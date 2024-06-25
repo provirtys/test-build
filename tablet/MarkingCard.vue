@@ -1,0 +1,163 @@
+<script setup>
+import ProgressPie from './ProgressPie.vue'
+
+defineProps({
+  isAggregationVisible: { type: Boolean, default: false },
+  isProgressPieVisible: { type: Boolean, default: false },
+  isRepeatVisible: { type: Boolean, default: false },
+  codeInfo: { type: Object, default: () => ({}) }
+})
+</script>
+
+<template>
+  <div class="marking-card">
+    <div class="main">
+      <div v-if="isAggregationVisible" class="aggregation">Идет агрегация</div>
+      <div class="main__head flex-space-between">
+        <p>Замаркировано</p>
+        <p>{{ codeInfo.labeled }} <span class="grey-text">/ {{ codeInfo.total }}</span></p>
+      </div>
+
+      <div class="main__info">
+          <div class="code-info">
+
+            <div>
+            <p class="main__info__title grey-text">Дата и время</p>
+            <p class="main__info__date">14.03.2024</p>
+            <p class="main__info__value grey-text">{{ codeInfo.ts }}</p>
+          </div>
+            <div>
+              <p class="main__info__title grey-text">Код</p>
+              <p class="main__info__value">{{ codeInfo.code }}</p>
+            </div>
+            <div>
+              <p class="main__info__title grey-text">Номер позиции</p>
+              <p class="main__info__value">{{ codeInfo.position }}</p>
+            </div>
+
+          </div>
+
+          <ProgressPie v-if="isProgressPieVisible" :size="'large'" :percentage="Math.round((codeInfo.labeled/codeInfo.total)*100)"></ProgressPie>
+
+      </div>
+      <div v-if="isRepeatVisible" class="main__repeat">
+        <!--Это не кнопка, просто индикатор, если нужна повторная маркировка-->
+        <div>
+          <img alt="Повторная маркировка" src="../../assets/images/repeat-marking.svg">
+        </div>
+        <p> Повторная маркировка</p>
+      </div>
+    </div>
+    <slot>
+      <!--Слот для кнопок, которые нужно настраивать-->
+    </slot>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.code-info {
+  display: flex;
+  flex-direction: column;
+  gap: $s-2;
+}
+p {
+  margin: 0;
+  font-family: 'Golos UI-medium';
+}
+
+.mb-6 {
+  margin-bottom: 6px;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.marking-card {
+  padding: $s-3;
+  background: $secondary;
+  max-width: 360px;
+  max-height: 600px;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  gap: $s-2;
+  border-radius: $s-1;
+
+  //font-family: 'Golos UI-medium';
+  font-size: $font-size-p3;
+  color: $dark-gray;
+}
+
+.aggregation {
+  background: $warning-40;
+  border-radius: $d-1;
+  padding: $s-2 $d-1;
+  text-align: center;
+  line-height: $s-1;
+  color: $dark-gray-70;
+  font-family: 'Golos UI-medium';
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: $s-2;
+
+  &__info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    //gap: $s-2;
+
+    text-align: left;
+    letter-spacing: -0.23999999463558197px;
+
+    &__title {
+      font-size: $font-size-p4;
+      line-height: $line-height-120;
+    }
+
+    &__date {
+      font-size: $m-2;
+      line-height: $line-height-120;
+      //letter-spacing: -0.24px;
+    }
+
+    &__value {
+      font-size: $font-size-h6;
+      line-height: $line-height-100;
+    }
+  }
+
+  &__repeat {
+    display: flex;
+    align-items: center;
+    gap: $d-1;
+
+    div {
+      width: $m-2;
+      height: $m-2;
+      background: $primary;
+      border: none;
+      border-radius: $d-1;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    p {
+      font-size: $font-size-p1;
+    }
+  }
+}
+
+.grey-text {
+  color: $dark-gray-40;
+}
+</style>

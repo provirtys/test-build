@@ -1,0 +1,65 @@
+<script setup>
+import AnimatedTabletButton from "./AnimatedTabletButton.vue";
+import scanIcon from '../../assets/images/tablet-icons/scan.svg'
+import aggregationIcon from '../../assets/images/tablet-icons/aggregation.svg'
+import TabletButton from "../TabletButton.vue";
+import restartIcon from '../../assets/images/tablet-icons/restart.svg'
+import badIcon from '../../assets/images/tablet-icons/bad.svg'
+import doneIcon from '../../assets/images/tablet-icons/done.svg'
+import MarkingCard from "./MarkingCard.vue";
+
+defineProps({
+  isAggregationVisible: {type: Boolean, default: true},
+  isProgressPieVisible: {type: Boolean, default: true},
+  isRepeatVisible: {type: Boolean, default: true},
+  codeInfo: {type: Object, default: () => ({})},
+  btn: {type: String, default: '1'}
+})
+</script>
+
+<template>
+  <div class="marking-card-container">
+    <MarkingCard :codeInfo="codeInfo" :is-repeat-visible="isRepeatVisible"
+                 :is-progress-pie-visible="isProgressPieVisible" :is-aggregation-visible="isAggregationVisible">
+      <div class="gap-12">
+        <AnimatedTabletButton v-if="btn === '1'" :icon="scanIcon" :text="'Сканировать'"/>
+        <AnimatedTabletButton v-if="btn === '1'" :color="'dark'" :text="'Начать агрегацию'" class="text-left"/>
+
+        <TabletButton v-if="btn === '2'" :text="'Повторить маркировку'" :icon="restartIcon"/>
+        <TabletButton v-if="btn === '2'" :text="'Брак маркировки'" :color="'light-gray'" :icon="badIcon"/>
+
+        <AnimatedTabletButton v-if="btn === '3'" :icon="scanIcon" :text="'Сканировать'"/>
+
+        <AnimatedTabletButton v-if="btn === '4'" :icon="doneIcon" :text="'Подтвердить'"/>
+
+        <AnimatedTabletButton v-if="btn === '5'" :icon="scanIcon" :text="'Сканировать'"/>
+        <AnimatedTabletButton v-if="btn === '5'" :icon="aggregationIcon" :color="'dark'" :text="'Завершить агрегацию'"/>
+      </div>
+    </MarkingCard>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.gap-12 {
+  display: flex;
+  flex-direction: column;
+  gap: $s-1;
+}
+
+.marking-card-container {
+  background: $secondary;
+  max-width: 360px;
+  height: 600px;
+  width: 100%;
+  //height: 100%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  gap: $s-3;
+  border-radius: $s-1;
+
+  //font-family: 'Golos UI-medium';
+  //font-size: $font-size-p3;
+  color: $dark-gray;
+}
+</style>
