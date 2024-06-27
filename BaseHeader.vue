@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import * as constants from '../constants/common'
+// import * as constants from '../constants/common'
 import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
@@ -24,7 +24,7 @@ const props = defineProps({
   /** Переключение логотипа*/
   isMain: { type: Boolean, default: true },
   /** Наименование организации*/
-    factoryName: { type: String, default: constants.INTEGRITY },
+    factoryName: { type: String, default: 'integrity' },
   /** Кнопка выхода*/
   needLogout: { type: Boolean, default: false }
 })

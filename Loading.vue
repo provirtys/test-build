@@ -5,7 +5,7 @@
         <div class="h2">{{ $t('loading.' + loadingType) }}</div>
         <div v-if="isInternetError" class="h3">{{ $t('loading.try_again') }}</div>
         <div v-else class="h3">{{ $t('loading.wait') }}</div>
-        <BaseButton v-if="isInternetError" :background="colors.RED" :color="colors.WHITE" :size="size.LARGE"
+        <BaseButton v-if="isInternetError" :background="'red'" :color="'white'" :size="'large'"
             :text="$t('loading.retry')" class="mt-5"></BaseButton>
     </div>
 </template>
@@ -13,9 +13,9 @@
 <script setup>
 import BaseButton from './BaseButton.vue'
 import LoadingAnimation from './LoadingAnimation.vue'
-import * as constants from '../constants/common'
-import * as colors from '../constants/colors'
-import * as size from '../constants/sizes'
+// import * as constants from '../constants/common'
+// import * as colors from '../constants/colors'
+// import * as size from '../constants/sizes'
 import { computed } from 'vue'
 
 const props = defineProps({
@@ -24,7 +24,7 @@ const props = defineProps({
 })
 
 const isInternetError = computed(() => {
-    return props.loadingType === constants.NO_INTERNET
+    return props.loadingType === 'internet_false'
 })
 </script>
 

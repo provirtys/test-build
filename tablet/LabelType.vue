@@ -2,16 +2,16 @@
     <div class="label-type">
         <div class="label-type__content">
             <p class="label-type__title">{{ $t('chooseLabelingType') }}</p>
-            <div class="label-type__option" :class="{'selected': dmSelected}" data-testid="codeType-DataMatrix" @click="switchType(codeTypes.DATAMATRIX)">
+            <div class="label-type__option" :class="{'selected': dmSelected}" data-testid="codeType-DataMatrix" @click="switchType('DataMatrix')">
                 <img :src="dataMatrix">
                 <p>Data Matrix</p>
             </div>
-            <div class="label-type__option" :class="{'selected': bcSelected}" data-testid="codeType-Code128" @click="switchType(codeTypes.CODE128)">
+            <div class="label-type__option" :class="{'selected': bcSelected}" data-testid="codeType-Code128" @click="switchType('Code128')">
                 <img :src="barCode">
                 <p>Barcode</p>
             </div>
             <div v-if="!isAuto" class="label-type__option all-selected">
-                <img :src="allSelected ? checkboxFilled : checkboxEmpty" data-testid="codeType-all" @click="switchType(codeTypes.ALL)">
+                <img :src="allSelected ? checkboxFilled : checkboxEmpty" data-testid="codeType-all" @click="switchType('all')">
                 <p>{{ $t('chooseAll') }}</p>
             </div>
         </div>
@@ -25,7 +25,7 @@ import dataMatrix from '../assets/images/tablet-icons/dataMatrix.svg'
 import barCode from '../assets/images/tablet-icons/barCode.svg'
 import checkboxFilled from '../assets/images/tablet-icons/checkbox-filled.svg'
 import checkboxEmpty from '../assets/images/tablet-icons/checkbox-empty.svg'
-import * as codeTypes from '../constants/codeTypes'
+// import * as codeTypes from '../constants/codeTypes'
 
 const props = defineProps({
   isAuto: {
@@ -41,51 +41,51 @@ const props = defineProps({
 const emit = defineEmits(['typeChosen'])
 
 const dmSelected = computed(() => {
-  return props.selectedTypes.includes(codeTypes.DATAMATRIX)
+  return props.selectedTypes.includes('DataMatrix')
 })
 
 const bcSelected = computed(() => {
-  return props.selectedTypes.includes(codeTypes.CODE128)
+  return props.selectedTypes.includes('Code128')
 })
 
 const allSelected = computed(() => {
-  return props.selectedTypes.includes(codeTypes.DATAMATRIX) && props.selectedTypes.includes(codeTypes.CODE128)
+  return props.selectedTypes.includes('DataMatrix') && props.selectedTypes.includes('Code128')
 })
 
 function switchType (value) {
   let newState = { dm: false, bc: false }
   if (props.isAuto) {
     switch (value) {
-      case codeTypes.DATAMATRIX:
+      case 'DataMatrix':
         newState = { dm: true, bc: false }
         break
-      case codeTypes.CODE128:
+      case 'Code128':
         newState = { dm: false, bc: true }
         break
     }
     if (newState.bc) {
-      emit('typeChosen', [codeTypes.CODE128])
+      emit('typeChosen', ['Code128'])
     } else {
-      emit('typeChosen', [codeTypes.DATAMATRIX])
+      emit('typeChosen', ['DataMatrix'])
     }
     return
   }
 
   switch (value) {
-    case codeTypes.ALL:
+    case 'all':
       if (!allSelected.value) {
         newState = { dm: true, bc: true }
         break
       }
       break
-    case codeTypes.DATAMATRIX:
+    case 'DataMatrix':
       if (dmSelected.value) {
         newState = { dm: false, bc: bcSelected.value }
         break
       }
       newState = { dm: true, bc: bcSelected.value }
       break
-    case codeTypes.CODE128:
+    case 'Code128':
       if (bcSelected.value) {
         newState = { dm: dmSelected.value, bc: false }
         break
@@ -95,10 +95,10 @@ function switchType (value) {
   }
   const result = []
   if (newState.dm) {
-    result.push(codeTypes.DATAMATRIX)
+    result.push('DataMatrix')
   }
   if (newState.bc) {
-    result.push(codeTypes.CODE128)
+    result.push('Code128')
   }
 
   emit('typeChosen', result)

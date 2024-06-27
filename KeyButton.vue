@@ -1,12 +1,12 @@
 <template>
     <div class="key" @click="pressed">
-        <img class="icon" v-if="value === constants.BACK" alt="" src="../assets/images/backspace.svg"/>
+        <img class="icon" v-if="value === 'Back'" alt="" src="../assets/images/backspace.svg"/>
         <span v-else class="h2">{{value}}</span>
     </div>
 </template>
 
 <script setup>
-import * as constants from '../constants/common'
+// import * as constants from '../constants/common'
 const props = defineProps({
   /** Значение кнопки*/
     value: { type: String, default: '' },

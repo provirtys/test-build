@@ -4,7 +4,7 @@
         <div class="scanner__wrapper">
             <div class="scanner__camera-preview" />
             <div class="scanner__border" :style="{width: props.width, height: props.height}">
-                <img v-if="codeType === codeTypes.CODE128" src="../assets//images/scan-border-wide.png" alt="Scan border">
+                <img v-if="codeType === 'Code128'" src="../assets//images/scan-border-wide.png" alt="Scan border">
                 <img v-else src="../assets/images/scan-border-square.png" alt="Scan border">
             </div>
         </div>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import * as codeTypes from '../constants/codeTypes'
+// import * as codeTypes from '../constants/codeTypes'
 import { ref } from 'vue'
 
 const props = defineProps({
@@ -24,7 +24,7 @@ const props = defineProps({
   /** Высота сканера */
     height: { type: String, default: 'auto' },
   /** Вариант изображения кода*/
-    codeType: { type: String, default: codeTypes.CODE128 }
+    codeType: { type: String, default: 'Code128' }
 })
 
 const isLightOn = ref(false)

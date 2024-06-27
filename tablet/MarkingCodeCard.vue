@@ -1,10 +1,10 @@
 <template>
     <div class="code-card">
         <div class="code-card__code">
-            <img v-if="codeType == codeTypes.CODE128" :src="barCode">
+            <img v-if="codeType == 'Code128'" :src="barCode">
             <img v-else :src="dataMatrix">
-            <img v-if="status === statuses.VERIFIED || status === statuses.SYNCED" class="code-card__status" :src="success">
-            <img v-if="status === statuses.BROKEN" class="code-card__status" :src="error">
+            <img v-if="status === 'verified' || status === 'synced'" class="code-card__status" :src="success">
+            <img v-if="status === 'broken'" class="code-card__status" :src="error">
         </div>
         <div class="code-card__info">
             <p class="code-card__title">{{ codeText }}</p>
@@ -21,11 +21,11 @@ import dataMatrix from '../../assets/images/tablet-icons/dataMatrix.svg'
 import barCode from '../../assets/images/tablet-icons/barCode.svg'
 import success from '../../assets/images/tablet-icons/status-success.svg'
 import error from '../../assets/images/tablet-icons/status-error.svg'
-import * as codeTypes from '../../constants/codeTypes.js'
-import * as statuses from '../../constants/status.js'
+// import * as codeTypes from '../../constants/codeTypes.js'
+// import * as statuses from '../../constants/status.js'
 
 defineProps({
-  codeType: { type: String, default: codeTypes.DATAMATRIX },
+  codeType: { type: String, default: 'DataMatrix' },
   codeText: { type: String, default: '' },
   status: { type: String, default: 'none' },
   time: { type: String, default: '' },

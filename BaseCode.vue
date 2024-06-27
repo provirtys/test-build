@@ -12,14 +12,14 @@
 import CodesArrow from '../components/icons/CodesArrow.vue'
 import DatamatrixIcon from '../components/icons/DatamatrixIcon.vue'
 import BarcodeIcon from '../components/icons/BarcodeIcon.vue'
-import * as types from '../constants/codeTypes'
-import * as colors from '../constants/colors'
-import * as size from '../constants/sizes'
+// import * as types from '../constants/codeTypes'
+// import * as colors from '../constants/colors'
+// import * as size from '../constants/sizes'
 import {computed} from 'vue'
 
 const props = defineProps({
   /** Вариант изображения кода*/
-  codeType: {type: String, default: types.DATAMATRIX},
+  codeType: {type: String, default: 'DataMatrix'},
   /** Индекс сканируемого кода*/
   currentCode: {type: Number, default: 0},
   /** Количество сканируемых кодов */
@@ -34,7 +34,7 @@ const codeTypes = {
 }
 
 const currentType = computed(() => {
-  if (props.codeType === types.CODE128) {
+  if (props.codeType === 'Code128') {
     return 'BarcodeIcon'
   } else {
     return 'DatamatrixIcon'
@@ -42,19 +42,19 @@ const currentType = computed(() => {
 })
 
 const codeTypeClass = computed(() => {
-  props.codeType === types.CODE128 ? 'barcode' : 'datamatrix'
+  props.codeType === 'Code128' ? 'barcode' : 'datamatrix'
 })
 
 const firstCodeColor = computed(() => {
-  return props.currentCode === -1 ? colors.GRAY : props.currentCode === 0 ? colors.RED : colors.BLACK
+  return props.currentCode === -1 ? 'gray' : props.currentCode === 0 ? 'red' : 'black'
 })
 
 const arrowMargin = computed(() => {
-  return props.codeType === types.CODE128 ? size.MEDIUM : size.LARGE
+  return props.codeType === 'Code128' ? 'medium' : 'large'
 })
 
 const codeColor = (index) => {
-  return index === props.currentCode ? colors.RED : index < props.currentCode + 1 ? colors.BLACK : colors.GRAY
+  return index === props.currentCode ? 'red' : index < props.currentCode + 1 ? 'black' : 'gray'
 }
 </script>
 

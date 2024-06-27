@@ -1,7 +1,7 @@
 <script setup>
 import ApexCharts from 'apexcharts'
 import { ref, watch, onMounted } from 'vue'
-import * as statuses from '../../constants/status.js'
+// import * as statuses from '../../constants/status.js'
 
 // количество видимых итераций (значений по горизонтальной оси)
 const limit = 18
@@ -33,9 +33,9 @@ function changeBarData (codeList) {
 
   if (totalItems <= limit) {
     codeList.forEach(({ status }, index) => {
-      if (status === statuses.GENERATED ||  status === statuses.PRINTED || status === statuses.VERIFIED || status === statuses.SYNCED) {
+      if (status === 'generated' ||  status === 'printed' || status === 'verified' || status === 'synced') {
         result[index]['ok']++
-      } else if (status === statuses.BROKEN) {
+      } else if (status === 'broken') {
         result[index]['broken']++
       }
     })
@@ -44,9 +44,9 @@ function changeBarData (codeList) {
     let codesInCurrentColumn = 0
     let currentColumn = 0
     codeList.forEach(({ status }, index) => {
-      if (status === statuses.GENERATED ||  status === statuses.PRINTED || status === statuses.VERIFIED || status === statuses.SYNCED) {
+      if (status === 'generated' ||  status === 'printed' || status === 'verified' || status === 'synced') {
         result[currentColumn]['ok']++
-      } else if (status === statuses.BROKEN) {
+      } else if (status === 'broken') {
         result[currentColumn]['broken']++
       }
       codesInCurrentColumn++

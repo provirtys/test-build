@@ -6,20 +6,20 @@
 </template>
 
 <script setup>
-import * as colors from '../constants/colors'
-import * as size from '../constants/sizes'
+// import * as colors from '../constants/colors'
+// import * as size from '../constants/sizes'
 import { computed } from 'vue'
 
 let props = defineProps({
    /** Цвет фона*/
     background: {
         type: String,
-        default: colors.RED
+        default: 'red'
     },
   /** Цвет текста и рамки*/
    color: {
         type: String,
-        default: colors.WHITE
+        default: 'white'
     },
   /** Текст кнопки*/
   text: {
@@ -34,7 +34,7 @@ let props = defineProps({
   /** Размер кнопки*/
     size: {
         type: String,
-        default: size.MEDIUM
+        default: 'medium'
     },
   /** Иконка кнопки*/
     icon: {
@@ -44,9 +44,9 @@ let props = defineProps({
 })
 
 const classes = computed(() => {
-    let bg = props.isDisabled ? 'gray-bg' : props.background === colors.RED ? 'red-bg' : 'transparent'
-    let border = props.color === colors.WHITE ? 'no-border' : props.color === colors.BLACK ? 'black-border' : 'red-border'
-    let button_size = props.size === size.LARGE ? size.LARGE : props.size === size.FULL ? size.FULL : size.MEDIUM
+    let bg = props.isDisabled ? 'gray-bg' : props.background === 'red' ? 'red-bg' : 'transparent'
+    let border = props.color === 'white' ? 'no-border' : props.color === 'black' ? 'black-border' : 'red-border'
+    let button_size = props.size === 'large' ? 'large' : props.size === 'full' ? 'full' : 'medium'
     return `${bg} ${border} ${button_size}`
 })
 
