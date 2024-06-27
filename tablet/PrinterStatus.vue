@@ -1,7 +1,7 @@
 <template>
   <div class="printer-status">
     <div class="printer-status__indicator" :class="props.color"></div>
-    <div class="printer-status__text">{{$t('printer-status.' + statusType) }}</div>
+    <div class="printer-status__text">{{ $t('printerStatus.' + statusType) }}</div>
   </div>
 </template>
 

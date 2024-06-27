@@ -1,7 +1,7 @@
 <template>
     <div class="label-type">
         <div class="label-type__content">
-            <p class="label-type__title">Выберите тип маркировки:</p>
+            <p class="label-type__title">{{ $t('chooseLabelingType') }}</p>
             <div class="label-type__option" :class="{'selected': dmSelected}" data-testid="codeType-DataMatrix" @click="switchType(codeTypes.DATAMATRIX)">
                 <img :src="dataMatrix">
                 <p>Data Matrix</p>
@@ -12,7 +12,7 @@
             </div>
             <div v-if="!isAuto" class="label-type__option all-selected">
                 <img :src="allSelected ? checkboxFilled : checkboxEmpty" data-testid="codeType-all" @click="switchType(codeTypes.ALL)">
-                <p>Выбрать все</p>
+                <p>{{ $t('chooseAll') }}</p>
             </div>
         </div>
         <slot></slot>

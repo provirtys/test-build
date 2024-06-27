@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-    <span :class="classes">Код привязки приложения ОТК</span>
+    <span :class="classes">{{ $t('bindingCode') }}</span>
     <div class="binding-barcode">
       <div id="factory-barcode" v-html="svgnode">
       </div>

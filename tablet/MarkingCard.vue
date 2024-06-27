@@ -12,32 +12,32 @@ defineProps({
 <template>
   <div class="marking-card">
     <div class="main">
-      <div v-if="isAggregationVisible" class="aggregation">Идет агрегация</div>
+      <div v-if="isAggregationVisible" class="aggregation">{{ $t('aggregationInProgress') }}</div>
       <div class="main__head flex-space-between">
-        <p>Замаркировано</p>
+        <p>{{ $t('labeled') }}</p>
         <p>{{ codeInfo.labeled }} <span class="grey-text">/ {{ codeInfo.total }}</span></p>
       </div>
 
       <div class="main__info">
-          <div class="code-info">
+        <div class="code-info">
 
-            <div>
-            <p class="main__info__title grey-text">Дата и время</p>
+          <div>
+            <p class="main__info__title grey-text">{{ $t('datetime') }}</p>
             <p class="main__info__date">14.03.2024</p>
             <p class="main__info__value grey-text">{{ codeInfo.ts }}</p>
           </div>
-            <div>
-              <p class="main__info__title grey-text">Код</p>
-              <p class="main__info__value">{{ codeInfo.code }}</p>
-            </div>
-            <div>
-              <p class="main__info__title grey-text">Номер позиции</p>
-              <p class="main__info__value">{{ codeInfo.position }}</p>
-            </div>
-
+          <div>
+            <p class="main__info__title grey-text">{{ $t('code') }}</p>
+            <p class="main__info__value">{{ codeInfo.code }}</p>
+          </div>
+          <div>
+            <p class="main__info__title grey-text">{{ $t('position') }}</p>
+            <p class="main__info__value">{{ codeInfo.position }}</p>
           </div>
 
-          <ProgressPie v-if="isProgressPieVisible" :size="'large'" :percentage="Math.round((codeInfo.labeled/codeInfo.total)*100)"></ProgressPie>
+        </div>
+
+        <ProgressPie v-if="isProgressPieVisible" :size="'large'" :percentage="Math.round((codeInfo.labeled/codeInfo.total)*100)"></ProgressPie>
 
       </div>
       <div v-if="isRepeatVisible" class="main__repeat">
@@ -45,7 +45,7 @@ defineProps({
         <div>
           <img alt="Повторная маркировка" src="../../assets/images/repeat-marking.svg">
         </div>
-        <p> Повторная маркировка</p>
+        <p>{{ $t('repeatedLabeling') }}</p>
       </div>
     </div>
     <slot>

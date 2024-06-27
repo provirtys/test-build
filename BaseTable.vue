@@ -26,7 +26,7 @@ let props = defineProps({
                :rows-per-page-options="[0]"
                :table-header-style="{ color: 'var(--q-primary)'}"
                :card-style="{ color: 'var(secondary)'}"
-               no-data-label="Нет записей"
+               :no-data-label="$t('storybook.table.noData')"
                hide-pagination
       />
       <!--    вариант с пустой табл-->

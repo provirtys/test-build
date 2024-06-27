@@ -1,45 +1,45 @@
 <template>
-    <div class="labeling__pie">
-        <div class="legend">
-            <div class="legend__item">
-                <div class="legend__title">
-                    <p>Всего</p>
-                    <p>{{ total }}</p>
-                </div>
-            </div>
-            <div class="legend__item">
-                <div class="legend__color bg-primary"></div>
-                <div class="legend__title">
-                    <p>Ошибки</p>
-                    <p>{{ mistakes }}</p>
-                </div>
-            </div>
-            <div class="legend__item">
-                <div class="legend__color  bg-gray2"></div>
-                <div class="legend__title">
-                    <p>Без ошибок</p>
-                    <p>{{ total - mistakes }}</p>
-                </div>
-            </div>
+  <div class="labeling__pie">
+    <div class="legend">
+      <div class="legend__item">
+        <div class="legend__title">
+          <p>{{ $t('total') }}</p>
+          <p>{{ total }}</p>
         </div>
-        <div class="circle">
-            <q-circular-progress
-            :value="percentage"
-            reverse
-            :angle="90"
-            size="320px"
-            :thickness="0.4"
-            color="primary"
-            track-color="gray2"
-            class="q-ma-md"
-            />
-            <div class="titles" :class="{'alignment': percentage === 100 || percentage === 0}">
-            <p :class="{'text-primary': percentage < 3}">{{ percentage }}%</p>
-            <p :class="{'text-primary': percentage < 97}">{{ 100 - percentage }}%</p>
-            </div>
+      </div>
+      <div class="legend__item">
+        <div class="legend__color bg-primary"></div>
+        <div class="legend__title">
+          <p>{{ $t('errors') }}</p>
+          <p>{{ mistakes }}</p>
         </div>
-        <AnimatedTabletButton :text="'Завершить маркировку'" :icon="logoutIcon" @action-submitted="finishLabeling" />
+      </div>
+      <div class="legend__item">
+        <div class="legend__color  bg-gray2"></div>
+        <div class="legend__title">
+          <p>{{ $t('withoutErrors') }}</p>
+          <p>{{ total - mistakes }}</p>
+        </div>
+      </div>
     </div>
+    <div class="circle">
+      <q-circular-progress
+          :value="percentage"
+          reverse
+          :angle="90"
+          size="320px"
+          :thickness="0.4"
+          color="primary"
+          track-color="gray2"
+          class="q-ma-md"
+      />
+      <div class="titles" :class="{'alignment': percentage === 100 || percentage === 0}">
+        <p :class="{'text-primary': percentage < 3}">{{ percentage }}%</p>
+        <p :class="{'text-primary': percentage < 97}">{{ 100 - percentage }}%</p>
+      </div>
+    </div>
+    <AnimatedTabletButton :text="$t('finishLabeling')" :icon="logoutIcon" @action-submitted="finishLabeling" />
+  </div>
 </template>
 
 <script setup>

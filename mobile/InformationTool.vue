@@ -1,7 +1,7 @@
 <template>
   <div class="main-tool">
     <div class="info">
-      <p class="info__title">Информация об инструменте</p>
+      <p class="info__title">{{ $t('storybook.toolInfo') }}</p>
       <div class="info__item">
         <div v-if="props.img" class="info__img">
           <img alt="Изображение инструмента" :src="props.img">
@@ -16,10 +16,10 @@
     </div>
 
     <div class="buttons">
-      <MobileButton v-if="props.btn === 'take'" :color="'dark'" :text="'Получить'"></MobileButton>
-      <MobileButton v-if="props.btn === 'returnBtn'" :color="'dark'" :text="'Вернуть'"></MobileButton>
+      <MobileButton v-if="props.btn === 'take'" :color="'dark'" :text="$t('storybook.take')"></MobileButton>
+      <MobileButton v-if="props.btn === 'returnBtn'" :color="'dark'" :text="$t('storybook.return')"></MobileButton>
 
-      <MobileButton :text="'Отменить'"></MobileButton>
+      <MobileButton :text="$t('storybook.cancel')"></MobileButton>
     </div>
   </div>
 </template>

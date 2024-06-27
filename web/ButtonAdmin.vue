@@ -5,7 +5,7 @@
         text-color="secondary"
         icon="sym_o_add"
         no-caps
-        label="Создать"
+        :label="$t('storybook.table.create')"
         class="add-btn"
     />
   </div>

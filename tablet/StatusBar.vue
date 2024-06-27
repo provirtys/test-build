@@ -3,14 +3,14 @@
     <button v-if="page == 'TaskList'" class="status-bar__button" v-touch-hold:2000.mouse="handleHold"
             @mousedown="startAnimation" @touchstart="startAnimation" @mouseup="finishAnimation"
             @touchend="finishAnimation">
-      <img src="../../assets/images/tablet-icons/logout.svg" alt="Выход">Выход
+      <img src="../../assets/images/tablet-icons/logout.svg" alt="Выход">{{ $t('logout') }}
     </button>
-    <button v-else class="status-bar__button" @click="goBack"><img src="../../assets/images/tablet-icons/arrowBack.svg">Назад
+    <button v-else class="status-bar__button" @click="goBack"><img src="../../assets/images/tablet-icons/arrowBack.svg">{{ $t('back') }}
     </button>
     <p class="status-bar__task">{{ textTask }}</p>
 <!--    <PrinterStatus :color="printer.status" :statusType="printer.text"/>-->
     <div class="row">
-      <button v-if="page == 'TaskList'" class="status-bar__button new-task mr-30" @click="scanTaskCode">Новое задание</button>
+      <button v-if="page == 'TaskList'" class="status-bar__button new-task mr-30" @click="scanTaskCode">{{ $t('newJob') }}</button>
       <PrinterStatus :color="printer.status" :statusType="printer.text" />
     </div>
   </div>
