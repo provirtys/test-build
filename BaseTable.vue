@@ -1,13 +1,12 @@
 <script setup>
 let props = defineProps({
   /** Значение строк*/
-  rows: {type: Array, default: () => []},
+  rows: {
+    type: Array, default: () => []
+  },
   /** Значение колонок*/
   columns: {
-    type: Array, default: () => [
-      {label: 'ФИO', field: 'name', headerClasses: 'base-table-header'},
-      {label: 'Роль', align: 'left', headerClasses: 'base-table-header'}
-    ]
+    type: Array, default: () => []
   },
 })
 
@@ -29,8 +28,6 @@ let props = defineProps({
                :no-data-label="$t('storybook.table.noData')"
                hide-pagination
       />
-      <!--    вариант с пустой табл-->
-      <!--    <div v-if="rows.length == 0" class="empty-table">пустая таблица</div>-->
     </div>
   </div>
 </template>

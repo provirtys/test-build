@@ -2,6 +2,10 @@
 import ApexCharts from 'apexcharts'
 // import * as statuses from '../../constants/status'
 import { ref, onMounted, watch } from 'vue'
+import { useI18n } from "vue-i18n"
+
+const { t } = useI18n()
+
 const props = defineProps({
   codes: {
     type: Array,
@@ -116,7 +120,7 @@ window.Apex = {
       height: 2
     },
     title: {
-      text: 'Длина, м'
+      text: t('length')
     }
   },
   // Высплывающая подсказка

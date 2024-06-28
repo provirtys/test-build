@@ -4,41 +4,84 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import { computed } from 'vue'
-const props = defineProps({
-  status: {
-    type: String,
-    default: ''
-  }
-})
+import { useI18n } from "vue-i18n"
 
-const text = computed(() => {
-  switch (props.status) {
-    case 'new':
-      return 'НОВОЕ'
-    case 'labeling':
-      return 'МАРКИРОВКА'
-    case 'ready':
-      return 'ЗАВЕРШЕНО'
-    default:
-      return 'ОТМЕНЕНО'
-  }
-})
+const { t } = useI18n()
 
-const color = computed(() => {
-  switch (props.status) {
-    case 'new':
-      return 'white'
-    case 'labeling':
-      return 'orange'
-    case 'ready':
-      return 'green'
-    default:
-      return ''
+export default {
+  props: {
+    status: {
+      type: String,
+      default: ''
+    }
+  },
+  setup(props) {
+    const text = computed(() => {
+      switch (props.status) {
+        case 'new':
+        case 'labeling':
+        case 'ready':
+          return t(props.status)
+        default:
+          return t('cancelled')
+      }
+    })
+
+    const color = computed(() => {
+      switch (props.status) {
+        case 'new':
+          return 'white'
+        case 'labeling':
+          return 'orange'
+        case 'ready':
+          return 'green'
+        default:
+          return ''
+      }
+    })
+
+    return { text, color }
   }
-})
+}
 </script>
+
+<!--<script setup>-->
+<!--import { computed } from 'vue'-->
+<!--const props = defineProps({-->
+<!--  status: {-->
+<!--    type: String,-->
+<!--    default: ''-->
+<!--  }-->
+<!--})-->
+
+<!--const text = computed(() => {-->
+<!--  switch (props.status) {-->
+<!--    case 'new':-->
+<!--      return 'НОВОЕ'-->
+<!--    case 'labeling':-->
+<!--      return 'МАРКИРОВКА'-->
+<!--    case 'ready':-->
+<!--      return 'ЗАВЕРШЕНО'-->
+<!--    default:-->
+<!--      return 'ОТМЕНЕНО'-->
+<!--  }-->
+<!--})-->
+
+<!--const color = computed(() => {-->
+<!--  switch (props.status) {-->
+<!--    case 'new':-->
+<!--      return 'white'-->
+<!--    case 'labeling':-->
+<!--      return 'orange'-->
+<!--    case 'ready':-->
+<!--      return 'green'-->
+<!--    default:-->
+<!--      return ''-->
+<!--  }-->
+<!--})-->
+<!--</script>-->
 
 <style scoped lang="scss">
 .marking-status {

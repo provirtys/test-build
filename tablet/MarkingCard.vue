@@ -7,6 +7,14 @@ defineProps({
   isRepeatVisible: { type: Boolean, default: false },
   codeInfo: { type: Object, default: () => ({}) }
 })
+
+function getCodeTime (value) {
+  return new Date(value).toLocaleTimeString('RU-ru')
+}
+
+function getCodeDate (value) {
+  return new Date(value).toLocaleDateString('RU-ru')
+}
 </script>
 
 <template>
@@ -23,8 +31,8 @@ defineProps({
 
           <div>
             <p class="main__info__title grey-text">{{ $t('datetime') }}</p>
-            <p class="main__info__date">14.03.2024</p>
-            <p class="main__info__value grey-text">{{ codeInfo.ts }}</p>
+            <p class="main__info__date">{{ getCodeDate(codeInfo.ts) }}</p> <!-- <p class="main__info__date">{{ getCodeDate(codeInfo.ts) }}</p>-->
+            <p class="main__info__value grey-text">{{ getCodeTime(codeInfo.ts) }}</p>
           </div>
           <div>
             <p class="main__info__title grey-text">{{ $t('code') }}</p>

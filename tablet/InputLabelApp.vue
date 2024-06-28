@@ -1,7 +1,6 @@
 <template>
   <div class="input-amount">
     <div class="full-width">
-      <!--          <p class="input-amount__title">Введите количество продукции:</p>-->
       <q-input v-model.number="amount" pattern="[0-9]*" inputmode="numeric" type="number" label="$t('amount')"
                stack-label outlined autofocus/>
     </div>

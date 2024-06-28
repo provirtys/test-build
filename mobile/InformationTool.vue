@@ -4,7 +4,7 @@
       <p class="info__title">{{ $t('storybook.toolInfo') }}</p>
       <div class="info__item">
         <div v-if="props.img" class="info__img">
-          <img alt="Изображение инструмента" :src="props.img">
+          <img :alt="$t('imageTool')" :src="props.img">
         </div>
         <div class="info__items">
           <dl v-for="(item, key) in props.toolItems" :key="key">
@@ -31,7 +31,7 @@ let props = defineProps({
   /** Информация об инструменте */
   toolItems: {
     type: Object,
-    default: () => ({'Название': 'название', 'Количество': 10})
+    default: () => ({})
   },
   /** Изображение инструмента */
   img: {

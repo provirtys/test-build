@@ -7,7 +7,7 @@
         size="30px"
     >
       <q-tooltip class="bg-table-text">
-        Обновить данные в таблице
+        {{ $t('storybook.table.updateDataInTable') }}
       </q-tooltip>
     </q-icon>
     <q-toolbar-title>{{nameTable}}</q-toolbar-title>
@@ -23,7 +23,7 @@
         v-model:pagination="pagination"
         :rows-per-page-options="[0]"
         :card-style="{ color: 'var(secondary)' }"
-        no-data-label="Нет записей"
+        :no-data-label="$t('storybook.table.noData')"
         hide-pagination
       >
         <template v-slot:body-cell-status="props">
@@ -54,7 +54,9 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useI18n } from "vue-i18n"
 
+const { t } = useI18n()
 let props = defineProps({
   /** Значение строк*/
   rows: { type: Array, default: () => [] },
@@ -71,13 +73,13 @@ const filteredRows = computed(() => {
 function getStatus (val) {
   switch (val) {
     case 'new':
-      return 'Создано'
+      return t('storybook.table.new')
     case 'cancel':
-      return 'Отменено'
+      return t('storybook.table.canceled')
     case 'labeling':
-      return 'Маркировка'
+      return t('storybook.table.labeling')
     case 'ready':
-      return 'Завершено'
+      return t('storybook.table.ready')
     default:
       return val
   }

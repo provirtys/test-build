@@ -4,8 +4,8 @@
       <q-input
         outlined
         v-model="taskText"
-        placeholder="Введите название задачи"
-        :rules="[val => !!val || 'Поле обязательно для заполнения']"
+        :placeholder="$t('taskText')"
+        :rules="[val => !!val || $t('error.noEmpty')]"
         class="job__task"
       ></q-input>
 
@@ -13,16 +13,16 @@
         outlined
         type="number"
         v-model.number="amount"
-        placeholder="Введите количество продукции"
-        :rules="[val => !!val || 'Поле обязательно для заполнения']"
+        :placeholder="$t('amountTitle')"
+        :rules="[val => !!val || $t('error.noEmpty')]"
         class="job__amount"
       ></q-input>
 
       <q-input
         outlined
         v-model="sku"
-        placeholder="Введите артикул"
-        :rules="[val => !!val || 'Поле обязательно для заполнения']"
+        :placeholder="$t('sku')"
+        :rules="[val => !!val || $t('error.noEmpty')]"
         class="job__amount"
       ></q-input>
 
@@ -32,16 +32,16 @@
             <q-input
               outlined
               v-model="row.key"
-              placeholder="Наименование"
+              :placeholder="$t('taskName')"
               class="job__attribute"
-              :rules="[val => !!val || 'Поле обязательно для заполнения', val => !notUniqueValue(row, val) || 'Введите уникальное наименование']"
+              :rules="[val => !!val || $t('error.noEmpty'), val => !notUniqueValue(row, val) || $t('error.uniqueValue')]"
             ></q-input>
             <q-input
               outlined
               v-model="row.value"
-              placeholder="Значение"
+              :placeholder="$t('value')"
               class="job__attribute"
-              :rules="[val => !!val || 'Поле обязательно для заполнения']"
+              :rules="[val => !!val || $t('error.noEmpty')]"
             ></q-input>
             <q-icon
               name="sym_o_delete"
@@ -58,7 +58,7 @@
               color="gray"
               text-color="dark"
               no-caps
-              label="Добавить"
+              :label="$t('add')"
               class="job__add-attribute-button"
               @click="addRow"
             />
@@ -75,7 +75,7 @@
         color="primary"
         text-color="secondary"
         no-caps
-        label="Создать задачу"
+        :label="$t('createTask')"
         @click="createTask"
       />
     </div>

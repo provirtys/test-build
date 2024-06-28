@@ -27,7 +27,9 @@
 <script setup>
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from "vue-i18n"
 
+const { t } = useI18n()
 const router = useRouter()
 
 const props = defineProps({
@@ -82,9 +84,9 @@ function onBackButton() {
 const getPageHeader = computed(() => {
     switch(props.page) {
         case 'Profile':
-            return 'Профиль'
+          return t('storybook.profile')
         case 'ProfileRegister':
-            return 'Регистрация'
+          return t('storybook.register')
         default:
             return undefined
     }

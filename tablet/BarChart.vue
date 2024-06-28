@@ -2,6 +2,9 @@
 import ApexCharts from 'apexcharts'
 import { ref, watch, onMounted } from 'vue'
 // import * as statuses from '../../constants/status.js'
+import { useI18n } from "vue-i18n"
+
+const { t } = useI18n()
 
 // количество видимых итераций (значений по горизонтальной оси)
 const limit = 18
@@ -110,7 +113,7 @@ window.Apex = {
       height: 2
     },
     title: {
-      text: 'Длина, м'
+      text: t('length')
     }
   },
   // Высплывающая подсказка
@@ -152,7 +155,7 @@ const optionsColumn = {
       height: 2
     },
     title: {
-      text: 'Ошибок',
+      text: t('errors'),
       rotate: -90,
       style: {
         fontSize: '12px',

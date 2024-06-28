@@ -6,15 +6,15 @@
         <q-input
             outlined
             v-model="taskText"
-            placeholder="Введите название задачи"
-            :rules="[val => !!val || 'Поле обязательно для заполнения']"
+            :placeholder="$t('taskText')"
+            :rules="[val => !!val || $t('error.noEmpty')]"
         ></q-input>
         <q-input
             outlined
             v-model="taskSku"
-            placeholder="Введите артикул"
+            :placeholder="$t('sku')"
             class="template__sku"
-            :rules="[val => !!val || 'Поле обязательно для заполнения']"
+            :rules="[val => !!val || $t('error.noEmpty')]"
         ></q-input>
         <div class="template__attributes">
           <form>
@@ -22,16 +22,16 @@
               <q-input
                   outlined
                   v-model="row.key"
-                  placeholder="Наименование"
+                  :placeholder="$t('taskName')"
                   class="template__attribute"
-                  :rules="[val => !!val || 'Поле обязательно для заполнения', val => !notUniqueValue(row, val) || 'Введите уникальное наименование']"
+                  :rules="[val => !!val || $t('error.noEmpty'), val => !notUniqueValue(row, val) || $t('error.uniqueValue')]"
               ></q-input>
               <q-input
                   outlined
                   v-model="row.value"
-                  placeholder="Значение"
+                  :placeholder="$t('value')"
                   class="template__attribute"
-                  :rules="[val => !!val || 'Поле обязательно для заполнения']"
+                  :rules="[val => !!val || $t('error.noEmpty')]"
               ></q-input>
               <q-icon
                   name="sym_o_delete"
@@ -48,7 +48,7 @@
                   color="gray"
                   text-color="dark"
                   no-caps
-                  label="Добавить"
+                  :label="$t('add')"
                   class="template__add-attribute-button"
                   @click="addRow"
               />
@@ -64,7 +64,7 @@
             color="gray"
             text-color="dark"
             no-caps
-            label="Сгенерировать DataMatrix"
+            :label="$t('generateDataMatrix')"
             @click="generateDataMatrix"
         />
         <q-btn
@@ -73,7 +73,7 @@
             color="primary"
             text-color="secondary"
             no-caps
-            label="Сохранить"
+            :label="$t('save')"
             @click="createTemplate"
         />
       </div>
