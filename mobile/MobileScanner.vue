@@ -43,7 +43,7 @@ async function onCameraLightButton() {
         background-color: transparent;
         box-shadow: none;
         border-width: 0px;
-        background-image: url("../../assets/images/mobile/camera-flash-off.svg");
+        background-image: url("../images/camera-flash-off.svg");
         background-size: 100% 100%;
         background-repeat: no-repeat;
         width: $m-3;
@@ -51,7 +51,7 @@ async function onCameraLightButton() {
         cursor: pointer;
 
         &.active {
-            background-image: url("../../assets/images/mobile/camera-flash-on.svg");
+            background-image: url("../images/camera-flash-on.svg");
         }
     }
 
@@ -76,8 +76,7 @@ async function onCameraLightButton() {
         align-items: center;
         justify-content: center;
         border-radius: 12%;
-        background-image: url("../../assets/images/mobile/paw.jpg");
-		background-size: 100% 100%;
+		    background-size: 100% 100%;
     }
 
     &__border {
@@ -85,7 +84,7 @@ async function onCameraLightButton() {
         height: 100%;
         min-height: $xxxl-3;
         aspect-ratio: 1/1;
-        background-image: url("../../assets/images/mobile/scan-zone.svg");
+        background-image: url("../images/scan-zone.svg");
 		background-size: 100% 100%;
     }
 }
@@ -107,5 +106,5 @@ async function onCameraLightButton() {
     &.text-red {
         color: $primary;
     }
-}	
+}
 </style>

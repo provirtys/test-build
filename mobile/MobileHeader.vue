@@ -1,8 +1,8 @@
 <template>
     <div class="header">
         <button v-if="showBackButton" @click="onBackButton" class="back-button">
-            <img v-if="isBackgroundDark" src="../../assets/images/mobile/back-arrow-light.svg" alt="back" />
-            <img v-else src="../../assets/images/mobile/back-arrow-dark.svg" alt="back" />
+            <img v-if="isBackgroundDark" src="../images/back-arrow-light.svg" alt="back" />
+            <img v-else src="../images/back-arrow-dark.svg" alt="back" />
         </button>
         <div class="integrity-logo-block">
             <div v-if="getPageHeader" class="integrity-header-name">
@@ -11,11 +11,11 @@
             <img v-else-if="isBackgroundDark"
                 class="integrity-logo"
                 alt="integrity"
-                src="../../assets/images/mobile/integrity-logo-light.svg" />
+                src="../images/integrity-logo-light.svg" />
             <img v-else
                 class="integrity-logo"
                 alt="integrity"
-                src="../../assets/images/mobile/integrity-logo.svg" />
+                src="../images/integrity-logo.svg" />
         </div>
 
         <div class="offline-mode-marker" :class="{ 'light': isBackgroundDark }" v-if="isOffline">

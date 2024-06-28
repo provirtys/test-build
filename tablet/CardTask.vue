@@ -50,7 +50,7 @@ function openTaskDetails() {
       </div>
     </div>
     <div class="card-task__arrow" @click="openTaskDetails">
-      <img src="../../assets/images/tablet-icons/arrow-forward.svg" alt="">
+      <img src="../images/arrow-forward.svg" alt="">
     </div>
   </div>
 </template>

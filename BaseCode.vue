@@ -9,9 +9,9 @@
 </template>
 
 <script setup>
-import CodesArrow from '../components/icons/CodesArrow.vue'
-import DatamatrixIcon from '../components/icons/DatamatrixIcon.vue'
-import BarcodeIcon from '../components/icons/BarcodeIcon.vue'
+import CodesArrow from 'icons/CodesArrow.vue'
+import DatamatrixIcon from 'icons/DatamatrixIcon.vue'
+import BarcodeIcon from 'icons/BarcodeIcon.vue'
 // import * as types from '../constants/codeTypes'
 // import * as colors from '../constants/colors'
 // import * as size from '../constants/sizes'

@@ -15,8 +15,8 @@
 
 <script setup>
 import {ref, computed} from 'vue'
-import TabletUIArrow from "./icons/TabletUIArrow.vue";
-import TabletUIDone from "./icons/TabletUIDone.vue";
+import TabletUIArrow from "../icons/TabletUIArrow.vue";
+import TabletUIDone from "../icons/TabletUIDone.vue";
 
 const isActionSubmitted = ref(null)
 

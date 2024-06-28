@@ -4,8 +4,8 @@
         <div class="scanner__wrapper">
             <div class="scanner__camera-preview" />
             <div class="scanner__border" :style="{width: props.width, height: props.height}">
-                <img v-if="codeType === 'Code128'" src="../assets//images/scan-border-wide.png" alt="Scan border">
-                <img v-else src="../assets/images/scan-border-square.png" alt="Scan border">
+                <img v-if="codeType === 'Code128'" src="images/scan-border-wide.png" alt="Scan border">
+                <img v-else src="images/scan-border-square.png" alt="Scan border">
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@ async function onCameraLightButton() {
         background-color: transparent;
         box-shadow: none;
         border-width: 0px;
-        background-image: url("../assets/images/camera-flash-off.svg");
+        background-image: url("images/camera-flash-off.svg");
         background-size: 100% 100%;
         background-repeat: no-repeat;
         width: $m-3;
@@ -59,7 +59,7 @@ async function onCameraLightButton() {
         cursor: pointer;
 
         &.active {
-            background-image: url("../assets/images/camera-flash-on.svg");
+            background-image: url("images/camera-flash-on.svg");
         }
     }
 

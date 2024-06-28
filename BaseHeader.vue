@@ -1,13 +1,13 @@
 <template>
     <header class="header ">
         <div class="header__content">
-            <img v-if="isMain" class="header__logo" src="../assets/images/logo_favicon.svg" alt="Integrity" @click="toHomePage" />
-            <img v-else class="header__back" src="../assets/images/back-arrow.svg" alt="Back" @click="onBackButton" />
+            <img v-if="isMain" class="header__logo" src="images/logo_favicon.svg" alt="Integrity" @click="toHomePage" />
+            <img v-else class="header__back" src="images/back-arrow.svg" alt="Back" @click="onBackButton" />
             <div class="header__factory-name">{{ factoryName }}</div>
         </div>
         <transition name="fade" mode="out-in">
             <div v-if="needLogout" class="header__logout">
-                <img @click="logout" class="header__logout-icon" src="../assets/images/logout.svg" alt="Log out"/>
+                <img @click="logout" class="header__logout-icon" src="images/logout.svg" alt="Log out"/>
             </div>
         </transition>
     </header>

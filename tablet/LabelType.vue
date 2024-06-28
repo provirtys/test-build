@@ -21,10 +21,10 @@
 
 <script setup>
 import { computed } from 'vue'
-import dataMatrix from '../assets/images/tablet-icons/dataMatrix.svg'
-import barCode from '../assets/images/tablet-icons/barCode.svg'
-import checkboxFilled from '../assets/images/tablet-icons/checkbox-filled.svg'
-import checkboxEmpty from '../assets/images/tablet-icons/checkbox-empty.svg'
+import dataMatrix from '../images/dataMatrix.svg'
+import barCode from '../images/barCode.svg'
+import checkboxFilled from '../images/checkbox-filled.svg'
+import checkboxEmpty from '../images/checkbox-empty.svg'
 // import * as codeTypes from '../constants/codeTypes'
 
 const props = defineProps({

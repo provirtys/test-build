@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import TabBarIcon from '../../components/icons/TabBarIcon.vue'
+import TabBarIcon from '../icons/TabBarIcon.vue'
 
 const props = defineProps({
     isBackgroundDark: {

@@ -1,6 +1,6 @@
 <template>
     <div class="key" @click="pressed">
-        <img class="icon" v-if="value === 'Back'" alt="" src="../assets/images/backspace.svg"/>
+        <img class="icon" v-if="value === 'Back'" alt="" src="images/backspace.svg"/>
         <span v-else class="h2">{{value}}</span>
     </div>
 </template>

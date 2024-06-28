@@ -1,11 +1,11 @@
 <script setup>
 import AnimatedTabletButton from "./AnimatedTabletButton.vue";
-import scanIcon from '../../assets/images/tablet-icons/scan.svg'
-import aggregationIcon from '../../assets/images/tablet-icons/aggregation.svg'
-import TabletButton from "../TabletButton.vue";
-import restartIcon from '../../assets/images/tablet-icons/restart.svg'
-import badIcon from '../../assets/images/tablet-icons/bad.svg'
-import doneIcon from '../../assets/images/tablet-icons/done.svg'
+import scanIcon from '../images/scan.svg'
+import aggregationIcon from '../images/aggregation.svg'
+import TabletButton from "TabletButton.vue";
+import restartIcon from '../images/restart.svg'
+import badIcon from '../images/bad.svg'
+import doneIcon from '../images/done.svg'
 import MarkingCard from "./MarkingCard.vue";
 
 defineProps({

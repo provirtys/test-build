@@ -182,7 +182,7 @@ function finishAnimation (event) {
     &.done {
       &::before {
         content: '';
-        background-image: url('../assets/images/tablet-icons/done.svg');
+        background-image: url('../images/done.svg');
         background-size: $l-2 $l-2;
         background-repeat: no-repeat;
         position: absolute;

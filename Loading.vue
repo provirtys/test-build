@@ -1,6 +1,6 @@
 <template>
     <div class="loading-animation">
-        <img v-if="isInternetError" class="icon" src="../assets/images/no-wifi.svg" alt="No internet connection" />
+        <img v-if="isInternetError" class="icon" src="images/no-wifi.svg" alt="No internet connection" />
         <LoadingAnimation v-else />
         <div class="h2">{{ $t('loading.' + loadingType) }}</div>
         <div v-if="isInternetError" class="h3">{{ $t('loading.try_again') }}</div>
