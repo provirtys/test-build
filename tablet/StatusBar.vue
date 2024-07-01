@@ -13,49 +13,23 @@
 </template>
 
 <script setup>
-// import axios from 'axios'
 import SystemStatus from "./SystemStatus.vue";
-import {ref, reactive, onMounted} from 'vue'
+import {ref, reactive} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
-// import { useNewOtkStore } from '../stores/newOtkStore'
 
 const route = useRoute()
 const router = useRouter()
-// const otkStore = useNewOtkStore()
 
 const isLogoutSubmitted = ref(false)
-// let requestTimer
 
 const systemStatus = reactive({
-  // status: 'error',
-  // text: 'NOT_READY'
-  // status: 'ok',
-  // text: 'READY'
-  // status: 'ok',
-  // text: 'DISCONNECTED'
 })
-// async function getSystemStatus () {
-//   const listDevices = [{"status": "Normal","ok": true},{"status": "Normal","ok": true},{"status": "Normal","ok": true}]
-//
-//   if (listDevices.length === 0 || listDevices.some(item => { return item.ok === false })) { // проверка на пустой массив объектов или значение каждого item.ok = false
-//     systemStatus.text = "NOT_READY"
-//     systemStatus.status = "error" //красный индикатор
-//   } else {
-//     systemStatus.text = "READY"
-//     systemStatus.status = "ok"
-//   }
-// }
-
-// const printer = reactive({
-//   status: 'ok',
-//   text: 'READY'
-// })
 
 const props = defineProps({
-  // title: {
-  //   type: String,
-  //   default: ''
-  // },
+  systemStatus: {
+    type: Object,
+    default: ()=>({})
+  },
   page: {
     type: String,
     default: 'TaskList'
@@ -66,14 +40,6 @@ const props = defineProps({
   },
 })
 
-// onMounted(async () => {
-//   await getSystemStatus()
-//   requestTimer = setInterval(getSystemStatus, otkStore.refresh)
-// })
-
-
-// const task = ref('Название задания')
-
 function scanTaskCode () {
   // open scanner
   // when scan successfully finished
@@ -81,26 +47,7 @@ function scanTaskCode () {
 }
 
 function goBack() {
-  switch (page) {
-    case 'TaskDetails':
-    case 'NewTaskDetails':
-      router.push({name: 'TaskList'})
-      break
-    case 'LabelingAuto':
-    case 'LabelingManual':
-      router.push({name: 'TaskDetails', params: {id: route.params.id}})
-      break
-    case 'LabelScan':
-      if (otkStore.mode === 'auto') {
-        router.push({name: 'LabelingAuto', params: {id: route.params.id}})
-      } else {
-        router.push({name: 'LabelingManual', params: {id: route.params.id}})
-      }
-      break
-    case 'CodeScan':
-      router.push({name: 'LabelingManual', params: {id: route.params.id}})
-      break
-  }
+  router.go(-1)
 }
 
 function logout() {
