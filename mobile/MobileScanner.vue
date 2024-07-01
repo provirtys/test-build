@@ -1,11 +1,11 @@
 <template>
-    <div class="scanner">
-        <button v-if="lightSwitcher" class="scanner__light-button" :class="{ 'active': isLightOn }" @click="onCameraLightButton" />
-        <div class="scanner__wrapper">
-            <div class="scanner__camera-preview" />
-            <div class="scanner__border" />
+    <div class="mobile-scanner">
+        <button v-if="lightSwitcher" class="mobile-scanner__light-button" :class="{ 'active': isLightOn }" @click="onCameraLightButton" />
+        <div class="mobile-scanner__wrapper">
+            <div class="mobile-scanner__camera-preview" />
+            <div class="mobile-scanner__border" />
         </div>
-        <p class="scanner__description" :class="{ 'text-red': helper.type === 'red' }">{{ helper.text }}</p>
+        <p class="mobile-scanner__description" :class="{ 'text-red': helper.type === 'red' }">{{ helper.text }}</p>
     </div>
 </template>
 
@@ -30,7 +30,7 @@ async function onCameraLightButton() {
 </script>
 
 <style lang="scss" scoped>
-.scanner {
+.mobile-scanner {
     width: 100%;
     // max-width: 600px;
     height: 100%;
@@ -88,7 +88,7 @@ async function onCameraLightButton() {
 		background-size: 100% 100%;
     }
 }
-.scanner__description {
+.mobile-scanner__description {
     margin-top: $s-3;
     flex-shrink: 0;
     //min-height: 50px;

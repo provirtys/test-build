@@ -1,13 +1,13 @@
 <template>
-    <header class="header ">
-        <div class="header__content">
-            <img v-if="isMain" class="header__logo" src="images/logo_favicon.svg" alt="Integrity" @click="toHomePage" />
-            <img v-else class="header__back" src="images/back-arrow.svg" alt="Back" @click="onBackButton" />
-            <div class="header__factory-name">{{ factoryName }}</div>
+    <header class="base-header">
+        <div class="base-header__content">
+            <img v-if="isMain" class="base-header__logo" src="images/logo_favicon.svg" alt="Integrity" @click="toHomePage" />
+            <img v-else class="base-header__back" src="images/back-arrow.svg" alt="Back" @click="onBackButton" />
+            <div class="base-header__factory-name">{{ factoryName }}</div>
         </div>
         <transition name="fade" mode="out-in">
-            <div v-if="needLogout" class="header__logout">
-                <img @click="logout" class="header__logout-icon" src="images/logout.svg" alt="Log out"/>
+            <div v-if="needLogout" class="base-header__logout">
+                <img @click="logout" class="base-header__logout-icon" src="images/logout.svg" alt="Log out"/>
             </div>
         </transition>
     </header>
@@ -46,7 +46,7 @@ function toHomePage() {
 </script>
 
 <style scoped lang="scss">
-.header {
+.base-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -89,7 +89,7 @@ function toHomePage() {
 }
 
 @media only screen and (orientation: portrait) {
-    .header {
+    .base-header {
         padding: 0 $s-3;
 
         &__factory-name {

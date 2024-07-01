@@ -19,28 +19,28 @@ function getCodeDate (value) {
 
 <template>
   <div class="marking-card">
-    <div class="main">
+    <div class="marking-card__main">
       <div v-if="isAggregationVisible" class="aggregation">{{ $t('aggregationInProgress') }}</div>
-      <div class="main__head flex-space-between">
+      <div class="marking-card__head flex-space-between">
         <p>{{ $t('labeled') }}</p>
         <p>{{ codeInfo.labeled }} <span class="grey-text">/ {{ codeInfo.total }}</span></p>
       </div>
 
-      <div class="main__info">
-        <div class="code-info">
+      <div class="marking-card__info">
+        <div class="marking-card__code-info">
 
           <div>
-            <p class="main__info__title grey-text">{{ $t('datetime') }}</p>
-            <p class="main__info__date">{{ getCodeDate(codeInfo.ts) }}</p> <!-- <p class="main__info__date">{{ getCodeDate(codeInfo.ts) }}</p>-->
-            <p class="main__info__value grey-text">{{ getCodeTime(codeInfo.ts) }}</p>
+            <p class="marking-card__info__title grey-text">{{ $t('datetime') }}</p>
+            <p class="marking-card__info__date">{{ getCodeDate(codeInfo.ts) }}</p> <!-- <p class="main__info__date">{{ getCodeDate(codeInfo.ts) }}</p>-->
+            <p class="marking-card__info__value grey-text">{{ getCodeTime(codeInfo.ts) }}</p>
           </div>
           <div>
-            <p class="main__info__title grey-text">{{ $t('code') }}</p>
-            <p class="main__info__value">{{ codeInfo.code }}</p>
+            <p class="marking-card__info__title grey-text">{{ $t('code') }}</p>
+            <p class="marking-card__info__value">{{ codeInfo.code }}</p>
           </div>
           <div>
-            <p class="main__info__title grey-text">{{ $t('position') }}</p>
-            <p class="main__info__value">{{ codeInfo.position }}</p>
+            <p class="marking-card__info__title grey-text">{{ $t('position') }}</p>
+            <p class="marking-card__info__value">{{ codeInfo.position }}</p>
           </div>
 
         </div>
@@ -48,10 +48,10 @@ function getCodeDate (value) {
         <ProgressPie v-if="isProgressPieVisible" :size="'large'" :percentage="Math.round((codeInfo.labeled/codeInfo.total)*100)"></ProgressPie>
 
       </div>
-      <div v-if="isRepeatVisible" class="main__repeat">
+      <div v-if="isRepeatVisible" class="marking-card__repeat">
         <!--Это не кнопка, просто индикатор, если нужна повторная маркировка-->
         <div>
-          <img alt="Повторная маркировка" src="../../assets/images/repeat-marking.svg">
+          <img alt="Повторная маркировка" src="../images/repeat-marking.svg">
         </div>
         <p>{{ $t('repeatedLabeling') }}</p>
       </div>
@@ -63,11 +63,6 @@ function getCodeDate (value) {
 </template>
 
 <style scoped lang="scss">
-.code-info {
-  display: flex;
-  flex-direction: column;
-  gap: $s-2;
-}
 p {
   margin: 0;
   font-family: 'Golos UI-medium';
@@ -99,22 +94,18 @@ p {
   //font-family: 'Golos UI-medium';
   font-size: $font-size-p3;
   color: $dark-gray;
-}
 
-.aggregation {
-  background: $warning-40;
-  border-radius: $d-1;
-  padding: $s-2 $d-1;
-  text-align: center;
-  line-height: $s-1;
-  color: $dark-gray-70;
-  font-family: 'Golos UI-medium';
-}
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: $s-2;
+  }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: $s-2;
+  &__code-info {
+    display: flex;
+    flex-direction: column;
+    gap: $s-2;
+  }
 
   &__info {
     display: flex;
@@ -163,6 +154,16 @@ p {
       font-size: $font-size-p1;
     }
   }
+}
+
+.aggregation {
+  background: $warning-40;
+  border-radius: $d-1;
+  padding: $s-2 $d-1;
+  text-align: center;
+  line-height: $s-1;
+  color: $dark-gray-70;
+  font-family: 'Golos UI-medium';
 }
 
 .grey-text {

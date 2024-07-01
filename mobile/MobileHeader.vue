@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="mobile-header">
         <button v-if="showBackButton" @click="onBackButton" class="back-button">
             <img v-if="isBackgroundDark" src="../images/back-arrow-light.svg" alt="back" />
             <img v-else src="../images/back-arrow-dark.svg" alt="back" />
@@ -94,7 +94,7 @@ const getPageHeader = computed(() => {
 </script>
 
 <style lang="scss">
-.header {
+.mobile-header {
     --safe-area-inset-top: env(safe-area-inset-top);
 	--safe-area-inset-bottom: env(safe-area-inset-bottom);
     font-family: Golos UI;

@@ -1,5 +1,5 @@
 <template>
-    <button class="button" :disabled="props.isDisabled" :class="classes">
+    <button class="base-button" :disabled="props.isDisabled" :class="classes">
         <span v-if="props.icon" :style="img"></span>
         {{ text }}
     </button>
@@ -56,7 +56,7 @@ const img = computed(() => {
 </script>
 
 <style lang="scss">
-.button {
+.base-button {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import MobileButton from "./mobile/MobileButton.vue";
+import MobileButton from "./MobileButton.vue";
 
 let props = defineProps({
   /** Информация об инструменте */

@@ -1,9 +1,9 @@
 <template>
-    <div class="scanner">
-        <button v-if="lightSwitcher" class="scanner__light-button" :class="[isLightOn ? 'active' : '']" @click="onCameraLightButton" data-testid="button"/>
-        <div class="scanner__wrapper">
-            <div class="scanner__camera-preview" />
-            <div class="scanner__border" :style="{width: props.width, height: props.height}">
+    <div class="mobile-scanner">
+        <button v-if="lightSwitcher" class="mobile-scanner__light-button" :class="[isLightOn ? 'active' : '']" @click="onCameraLightButton" data-testid="button"/>
+        <div class="mobile-scanner__wrapper">
+            <div class="mobile-scanner__camera-preview" />
+            <div class="mobile-scanner__border" :style="{width: props.width, height: props.height}">
                 <img v-if="codeType === 'Code128'" src="images/scan-border-wide.png" alt="Scan border">
                 <img v-else src="images/scan-border-square.png" alt="Scan border">
             </div>
@@ -40,7 +40,7 @@ async function onCameraLightButton() {
 </script>
 
 <style lang="scss" scoped>
-.scanner {
+.mobile-scanner {
     width: 100%;
     height: 100%;
     display: flex;
@@ -99,7 +99,7 @@ async function onCameraLightButton() {
 }
 
 @media (orientation: portrait) {
-    .scanner {
+    .mobile-scanner {
         flex-direction: column;
         justify-content: center;
 

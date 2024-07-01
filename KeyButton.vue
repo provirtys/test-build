@@ -1,7 +1,7 @@
 <template>
     <div class="key" @click="pressed">
         <img class="icon" v-if="value === 'Back'" alt="" src="images/backspace.svg"/>
-        <span v-else class="h2">{{value}}</span>
+        <span v-else class="key__text">{{value}}</span>
     </div>
 </template>
 
@@ -47,5 +47,10 @@ function pressed () {
     .icon {
         max-height: 45px;
     }
+  &__text {
+    font-family: Ubuntu-regular, serif;
+    font-size: $m-2;
+    margin-bottom: 10px;
+  }
 }
 </style>
