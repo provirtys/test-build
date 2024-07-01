@@ -90,7 +90,7 @@
 import {reactive, ref, watch} from 'vue'
 import bwipjs from 'bwip-js'
 import {v4 as uuidv4} from 'uuid'
-import {TemplateModel} from "../util/template_pb.js";
+import {TemplateModel} from "../utils/template_pb.js";
 
 const rows = reactive([{uuid: uuidv4(), key: '', value: ''}])
 const svgnode = ref('')

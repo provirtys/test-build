@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import DATAMatrix from "../util/datamatrix.js"
+import DATAMatrix from "utils/datamatrix.js"
 import {ref, onMounted, computed} from 'vue'
 
 let props = defineProps({
