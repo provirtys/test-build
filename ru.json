@@ -9,6 +9,10 @@
 		"wait": "Пожалуйста, подождите",
 		"retry": "ПОВТОРИТЬ"
 	},
+	"system-status": {
+		"READY": "Готов",
+		"NOT_READY": "Ошибка"
+	},
   "printerStatus.READY": "Принтер готов",
   "printerStatus.NOT_READY": "Принтер не готов",
   "printerStatus.DISCONNECTED": "Принтер не подключён",
