@@ -6,7 +6,6 @@
 </template>
 
 <script setup>
-// import * as constants from '../constants/common'
 const props = defineProps({
   /** Значение кнопки*/
     value: { type: String, default: '' },

@@ -1,8 +1,8 @@
-import BaseTableRedesign from "@/components/redesign-tabletUI/BaseTableRedesign.vue";
+import BaseTable from "../../redesign/BaseTable.vue";
 
 export default {
     title: "TabletUI-redesign/BaseTable",
-    component: BaseTableRedesign,
+    component: BaseTable,
     tags: ["autodocs"]
 };
 

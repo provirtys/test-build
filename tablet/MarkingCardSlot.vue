@@ -51,15 +51,11 @@ defineProps({
   max-width: 360px;
   height: 600px;
   width: 100%;
-  //height: 100%;
   justify-content: space-between;
   display: flex;
   flex-direction: column;
   gap: $s-3;
   border-radius: $s-1;
-
-  //font-family: 'Golos UI-medium';
-  //font-size: $font-size-p3;
   color: $dark-gray;
 }
 </style>

@@ -32,11 +32,6 @@ export default {
         parameters: {
             backgrounds: {
                 default: 'white',
-                // values: [
-                //     {name: 'dark', value: '#242a2b'},
-                //     {name: 'white', value: '#ffffff'},
-                //     {name: 'light', value: '#ededed'},
-                // ]
             }
         },
         color: {

@@ -51,13 +51,7 @@ export default {
         },
     },
 };
-// export const takeToolWithImage = {
-//     args: {
-//         toolItems: {'Название': 'Очень длинное название иструмента 2', 'Количество': 1245},
-//         img: imageTool,
-//         btn: take
-//     },
-// };
+
 export const takeToolWithoutImage = {
     args: {
         toolItems: {'Название': 'Название иструмента 1', 'Количество': 125},

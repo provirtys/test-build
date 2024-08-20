@@ -20,7 +20,6 @@ const panel = ref(null)
 
 function swipe() {
     panel.value.style.left = '100%'
-    // notificationStore.dispatch('closeNotification')
 }
 </script>
 

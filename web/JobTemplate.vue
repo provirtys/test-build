@@ -104,7 +104,6 @@ const addRow = () => {
 }
 const removeRow = (row) => {
   const idx = rows.indexOf(row)
-  console.log(idx)
   if (idx > -1) {
     rows.splice(idx, 1)
   }
@@ -134,16 +133,13 @@ function notEmpty() {
 // Проверка на уникальность поля Наименование
 function notUniqueValue(currentRow, val) {
   let hasErrorUniqueValue = false
-  // console.log(currentRow)
   for (const row of rows) { // В ЦИКЛЕ РАССМАТРИВАЕМ ВСЕ СТРОЧКИ
     if (row.uuid !== currentRow.uuid) { // если uuid строки из массива не совпадает с проверяемой, то выполняем проверку
       if (row.key === currentRow.key) {
         hasErrorUniqueValue = true// есть совпадение
-        // console.log('Требуется уникальное наименование')
         break
       } else {
         hasErrorUniqueValue = false// отсутствует совпадение
-        // console.log('Все наименования разные')
       }
     }
   }
@@ -166,8 +162,6 @@ watch(() => rows, () => {
 async function notStoke() {
   if (rows.length < 1) {
     isDisabledButton.value = true
-    // console.log("Добавьте хотя бы один атрибут")
-    // alert('Добавьте хотя бы один атрибут')
   } else if (notEmpty() && notEmptyInputs()) {
     for (let i = 0; i <= rows.length - 1; i++) {
       if (notUniqueValue(rows[i])) {
@@ -193,8 +187,6 @@ function saveData() {
       form[rows[i].key] = rows[i].value
     }
     attributes.value = Object.entries(form).map(([key, value]) => ({key, value}))
-    console.log(form)
-    console.log(attributes)
   }
 }
 
@@ -204,28 +196,13 @@ async function generateDataMatrix() {
     title: taskText.value,
     attributes: attributes.value
   }
-  // const extId = uuidv4() // внутренний идентификатор
 
   const product = new TemplateModel(value)
-  // const binData = Product.encode(product).finish()
   const binData = product.toBinary()
-  console.log(binData)
   const asciiData = String.fromCharCode.apply(null, binData)
-  console.log(asciiData)
-
-  // const root = await protobuf.load('./product.proto')
-  // const Product = root.lookupType('Product')
-  // const product = Product.create(value)
-
-  // const binData = Product.encode(product).finish()
-  // const asciiData = String.fromCharCode.apply(null, binData)
-  // console.log(asciiData)
 
   const decodeBinData = Uint8Array.from(asciiData, c => c.charCodeAt(0))
-  // const decodeProduct = Product.decode(decodeBinData)
   const decodeProduct = TemplateModel.fromBinary(decodeBinData)
-  console.log(`Decode product: ${JSON.stringify(decodeProduct)}`)
-  console.log(JSON.parse(JSON.stringify(decodeProduct)))
 
   const svg = bwipjs.toSVG({
     bcid: 'datamatrix',
@@ -238,7 +215,6 @@ async function generateDataMatrix() {
     while (e.childNodes[0]) {
       e.removeChild(e.childNodes[0])
     }
-    // const [, width, height] = /viewBox="0 0 (\d+) (\d+)"/.exec(svg)
     const span = document.createElement('span')
     span.style.display = 'inline-block'
     span.style.width = '90%'
@@ -331,7 +307,6 @@ async function createTemplate() {
   }
 
   &__add-attribute-button {
-    //width: 20%;
     height: 56px;
     background: #ededed;
   }

@@ -13,9 +13,6 @@
 <script setup>
 import BaseButton from './BaseButton.vue'
 import LoadingAnimation from './LoadingAnimation.vue'
-// import * as constants from '../constants/common'
-// import * as colors from '../constants/colors'
-// import * as size from '../constants/sizes'
 import { computed } from 'vue'
 
 const props = defineProps({

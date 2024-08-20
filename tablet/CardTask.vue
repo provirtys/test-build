@@ -67,7 +67,6 @@ function openTaskDetails() {
     background: $secondary;
     padding: $s-3 $l-2 $s-3 $s-3;
     color: $dark-gray;
-    //font-family: 'Golos UI-medium';
     letter-spacing: -0.24px;
 
     display: flex;
@@ -88,7 +87,6 @@ function openTaskDetails() {
       }
 
       &__items {
-        //max-width: 640px;
         display: flex;
         flex-direction: column;
         gap: $s-4;
@@ -112,12 +110,7 @@ function openTaskDetails() {
   }
 }
 
-//dl dd:first-of-type {
-//  font-size: $font-size-p2;
-//}
-
 dl {
-  //margin: auto;
   display: flex;
   align-items: center;
 }
@@ -131,7 +124,6 @@ dl dt {
 }
 
 dl dd {
-  //margin: 2px 0;
   padding: 5px 0;
   font-size: $font-size-p3;
   font-family: 'Golos UI-medium';

@@ -1,4 +1,4 @@
-import RadioButton from "@/components/redesign-tabletUI/RadioButton.vue";
+import RadioButton from "../../redesign/RadioButton.vue";
 
 // Виды кнопок
 const primary = 'primary'
@@ -21,6 +21,12 @@ const colors = {primary, secondary, plane, outline}
 const icons = {empty, icon, status}
 const sizes = {large, medium, small, extraSmall}
 
+const info = 'info'
+const success = 'success'
+const error = 'error'
+const warning = 'warning'
+
+const colorIcon = {info, warning, success, error}
 export default {
     title: "TabletUI-redesign/RadioButton",
     component: RadioButton,
@@ -66,6 +72,25 @@ export default {
                         status: 'Со статусом',
                     },
                 },
+            },
+        iconStatus: {
+            description: 'Иконка статуса',
+            options: Object.keys(colorIcon),
+            mapping: colorIcon,
+            control: {
+                type: 'radio',
+                labels: {
+                    info: 'Информация (Info)',
+                    success: 'Система готова к работе (Success)',
+                    error: 'Система не готова к работе (Error)',
+                    warning: 'Настройка системы (Warning)'
+                },
+            },
+        },
+        isAnimate: {
+            description: 'Анимированное состояние иконки статуса',
+            options: [true, false],
+            control: {type: 'radio'},
         },
         isDisabled: {
             description: 'Неактивное состояние.',
@@ -113,6 +138,8 @@ export const WithStatus = {
     args: {
         isIcon: 'status',
         buttonText: 'Radio title',
+        isAnimate: false,
+        iconStatus: 'success'
     },
 };
 
@@ -121,7 +148,10 @@ export const Secondary = {
         isIcon: '',
         color: 'secondary',
         buttonText: 'Radio title',
-        height: 'large'
+        height: 'large',
+        isAnimate: false,
+        iconStatus: 'success'
+
     },
 };
 
@@ -130,7 +160,10 @@ export const Plane = {
         isIcon: '',
         color: 'plane',
         buttonText: 'Radio title',
-        height: 'large'
+        height: 'large',
+        isAnimate: false,
+        iconStatus: 'success'
+
     },
 };
 
@@ -139,6 +172,9 @@ export const Outline = {
         isIcon: '',
         color: 'outline',
         buttonText: 'Radio title',
-        height: 'large'
+        height: 'large',
+        isAnimate: false,
+        iconStatus: 'success'
+
     },
 };

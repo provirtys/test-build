@@ -49,7 +49,6 @@ export default {
                     empty: 'Без иконки',
                     aggregationIcon: 'Агрегация',
                     badIcon: 'Брак',
-                    // logoutIcon: 'Выйти',
                     printIcon: 'Печать',
                     restartIcon: 'Повторить',
                     scanIcon: 'Сканировать',
@@ -127,11 +126,3 @@ export const Aggregation = {
         color: 'dark'
     },
 };
-//В макете нет кнопри Выйти, есть кнопка Выход в статус баре
-// export const Logout = {
-//     args: {
-//         text: 'Выйти',
-//         icon: logoutIcon,
-//         color: 'light-gray'
-//     },
-// };

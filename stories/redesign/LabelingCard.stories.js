@@ -1,4 +1,4 @@
-import MarkingCodeCardRedesign from "@/components/redesign-tabletUI/MarkingCodeCardRedesign.vue";
+import LabelingCard from "../../redesign/LabelingCard.vue";
 
 const dataMatrix = 'DataMatrix'
 const code128 = 'Code128'
@@ -16,38 +16,26 @@ const warning = 'warning'
 const codeTypes = {dataMatrix, code128}
 const statuses = {verified, synced, broken, none}
 const colors = {info, warning, success, error}
-/** Компонент отображает информацию о маркировке кода. Можно настроить тип, текст, статус кода, время и номер позиции.  */
+/** Компонент карточки маркировки */
 export default {
-    title: "TabletUI-redesign/MarkingCodeCard",
-    component: MarkingCodeCardRedesign,
+    title: "TabletUI-redesign/LabelingCard",
+    component: LabelingCard,
     tags: ["autodocs"],
     argTypes: {
-        codeText: {
-            description: 'Текст кода',
+        isAggregationVisible: {
+            description: 'Идет агрегация',
         },
-        template: {
-            description: 'Текст кода',
+        isAuto: {
+            description: 'Автоматическая маркировка',
         },
-        time: {
-            description: 'Время',
+        codeInfo: {
+            description: 'Информация по объекту',
         },
-        position: {
-            description: 'Номер позиции',
+        isCodes: {
+            description: 'Статус кода',
         },
-        isErrorLabeling: {
-            description: 'Ошибка маркировки',
-            options: [true, false],
-            control: {type: 'radio'},
-        },
-      isAggregation: {
-            description: 'Группа кодов (агрегация)',
-            options: [true, false],
-            control: {type: 'radio'},
-        },
-        noCodes: {
-            description: 'No codes',
-            options: [true, false],
-            control: {type: 'radio'},
+        isScan: {
+            description: 'Статус кода',
         },
         status1: {
             description: 'Статус',
@@ -108,7 +96,7 @@ export default {
                 },
             },
         },
-          codeType2: {
+        codeType2: {
             description: 'Тип кода',
             options: Object.keys(codeTypes),
             mapping: codeTypes,
@@ -120,7 +108,7 @@ export default {
                 },
             },
         },
-          color2: {
+        color2: {
             description: 'Иконка статуса',
             options: Object.keys(colors),
             mapping: colors,
@@ -140,82 +128,61 @@ export default {
             default: 'light',
             values: [
                 {name: 'dark', value: '#242a2b'},
-                {name: 'light', value: '#f4f4f4'},
-                {name: 'white', value: '#fff'},
+                {name: 'light', value: '#ededed'},
                 {name: 'light-gray-55', value: '#f1f1f1'},
-
+                {name: 'light-gray', value: '#D9D9D9'},
             ]
         }
     }
 };
 
-export const DataMatrixAndBarcode = {
+/** Прогресс маркировки */
+export const Progress = {
     args: {
-        codeText: 'wv985fjs934',
-        time: '00:00:00',
-        position: 0,
-        template: 'Integrity',
+        isAggregationVisible: false,
+        isAuto: true,
+        isCodes: true,
+        isScan: false,
+        codeInfo: {
+            labeled: 50,
+            total: 120,
+            ts: '12:11:12',
+            code: 'wv985fjs934',
+            position: 10
+        },
     },
 };
-export const BarcodeAndDataMatrix = {
+
+/** Идет агрегация */
+export const goAggregation = {
     args: {
-        codeText: 'wv985fjs934',
-        time: '00:00:00',
-        position: 0,
-        template: 'Integrity 0',
+        isAggregationVisible: true,
+        isAuto: true,
+        isCodes: true,
+        isScan: false,
+        codeInfo: {
+            labeled: 50,
+            total: 120,
+            ts: '12:11:12',
+            code: 'wv985fjs934',
+            position: 10
+        },
     },
 };
-export const DataMatrixVerifiedSynced = {
+
+/** Повторная маркировка */
+export const Print = {
     args: {
-        codeText: 'wv985fjs935',
-        time: '00:01:01',
-        position: 1,
-        template: 'Integrity 1',
-    },
-};
-export const DataMatrixVerified = {
-    args: {
-        codeText: 'wv985fjs935',
-        time: '00:01:01',
-        position: 1,
-        template: 'Integrity 1',
-    },
-};
-export const DataMatrixBroken = {
-    args: {
-        codeText: 'wv985fjs936',
-        status: 'broken',
-        time: '00:02:02',
-        position: 2,
-        template: 'Integrity 2',
-    },
-};
-export const Code128Primary = {
-    args: {
-        codeText: 'wv985fjs937',
-        status: 'none',
-        time: '00:04:04',
-        position: 4,
-        template: 'Integrity 4',
-    },
-};
-export const Code128Verified = {
-    args: {
-        codeType: 'code128',
-        codeText: 'wv985fjs938',
-        status: 'verified',
-        time: '00:05:05',
-        position: 5,
-        template: 'Integrity 5',
-    },
-};
-export const Code128Broken = {
-    args: {
-        codeType: 'code128',
-        codeText: 'wv985fjs939',
-        status: 'broken',
-        time: '00:06:06',
-        position: 6,
-        template: 'Integrity 6',
+        isAggregationVisible: false,
+        isAuto: false,
+        isCodes: true,
+        isScan: true,
+        codeInfo: {
+            labeled: 50,
+            total: 120,
+            ts: '12:11:12',
+            code: 'wv985fjs934',
+            position: 10
+        },
     },
 };

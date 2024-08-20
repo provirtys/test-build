@@ -110,7 +110,6 @@ const addRow = () => {
 }
 const removeRow = (row) => {
   const idx = rows.indexOf(row)
-  console.log(idx)
   if (idx > -1) {
     rows.splice(idx, 1)
   }
@@ -197,8 +196,6 @@ function saveData () {
       form[rows[i].key] = rows[i].value
     }
     attributes.value = Object.entries(form).map(([key, value]) => ({ key, value }))
-    console.log(form)
-    console.log(attributes)
   }
 }
 
@@ -277,7 +274,6 @@ async function createTask () {
   }
 
   &__add-attribute-button {
-    //width: 20%;
     height: 56px;
   }
 

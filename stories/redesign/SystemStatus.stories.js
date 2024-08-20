@@ -1,4 +1,4 @@
-import SystemStatusRedesign from "../../components/redesign-tabletUI/SystemStatusRedesign.vue";
+import SystemStatus from "../../redesign/SystemStatus.vue";
 
 const success = 'success'
 const error = 'error'
@@ -10,7 +10,7 @@ const colors = {success, error, warning}
  * которая отражает состояние системы.*/
 export default {
     title: "TabletUI-redesign/SystemStatus",
-    component: SystemStatusRedesign,
+    component: SystemStatus,
     tags: ["autodocs"],
     argTypes: {
         color: {
@@ -59,7 +59,7 @@ export const StandardState = {
         statusType: 'READY',
         color: 'success',
         isSync: false,
-        isActive: false
+        isActive: false,
     },
 };
 
@@ -68,7 +68,7 @@ export const Synchronization = {
         statusType: 'READY',
         color: 'success',
         isSync: true,
-        isActive: false
+        isActive: false,
     },
 };
 export const DebuggingMode = {
@@ -76,7 +76,7 @@ export const DebuggingMode = {
         statusType: 'READY',
         color: 'success',
         isSync: true,
-        isActive: true
+        isActive: true,
     },
 };
 

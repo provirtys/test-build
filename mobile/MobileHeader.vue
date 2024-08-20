@@ -54,12 +54,9 @@ const props = defineProps({
 function onBackButton() {
     switch(props.page) {
         case 'FrontPage':
-            // vibrate()
-            // appExit()
             break
 
         case 'CheckResult':
-            // vibrate()
             router.push({ name: 'CheckScan' })
             break
 
@@ -70,12 +67,10 @@ function onBackButton() {
         case 'Auth':
         case 'ProfileRegister':
         case 'ForgotPassword':
-            // vibrate()
             router.push({name: 'FrontPage'})
             break
 
         default:
-            // vibrate()
             router.go(-1)
             break
     }

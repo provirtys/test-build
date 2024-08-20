@@ -72,27 +72,22 @@ function tabbarItemColor(page) {
 
     .tabs {
         height: 50px;
-        //width: 375px;
         width: calc(100% - $s-2);
         padding-left: $d-1;
         padding-right: $d-1;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        //justify-content: flex-start;
         justify-content: space-evenly;
         align-items: flex-start;
         gap: $s-3;
         position: relative;
 
         .tabbar-item {
-            //background-color:#ffffff;
             height: 49px;
             width: 74.75px;
             align-self: flex-start;
-            //left: $d-1;
             top: 0px;
-            //position: absolute;
             padding: 0px;
             align-content: center;
             justify-content: center;
@@ -110,9 +105,7 @@ function tabbarItemColor(page) {
                 font-family: Golos UI;
                 left: 14.77px;
                 top: 35px;
-                //width: 46px;
                 height: $s-1;
-                //position: absolute;
                 letter-spacing: -0.23999999463558197px;
                 line-height: auto;
             }
@@ -123,7 +116,6 @@ function tabbarItemColor(page) {
                 padding: 0px;
                 left: 25.27px;
                 top: $d-1;
-                //position:absolute;
             }
         }
     }

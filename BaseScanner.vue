@@ -13,7 +13,6 @@
 </template>
 
 <script setup>
-// import * as codeTypes from '../constants/codeTypes'
 import { ref } from 'vue'
 
 const props = defineProps({

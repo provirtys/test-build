@@ -92,14 +92,11 @@ img {
     position: relative;
     width: calc(min(100vh, 100vw) - $xxxl-3);
     min-height: $xxxl-3;
-    //aspect-ratio: 1/1;
-    //min-width: 90%;
     margin: 0 auto;
   }
 
   &__items {
     flex: 1;
-    //width: 100%;
     max-height: 90%;
     /* добавить полосы прокрутки, если это необходимо */
     overflow: auto;

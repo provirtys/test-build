@@ -162,7 +162,6 @@ function finishAnimation(event) {
   font-size: $font-size-p1;
   font-family: Golos UI;
   letter-spacing: -0.24px;
-  //line-height: 24px;
   line-height: $line-height-120;
   display: flex;
   flex-direction: row;
@@ -218,7 +217,6 @@ function finishAnimation(event) {
   //Размеры кнопки
   &.large {
     height: $xxl-4;
-    //padding: 32px 28px;
     padding: $m-2 $m-1;
   }
 
@@ -228,13 +226,11 @@ function finishAnimation(event) {
 
   &.small {
     height: $l-4;
-    //padding: 16px 20px;
     padding: $s-2 $s-3;
   }
 
   &.extra-small {
     height: $l-1;
-    //padding: 10px 16px;
     padding: 10px $s-2;
     gap: $s-1;
   }
@@ -261,7 +257,6 @@ function finishAnimation(event) {
     &.primary {
       &::before {
         background: $secondary;
-        //mix-blend-mode: plus-lighter; // свойство не поддерживается в опере
         opacity: 0.25;
       }
     }

@@ -25,7 +25,6 @@ import dataMatrix from '../images/dataMatrix.svg'
 import barCode from '../images/barCode.svg'
 import checkboxFilled from '../images/checkbox-filled.svg'
 import checkboxEmpty from '../images/checkbox-empty.svg'
-// import * as codeTypes from '../constants/codeTypes'
 
 const props = defineProps({
   isAuto: {

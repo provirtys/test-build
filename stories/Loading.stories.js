@@ -31,17 +31,3 @@ export const PhotoProcessing = {
         loadingType: 'photo'
     },
 };
-
-// export const ConnectingDatabase = {
-//     args: {
-//         loadingType: 'connection'
-//     },
-// };
-
-
-
-// export const TryAgain = {
-//     args: {
-//         loadingType: 'try_again'
-//     },
-// };

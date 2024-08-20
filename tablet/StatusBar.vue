@@ -41,8 +41,6 @@ const props = defineProps({
 })
 
 function scanTaskCode () {
-  // open scanner
-  // when scan successfully finished
   router.push({ name: 'NewTaskDetails' })
 }
 
@@ -51,12 +49,10 @@ function goBack() {
 }
 
 function logout() {
-  // logout
   router.push({name: 'Auth'})
 }
 
 function handleHold({evt, ...newInfo}) {
-  console.log('work?')
   isLogoutSubmitted.value = newInfo
   finishAnimation(evt)
   logout()

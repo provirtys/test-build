@@ -21,8 +21,6 @@ import dataMatrix from '../images/dataMatrix.svg'
 import barCode from '../images/barCode.svg'
 import success from '../images/status-success.svg'
 import error from '../images/status-error.svg'
-// import * as codeTypes from '../../constants/codeTypes.js'
-// import * as statuses from '../../constants/status.js'
 
 defineProps({
   codeType: { type: String, default: 'DataMatrix' },

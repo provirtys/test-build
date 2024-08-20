@@ -48,13 +48,4 @@ const amount = ref(0)
     background: $secondary;
   }
 }
-
-//&__title {
-//  font-size: $font-size-p3;
-//  margin-bottom: $m-2;
-//  text-align: left;
-//  width: 100%;
-//  font-family: "Golos UI-medium";
-//}
-
 </style>

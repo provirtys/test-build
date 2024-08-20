@@ -55,7 +55,6 @@ export default {
 };
 export const ExitBtn = {
     args: {
-        // nameButton: 'back',
         textTask: 'Наименование задачи',
         page: 'TaskList',
         systemStatus: {
@@ -66,7 +65,6 @@ export const ExitBtn = {
 };
 export const ExitBtnPrinterError = {
     args: {
-        // nameButton: 'back',
         textTask: 'Наименование задачи',
         page: 'TaskList',
         systemStatus: {
@@ -78,7 +76,6 @@ export const ExitBtnPrinterError = {
 
 export const BackBtn = {
     args: {
-        // nameButton: 'exit',
         textTask: 'Задача 1',
         page: '',
         systemStatus: {
@@ -89,7 +86,6 @@ export const BackBtn = {
 };
 export const BackBtnPrinterError = {
     args: {
-        // nameButton: 'exit',
         textTask: 'Задача 1',
         page: '',
         systemStatus: {

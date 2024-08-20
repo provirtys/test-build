@@ -14,7 +14,6 @@
 </template>
 
 <script setup>
-// import * as constants from '../constants/common'
 import { useRouter, useRoute } from 'vue-router'
 
 const router = useRouter()
@@ -34,7 +33,6 @@ function logout () {
 }
 function onBackButton () {
     if (route.name === 'ScanMode') {
-        // this.$store.commit('logout')
         router.push({ name: 'Auth' })
     } else {
         router.go(-1)

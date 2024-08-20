@@ -1,4 +1,4 @@
-import CardTaskRedesign from "@/components/redesign-tabletUI/CardTaskRedesign.vue";
+import CardTask from "../../redesign/CardTask.vue";
 
 const cancelStatus = ''
 const newStatus = 'new'
@@ -10,7 +10,7 @@ const LabelingStatuses = {newStatus, labelingStatus, readyStatus, cancelStatus}
  * название задания (Task name), количество позиций маркировки, дату и время добавления задания.*/
 export default {
     title: "TabletUI-redesign/CardTask",
-    component: CardTaskRedesign,
+    component: CardTask,
     tags: ["autodocs"],
     argTypes: {
         title: {

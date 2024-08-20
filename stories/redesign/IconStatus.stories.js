@@ -1,4 +1,4 @@
-import IconStatus from "../../components/redesign-tabletUI/IconStatus.vue";
+import IconStatus from "../../redesign/IconStatus.vue";
 
 const info = 'info'
 const success = 'success'

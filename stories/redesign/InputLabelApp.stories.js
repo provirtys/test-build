@@ -1,4 +1,4 @@
-import InputLabelAppRedesign from "@/components/redesign-tabletUI/InputLabelAppRedesign.vue";
+import InputLabelApp from "../../redesign/InputLabelApp.vue";
 
 // Размеры кнопки
 const large = 'large'
@@ -10,7 +10,7 @@ const sizes = {large, medium, small, extraSmall}
 /** Компонент input для ввода количества продукции в новой задаче (Tablet) */
 export default {
     title: 'TabletUI-redesign/InputLabelApp',
-    component: InputLabelAppRedesign,
+    component: InputLabelApp,
     tags: ['autodocs'],
     argTypes: {
         parameters: {

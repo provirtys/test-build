@@ -1,9 +1,9 @@
-import KeyButtonRedesign from "../../components/redesign-tabletUI/KeyButtonRedesign.vue";
+import KeyButton from "../../redesign/KeyButton.vue";
 
 /** KeyButton component with customizable number*/
 export default {
     title: "TabletUI-redesign/KeyButton",
-    component: KeyButtonRedesign,
+    component: KeyButton,
     tags: ["autodocs"],
     argTypes: {
         value: {

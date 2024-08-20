@@ -6,8 +6,6 @@
 </template>
 
 <script setup>
-// import * as colors from '../constants/colors'
-// import * as size from '../constants/sizes'
 import { computed } from 'vue'
 
 let props = defineProps({

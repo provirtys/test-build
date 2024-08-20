@@ -49,7 +49,6 @@ const filter = ref('')
 
 .q-dialog__inner > div {
   border-radius: $s-3;
-  //max-width: 200px;
   width: 500px;
   padding: $m-1;
 }

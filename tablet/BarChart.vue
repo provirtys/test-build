@@ -1,7 +1,6 @@
 <script setup>
 import ApexCharts from 'apexcharts'
 import { ref, watch, onMounted } from 'vue'
-// import * as statuses from '../../constants/status.js'
 import { useI18n } from "vue-i18n"
 
 const { t } = useI18n()
@@ -212,7 +211,6 @@ function updateData (broken, ok, x) {
 <style lang="scss">
 .bar-chart {
   height: 80%;
-  //padding: $s-3 $s-3 0;
   background: $secondary;
 
   //style storybook

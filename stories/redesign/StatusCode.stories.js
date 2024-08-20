@@ -1,4 +1,4 @@
-import StatusCode from "@/components/redesign-tabletUI/StatusCode.vue";
+import StatusCode from "../../redesign/StatusCode.vue";
 
 const dataMatrix = 'DataMatrix'
 const code128 = 'Code128'
@@ -35,11 +35,6 @@ export default {
                 },
             },
         },
-        isAnimate: {
-            description: 'Анимированное состояние иконки',
-            options: [true, false],
-            control: {type: 'radio'},
-        },
         color: {
             description: 'Иконка статуса',
             options: Object.keys(colors),
@@ -63,7 +58,8 @@ export default {
                 labels: {
                     none: 'Стандартное',
                     verified: 'В процессе',
-                    broken: 'Ошибка'
+                    broken: 'Ошибка',
+                    synced: 'Синхронизация (анимированное состояние иконки)'
                 },
             },
         },

@@ -32,9 +32,7 @@ async function onCameraLightButton() {
 <style lang="scss" scoped>
 .mobile-scanner {
     width: 100%;
-    // max-width: 600px;
     height: 100%;
-    // max-height: 1000px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,17 +89,14 @@ async function onCameraLightButton() {
 .mobile-scanner__description {
     margin-top: $s-3;
     flex-shrink: 0;
-    //min-height: 50px;
     padding: 0 $m-1 0 $m-1;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    //margin-top: $m-2;
     color: $light-gray-55;
     font-family:Golos UI;
     white-space: pre-line;
-    // margin-bottom: $s-1;
 
     &.text-red {
         color: $primary;

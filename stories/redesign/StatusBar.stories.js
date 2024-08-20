@@ -1,8 +1,12 @@
-import StatusBarRedesign from "../../components/redesign-tabletUI/StatusBarRedesign.vue";
+import StatusBar from "../../redesign/StatusBar.vue";
 
 const btnExit = 'TaskList'
 const btnBack = ''
 const buttons = {btnExit, btnBack}
+
+const home = 'home'
+const arrow = 'arrow'
+const icons = {home, arrow}
 
 const StandardState = {
     status: 'success',
@@ -55,10 +59,11 @@ const DebuggingModeError = {
     active: true}
 const systemStatus = {StandardState, Synchronization, DebuggingMode, StandardStateSettings, SynchronizationSettings, DebuggingModeSettings, StandardStateError, SynchronizationError, DebuggingModeError}
 
-/** Компонент StatusBar отображает кнопку Выход/Назад, Список задач/Актикул изделия и статус готовности принтера, а также кнопку Настройки */
+/** Компонент StatusBar отображает кнопку Выход/Назад, Список задач/Актикул изделия и статус готовности принтера,
+ * а также кнопку Настройки. Для кнопки Назад есть два варианта иконки - home/arrow */
 export default {
     title: "TabletUI-redesign/StatusBar",
-    component: StatusBarRedesign,
+    component: StatusBar,
     tags: ["autodocs"],
     argTypes: {
         page: {
@@ -70,6 +75,18 @@ export default {
                 labels: {
                     btnExit: 'Выход',
                     btnBack: 'Назад'
+                },
+            },
+        },
+        icon: {
+            description: 'Иконка кнопки Назад',
+            options: Object.keys(icons),
+            mapping: icons,
+            control: {
+                type: 'radio',
+                labels: {
+                    home: 'home',
+                    arrow: 'arrow',
                 },
             },
         },
@@ -109,13 +126,13 @@ export default {
                 {name: 'dark', value: '#242a2b'},
                 {name: 'light', value: '#ededed'},
                 {name: 'white', value: '#fff'},
+                {name: 'light-gray-55', value: '#f1f1f1'},
             ]
         }
     }
 };
 export const ExitBtn = {
     args: {
-        // nameButton: 'back',
         textTask: 'Список заданий',
         page: 'TaskList',
         systemStatus: {
@@ -130,7 +147,6 @@ export const ExitBtn = {
 };
 export const ExitBtnPrinterError = {
     args: {
-        // nameButton: 'back',
         textTask: 'Список заданий',
         page: 'TaskList',
         systemStatus: {
@@ -145,7 +161,6 @@ export const ExitBtnPrinterError = {
 
 export const BackBtn = {
     args: {
-        // nameButton: 'exit',
         textTask: 'Актикул изделия',
         page: '',
         systemStatus: {
@@ -156,7 +171,6 @@ export const BackBtn = {
 };
 export const BackBtnPrinterError = {
     args: {
-        // nameButton: 'exit',
         textTask: 'Актикул изделия',
         page: '',
         systemStatus: {
@@ -170,7 +184,6 @@ export const BackBtnPrinterError = {
 };
 export const BackBtnSetting = {
     args: {
-        // nameButton: 'exit',
         textTask: 'Актикул изделия',
         page: '',
         systemStatus: {
@@ -181,7 +194,6 @@ export const BackBtnSetting = {
 };
 export const BackBtnPrinterSetting = {
     args: {
-        // nameButton: 'exit',
         textTask: 'Актикул изделия',
         page: '',
         systemStatus: {

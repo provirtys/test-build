@@ -91,7 +91,6 @@ p {
   gap: $s-2;
   border-radius: $s-1;
 
-  //font-family: 'Golos UI-medium';
   font-size: $font-size-p3;
   color: $dark-gray;
 
@@ -111,7 +110,6 @@ p {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    //gap: $s-2;
 
     text-align: left;
     letter-spacing: -0.23999999463558197px;
@@ -124,7 +122,6 @@ p {
     &__date {
       font-size: $m-2;
       line-height: $line-height-120;
-      //letter-spacing: -0.24px;
     }
 
     &__value {

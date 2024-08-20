@@ -38,10 +38,6 @@ const updateModelValue = ($event) => {
       $event.target.value.match(props.rules.regex) !== $event.target.value)) {
       noPositiveNumber.value = true
     $event.target.value = $event.target.value.match(props.rules.regex)
-    // this.$store.dispatch('showNotification', {
-    //     min: true,
-    //     text: i18n.t('qa.length_cant_be_0'),
-    // })
   } else if ('not-empty' in props.rules && $event.target.value === '') {
     hasErrorNoEmpty.value = true// поле пустое
   } else {
