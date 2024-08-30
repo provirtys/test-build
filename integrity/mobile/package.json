@@ -1,0 +1,16 @@
+{
+  "name": "mobile",
+  "version": "0.0.1",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  },
+  "devDependencies": {
+    "@nx/storybook": "^19.6.4",
+    "vue-i18n": "^9.14.0"
+  }
+}
