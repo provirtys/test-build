@@ -2,11 +2,11 @@
   <div class="status-bar">
     <button v-if="route.name == 'TaskList'" class="status-bar__button" v-touch-hold:2000.mouse="handleHold"
             @mousedown="startAnimation" @touchstart="startAnimation" @mouseup="finishAnimation" @touchend="finishAnimation">
-      <img src="../images/logout.svg">{{ $t('logout') }}</button>
-    <button v-else class="status-bar__button" @click="goBack"><img src="../images/arrowBack.svg">{{ $t('back') }}</button>
+      <img src="../images/logout.svg">{{ t('logout') }}</button>
+    <button v-else class="status-bar__button" @click="goBack"><img src="../images/arrowBack.svg">{{ t('back') }}</button>
     <p class="status-bar__task">{{ otkStore.taskName }}</p>
     <div class="row">
-      <button v-if="route.name == 'TaskList'" class="status-bar__button bg-primary mr-30" @click="scanTaskCode">{{ $t('newJob') }}</button>
+      <button v-if="route.name == 'TaskList'" class="status-bar__button bg-primary mr-30" @click="scanTaskCode">{{ t('newJob') }}</button>
       <SystemStatus :color="systemStatus.status" :statusType="systemStatus.text" />
     </div>
   </div>

@@ -20,9 +20,9 @@ function getCodeDate (value) {
 <template>
   <div class="marking-card">
     <div class="marking-card__main">
-      <div v-if="isAggregationVisible" class="aggregation">{{ $t('aggregationInProgress') }}</div>
+      <div v-if="isAggregationVisible" class="aggregation">{{ t('aggregationInProgress') }}</div>
       <div class="marking-card__head flex-space-between">
-        <p>{{ $t('labeled') }}</p>
+        <p>{{ t('labeled') }}</p>
         <p>{{ codeInfo.labeled }} <span class="grey-text">/ {{ codeInfo.total }}</span></p>
       </div>
 
@@ -30,16 +30,16 @@ function getCodeDate (value) {
         <div class="marking-card__code-info">
 
           <div>
-            <p class="marking-card__info__title grey-text">{{ $t('datetime') }}</p>
+            <p class="marking-card__info__title grey-text">{{ t('datetime') }}</p>
             <p class="marking-card__info__date">{{ getCodeDate(codeInfo.ts) }}</p> <!-- <p class="main__info__date">{{ getCodeDate(codeInfo.ts) }}</p>-->
             <p class="marking-card__info__value grey-text">{{ getCodeTime(codeInfo.ts) }}</p>
           </div>
           <div>
-            <p class="marking-card__info__title grey-text">{{ $t('code') }}</p>
+            <p class="marking-card__info__title grey-text">{{ t('code') }}</p>
             <p class="marking-card__info__value">{{ codeInfo.code }}</p>
           </div>
           <div>
-            <p class="marking-card__info__title grey-text">{{ $t('position') }}</p>
+            <p class="marking-card__info__title grey-text">{{ t('position') }}</p>
             <p class="marking-card__info__value">{{ codeInfo.position }}</p>
           </div>
 
@@ -53,7 +53,7 @@ function getCodeDate (value) {
         <div>
           <img alt="Повторная маркировка" src="../images/repeat-marking.svg">
         </div>
-        <p>{{ $t('repeatedLabeling') }}</p>
+        <p>{{ t('repeatedLabeling') }}</p>
       </div>
     </div>
     <slot>

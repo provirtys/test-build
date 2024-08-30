@@ -2,11 +2,11 @@
     <div class="loading__animation">
         <img v-if="isInternetError" class="icon" src="images/no-wifi.svg" alt="No internet connection" />
         <LoadingAnimation v-else />
-        <div class="loading__text">{{ $t('loading.' + loadingType) }}</div>
-        <div v-if="isInternetError" class="loading__error">{{ $t('loading.try_again') }}</div>
-        <div v-else class="loading__error">{{ $t('loading.wait') }}</div>
+        <div class="loading__text">{{ t('loading.' + loadingType) }}</div>
+        <div v-if="isInternetError" class="loading__error">{{ t('loading.try_again') }}</div>
+        <div v-else class="loading__error">{{ t('loading.wait') }}</div>
         <BaseButton v-if="isInternetError" :background="'red'" :color="'white'" :size="'large'"
-            :text="$t('loading.retry')" class="mt-5"></BaseButton>
+            :text="t('loading.retry')" class="mt-5"></BaseButton>
     </div>
 </template>
 

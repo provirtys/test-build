@@ -4,8 +4,8 @@
       <q-input
         outlined
         v-model="taskText"
-        :placeholder="$t('taskText')"
-        :rules="[val => !!val || $t('error.noEmpty')]"
+        :placeholder="t('taskText')"
+        :rules="[val => !!val || t('error.noEmpty')]"
         class="job__task"
       ></q-input>
 
@@ -13,16 +13,16 @@
         outlined
         type="number"
         v-model.number="amount"
-        :placeholder="$t('amountTitle')"
-        :rules="[val => !!val || $t('error.noEmpty')]"
+        :placeholder="t('amountTitle')"
+        :rules="[val => !!val || t('error.noEmpty')]"
         class="job__amount"
       ></q-input>
 
       <q-input
         outlined
         v-model="sku"
-        :placeholder="$t('sku')"
-        :rules="[val => !!val || $t('error.noEmpty')]"
+        :placeholder="t('sku')"
+        :rules="[val => !!val || t('error.noEmpty')]"
         class="job__amount"
       ></q-input>
 
@@ -32,16 +32,16 @@
             <q-input
               outlined
               v-model="row.key"
-              :placeholder="$t('taskName')"
+              :placeholder="t('taskName')"
               class="job__attribute"
-              :rules="[val => !!val || $t('error.noEmpty'), val => !notUniqueValue(row, val) || $t('error.uniqueValue')]"
+              :rules="[val => !!val || t('error.noEmpty'), val => !notUniqueValue(row, val) || t('error.uniqueValue')]"
             ></q-input>
             <q-input
               outlined
               v-model="row.value"
-              :placeholder="$t('value')"
+              :placeholder="t('value')"
               class="job__attribute"
-              :rules="[val => !!val || $t('error.noEmpty')]"
+              :rules="[val => !!val || t('error.noEmpty')]"
             ></q-input>
             <q-icon
               name="sym_o_delete"
@@ -58,7 +58,7 @@
               color="gray"
               text-color="dark"
               no-caps
-              :label="$t('add')"
+              :label="t('add')"
               class="job__add-attribute-button"
               @click="addRow"
             />
@@ -75,7 +75,7 @@
         color="primary"
         text-color="secondary"
         no-caps
-        :label="$t('createTask')"
+        :label="t('createTask')"
         @click="createTask"
       />
     </div>

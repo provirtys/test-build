@@ -1,7 +1,7 @@
 <template>
   <div class="input-amount">
     <div class="full-width">
-      <q-input v-model.number="amount" pattern="[0-9]*" inputmode="numeric" type="number" label="$t('amount')"
+      <q-input v-model.number="amount" pattern="[0-9]*" inputmode="numeric" type="number" label="t('amount')"
                stack-label outlined autofocus/>
     </div>
   </div>

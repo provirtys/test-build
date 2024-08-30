@@ -22,18 +22,18 @@ defineProps({
     <MarkingCard :codeInfo="codeInfo" :is-repeat-visible="isRepeatVisible"
                  :is-progress-pie-visible="isProgressPieVisible" :is-aggregation-visible="isAggregationVisible">
       <div class="gap-12">
-        <AnimatedTabletButton v-if="btn === '1'" :icon="scanIcon" :text="$t('scan')"/>
-        <AnimatedTabletButton v-if="btn === '1'" :color="'dark'" :text="$t('startAggregation')" class="text-left"/>
+        <AnimatedTabletButton v-if="btn === '1'" :icon="scanIcon" :text="t('scan')"/>
+        <AnimatedTabletButton v-if="btn === '1'" :color="'dark'" :text="t('startAggregation')" class="text-left"/>
 
-        <TabletButton v-if="btn === '2'" :text="$t('repeatLabeling')" :icon="restartIcon"/>
-        <TabletButton v-if="btn === '2'" :text="$t('labelingDefect')" :color="'light-gray'" :icon="badIcon"/>
+        <TabletButton v-if="btn === '2'" :text="t('repeatLabeling')" :icon="restartIcon"/>
+        <TabletButton v-if="btn === '2'" :text="t('labelingDefect')" :color="'light-gray'" :icon="badIcon"/>
 
-        <AnimatedTabletButton v-if="btn === '3'" :icon="scanIcon" :text="$t('scan')"/>
+        <AnimatedTabletButton v-if="btn === '3'" :icon="scanIcon" :text="t('scan')"/>
 
-        <AnimatedTabletButton v-if="btn === '4'" :icon="doneIcon" :text="$t('confirm')"/>
+        <AnimatedTabletButton v-if="btn === '4'" :icon="doneIcon" :text="t('confirm')"/>
 
-        <AnimatedTabletButton v-if="btn === '5'" :icon="scanIcon" :text="$t('scan')"/>
-        <AnimatedTabletButton v-if="btn === '5'" :icon="aggregationIcon" :color="'dark'" :text="$t('finishAggregation')"/>
+        <AnimatedTabletButton v-if="btn === '5'" :icon="scanIcon" :text="t('scan')"/>
+        <AnimatedTabletButton v-if="btn === '5'" :icon="aggregationIcon" :color="'dark'" :text="t('finishAggregation')"/>
       </div>
     </MarkingCard>
   </div>

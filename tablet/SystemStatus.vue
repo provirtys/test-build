@@ -1,7 +1,7 @@
 <template>
   <div class="system-status">
     <div class="system-status__indicator" :class="props.color"></div>
-    <div class="system-status__text">{{$t('system-status.' + statusType) }}</div>
+    <div class="system-status__text">{{ t('system-status.' + statusType) }}</div>
   </div>
 </template>
 

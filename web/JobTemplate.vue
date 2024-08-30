@@ -6,15 +6,15 @@
         <q-input
             outlined
             v-model="taskText"
-            :placeholder="$t('taskText')"
-            :rules="[val => !!val || $t('error.noEmpty')]"
+            :placeholder="t('taskText')"
+            :rules="[val => !!val || t('error.noEmpty')]"
         ></q-input>
         <q-input
             outlined
             v-model="taskSku"
-            :placeholder="$t('sku')"
+            :placeholder="t('sku')"
             class="template__sku"
-            :rules="[val => !!val || $t('error.noEmpty')]"
+            :rules="[val => !!val || t('error.noEmpty')]"
         ></q-input>
         <div class="template__attributes">
           <form>
@@ -22,16 +22,16 @@
               <q-input
                   outlined
                   v-model="row.key"
-                  :placeholder="$t('taskName')"
+                  :placeholder="t('taskName')"
                   class="template__attribute"
-                  :rules="[val => !!val || $t('error.noEmpty'), val => !notUniqueValue(row, val) || $t('error.uniqueValue')]"
+                  :rules="[val => !!val || t('error.noEmpty'), val => !notUniqueValue(row, val) || t('error.uniqueValue')]"
               ></q-input>
               <q-input
                   outlined
                   v-model="row.value"
-                  :placeholder="$t('value')"
+                  :placeholder="t('value')"
                   class="template__attribute"
-                  :rules="[val => !!val || $t('error.noEmpty')]"
+                  :rules="[val => !!val || t('error.noEmpty')]"
               ></q-input>
               <q-icon
                   name="sym_o_delete"
@@ -48,7 +48,7 @@
                   color="gray"
                   text-color="dark"
                   no-caps
-                  :label="$t('add')"
+                  :label="t('add')"
                   class="template__add-attribute-button"
                   @click="addRow"
               />
@@ -64,7 +64,7 @@
             color="gray"
             text-color="dark"
             no-caps
-            :label="$t('generateDataMatrix')"
+            :label="t('generateDataMatrix')"
             @click="generateDataMatrix"
         />
         <q-btn
@@ -73,7 +73,7 @@
             color="primary"
             text-color="secondary"
             no-caps
-            :label="$t('save')"
+            :label="t('save')"
             @click="createTemplate"
         />
       </div>

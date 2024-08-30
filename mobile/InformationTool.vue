@@ -1,10 +1,10 @@
 <template>
   <div class="main-tool">
     <div class="info">
-      <p class="info__title">{{ $t('storybook.toolInfo') }}</p>
+      <p class="info__title">{{ t('storybook.toolInfo') }}</p>
       <div class="info__item">
         <div v-if="props.img" class="info__img">
-          <img :alt="$t('imageTool')" :src="props.img">
+          <img :alt="t('imageTool')" :src="props.img">
         </div>
         <div class="info__items">
           <dl v-for="(item, key) in props.toolItems" :key="key">
@@ -16,10 +16,10 @@
     </div>
 
     <div class="buttons">
-      <MobileButton v-if="props.btn === 'take'" :color="'dark'" :text="$t('storybook.take')"></MobileButton>
-      <MobileButton v-if="props.btn === 'returnBtn'" :color="'dark'" :text="$t('storybook.return')"></MobileButton>
+      <MobileButton v-if="props.btn === 'take'" :color="'dark'" :text="t('storybook.take')"></MobileButton>
+      <MobileButton v-if="props.btn === 'returnBtn'" :color="'dark'" :text="t('storybook.return')"></MobileButton>
 
-      <MobileButton :text="$t('storybook.cancel')"></MobileButton>
+      <MobileButton :text="t('storybook.cancel')"></MobileButton>
     </div>
   </div>
 </template>

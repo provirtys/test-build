@@ -3,21 +3,21 @@
     <div class="legend">
       <div class="legend__item">
         <div class="legend__title">
-          <p>{{ $t('total') }}</p>
+          <p>{{ t('total') }}</p>
           <p>{{ total }}</p>
         </div>
       </div>
       <div class="legend__item">
         <div class="legend__color bg-primary"></div>
         <div class="legend__title">
-          <p>{{ $t('errors') }}</p>
+          <p>{{ t('errors') }}</p>
           <p>{{ mistakes }}</p>
         </div>
       </div>
       <div class="legend__item">
         <div class="legend__color  bg-gray2"></div>
         <div class="legend__title">
-          <p>{{ $t('withoutErrors') }}</p>
+          <p>{{ t('withoutErrors') }}</p>
           <p>{{ total - mistakes }}</p>
         </div>
       </div>
@@ -38,7 +38,7 @@
         <p :class="{'text-primary': percentage < 97}">{{ 100 - percentage }}%</p>
       </div>
     </div>
-    <AnimatedTabletButton :text="$t('finishLabeling')" :icon="logoutIcon" @action-submitted="finishLabeling" />
+    <AnimatedTabletButton :text="t('finishLabeling')" :icon="logoutIcon" @action-submitted="finishLabeling" />
   </div>
 </template>
 

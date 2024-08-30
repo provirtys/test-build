@@ -8,7 +8,7 @@
            :rows-per-page-options="[0]"
            :table-header-style="{ color: 'var(--q-primary)'}"
            :card-style="{ color: 'var(secondary)'}"
-           :no-data-label="$t('noData')"
+           :no-data-label="t('noData')"
            hide-pagination
   />
   <!--    вариант с пустой табл-->

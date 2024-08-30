@@ -3,9 +3,9 @@
     <input class="base-input" :class="{ 'error': hasErrorNoEmpty || hasErrorUniqueValue}" :placeholder="placeholder"
            :type="type" :value="modelValue" @input="updateModelValue"
            v-bind="$attrs" data-testid="input">
-    <span v-if="hasErrorNoEmpty" class="error-text">{{ $t('error.noEmpty') }}</span>
-    <span v-else-if="hasErrorUniqueValue" class="error-text">{{ $t('error.uniqueValue') }}</span>
-    <span v-if="noPositiveNumber" class="error-text">{{ $t('error.noPositiveNumber') }}</span>
+    <span v-if="hasErrorNoEmpty" class="error-text">{{ t('error.noEmpty') }}</span>
+    <span v-else-if="hasErrorUniqueValue" class="error-text">{{ t('error.uniqueValue') }}</span>
+    <span v-if="noPositiveNumber" class="error-text">{{ t('error.noPositiveNumber') }}</span>
   </div>
 
 </template>

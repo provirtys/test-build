@@ -4,7 +4,7 @@
           v-touch-hold:1000.mouse="handleHold"
           class="status-system"
           :class="[{ 'active': props.isActive }, { 'done': isActionSubmitted }, backgroundColor]">
-    {{ $t('system-status.' + statusType) }}
+    {{ t('system-status.' + statusType) }}
     <IconStatus class="pointer-icon" :color="props.color" :is-animate="props.isSync"></IconStatus>
   </button>
 </template>

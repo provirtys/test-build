@@ -7,7 +7,7 @@
         size="30px"
     >
       <q-tooltip class="bg-table-text">
-        {{ $t('storybook.table.updateDataInTable') }}
+        {{ t('storybook.table.updateDataInTable') }}
       </q-tooltip>
     </q-icon>
     <q-toolbar-title>{{nameTable}}</q-toolbar-title>
@@ -23,7 +23,7 @@
         v-model:pagination="pagination"
         :rows-per-page-options="[0]"
         :card-style="{ color: 'var(secondary)' }"
-        :no-data-label="$t('storybook.table.noData')"
+        :no-data-label="t('storybook.table.noData')"
         hide-pagination
       >
         <template v-slot:body-cell-status="props">
