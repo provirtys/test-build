@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../dist/out-tsc",
-    "types": ["vite/client"]
+    "types": ["vite/client", "vue"],
   },
   "exclude": [
     "src/**/__tests__/*",

@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "mobile": ["mobile/src/index.ts"],
+      "my-plugin": ["tools/my-plugin/src/index.ts"],
       "tablet": ["tablet/src/index.ts"],
       "ui": ["shared/ui/src/index.ts"],
       "web": ["web/src/index.ts"]

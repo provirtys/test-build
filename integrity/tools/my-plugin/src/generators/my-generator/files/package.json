@@ -2,10 +2,9 @@
   "name": "mobile",
   "version": "0.0.1",
   "main": "./index.js",
-  "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.mjs",
+      "import": "./index.js",
       "require": "./index.js"
     }
   },
