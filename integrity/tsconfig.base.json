@@ -15,11 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "mobile": ["mobile/src/index.ts"],
-      "my-plugin": ["tools/my-plugin/src/index.ts"],
-      "tablet": ["tablet/src/index.ts"],
-      "ui": ["shared/ui/src/index.ts"],
-      "web": ["web/src/index.ts"]
+      "base-plugin": ["tools/base-plugin/src/index.ts"],
+      "mobile-plugin": ["tools/mobile-plugin/src/index.ts"],
+      "tablet-plugin": ["tools/tablet-plugin/src/index.ts"],
+      "web-plugin": ["tools/web-plugin/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

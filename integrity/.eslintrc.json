@@ -9,7 +9,7 @@
       "rules": {}
     },
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx", "*.vue"],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
@@ -34,6 +34,13 @@
     {
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+      "env": {
+        "jest": true
+      },
       "rules": {}
     }
   ]

@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "web-generator": {
+      "factory": "./src/generators/web-generator/generator",
+      "schema": "./src/generators/web-generator/schema.json",
+      "description": "web-generator generator"
+    }
+  }
+}
