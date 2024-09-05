@@ -1,5 +1,8 @@
 <script setup>
 import ProgressPie from './ProgressPie.vue';
+import { setupI18n } from '../i18n.js';
+
+const { t } = setupI18n();
 
 defineProps({
   isAggregationVisible: { type: Boolean, default: false },
@@ -67,7 +70,7 @@ function getCodeDate(value) {
         <!--Это не кнопка, просто индикатор, если нужна повторная маркировка-->
         <div>
           <img
-            alt="Повторная маркировка"
+            :alt="t('repeatedLabeling')"
             src="../assets/images/repeat-marking.svg"
           />
         </div>

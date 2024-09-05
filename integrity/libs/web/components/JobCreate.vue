@@ -32,7 +32,7 @@
             <q-input
               outlined
               v-model="row.key"
-              :placeholder="t('taskName')"
+              :placeholder="t('storybook.taskName')"
               class="job__attribute"
               :rules="[
                 (val) => !!val || t('error.noEmpty'),
@@ -94,7 +94,9 @@
 <script setup>
 import { reactive, ref, watch } from 'vue';
 import { v4 as uuidv4 } from 'uuid';
-import { useRouter } from 'vue-router';
+import { setupI18n } from '../i18n.js';
+
+const { t } = setupI18n();
 
 const rows = reactive([{ uuid: uuidv4(), key: '', value: '' }]);
 const attributes = ref([]);

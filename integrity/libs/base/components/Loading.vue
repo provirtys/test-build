@@ -4,7 +4,7 @@
       v-if="isInternetError"
       class="icon"
       src="../assets/images/no-wifi.svg"
-      alt="No internet connection"
+      :alt="t('loading.internet_false')"
     />
     <LoadingAnimation v-else />
     <div class="loading__text">{{ t('loading.' + loadingType) }}</div>
@@ -27,6 +27,9 @@
 import BaseButton from './BaseButton.vue';
 import LoadingAnimation from './LoadingAnimation.vue';
 import { computed } from 'vue';
+import { setupI18n } from '../i18n.js';
+
+const { t } = setupI18n();
 
 const props = defineProps({
   /** Тип загрузки*/

@@ -22,7 +22,7 @@
               <q-input
                   outlined
                   v-model="row.key"
-                  :placeholder="t('taskName')"
+                  :placeholder="t('storybook.taskName')"
                   class="template__attribute"
                   :rules="[val => !!val || t('error.noEmpty'), val => !notUniqueValue(row, val) || t('error.uniqueValue')]"
               ></q-input>
@@ -90,7 +90,10 @@
 import {reactive, ref, watch} from 'vue'
 import bwipjs from 'bwip-js'
 import {v4 as uuidv4} from 'uuid'
-import {TemplateModel} from "../utils/template_pb.js";
+import {TemplateModel} from "../utils/template_pb.js"
+import { setupI18n } from '../i18n.js'
+
+const { t } = setupI18n()
 
 const rows = reactive([{uuid: uuidv4(), key: '', value: ''}])
 const svgnode = ref('')

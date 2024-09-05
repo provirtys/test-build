@@ -24,6 +24,9 @@
 
 <script setup>
 import { computed, ref } from 'vue';
+import { setupI18n } from '../i18n.js';
+
+const { t } = setupI18n();
 
 const props = defineProps({
   /** Введенное значение */

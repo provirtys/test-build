@@ -3,10 +3,10 @@
     <div class="labeling-main">
       <div v-if="isAggregationVisible" class="aggregation">
         <img src="../../assets/images/go-aggregation-blue.svg">
-        Идет агрегация
+        {{ t('aggregationInProgress') }}
       </div>
       <div class="labeling-main__head flex-space-between">
-        <p>Замаркировано</p>
+        <p>{{ t('labeled') }}</p>
         <p class="dark-gray">{{ codeInfo.labeled }} / {{ codeInfo.total }}</p>
       </div>
 
@@ -14,29 +14,29 @@
 
           <div class="code-info" v-if="isScan">
             <div>
-              <p class="labeling-main__info__title">Напечатано</p>
+              <p class="labeling-main__info__title">{{ t('printed') }}</p>
               <p class="labeling-main__info__date">{{ codeInfo.total }}</p>
               <p class="labeling-main__info__value time">{{ codeInfo.ts }}</p>
 
             </div>
             <div>
-              <p class="labeling-main__info__title">Считано</p>
+              <p class="labeling-main__info__title">{{ t('recognized') }}</p>
               <p class="labeling-main__info__value">{{ codeInfo.labeled }}</p>
             </div>
           </div>
 
           <div class="code-info" v-else>
             <div>
-              <p class="labeling-main__info__title">Дата и время</p>
+              <p class="labeling-main__info__title">{{ t('datetime') }}</p>
               <p class="labeling-main__info__date">14.03.2024</p>
               <p class="labeling-main__info__value time">{{ codeInfo.ts }}</p>
             </div>
             <div v-if="!isAuto">
-              <p class="labeling-main__info__title">Номер позиции</p>
+              <p class="labeling-main__info__title">{{ t('position') }}</p>
               <p class="labeling-main__info__value">{{ codeInfo.position }}</p>
             </div>
             <div>
-              <p class="labeling-main__info__title">Код</p>
+              <p class="labeling-main__info__title">{{ t('code') }}</p>
               <p class="labeling-main__info__value">{{ codeInfo.code }}</p>
               <div v-if="isCodes" class="labeling-main__info__status-code">
                 <StatusCode :status="status1" :codeType="codeType1" :color="color1" :is-animate="status1 === 'synced'"></StatusCode>
@@ -56,8 +56,10 @@
 </template>
 
 <script setup>
-
 import StatusCode from "./StatusCode.vue";
+import { setupI18n } from '../../i18n.js';
+
+const { t } = setupI18n();
 
 defineProps({
   isAggregationVisible: {type: Boolean, default: false},

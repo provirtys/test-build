@@ -4,7 +4,7 @@
       <p class="info__title">{{ t('storybook.toolInfo') }}</p>
       <div class="info__item">
         <div v-if="props.img" class="info__img">
-          <img :alt="t('imageTool')" :src="props.img">
+          <img :alt="t('storybook.toolImage')" :src="props.img">
         </div>
         <div class="info__items">
           <dl v-for="(item, key) in props.toolItems" :key="key">
@@ -26,6 +26,9 @@
 
 <script setup>
 import MobileButton from "./MobileButton.vue";
+import { setupI18n } from '../i18n.js';
+
+const { t } = setupI18n();
 
 let props = defineProps({
   /** Информация об инструменте */

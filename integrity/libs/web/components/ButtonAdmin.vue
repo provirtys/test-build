@@ -11,7 +11,11 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { setupI18n } from '../i18n.js';
+
+const { t } = setupI18n();
+</script>
 
 <style scoped lang="scss">
 .add-btn {

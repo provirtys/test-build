@@ -11,6 +11,9 @@
 
 <script setup>
 import { computed } from 'vue';
+import { setupI18n } from '../../i18n.js';
+
+const { t } = setupI18n();
 /** Статус маркировки */
 const props = defineProps({
   status: {
@@ -32,13 +35,11 @@ const props = defineProps({
 const text = computed(() => {
   switch (props.status) {
     case 'new':
-      return 'НОВОЕ';
     case 'labeling':
-      return 'МАРКИРОВКА';
     case 'ready':
-      return 'ЗАВЕРШЕНО';
+      return t(props.status);
     default:
-      return 'ОТМЕНЕНО';
+      return t('cancelled');
   }
 });
 

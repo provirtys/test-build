@@ -39,6 +39,9 @@ import dataMatrix from '../assets/images/dataMatrix.svg';
 import barCode from '../assets/images/barCode.svg';
 import checkboxFilled from '../assets/images/checkbox-filled.svg';
 import checkboxEmpty from '../assets/images/checkbox-empty.svg';
+import { setupI18n } from '../i18n.js';
+
+const { t } = setupI18n();
 
 const props = defineProps({
   isAuto: {

@@ -1,9 +1,9 @@
 <script setup>
 import ApexCharts from 'apexcharts';
 import { ref, onMounted, watch } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { setupI18n } from '../i18n.js';
 
-const { t } = useI18n();
+const { t } = setupI18n();
 
 const props = defineProps({
   codes: {

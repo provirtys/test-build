@@ -45,6 +45,7 @@ const props = defineProps({
   needLogout: { type: Boolean, default: false },
 });
 
+const emit = defineEmits(['toHomePage']);
 function logout() {
   router.push({ name: 'Auth' });
 }
@@ -56,7 +57,7 @@ function onBackButton() {
   }
 }
 function toHomePage() {
-  router.push({ name: 'BindFactory' });
+  emit('toHomePage');
 }
 </script>
 

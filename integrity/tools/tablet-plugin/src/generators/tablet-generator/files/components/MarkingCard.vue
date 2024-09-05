@@ -1,5 +1,8 @@
 <script setup>
 import ProgressPie from './ProgressPie.vue'
+import { setupI18n } from '../i18n.js'
+
+const { t } = setupI18n()
 
 defineProps({
   isAggregationVisible: { type: Boolean, default: false },
@@ -51,7 +54,7 @@ function getCodeDate (value) {
       <div v-if="isRepeatVisible" class="marking-card__repeat">
         <!--Это не кнопка, просто индикатор, если нужна повторная маркировка-->
         <div>
-          <img alt="Повторная маркировка" src="../assets/images/repeat-marking.svg">
+          <img :alt="t('repeatedLabeling')" src="../assets/images/repeat-marking.svg">
         </div>
         <p>{{ t('repeatedLabeling') }}</p>
       </div>

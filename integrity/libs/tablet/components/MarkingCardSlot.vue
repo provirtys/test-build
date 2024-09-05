@@ -7,6 +7,9 @@ import restartIcon from '../assets/images/restart.svg';
 import badIcon from '../assets/images/bad.svg';
 import doneIcon from '../assets/images/done.svg';
 import MarkingCard from './MarkingCard.vue';
+import { setupI18n } from '../i18n.js';
+
+const { t } = setupI18n();
 
 defineProps({
   isAggregationVisible: { type: Boolean, default: true },

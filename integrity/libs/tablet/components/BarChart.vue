@@ -1,9 +1,9 @@
 <script setup>
 import ApexCharts from 'apexcharts';
 import { ref, watch, onMounted } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { setupI18n } from '../i18n.js';
 
-const { t } = useI18n();
+const { t } = setupI18n();
 
 // количество видимых итераций (значений по горизонтальной оси)
 const limit = 18;

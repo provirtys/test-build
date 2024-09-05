@@ -7,7 +7,7 @@
       size="30px"
     >
       <q-tooltip class="bg-table-text">
-        {{ t('storybook.table.updateDataInTable') }}
+        {{ t('storybook.table.update') }}
       </q-tooltip>
     </q-icon>
     <q-toolbar-title>{{ nameTable }}</q-toolbar-title>
@@ -54,9 +54,10 @@
 
 <script setup>
 import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { setupI18n } from '../i18n.js';
 
-const { t } = useI18n();
+const { t } = setupI18n();
+
 let props = defineProps({
   /** Значение строк*/
   rows: { type: Array, default: () => [] },

@@ -46,6 +46,9 @@
 import { computed } from 'vue'
 import AnimatedTabletButton from './ActionTabletUIButton.vue'
 import logoutIcon from '../assets/images/button-logout.svg'
+import { setupI18n } from '../i18n.js'
+
+const { t } = setupI18n()
 
 const props = defineProps({
     total: { type: Number, default: 1 },

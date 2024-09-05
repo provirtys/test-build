@@ -9,8 +9,11 @@
 </template>
 
 <script setup>
-import DATAMatrix from '../datamatrix.js'
 import {ref, onMounted, computed} from 'vue'
+import DATAMatrix from '../datamatrix.js'
+import { setupI18n } from '../i18n.js'
+
+const { t } = setupI18n()
 
 let props = defineProps({
   uuid: {type: String, default: ''},

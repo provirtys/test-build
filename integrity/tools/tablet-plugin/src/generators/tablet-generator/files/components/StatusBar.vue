@@ -6,7 +6,7 @@
     <button v-else class="status-bar__button" @click="goBack"><img src="../assets/images/arrowBack.svg">{{ t('back') }}</button>
     <p class="status-bar__task">{{ otkStore.taskName }}</p>
     <div class="row">
-      <button v-if="route.name == 'TaskList'" class="status-bar__button bg-primary mr-30" @click="scanTaskCode">{{ t('newJob') }}</button>
+      <button v-if="route.name == 'TaskList'" class="status-bar__button bg-primary mr-30" @click="toNewJob">{{ t('newJob') }}</button>
       <SystemStatus :color="systemStatus.status" :statusType="systemStatus.text" />
     </div>
   </div>
@@ -16,7 +16,9 @@
 import SystemStatus from "./SystemStatus.vue";
 import {ref, reactive} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
+import { setupI18n } from '../i18n.js'
 
+const { t } = setupI18n()
 const route = useRoute()
 const router = useRouter()
 
@@ -40,22 +42,20 @@ const props = defineProps({
   },
 })
 
-function scanTaskCode () {
-  router.push({ name: 'NewTaskDetails' })
+const emit = defineEmits(['createNewJob', 'logout'])
+
+function toNewJob () {
+  emit('createNewJob')
 }
 
 function goBack() {
   router.go(-1)
 }
 
-function logout() {
-  router.push({name: 'Auth'})
-}
-
 function handleHold({evt, ...newInfo}) {
   isLogoutSubmitted.value = newInfo
   finishAnimation(evt)
-  logout()
+  emit('logout')
 }
 
 function startAnimation(event) {

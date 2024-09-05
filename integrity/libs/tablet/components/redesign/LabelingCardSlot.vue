@@ -8,35 +8,35 @@
       <div class="gap-10">
         <ActionTabletUIButton
           v-if="btn === '1'"
-          :text="'Начать агрегацию'"
+          :text="t('startAggregation')"
           :icon="'startAggregationIcon'"
           :location-icon="'right'"
           :color="'outline'"
         ></ActionTabletUIButton>
         <ActionTabletUIButton
           v-if="btn === '1'"
-          :text="'Начать маркировку'"
+          :text="t('startLabeling')"
           :icon="'openTaskIcon'"
           :location-icon="'right'"
         ></ActionTabletUIButton>
 
         <ActionTabletUIButton
           v-if="btn === '2'"
-          :text="'Новое задание'"
+          :text="t('newJob')"
           :icon="'newTaskIcon'"
           :location-icon="'right'"
           :color="'outline'"
         ></ActionTabletUIButton>
         <ActionTabletUIButton
           v-if="btn === '2'"
-          :text="'Продолжить маркировку'"
+          :text="t('continueLabeling')"
           :icon="'openTaskIcon'"
           :location-icon="'right'"
         ></ActionTabletUIButton>
 
         <ActionTabletUIButton
           v-if="btn === '3'"
-          :text="'Закончить агрегацию'"
+          :text="t('finishAggregation')"
           :icon="'finishAggregationIcon'"
           :location-icon="'right'"
           :color="'outline'"
@@ -44,7 +44,7 @@
 
         <ActionTabletUIButton
           v-if="btn === '4'"
-          :text="'Печать этикетки'"
+          :text="t('labelPrint')"
           :icon="'labelPrintingIcon'"
           :location-icon="'right'"
           :color="'outline'"
@@ -52,7 +52,7 @@
         <ActionTabletUIButton
           v-if="btn === '4'"
           :is-disabled="true"
-          :text="'Начать маркировку'"
+          :text="t('startLabeling')"
           :icon="'openTaskIcon'"
           :location-icon="'right'"
         ></ActionTabletUIButton>
@@ -60,7 +60,7 @@
         <ActionTabletUIButton
           v-if="btn === '5'"
           :is-disabled="true"
-          :text="'Брак маркировки'"
+          :text="t('labelingDefect')"
           :icon="'restartIcon'"
           :location-icon="'right'"
           :color="'outline'"
@@ -68,7 +68,7 @@
         <ActionTabletUIButton
           v-if="btn === '5'"
           :is-disabled="true"
-          :text="'Подтвердить'"
+          :text="t('confirm')"
           :icon="'verifyIcon'"
           :location-icon="'right'"
         ></ActionTabletUIButton>
@@ -80,6 +80,9 @@
 <script setup>
 import LabelingCard from './LabelingCard.vue';
 import ActionTabletUIButton from './ActionTabletUIButton.vue';
+import { setupI18n } from '../../i18n.js';
+
+const { t } = setupI18n();
 
 defineProps({
   isAggregationVisible: { type: Boolean, default: true },

@@ -9,10 +9,9 @@
       @mouseup="finishAnimation"
       @touchend="finishAnimation"
     >
-      <img
-        class="pointer-icon"
-        src="../../assets/images/logout-dark.svg"
-      />Выйти
+      <img class="pointer-icon" src="../../assets/images/logout-dark.svg" />{{
+        t('logout')
+      }}
     </button>
     <button
       v-else
@@ -57,6 +56,9 @@
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import SystemStatus from './SystemStatus.vue';
+import { setupI18n } from '../../i18n.js';
+
+const { t } = setupI18n();
 
 const route = useRoute();
 const router = useRouter();
@@ -82,6 +84,8 @@ const props = defineProps({
   },
   icon: { type: String, default: 'home' },
 });
+
+const emit = defineEmits(['logout']);
 
 function handleHoldGoBack({ evt, ...newInfo }) {
   isLogoutSubmitted.value = newInfo;
@@ -115,15 +119,10 @@ function goBack() {
   }
 }
 
-function logout() {
-  clearInterval(requestTimer);
-  router.push({ name: 'Auth' });
-}
-
 function handleHold({ evt, ...newInfo }) {
   isLogoutSubmitted.value = newInfo;
   finishAnimation(evt);
-  logout();
+  emit('logout');
 }
 
 function startAnimation(event) {

@@ -6,7 +6,7 @@
         pattern="[0-9]*"
         inputmode="numeric"
         type="number"
-        label="t('amount')"
+        :label="t('amount')"
         stack-label
         outlined
         autofocus
@@ -17,6 +17,9 @@
 
 <script setup>
 import { ref } from 'vue';
+import { setupI18n } from '../i18n.js';
+
+const { t } = setupI18n();
 
 const amount = ref(0);
 </script>

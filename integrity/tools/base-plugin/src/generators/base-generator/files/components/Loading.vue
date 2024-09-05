@@ -1,6 +1,6 @@
 <template>
     <div class="loading__animation">
-        <img v-if="isInternetError" class="icon" src="../assets/images/no-wifi.svg" alt="No internet connection" />
+        <img v-if="isInternetError" class="icon" src="../assets/images/no-wifi.svg" :alt="t('loading.internet_false')" />
         <LoadingAnimation v-else />
         <div class="loading__text">{{ t('loading.' + loadingType) }}</div>
         <div v-if="isInternetError" class="loading__error">{{ t('loading.try_again') }}</div>
@@ -14,6 +14,9 @@
 import BaseButton from './BaseButton.vue'
 import LoadingAnimation from './LoadingAnimation.vue'
 import { computed } from 'vue'
+import { setupI18n } from '../i18n.js'
+
+const { t } = setupI18n()
 
 const props = defineProps({
   /** Тип загрузки*/

@@ -1,6 +1,6 @@
 <template>
   <div class="amount" :class="[{'not-empty': amount > 0}, buttonSize]">
-    <q-input v-model.number="amount" pattern="[0-9]*" inputmode="numeric" type="number" :label=label
+    <q-input v-model.number="amount" pattern="[0-9]*" inputmode="numeric" type="number" :label="label"
              stack-label outlined placeholder="0">
       <template v-slot:prepend>
         <q-icon v-if="isIcon">

@@ -23,6 +23,9 @@
 
 <script setup>
 import TabBarIcon from '../assets/icons/TabBarIcon.vue'
+import { setupI18n } from '../i18n.js';
+
+const { t } = setupI18n();
 
 const props = defineProps({
     isBackgroundDark: {

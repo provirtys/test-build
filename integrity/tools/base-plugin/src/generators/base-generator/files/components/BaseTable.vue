@@ -1,4 +1,7 @@
 <script setup>
+import { setupI18n } from '../i18n.js'
+
+const { t } = setupI18n()
 let props = defineProps({
   /** Значение строк*/
   rows: {

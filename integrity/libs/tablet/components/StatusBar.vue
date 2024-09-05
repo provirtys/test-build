@@ -19,7 +19,7 @@
       <button
         v-if="route.name == 'TaskList'"
         class="status-bar__button bg-primary mr-30"
-        @click="scanTaskCode"
+        @click="toNewJob"
       >
         {{ t('newJob') }}
       </button>
@@ -35,7 +35,9 @@
 import SystemStatus from './SystemStatus.vue';
 import { ref, reactive } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { setupI18n } from '../i18n.js';
 
+const { t } = setupI18n();
 const route = useRoute();
 const router = useRouter();
 
@@ -58,22 +60,20 @@ const props = defineProps({
   },
 });
 
-function scanTaskCode() {
-  router.push({ name: 'NewTaskDetails' });
+const emit = defineEmits(['createNewJob', 'logout']);
+
+function toNewJob() {
+  emit('createNewJob');
 }
 
 function goBack() {
   router.go(-1);
 }
 
-function logout() {
-  router.push({ name: 'Auth' });
-}
-
 function handleHold({ evt, ...newInfo }) {
   isLogoutSubmitted.value = newInfo;
   finishAnimation(evt);
-  logout();
+  emit('logout');
 }
 
 function startAnimation(event) {

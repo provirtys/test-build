@@ -27,9 +27,9 @@
 <script setup>
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { useI18n } from "vue-i18n"
+import { setupI18n } from '../i18n.js';
 
-const { t } = useI18n()
+const { t } = setupI18n();
 const router = useRouter()
 
 const props = defineProps({
