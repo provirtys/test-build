@@ -8,8 +8,19 @@
     "@nx/eslint": "19.6.4",
     "@nx/eslint-plugin": "19.6.4",
     "@nx/jest": "19.6.4",
-    "@nx/js": "19.6.4",
+    "@nx/js": "19.6.5",
     "@nx/plugin": "^19.6.4",
+    "@nx/storybook": "^19.6.5",
+    "@nx/vite": "19.6.5",
+    "@nx/web": "19.6.5",
+    "@storybook/addon-essentials": "8.2.9",
+    "@storybook/addon-interactions": "^8.2.8",
+    "@storybook/core-server": "8.2.9",
+    "@storybook/jest": "^0.2.3",
+    "@storybook/test-runner": "^0.13.0",
+    "@storybook/testing-library": "^0.2.2",
+    "@storybook/vue3": "^8.2.8",
+    "@storybook/vue3-vite": "8.2.9",
     "@swc-node/register": "~1.9.1",
     "@swc/cli": "~0.3.12",
     "@swc/core": "~1.5.7",
@@ -24,15 +35,19 @@
     "jest-environment-jsdom": "^29.7.0",
     "nx": "19.6.4",
     "prettier": "^2.6.2",
+    "storybook": "8.2.9",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
-    "typescript": "~5.5.2"
+    "typescript": "~5.5.2",
+    "vite": "^5.0.0"
   },
   "workspaces": [
     "packages/*"
   ],
   "dependencies": {
     "@nx/devkit": "19.6.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tslib": "^2.3.0"
   }
 }

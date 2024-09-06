@@ -21,6 +21,8 @@ const props = defineProps({
 </script>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 .printer-status {
   display: flex;
   gap: 13px;

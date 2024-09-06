@@ -29,6 +29,8 @@ let props = defineProps({
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .q-table__bottom--nodata {
   padding-top: $s-3;
 }

@@ -106,6 +106,8 @@ function finishAnimation(event) {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .status-line {
   width: 100%;
   height: $l-4;

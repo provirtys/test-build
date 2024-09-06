@@ -63,6 +63,8 @@ function setIcon() {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .input-field {
   display: flex;
   flex-direction: column;

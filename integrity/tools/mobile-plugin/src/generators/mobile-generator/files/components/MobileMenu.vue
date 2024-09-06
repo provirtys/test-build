@@ -66,6 +66,8 @@ function tabbarItemColor(page) {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .tabbar {
     background-color: $light-gray-55;
     width: 100%;

@@ -43,6 +43,8 @@ defineProps({
 </template>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 .gap-12 {
   display: flex;
   flex-direction: column;

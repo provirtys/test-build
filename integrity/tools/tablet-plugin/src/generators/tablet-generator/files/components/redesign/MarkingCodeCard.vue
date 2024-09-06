@@ -48,6 +48,8 @@ defineProps({
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .code-name {
   color: $dark-gray-70;
   font-family: Golos UI-medium;

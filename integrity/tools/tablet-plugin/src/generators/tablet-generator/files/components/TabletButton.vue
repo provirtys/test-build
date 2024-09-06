@@ -57,6 +57,8 @@ const buttonSize = computed(() => {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .btn-tablet {
     width: 100%;
     border-radius: $d-1;

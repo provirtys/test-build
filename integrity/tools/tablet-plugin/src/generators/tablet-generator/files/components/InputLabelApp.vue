@@ -17,6 +17,8 @@ const amount = ref(0)
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .q-radio__label {
   font-size: $font-size-h6;
   margin-left: $s-1;

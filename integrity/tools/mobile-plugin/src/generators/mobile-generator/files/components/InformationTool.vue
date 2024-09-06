@@ -51,6 +51,8 @@ let props = defineProps({
 </script>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 img {
   width: 100%;
   height: 100%;

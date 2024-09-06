@@ -82,6 +82,8 @@ defineProps({
 </script>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 .code-info {
   display: flex;
   flex-direction: column;

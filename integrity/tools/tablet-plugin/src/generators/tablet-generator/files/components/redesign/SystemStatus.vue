@@ -96,6 +96,8 @@ function finishAnimation(event) {
 </script>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 // при нажатии на иконку срабатывает клик по кнопке
 .pointer-icon {
   pointer-events: none;

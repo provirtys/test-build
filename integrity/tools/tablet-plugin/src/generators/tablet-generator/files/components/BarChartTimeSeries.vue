@@ -217,6 +217,8 @@ function updateData (broken, ok, x) {
 </template>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .bar-chart-time {
   height: 100%;
   max-height: 200px;

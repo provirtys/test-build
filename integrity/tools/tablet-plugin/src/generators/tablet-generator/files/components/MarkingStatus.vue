@@ -48,6 +48,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 .marking-status {
   width: fit-content;
   background: $primary;
