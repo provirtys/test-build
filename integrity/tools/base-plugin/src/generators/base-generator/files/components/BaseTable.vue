@@ -36,6 +36,8 @@ let props = defineProps({
 </template>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 //стили для надписи пустой таблицы
 .q-table__bottom {
   display: flex;

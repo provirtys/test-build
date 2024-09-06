@@ -68,6 +68,8 @@ const img = computed(() => {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .base-button {
   display: flex;
   align-items: center;

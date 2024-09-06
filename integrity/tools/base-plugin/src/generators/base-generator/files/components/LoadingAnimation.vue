@@ -11,6 +11,8 @@
 <script setup></script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 @keyframes loading {
   0% {
     opacity: 0;

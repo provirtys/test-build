@@ -62,6 +62,8 @@ function toHomePage() {
 </script>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 .base-header {
   display: flex;
   justify-content: space-between;

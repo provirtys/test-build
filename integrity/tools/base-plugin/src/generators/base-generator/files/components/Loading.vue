@@ -29,6 +29,8 @@ const isInternetError = computed(() => {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .loading {
   &__animation {
     padding: $s-3;

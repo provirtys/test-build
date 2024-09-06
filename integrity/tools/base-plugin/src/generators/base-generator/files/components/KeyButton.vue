@@ -19,6 +19,8 @@ function pressed () {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .key {
     cursor: pointer;
     position: relative;

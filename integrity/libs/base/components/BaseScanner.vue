@@ -55,6 +55,8 @@ async function onCameraLightButton() {
 </script>
 
 <style lang="scss" scoped>
+@import 'assets/css/main.scss';
+
 .mobile-scanner {
   width: 100%;
   height: 100%;
