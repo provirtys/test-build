@@ -18,6 +18,8 @@ const { t } = setupI18n();
 </script>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 .add-btn {
   height: $m-4;
   width: $b-4;

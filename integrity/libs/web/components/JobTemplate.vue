@@ -243,6 +243,8 @@ async function createTemplate() {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .text-secondary {
   color: $secondary !important;
 }

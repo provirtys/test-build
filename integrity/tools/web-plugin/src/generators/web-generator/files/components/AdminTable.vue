@@ -93,6 +93,8 @@ function chooseRowToDelete (props) {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .dark-text {
   color: $dark-gray;
   font-size: $font-size-p4 !important;

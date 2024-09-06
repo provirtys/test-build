@@ -32,6 +32,8 @@ const filter = ref('');
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .q-field__control {
   color: $primary !important;
 }
