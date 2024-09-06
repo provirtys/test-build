@@ -60,6 +60,8 @@ function openTaskDetails() {
 </template>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 .card-task {
   width: 100%;
   display: flex;

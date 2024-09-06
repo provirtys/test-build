@@ -2,7 +2,7 @@
 import AnimatedTabletButton from './AnimatedTabletButton.vue';
 import scanIcon from '../assets/images/scan.svg';
 import aggregationIcon from '../assets/images/aggregation.svg';
-import TabletButton from 'TabletButton.vue';
+import TabletButton from './TabletButton.vue';
 import restartIcon from '../assets/images/restart.svg';
 import badIcon from '../assets/images/bad.svg';
 import doneIcon from '../assets/images/done.svg';
@@ -82,6 +82,8 @@ defineProps({
 </template>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 .gap-12 {
   display: flex;
   flex-direction: column;

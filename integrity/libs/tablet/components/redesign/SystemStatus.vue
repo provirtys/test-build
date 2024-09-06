@@ -24,6 +24,9 @@
 <script setup>
 import { computed, ref } from 'vue';
 import IconStatus from './IconStatus.vue';
+import { setupI18n } from '../../i18n.js';
+
+const { t } = setupI18n();
 
 const props = defineProps({
   /** Цвет индикатора статуса принтера */
@@ -109,6 +112,8 @@ function finishAnimation(event) {
 </script>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 // при нажатии на иконку срабатывает клик по кнопке
 .pointer-icon {
   pointer-events: none;

@@ -33,7 +33,7 @@ const props = defineProps({
   &__indicator {
     width: 10px;
     height: 10px;
-    background: $green;
+    background: $success;
     border-radius: 50%;
 
     &.warning {

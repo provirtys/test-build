@@ -93,6 +93,8 @@ defineProps({
 </script>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 .gap-10 {
   display: flex;
   flex-direction: column;

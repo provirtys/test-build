@@ -23,6 +23,8 @@ const props = defineProps({
 </script>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 .printer-status {
   display: flex;
   gap: 13px;
@@ -33,7 +35,7 @@ const props = defineProps({
   &__indicator {
     width: 10px;
     height: 10px;
-    background: $green;
+    background: $success;
     border-radius: 50%;
 
     &.warning {

@@ -24,6 +24,8 @@ function pressed() {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .pin-button {
   cursor: pointer;
   position: relative;

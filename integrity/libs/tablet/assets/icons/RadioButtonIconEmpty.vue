@@ -48,6 +48,8 @@ const colorClass = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+@import 'assets/css/main.scss';
+
 .primary {
   color: $light-gray-40;
 }

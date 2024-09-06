@@ -76,6 +76,8 @@ function finishLabeling() {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .circle {
   position: relative;
   margin: $xl-1 0;

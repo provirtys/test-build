@@ -24,6 +24,8 @@ defineProps({
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .labeling-code {
   width: $l-2;
   height: $l-2;

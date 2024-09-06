@@ -84,6 +84,8 @@ function getCodeDate(value) {
 </template>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 p {
   margin: 0;
   font-family: 'Golos UI-medium';

@@ -4,50 +4,47 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { computed } from 'vue';
 import { setupI18n } from '../i18n.js';
 
 const { t } = setupI18n();
 
-export default {
-  props: {
-    status: {
-      type: String,
-      default: '',
-    },
+const props = defineProps({
+  status: {
+    type: String,
+    default: '',
   },
-  setup(props) {
-    const text = computed(() => {
-      switch (props.status) {
-        case 'new':
-        case 'labeling':
-        case 'ready':
-          return t(props.status);
-        default:
-          return t('cancelled');
-      }
-    });
+});
 
-    const color = computed(() => {
-      switch (props.status) {
-        case 'new':
-          return 'white';
-        case 'labeling':
-          return 'orange';
-        case 'ready':
-          return 'green';
-        default:
-          return '';
-      }
-    });
+const text = computed(() => {
+  switch (props.status) {
+    case 'new':
+    case 'labeling':
+    case 'ready':
+      return t(props.status);
+    default:
+      return t('cancelled');
+  }
+});
 
-    return { text, color };
-  },
-};
+const color = computed(() => {
+  switch (props.status) {
+    case 'new':
+      return 'white';
+    case 'labeling':
+      return 'orange';
+    case 'ready':
+      return 'green';
+    default:
+      return '';
+  }
+});
 </script>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 .marking-status {
   width: fit-content;
   background: $primary;

@@ -39,6 +39,8 @@ const colorClass = computed(() => {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .primary {
   color: $primary;
 }

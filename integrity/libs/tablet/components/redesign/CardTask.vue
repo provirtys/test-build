@@ -72,6 +72,8 @@ function chooseTask() {
 </script>
 
 <style scoped lang="scss">
+@import 'assets/css/main.scss';
+
 .card-job {
   display: flex;
   flex-direction: column;

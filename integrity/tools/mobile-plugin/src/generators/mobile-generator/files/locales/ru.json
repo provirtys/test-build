@@ -3,7 +3,7 @@
 	"READY": "Готово",
 	"NOT_READY": "Не готово"
   },
-  "printer-status": {
+  "printerStatus": {
 	"READY": "Принтер готов",
 	"NOT_READY": "Принтер не готов",
 	"DISCONNECTED": "Принтер не подключён"

@@ -113,6 +113,8 @@ const buttonSize = computed(() => {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .radio-btn {
   width: 100%;
   height: $xxl-4;

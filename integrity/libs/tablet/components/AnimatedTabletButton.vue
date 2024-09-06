@@ -105,6 +105,8 @@ function finishAnimation(event) {
 </script>
 
 <style lang="scss">
+@import 'assets/css/main.scss';
+
 .btn {
   width: 100%;
   border-radius: $d-1;

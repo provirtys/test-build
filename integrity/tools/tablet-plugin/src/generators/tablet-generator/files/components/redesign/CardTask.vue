@@ -88,7 +88,7 @@ function chooseTask () {
 
   &__title {
     color: $dark-gray;
-    font-family: Golos UI-medium;
+    font-family: Golos UI-Medium;
     font-size: $font-size-p1;
     line-height: $s-3;
     letter-spacing: -0.24px;
