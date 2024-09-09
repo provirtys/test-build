@@ -70,7 +70,7 @@ const colorSecondary = computed(() => {
 </script>
 
 <style scoped lang="scss">
-@import 'assets/css/main.scss';
+@import '../../assets/css/main.scss';
 
 .labeling-status-main {
   display: flex;

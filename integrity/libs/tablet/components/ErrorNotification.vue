@@ -10,6 +10,8 @@
 
 <script setup>
 import { ref } from 'vue';
+import { QDialog, QCard, QCardSection } from 'quasar';
+import 'quasar/dist/quasar.css';
 
 const props = defineProps({
   /** Текст ошибки */
@@ -19,7 +21,7 @@ const errorModal = ref(true);
 </script>
 
 <style lang="scss">
-@import 'assets/css/main.scss';
+@import '../assets/css/main.scss';
 
 .error-message {
   .q-dialog__inner--minimized {

@@ -36,7 +36,7 @@ defineProps({
 </script>
 
 <style lang="scss">
-@import 'assets/css/main.scss';
+@import '../assets/css/main.scss';
 
 .code-card {
   width: 100%;

@@ -42,7 +42,7 @@ const isInternetError = computed(() => {
 </script>
 
 <style lang="scss">
-@import 'assets/css/main.scss';
+@import '../assets/css/main.scss';
 
 .loading {
   &__animation {

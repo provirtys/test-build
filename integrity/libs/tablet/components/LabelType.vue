@@ -125,7 +125,7 @@ function switchType(value) {
 </script>
 
 <style lang="scss">
-@import 'assets/css/main.scss';
+@import '../assets/css/main.scss';
 
 .label-type {
   padding: $s-3;

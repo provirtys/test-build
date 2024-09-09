@@ -150,7 +150,7 @@ function finishAnimation(event) {
 </script>
 
 <style lang="scss" scoped>
-@import 'assets/css/main.scss';
+@import '../../assets/css/main.scss';
 
 .pointer-icon {
   pointer-events: none;

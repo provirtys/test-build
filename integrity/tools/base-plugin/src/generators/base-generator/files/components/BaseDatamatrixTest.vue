@@ -57,7 +57,7 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-@import 'assets/css/main.scss';
+@import '../assets/css/main.scss';
 
 .binding-barcode {
   margin-top: 5%;

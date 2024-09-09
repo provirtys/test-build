@@ -68,7 +68,7 @@ const img = computed(() => {
 </script>
 
 <style lang="scss">
-@import 'assets/css/main.scss';
+@import '../assets/css/main.scss';
 
 .base-button {
   display: flex;

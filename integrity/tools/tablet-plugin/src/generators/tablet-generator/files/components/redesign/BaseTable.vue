@@ -17,6 +17,8 @@
 
 <script setup>
 import { setupI18n } from '../../i18n.js';
+import { QTable } from 'quasar'
+import 'quasar/dist/quasar.css'
 
 const { t } = setupI18n()
 let props = defineProps({
@@ -29,7 +31,7 @@ let props = defineProps({
 </script>
 
 <style lang="scss">
-@import 'assets/css/main.scss';
+@import '../../assets/css/main.scss';
 
 .q-table__bottom--nodata {
   padding-top: $s-3;

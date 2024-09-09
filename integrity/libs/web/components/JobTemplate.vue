@@ -91,9 +91,9 @@
 
 <script setup>
 import { reactive, ref, watch } from 'vue';
-import bwipjs from 'bwip-js';
+// import bwipjs from 'bwip-js'
 import { v4 as uuidv4 } from 'uuid';
-import { TemplateModel } from '../utils/template_pb.js';
+// import {TemplateModel} from "../utils/template_pb.js"
 import { setupI18n } from '../i18n.js';
 
 const { t } = setupI18n();
@@ -205,36 +205,36 @@ function saveData() {
 
 async function generateDataMatrix() {
   saveData();
-  const value = {
-    title: taskText.value,
-    attributes: attributes.value,
-  };
+  // const value = {
+  //   title: taskText.value,
+  //   attributes: attributes.value
+  // }
 
-  const product = new TemplateModel(value);
-  const binData = product.toBinary();
-  const asciiData = String.fromCharCode.apply(null, binData);
+  // const product = new TemplateModel(value)
+  // const binData = product.toBinary()
+  // const asciiData = String.fromCharCode.apply(null, binData)
 
-  const decodeBinData = Uint8Array.from(asciiData, (c) => c.charCodeAt(0));
-  const decodeProduct = TemplateModel.fromBinary(decodeBinData);
+  // const decodeBinData = Uint8Array.from(asciiData, c => c.charCodeAt(0))
+  // const decodeProduct = TemplateModel.fromBinary(decodeBinData)
 
-  const svg = bwipjs.toSVG({
-    bcid: 'datamatrix',
-    text: asciiData,
-    binarytext: true,
-  });
+  // const svg = bwipjs.toSVG({
+  //   bcid: 'datamatrix',
+  //   text: asciiData,
+  //   binarytext: true
+  // })
 
-  const e = document.getElementById('factory-barcode');
-  if (e) {
-    while (e.childNodes[0]) {
-      e.removeChild(e.childNodes[0]);
-    }
-    const span = document.createElement('span');
-    span.style.display = 'inline-block';
-    span.style.width = '90%';
-    span.style.height = '90%';
-    span.innerHTML = svg;
-    e.appendChild(span);
-  }
+  // const e = document.getElementById('factory-barcode')
+  // if (e) {
+  //   while (e.childNodes[0]) {
+  //     e.removeChild(e.childNodes[0])
+  //   }
+  //   const span = document.createElement('span')
+  //   span.style.display = 'inline-block'
+  //   span.style.width = '90%'
+  //   span.style.height = '90%'
+  //   span.innerHTML = svg
+  //   e.appendChild(span)
+  // }
 }
 
 async function createTemplate() {
@@ -243,7 +243,7 @@ async function createTemplate() {
 </script>
 
 <style lang="scss">
-@import 'assets/css/main.scss';
+@import '../assets/css/main.scss';
 
 .text-secondary {
   color: $secondary !important;

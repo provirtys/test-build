@@ -93,6 +93,8 @@
 import { reactive, ref, watch } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 import { setupI18n } from '../i18n.js'
+import { QInput, QIcon, QBtn, QDialog, QCard, QCardSection } from 'quasar'
+import 'quasar/dist/quasar.css'
 
 const { t } = setupI18n()
 
@@ -205,7 +207,7 @@ async function createTask () {
 </script>
 
 <style lang="scss">
-@import 'assets/css/main.scss';
+@import '../assets/css/main.scss';
 
 .text-secondary {
   color: $secondary !important;

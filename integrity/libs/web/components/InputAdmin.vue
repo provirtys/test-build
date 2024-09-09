@@ -23,6 +23,8 @@
 
 <script setup>
 import { ref } from 'vue';
+import { QInput, QIcon } from 'quasar';
+import 'quasar/dist/quasar.css';
 
 let props = defineProps({
   /** Подпись элемента*/
@@ -36,7 +38,7 @@ const filter = ref('');
 </script>
 
 <style lang="scss">
-@import 'assets/css/main.scss';
+@import '../assets/css/main.scss';
 
 .bg-secondary {
   background: $secondary !important;

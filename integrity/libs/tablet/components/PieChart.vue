@@ -56,6 +56,8 @@ import { computed } from 'vue';
 import AnimatedTabletButton from './ActionTabletUIButton.vue';
 import logoutIcon from '../assets/images/button-logout.svg';
 import { setupI18n } from '../i18n.js';
+import { QCircularProgress } from 'quasar';
+import 'quasar/dist/quasar.css';
 
 const { t } = setupI18n();
 
@@ -76,7 +78,7 @@ function finishLabeling() {
 </script>
 
 <style lang="scss">
-@import 'assets/css/main.scss';
+@import '../assets/css/main.scss';
 
 .circle {
   position: relative;

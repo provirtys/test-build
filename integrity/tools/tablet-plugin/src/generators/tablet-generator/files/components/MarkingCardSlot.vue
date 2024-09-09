@@ -43,7 +43,7 @@ defineProps({
 </template>
 
 <style scoped lang="scss">
-@import 'assets/css/main.scss';
+@import '../assets/css/main.scss';
 
 .gap-12 {
   display: flex;

@@ -71,7 +71,7 @@ const codeColor = (index) => {
 </script>
 
 <style scoped lang="scss">
-@import 'assets/css/main.scss';
+@import '../assets/css/main.scss';
 
 .codes {
   display: flex;

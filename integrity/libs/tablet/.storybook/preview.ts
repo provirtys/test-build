@@ -1,7 +1,12 @@
 import { setup } from '@storybook/vue3';
 import { createI18n } from 'vue-i18n';
+import { Quasar } from 'quasar';
 
 import '../assets/css/main.scss';
+import '@quasar/extras/roboto-font/roboto-font.css'
+import '@quasar/extras/material-icons/material-icons.css'
+import '@quasar/extras/material-icons-outlined/material-icons-outlined.css'
+import '@quasar/extras/material-symbols-outlined/material-symbols-outlined.css'
 
 interface LanguageMessages {
     [key: string]: any;
@@ -30,4 +35,5 @@ const i18n = createI18n({
 
 setup((app) => {
     app.use(i18n);
+    app.use(Quasar, {});
 })

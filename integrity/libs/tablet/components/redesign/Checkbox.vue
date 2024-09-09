@@ -55,7 +55,7 @@ const buttonSize = computed(() => {
 </script>
 
 <style lang="scss">
-@import 'assets/css/main.scss';
+@import '../../assets/css/main.scss';
 
 .checkbox {
   width: 100%;

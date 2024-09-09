@@ -6,6 +6,8 @@
 
 <script setup>
 import {ref} from "vue";
+import { QSelect } from 'quasar';
+import 'quasar/dist/quasar.css';
 
 let props = defineProps({
   /** Значения раскрывющегося списка*/
@@ -24,7 +26,7 @@ const filter = ref('')
 </script>
 
 <style lang="scss">
-@import 'assets/css/main.scss';
+@import '../assets/css/main.scss';
 
 .q-field__control {
   color: $primary !important;
