@@ -1,9 +1,0 @@
-{
-  "generators": {
-    "mobile-generator": {
-      "factory": "./src/generators/mobile-generator/generator",
-      "schema": "./src/generators/mobile-generator/schema.json",
-      "description": "mobile-generator generator"
-    }
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "generators": {
-    "tablet-generator": {
-      "factory": "./src/generators/tablet-generator/generator",
-      "schema": "./src/generators/tablet-generator/schema.json",
-      "description": "tablet-generator generator"
-    }
-  }
-}

@@ -15,10 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "base-plugin": ["tools/base-plugin/src/index.ts"],
-      "mobile-plugin": ["tools/mobile-plugin/src/index.ts"],
-      "tablet-plugin": ["tools/tablet-plugin/src/index.ts"],
-      "web-plugin": ["tools/web-plugin/src/index.ts"]
+      "base-ui": ["base-ui/src/index.ts"],
+      "mobile-ui": ["mobile-ui/src/index.ts"],
+      "tablet-ui": ["tablet-ui/src/index.ts"],
+      "web-ui": ["web-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
