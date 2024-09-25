@@ -120,11 +120,11 @@ function finishAnimation(event) {
   border: none;
   animation: none;
 
-    font-family: Golos UI-medium;
-    color: $dark-gray-85;
-    font-size: $font-size-p2;
-    line-height: 24px;
-    letter-spacing: -0.24px;
+  font-family: Golos UI-medium;
+  color: $dark-gray-85;
+  font-size: $font-size-p2;
+  line-height: 24px;
+  letter-spacing: -0.24px;
 
   &.active-success {
     background: $success-25;
@@ -142,56 +142,56 @@ function finishAnimation(event) {
     &.in-progress-success {
       background: linear-gradient(to right, $success 50%, $success-25 50%);
       background-size: 200% 100%;
-      animation: filling 1s linear 0s 1 normal backwards;
+      animation: fill 1s linear 0s 1 normal backwards;
     }
     &.in-progress-error {
       background: linear-gradient(to right, $error 50%, $primary-25 50%);
       background-size: 200% 100%;
-      animation: filling 1s linear 0s 1 normal backwards;
+      animation: fill 1s linear 0s 1 normal backwards;
     }
     &.in-progress-warning {
       background: linear-gradient(to right, $warning 50%, $warning-25 50%);
       background-size: 200% 100%;
-      animation: filling 1s linear 0s 1 normal backwards;
+      animation: fill 1s linear 0s 1 normal backwards;
     }
   }
 
-    &.done-success {
-      &::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: $success;
-      }
+  &.done-success {
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: $success;
     }
-    &.done-error {
-      &::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: $error;
-      }
+  }
+  &.done-error {
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: $error;
     }
-    &.done-warning {
-      &::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: $warning;
-      }
+  }
+  &.done-warning {
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: $warning;
     }
+  }
 }
 
-@keyframes filling {
+@keyframes fill {
   0% {
     background-position: right;
   }

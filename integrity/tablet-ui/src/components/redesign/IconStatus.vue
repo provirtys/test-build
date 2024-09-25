@@ -1,6 +1,7 @@
 <template>
   <div class="icon-status">
-    <div class="icon-status__indicator" :class="props.color"></div>
+    <div class="icon-status__indicator" :class="props.color">
+    </div>
     <div v-if="isAnimate" class="icon-status__border animate-ping" :class="props.color"></div>
   </div>
 </template>
@@ -70,21 +71,23 @@ const props = defineProps({
     }
 
     &.error {
-      border: 1px solid $primary-40;
+      border: 1px solid $error-40;
     }
   }
 }
 
 .animate-ping {
-  animation: ping 1s cubic-bezier(0, 0, 0.2, 0) infinite;
-
+  animation: ping 1.5s cubic-bezier(1, 1, 0, 0) infinite;
+}
   @keyframes ping {
     0% {
-      border-width: 3px;
+      border-width: 2px;
+      scale: 0;
     }
-    100% {
-      border-width: 1px;
+
+    to {
+      border-width: 3px;
+      scale: 1.2;
     }
   }
-}
 </style>
