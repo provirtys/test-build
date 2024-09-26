@@ -34,14 +34,15 @@ export default {
     },
     parameters: {
         backgrounds: {
-            default: 'bg-screen-grey',
+            default: 'white',
             values: [
                 {name: 'dark', value: '#242a2b'},
-                {name: 'light', value: '#f4f4f4'},
-                {name: 'bg-screen-grey', value: '#EDEDED'},
+                {name: 'white', value: '#ffffff'},
+                {name: 'light', value: '#ededed'},
+                {name: 'light-gray', value: '#f1f1f1'},
             ]
         }
-    }
+    },
 };
 
 export const Info = {

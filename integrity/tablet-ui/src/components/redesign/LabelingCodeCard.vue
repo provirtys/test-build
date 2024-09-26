@@ -68,6 +68,7 @@ defineProps({
   justify-content: flex-start;
   align-items: center;
   background: $light-gray-40;
+  gap: $d-1;
 
   &.aggregation {
     background: $light-gray-55;

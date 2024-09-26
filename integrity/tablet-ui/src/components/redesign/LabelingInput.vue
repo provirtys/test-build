@@ -1,7 +1,7 @@
 <template>
   <div class="amount" :class="[{'not-empty': amount > 0}, buttonSize]">
     <q-input v-model.number="amount" pattern="[0-9]*" inputmode="numeric" type="number" :label="label"
-             stack-label outlined placeholder="0">
+             stack-label outlined placeholder="0" >
       <template v-slot:prepend>
         <q-icon v-if="isIcon">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -123,7 +123,7 @@ const buttonSize = computed(() => {
   }
 
   .q-field--float .q-field__label {
-    transform: translateY(-110%);
+    transform: translateY(-125%);
     background: $light-gray-55;
     padding: $d-0;
     z-index: 2;

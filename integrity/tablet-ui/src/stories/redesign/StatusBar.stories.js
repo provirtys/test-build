@@ -118,7 +118,6 @@ export default {
             control: {type: 'radio'},
         },
     },
-
     parameters: {
         backgrounds: {
             default: 'light',

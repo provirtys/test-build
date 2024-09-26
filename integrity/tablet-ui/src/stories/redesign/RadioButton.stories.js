@@ -117,6 +117,17 @@ export default {
             },
         },
     },
+    parameters: {
+        backgrounds: {
+            default: 'light',
+            values: [
+                {name: 'dark', value: '#242a2b'},
+                {name: 'light', value: '#f4f4f4'},
+                {name: 'white', value: '#fff'},
+                {name: 'light-gray-55', value: '#f1f1f1'},
+            ]
+        }
+    }
 };
 
 export const Primary = {

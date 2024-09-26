@@ -11,6 +11,17 @@ export default {
             control: {type: 'select'},
         },
     },
+    parameters: {
+        backgrounds: {
+            default: 'white',
+            values: [
+                {name: 'dark', value: '#242a2b'},
+                {name: 'white', value: '#ffffff'},
+                {name: 'light', value: '#ededed'},
+                {name: 'light-gray', value: '#f1f1f1'},
+            ]
+        }
+    },
 };
 
 /** Кнопка Number*/

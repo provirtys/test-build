@@ -13,17 +13,6 @@ export default {
     component: Checkbox,
     tags: ["autodocs"],
     argTypes: {
-        parameters: {
-            backgrounds: {
-                default: 'white',
-                values: [
-                    {name: 'dark', value: '#242a2b'},
-                    {name: 'white', value: '#ffffff'},
-                    {name: 'light', value: '#ededed'},
-                    {name: 'light-gray', value: '#f1f1f1'},
-                ]
-            }
-        },
         buttonText: {
             description: 'Текст кнопки',
         },
@@ -56,6 +45,17 @@ export default {
                 },
             },
         },
+    },
+    parameters: {
+        backgrounds: {
+            default: 'white',
+            values: [
+                {name: 'dark', value: '#242a2b'},
+                {name: 'white', value: '#ffffff'},
+                {name: 'light', value: '#ededed'},
+                {name: 'light-gray', value: '#f1f1f1'},
+            ]
+        }
     },
 };
 

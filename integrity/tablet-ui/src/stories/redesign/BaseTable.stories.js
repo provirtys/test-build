@@ -3,7 +3,18 @@ import BaseTable from "../../components/redesign/BaseTable.vue";
 export default {
     title: "TabletUI-redesign/BaseTable",
     component: BaseTable,
-    tags: ["autodocs"]
+    tags: ["autodocs"],
+    parameters: {
+        backgrounds: {
+            default: 'white',
+            values: [
+                {name: 'dark', value: '#242a2b'},
+                {name: 'white', value: '#ffffff'},
+                {name: 'light', value: '#ededed'},
+                {name: 'light-gray', value: '#f1f1f1'},
+            ]
+        }
+    },
 };
 
 export const PrimaryList = {
