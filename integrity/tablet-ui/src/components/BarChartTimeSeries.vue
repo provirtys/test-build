@@ -89,7 +89,7 @@ window.Apex = {
   chart: {
     type: 'bar',
     stacked: true,
-    height: '90%',// storybook
+    height: '100%',// storybook
     foreColor: '#000',
     fontFamily: 'Golos UI-medium',
     // меню для скачивания графика
@@ -221,8 +221,8 @@ function updateData (broken, ok, x) {
 
 .bar-chart-time {
   height: 100%;
-  max-height: 200px;
-  padding: $s-3;
+  max-height: 300px;
+  padding: 0 $s-3 $s-3;
   background: $secondary;
   border-radius: $s-1;
 }
