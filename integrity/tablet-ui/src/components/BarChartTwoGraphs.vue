@@ -1,6 +1,6 @@
 <template>
   <div class="labeling">
-  <BarChart :codes="codes" :last-meter="codes.length" class="p-0"></BarChart>
+  <BarChart :codes="codes" :last-meter="lastMeter?lastMeter:codes.length" class="p-0"></BarChart>
   <BarChartTimeSeries :codes="codes" class="p-0"></BarChartTimeSeries>
   </div>
 </template>

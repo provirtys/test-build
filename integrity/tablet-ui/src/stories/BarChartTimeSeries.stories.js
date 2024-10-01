@@ -22,6 +22,54 @@ export default {
     }
 };
 
+export const BarChartPrimary1code = {
+    args: {
+        codes:
+            [
+                {code: 3, status: 'printed'},          ],
+        lastMeter: 1
+    },
+};
+export const BarChartPrimary2code = {
+    args: {
+        codes:
+            [
+                {code: 3, status: 'printed'},   {code: 3, status: 'printed'},        ],
+        lastMeter: 2
+    },
+};
+export const BarChartPrimary3code = {
+    args: {
+        codes:
+            [
+                {code: 3, status: 'printed'},   {code: 3, status: 'printed'},   {code: 3, status: 'printed'},       ],
+        lastMeter: 3
+    },
+};
+export const BarChartPrimary4code = {
+    args: {
+        codes:
+            [
+                {code: 3, status: 'printed'},   {code: 3, status: 'printed'},   {code: 3, status: 'printed'},  {code: 3, status: 'printed'},     ],
+        lastMeter: 4
+    },
+};
+export const BarChartBottomPrimary5code = {
+    args: {
+        codes:
+            [
+                {code: 3, status: 'printed'}, {code: 2, status: 'printed'}, {code: 1, status: 'printed'}, {code: 2, status: 'printed'}, {code: 3, status: 'broken'},            ],
+        lastMeter: 5
+    },
+};
+export const BarChartBottomPrimary6code = {
+    args: {
+        codes:
+            [
+                {code: 3, status: 'printed'}, {code: 2, status: 'printed'}, {code: 1, status: 'printed'}, {code: 2, status: 'printed'}, {code: 3, status: 'broken'}, {code: 2, status: 'printed'},            ],
+        lastMeter: 6
+    },
+};
 export const BarChartTimeSeries18Meters = {
     args: {
         codes:

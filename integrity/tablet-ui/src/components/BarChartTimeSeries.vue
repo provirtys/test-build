@@ -138,11 +138,12 @@ const optionsColumn = {
   },
   plotOptions: {
     bar: {
-      columnWidth: '100%'
+      columnWidth: '90%'
     }
   },
   stroke: {
-    colors: ['#d3141c','#e3e3e3'],
+    // show: true,
+    // colors: ['#d3141c', '#e3e3e3'],
     width: 0
   },
   yaxis: {

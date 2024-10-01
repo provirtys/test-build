@@ -1,41 +1,31 @@
 <script setup>
 import ApexCharts from 'apexcharts'
-import { ref, watch, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { setupI18n } from '../i18n.js'
 
 const { t } = setupI18n()
-
-// количество видимых итераций (значений по горизонтальной оси)
-const limit = 18
 
 const props = defineProps({
   codes: {
     type: Array,
     default: () => []
-  },
-  lastMeter: {
-    type: Number,
-    default: 0
   }
 })
-
+const limit = 200
 const ok = ref([])
 const broken = ref([])
-// каждый раз когда изменяется список всех кодов, которые нужно отобразить на графике
 watch(() => props.codes, (first, second) => {
   changeBarData(props.codes)
 })
-
 function changeBarData (codeList) {
   ok.value = []
   broken.value = []
   const totalItems = codeList.length
-  // массив, то что показывается в каждом столбике
   const result = Array.from({ length: limit }, () => ({ ok: 0, broken: 0 }))
-
+  // заполнение result
   if (totalItems <= limit) {
     codeList.forEach(({ status }, index) => {
-      if (status === 'generated' ||  status === 'printed' || status === 'verified' || status === 'synced') {
+      if (status === 'generated' || status === 'printed' || status === 'verified' || status === 'synced') {
         result[index]['ok']++
       } else if (status === 'broken') {
         result[index]['broken']++
@@ -61,20 +51,36 @@ function changeBarData (codeList) {
       }
     })
   }
+  result.forEach((col, index) => {
+    if (col.broken > 0) {
+      ok.value.push([index + 1, 0])
+      broken.value.push([index + 1, 1])
+    } else if (col.ok > 0) {
+      ok.value.push([index + 1, 1])
+      broken.value.push([index + 1, 0])
 
-  result.forEach(col => {
-    ok.value.push(col.ok)
-    broken.value.push(col.broken)
+    }
   })
   // для работы с осью х
   const xax = []
   // если группировать ничего не нужно тогда ось х - прописываем номера кодов
   if (codeList.length <= limit) {
-    for (let i = props.lastMeter - codeList.length + 1; i <= props.lastMeter; i++) { xax.push(i) }
+    for (let i = 1; i <= codeList.length; i++) {
+      xax.push(i)
+    }
   } else {
-    xax.push(result[0].ok + result[0].broken + props.lastMeter - codeList.length)
-    for (let i = 1; i < codeList.length; i++) {
-      xax.push(ok.value[i] + broken.value[i] + xax[i - 1])
+    xax.push(result[0].ok + result[0].broken)
+    for (let i = 1; i < limit; i++) {
+      xax.push(result[i].ok + result[i].broken + xax[i - 1])
+    }
+  }
+  // группировать при длине оси Х больше 20
+  if (xax.length > 20) {
+    for (let i = 0; i < limit; i++) {
+      // если остаток от деление на 20 != 0 и i != последнему элементу
+      if ((i % 20 !== 0) && (i !== xax.length - 1)) {
+        xax[i] = ''
+      }
     }
   }
   updateData(broken.value, ok.value, xax)
@@ -95,6 +101,7 @@ window.Apex = {
       enabled: false
     }
   },
+  colors: ['#d3141c', '#e3e3e3'],
   dataLabels: {
     enabled: false
   },
@@ -102,6 +109,7 @@ window.Apex = {
     show: false
   },
   xaxis: {
+    tickAmount: 15,
     axisTicks: {
       color: '#000',
       width: 2,
@@ -120,47 +128,25 @@ window.Apex = {
     enabled: false
   }
 }
-
 let chartColumn = null
-
 const optionsColumn = {
   chart: {
-    height: '100%',
     animations: {
       enabled: false
     }
   },
-  colors: ['#d3141c', '#e3e3e3'],
-  stroke: {
-    width: 0
-  },
   plotOptions: {
     bar: {
-      columnWidth: '90%'
+      columnWidth: '95%'
     }
   },
+  stroke: {
+    // show: true,
+    // colors: ['#d3141c', '#e3e3e3'],
+    width: 0
+  },
   yaxis: {
-    show: true,
-    stepSize: 1,
-    axisBorder: {
-      show: true,
-      color: '#000000',
-      width: 2
-    },
-    axisTicks: {
-      show: true,
-      color: '#000000',
-      width: 6,
-      height: 2
-    },
-    title: {
-      text: t('errors'),
-      rotate: -90,
-      style: {
-        fontSize: '12px',
-        cssClass: 'apexcharts-yaxis-label'
-      }
-    }
+    show: false
   },
   dataLabels: {
     enabled: false
@@ -174,56 +160,75 @@ const optionsColumn = {
     }
   ],
   xaxis: {
-    tickPlacement: 'on'
+    tickPlacement: 'on',
+    labels: {
+      rotate: 0
+    },
+    axisTicks: {},
+    title: {
+      text: undefined
+    }
   },
   legend: {
     show: false
   }
 }
-
 onMounted(() => {
-  chartColumn = new ApexCharts(document.querySelector('#columnchart'), optionsColumn)
+  chartColumn = new ApexCharts(document.querySelector('#columnchart-bottom'), optionsColumn)
   chartColumn.render()
   changeBarData(props.codes)
 })
 
-function updateData (broken, ok, x) {
+function updateData(broken, ok, x) {
   chartColumn.updateOptions({
     series: [
-      { data: broken },
-      { data: ok }
+      {data: broken},
+      {data: ok}
     ],
     xaxis: {
       type: 'category',
-      categories: x
+      categories: x,
+      axisTicks: {
+        color: '#ffffff'
+      }
     }
   })
+  const xaxisTicks = document.getElementById('columnchart-bottom').getElementsByClassName('apexcharts-inner apexcharts-graphical')[0].getElementsByClassName('apexcharts-xaxis-tick')
+  if (xaxisTicks.length > 20) {
+    for (let i = 0; i < xaxisTicks.length; i++) {
+      if ((i % 20 === 0) || (i === xaxisTicks.length - 1)) {
+        xaxisTicks[i].setAttribute('stroke', '#000000')
+      }
+    }
+  } else {
+    for (let i = 0; i < xaxisTicks.length; i++) {
+      xaxisTicks[i].setAttribute('stroke', '#000000')
+    }
+  }
 }
-
 </script>
 
 <template>
-  <div class="bar-chart">
-    <div id="columnchart"></div>
+  <div class="bar-chart-bottom">
+    <div id="columnchart-bottom"></div>
   </div>
 </template>
 
 <style lang="scss">
 @import '../css/main.scss';
 
-.bar-chart {
-  height: 80%;
+.bar-chart-bottom {
+  height: 100%;
+  max-height: 300px;
+  padding: 0 20px 20px;
   background: $secondary;
-
-  //style storybook
   border-radius: $s-1;
-  min-height: 500px;
-  padding: $s-3;
+
 }
 
 .apexcharts-xaxis-title, .apexcharts-yaxis-label {
   letter-spacing: -0.24px;
   line-height: 24;
-  font-size: $font-size-p5;
+  font-size: 12px;
 }
 </style>
