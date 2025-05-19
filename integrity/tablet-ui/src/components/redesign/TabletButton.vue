@@ -1,133 +1,184 @@
 <template>
   <button
-      @mousedown="startAnimation" @touchstart="startAnimation"
-      @mouseup="finishAnimation" @touchend="finishAnimation"
-      v-touch-hold:1000.mouse="handleHold"
-      class="action-tablet-btn" :disabled="props.isDisabled"
-      :class="[{ 'text-center': props.locationIcon }, {'disabled': isDisabled}, { 'done-icon': isActionSubmitted }, isActionSubmitted ? doneOpacity : '' ,backgroundColor, buttonSize, borderRadius, {'min-width-empty': props.locationIcon === '' }]"
+    @mousedown="startAnimation" @touchstart="startAnimation"
+    @mouseup="finishAnimation" @touchend="finishAnimation"
+    v-touch-hold:1000:200:200.mouse="handleHold"
+    class="action-tablet-btn" :disabled="props.isDisabled"
+    :class="btnClasses"
   >
-    <IconDone v-if="isActionSubmitted" :icon-size="sizeIcon"></IconDone>
-    <IconsForButton :icon="props.icon" class="pointer-icon" v-if="props.locationIcon === 'left' && buttonIcon"
-                   :icon-size="sizeIcon"></IconsForButton>
-    {{ buttonText }}
-    <IconsForButton :icon="props.icon" class="pointer-icon" v-if="props.locationIcon === 'right' && buttonIcon"
-                   :icon-size="sizeIcon"></IconsForButton>
+    <CommonIcon v-if="isActionSubmitted" name="done" :size="sizeIcon" />
+    <template v-else>
+      <span v-if="icon && locationIcon === 'left'" class="action-tablet-btn__icon-container justify-start">
+      <CommonIcon :name="icon" :size="sizeIcon" />
+        </span>
+      <span class="action-tablet-btn__text">{{ text }}</span>
+      <span v-if="icon && locationIcon === 'right'" class="action-tablet-btn__icon-container justify-end">
+      <CommonIcon :name="icon" :size="sizeIcon" />
+        </span>
+    </template>
   </button>
 </template>
 
 <script setup>
-import {ref, computed} from 'vue'
-import IconsForButton from '../../assets/icons/AllOptionsIconForButton.vue'
-import IconDone from '../../assets/icons/IconDone.vue'
+import { ref, computed } from 'vue';
+import CommonIcon from '../CommonIcon.vue';
 
-const isActionSubmitted = ref(null)
+const isActionSubmitted = ref(null);
 const props = defineProps({
-  color: {type: String, default: ''},
-  text: {type: String, default: ''},
-  isDisabled: {type: Boolean, default: false},
-  height: {type: String, default: 'large'},
-  isRadius: {type: Boolean, default: true},
-  locationIcon: {type: String, default: ''},
-  icon: {type: String, default: ''},
-})
-const emit = defineEmits(['actionSubmitted'])
+  color: {
+    type: String,
+    required: false,
+    validator: val => ['primary', 'secondary', 'plane', 'outline', 'red'].includes(val)
+  },
+  text: {
+    type: String,
+    required: false
+  },
+  isDisabled: {
+    type: Boolean,
+    required: false
+  },
+  height: {
+    type: String,
+    required: false,
+    validator: val => ['large', 'medium', 'small', 'extra-small'].includes(val)
+  },
+  isRadius: {
+    type: Boolean,
+    required: false
+  },
+  locationIcon: {
+    type: String,
+    required: false
+  },
+  icon: {
+    type: String,
+    required: false
+  },
+  textAlignment: {
+    type: String,
+    required: false,
+    validator: val => ['left', 'center', 'right'].includes(val)
+  },
+  fitWidth: {
+    type: Boolean,
+    required: false
+  },
+  changeIcon: {
+    type: Boolean,
+    required: false
+  }
+});
+
+const emit = defineEmits(['actionSubmitted']);
+
+const btnClasses = computed(() => [
+  isActionSubmitted.value ? doneOpacity.value : '',
+  backgroundColor.value,
+  buttonSize.value,
+  borderRadius.value,
+  {
+    'disabled': props.isDisabled,
+    'fit-width': props.fitWidth,
+    'done-icon': isActionSubmitted.value,
+    'min-width-empty': props.locationIcon === '',
+    'with-items-distance': props.withItemsDistance,
+    [`text-${props.textAlignment}`]: props.textAlignment,
+  }
+]);
 
 const doneOpacity = computed(() => {
   switch (props.color) {
     case 'secondary':
-      return 'done-secondary'
+      return 'done-secondary';
     case 'plane':
-      return 'done-plane'
+      return 'done-plane';
     case 'outline':
-      return 'done-outline'
+      return 'done-outline';
+    case 'red':
+      return 'done-red';
     case 'primary':
-      return 'done-primary'
+      return 'done-primary';
   }
-})
+});
 
 const sizeIcon = computed(() => {
   switch (props.height) {
     case 'large':
-      return 36
+      return 36;
     default:
-      return 28
+      return 28;
   }
-})
+});
 
 const borderRadius = computed(() => {
   if (!props.isRadius) {
-    return 'without-rounding'
+    return 'without-rounding';
   }
-  return ''
-})
+  return '';
+});
 
 const backgroundColor = computed(() => {
   switch (props.color) {
     case 'secondary':
     case 'plane':
     case 'outline':
+    case 'red':
     case 'primary':
-      return props.color
+      return props.color;
     default:
-      return 'primary'
+      return 'primary';
   }
-})
+});
+
 const buttonSize = computed(() => {
   switch (props.height) {
     case 'medium':
     case 'small':
     case 'extra-small':
-      return props.height
+      return props.height;
     default:
-      return 'large'
+      return 'large';
   }
-})
-const buttonText = computed(() => {
-  const text = isActionSubmitted.value ? '' : props.text
-  return text
-})
-const buttonIcon = computed(() => {
-  const icon = isActionSubmitted.value ? '' : props.locationIcon
-  return icon
-})
+});
 
-function handleHold({evt, ...newInfo}) {
+function handleHold({ evt, ...newInfo }) {
   if (!props.isDisabled) {
-    isActionSubmitted.value = newInfo
-    finishAnimation(evt)
-    evt.target.classList.add('done')
-    evt.target.disabled = true
-    setTimeout(submitAction, 800)
+    isActionSubmitted.value = newInfo;
+    finishAnimation(evt);
+    evt.target.classList.add('done');
+    evt.target.disabled = true;
+    setTimeout(submitAction, 800);
   }
 }
 
 function submitAction() {
-  emit('actionSubmitted')
+  emit('actionSubmitted');
 }
 
 function startAnimation(event) {
   if (!props.isDisabled) {
+    const buttonEl = (event.target)?.closest('button')
     if (props.isRadius) {
-      event.target.classList.add('in-progress')
+      buttonEl?.classList.add('in-progress');
     } else {
-      event.target.classList.add('in-progress')
-      event.target.classList.add('not-radius')
+      buttonEl?.classList.add('in-progress');
+      buttonEl?.classList.add('not-radius');
     }
   }
 }
 
 function finishAnimation(event) {
   if (!props.isDisabled) {
+    const buttonEl = (event.target)?.closest('button')
     if (props.isRadius) {
-      event.target.classList.remove('in-progress')
-      event.target.classList.remove('radius')
+      buttonEl?.classList.remove('in-progress')
     } else {
-      event.target.classList.remove('in-progress')
-      event.target.classList.remove('not-radius')
+      buttonEl?.classList.remove('in-progress')
+      buttonEl?.classList.remove('not-radius')
     }
   }
 }
-
 </script>
 
 <style lang="scss">
@@ -185,6 +236,11 @@ function finishAnimation(event) {
     background: none;
   }
 
+  &.red {
+    background-color: $primary;
+    color: $secondary;
+  }
+
   //Для любого не активного элемента прозрачность – 0.1 (10%)
   &.disabled {
     opacity: 0.1 !important;
@@ -210,8 +266,16 @@ function finishAnimation(event) {
     background-color: $primary-text-20;
   }
 
-  &.text-center {
+  &.text-left &__text {
+    text-align: left;
+  }
+
+  &.text-center &__text {
     text-align: center;
+  }
+
+  &.text-right &__text {
+    text-align: right;
   }
 
   &.large {
@@ -230,9 +294,9 @@ function finishAnimation(event) {
 
   &.extra-small {
     height: $l-1;
-    padding: 10px $s-2;
     gap: $s-1;
     font-size: $font-size-p2;
+    padding: 10px $s-2;
   }
 
   &.without-rounding {
@@ -257,6 +321,13 @@ function finishAnimation(event) {
       &::before {
         background: $secondary;
         opacity: 0.2;
+      }
+    }
+
+    &.red {
+      &::before {
+        background: $secondary;
+        opacity: 0.25;
       }
     }
 
@@ -289,8 +360,15 @@ function finishAnimation(event) {
       align-items: center;
     }
   }
-}
 
+  &.fit-width {
+    width: auto;
+  }
+
+  &__text{
+    flex-grow: 1;
+  }
+}
 
 @keyframes filling {
   0% {
