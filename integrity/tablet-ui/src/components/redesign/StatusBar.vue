@@ -1,106 +1,102 @@
 <template>
   <div class="status-line">
-    <button v-if="page == 'TaskList'" class="status-line__button" v-touch-hold:1000.mouse="handleHold"
-            @mousedown="startAnimation" @touchstart="startAnimation" @mouseup="finishAnimation"
-            @touchend="finishAnimation">
-      <img class="pointer-icon" src="../../assets/images/logout-dark.svg">{{ t('logout') }}
-    </button>
-    <button v-else class="status-line__button" v-touch-hold:1000.mouse="handleHoldGoBack"
-            @mousedown="startAnimation" @touchstart="startAnimation" @mouseup="finishAnimation"
-            @touchend="finishAnimation">
-      <img v-if="icon === 'home'" class="pointer-icon" src="../../assets/images/home.svg">
-      <img v-else class="pointer-icon" src="../../assets/images/arrowBackRedesign.svg">
-      Назад
-    </button>
-    <p class="status-line__task">{{ textTask }}</p>
+    <TabletButton height="small" fit-width :text="btnText" color="secondary" :icon="btnIcon" location-icon="left" />
+    <p class="status-line__task">{{ title }}</p>
     <div class="row">
       <SystemStatus :color="systemStatus.status" :statusType="systemStatus.text" :isSync="systemStatus.sync"
-                            :is-active="systemStatus.active"></SystemStatus>
+                    :is-active="systemStatus.active"></SystemStatus>
       <div class="status-line__button status-line__settings"
            :class="[ { 'disabled': props.isDisabled } ]">
-        <img src="../../assets/images/settings.svg">
+        <CommonIcon name="settings" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import {ref} from 'vue'
-import {useRoute, useRouter} from 'vue-router'
-import SystemStatus from "./InteractiveSystemStatus.vue";
-import { setupI18n } from '../../i18n.js';
+import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import SystemStatus from './InteractiveSystemStatus.vue';
+import TabletButton from './TabletButton.vue';
+import CommonIcon from '../CommonIcon.vue';
 
-const { t } = setupI18n();
+const route = useRoute();
+const router = useRouter();
 
-const route = useRoute()
-const router = useRouter()
-
-const isLogoutSubmitted = ref(false)
+const isLogoutSubmitted = ref(false);
 
 const props = defineProps({
-  systemStatus: {
-    type: Object,
-    default: () => ({})
-  },
-  page: {
-    type: String,
-    default: 'TaskList'
-  },
-  textTask: {
-    type: String,
-    default: 'Список заданий'
-  },
-  isDisabled: {
-    type: Boolean,
-    default: false
-  },
-  icon: { type: String,
-    default: 'home'}
-})
+    systemStatus: {
+      type: Object,
+      default: () => ({
+        status: 'error',
+        text: 'NOT_READY',
+        sync: true,
+        active: false
+      })
+    },
+    title: {
+      type: String,
+      default: 'Список заданий'
+    },
+    isDisabled: {
+      type: Boolean,
+      default: false
+    },
+    btnText: {
+      type: String,
+      default: 'Назад'
+    },
+    btnIcon: {
+      type: String,
+      default: 'arrowBackRedesign'
+    },
+  }
+);
 
-const emit = defineEmits(['logout'])
+const emit = defineEmits(['logout']);
 
-function handleHoldGoBack({evt, ...newInfo}) {
-  isLogoutSubmitted.value = newInfo
-  finishAnimation(evt)
-  goBack()
+function handleHoldGoBack({ evt, ...newInfo }) {
+  isLogoutSubmitted.value = newInfo;
+  finishAnimation(evt);
+  goBack();
 }
 
 function goBack() {
   switch (route.name) {
     case 'TaskDetails':
     case 'NewTaskDetails':
-      router.push({name: 'TaskList'})
-      break
+      router.push({ name: 'TaskList' });
+      break;
     case 'LabelingAuto':
     case 'LabelingManual':
-      router.push({name: 'TaskDetails', params: {id: route.params.id}})
-      break
+      router.push({ name: 'TaskDetails', params: { id: route.params.id } });
+      break;
     case 'LabelScan':
       if (otkStore.mode === 'auto') {
-        router.push({name: 'LabelingAuto', params: {id: route.params.id}})
+        router.push({ name: 'LabelingAuto', params: { id: route.params.id } });
       } else {
-        router.push({name: 'LabelingManual', params: {id: route.params.id}})
+        router.push({ name: 'LabelingManual', params: { id: route.params.id } });
       }
-      break
+      break;
     case 'CodeScan':
-      router.push({name: 'LabelingManual', params: {id: route.params.id}})
-      break
+      router.push({ name: 'LabelingManual', params: { id: route.params.id } });
+      break;
   }
 }
 
-function handleHold({evt, ...newInfo}) {
-  isLogoutSubmitted.value = newInfo
-  finishAnimation(evt)
-  emit('logout')
+function handleHold({ evt, ...newInfo }) {
+  isLogoutSubmitted.value = newInfo;
+  finishAnimation(evt);
+  emit('logout');
 }
 
 function startAnimation(event) {
-  event.target.classList.add('in-progress')
+  event.target.classList.add('in-progress');
 }
 
 function finishAnimation(event) {
-  event.target.classList.remove('in-progress')
+  event.target.classList.remove('in-progress');
 }
 
 </script>
@@ -139,14 +135,7 @@ function finishAnimation(event) {
     border: none;
     outline: none;
     position: relative;
-
-    img {
-      margin-right: $s-2;
-    }
-
-    &.status-line__settings img {
-      margin-right: 0;
-    }
+    gap: 16px;
 
     &.in-progress {
       &::before {

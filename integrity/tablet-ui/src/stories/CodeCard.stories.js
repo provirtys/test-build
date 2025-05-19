@@ -4,9 +4,10 @@ const dataMatrix = 'DataMatrix'
 const code128 = 'Code128'
 const verified = 'verified'
 const broken = 'broken'
+const synced = 'synced'
 const none = 'none'
 const codeTypes = {dataMatrix, code128}
-const statuses = {verified, broken, none}
+const statuses = {verified, broken, synced, none}
 
 /** Компонент отображает информацию о маркировке кода. Можно настроить тип, текст, статус кода, время и номер позиции.  */
 export default {
@@ -38,7 +39,8 @@ export default {
                 labels: {
                     verified: 'verified',
                     broken: 'broken',
-                    synced: 'none'
+                    synced: 'synced',
+                    none: 'none'
                 },
             },
         },

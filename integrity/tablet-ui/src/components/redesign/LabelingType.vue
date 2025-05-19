@@ -2,18 +2,17 @@
   <div class="labeling-type">
     <div class="labeling-type__status"
          :class="[{'active': !props.isActive}, {'disabled': props.isActive && props.isDisabled}]">
-      <Auto></Auto>
+      <CommonIcon name="auto" />
       <p>{{ textAuto }}</p></div>
     <div class="labeling-type__status"
          :class="[{'active': props.isActive}, {'disabled': !props.isActive && props.isDisabled}]">
-      <List></List>
+      <CommonIcon name="list" />
       <p>{{ textList }}</p></div>
   </div>
 </template>
 
 <script setup>
-import Auto from '../../assets/icons/Auto.vue';
-import List from '../../assets/icons/List.vue';
+import CommonIcon from '../CommonIcon.vue';
 
 const props = defineProps({
   isActive: {type: Boolean, default: true},

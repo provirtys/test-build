@@ -2,19 +2,19 @@
 <div class="labeling-card-container">
 <LabelingCard :codeInfo="codeInfo" :is-aggregation-visible="isAggregationVisible" :is-auto="isAutoLabeling">
   <div class="gap-10">
-    <ActionTabletUIButton v-if="btn === '1'" :text="t('startAggregation')" :icon="'startAggregationIcon'" :location-icon="'right'" :color="'outline'" ></ActionTabletUIButton>
-    <ActionTabletUIButton v-if="btn === '1'" :text="t('startLabeling')" :icon="'openTaskIcon'" :location-icon="'right'"></ActionTabletUIButton>
+    <TabletButton v-if="btn === '1'" :text="t('startAggregation')" icon="startAggregation" location-icon="right" color="outline" is-radius text-alignment="left" />
+    <TabletButton v-if="btn === '1'" :text="t('startLabeling')" icon="openTask" location-icon="right" is-radius text-alignment="left" />
 
-    <ActionTabletUIButton v-if="btn === '2'" :text="t('newJob')" :icon="'newTaskIcon'" :location-icon="'right'" :color="'outline'"></ActionTabletUIButton>
-    <ActionTabletUIButton v-if="btn === '2'" :text="t('continueLabeling')" :icon="'openTaskIcon'" :location-icon="'right'"></ActionTabletUIButton>
+    <TabletButton v-if="btn === '2'" :text="t('newJob')" icon="newTask" location-icon="right" color="outline" is-radius text-alignment="left" />
+    <TabletButton v-if="btn === '2'" :text="t('continueLabeling')" icon="openTask" location-icon="right" is-radius text-alignment="left" />
 
-    <ActionTabletUIButton v-if="btn === '3'" :text="t('finishAggregation')" :icon="'finishAggregationIcon'" :location-icon="'right'" :color="'outline'" ></ActionTabletUIButton>
+    <TabletButton v-if="btn === '3'" :text="t('finishAggregation')" icon="finishAggregation" location-icon="right" color="outline" is-radius text-alignment="left" />
 
-    <ActionTabletUIButton v-if="btn === '4'" :text="t('labelPrint')" :icon="'labelPrintingIcon'" :location-icon="'right'" :color="'outline'" ></ActionTabletUIButton>
-    <ActionTabletUIButton v-if="btn === '4'" :is-disabled="true" :text="t('startLabeling')" :icon="'openTaskIcon'" :location-icon="'right'"></ActionTabletUIButton>
+    <TabletButton v-if="btn === '4'" :text="t('labelPrint')" icon="labelPrinting" location-icon="right" color="outline" is-radius text-alignment="left" />
+    <TabletButton v-if="btn === '4'" :text="t('startLabeling')" is-disabled icon="openTask" location-icon="right" is-radius text-alignment="left" />
 
-    <ActionTabletUIButton v-if="btn === '5'" :is-disabled="true" :text="t('labelingDefect')" :icon="'restartIcon'" :location-icon="'right'" :color="'outline'" ></ActionTabletUIButton>
-    <ActionTabletUIButton v-if="btn === '5'" :is-disabled="true" :text="t('confirm')" :icon="'verifyIcon'" :location-icon="'right'"></ActionTabletUIButton>
+    <TabletButton v-if="btn === '5'" is-disabled :text="t('labelingDefect')" icon="restart" location-icon="right" color="outline" is-radius text-alignment="left" />
+    <TabletButton v-if="btn === '5'" is-disabled :text="t('confirm')" icon="verify" location-icon="right" is-radius text-alignment="left" />
   </div>
 </LabelingCard>
 </div>
@@ -22,8 +22,8 @@
 
 <script setup>
 import LabelingCard from "./LabelingCard.vue";
-import ActionTabletUIButton from "./ActionTabletButton.vue";
 import { setupI18n } from '../../i18n.js';
+import TabletButton from './TabletButton.vue';
 
 const { t } = setupI18n();
 

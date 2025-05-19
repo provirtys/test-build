@@ -2,19 +2,16 @@
   <button
       class="checkbox" :class="[{'active': isActive}, {'plane': isPlane }, buttonSize]" @click="submitAction">
     <div class="checkbox__title" :class="buttonSize">
-      <CheckBoxIconEmpty v-if="!isActive" :heightButton="buttonSize"></CheckBoxIconEmpty>
-      <CheckBoxIconSelect v-else :heightButton="buttonSize"></CheckBoxIconSelect>
+      <CommonIcon :name="isActive ? 'checkbox-transparent-select' : 'checkbox-transparent-empty'" :size="iconSizes[height]['checkbox']" />
       {{ buttonText }}
     </div>
-    <CheckBoxIcon v-if="isIcon" :heightButton="buttonSize"></CheckBoxIcon>
+    <CommonIcon v-if="isIcon" name="qr" :size="iconSizes[height]['qr']" />
   </button>
 </template>
 
 <script setup>
-import CheckBoxIcon from '../../assets/icons/CheckBoxIcon.vue';
-import CheckBoxIconEmpty from '../../assets/icons/CheckBoxIconEmpty.vue';
-import CheckBoxIconSelect from '../../assets/icons/CheckBoxIconSelect.vue';
 import {computed} from "vue";
+import CommonIcon from '../CommonIcon.vue';
 
 const props = defineProps({
   isIcon: { type: Boolean, default: false },
@@ -31,6 +28,25 @@ const props = defineProps({
 const emit = defineEmits(['actionSubmitted'])
 function submitAction() {
   emit('actionSubmitted')
+}
+
+const iconSizes = {
+  'large': {
+    'qr': 60,
+    'checkbox': 44,
+  },
+  'medium': {
+    'qr': 52,
+    'checkbox': 36,
+  },
+  'small': {
+    'qr': 44,
+    'checkbox': 28,
+  },
+  'extra-small': {
+    'qr': 36,
+    'checkbox': 28,
+  }
 }
 
 const buttonSize = computed(() => {

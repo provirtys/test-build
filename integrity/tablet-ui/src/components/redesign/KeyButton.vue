@@ -1,11 +1,13 @@
 <template>
   <div class="pin-button" @click="pressed" v-touch-hold:500.mouse="pressed">
-    <img class="icon" v-if="value === 'Back'" alt="" src="../../assets/images/backspaceRedesign.svg"/>
+    <CommonIcon v-if="value === 'Back'" name="backspaceRedesign" />
     <span v-else class="pin-button__h2">{{ value }}</span>
   </div>
 </template>
 
 <script setup>
+import CommonIcon from '../CommonIcon.vue';
+
 const props = defineProps({
   /** Значение кнопки*/
   value: {type: String, default: ''},
@@ -29,13 +31,11 @@ function pressed() {
   justify-content: center;
   width: $b-4;
   height: $xl-4;
-
   background: $primary-text-20;
   transition: background .5s;
-
   border-radius: $d-1;
-
   outline: none !important;
+  color: $primary-text;
 
 
   &:active {

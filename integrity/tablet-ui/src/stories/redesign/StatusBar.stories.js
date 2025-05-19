@@ -5,8 +5,9 @@ const btnBack = ''
 const buttons = {btnExit, btnBack}
 
 const home = 'home'
-const arrow = 'arrow'
-const icons = {home, arrow}
+const logoutDark = 'logout-dark'
+const arrowBackRedesign = 'arrowBackRedesign'
+const icons = {home, logoutDark, arrowBackRedesign}
 
 const StandardState = {
     status: 'success',
@@ -66,31 +67,20 @@ export default {
     component: StatusBar,
     tags: ["autodocs"],
     argTypes: {
-        page: {
-            description: 'Выбор кнопки',
-            options: Object.keys(buttons),
-            mapping: buttons,
-            control: {
-                type: 'radio',
-                labels: {
-                    btnExit: 'Выход',
-                    btnBack: 'Назад'
-                },
-            },
-        },
-        icon: {
+        btnIcon: {
             description: 'Иконка кнопки Назад',
             options: Object.keys(icons),
             mapping: icons,
             control: {
                 type: 'radio',
                 labels: {
-                    home: 'home',
-                    arrow: 'arrow',
+                    home: 'Домой',
+                    logoutDark: 'Выйти',
+                    arrowBackRedesign: 'Назад',
                 },
             },
         },
-        textTask: {
+        title: {
             description: 'Наименование задачи',
         },
         systemStatus: {
@@ -130,24 +120,26 @@ export default {
         }
     }
 };
+
 export const ExitBtn = {
     args: {
-        textTask: 'Список заданий',
-        page: 'TaskList',
+        title: 'Список заданий',
+        btnText: 'Выйти',
+        btnIcon: 'logout-dark',
         systemStatus: {
             status: 'success',
             text: 'READY',
             sync: false,
             active: true
         },
-        isDisabled: false,
-
     },
 };
+
 export const ExitBtnPrinterError = {
     args: {
-        textTask: 'Список заданий',
-        page: 'TaskList',
+        title: 'Список заданий',
+        btnText: 'Выйти',
+        btnIcon: 'logout-dark',
         systemStatus: {
             status: 'error',
             text: 'NOT_READY',
@@ -160,18 +152,19 @@ export const ExitBtnPrinterError = {
 
 export const BackBtn = {
     args: {
-        textTask: 'Актикул изделия',
-        page: '',
+        title: 'Артикул изделия',
+        btnText: 'Назад',
+        btnIcon: arrowBackRedesign,
         systemStatus: {
             status: 'ok',
             text: 'READY'
         }
     },
 };
+
 export const BackBtnPrinterError = {
     args: {
-        textTask: 'Актикул изделия',
-        page: '',
+        title: 'Артикул изделия',
         systemStatus: {
             status: 'error',
             text: 'NOT_READY',
@@ -181,20 +174,20 @@ export const BackBtnPrinterError = {
         isDisabled: true,
     },
 };
+
 export const BackBtnSetting = {
     args: {
-        textTask: 'Актикул изделия',
-        page: '',
+        title: 'Артикул изделия',
         systemStatus: {
             status: 'warning',
             text: 'SETTING'
         }
     },
 };
+
 export const BackBtnPrinterSetting = {
     args: {
-        textTask: 'Актикул изделия',
-        page: '',
+        title: 'Артикул изделия',
         systemStatus: {
             status: 'warning',
             text: 'SETTING',
@@ -202,5 +195,17 @@ export const BackBtnPrinterSetting = {
             active: false
         },
         isDisabled: true,
+    },
+};
+
+export const HomeBtn = {
+    args: {
+        title: 'Артикул изделия',
+        btnText: 'Назад',
+        btnIcon: home,
+        systemStatus: {
+            status: 'ok',
+            text: 'READY'
+        }
     },
 };

@@ -2,8 +2,11 @@
   <div class="status-bar">
     <button v-if="page == 'TaskList'" class="status-bar__button" v-touch-hold:2000.mouse="handleHold"
             @mousedown="startAnimation" @touchstart="startAnimation" @mouseup="finishAnimation" @touchend="finishAnimation">
-      <img src="../assets/images/logout.svg">{{ t('logout') }}</button>
-    <button v-else class="status-bar__button" @click="goBack"><img src="../assets/images/arrowBack.svg">{{ t('back') }}</button>
+      <CommonIcon name="logout" />
+      {{ t('logout') }}</button>
+    <button v-else class="status-bar__button" @click="goBack">
+      <CommonIcon name="arrowBack" />
+      {{ t('back') }}</button>
     <p class="status-bar__task">{{ textTask }}</p>
     <div class="row">
       <button v-if="page == 'TaskList'" class="status-bar__button bg-primary mr-30" @click="toNewJob">{{ t('newJob') }}</button>
@@ -17,6 +20,8 @@ import SystemStatus from "./SystemStatus.vue";
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { setupI18n } from '../i18n.js'
+import CommonIcon from './CommonIcon.vue';
+import TabletButton from './redesign/TabletButton.vue';
 
 const { t } = setupI18n()
 const router = useRouter()
@@ -89,13 +94,10 @@ function finishAnimation(event) {
     border: none;
     outline: none;
     position: relative;
+    gap: 16px;
 
     &.mr-30 {
       margin-right: 30px;
-    }
-
-    img {
-      margin-right: $s-2;
     }
 
     &.in-progress {

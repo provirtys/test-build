@@ -3,16 +3,16 @@
         <div class="label-type__content">
             <p class="label-type__title">{{ t('chooseLabelingType') }}</p>
             <div class="label-type__option" :class="{'selected': dmSelected}" data-testid="codeType-DataMatrix" @click="switchType('DataMatrix')">
-                <img :src="dataMatrix">
-                <p>Data Matrix</p>
+              <CommonIcon name="dataMatrix" />
+              <p>Data Matrix</p>
             </div>
             <div class="label-type__option" :class="{'selected': bcSelected}" data-testid="codeType-Code128" @click="switchType('Code128')">
-                <img :src="barCode">
-                <p>Barcode</p>
+              <CommonIcon name="barCode" />
+              <p>Barcode</p>
             </div>
             <div v-if="!isAuto" class="label-type__option all-selected">
-                <img :src="allSelected ? checkboxFilled : checkboxEmpty" data-testid="codeType-all" @click="switchType('all')">
-                <p>{{ t('chooseAll') }}</p>
+              <CommonIcon :name="allSelected ? 'checkbox-filled' : 'checkbox-empty'" data-testid="codeType-all" @click="switchType('all')" />
+              <p>{{ t('chooseAll') }}</p>
             </div>
         </div>
         <slot></slot>
@@ -21,11 +21,8 @@
 
 <script setup>
 import { computed } from 'vue'
-import dataMatrix from '../assets/images/dataMatrix.svg'
-import barCode from '../assets/images/barCode.svg'
-import checkboxFilled from '../assets/images/checkbox-filled.svg'
-import checkboxEmpty from '../assets/images/checkbox-empty.svg'
 import { setupI18n } from '../i18n.js'
+import CommonIcon from './CommonIcon.vue';
 
 const { t } = setupI18n()
 

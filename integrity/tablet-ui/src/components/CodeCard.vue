@@ -1,10 +1,8 @@
 <template>
     <div class="code-card">
         <div class="code-card__code">
-            <img v-if="codeType == 'Code128'" :src="barCode">
-            <img v-else :src="dataMatrix">
-            <img v-if="status === 'verified' || status === 'synced'" class="code-card__status" :src="success">
-            <img v-if="status === 'broken'" class="code-card__status" :src="error">
+          <CommonIcon :name="codeType === 'Code128' ? 'dataMatrix' : 'barCode'" />
+          <CommonIcon v-if="statusIcon" class="code-card__status" :name="statusIcon" />
         </div>
         <div class="code-card__info">
             <p class="code-card__title">{{ codeText }}</p>
@@ -17,17 +15,26 @@
 </template>
 
 <script setup>
-import dataMatrix from '../assets/images/dataMatrix.svg'
-import barCode from '../assets/images/barCode.svg'
-import success from '../assets/images/status-success.svg'
-import error from '../assets/images/status-error.svg'
+import { computed } from 'vue';
+import CommonIcon from './CommonIcon.vue';
 
-defineProps({
+const props = defineProps({
   codeType: { type: String, default: 'DataMatrix' },
   codeText: { type: String, default: '' },
   status: { type: String, default: 'none' },
   time: { type: String, default: '' },
   position: { type: Number, default: 0 }
+})
+
+const statusIcon = computed(() => {
+  if(props.status === 'verified' || props.status === 'synced'){
+    return 'status-success'
+  }
+  else if(props.status === 'broken'){
+    return 'status-error'
+  }
+
+  return ''
 })
 </script>
 

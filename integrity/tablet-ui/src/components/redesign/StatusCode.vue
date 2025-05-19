@@ -1,7 +1,7 @@
 <template>
   <div class="labeling-code" :class="[{ 'error': status === 'broken' }]">
-    <img v-if="codeType == 'Code128'" :src="barCode">
-    <img v-else :src="dataMatrix">
+    <CommonIcon v-if="codeType === 'Code128'" name="barcodeRedesign" />
+    <CommonIcon v-else name="datamatrixRedesign" />
     <div v-if="status === 'verified' || status === 'synced'" class="labeling-code__status">
       <IconStatus :is-animate="status === 'synced'" :color="color"></IconStatus>
     </div>
@@ -9,9 +9,8 @@
 </template>
 
 <script setup>
-import dataMatrix from '../../assets/images/datamatrixRedesign.svg'
-import barCode from '../../assets/images/barcodeRedesign.svg'
 import IconStatus from "./IconStatus.vue";
+import CommonIcon from '../CommonIcon.vue';
 
 defineProps({
   codeType: {type: String, default: 'DataMatrix'},
@@ -27,11 +26,11 @@ defineProps({
   width: $l-2;
   height: $l-2;
   border-radius: $d-0;
-  padding: $s-3;
   display: flex;
   justify-content: center;
   align-items: center;
   background: $light-gray-40;
+  color: $dark-gray;
 
   position: relative;
 

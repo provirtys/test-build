@@ -1,0 +1,51 @@
+<template>
+  <svg
+    :width="width ?? size ?? baseSize.width"
+    :height="height ?? size ?? baseSize.height"
+    aria-hidden="true"
+    class="flex"
+    :viewBox="viewBox"
+  >
+    <use :xlink:href="`#${name}`" />
+  </svg>
+</template>
+
+<script setup>
+import { reactive, onMounted } from 'vue'
+
+const props = defineProps({
+  width: {
+    type: [String, Number],
+    required: false
+  },
+  height: {
+    type: [String, Number],
+    required: false
+  },
+  size: {
+    type: [String, Number],
+    required: false
+  },
+  name: {
+    type: [String, Number],
+    required: true
+  },
+})
+
+const baseSize = reactive({
+  width: null,
+  height: null
+})
+
+onMounted(() => {
+  const svgElement = document.querySelector(`#${props.name}`)
+  if (svgElement) {
+    const originalViewBox = svgElement.getAttribute('viewBox')
+    if (originalViewBox) {
+      const viewBoxArr = originalViewBox.split(/[\s,]+/).filter(Boolean)
+      baseSize.width = viewBoxArr[2]
+      baseSize.height = viewBoxArr[3]
+    }
+  }
+})
+</script>

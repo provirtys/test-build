@@ -1,6 +1,30 @@
+<template>
+  <div class="card-task">
+    <div class="card-task__main">
+      <div class="card-task__main__info">
+        <p>{{ title }}</p>
+        <div class="card-task__main__info__items">
+          <dl v-for="(item, key) in toolItems" :key="key">
+            <dt>{{ key }}:</dt>
+            <dd>{{ item }}</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="card-task__main__status">
+        <MarkingStatus :status="markingStatus"></MarkingStatus>
+        <ProgressPie v-if="progress >= 0" :percentage="progress" :size="'large'"></ProgressPie>
+      </div>
+    </div>
+    <div class="card-task__arrow" @click="openTaskDetails">
+      <CommonIcon name="arrow" size="30"/>
+    </div>
+  </div>
+</template>
+
 <script setup>
 import MarkingStatus from './MarkingStatus.vue'
 import ProgressPie from './ProgressPie.vue'
+import CommonIcon from './CommonIcon.vue';
 
 const props = defineProps({
   id: {
@@ -31,29 +55,6 @@ function openTaskDetails() {
   emit('openTaskDetails', props.id)
 }
 </script>
-
-<template>
-  <div class="card-task">
-    <div class="card-task__main">
-      <div class="card-task__main__info">
-        <p>{{ title }}</p>
-        <div class="card-task__main__info__items">
-          <dl v-for="(item, key) in toolItems" :key="key">
-            <dt>{{ key }}:</dt>
-            <dd>{{ item }}</dd>
-          </dl>
-        </div>
-      </div>
-      <div class="card-task__main__status">
-        <MarkingStatus :status="markingStatus"></MarkingStatus>
-        <ProgressPie v-if="progress >= 0" :percentage="progress" :size="'large'"></ProgressPie>
-      </div>
-    </div>
-    <div class="card-task__arrow" @click="openTaskDetails">
-      <img src="../assets/images/arrow-forward.svg" alt="">
-    </div>
-  </div>
-</template>
 
 <style lang="scss">
 @import '../css/main.scss';
@@ -109,6 +110,7 @@ function openTaskDetails() {
     background: $primary;
     padding: $s-3;
     align-items: center;
+    color: $secondary;
   }
 }
 

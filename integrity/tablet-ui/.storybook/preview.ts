@@ -9,7 +9,6 @@ import '@quasar/extras/material-icons-outlined/material-icons-outlined.css'
 import '@quasar/extras/material-symbols-outlined/material-symbols-outlined.css'
 import 'quasar/dist/quasar.css';
 
-
 interface LanguageMessages {
     [key: string]: any;
 }
@@ -34,6 +33,9 @@ const i18n = createI18n({
     legacy: false,
     messages: loadLocaleMessages()
 });
+
+const modules = import.meta.glob('../src/assets/icons/*.svg');
+Object.values(modules).forEach(async (el) => await el());
 
 setup((app) => {
     app.use(i18n);

@@ -1,13 +1,7 @@
 <script setup>
-import AnimatedTabletButton from "./AnimatedTabletButton.vue"
-import scanIcon from '../assets/images/scan.svg'
-import aggregationIcon from '../assets/images/aggregation.svg'
-import TabletButton from './TabletButton.vue'
-import restartIcon from '../assets/images/restart.svg'
-import badIcon from '../assets/images/bad.svg'
-import doneIcon from '../assets/images/done.svg'
 import MarkingCard from './MarkingCard.vue'
 import { setupI18n } from '../i18n.js'
+import TabletButton from './redesign/TabletButton.vue';
 
 const { t } = setupI18n()
 
@@ -25,18 +19,18 @@ defineProps({
     <MarkingCard :codeInfo="codeInfo" :is-repeat-visible="isRepeatVisible"
                  :is-progress-pie-visible="isProgressPieVisible" :is-aggregation-visible="isAggregationVisible">
       <div class="gap-12">
-        <AnimatedTabletButton v-if="btn === '1'" :icon="scanIcon" :text="t('scan')"/>
-        <AnimatedTabletButton v-if="btn === '1'" :color="'dark'" :text="t('startAggregation')" class="text-left"/>
+        <TabletButton v-if="btn === '1'" :text="t('scan')" icon="scan" location-icon="right" is-radius text-alignment="left" color="red" />
+        <TabletButton v-if="btn === '1'" :text="t('startAggregation')" is-radius text-alignment="left"/>
 
-        <TabletButton v-if="btn === '2'" :text="t('repeatLabeling')" :icon="restartIcon"/>
-        <TabletButton v-if="btn === '2'" :text="t('labelingDefect')" :color="'light-gray'" :icon="badIcon"/>
+        <TabletButton v-if="btn === '2'" :text="t('repeatLabeling')" icon="restart" location-icon="right" is-radius text-alignment="left" color="red" />
+        <TabletButton v-if="btn === '2'" :text="t('labelingDefect')" icon="bad" location-icon="right" is-radius text-alignment="left" color="secondary" />
 
-        <AnimatedTabletButton v-if="btn === '3'" :icon="scanIcon" :text="t('scan')"/>
+        <TabletButton v-if="btn === '3'" :text="t('scan')" icon="scan" location-icon="right" is-radius text-alignment="left" color="red" />
 
-        <AnimatedTabletButton v-if="btn === '4'" :icon="doneIcon" :text="t('confirm')"/>
+        <TabletButton v-if="btn === '4'" :text="t('confirm')" icon="done" location-icon="right" is-radius text-alignment="left" color="red" />
 
-        <AnimatedTabletButton v-if="btn === '5'" :icon="scanIcon" :text="t('scan')"/>
-        <AnimatedTabletButton v-if="btn === '5'" :icon="aggregationIcon" :color="'dark'" :text="t('finishAggregation')"/>
+        <TabletButton v-if="btn === '5'" :text="t('scan')" icon="scan" location-icon="right" is-radius text-alignment="left" color="red" />
+        <TabletButton v-if="btn === '5'" :text="t('finishAggregation')" icon="aggregation" location-icon="right" is-radius text-alignment="left" />
       </div>
     </MarkingCard>
   </div>

@@ -1,6 +1,7 @@
 <script setup>
 import ProgressPie from './ProgressPie.vue'
 import { setupI18n } from '../i18n.js'
+import CommonIcon from './CommonIcon.vue';
 
 const { t } = setupI18n()
 
@@ -53,8 +54,8 @@ function getCodeDate (value) {
       </div>
       <div v-if="isRepeatVisible" class="marking-card__repeat">
         <!--Это не кнопка, просто индикатор, если нужна повторная маркировка-->
-        <div>
-          <img :alt="t('repeatedLabeling')" src="../assets/images/repeat-marking.svg">
+        <div class="marking-card__repeat-icon">
+          <CommonIcon name="restart" />
         </div>
         <p>{{ t('repeatedLabeling') }}</p>
       </div>
@@ -140,12 +141,13 @@ p {
     align-items: center;
     gap: $d-1;
 
-    div {
+    &-icon{
       width: $m-2;
       height: $m-2;
       background: $primary;
       border: none;
       border-radius: $d-1;
+      color: $secondary;
 
       display: flex;
       align-items: center;

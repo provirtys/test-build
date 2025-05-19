@@ -38,17 +38,16 @@
         <p :class="{'text-primary': percentage < 97}">{{ 100 - percentage }}%</p>
       </div>
     </div>
-    <AnimatedTabletButton :text="t('finishLabeling')" :icon="logoutIcon" @action-submitted="finishLabeling" />
+    <TabletButton :text="t('finishLabeling')" icon="arrow" location-icon="right" is-radius color="red" @action-submitted="finishLabeling" />
   </div>
 </template>
 
 <script setup>
 import { computed } from 'vue'
-import AnimatedTabletButton from './ActionTabletUIButton.vue'
-import logoutIcon from '../assets/images/button-logout.svg'
 import { setupI18n } from '../i18n.js'
 import { QCircularProgress } from 'quasar'
 import 'quasar/dist/quasar.css'
+import TabletButton from './redesign/TabletButton.vue';
 
 const { t } = setupI18n()
 

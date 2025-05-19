@@ -2,7 +2,7 @@
   <div class="labeling-code-card" :class="{'aggregation': isAggregation}">
 
     <div class="labeling-code-card__position" :class="{'error': isErrorLabeling}">
-      <img v-if="isAggregation" :src="aggregation">
+      <CommonIcon v-if="isAggregation" name="aggregation" size="35"/>
       <p v-else>{{ position }}</p>
     </div>
 
@@ -22,7 +22,7 @@
 
 <script setup>
 import StatusCode from "./StatusCode.vue";
-import aggregation from "../../assets/images/aggregationRedesign.svg"
+import CommonIcon from '../CommonIcon.vue';
 
 defineProps({
   codeText: {type: String, default: 'Code name'},

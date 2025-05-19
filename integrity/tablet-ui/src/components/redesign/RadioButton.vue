@@ -1,21 +1,20 @@
 <template>
   <button
       :disabled="props.isDisabled" class="radio-btn" :class="[backgroundColor,buttonSize]" @click="submitAction">
-    <RadioButtonIconEmpty v-if="!isSelect" :icon-color="colorIcon" :icon-size="sizeIcon"></RadioButtonIconEmpty>
-    <RadioButtonIconSelect v-if="isSelect" :icon-color="colorIcon" :icon-size="sizeIcon"></RadioButtonIconSelect>
+    <CommonIcon :name="isSelect ? 'radioButton-select' : 'radioButton-empty'" :size="sizeIcon" />
     {{ buttonText }}
-    <RadioButtonIcon v-if="isIcon === 'icon'" :icon-color="colorIcon" :icon-size="sizeIcon" class="radio-btn__status"></RadioButtonIcon>
-    <IconStatus v-if="isIcon === 'status' && isDisabled === false" :is-animate="isAnimate" :color="iconStatus" class="radio-btn__status"></IconStatus>
+    <span class="radio-btn__status">
+      <CommonIcon v-if="isIcon === 'icon'" name="numbers" :size="sizeIcon" />
+      <IconStatus v-if="isIcon === 'status' && isDisabled === false" :is-animate="isAnimate" :color="iconStatus"></IconStatus>
+    </span>
   </button>
 </template>
 
 <script setup>
 
 import {computed} from "vue";
-import RadioButtonIconEmpty from "../../assets/icons/RadioButtonIconEmpty.vue";
-import RadioButtonIcon from "../../assets/icons/RadioButtonIcon.vue";
-import RadioButtonIconSelect from "../../assets/icons/RadioButtonIconSelect.vue";
 import IconStatus from "./IconStatus.vue";
+import CommonIcon from '../CommonIcon.vue';
 
 const props = defineProps({
   /** Вид кнопки */
@@ -52,21 +51,6 @@ const backgroundColor = computed(() => {
       return props.color
     default:
       return 'primary'
-  }
-})
-
-const colorIcon = computed(() => {
-  if(!props.isDisabled) {
-    switch (props.color) {
-      case 'secondary':
-      case 'plane':
-      case 'outline':
-        return `secondary`
-      default:
-        return `primary`
-    }
-  } else {
-    return 'disabled'
   }
 })
 

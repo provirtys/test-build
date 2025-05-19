@@ -1,4 +1,3 @@
-export { default as ActionTabletButton } from './components/redesign/ActionTabletButton.vue';
 export { default as BaseTable } from './components/redesign/BaseTable.vue';
 export { default as CardJob } from './components/redesign/CardJob.vue';
 export { default as Checkbox } from './components/redesign/Checkbox.vue';
@@ -15,8 +14,6 @@ export { default as RadioButton } from './components/redesign/RadioButton.vue';
 export { default as StatusBar } from './components/redesign/StatusBar.vue';
 export { default as StatusCode } from './components/redesign/StatusCode.vue';
 
-export { default as ActionTabletUIButton } from './components/ActionTabletUIButton.vue';
-export { default as AnimatedTabletButton } from './components/AnimatedTabletButton.vue';
 export { default as BarChart } from './components/BarChart.vue';
 export { default as BarChartTimeSeries } from './components/BarChartTimeSeries.vue';
 export { default as BaseInput } from './components/BaseInput.vue';
@@ -32,4 +29,3 @@ export { default as PrinterStatus } from './components/PrinterStatus.vue';
 export { default as ProgressPie } from './components/ProgressPie.vue';
 export { default as StatusLine } from './components/StatusLine.vue';
 export { default as SystemStatus } from './components/SystemStatus.vue';
-export { default as TabletButton } from './components/TabletButton.vue';

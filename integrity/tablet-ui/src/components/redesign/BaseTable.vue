@@ -1,15 +1,16 @@
 <template>
-  <q-table class="sticky-header-table no-box-shadow base-style"
-           title=""
-           :rows="props.rows"
-           :columns="props.columns"
-           row-key="name"
-           v-model:pagination="pagination"
-           :rows-per-page-options="[0]"
-           :table-header-style="{ color: 'var(--q-primary)'}"
-           :card-style="{ color: 'var(secondary)'}"
-           :no-data-label="t('noData')"
-           hide-pagination
+  <q-table
+    class="sticky-header-table no-box-shadow base-style"
+    title=""
+    :rows="props.rows"
+    :columns="props.columns"
+    row-key="name"
+    v-model:pagination="pagination"
+    :rows-per-page-options="[0]"
+    :table-header-style="{ color: 'var(--q-primary)'}"
+    :card-style="{ color: 'var(secondary)'}"
+    :no-data-label="t('noData')"
+    hide-pagination
   />
   <!--    вариант с пустой табл-->
   <!--    <div v-if="rows.length == 0" class="empty-table">пустая таблица</div>-->
@@ -17,16 +18,16 @@
 
 <script setup>
 import { setupI18n } from '../../i18n.js';
-import { QTable } from 'quasar'
-import 'quasar/dist/quasar.css'
+import { QTable } from 'quasar';
+import 'quasar/dist/quasar.css';
 
-const { t } = setupI18n()
+const { t } = setupI18n();
 let props = defineProps({
   /** Значение строк*/
-  rows: {type: Array, default: () => []},
+  rows: { type: Array, default: () => [] },
   /** Значение колонок*/
-  columns: {type: Array, default: () => []},
-})
+  columns: { type: Array, default: () => [] }
+});
 
 </script>
 

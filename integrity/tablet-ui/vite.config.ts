@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import * as path from 'path';
 import { quasar } from '@quasar/vite-plugin'
+import createSvgSprite from 'vite-plugin-svg-sprite'
 
 export default defineConfig({
   root: __dirname,
@@ -10,7 +11,7 @@ export default defineConfig({
 
   plugins: [
     vue(),
-    quasar()
+    quasar(),
   ],
 
   // Uncomment this if you are using workers.

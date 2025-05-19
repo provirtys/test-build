@@ -2,52 +2,47 @@
   <div class="labeling-cart">
     <div class="labeling-main">
       <div v-if="isAggregationVisible" class="aggregation">
-        <img src="../../assets/images/go-aggregation-blue.svg">
+        <CommonIcon name="aggregation" size="28" />
         {{ t('aggregationInProgress') }}
       </div>
       <div class="labeling-main__head flex-space-between">
         <p>{{ t('labeled') }}</p>
         <p class="dark-gray">{{ codeInfo.labeled }} / {{ codeInfo.total }}</p>
       </div>
-
       <div class="labeling-main__info">
-
-          <div class="code-info" v-if="isScan">
-            <div>
-              <p class="labeling-main__info__title">{{ t('printed') }}</p>
-              <p class="labeling-main__info__date">{{ codeInfo.total }}</p>
-              <p class="labeling-main__info__value time">{{ codeInfo.ts }}</p>
-
-            </div>
-            <div>
-              <p class="labeling-main__info__title">{{ t('recognized') }}</p>
-              <p class="labeling-main__info__value">{{ codeInfo.labeled }}</p>
+        <div class="code-info" v-if="isScan">
+          <div>
+            <p class="labeling-main__info__title">{{ t('printed') }}</p>
+            <p class="labeling-main__info__date">{{ codeInfo.total }}</p>
+            <p class="labeling-main__info__value time">{{ codeInfo.ts }}</p>
+          </div>
+          <div>
+            <p class="labeling-main__info__title">{{ t('recognized') }}</p>
+            <p class="labeling-main__info__value">{{ codeInfo.labeled }}</p>
+          </div>
+        </div>
+        <div class="code-info" v-else>
+          <div>
+            <p class="labeling-main__info__title">{{ t('datetime') }}</p>
+            <p class="labeling-main__info__date">14.03.2024</p>
+            <p class="labeling-main__info__value time">{{ codeInfo.ts }}</p>
+          </div>
+          <div v-if="!isAuto">
+            <p class="labeling-main__info__title">{{ t('position') }}</p>
+            <p class="labeling-main__info__value">{{ codeInfo.position }}</p>
+          </div>
+          <div>
+            <p class="labeling-main__info__title">{{ t('code') }}</p>
+            <p class="labeling-main__info__value">{{ codeInfo.code }}</p>
+            <div v-if="isCodes" class="labeling-main__info__status-code">
+              <StatusCode :status="status1" :codeType="codeType1" :color="color1"
+                          :is-animate="status1 === 'synced'"></StatusCode>
+              <StatusCode v-if="secondCode" :status="status2" :codeType="codeType2" :color="color2"
+                          :is-animate="status2 === 'synced'"></StatusCode>
             </div>
           </div>
-
-          <div class="code-info" v-else>
-            <div>
-              <p class="labeling-main__info__title">{{ t('datetime') }}</p>
-              <p class="labeling-main__info__date">14.03.2024</p>
-              <p class="labeling-main__info__value time">{{ codeInfo.ts }}</p>
-            </div>
-            <div v-if="!isAuto">
-              <p class="labeling-main__info__title">{{ t('position') }}</p>
-              <p class="labeling-main__info__value">{{ codeInfo.position }}</p>
-            </div>
-            <div>
-              <p class="labeling-main__info__title">{{ t('code') }}</p>
-              <p class="labeling-main__info__value">{{ codeInfo.code }}</p>
-              <div v-if="isCodes" class="labeling-main__info__status-code">
-                <StatusCode :status="status1" :codeType="codeType1" :color="color1" :is-animate="status1 === 'synced'"></StatusCode>
-                <StatusCode v-if="secondCode" :status="status2" :codeType="codeType2" :color="color2"
-                            :is-animate="status2 === 'synced'"></StatusCode>
-              </div>
-            </div>
-          </div>
-
+        </div>
       </div>
-
     </div>
     <slot>
       <!--Слот для кнопок, которые нужно настраивать-->
@@ -56,29 +51,30 @@
 </template>
 
 <script setup>
-import StatusCode from "./StatusCode.vue";
+import StatusCode from './StatusCode.vue';
 import { setupI18n } from '../../i18n.js';
+import CommonIcon from '../CommonIcon.vue';
 
 const { t } = setupI18n();
 
 defineProps({
-  isAggregationVisible: {type: Boolean, default: false},
-  isAuto: {type: Boolean, default: false},
-  isCodes: {type: Boolean, default: true},
-  isScan: {type: Boolean, default: false},
-  codeInfo: {type: Object, default: () => ({})},
+  isAggregationVisible: { type: Boolean, default: false },
+  isAuto: { type: Boolean, default: false },
+  isCodes: { type: Boolean, default: true },
+  isScan: { type: Boolean, default: false },
+  codeInfo: { type: Object, default: () => ({}) },
   /** Статус индикатора  */
-  status1: {type: String, default: ''},
+  status1: { type: String, default: '' },
   /** Тип кода  */
-  codeType1: {type: String, default: ''},
+  codeType1: { type: String, default: '' },
   /** Цвет индикатора  */
-  color1: {type: String, default: 'info'},
+  color1: { type: String, default: 'info' },
 
-  secondCode: {type: Boolean, default: true},
-  status2: {type: String, default: ''},
-  codeType2: {type: String, default: ''},
-  color2: {type: String, default: 'info'},
-})
+  secondCode: { type: Boolean, default: true },
+  status2: { type: String, default: '' },
+  codeType2: { type: String, default: '' },
+  color2: { type: String, default: 'info' }
+});
 </script>
 
 <style lang="scss">

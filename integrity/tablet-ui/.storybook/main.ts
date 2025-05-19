@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/vue3-vite';
+import createSvgSprite from 'vite-plugin-svg-sprite';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
@@ -10,6 +11,16 @@ const config: StorybookConfig = {
         viteConfigPath: 'vite.config.ts',
       },
     },
+  },
+  viteFinal: async (config, { configType }) => {
+    config.plugins = config.plugins || [];
+    config.plugins.push(
+      createSvgSprite({
+        include: '**/icons/*.svg',
+        symbolId: '[name]',
+      })
+    );
+    return config;
   },
 };
 
