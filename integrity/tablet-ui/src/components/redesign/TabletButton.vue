@@ -1,90 +1,110 @@
 <template>
-  <button
-    @mousedown="startAnimation" @touchstart="startAnimation"
-    @mouseup="finishAnimation" @touchend="finishAnimation"
-    v-touch-hold:1000:200:200.mouse="handleHold"
-    class="action-tablet-btn" :disabled="props.isDisabled"
+  <q-btn
+    class="action-tablet-btn"
     :class="btnClasses"
+    :disabled="props.isDisabled || btnStatus === 'done'"
+    no-caps
+    :ripple="false"
+    flat
+    ref="btnRef"
+    v-touch-hold:1000:200:200.mouse="handleHold"
+    @mousedown="startAnimation"
+    @touchstart="startAnimation"
+    @mouseup="finishAnimation"
+    @touchend="finishAnimation"
   >
-    <CommonIcon v-if="isActionSubmitted" name="done" :size="sizeIcon" />
+    <CommonIcon v-if="showSubmittedIcon" name="done" :size="sizeIcon" />
     <template v-else>
-      <span v-if="icon && locationIcon === 'left'" class="action-tablet-btn__icon-container justify-start">
-      <CommonIcon :name="icon" :size="sizeIcon" />
-        </span>
+      <span
+        v-if="icon && locationIcon === 'left'"
+        class="action-tablet-btn__icon-container justify-start"
+      >
+        <CommonIcon :name="icon" :size="sizeIcon" />
+      </span>
       <span class="action-tablet-btn__text">{{ text }}</span>
-      <span v-if="icon && locationIcon === 'right'" class="action-tablet-btn__icon-container justify-end">
-      <CommonIcon :name="icon" :size="sizeIcon" />
-        </span>
+      <span
+        v-if="icon && locationIcon === 'right'"
+        class="action-tablet-btn__icon-container justify-end"
+      >
+        <CommonIcon :name="icon" :size="sizeIcon" />
+      </span>
     </template>
-  </button>
+  </q-btn>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue';
 import CommonIcon from '../CommonIcon.vue';
 
-const isActionSubmitted = ref(null);
 const props = defineProps({
   color: {
     type: String,
     required: false,
-    validator: val => ['primary', 'secondary', 'plane', 'outline', 'red'].includes(val)
+    validator: (val) =>
+      ['primary', 'secondary', 'plane', 'outline', 'red'].includes(val),
   },
   text: {
     type: String,
-    required: false
+    required: false,
   },
   isDisabled: {
     type: Boolean,
-    required: false
+    required: false,
   },
   height: {
     type: String,
     required: false,
-    validator: val => ['large', 'medium', 'small', 'extra-small'].includes(val)
+    validator: (val) =>
+      ['large', 'medium', 'small', 'extra-small'].includes(val),
   },
   isRadius: {
     type: Boolean,
-    required: false
+    required: false,
   },
   locationIcon: {
     type: String,
-    required: false
+    required: false,
   },
   icon: {
     type: String,
-    required: false
+    required: false,
   },
   textAlignment: {
     type: String,
     required: false,
-    validator: val => ['left', 'center', 'right'].includes(val)
+    validator: (val) => ['left', 'center', 'right'].includes(val),
   },
   fitWidth: {
     type: Boolean,
-    required: false
+    required: false,
   },
   changeIcon: {
     type: Boolean,
-    required: false
-  }
+    required: false,
+  },
 });
 
 const emit = defineEmits(['actionSubmitted']);
 
+const btnRef = ref(null)
+const btnStatus = ref('default') // default, progress or done
+
+const showSubmittedIcon = computed(() => props.changeIcon && btnStatus.value === 'done')
+
 const btnClasses = computed(() => [
-  isActionSubmitted.value ? doneOpacity.value : '',
+  showSubmittedIcon.value ? doneOpacity.value : '',
   backgroundColor.value,
   buttonSize.value,
   borderRadius.value,
   {
-    'disabled': props.isDisabled,
+    'disabled': props.isDisabled || btnStatus.value === 'done',
     'fit-width': props.fitWidth,
-    'done-icon': isActionSubmitted.value,
     'min-width-empty': props.locationIcon === '',
-    'with-items-distance': props.withItemsDistance,
     [`text-${props.textAlignment}`]: props.textAlignment,
-  }
+    'in-progress': btnStatus.value === 'progress',
+    'done': showSubmittedIcon.value,
+    'not-radius': btnStatus.value === 'done' && !props.isRadius,
+  },
 ]);
 
 const doneOpacity = computed(() => {
@@ -99,6 +119,8 @@ const doneOpacity = computed(() => {
       return 'done-red';
     case 'primary':
       return 'done-primary';
+    default:
+      return 'done-primary'
   }
 });
 
@@ -142,42 +164,37 @@ const buttonSize = computed(() => {
   }
 });
 
-function handleHold({ evt, ...newInfo }) {
+const handleHold = ({ evt }) => {
   if (!props.isDisabled) {
-    isActionSubmitted.value = newInfo;
-    finishAnimation(evt);
-    evt.target.classList.add('done');
-    evt.target.disabled = true;
-    setTimeout(submitAction, 800);
+    if (props.changeIcon && btnRef.value) {
+      btnStatus.value = 'done'
+      finishAnimation(evt, true)
+    }
+    submitAction(evt)
   }
 }
 
-function submitAction() {
+const submitAction = () => {
   emit('actionSubmitted');
 }
 
-function startAnimation(event) {
-  if (!props.isDisabled) {
-    const buttonEl = (event.target)?.closest('button')
-    if (props.isRadius) {
-      buttonEl?.classList.add('in-progress');
-    } else {
-      buttonEl?.classList.add('in-progress');
-      buttonEl?.classList.add('not-radius');
-    }
-  }
+const stopAnimation = () => finishAnimation()
+
+const startAnimation = () => {
+  btnStatus.value = 'progress'
+  document.addEventListener('mouseup', stopAnimation)
+  document.addEventListener('touchend', stopAnimation)
 }
 
-function finishAnimation(event) {
-  if (!props.isDisabled) {
-    const buttonEl = (event.target)?.closest('button')
-    if (props.isRadius) {
-      buttonEl?.classList.remove('in-progress')
-    } else {
-      buttonEl?.classList.remove('in-progress')
-      buttonEl?.classList.remove('not-radius')
-    }
+const finishAnimation = (evt, finished) => {
+  console.log('FINISH')
+  if (finished) {
+    btnStatus.value = 'done'
+  } else {
+    btnStatus.value = 'default'
   }
+  document.removeEventListener('mouseup', stopAnimation)
+  document.removeEventListener('touchend', stopAnimation)
 }
 </script>
 
@@ -359,14 +376,33 @@ function finishAnimation(event) {
       justify-content: center;
       align-items: center;
     }
+
+    .q-btn__content {
+      justify-content: center;
+    }
   }
 
   &.fit-width {
     width: auto;
   }
 
-  &__text{
+  &__text {
     flex-grow: 1;
+    text-align: left;
+    width: min-content;
+  }
+
+  .q-btn__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: $s-2;
+    flex-wrap: nowrap;
+  }
+
+  .q-focus-helper{
+    display: none;
   }
 }
 

@@ -117,8 +117,8 @@ export default {
         type: 'radio',
         labels: {
           empty: 'Без иконки',
-          left: 'left',
-          right: 'right'
+          left: 'Слева',
+          right: 'Справа'
         }
       }
     },
@@ -236,7 +236,7 @@ export const IconLeftWithTextCenter = {
 
 export const IconLeftWithTextRight = {
   args: {
-    text: 'Иконка слева текст по центру',
+    text: 'Иконка слева текст справа',
     height: medium,
     color: primary,
     isRadius: false,
