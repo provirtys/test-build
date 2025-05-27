@@ -2,7 +2,7 @@
   <q-btn
     class="action-tablet-btn"
     :class="btnClasses"
-    :disabled="props.isDisabled || btnStatus === 'done'"
+    :disabled="btnDisabled"
     no-caps
     :ripple="false"
     flat
@@ -86,10 +86,12 @@ const props = defineProps({
 
 const emit = defineEmits(['actionSubmitted']);
 
-const btnRef = ref(null)
-const btnStatus = ref('default') // default, progress or done
+const btnRef = ref(null);
+const btnStatus = ref('default'); // default, progress or done
 
-const showSubmittedIcon = computed(() => props.changeIcon && btnStatus.value === 'done')
+const showSubmittedIcon = computed(
+  () => props.changeIcon && btnStatus.value === 'done'
+);
 
 const btnClasses = computed(() => [
   showSubmittedIcon.value ? doneOpacity.value : '',
@@ -97,12 +99,12 @@ const btnClasses = computed(() => [
   buttonSize.value,
   borderRadius.value,
   {
-    'disabled': props.isDisabled || btnStatus.value === 'done',
+    disabled: btnDisabled.value,
     'fit-width': props.fitWidth,
     'min-width-empty': props.locationIcon === '',
     [`text-${props.textAlignment}`]: props.textAlignment,
     'in-progress': btnStatus.value === 'progress',
-    'done': showSubmittedIcon.value,
+    done: showSubmittedIcon.value,
     'not-radius': btnStatus.value === 'done' && !props.isRadius,
   },
 ]);
@@ -120,7 +122,7 @@ const doneOpacity = computed(() => {
     case 'primary':
       return 'done-primary';
     default:
-      return 'done-primary'
+      return 'done-primary';
   }
 });
 
@@ -164,38 +166,45 @@ const buttonSize = computed(() => {
   }
 });
 
+const btnDisabled = computed(
+  () => props.isDisabled || btnStatus.value === 'done'
+);
+
 const handleHold = ({ evt }) => {
-  if (!props.isDisabled) {
-    if (props.changeIcon && btnRef.value) {
-      btnStatus.value = 'done'
-      finishAnimation(evt, true)
-    }
-    submitAction(evt)
+  if (btnDisabled.value) return;
+
+  if (props.changeIcon && btnRef.value) {
+    btnStatus.value = 'done';
+    finishAnimation(evt, true);
   }
-}
+  submitAction(evt);
+};
 
 const submitAction = () => {
   emit('actionSubmitted');
-}
+};
 
-const stopAnimation = () => finishAnimation()
+const stopAnimation = () => finishAnimation();
 
 const startAnimation = () => {
-  btnStatus.value = 'progress'
-  document.addEventListener('mouseup', stopAnimation)
-  document.addEventListener('touchend', stopAnimation)
-}
+  if (btnDisabled.value) return;
+
+  btnStatus.value = 'progress';
+  document.addEventListener('mouseup', stopAnimation);
+  document.addEventListener('touchend', stopAnimation);
+};
 
 const finishAnimation = (evt, finished) => {
-  console.log('FINISH')
-  if (finished) {
-    btnStatus.value = 'done'
+  if (btnDisabled.value) return;
+
+  if (props.changeIcon && finished) {
+    btnStatus.value = 'done';
   } else {
-    btnStatus.value = 'default'
+    btnStatus.value = 'default';
   }
-  document.removeEventListener('mouseup', stopAnimation)
-  document.removeEventListener('touchend', stopAnimation)
-}
+  document.removeEventListener('mouseup', stopAnimation);
+  document.removeEventListener('touchend', stopAnimation);
+};
 </script>
 
 <style lang="scss">
@@ -401,7 +410,7 @@ const finishAnimation = (evt, finished) => {
     flex-wrap: nowrap;
   }
 
-  .q-focus-helper{
+  .q-focus-helper {
     display: none;
   }
 }
