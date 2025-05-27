@@ -281,3 +281,13 @@ export const IconRightWithTextCenter = {
     textAlignment: 'right'
   }
 };
+
+export const ShowIconOnAction = {
+  args: {
+    text: 'Показывать иконку при отработке нажатия',
+    height: medium,
+    color: primary,
+    isRadius: false,
+    changeIcon: true
+  }
+};
