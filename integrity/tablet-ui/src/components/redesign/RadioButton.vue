@@ -5,7 +5,7 @@
     {{ buttonText }}
     <span class="radio-btn__status">
       <CommonIcon v-if="isIcon === 'icon'" name="numbers" :size="sizeIcon" />
-      <IconStatus v-if="isIcon === 'status' && isDisabled === false" :is-animate="isAnimate" :color="iconStatus"></IconStatus>
+      <StatusIndicator v-if="isIcon === 'status' && isDisabled === false" :is-animate="isAnimate" :color="iconStatus"></StatusIndicator>
     </span>
   </button>
 </template>
@@ -13,7 +13,7 @@
 <script setup>
 
 import {computed} from "vue";
-import IconStatus from "./IconStatus.vue";
+import StatusIndicator from "./StatusIndicator.vue";
 import CommonIcon from '../CommonIcon.vue';
 
 const props = defineProps({

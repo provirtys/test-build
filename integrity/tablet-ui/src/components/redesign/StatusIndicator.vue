@@ -1,14 +1,14 @@
 <template>
-  <div class="icon-status">
-    <div class="icon-status__indicator" :class="props.color">
+  <div class="status-indicator">
+    <div class="status-indicator__dot" :class="props.color">
     </div>
-    <div v-if="isAnimate" class="icon-status__border animate-ping" :class="props.color"></div>
+    <div v-if="isAnimate" class="status-indicator__border animate-ping" :class="props.color"></div>
   </div>
 </template>
 
 <script setup>
 const props = defineProps({
-  /** Цвет индикатора статуса принтера */
+  /** Цвет индикатора*/
   color: {
     type: String,
     default: 'info'
@@ -24,12 +24,12 @@ const props = defineProps({
 <style lang="scss">
 @import '../../css/main.scss';
 
-.icon-status {
+.status-indicator {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  &__indicator {
+  &__dot {
     width: $s-1;
     height: $s-1;
     border-radius: 50%;
@@ -53,25 +53,27 @@ const props = defineProps({
 
   &__border {
     position: absolute;
-    width: 18px;
-    height: 18px;
+    width: $s-1;
+    height: $s-1;
     border-radius: 50%;
     box-sizing: content-box;
+    border-width: 1px;
+    border-style: solid;
 
     &.info {
-      border: 1px solid $info-40;
+      border-color: $info-40;
     }
 
     &.warning {
-      border: 1px solid $warning-40;
+      border-color: $warning-40;
     }
 
     &.success {
-      border: 1px solid $success-40;
+      border-color: $success-40;
     }
 
     &.error {
-      border: 1px solid $error-40;
+      border-color: $error-40;
     }
   }
 }
@@ -79,15 +81,16 @@ const props = defineProps({
 .animate-ping {
   animation: ping 1.5s cubic-bezier(1, 1, 0, 0) infinite;
 }
-  @keyframes ping {
-    0% {
-      border-width: 2px;
-      scale: 0;
-    }
 
-    to {
-      border-width: 3px;
-      scale: 1.2;
-    }
+@keyframes ping {
+  from {
+    border-width: 1.5px;
+    scale: 0;
   }
+
+  to {
+    border-width: 2px;
+    scale: 2;
+  }
+}
 </style>

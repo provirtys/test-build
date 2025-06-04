@@ -3,13 +3,13 @@
     <CommonIcon v-if="codeType === 'Code128'" name="barcodeRedesign" />
     <CommonIcon v-else name="datamatrixRedesign" />
     <div v-if="status === 'verified' || status === 'synced'" class="labeling-code__status">
-      <IconStatus :is-animate="status === 'synced'" :color="color"></IconStatus>
+      <StatusIndicator :is-animate="status === 'synced'" :color="color"></StatusIndicator>
     </div>
   </div>
 </template>
 
 <script setup>
-import IconStatus from "./IconStatus.vue";
+import StatusIndicator from "./StatusIndicator.vue";
 import CommonIcon from '../CommonIcon.vue';
 
 defineProps({

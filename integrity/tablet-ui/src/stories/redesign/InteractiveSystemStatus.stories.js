@@ -34,12 +34,10 @@ export default {
         isSync: {
             description: 'Состояние синхронизации',
             options: [true, false],
-            control: {type: 'radio'},
         },
         isActive: {
             description: 'Режим отладки',
             options: [true, false],
-            control: {type: 'radio'},
         },
     },
     parameters: {

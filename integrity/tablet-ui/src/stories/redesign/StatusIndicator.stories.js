@@ -1,4 +1,4 @@
-import IconStatus from "../../components/redesign/IconStatus.vue";
+import StatusIndicator from "../../components/redesign/StatusIndicator.vue";
 
 const info = 'info'
 const success = 'success'
@@ -6,30 +6,29 @@ const error = 'error'
 const warning = 'warning'
 
 const colors = {info, warning, success, error}
-/** Компонент Иконка статуса. Можно регулировать цвет, анимированное состояние. */
+/** Компонент для отображения статуса сервиса. Можно регулировать цвет и включать/отключать анимацию. */
 export default {
-    title: "TabletUI-redesign/IconStatus",
-    component: IconStatus,
+    title: "TabletUI-redesign/StatusIndicator",
+    component: StatusIndicator,
     tags: ["autodocs"],
     argTypes: {
         color: {
-            description: 'Иконка статуса',
+            description: 'Цвет статуса',
             options: Object.keys(colors),
             mapping: colors,
             control: {
                 type: 'radio',
                 labels: {
-                    info: 'Информация (Info)',
-                    success: 'Система готова к работе (Success)',
-                    error: 'Система не готова к работе (Error)',
-                    warning: 'Настройка системы (Warning)'
+                    info: 'Info (Синий)',
+                    success: 'Success (Зеленый)',
+                    error: 'Error (Красный)',
+                    warning: 'Warning (Желтый)'
                 },
             },
         },
         isAnimate: {
             description: 'Анимированное состояние иконки',
             options: [true, false],
-            control: {type: 'radio'},
         },
     },
     parameters: {
@@ -51,18 +50,22 @@ export const Info = {
         isAnimate: true,
     },
 };
+
 export const Warning = {
     args: {
         color: 'warning',
         isAnimate: true,
     },
 };
+
 export const Success = {
     args: {
         color: 'success',
         isAnimate: true,
     },
-};export const Error = {
+};
+
+export const Error = {
     args: {
         color: 'error',
         isAnimate: true,

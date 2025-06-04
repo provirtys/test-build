@@ -5,13 +5,13 @@
           class="status-system"
           :class="[{ 'active': props.isActive }, { 'done': isActionSubmitted }, backgroundColor]">
     {{ t('system-status.' + statusType) }}
-    <IconStatus class="pointer-icon" :color="props.color" :is-animate="props.isSync"></IconStatus>
+    <StatusIndicator class="pointer-icon" :color="props.color" :is-animate="props.isSync"></StatusIndicator>
   </button>
 </template>
 
 <script setup>
 import {computed, ref} from "vue";
-import IconStatus from "./IconStatus.vue";
+import StatusIndicator from "./StatusIndicator.vue";
 import { setupI18n } from '../../i18n.js';
 
 const { t } = setupI18n();

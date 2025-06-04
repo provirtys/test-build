@@ -1,7 +1,7 @@
 export { default as BaseTable } from './components/redesign/BaseTable.vue';
 export { default as CardJob } from './components/redesign/CardJob.vue';
 export { default as Checkbox } from './components/redesign/Checkbox.vue';
-export { default as IconStatus } from './components/redesign/IconStatus.vue';
+export { default as StatusIndicator } from './components/redesign/StatusIndicator.vue';
 export { default as InteractiveSystemStatus } from './components/redesign/InteractiveSystemStatus.vue';
 export { default as KeyButton } from './components/redesign/KeyButton.vue';
 export { default as LabelingCard } from './components/redesign/LabelingCard.vue';
