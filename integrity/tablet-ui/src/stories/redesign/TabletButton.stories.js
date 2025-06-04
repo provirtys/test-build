@@ -20,23 +20,30 @@ const extraSmall = 'extra-small';
 const center = 'center';
 
 //Названия иконок
-const bad = 'bad'
-const arrow = 'arrow'
-const aggregation = 'aggregation'
-const finishAggregation = 'finishAggregation'
-const barCode = 'barCode'
-const dataMatrix = 'dataMatrix'
-const restart = 'restart'
+const bad = 'bad';
+const arrow = 'arrow';
+const aggregation = 'aggregation';
+const finishAggregation = 'finishAggregation';
+const barCode = 'barCode';
+const dataMatrix = 'dataMatrix';
+const restart = 'restart';
 
 const location = { left, right, empty };
 const colors = { primary, secondary, plane, outline };
 const sizes = { large, medium, small, extraSmall };
 const textAlignments = { left, center, right };
-const iconNames = { bad, arrow, aggregation, finishAggregation, barCode, dataMatrix, restart }
+const iconNames = {
+  bad,
+  arrow,
+  aggregation,
+  finishAggregation,
+  barCode,
+  dataMatrix,
+  restart,
+};
 
 /** Компонент кнопки с длительным нажатием, используемый на планшетах. Можно регулировать цвет кнопки, её текст и управлять
- * наличием иконки. Если в кнопке есть иконка, то текст выравнивается не по центру, а по левому краю, иконка
- * располагается справа. */
+ * наличием иконки и её расположением */
 export default {
   title: 'TabletUI-redesign/TabletButton',
   component: TabletButton,
@@ -44,8 +51,8 @@ export default {
   argTypes: {
     parameters: {
       backgrounds: {
-        default: 'white'
-      }
+        default: 'white',
+      },
     },
     color: {
       description: 'Цвет кнопки',
@@ -57,12 +64,12 @@ export default {
           primary: 'Primary',
           secondary: 'Secondary',
           plane: 'Plane',
-          outline: 'Outline'
-        }
-      }
+          outline: 'Outline',
+        },
+      },
     },
     text: {
-      description: 'Текст кнопки.'
+      description: 'Текст кнопки.',
     },
     textAlignment: {
       description: 'Положение текста',
@@ -73,14 +80,14 @@ export default {
         labels: {
           left: 'Слева',
           center: 'По центру',
-          right: 'Справа'
-        }
-      }
+          right: 'Справа',
+        },
+      },
     },
     isDisabled: {
       description: 'Неактивное состояние',
       options: [true, false],
-      control: { type: 'radio' }
+      control: { type: 'radio' },
     },
     height: {
       description: 'Размеры кнопки',
@@ -92,23 +99,25 @@ export default {
           large: 'Large (L)',
           medium: 'Medium (M)',
           small: 'Small (S)',
-          extraSmall: 'Extra small (XS)'
-        }
-      }
+          extraSmall: 'Extra small (XS)',
+        },
+      },
     },
     isRadius: {
       description: 'Скругление углов.',
       options: [true, false],
-      control: { type: 'radio' }
+      control: { type: 'radio' },
     },
     icon: {
-      description: 'Имя иконки (название файла из папки с иконками без расширения)',
+      description:
+        'Имя иконки (название файла из папки с иконками без расширения)',
       options: Object.keys(iconNames),
       mapping: iconNames,
       control: {
         type: 'radio',
-        labels: iconNames
-      }},
+        labels: iconNames,
+      },
+    },
     locationIcon: {
       description: 'Расположение иконки',
       options: Object.keys(location),
@@ -118,21 +127,21 @@ export default {
         labels: {
           empty: 'Без иконки',
           left: 'Слева',
-          right: 'Справа'
-        }
-      }
+          right: 'Справа',
+        },
+      },
     },
     fitWidth: {
       description: 'Отменить растягивание кнопки',
       options: [true, false],
-      control: { type: 'radio' }
+      control: { type: 'radio' },
     },
     changeIcon: {
       description: 'Показывать иконку галочки при отработке нажатия',
       options: [true, false],
-      control: { type: 'radio' }
-    }
-  }
+      control: { type: 'radio' },
+    },
+  },
 };
 
 export const Primary = {
@@ -140,8 +149,8 @@ export const Primary = {
     text: 'Начать маркировку',
     height: medium,
     isRadius: true,
-    color: primary
-  }
+    color: primary,
+  },
 };
 
 export const Secondary = {
@@ -149,8 +158,8 @@ export const Secondary = {
     text: 'Начать маркировку',
     height: medium,
     color: secondary,
-    isRadius: true
-  }
+    isRadius: true,
+  },
 };
 
 export const Plane = {
@@ -158,8 +167,8 @@ export const Plane = {
     text: 'Начать маркировку',
     height: medium,
     color: plane,
-    isRadius: true
-  }
+    isRadius: true,
+  },
 };
 
 export const Outline = {
@@ -167,8 +176,8 @@ export const Outline = {
     text: 'Начать маркировку',
     height: medium,
     color: outline,
-    isRadius: true
-  }
+    isRadius: true,
+  },
 };
 
 export const Disabled = {
@@ -177,8 +186,8 @@ export const Disabled = {
     height: medium,
     isDisabled: true,
     color: primary,
-    isRadius: true
-  }
+    isRadius: true,
+  },
 };
 
 export const NotRounded = {
@@ -186,8 +195,8 @@ export const NotRounded = {
     text: 'Не скругленная',
     height: medium,
     color: primary,
-    isRadius: false
-  }
+    isRadius: false,
+  },
 };
 
 export const TextCenter = {
@@ -196,8 +205,8 @@ export const TextCenter = {
     height: medium,
     color: primary,
     isRadius: false,
-    textAlignment: 'center'
-  }
+    textAlignment: 'center',
+  },
 };
 
 export const TextRight = {
@@ -206,8 +215,8 @@ export const TextRight = {
     height: medium,
     color: primary,
     isRadius: false,
-    textAlignment: 'right'
-  }
+    textAlignment: 'right',
+  },
 };
 
 export const IconLeftWithTextLeft = {
@@ -218,8 +227,8 @@ export const IconLeftWithTextLeft = {
     isRadius: false,
     locationIcon: 'left',
     icon: 'bad',
-    textAlignment: 'left'
-  }
+    textAlignment: 'left',
+  },
 };
 
 export const IconLeftWithTextCenter = {
@@ -230,8 +239,8 @@ export const IconLeftWithTextCenter = {
     isRadius: false,
     locationIcon: 'left',
     icon: 'bad',
-    textAlignment: 'center'
-  }
+    textAlignment: 'center',
+  },
 };
 
 export const IconLeftWithTextRight = {
@@ -242,8 +251,8 @@ export const IconLeftWithTextRight = {
     isRadius: false,
     locationIcon: 'left',
     icon: 'bad',
-    textAlignment: 'right'
-  }
+    textAlignment: 'right',
+  },
 };
 
 export const IconRightWithTextLeft = {
@@ -254,8 +263,8 @@ export const IconRightWithTextLeft = {
     isRadius: false,
     locationIcon: 'right',
     icon: 'bad',
-    textAlignment: 'left'
-  }
+    textAlignment: 'left',
+  },
 };
 
 export const IconRightTextCenter = {
@@ -266,8 +275,8 @@ export const IconRightTextCenter = {
     isRadius: false,
     locationIcon: 'right',
     icon: 'bad',
-    textAlignment: 'center'
-  }
+    textAlignment: 'center',
+  },
 };
 
 export const IconRightWithTextCenter = {
@@ -278,8 +287,8 @@ export const IconRightWithTextCenter = {
     isRadius: false,
     locationIcon: 'right',
     icon: 'bad',
-    textAlignment: 'right'
-  }
+    textAlignment: 'right',
+  },
 };
 
 export const ShowIconOnAction = {
@@ -288,6 +297,6 @@ export const ShowIconOnAction = {
     height: medium,
     color: primary,
     isRadius: false,
-    changeIcon: true
-  }
+    changeIcon: true,
+  },
 };
