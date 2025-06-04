@@ -1,64 +1,91 @@
 <template>
-  <button
-      class="checkbox" :class="[{'active': isActive}, {'plane': isPlane }, buttonSize]" @click="submitAction">
-    <div class="checkbox__title" :class="buttonSize">
-      <CommonIcon :name="isActive ? 'checkbox-transparent-select' : 'checkbox-transparent-empty'" :size="iconSizes[height]['checkbox']" />
-      {{ buttonText }}
-    </div>
-    <CommonIcon v-if="isIcon" name="qr" :size="iconSizes[height]['qr']" />
-  </button>
+  <label :class="classes">
+    <input
+      type="checkbox"
+      class="checkbox__input"
+      :checked="modelValue"
+      :disabled="isDisabled"
+      @change="() => $emit('update:modelValue', !modelValue)"
+    />
+    <CommonIcon
+      :name="checkboxIconName"
+      :size="iconSizes[height]['checkbox']"
+    />
+    <span :class="['checkbox__title', buttonSize]">{{ label }}</span>
+    <CommonIcon
+      v-if="iconName"
+      :name="iconName"
+      :size="iconSizes[height]['icon']"
+    />
+  </label>
 </template>
 
 <script setup>
-import {computed} from "vue";
+import { computed } from 'vue';
 import CommonIcon from '../CommonIcon.vue';
 
 const props = defineProps({
-  isIcon: { type: Boolean, default: false },
   /** Выбранное значение */
-  isActive: { type: Boolean, default: false },
+  modelValue: { type: Boolean, default: false },
+  /** Имя иконки */
+  iconName: { type: String, default: '' },
   /** Вид Plane */
   isPlane: { type: Boolean, default: false },
   /** Высота */
-  height: {type: String, default: 'large'},
+  height: { type: String, default: 'large' },
   /** Текст кнопки */
-  buttonText: {type: String, default: 'Checkbox'}
-})
+  label: { type: String, default: 'Checkbox' },
+  /** Активность чекбокса */
+  isDisabled: { type: Boolean, default: false },
+});
 
-const emit = defineEmits(['actionSubmitted'])
-function submitAction() {
-  emit('actionSubmitted')
-}
+defineEmits(['update:modelValue']);
+
+const classes = computed(() => [
+  'checkbox',
+  buttonSize.value,
+  {
+    active: props.modelValue,
+    plane: props.isPlane,
+    disabled: props.isDisabled,
+  },
+]);
+
+const checkboxIconName = computed(() =>
+  props.modelValue
+    ? 'checkbox-transparent-select'
+    : 'checkbox-transparent-empty'
+);
 
 const iconSizes = {
-  'large': {
-    'qr': 60,
-    'checkbox': 44,
+  large: {
+    icon: 60,
+    checkbox: 44,
   },
-  'medium': {
-    'qr': 52,
-    'checkbox': 36,
+  medium: {
+    icon: 52,
+    checkbox: 36,
   },
-  'small': {
-    'qr': 44,
-    'checkbox': 28,
+  small: {
+    icon: 44,
+    checkbox: 28,
   },
   'extra-small': {
-    'qr': 36,
-    'checkbox': 28,
-  }
-}
+    icon: 36,
+    checkbox: 28,
+  },
+};
 
 const buttonSize = computed(() => {
   switch (props.height) {
     case 'medium':
     case 'small':
     case 'extra-small':
-      return props.height
+      return props.height;
     default:
-      return 'large'
+      return 'large';
   }
-})
+});
 </script>
 
 <style lang="scss">
@@ -77,23 +104,6 @@ const buttonSize = computed(() => {
   border: 1px solid $dark-gray;
   animation: none;
   background: none;
-
-&__title {
-  font-size: $font-size-p1;
-  font-family: Golos UI-medium;
-  letter-spacing: -0.24px;
-  line-height: $s-4;
-  color: $dark-gray;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 16px;
-
-  &.extra-small {
-    font-size: $font-size-p2;
-  }
-}
 
   &.active {
     background: $primary-text-20;
@@ -127,6 +137,28 @@ const buttonSize = computed(() => {
     height: $l-1;
     padding: $d-1 $s-2;
     gap: $s-1;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__title {
+    font-size: $font-size-p1;
+    font-family: Golos UI-medium, sans-serif;
+    letter-spacing: -0.24px;
+    line-height: $s-4;
+    color: $dark-gray;
+    margin-right: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+
+    &.extra-small {
+      font-size: $font-size-p2;
+    }
   }
 }
 </style>
