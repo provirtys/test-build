@@ -52,7 +52,15 @@ const createMockFetch = (loadingTime, shouldFail, mockData) => {
   };
 };
 
-export const Primary = (args) => ({
+const BaseArgs = {
+  fallbackIcon: 'status-error',
+  loadingText: 'Обновление...',
+  fallbackText: 'Ошибка',
+  updateBtnText: 'Обновить',
+  isLoading: false
+}
+
+const BaseComponent = (args) => ({
   components: { FallbackLoader },
   setup() {
     const isLoading = ref(false);
@@ -90,37 +98,45 @@ export const Primary = (args) => ({
       @on-update="handleUpdate"
     />
   `,
+  args: {
+    loadingText: 'teqwe'
+  }
 });
 
-export const IconChange = Primary.bind({});
+export const Primary = BaseComponent.bind({});
+Primary.args = {
+  ...BaseArgs,
+};
+
+export const IconChange = BaseComponent.bind({});
 IconChange.args = {
-  ...Primary.args,
+  ...BaseArgs,
   fallbackIcon: 'bad'
 };
 
-export const CustomText = Primary.bind({});
+export const CustomText = BaseComponent.bind({});
 CustomText.args = {
-  ...Primary.args,
+  ...BaseArgs,
   fallbackText: 'Что-то пошло не так',
   loadingText: 'Загрузка данных...',
   updateBtnText: 'Повторить запрос',
 };
 
-export const NoLoadingText = Primary.bind({});
+export const NoLoadingText = BaseComponent.bind({});
 NoLoadingText.args = {
-  ...Primary.args,
+  ...BaseArgs,
   loadingText: ''
 };
 
-export const NoFallbackText = Primary.bind({});
+export const NoFallbackText = BaseComponent.bind({});
 NoFallbackText.args = {
-  ...Primary.args,
+  ...BaseArgs,
   fallbackText: ''
 };
 
-export const NoFallbackIcon= Primary.bind({});
+export const NoFallbackIcon= BaseComponent.bind({});
 NoFallbackIcon.args = {
-  ...Primary.args,
+  ...BaseArgs,
   fallbackIcon: ''
 };
 
