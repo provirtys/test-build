@@ -1,51 +1,56 @@
 <template>
   <svg
-    :width="width ?? size ?? baseSize.width"
-    :height="height ?? size ?? baseSize.height"
+    :width="iconSize.width"
+    :height="iconSize.height"
     aria-hidden="true"
     class="flex"
-    :viewBox="viewBox"
+    :viewBox="`0 0 ${iconSize.width} ${iconSize.height}`"
   >
     <use :xlink:href="`#${name}`" />
   </svg>
 </template>
 
 <script setup>
-import { reactive, onMounted } from 'vue'
+import {reactive, onMounted, computed} from 'vue';
 
 const props = defineProps({
   width: {
     type: [String, Number],
-    required: false
+    required: false,
   },
   height: {
     type: [String, Number],
-    required: false
+    required: false,
   },
   size: {
     type: [String, Number],
-    required: false
+    required: false,
   },
   name: {
     type: [String, Number],
-    required: true
+    required: true,
   },
-})
+});
 
 const baseSize = reactive({
   width: null,
-  height: null
-})
+  height: null,
+});
+
+const iconSize = computed(() => ({
+  width: props.width ?? props.size ?? baseSize.width,
+  height: props.height ?? props.size ?? baseSize.height,
+}));
 
 onMounted(() => {
-  const svgElement = document.querySelector(`#${props.name}`)
+  const svgElement = document.querySelector(`#${props.name}`);
   if (svgElement) {
-    const originalViewBox = svgElement.getAttribute('viewBox')
+    const originalViewBox = svgElement.getAttribute('viewBox');
     if (originalViewBox) {
-      const viewBoxArr = originalViewBox.split(/[\s,]+/).filter(Boolean)
-      baseSize.width = viewBoxArr[2]
-      baseSize.height = viewBoxArr[3]
+      const viewBoxArr = originalViewBox.split(/[\s,]+/).filter(Boolean);
+      baseSize.width = viewBoxArr[2];
+      baseSize.height = viewBoxArr[3];
     }
   }
-})
+});
 </script>
