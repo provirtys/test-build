@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="card-task__arrow" @click="openTaskDetails">
-      <CommonIcon name="arrow" size="30"/>
+      <CommonIcon name="arrow" size="30" />
     </div>
   </div>
 </template>
@@ -24,29 +24,29 @@
 <script setup>
 import MarkingStatus from './MarkingStatus.vue'
 import ProgressPie from './ProgressPie.vue'
-import CommonIcon from './CommonIcon.vue';
+import CommonIcon from './CommonIcon.vue'
 
 const props = defineProps({
   id: {
     type: String,
-    default: ''
+    default: '',
   },
   title: {
     type: String,
-    default: ''
+    default: '',
   },
   toolItems: {
     type: Object,
-    default: () => ({})
+    default: () => ({}),
   },
   markingStatus: {
     type: String,
-    default: ''
+    default: '',
   },
   progress: {
     type: Number,
-    default: 0
-  }
+    default: 0,
+  },
 })
 
 const emit = defineEmits(['openTaskDetails'])

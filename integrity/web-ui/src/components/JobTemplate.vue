@@ -90,9 +90,9 @@
 </template>
 
 <script setup>
-import { reactive, ref, watch } from 'vue';
-import { v4 as uuidv4 } from 'uuid';
-import { setupI18n } from '../i18n.js';
+import { reactive, ref, watch } from 'vue'
+import { v4 as uuidv4 } from 'uuid'
+import { setupI18n } from '../i18n.js'
 import { TemplateModel } from '../utils/template_pb'
 import DMProto from '../utils/DMProto'
 
@@ -101,117 +101,117 @@ const { t } = setupI18n()
 
 const emit = defineEmits(['createTemplate'])
 
-const rows = reactive([{ uuid: uuidv4(), key: '', value: '' }]);
-const svgnode = ref('');
-const attributes = ref([]);
-const taskText = ref('');
-const taskSku = ref('');
-const isDisabledButton = ref(true);
+const rows = reactive([{ uuid: uuidv4(), key: '', value: '' }])
+const svgnode = ref('')
+const attributes = ref([])
+const taskText = ref('')
+const taskSku = ref('')
+const isDisabledButton = ref(true)
 
 const addRow = () => {
-  rows.push({ uuid: uuidv4(), key: '', value: '' });
-};
+  rows.push({ uuid: uuidv4(), key: '', value: '' })
+}
 const removeRow = (row) => {
-  const idx = rows.indexOf(row);
+  const idx = rows.indexOf(row)
   if (idx > -1) {
-    rows.splice(idx, 1);
+    rows.splice(idx, 1)
   }
-};
+}
 
 // Проверка на пустое поле Название задачи
 function notEmptyInputs() {
   if (taskText.value !== '' && taskSku.value !== '') {
-    return true;
+    return true
   }
 }
 
 // Проверка на пустое поле Наименование - Значение
 function notEmpty() {
-  let hasErrorNoEmpty = false;
+  let hasErrorNoEmpty = false
   for (let i = 0; i <= rows.length - 1; i++) {
     if (rows[i].key === '' || rows[i].value === '') {
-      hasErrorNoEmpty = true; // поле пустое
-      break;
+      hasErrorNoEmpty = true // поле пустое
+      break
     } else {
-      hasErrorNoEmpty = false; // поле не пустое
+      hasErrorNoEmpty = false // поле не пустое
     }
   }
-  return !hasErrorNoEmpty;
+  return !hasErrorNoEmpty
 }
 
 // Проверка на уникальность поля Наименование
 function notUniqueValue(currentRow, val) {
-  let hasErrorUniqueValue = false;
+  let hasErrorUniqueValue = false
   for (const row of rows) {
     // В ЦИКЛЕ РАССМАТРИВАЕМ ВСЕ СТРОЧКИ
     if (row.uuid !== currentRow.uuid) {
       // если uuid строки из массива не совпадает с проверяемой, то выполняем проверку
       if (row.key === currentRow.key) {
-        hasErrorUniqueValue = true; // есть совпадение
-        break;
+        hasErrorUniqueValue = true // есть совпадение
+        break
       } else {
-        hasErrorUniqueValue = false; // отсутствует совпадение
+        hasErrorUniqueValue = false // отсутствует совпадение
       }
     }
   }
-  return hasErrorUniqueValue;
+  return hasErrorUniqueValue
 }
 
 watch(taskText, () => {
-  notStoke();
-});
+  notStoke()
+})
 watch(taskSku, () => {
-  notStoke();
-});
+  notStoke()
+})
 watch(
   () => rows,
   () => {
-    notStoke();
+    notStoke()
   },
   { deep: true }
-);
+)
 
 // проверка на отсутствие хотя бы одной строки Наименование - Значение
 async function notStoke() {
   if (rows.length < 1) {
-    isDisabledButton.value = true;
+    isDisabledButton.value = true
   } else if (notEmpty() && notEmptyInputs()) {
     for (let i = 0; i <= rows.length - 1; i++) {
       if (notUniqueValue(rows[i])) {
-        isDisabledButton.value = true;
-        break;
+        isDisabledButton.value = true
+        break
       } else {
-        isDisabledButton.value = false;
+        isDisabledButton.value = false
       }
     }
-    return isDisabledButton.value;
+    return isDisabledButton.value
   } else {
-    isDisabledButton.value = true;
+    isDisabledButton.value = true
   }
 }
 
 function saveData() {
-  const form = {};
+  const form = {}
   // Добавление свойства в объект
   for (let i = 0; i <= rows.length - 1; i++) {
     if (rows[i].key === '' || rows[i].value === '') {
-      rows.filter((item) => item.key !== '' || item.key !== '');
+      rows.filter((item) => item.key !== '' || item.key !== '')
     } else {
-      form[rows[i].key] = rows[i].value;
+      form[rows[i].key] = rows[i].value
     }
     attributes.value = Object.entries(form).map(([key, value]) => ({
       key,
       value,
-    }));
+    }))
   }
 }
 
 async function generateDataMatrix() {
-  saveData();
+  saveData()
   const value = {
     title: taskText.value,
     sku: taskSku.value,
-    attributes: attributes.value
+    attributes: attributes.value,
   }
 
   const product = dmproto.encode(value)
@@ -225,7 +225,7 @@ async function generateDataMatrix() {
     text: product,
     binarytext: true,
     parse: true,
-    parsefnc: true
+    parsefnc: true,
   })
 
   const e = document.getElementById('factory-barcode')
@@ -244,8 +244,12 @@ async function generateDataMatrix() {
 }
 
 async function createTemplate() {
-  saveData();
-  emit('createTemplate', { title: taskText.value, sku: taskSku.value, attributes: attributes.value })
+  saveData()
+  emit('createTemplate', {
+    title: taskText.value,
+    sku: taskSku.value,
+    attributes: attributes.value,
+  })
 }
 </script>
 

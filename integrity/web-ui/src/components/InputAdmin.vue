@@ -10,21 +10,16 @@
     >
       <template v-slot:prepend>
         <q-icon v-if="filter === ''" name="sym_o_search" />
-        <q-icon
-          v-else
-          name="sym_o_close"
-          class="cursor-pointer"
-          @click="filter = ''"
-        />
+        <q-icon v-else name="sym_o_close" class="cursor-pointer" @click="filter = ''" />
       </template>
     </q-input>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { QInput, QIcon } from 'quasar';
-import 'quasar/dist/quasar.css';
+import { ref } from 'vue'
+import { QInput, QIcon } from 'quasar'
+import 'quasar/dist/quasar.css'
 
 let props = defineProps({
   /** Подпись элемента*/
@@ -32,9 +27,9 @@ let props = defineProps({
     type: String,
     default: '',
   },
-});
+})
 
-const filter = ref('');
+const filter = ref('')
 </script>
 
 <style lang="scss">

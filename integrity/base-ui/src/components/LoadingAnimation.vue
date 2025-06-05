@@ -1,11 +1,11 @@
 <template>
-    <div class="loading-animation__wrapper">
-        <img class="animation__bg" src="../assets/images/loading.svg" alt="" />
-        <img class="animation animation_25" src="../assets/images/loading-part.svg" alt="" />
-        <img class="animation animation_50" src="../assets/images/loading-part.svg" alt="" />
-        <img class="animation animation_75" src="../assets/images/loading-part.svg" alt="" />
-        <img class="animation animation_100" src="../assets/images/loading-part.svg" alt="" />
-    </div>
+  <div class="loading-animation__wrapper">
+    <img class="animation__bg" src="../assets/images/loading.svg" alt="" />
+    <img class="animation animation_25" src="../assets/images/loading-part.svg" alt="" />
+    <img class="animation animation_50" src="../assets/images/loading-part.svg" alt="" />
+    <img class="animation animation_75" src="../assets/images/loading-part.svg" alt="" />
+    <img class="animation animation_100" src="../assets/images/loading-part.svg" alt="" />
+  </div>
 </template>
 
 <script setup></script>
@@ -32,42 +32,42 @@
 }
 
 .loading-animation__wrapper {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 
-    .animation {
-        position: absolute;
-        top: 0;
-        right: 0;
-        animation-name: loading;
-        animation-duration: 4s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        opacity: 0;
+  .animation {
+    position: absolute;
+    top: 0;
+    right: 0;
+    animation-name: loading;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    opacity: 0;
 
-        &__bg {
-            margin-bottom: 50px;
-        }
-
-        &_25 {
-            animation-delay: 0s;
-            transform: rotate(0deg);
-        }
-
-        &_50 {
-            animation-delay: .3s;
-            transform: rotate(90deg);
-        }
-
-        &_75 {
-            animation-delay: .6s;
-            transform: rotate(180deg);
-        }
-
-        &_100 {
-            animation-delay: .9s;
-            transform: rotate(270deg);
-        }
+    &__bg {
+      margin-bottom: 50px;
     }
+
+    &_25 {
+      animation-delay: 0s;
+      transform: rotate(0deg);
+    }
+
+    &_50 {
+      animation-delay: 0.3s;
+      transform: rotate(90deg);
+    }
+
+    &_75 {
+      animation-delay: 0.6s;
+      transform: rotate(180deg);
+    }
+
+    &_100 {
+      animation-delay: 0.9s;
+      transform: rotate(270deg);
+    }
+  }
 }
 </style>

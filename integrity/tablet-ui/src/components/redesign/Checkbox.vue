@@ -7,22 +7,15 @@
       :disabled="isDisabled"
       @change="() => $emit('update:modelValue', !modelValue)"
     />
-    <CommonIcon
-      :name="checkboxIconName"
-      :size="iconSizes[height]['checkbox']"
-    />
+    <CommonIcon :name="checkboxIconName" :size="iconSizes[height]['checkbox']" />
     <span :class="['checkbox__title', buttonSize]">{{ label }}</span>
-    <CommonIcon
-      v-if="iconName"
-      :name="iconName"
-      :size="iconSizes[height]['icon']"
-    />
+    <CommonIcon v-if="iconName" :name="iconName" :size="iconSizes[height]['icon']" />
   </label>
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import CommonIcon from '../CommonIcon.vue';
+import { computed } from 'vue'
+import CommonIcon from '../CommonIcon.vue'
 
 const props = defineProps({
   /** Выбранное значение */
@@ -37,9 +30,9 @@ const props = defineProps({
   label: { type: String, default: 'Checkbox' },
   /** Активность чекбокса */
   isDisabled: { type: Boolean, default: false },
-});
+})
 
-defineEmits(['update:modelValue']);
+defineEmits(['update:modelValue'])
 
 const classes = computed(() => [
   'checkbox',
@@ -49,13 +42,11 @@ const classes = computed(() => [
     plane: props.isPlane,
     disabled: props.isDisabled,
   },
-]);
+])
 
 const checkboxIconName = computed(() =>
-  props.modelValue
-    ? 'checkbox-transparent-select'
-    : 'checkbox-transparent-empty'
-);
+  props.modelValue ? 'checkbox-transparent-select' : 'checkbox-transparent-empty'
+)
 
 const iconSizes = {
   large: {
@@ -74,18 +65,18 @@ const iconSizes = {
     icon: 36,
     checkbox: 28,
   },
-};
+}
 
 const buttonSize = computed(() => {
   switch (props.height) {
     case 'medium':
     case 'small':
     case 'extra-small':
-      return props.height;
+      return props.height
     default:
-      return 'large';
+      return 'large'
   }
-});
+})
 </script>
 
 <style lang="scss">

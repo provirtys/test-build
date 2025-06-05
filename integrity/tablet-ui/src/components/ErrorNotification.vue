@@ -1,21 +1,21 @@
 <template>
-    <q-dialog v-model="errorModal" class="error-message" position="top">
-      <q-card class="full-width">
-        <q-card-section class="row items-center no-wrap">
-          <p>{{ errorText }}</p>
-        </q-card-section>
-      </q-card>
-    </q-dialog>
+  <q-dialog v-model="errorModal" class="error-message" position="top">
+    <q-card class="full-width">
+      <q-card-section class="row items-center no-wrap">
+        <p>{{ errorText }}</p>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { QDialog, QCard, QCardSection } from 'quasar';
+import { QDialog, QCard, QCardSection } from 'quasar'
 import 'quasar/dist/quasar.css'
 
 const props = defineProps({
-    /** Текст ошибки */
-    errorText: { type: String, default: '' }
+  /** Текст ошибки */
+  errorText: { type: String, default: '' },
 })
 const errorModal = ref(true)
 </script>
@@ -25,7 +25,7 @@ const errorModal = ref(true)
 
 .error-message {
   .q-dialog__inner--minimized {
-    padding: 0
+    padding: 0;
   }
 
   .q-card {
@@ -47,6 +47,6 @@ const errorModal = ref(true)
   }
 }
 .q-dialog__inner > div {
-    border-radius: $s-3;
+  border-radius: $s-3;
 }
 </style>

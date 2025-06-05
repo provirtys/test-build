@@ -2,57 +2,56 @@
   <div class="user">
     <span :class="classes">{{ t('bindingCode') }}</span>
     <div class="binding-barcode">
-      <div id="factory-barcode" v-html="svgnode">
-      </div>
+      <div id="factory-barcode" v-html="svgnode"></div>
     </div>
   </div>
 </template>
 
 <script setup>
-import {ref, onMounted, computed} from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import DATAMatrix from '../datamatrix.js'
 import { setupI18n } from '../i18n.js'
 
 const { t } = setupI18n()
 
 let props = defineProps({
-  uuid: {type: String, default: ''},
-  name: {type: String, default: ''},
-  isBackgroundDark: {type: Boolean, default: false},
+  uuid: { type: String, default: '' },
+  name: { type: String, default: '' },
+  isBackgroundDark: { type: Boolean, default: false },
 })
 
 const classes = computed(() => {
-  let color_text = props.isBackgroundDark === false ? "black-color" : "white-color"
+  let color_text = props.isBackgroundDark === false ? 'black-color' : 'white-color'
   return `${color_text}`
 })
 
-const svgnode = ref("")
+const svgnode = ref('')
 
 onMounted(() => {
   const data = {
     uuid: props.uuid,
-    name: props.name
+    name: props.name,
   }
   const datamatrix_text = JSON.stringify(data).replace(/[\u007F-\uFFFF]/g, (chr) => {
-    return "\\u" + ("0000" + chr.charCodeAt(0).toString(16)).substr(-4)
-  });
-  const pad = 5;
+    return '\\u' + ('0000' + chr.charCodeAt(0).toString(16)).substr(-4)
+  })
+  const pad = 5
   const datamatrix = DATAMatrix({
     msg: datamatrix_text,
-    dim: 180,	// dimensions
-    rct: 0,	// keep datamatrix square
-    pad,	// padding
-    pal: ["#000000", props.isBackgroundDark ? "#fff" : ""],	// pallette
-    vrb: 1,	// verbose
-  });
-  const e = document.getElementById("factory-barcode");
+    dim: 180, // dimensions
+    rct: 0, // keep datamatrix square
+    pad, // padding
+    pal: ['#000000', props.isBackgroundDark ? '#fff' : ''], // pallette
+    vrb: 1, // verbose
+  })
+  const e = document.getElementById('factory-barcode')
   if (e) {
     while (e.childNodes[0]) {
-      e.removeChild(e.childNodes[0]);
+      e.removeChild(e.childNodes[0])
     }
-    e.appendChild(datamatrix);
+    e.appendChild(datamatrix)
   }
-  svgnode.value = datamatrix.outerHTML;
+  svgnode.value = datamatrix.outerHTML
 })
 </script>
 

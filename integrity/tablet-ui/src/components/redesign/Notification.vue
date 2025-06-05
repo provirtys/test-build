@@ -13,33 +13,33 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 const props = defineProps({
   bgColor: {
     type: String,
-    default: '#206DC8'
+    default: '#206DC8',
   },
   iconColor: {
     type: String,
-    default: '#206DC8'
+    default: '#206DC8',
   },
   text: {
     type: String,
-    default: 'Info'
+    default: 'Info',
   },
   isTransparent: {
     type: Boolean,
-    default: true
-  }
-});
+    default: true,
+  },
+})
 
 const alertStyles = computed(() => ({
-  backgroundColor: props.isTransparent ? `${props.bgColor}10` : `${props.bgColor}`
-}));
+  backgroundColor: props.isTransparent ? `${props.bgColor}10` : `${props.bgColor}`,
+}))
 const iconStyles = computed(() => ({
-  color: props.iconColor
-}));
+  color: props.iconColor,
+}))
 </script>
 
 <style lang="scss">

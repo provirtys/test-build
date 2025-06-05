@@ -1,7 +1,6 @@
 <template>
   <div class="status-indicator">
-    <div class="status-indicator__dot" :class="props.color">
-    </div>
+    <div class="status-indicator__dot" :class="props.color"></div>
     <div v-if="isAnimate" class="status-indicator__border animate-ping" :class="props.color"></div>
   </div>
 </template>
@@ -11,12 +10,12 @@ const props = defineProps({
   /** Цвет индикатора*/
   color: {
     type: String,
-    default: 'info'
+    default: 'info',
   },
   /** Анимированное состояние иконки*/
   isAnimate: {
     type: Boolean,
-    default: false
+    default: false,
   },
 })
 </script>

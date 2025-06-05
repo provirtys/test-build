@@ -1,41 +1,49 @@
 <template>
-  <button @mousedown="startAnimation" @touchstart="startAnimation"
-          @mouseup="finishAnimation" @touchend="finishAnimation"
-          v-touch-hold:1000.mouse="handleHold"
-          class="status-system"
-          :class="[{ 'active': props.isActive }, { 'done': isActionSubmitted }, backgroundColor]">
+  <button
+    @mousedown="startAnimation"
+    @touchstart="startAnimation"
+    @mouseup="finishAnimation"
+    @touchend="finishAnimation"
+    v-touch-hold:1000.mouse="handleHold"
+    class="status-system"
+    :class="[{ active: props.isActive }, { done: isActionSubmitted }, backgroundColor]"
+  >
     {{ t('system-status.' + statusType) }}
-    <StatusIndicator class="pointer-icon" :color="props.color" :is-animate="props.isSync"></StatusIndicator>
+    <StatusIndicator
+      class="pointer-icon"
+      :color="props.color"
+      :is-animate="props.isSync"
+    ></StatusIndicator>
   </button>
 </template>
 
 <script setup>
-import {computed, ref} from "vue";
-import StatusIndicator from "./StatusIndicator.vue";
-import { setupI18n } from '../../i18n.js';
+import { computed, ref } from 'vue'
+import StatusIndicator from './StatusIndicator.vue'
+import { setupI18n } from '../../i18n.js'
 
-const { t } = setupI18n();
+const { t } = setupI18n()
 
 const props = defineProps({
   /** Цвет индикатора статуса принтера */
   color: {
     type: String,
-    default: ''
+    default: '',
   },
   /** Текст статуса принтера */
   statusType: {
     type: String,
-    default: ''
+    default: '',
   },
   /** Текст статуса принтера */
   isSync: {
     type: Boolean,
-    default: false
+    default: false,
   },
   /** Режим отладки */
   isActive: {
     type: Boolean,
-    default: false
+    default: false,
   },
 })
 
@@ -57,7 +65,7 @@ const backgroundColor = computed(() => {
   }
 })
 
-function handleHold({evt, ...newInfo}) {
+function handleHold({ evt, ...newInfo }) {
   if (props.isActive) {
     finishAnimation(evt)
     setTimeout(submitAction, 800)
@@ -94,7 +102,8 @@ function finishAnimation(event) {
     }
     if (props.color === 'warning') {
       event.target.classList.remove('in-progress-warning')
-    }  }
+    }
+  }
 }
 </script>
 

@@ -1,21 +1,21 @@
-import Checkbox from '../../components/redesign/Checkbox.vue';
+import Checkbox from '../../components/redesign/Checkbox.vue'
 
 // Размеры кнопки
-const large = 'large';
-const medium = 'medium';
-const small = 'small';
-const extraSmall = 'extra-small';
+const large = 'large'
+const medium = 'medium'
+const small = 'small'
+const extraSmall = 'extra-small'
 
 //Названия иконок
-const qr = 'qr';
-const aggregation = 'aggregation';
-const finishAggregation = 'finishAggregation';
-const barCode = 'barCode';
-const dataMatrix = 'dataMatrix';
-const done = 'done';
-const iconNames = { qr, aggregation, finishAggregation, barCode, dataMatrix, done };
+const qr = 'qr'
+const aggregation = 'aggregation'
+const finishAggregation = 'finishAggregation'
+const barCode = 'barCode'
+const dataMatrix = 'dataMatrix'
+const done = 'done'
+const iconNames = { qr, aggregation, finishAggregation, barCode, dataMatrix, done }
 
-const sizes = { large, medium, small, extraSmall };
+const sizes = { large, medium, small, extraSmall }
 
 export default {
   title: 'TabletUI-redesign/Checkbox',
@@ -30,8 +30,7 @@ export default {
       options: [true, false],
     },
     iconName: {
-      description:
-        'Имя иконки (название файла из папки с иконками без расширения)',
+      description: 'Имя иконки (название файла из папки с иконками без расширения)',
       options: Object.keys(iconNames),
       mapping: iconNames,
       control: {
@@ -73,7 +72,7 @@ export default {
       ],
     },
   },
-};
+}
 
 export const Primary = {
   args: {
@@ -84,7 +83,7 @@ export const Primary = {
     label: 'Checkbox',
     isDisabled: false,
   },
-};
+}
 export const SelectedValue = {
   args: {
     modelValue: true,
@@ -94,7 +93,7 @@ export const SelectedValue = {
     label: 'Checkbox',
     isDisabled: false,
   },
-};
+}
 export const Default = {
   args: {
     modelValue: false,
@@ -104,7 +103,7 @@ export const Default = {
     label: 'Checkbox',
     isDisabled: false,
   },
-};
+}
 export const Plane = {
   args: {
     modelValue: false,
@@ -114,7 +113,7 @@ export const Plane = {
     label: 'Checkbox',
     isDisabled: false,
   },
-};
+}
 
 export const MediumHeight = {
   args: {
@@ -125,7 +124,7 @@ export const MediumHeight = {
     label: 'Checkbox',
     isDisabled: false,
   },
-};
+}
 
 export const SmallHeight = {
   args: {
@@ -136,7 +135,7 @@ export const SmallHeight = {
     label: 'Checkbox',
     isDisabled: false,
   },
-};
+}
 
 export const ExtraSmallHeight = {
   args: {
@@ -147,7 +146,7 @@ export const ExtraSmallHeight = {
     label: 'Checkbox',
     isDisabled: false,
   },
-};
+}
 
 export const WithIcon = {
   args: {
@@ -158,7 +157,7 @@ export const WithIcon = {
     label: 'Checkbox',
     isDisabled: false,
   },
-};
+}
 
 export const Disabled = {
   args: {
@@ -169,4 +168,4 @@ export const Disabled = {
     label: 'Checkbox',
     isDisabled: true,
   },
-};
+}

@@ -33,15 +33,14 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import CommonIcon from '../CommonIcon.vue';
+import { ref, computed } from 'vue'
+import CommonIcon from '../CommonIcon.vue'
 
 const props = defineProps({
   color: {
     type: String,
     required: false,
-    validator: (val) =>
-      ['primary', 'secondary', 'plane', 'outline', 'red'].includes(val),
+    validator: (val) => ['primary', 'secondary', 'plane', 'outline', 'red'].includes(val),
   },
   text: {
     type: String,
@@ -54,8 +53,7 @@ const props = defineProps({
   height: {
     type: String,
     required: false,
-    validator: (val) =>
-      ['large', 'medium', 'small', 'extra-small'].includes(val),
+    validator: (val) => ['large', 'medium', 'small', 'extra-small'].includes(val),
   },
   isRadius: {
     type: Boolean,
@@ -82,16 +80,14 @@ const props = defineProps({
     type: Boolean,
     required: false,
   },
-});
+})
 
-const emit = defineEmits(['actionSubmitted']);
+const emit = defineEmits(['actionSubmitted'])
 
-const btnRef = ref(null);
-const btnStatus = ref('default'); // default, progress or done
+const btnRef = ref(null)
+const btnStatus = ref('default') // default, progress or done
 
-const showSubmittedIcon = computed(
-  () => props.changeIcon && btnStatus.value === 'done'
-);
+const showSubmittedIcon = computed(() => props.changeIcon && btnStatus.value === 'done')
 
 const btnClasses = computed(() => [
   showSubmittedIcon.value ? doneOpacity.value : '',
@@ -107,40 +103,40 @@ const btnClasses = computed(() => [
     done: showSubmittedIcon.value,
     'not-radius': btnStatus.value === 'done' && !props.isRadius,
   },
-]);
+])
 
 const doneOpacity = computed(() => {
   switch (props.color) {
     case 'secondary':
-      return 'done-secondary';
+      return 'done-secondary'
     case 'plane':
-      return 'done-plane';
+      return 'done-plane'
     case 'outline':
-      return 'done-outline';
+      return 'done-outline'
     case 'red':
-      return 'done-red';
+      return 'done-red'
     case 'primary':
-      return 'done-primary';
+      return 'done-primary'
     default:
-      return 'done-primary';
+      return 'done-primary'
   }
-});
+})
 
 const sizeIcon = computed(() => {
   switch (props.height) {
     case 'large':
-      return 36;
+      return 36
     default:
-      return 28;
+      return 28
   }
-});
+})
 
 const borderRadius = computed(() => {
   if (!props.isRadius) {
-    return 'without-rounding';
+    return 'without-rounding'
   }
-  return '';
-});
+  return ''
+})
 
 const backgroundColor = computed(() => {
   switch (props.color) {
@@ -149,62 +145,60 @@ const backgroundColor = computed(() => {
     case 'outline':
     case 'red':
     case 'primary':
-      return props.color;
+      return props.color
     default:
-      return 'primary';
+      return 'primary'
   }
-});
+})
 
 const buttonSize = computed(() => {
   switch (props.height) {
     case 'medium':
     case 'small':
     case 'extra-small':
-      return props.height;
+      return props.height
     default:
-      return 'large';
+      return 'large'
   }
-});
+})
 
-const btnDisabled = computed(
-  () => props.isDisabled || btnStatus.value === 'done'
-);
+const btnDisabled = computed(() => props.isDisabled || btnStatus.value === 'done')
 
 const handleHold = ({ evt }) => {
-  if (btnDisabled.value) return;
+  if (btnDisabled.value) return
 
   if (props.changeIcon && btnRef.value) {
-    btnStatus.value = 'done';
-    finishAnimation(evt, true);
+    btnStatus.value = 'done'
+    finishAnimation(evt, true)
   }
-  submitAction(evt);
-};
+  submitAction(evt)
+}
 
 const submitAction = () => {
-  emit('actionSubmitted');
-};
+  emit('actionSubmitted')
+}
 
-const stopAnimation = () => finishAnimation();
+const stopAnimation = () => finishAnimation()
 
 const startAnimation = () => {
-  if (btnDisabled.value) return;
+  if (btnDisabled.value) return
 
-  btnStatus.value = 'progress';
-  document.addEventListener('mouseup', stopAnimation);
-  document.addEventListener('touchend', stopAnimation);
-};
+  btnStatus.value = 'progress'
+  document.addEventListener('mouseup', stopAnimation)
+  document.addEventListener('touchend', stopAnimation)
+}
 
 const finishAnimation = (evt, finished) => {
-  if (btnDisabled.value) return;
+  if (btnDisabled.value) return
 
   if (props.changeIcon && finished) {
-    btnStatus.value = 'done';
+    btnStatus.value = 'done'
   } else {
-    btnStatus.value = 'default';
+    btnStatus.value = 'default'
   }
-  document.removeEventListener('mouseup', stopAnimation);
-  document.removeEventListener('touchend', stopAnimation);
-};
+  document.removeEventListener('mouseup', stopAnimation)
+  document.removeEventListener('touchend', stopAnimation)
+}
 </script>
 
 <style lang="scss">

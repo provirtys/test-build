@@ -11,22 +11,25 @@ const limit = 18
 const props = defineProps({
   codes: {
     type: Array,
-    default: () => []
+    default: () => [],
   },
   lastMeter: {
     type: Number,
-    default: 0
-  }
+    default: 0,
+  },
 })
 
 const ok = ref([])
 const broken = ref([])
 // каждый раз когда изменяется список всех кодов, которые нужно отобразить на графике
-watch(() => props.codes, (first, second) => {
-  changeBarData(props.codes)
-})
+watch(
+  () => props.codes,
+  (first, second) => {
+    changeBarData(props.codes)
+  }
+)
 
-function changeBarData (codeList) {
+function changeBarData(codeList) {
   ok.value = []
   broken.value = []
   const totalItems = codeList.length
@@ -35,7 +38,12 @@ function changeBarData (codeList) {
 
   if (totalItems <= limit) {
     codeList.forEach(({ status }, index) => {
-      if (status === 'generated' ||  status === 'printed' || status === 'verified' || status === 'synced') {
+      if (
+        status === 'generated' ||
+        status === 'printed' ||
+        status === 'verified' ||
+        status === 'synced'
+      ) {
         result[index]['ok']++
       } else if (status === 'broken') {
         result[index]['broken']++
@@ -46,13 +54,18 @@ function changeBarData (codeList) {
     let codesInCurrentColumn = 0
     let currentColumn = 0
     codeList.forEach(({ status }, index) => {
-      if (status === 'generated' ||  status === 'printed' || status === 'verified' || status === 'synced') {
+      if (
+        status === 'generated' ||
+        status === 'printed' ||
+        status === 'verified' ||
+        status === 'synced'
+      ) {
         result[currentColumn]['ok']++
       } else if (status === 'broken') {
         result[currentColumn]['broken']++
       }
       codesInCurrentColumn++
-      if ((totalItems - index - 1 === (limit - currentColumn - 1) * (codesPerColumn - 1))) {
+      if (totalItems - index - 1 === (limit - currentColumn - 1) * (codesPerColumn - 1)) {
         codesPerColumn--
       }
       if (codesInCurrentColumn >= codesPerColumn) {
@@ -62,7 +75,7 @@ function changeBarData (codeList) {
     })
   }
 
-  result.forEach(col => {
+  result.forEach((col) => {
     ok.value.push(col.ok)
     broken.value.push(col.broken)
   })
@@ -70,7 +83,9 @@ function changeBarData (codeList) {
   const xax = []
   // если группировать ничего не нужно тогда ось х - прописываем номера кодов
   if (codeList.length <= limit) {
-    for (let i = props.lastMeter - codeList.length + 1; i <= props.lastMeter; i++) { xax.push(i) }
+    for (let i = props.lastMeter - codeList.length + 1; i <= props.lastMeter; i++) {
+      xax.push(i)
+    }
   } else {
     xax.push(result[0].ok + result[0].broken + props.lastMeter - codeList.length)
     for (let i = 1; i < codeList.length; i++) {
@@ -89,36 +104,36 @@ window.Apex = {
     fontFamily: 'Golos UI-medium',
     // меню для скачивания графика
     toolbar: {
-      show: false
+      show: false,
     },
     zoom: {
-      enabled: false
-    }
+      enabled: false,
+    },
   },
   dataLabels: {
-    enabled: false
+    enabled: false,
   },
   grid: {
-    show: false
+    show: false,
   },
   xaxis: {
     axisTicks: {
       color: '#000',
       width: 2,
-      height: 6
+      height: 6,
     },
     axisBorder: {
       color: '#000',
-      height: 2
+      height: 2,
     },
     title: {
-      text: t('length')
-    }
+      text: t('length'),
+    },
   },
   // Высплывающая подсказка
   tooltip: {
-    enabled: false
-  }
+    enabled: false,
+  },
 }
 
 let chartColumn = null
@@ -127,17 +142,17 @@ const optionsColumn = {
   chart: {
     height: '100%',
     animations: {
-      enabled: false
-    }
+      enabled: false,
+    },
   },
   colors: ['#d3141c', '#e3e3e3'],
   stroke: {
-    width: 0
+    width: 0,
   },
   plotOptions: {
     bar: {
-      columnWidth: '90%'
-    }
+      columnWidth: '90%',
+    },
   },
   yaxis: {
     show: true,
@@ -145,40 +160,40 @@ const optionsColumn = {
     axisBorder: {
       show: true,
       color: '#000000',
-      width: 2
+      width: 2,
     },
     axisTicks: {
       show: true,
       color: '#000000',
       width: 6,
-      height: 2
+      height: 2,
     },
     title: {
       text: t('errors'),
       rotate: -90,
       style: {
         fontSize: '12px',
-        cssClass: 'apexcharts-yaxis-label'
-      }
-    }
+        cssClass: 'apexcharts-yaxis-label',
+      },
+    },
   },
   dataLabels: {
-    enabled: false
+    enabled: false,
   },
   series: [
     {
-      data: broken.value
+      data: broken.value,
     },
     {
-      data: ok.value
-    }
+      data: ok.value,
+    },
   ],
   xaxis: {
-    tickPlacement: 'on'
+    tickPlacement: 'on',
   },
   legend: {
-    show: false
-  }
+    show: false,
+  },
 }
 
 onMounted(() => {
@@ -187,19 +202,15 @@ onMounted(() => {
   changeBarData(props.codes)
 })
 
-function updateData (broken, ok, x) {
+function updateData(broken, ok, x) {
   chartColumn.updateOptions({
-    series: [
-      { data: broken },
-      { data: ok }
-    ],
+    series: [{ data: broken }, { data: ok }],
     xaxis: {
       type: 'category',
-      categories: x
-    }
+      categories: x,
+    },
   })
 }
-
 </script>
 
 <template>
@@ -221,7 +232,8 @@ function updateData (broken, ok, x) {
   padding: $s-3;
 }
 
-.apexcharts-xaxis-title, .apexcharts-yaxis-label {
+.apexcharts-xaxis-title,
+.apexcharts-yaxis-label {
   letter-spacing: -0.24px;
   line-height: 24;
   font-size: $font-size-p5;

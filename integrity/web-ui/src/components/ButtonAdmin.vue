@@ -12,11 +12,11 @@
 </template>
 
 <script setup>
-import { setupI18n } from '../i18n.js';
-import { QBtn } from 'quasar';
-import 'quasar/dist/quasar.css';
+import { setupI18n } from '../i18n.js'
+import { QBtn } from 'quasar'
+import 'quasar/dist/quasar.css'
 
-const { t } = setupI18n();
+const { t } = setupI18n()
 </script>
 
 <style lang="scss">

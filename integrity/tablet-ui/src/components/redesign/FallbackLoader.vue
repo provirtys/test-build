@@ -13,29 +13,29 @@
 </template>
 
 <script setup lang="ts">
-import CommonIcon from '../CommonIcon.vue';
+import CommonIcon from '../CommonIcon.vue'
 
 defineProps({
   loadingText: {
     type: String,
-    default: 'Обновление...'
+    default: 'Обновление...',
   },
   fallbackText: {
     type: String,
-    default: 'Ошибка'
+    default: 'Ошибка',
   },
   fallbackIcon: {
     type: String,
-    default: 'status-error'
+    default: 'status-error',
   },
   updateBtnText: {
     type: String,
-    default: 'Обновить'
+    default: 'Обновить',
   },
   isLoading: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
 
 defineEmits(['onUpdate'])

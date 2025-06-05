@@ -1,17 +1,14 @@
 /// <reference types='vitest' />
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import * as path from 'path';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import * as path from 'path'
 import { quasar } from '@quasar/vite-plugin'
 
 export default defineConfig({
   root: __dirname,
   cacheDir: '../node_modules/.vite/base-ui',
 
-  plugins: [
-    vue(),
-    quasar()
-  ],
+  plugins: [vue(), quasar()],
 
   // Uncomment this if you are using workers.
   // worker: {
@@ -23,19 +20,19 @@ export default defineConfig({
   build: {
     lib: {
       // Could also be a dictionary or array of multiple entry points.
-      entry: path.resolve(__dirname, "src/index.js"),
+      entry: path.resolve(__dirname, 'src/index.js'),
       name: 'base-ui',
       fileName: (format) => `base-ui.${format}.js`,
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.
-      external: ["vue"],
+      external: ['vue'],
       output: {
         globals: {
-          vue: "Vue",
-          'quasar': "quasar"
-        }
-      }
+          vue: 'Vue',
+          quasar: 'quasar',
+        },
+      },
     },
   },
-});
+})

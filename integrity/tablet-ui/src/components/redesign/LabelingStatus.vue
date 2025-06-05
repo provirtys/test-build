@@ -1,8 +1,8 @@
 <template>
   <div class="labeling-status-main">
     <div class="labeling-status" :class="color">
-    <p class="labeling-status__text">{{ text }}</p>
-  </div>
+      <p class="labeling-status__text">{{ text }}</p>
+    </div>
     <div v-if="isSecondary" class="labeling-status" :class="colorSecondary">
       <p class="labeling-status__text">{{ textSecondary }}</p>
     </div>
@@ -10,25 +10,25 @@
 </template>
 
 <script setup>
-import {computed} from 'vue'
-import { setupI18n } from '../../i18n.js';
+import { computed } from 'vue'
+import { setupI18n } from '../../i18n.js'
 
-const { t } = setupI18n();
+const { t } = setupI18n()
 /** Статус маркировки */
 const props = defineProps({
   status: {
     type: String,
-    default: ''
+    default: '',
   },
   /** Приоритет маркировки */
   isSecondary: {
     Boolean,
-    default: false
+    default: false,
   },
   /** Текст приоритета маркировки */
   textSecondary: {
     type: String,
-    default: 'P1'
+    default: 'P1',
   },
 })
 
@@ -44,28 +44,28 @@ const text = computed(() => {
 })
 
 const color = computed(() => {
-    switch (props.status) {
-      case 'new':
-        return 'blue'
-      case 'labeling':
-        return 'orange'
-      case 'ready':
-        return 'green'
-      default:
-        return ''
-    }
+  switch (props.status) {
+    case 'new':
+      return 'blue'
+    case 'labeling':
+      return 'orange'
+    case 'ready':
+      return 'green'
+    default:
+      return ''
+  }
 })
 const colorSecondary = computed(() => {
-    switch (props.status) {
-      case 'new':
-        return 'blue-secondary'
-      case 'labeling':
-        return 'orange-secondary'
-      case 'ready':
-        return 'green-secondary'
-      default:
-        return 'red-secondary'
-    }
+  switch (props.status) {
+    case 'new':
+      return 'blue-secondary'
+    case 'labeling':
+      return 'orange-secondary'
+    case 'ready':
+      return 'green-secondary'
+    default:
+      return 'red-secondary'
+  }
 })
 </script>
 
@@ -93,7 +93,7 @@ const colorSecondary = computed(() => {
 
   &__text {
     margin: 0;
-    font-family: "Golos UI-bold";
+    font-family: 'Golos UI-bold';
   }
 
   //Primary

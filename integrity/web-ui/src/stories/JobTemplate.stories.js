@@ -1,4 +1,4 @@
-import JobTemplate from '../components/JobTemplate.vue';
+import JobTemplate from '../components/JobTemplate.vue'
 
 /** Страница для создания шаблона задания с генерацией DataMatrix кода. Максимальное количество атрибутов для добавления 10. Динамическое добавление/редактирование/удаление атрибутов */
 export default {
@@ -17,9 +17,9 @@ export default {
       },
     },
   },
-};
+}
 
 /** Создание шаблона*/
 export const CreateTemplate = {
   args: {},
-};
+}

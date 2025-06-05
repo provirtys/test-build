@@ -3,23 +3,23 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { proto3, Timestamp } from "@bufbuild/protobuf";
-import { JobModel_Attribute } from "./job_pb.js";
+import { proto3, Timestamp } from '@bufbuild/protobuf'
+import { JobModel_Attribute } from './job_pb.js'
 
 /**
  * @generated from message external.api.v1.TemplateModel
  */
 export const TemplateModel = /*@__PURE__*/ proto3.makeMessageType(
-  "external.api.v1.TemplateModel",
+  'external.api.v1.TemplateModel',
   () => [
-    { no: 1, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "attributes", kind: "message", T: JobModel_Attribute, repeated: true },
-    { no: 4, name: "created_at", kind: "message", T: Timestamp },
-    { no: 5, name: "updated_at", kind: "message", T: Timestamp },
-    { no: 6, name: "sku", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ],
-);
+    { no: 1, name: 'uuid', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: 'title', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: 'attributes', kind: 'message', T: JobModel_Attribute, repeated: true },
+    { no: 4, name: 'created_at', kind: 'message', T: Timestamp },
+    { no: 5, name: 'updated_at', kind: 'message', T: Timestamp },
+    { no: 6, name: 'sku', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+  ]
+)
 
 /**
  * TemplateCreate
@@ -27,25 +27,23 @@ export const TemplateModel = /*@__PURE__*/ proto3.makeMessageType(
  * @generated from message external.api.v1.TemplateCreateRequest
  */
 export const TemplateCreateRequest = /*@__PURE__*/ proto3.makeMessageType(
-  "external.api.v1.TemplateCreateRequest",
+  'external.api.v1.TemplateCreateRequest',
   () => [
-    { no: 1, name: "token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "sign", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "attributes", kind: "message", T: JobModel_Attribute, repeated: true },
-    { no: 5, name: "sku", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ],
-);
+    { no: 1, name: 'token', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: 'sign', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: 'title', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: 'attributes', kind: 'message', T: JobModel_Attribute, repeated: true },
+    { no: 5, name: 'sku', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+  ]
+)
 
 /**
  * @generated from message external.api.v1.TemplateCreateResponse
  */
 export const TemplateCreateResponse = /*@__PURE__*/ proto3.makeMessageType(
-  "external.api.v1.TemplateCreateResponse",
-  () => [
-    { no: 1, name: "data", kind: "message", T: TemplateModel },
-  ],
-);
+  'external.api.v1.TemplateCreateResponse',
+  () => [{ no: 1, name: 'data', kind: 'message', T: TemplateModel }]
+)
 
 /**
  * TemplateList
@@ -53,22 +51,20 @@ export const TemplateCreateResponse = /*@__PURE__*/ proto3.makeMessageType(
  * @generated from message external.api.v1.TemplateListRequest
  */
 export const TemplateListRequest = /*@__PURE__*/ proto3.makeMessageType(
-  "external.api.v1.TemplateListRequest",
+  'external.api.v1.TemplateListRequest',
   () => [
-    { no: 1, name: "token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "sign", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ],
-);
+    { no: 1, name: 'token', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: 'sign', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+  ]
+)
 
 /**
  * @generated from message external.api.v1.TemplateListResponse
  */
 export const TemplateListResponse = /*@__PURE__*/ proto3.makeMessageType(
-  "external.api.v1.TemplateListResponse",
-  () => [
-    { no: 1, name: "items", kind: "message", T: TemplateModel, repeated: true },
-  ],
-);
+  'external.api.v1.TemplateListResponse',
+  () => [{ no: 1, name: 'items', kind: 'message', T: TemplateModel, repeated: true }]
+)
 
 /**
  * TemplateUpdate
@@ -76,24 +72,24 @@ export const TemplateListResponse = /*@__PURE__*/ proto3.makeMessageType(
  * @generated from message external.api.v1.TemplateUpdateRequest
  */
 export const TemplateUpdateRequest = /*@__PURE__*/ proto3.makeMessageType(
-  "external.api.v1.TemplateUpdateRequest",
+  'external.api.v1.TemplateUpdateRequest',
   () => [
-    { no: 1, name: "token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "sign", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "title", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "attributes", kind: "message", T: JobModel_Attribute, repeated: true },
-    { no: 6, name: "sku", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ],
-);
+    { no: 1, name: 'token', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: 'sign', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: 'uuid', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: 'title', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: 'attributes', kind: 'message', T: JobModel_Attribute, repeated: true },
+    { no: 6, name: 'sku', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+  ]
+)
 
 /**
  * @generated from message external.api.v1.TemplateUpdateResponse
  */
 export const TemplateUpdateResponse = /*@__PURE__*/ proto3.makeMessageType(
-  "external.api.v1.TemplateUpdateResponse",
-  [],
-);
+  'external.api.v1.TemplateUpdateResponse',
+  []
+)
 
 /**
  * TemplateDelete
@@ -101,19 +97,18 @@ export const TemplateUpdateResponse = /*@__PURE__*/ proto3.makeMessageType(
  * @generated from message external.api.v1.TemplateDeleteRequest
  */
 export const TemplateDeleteRequest = /*@__PURE__*/ proto3.makeMessageType(
-  "external.api.v1.TemplateDeleteRequest",
+  'external.api.v1.TemplateDeleteRequest',
   () => [
-    { no: 1, name: "token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "sign", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "uuid", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ],
-);
+    { no: 1, name: 'token', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: 'sign', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: 'uuid', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+  ]
+)
 
 /**
  * @generated from message external.api.v1.TemplateDeleteResponse
  */
 export const TemplateDeleteResponse = /*@__PURE__*/ proto3.makeMessageType(
-  "external.api.v1.TemplateDeleteResponse",
-  [],
-);
-
+  'external.api.v1.TemplateDeleteResponse',
+  []
+)

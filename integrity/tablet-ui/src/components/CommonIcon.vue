@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import {reactive, onMounted, computed} from 'vue';
+import { reactive, onMounted, computed } from 'vue'
 
 const props = defineProps({
   width: {
@@ -30,27 +30,27 @@ const props = defineProps({
     type: [String, Number],
     required: true,
   },
-});
+})
 
 const baseSize = reactive({
   width: null,
   height: null,
-});
+})
 
 const iconSize = computed(() => ({
   width: props.width ?? props.size ?? baseSize.width,
   height: props.height ?? props.size ?? baseSize.height,
-}));
+}))
 
 onMounted(() => {
-  const svgElement = document.querySelector(`#${props.name}`);
+  const svgElement = document.querySelector(`#${props.name}`)
   if (svgElement) {
-    const originalViewBox = svgElement.getAttribute('viewBox');
+    const originalViewBox = svgElement.getAttribute('viewBox')
     if (originalViewBox) {
-      const viewBoxArr = originalViewBox.split(/[\s,]+/).filter(Boolean);
-      baseSize.width = viewBoxArr[2];
-      baseSize.height = viewBoxArr[3];
+      const viewBoxArr = originalViewBox.split(/[\s,]+/).filter(Boolean)
+      baseSize.width = viewBoxArr[2]
+      baseSize.height = viewBoxArr[3]
     }
   }
-});
+})
 </script>

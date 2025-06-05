@@ -1,12 +1,25 @@
 <template>
   <div class="status-line">
-    <TabletButton height="small" fit-width :text="btnText" color="secondary" :icon="btnIcon" location-icon="left" />
+    <TabletButton
+      height="small"
+      fit-width
+      :text="btnText"
+      color="secondary"
+      :icon="btnIcon"
+      location-icon="left"
+    />
     <p class="status-line__task">{{ title }}</p>
     <div class="row">
-      <SystemStatus :color="systemStatus.status" :statusType="systemStatus.text" :isSync="systemStatus.sync"
-                    :is-active="systemStatus.active"></SystemStatus>
-      <div class="status-line__button status-line__settings"
-           :class="[ { 'disabled': props.isDisabled } ]">
+      <SystemStatus
+        :color="systemStatus.status"
+        :statusType="systemStatus.text"
+        :isSync="systemStatus.sync"
+        :is-active="systemStatus.active"
+      ></SystemStatus>
+      <div
+        class="status-line__button status-line__settings"
+        :class="[{ disabled: props.isDisabled }]"
+      >
         <CommonIcon name="settings" />
       </div>
     </div>
@@ -14,91 +27,89 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import SystemStatus from './InteractiveSystemStatus.vue';
-import TabletButton from './TabletButton.vue';
-import CommonIcon from '../CommonIcon.vue';
+import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import SystemStatus from './InteractiveSystemStatus.vue'
+import TabletButton from './TabletButton.vue'
+import CommonIcon from '../CommonIcon.vue'
 
-const route = useRoute();
-const router = useRouter();
+const route = useRoute()
+const router = useRouter()
 
-const isLogoutSubmitted = ref(false);
+const isLogoutSubmitted = ref(false)
 
 const props = defineProps({
-    systemStatus: {
-      type: Object,
-      default: () => ({
-        status: 'error',
-        text: 'NOT_READY',
-        sync: true,
-        active: false
-      })
-    },
-    title: {
-      type: String,
-      default: 'Список заданий'
-    },
-    isDisabled: {
-      type: Boolean,
-      default: false
-    },
-    btnText: {
-      type: String,
-      default: 'Назад'
-    },
-    btnIcon: {
-      type: String,
-      default: 'arrowBackRedesign'
-    },
-  }
-);
+  systemStatus: {
+    type: Object,
+    default: () => ({
+      status: 'error',
+      text: 'NOT_READY',
+      sync: true,
+      active: false,
+    }),
+  },
+  title: {
+    type: String,
+    default: 'Список заданий',
+  },
+  isDisabled: {
+    type: Boolean,
+    default: false,
+  },
+  btnText: {
+    type: String,
+    default: 'Назад',
+  },
+  btnIcon: {
+    type: String,
+    default: 'arrowBackRedesign',
+  },
+})
 
-const emit = defineEmits(['logout']);
+const emit = defineEmits(['logout'])
 
 function handleHoldGoBack({ evt, ...newInfo }) {
-  isLogoutSubmitted.value = newInfo;
-  finishAnimation(evt);
-  goBack();
+  isLogoutSubmitted.value = newInfo
+  finishAnimation(evt)
+  goBack()
 }
 
 function goBack() {
   switch (route.name) {
     case 'TaskDetails':
     case 'NewTaskDetails':
-      router.push({ name: 'TaskList' });
-      break;
+      router.push({ name: 'TaskList' })
+      break
     case 'LabelingAuto':
     case 'LabelingManual':
-      router.push({ name: 'TaskDetails', params: { id: route.params.id } });
-      break;
+      router.push({ name: 'TaskDetails', params: { id: route.params.id } })
+      break
     case 'LabelScan':
       if (otkStore.mode === 'auto') {
-        router.push({ name: 'LabelingAuto', params: { id: route.params.id } });
+        router.push({ name: 'LabelingAuto', params: { id: route.params.id } })
       } else {
-        router.push({ name: 'LabelingManual', params: { id: route.params.id } });
+        router.push({ name: 'LabelingManual', params: { id: route.params.id } })
       }
-      break;
+      break
     case 'CodeScan':
-      router.push({ name: 'LabelingManual', params: { id: route.params.id } });
-      break;
+      router.push({ name: 'LabelingManual', params: { id: route.params.id } })
+      break
   }
 }
 
 function handleHold({ evt, ...newInfo }) {
-  isLogoutSubmitted.value = newInfo;
-  finishAnimation(evt);
-  emit('logout');
+  isLogoutSubmitted.value = newInfo
+  finishAnimation(evt)
+  emit('logout')
 }
 
 function startAnimation(event) {
-  event.target.classList.add('in-progress');
+  event.target.classList.add('in-progress')
 }
 
 function finishAnimation(event) {
-  event.target.classList.remove('in-progress');
+  event.target.classList.remove('in-progress')
 }
-
 </script>
 
 <style lang="scss">
@@ -121,7 +132,6 @@ function finishAnimation(event) {
   line-height: 21.6px;
 
   text-align: left;
-
 
   &__button {
     background: $primary-text-20;

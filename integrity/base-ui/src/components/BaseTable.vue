@@ -7,31 +7,33 @@ const { t } = setupI18n()
 let props = defineProps({
   /** Значение строк*/
   rows: {
-    type: Array, default: () => []
+    type: Array,
+    default: () => [],
   },
   /** Значение колонок*/
   columns: {
-    type: Array, default: () => []
+    type: Array,
+    default: () => [],
   },
 })
-
 </script>
 
 <template>
   <div class="height-table">
     <div class="full-height">
-      <q-table class="no-box-shadow my-table"
-               title=""
-               :rows="props.rows"
-               :columns="props.columns"
-               row-key="name"
-               virtual-scroll
-               v-model:pagination="pagination"
-               :rows-per-page-options="[0]"
-               :table-header-style="{ color: 'var(--q-primary)'}"
-               :card-style="{ color: 'var(secondary)'}"
-               :no-data-label="t('storybook.table.noData')"
-               hide-pagination
+      <q-table
+        class="no-box-shadow my-table"
+        title=""
+        :rows="props.rows"
+        :columns="props.columns"
+        row-key="name"
+        virtual-scroll
+        v-model:pagination="pagination"
+        :rows-per-page-options="[0]"
+        :table-header-style="{ color: 'var(--q-primary)' }"
+        :card-style="{ color: 'var(secondary)' }"
+        :no-data-label="t('storybook.table.noData')"
+        hide-pagination
       />
     </div>
   </div>
@@ -62,7 +64,8 @@ let props = defineProps({
   width: 100%;
 }
 
-.q-table th, .q-table td {
+.q-table th,
+.q-table td {
   padding: $s-1 10px;
   font-size: $font-size-p4;
 }

@@ -1,7 +1,7 @@
 <script setup>
 import ProgressPie from './ProgressPie.vue'
 import { setupI18n } from '../i18n.js'
-import CommonIcon from './CommonIcon.vue';
+import CommonIcon from './CommonIcon.vue'
 
 const { t } = setupI18n()
 
@@ -9,14 +9,14 @@ defineProps({
   isAggregationVisible: { type: Boolean, default: false },
   isProgressPieVisible: { type: Boolean, default: false },
   isRepeatVisible: { type: Boolean, default: false },
-  codeInfo: { type: Object, default: () => ({}) }
+  codeInfo: { type: Object, default: () => ({}) },
 })
 
-function getCodeTime (value) {
+function getCodeTime(value) {
   return new Date(value).toLocaleTimeString('RU-ru')
 }
 
-function getCodeDate (value) {
+function getCodeDate(value) {
   return new Date(value).toLocaleDateString('RU-ru')
 }
 </script>
@@ -27,15 +27,17 @@ function getCodeDate (value) {
       <div v-if="isAggregationVisible" class="aggregation">{{ t('aggregationInProgress') }}</div>
       <div class="marking-card__head flex-space-between">
         <p>{{ t('labeled') }}</p>
-        <p>{{ codeInfo.labeled }} <span class="grey-text">/ {{ codeInfo.total }}</span></p>
+        <p>
+          {{ codeInfo.labeled }} <span class="grey-text">/ {{ codeInfo.total }}</span>
+        </p>
       </div>
 
       <div class="marking-card__info">
         <div class="marking-card__code-info">
-
           <div>
             <p class="marking-card__info__title grey-text">{{ t('datetime') }}</p>
-            <p class="marking-card__info__date">{{ getCodeDate(codeInfo.ts) }}</p> <!-- <p class="main__info__date">{{ getCodeDate(codeInfo.ts) }}</p>-->
+            <p class="marking-card__info__date">{{ getCodeDate(codeInfo.ts) }}</p>
+            <!-- <p class="main__info__date">{{ getCodeDate(codeInfo.ts) }}</p>-->
             <p class="marking-card__info__value grey-text">{{ getCodeTime(codeInfo.ts) }}</p>
           </div>
           <div>
@@ -46,11 +48,13 @@ function getCodeDate (value) {
             <p class="marking-card__info__title grey-text">{{ t('position') }}</p>
             <p class="marking-card__info__value">{{ codeInfo.position }}</p>
           </div>
-
         </div>
 
-        <ProgressPie v-if="isProgressPieVisible" :size="'large'" :percentage="Math.round((codeInfo.labeled/codeInfo.total)*100)"></ProgressPie>
-
+        <ProgressPie
+          v-if="isProgressPieVisible"
+          :size="'large'"
+          :percentage="Math.round((codeInfo.labeled / codeInfo.total) * 100)"
+        ></ProgressPie>
       </div>
       <div v-if="isRepeatVisible" class="marking-card__repeat">
         <!--Это не кнопка, просто индикатор, если нужна повторная маркировка-->
@@ -141,7 +145,7 @@ p {
     align-items: center;
     gap: $d-1;
 
-    &-icon{
+    &-icon {
       width: $m-2;
       height: $m-2;
       background: $primary;

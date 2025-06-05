@@ -8,16 +8,19 @@ const { t } = setupI18n()
 const props = defineProps({
   codes: {
     type: Array,
-    default: () => []
-  }
+    default: () => [],
+  },
 })
 const limit = 200
 const ok = ref([])
 const broken = ref([])
-watch(() => props.codes, (first, second) => {
-  changeBarData(props.codes)
-})
-function changeBarData (codeList) {
+watch(
+  () => props.codes,
+  (first, second) => {
+    changeBarData(props.codes)
+  }
+)
+function changeBarData(codeList) {
   ok.value = []
   broken.value = []
   const totalItems = codeList.length
@@ -25,7 +28,12 @@ function changeBarData (codeList) {
   // заполнение result
   if (totalItems <= limit) {
     codeList.forEach(({ status }, index) => {
-      if (status === 'generated' || status === 'printed' || status === 'verified' || status === 'synced') {
+      if (
+        status === 'generated' ||
+        status === 'printed' ||
+        status === 'verified' ||
+        status === 'synced'
+      ) {
         result[index]['ok']++
       } else if (status === 'broken') {
         result[index]['broken']++
@@ -36,13 +44,18 @@ function changeBarData (codeList) {
     let codesInCurrentColumn = 0
     let currentColumn = 0
     codeList.forEach(({ status }, index) => {
-      if (status === 'generated' ||  status === 'printed' || status === 'verified' || status === 'synced') {
+      if (
+        status === 'generated' ||
+        status === 'printed' ||
+        status === 'verified' ||
+        status === 'synced'
+      ) {
         result[currentColumn]['ok']++
       } else if (status === 'broken') {
         result[currentColumn]['broken']++
       }
       codesInCurrentColumn++
-      if ((totalItems - index - 1 === (limit - currentColumn - 1) * (codesPerColumn - 1))) {
+      if (totalItems - index - 1 === (limit - currentColumn - 1) * (codesPerColumn - 1)) {
         codesPerColumn--
       }
       if (codesInCurrentColumn >= codesPerColumn) {
@@ -58,7 +71,6 @@ function changeBarData (codeList) {
     } else if (col.ok > 0) {
       ok.value.push([index + 1, 1])
       broken.value.push([index + 1, 0])
-
     }
   })
   // для работы с осью х
@@ -78,7 +90,7 @@ function changeBarData (codeList) {
   if (xax.length > 20) {
     for (let i = 0; i < limit; i++) {
       // если остаток от деление на 20 != 0 и i != последнему элементу
-      if ((i % 20 !== 0) && (i !== xax.length - 1)) {
+      if (i % 20 !== 0 && i !== xax.length - 1) {
         xax[i] = ''
       }
     }
@@ -95,83 +107,83 @@ window.Apex = {
     fontFamily: 'Golos UI-medium',
     // меню для скачивания графика
     toolbar: {
-      show: false
+      show: false,
     },
     zoom: {
-      enabled: false
-    }
+      enabled: false,
+    },
   },
   colors: ['#d3141c', '#e3e3e3'],
   dataLabels: {
-    enabled: false
+    enabled: false,
   },
   grid: {
-    show: false
+    show: false,
   },
   xaxis: {
     tickAmount: 15,
     axisTicks: {
       color: '#000',
       width: 2,
-      height: 6
+      height: 6,
     },
     axisBorder: {
       color: '#000',
-      height: 2
+      height: 2,
     },
     title: {
-      text: t('length')
-    }
+      text: t('length'),
+    },
   },
   // Высплывающая подсказка
   tooltip: {
-    enabled: false
-  }
+    enabled: false,
+  },
 }
 let chartColumn = null
 const optionsColumn = {
   chart: {
     animations: {
-      enabled: false
-    }
+      enabled: false,
+    },
   },
   plotOptions: {
     bar: {
-      columnWidth: '95%'
-    }
+      columnWidth: '95%',
+    },
   },
   stroke: {
     // show: true,
     // colors: ['#d3141c', '#e3e3e3'],
-    width: 0
+    width: 0,
   },
   yaxis: {
-    show: false
+    show: false,
   },
   dataLabels: {
-    enabled: false
+    enabled: false,
   },
   series: [
     {
-      data: broken.value
+      data: broken.value,
     },
     {
-      data: ok.value
-    }
+      data: ok.value,
+    },
   ],
   xaxis: {
     tickPlacement: 'on',
     labels: {
-      rotate: 0
+      rotate: 0,
     },
     axisTicks: {},
     title: {
-      text: undefined
-    }
+      text: undefined,
+    },
   },
   legend: {
-    show: false
-  }
+    show: false,
+  },
 }
 onMounted(() => {
   chartColumn = new ApexCharts(document.querySelector('#columnchart-bottom'), optionsColumn)
@@ -181,22 +193,22 @@ onMounted(() => {
 
 function updateData(broken, ok, x) {
   chartColumn.updateOptions({
-    series: [
-      {data: broken},
-      {data: ok}
-    ],
+    series: [{ data: broken }, { data: ok }],
     xaxis: {
       type: 'category',
       categories: x,
       axisTicks: {
-        color: '#ffffff'
-      }
-    }
+        color: '#ffffff',
+      },
+    },
   })
-  const xaxisTicks = document.getElementById('columnchart-bottom').getElementsByClassName('apexcharts-inner apexcharts-graphical')[0].getElementsByClassName('apexcharts-xaxis-tick')
+  const xaxisTicks = document
+    .getElementById('columnchart-bottom')
+    .getElementsByClassName('apexcharts-inner apexcharts-graphical')[0]
+    .getElementsByClassName('apexcharts-xaxis-tick')
   if (xaxisTicks.length > 20) {
     for (let i = 0; i < xaxisTicks.length; i++) {
-      if ((i % 20 === 0) || (i === xaxisTicks.length - 1)) {
+      if (i % 20 === 0 || i === xaxisTicks.length - 1) {
         xaxisTicks[i].setAttribute('stroke', '#000000')
       }
     }
@@ -223,10 +235,10 @@ function updateData(broken, ok, x) {
   padding: 0 20px 20px;
   background: $secondary;
   border-radius: $s-1;
-
 }
 
-.apexcharts-xaxis-title, .apexcharts-yaxis-label {
+.apexcharts-xaxis-title,
+.apexcharts-yaxis-label {
   letter-spacing: -0.24px;
   line-height: 24;
   font-size: 12px;

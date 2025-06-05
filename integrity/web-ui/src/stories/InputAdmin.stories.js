@@ -1,4 +1,4 @@
-import InputAdmin from '../components/InputAdmin.vue';
+import InputAdmin from '../components/InputAdmin.vue'
 
 /** Компонент input с иконкой поиска  (Labeling Admin) */
 export default {
@@ -17,15 +17,15 @@ export default {
       },
     },
   },
-};
+}
 export const InputSearchTask = {
   args: {
     placeholder: 'задание',
   },
-};
+}
 export const InputSearchDevice = {
   args: {
     placeholder: 'токен',
   },
-};
-export const InputSearchEmpty = {};
+}
+export const InputSearchEmpty = {}

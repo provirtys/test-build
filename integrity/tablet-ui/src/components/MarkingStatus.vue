@@ -13,8 +13,8 @@ const { t } = setupI18n()
 const props = defineProps({
   status: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 })
 
 const text = computed(() => {
@@ -62,7 +62,7 @@ const color = computed(() => {
 
   &__text {
     margin: 0;
-    font-family: "Golos UI-bold";
+    font-family: 'Golos UI-bold';
   }
 
   &.green {

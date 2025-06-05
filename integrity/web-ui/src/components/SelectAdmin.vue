@@ -13,9 +13,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { QSelect } from 'quasar';
-import 'quasar/dist/quasar.css';
+import { ref } from 'vue'
+import { QSelect } from 'quasar'
+import 'quasar/dist/quasar.css'
 
 let props = defineProps({
   /** Значения раскрывющегося списка*/
@@ -28,9 +28,9 @@ let props = defineProps({
     type: String,
     default: '',
   },
-});
+})
 
-const filter = ref('');
+const filter = ref('')
 </script>
 
 <style lang="scss">

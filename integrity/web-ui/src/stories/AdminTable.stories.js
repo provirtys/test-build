@@ -1,4 +1,4 @@
-import AdminTable from '../components/AdminTable.vue';
+import AdminTable from '../components/AdminTable.vue'
 
 export default {
   title: 'web/AdminTable',
@@ -19,7 +19,7 @@ export default {
       },
     },
   },
-};
+}
 
 export const PrimaryList = {
   args: {
@@ -111,4 +111,4 @@ export const PrimaryList = {
 
     nameTable: 'Задания',
   },
-};
+}

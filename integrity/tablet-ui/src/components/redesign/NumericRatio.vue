@@ -24,14 +24,14 @@ const props = defineProps({
   },
   secondaryValue: {
     type: [Number, null],
-    default: null
+    default: null,
   },
   total: Number,
   isLight: {
     type: Boolean,
-    default: false
-  }
-});
+    default: false,
+  },
+})
 
 const classes = computed(() => ({
   'numeric-ratio--light': props.isLight,
@@ -48,10 +48,7 @@ const classes = computed(() => ({
   display: inline-flex !important;
   flex-direction: column;
   align-items: center;
-  font-family:
-    system-ui,
-    -apple-system,
-    sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
 
   &--light {
     .numeric-ratio__value,
@@ -59,7 +56,7 @@ const classes = computed(() => ({
       color: $light-gray-40;
     }
 
-    .numeric-ratio__secondary{
+    .numeric-ratio__secondary {
       color: $light-gray-70;
     }
   }

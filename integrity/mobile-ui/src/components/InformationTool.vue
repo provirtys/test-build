@@ -4,7 +4,7 @@
       <p class="info__title">{{ t('storybook.toolInfo') }}</p>
       <div class="info__item">
         <div v-if="props.img" class="info__img">
-          <img :alt="t('storybook.toolImage')" :src="props.img">
+          <img :alt="t('storybook.toolImage')" :src="props.img" />
         </div>
         <div class="info__items">
           <dl v-for="(item, key) in props.toolItems" :key="key">
@@ -16,8 +16,16 @@
     </div>
 
     <div class="buttons">
-      <MobileButton v-if="props.btn === 'take'" :color="'dark'" :text="t('storybook.take')"></MobileButton>
-      <MobileButton v-if="props.btn === 'returnBtn'" :color="'dark'" :text="t('storybook.return')"></MobileButton>
+      <MobileButton
+        v-if="props.btn === 'take'"
+        :color="'dark'"
+        :text="t('storybook.take')"
+      ></MobileButton>
+      <MobileButton
+        v-if="props.btn === 'returnBtn'"
+        :color="'dark'"
+        :text="t('storybook.return')"
+      ></MobileButton>
 
       <MobileButton :text="t('storybook.cancel')"></MobileButton>
     </div>
@@ -25,29 +33,28 @@
 </template>
 
 <script setup>
-import MobileButton from "./MobileButton.vue";
-import { setupI18n } from '../i18n.js';
+import MobileButton from './MobileButton.vue'
+import { setupI18n } from '../i18n.js'
 
-const { t } = setupI18n();
+const { t } = setupI18n()
 
 let props = defineProps({
   /** Информация об инструменте */
   toolItems: {
     type: Object,
-    default: () => ({})
+    default: () => ({}),
   },
   /** Изображение инструмента */
   img: {
     type: String,
-    default: ''
+    default: '',
   },
   /** Тип кнопки Получить/Вернуть*/
   btn: {
     type: String,
-    default: 'take'
-  }
+    default: 'take',
+  },
 })
-
 </script>
 
 <style lang="scss">

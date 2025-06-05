@@ -1,40 +1,55 @@
 # MyWorkspace
+
 ## Запуск проекта
+
 1. В папке Integrity установить все зависимости
- ```
+
+```
 npm install
 ```
+
 2. В каждой библиотеке (в каждой библиотеке/папке base-ui, mobile-ui, tablet-ui, web-ui и новых созданных библиотеках) установить все зависимости
- ```
+
+```
 npm install
 ```
+
 3. Запустить сторибук (tut-nazvanie - название библиотеки/папки)
+
 ```
 nx run tut-nazvanie:storybook
 ```
 
 ## My-lib (создание библиотеки компонентов)
+
 1. Убедитесь, что у вас установлен Node.js (рекомендуемая версия 14 или выше). Проверить установку можно с помощью команды:
 
 ```sh
 node -v
 ```
+
 2. Создание пространства nx (stack: none, package-based, vite):
 
 ```sh
 npx create-nx-workspace
 ```
+
 3. Добавление пакета Vue:
 
 ```sh
 npm install @nx/vue
 ```
+
 4. Создание библиотеки в nx (➕vite):
+
 ```sh
 nx g @nx/vue:library tut-nazvanie в папке библиотеки
 ```
+
 5. Наполнить src, заменить (взять из готовой библиотеки)
+
 - package.json
+
 ```sh
 "name": "tut-nazvanie",
   "version": "номер версии",
@@ -48,7 +63,9 @@ nx g @nx/vue:library tut-nazvanie в папке библиотеки
     "./style.css": "./dist/style.css"
   },
 ```
+
 - vite.config.ts
+
 ```sh
 /// <reference types='vitest' />
 import { defineConfig } from 'vite';
@@ -92,35 +109,49 @@ export default defineConfig({
   },
 });
 ```
+
 6. Перейти в созданную папку библиотеки, установить зависимости
+
 ```sh
 npm install
 ```
+
 7. Добавить сторибук в основной папке (выбрать @storybook/vue3-vite). исправить для него preview.ts
+
 ```sh
 nx add @nx/storybook
 ```
+
 8. Далее в папке библиотеки
+
 ```sh
 npx nx g @nx/storybook:configuration tut-nazvanie
 ```
+
 9. Запустить сторибук
+
 ```sh
 nx run tut-nazvanie:storybook
 ```
+
 10. собрать библиотеку
+
 ```sh
 nx build tut-nazvanie
 ```
-11.  войти в свой аккаунт npm
+
+11. войти в свой аккаунт npm
+
 ```sh
 npm login
 ```
+
 12. опубликовать библиотеку
+
 ```sh
   npm publish --access=public
 ```
- 
+
 - !!! в компонентах style должны быть не scoped
 - а также dependencies и devdependencies (все библиотеки нужные для работы библиотеки компонентов, все что используется внутри)
 
@@ -145,7 +176,9 @@ const app = createApp(App)
 
 app.use(i18n).use(Quasar, {}).mount('#app')
 ```
+
 - vite.config.js (файл в приложении vue, куда будет импортироваться библиотека компонентов)
+
 ```sh
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -159,7 +192,9 @@ export default defineConfig({
   ],
 })
 ```
+
 - html
+
 ```sh
 <srcipt setup>
 import { NazvanieComponenta } from 'tut-nazvanie'

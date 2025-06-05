@@ -1,11 +1,6 @@
 <template>
   <q-toolbar class="text-table-text q-mb-sm">
-    <q-icon
-      name="sym_o_refresh"
-      :color="'table-text'"
-      class="cursor-pointer"
-      size="30px"
-    >
+    <q-icon name="sym_o_refresh" :color="'table-text'" class="cursor-pointer" size="30px">
       <q-tooltip class="bg-table-text">
         {{ t('storybook.table.update') }}
       </q-tooltip>
@@ -53,20 +48,12 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { setupI18n } from '../i18n.js';
-import {
-  QToolbar,
-  QIcon,
-  QTooltip,
-  QToolbarTitle,
-  QTable,
-  QTd,
-  QBtn,
-} from 'quasar';
-import 'quasar/dist/quasar.css';
+import { computed } from 'vue'
+import { setupI18n } from '../i18n.js'
+import { QToolbar, QIcon, QTooltip, QToolbarTitle, QTable, QTd, QBtn } from 'quasar'
+import 'quasar/dist/quasar.css'
 
-const { t } = setupI18n();
+const { t } = setupI18n()
 
 let props = defineProps({
   /** Значение строк*/
@@ -75,30 +62,30 @@ let props = defineProps({
   columns: { type: Array, default: () => [] },
   /** Название таблицы*/
   nameTable: { type: String, default: '' },
-});
+})
 
 const filteredRows = computed(() => {
-  return props.rows;
-});
+  return props.rows
+})
 
 function getStatus(val) {
   switch (val) {
     case 'new':
-      return t('storybook.table.new');
+      return t('storybook.table.new')
     case 'cancel':
-      return t('storybook.table.canceled');
+      return t('storybook.table.canceled')
     case 'labeling':
-      return t('storybook.table.labeling');
+      return t('storybook.table.labeling')
     case 'ready':
-      return t('storybook.table.ready');
+      return t('storybook.table.ready')
     default:
-      return val;
+      return val
   }
 }
 
 function chooseRowToDelete(props) {
-  const index = filteredRows.value.findIndex((el) => el.id === props.row.id);
-  filteredRows.value.splice(index, 1);
+  const index = filteredRows.value.findIndex((el) => el.id === props.row.id)
+  filteredRows.value.splice(index, 1)
 }
 </script>
 

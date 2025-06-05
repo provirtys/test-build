@@ -1,26 +1,31 @@
 <template>
   <div class="labeling-type">
-    <div class="labeling-type__status"
-         :class="[{'active': !props.isActive}, {'disabled': props.isActive && props.isDisabled}]">
+    <div
+      class="labeling-type__status"
+      :class="[{ active: !props.isActive }, { disabled: props.isActive && props.isDisabled }]"
+    >
       <CommonIcon name="auto" />
-      <p>{{ textAuto }}</p></div>
-    <div class="labeling-type__status"
-         :class="[{'active': props.isActive}, {'disabled': !props.isActive && props.isDisabled}]">
+      <p>{{ textAuto }}</p>
+    </div>
+    <div
+      class="labeling-type__status"
+      :class="[{ active: props.isActive }, { disabled: !props.isActive && props.isDisabled }]"
+    >
       <CommonIcon name="list" />
-      <p>{{ textList }}</p></div>
+      <p>{{ textList }}</p>
+    </div>
   </div>
 </template>
 
 <script setup>
-import CommonIcon from '../CommonIcon.vue';
+import CommonIcon from '../CommonIcon.vue'
 
 const props = defineProps({
-  isActive: {type: Boolean, default: true},
-  textAuto: {type: String, default: ''},
-  textList: {type: String, default: ''},
-  isDisabled: {type: Boolean, default: false}
+  isActive: { type: Boolean, default: true },
+  textAuto: { type: String, default: '' },
+  textList: { type: String, default: '' },
+  isDisabled: { type: Boolean, default: false },
 })
-
 </script>
 
 <style lang="scss">

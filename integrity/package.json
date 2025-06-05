@@ -2,7 +2,10 @@
   "name": "integrity",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint -c ./.eslintrc.json \"./*-ui/**/*.{ts,js,cjs,mjs,vue}\" ",
+    "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore"
+  },
   "private": true,
   "devDependencies": {
     "@nx/eslint": "19.6.4",

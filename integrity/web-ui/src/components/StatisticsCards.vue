@@ -20,12 +20,12 @@
 </template>
 
 <script setup>
-import StatisticsByStatusCard from './StatisticsByStatusCard.vue';
+import StatisticsByStatusCard from './StatisticsByStatusCard.vue'
 
 const props = defineProps({
   jobCards: { type: Array, default: () => [] },
   toolCards: { type: Array, default: () => [] },
-});
+})
 </script>
 
 <style lang="scss">

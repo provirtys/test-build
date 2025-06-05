@@ -1,9 +1,13 @@
 <template>
-  <div class="codes" >
-    <component :is="codeTypes[currentType]" :border="props.needBorder" :class="[ codeTypeClass, firstCodeColor ]"/>
-    <div class="code" v-for="index in props.codesLength - 1" :key="index" >
-      <CodesArrow class="arrow" :class="[ codeColor(index), arrowMargin ]" />
-      <component :is="codeTypes[currentType]" :class="[ codeTypeClass, codeColor(index) ]" />
+  <div class="codes">
+    <component
+      :is="codeTypes[currentType]"
+      :border="props.needBorder"
+      :class="[codeTypeClass, firstCodeColor]"
+    />
+    <div class="code" v-for="index in props.codesLength - 1" :key="index">
+      <CodesArrow class="arrow" :class="[codeColor(index), arrowMargin]" />
+      <component :is="codeTypes[currentType]" :class="[codeTypeClass, codeColor(index)]" />
     </div>
   </div>
 </template>
@@ -12,22 +16,22 @@
 import CodesArrow from '../assets/icons/CodesArrow.vue'
 import DatamatrixIcon from '../assets/icons/DatamatrixIcon.vue'
 import BarcodeIcon from '../assets/icons/BarcodeIcon.vue'
-import {computed} from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   /** Вариант изображения кода*/
-  codeType: {type: String, default: 'DataMatrix'},
+  codeType: { type: String, default: 'DataMatrix' },
   /** Индекс сканируемого кода*/
-  currentCode: {type: Number, default: 0},
+  currentCode: { type: Number, default: 0 },
   /** Количество сканируемых кодов */
-  codesLength: {type: Number, default: 2},
+  codesLength: { type: Number, default: 2 },
   /** Видимость рамки сканирования кода*/
-  needBorder: {type: Boolean, default: true}
+  needBorder: { type: Boolean, default: true },
 })
 
 const codeTypes = {
   DatamatrixIcon,
-  BarcodeIcon
+  BarcodeIcon,
 }
 
 const currentType = computed(() => {

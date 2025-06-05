@@ -1,13 +1,24 @@
 <template>
-    <div class="loading__animation">
-        <img v-if="isInternetError" class="icon" src="../assets/images/no-wifi.svg" :alt="t('loading.internet_false')" />
-        <LoadingAnimation v-else />
-        <div class="loading__text">{{ t('loading.' + loadingType) }}</div>
-        <div v-if="isInternetError" class="loading__error">{{ t('loading.try_again') }}</div>
-        <div v-else class="loading__error">{{ t('loading.wait') }}</div>
-        <BaseButton v-if="isInternetError" :background="'red'" :color="'white'" :size="'large'"
-            :text="t('loading.retry')" class="mt-5"></BaseButton>
-    </div>
+  <div class="loading__animation">
+    <img
+      v-if="isInternetError"
+      class="icon"
+      src="../assets/images/no-wifi.svg"
+      :alt="t('loading.internet_false')"
+    />
+    <LoadingAnimation v-else />
+    <div class="loading__text">{{ t('loading.' + loadingType) }}</div>
+    <div v-if="isInternetError" class="loading__error">{{ t('loading.try_again') }}</div>
+    <div v-else class="loading__error">{{ t('loading.wait') }}</div>
+    <BaseButton
+      v-if="isInternetError"
+      :background="'red'"
+      :color="'white'"
+      :size="'large'"
+      :text="t('loading.retry')"
+      class="mt-5"
+    ></BaseButton>
+  </div>
 </template>
 
 <script setup>
@@ -20,11 +31,11 @@ const { t } = setupI18n()
 
 const props = defineProps({
   /** Тип загрузки*/
-    loadingType: { type: String, default: '' }
+  loadingType: { type: String, default: '' },
 })
 
 const isInternetError = computed(() => {
-    return props.loadingType === 'internet_false'
+  return props.loadingType === 'internet_false'
 })
 </script>
 
@@ -55,5 +66,4 @@ const isInternetError = computed(() => {
     font-size: $font-size-h6;
   }
 }
-
 </style>

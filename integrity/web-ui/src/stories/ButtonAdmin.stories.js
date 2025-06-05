@@ -1,4 +1,4 @@
-import ButtonAdmin from '../components/ButtonAdmin.vue';
+import ButtonAdmin from '../components/ButtonAdmin.vue'
 
 /** Кнопка для создания/добавления задания, токена, шаблона задания в Labeling Admin */
 export default {
@@ -6,7 +6,7 @@ export default {
   component: ButtonAdmin,
   tags: ['autodocs'],
   argTypes: {},
-};
+}
 export const Create = {
   args: {},
-};
+}

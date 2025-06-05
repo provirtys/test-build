@@ -1,37 +1,37 @@
-import TabletButton from '../../components/redesign/TabletButton.vue';
+import TabletButton from '../../components/redesign/TabletButton.vue'
 
 // Расположение иконки
-const empty = '';
-const right = 'right';
-const left = 'left';
+const empty = ''
+const right = 'right'
+const left = 'left'
 
 // Виды кнопок
-const primary = 'primary';
-const secondary = 'secondary';
-const plane = 'plane';
-const outline = 'outline';
+const primary = 'primary'
+const secondary = 'secondary'
+const plane = 'plane'
+const outline = 'outline'
 
 // Размеры кнопки
-const large = 'large';
-const medium = 'medium';
-const small = 'small';
-const extraSmall = 'extra-small';
+const large = 'large'
+const medium = 'medium'
+const small = 'small'
+const extraSmall = 'extra-small'
 
-const center = 'center';
+const center = 'center'
 
 //Названия иконок
-const bad = 'bad';
-const arrow = 'arrow';
-const aggregation = 'aggregation';
-const finishAggregation = 'finishAggregation';
-const barCode = 'barCode';
-const dataMatrix = 'dataMatrix';
-const restart = 'restart';
+const bad = 'bad'
+const arrow = 'arrow'
+const aggregation = 'aggregation'
+const finishAggregation = 'finishAggregation'
+const barCode = 'barCode'
+const dataMatrix = 'dataMatrix'
+const restart = 'restart'
 
-const location = { left, right, empty };
-const colors = { primary, secondary, plane, outline };
-const sizes = { large, medium, small, extraSmall };
-const textAlignments = { left, center, right };
+const location = { left, right, empty }
+const colors = { primary, secondary, plane, outline }
+const sizes = { large, medium, small, extraSmall }
+const textAlignments = { left, center, right }
 const iconNames = {
   bad,
   arrow,
@@ -40,7 +40,7 @@ const iconNames = {
   barCode,
   dataMatrix,
   restart,
-};
+}
 
 /** Компонент кнопки с длительным нажатием, используемый на планшетах. Можно регулировать цвет кнопки, её текст и управлять
  * наличием иконки и её расположением */
@@ -109,8 +109,7 @@ export default {
       control: { type: 'radio' },
     },
     icon: {
-      description:
-        'Имя иконки (название файла из папки с иконками без расширения)',
+      description: 'Имя иконки (название файла из папки с иконками без расширения)',
       options: Object.keys(iconNames),
       mapping: iconNames,
       control: {
@@ -142,7 +141,7 @@ export default {
       control: { type: 'radio' },
     },
   },
-};
+}
 
 export const Primary = {
   args: {
@@ -151,7 +150,7 @@ export const Primary = {
     isRadius: true,
     color: primary,
   },
-};
+}
 
 export const Secondary = {
   args: {
@@ -160,7 +159,7 @@ export const Secondary = {
     color: secondary,
     isRadius: true,
   },
-};
+}
 
 export const Plane = {
   args: {
@@ -169,7 +168,7 @@ export const Plane = {
     color: plane,
     isRadius: true,
   },
-};
+}
 
 export const Outline = {
   args: {
@@ -178,7 +177,7 @@ export const Outline = {
     color: outline,
     isRadius: true,
   },
-};
+}
 
 export const Disabled = {
   args: {
@@ -188,7 +187,7 @@ export const Disabled = {
     color: primary,
     isRadius: true,
   },
-};
+}
 
 export const NotRounded = {
   args: {
@@ -197,7 +196,7 @@ export const NotRounded = {
     color: primary,
     isRadius: false,
   },
-};
+}
 
 export const TextCenter = {
   args: {
@@ -207,7 +206,7 @@ export const TextCenter = {
     isRadius: false,
     textAlignment: 'center',
   },
-};
+}
 
 export const TextRight = {
   args: {
@@ -217,7 +216,7 @@ export const TextRight = {
     isRadius: false,
     textAlignment: 'right',
   },
-};
+}
 
 export const IconLeftWithTextLeft = {
   args: {
@@ -229,7 +228,7 @@ export const IconLeftWithTextLeft = {
     icon: 'bad',
     textAlignment: 'left',
   },
-};
+}
 
 export const IconLeftWithTextCenter = {
   args: {
@@ -241,7 +240,7 @@ export const IconLeftWithTextCenter = {
     icon: 'bad',
     textAlignment: 'center',
   },
-};
+}
 
 export const IconLeftWithTextRight = {
   args: {
@@ -253,7 +252,7 @@ export const IconLeftWithTextRight = {
     icon: 'bad',
     textAlignment: 'right',
   },
-};
+}
 
 export const IconRightWithTextLeft = {
   args: {
@@ -265,7 +264,7 @@ export const IconRightWithTextLeft = {
     icon: 'bad',
     textAlignment: 'left',
   },
-};
+}
 
 export const IconRightTextCenter = {
   args: {
@@ -277,7 +276,7 @@ export const IconRightTextCenter = {
     icon: 'bad',
     textAlignment: 'center',
   },
-};
+}
 
 export const IconRightWithTextCenter = {
   args: {
@@ -289,7 +288,7 @@ export const IconRightWithTextCenter = {
     icon: 'bad',
     textAlignment: 'right',
   },
-};
+}
 
 export const ShowIconOnAction = {
   args: {
@@ -299,4 +298,4 @@ export const ShowIconOnAction = {
     isRadius: false,
     changeIcon: true,
   },
-};
+}

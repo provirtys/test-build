@@ -1,11 +1,7 @@
 <template>
-  <div class="progress-pie" :class="[{done: percentage === 100}, props.size]" :style="degrees">
-    <div class="progress-pie__filling">
-
-    </div>
-    <div class="progress-pie__percentage">
-      {{ props.percentage }}%
-    </div>
+  <div class="progress-pie" :class="[{ done: percentage === 100 }, props.size]" :style="degrees">
+    <div class="progress-pie__filling"></div>
+    <div class="progress-pie__percentage">{{ props.percentage }}%</div>
   </div>
 </template>
 
@@ -13,13 +9,13 @@
 import { computed } from 'vue'
 const props = defineProps({
   percentage: { type: Number, default: 0 },
-  size: { type: String, default: 'small' }
+  size: { type: String, default: 'small' },
 })
 
 const degrees = computed(() => {
   const radius = props.percentage <= 2 ? '6deg' : (props.percentage * 3.6).toString() + 'deg'
   return {
-    '--degrees': radius
+    '--degrees': radius,
   }
 })
 </script>

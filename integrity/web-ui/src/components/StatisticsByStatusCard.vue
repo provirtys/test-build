@@ -9,7 +9,7 @@
 const props = defineProps({
   title: { type: String, default: '' },
   number: { type: Number, default: 0 },
-});
+})
 </script>
 
 <style lang="scss">

@@ -35,10 +35,19 @@
             <p class="labeling-main__info__title">{{ t('code') }}</p>
             <p class="labeling-main__info__value">{{ codeInfo.code }}</p>
             <div v-if="isCodes" class="labeling-main__info__status-code">
-              <StatusCode :status="status1" :codeType="codeType1" :color="color1"
-                          :is-animate="status1 === 'synced'"></StatusCode>
-              <StatusCode v-if="secondCode" :status="status2" :codeType="codeType2" :color="color2"
-                          :is-animate="status2 === 'synced'"></StatusCode>
+              <StatusCode
+                :status="status1"
+                :codeType="codeType1"
+                :color="color1"
+                :is-animate="status1 === 'synced'"
+              ></StatusCode>
+              <StatusCode
+                v-if="secondCode"
+                :status="status2"
+                :codeType="codeType2"
+                :color="color2"
+                :is-animate="status2 === 'synced'"
+              ></StatusCode>
             </div>
           </div>
         </div>
@@ -51,11 +60,11 @@
 </template>
 
 <script setup>
-import StatusCode from './StatusCode.vue';
-import { setupI18n } from '../../i18n.js';
-import CommonIcon from '../CommonIcon.vue';
+import StatusCode from './StatusCode.vue'
+import { setupI18n } from '../../i18n.js'
+import CommonIcon from '../CommonIcon.vue'
 
-const { t } = setupI18n();
+const { t } = setupI18n()
 
 defineProps({
   isAggregationVisible: { type: Boolean, default: false },
@@ -73,8 +82,8 @@ defineProps({
   secondCode: { type: Boolean, default: true },
   status2: { type: String, default: '' },
   codeType2: { type: String, default: '' },
-  color2: { type: String, default: 'info' }
-});
+  color2: { type: String, default: 'info' },
+})
 </script>
 
 <style lang="scss">
@@ -203,7 +212,7 @@ p {
 }
 
 .time {
-  color: #9C9C9C;
+  color: #9c9c9c;
   font-size: $font-size-p1;
 }
 </style>

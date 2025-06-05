@@ -1,5 +1,5 @@
 <template>
-  <div class="labeling-code" :class="[{ 'error': status === 'broken' }]">
+  <div class="labeling-code" :class="[{ error: status === 'broken' }]">
     <CommonIcon v-if="codeType === 'Code128'" name="barcodeRedesign" />
     <CommonIcon v-else name="datamatrixRedesign" />
     <div v-if="status === 'verified' || status === 'synced'" class="labeling-code__status">
@@ -9,13 +9,13 @@
 </template>
 
 <script setup>
-import StatusIndicator from "./StatusIndicator.vue";
-import CommonIcon from '../CommonIcon.vue';
+import StatusIndicator from './StatusIndicator.vue'
+import CommonIcon from '../CommonIcon.vue'
 
 defineProps({
-  codeType: {type: String, default: 'DataMatrix'},
-  status: {type: String, default: ''},
-  color: {type: String, default: 'info'},
+  codeType: { type: String, default: 'DataMatrix' },
+  status: { type: String, default: '' },
+  color: { type: String, default: 'info' },
 })
 </script>
 

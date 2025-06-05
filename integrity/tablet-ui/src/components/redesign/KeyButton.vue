@@ -6,11 +6,11 @@
 </template>
 
 <script setup>
-import CommonIcon from '../CommonIcon.vue';
+import CommonIcon from '../CommonIcon.vue'
 
 const props = defineProps({
   /** Значение кнопки*/
-  value: {type: String, default: ''},
+  value: { type: String, default: '' },
 })
 
 const emit = defineEmits(['pressed'])
@@ -32,15 +32,14 @@ function pressed() {
   width: $b-4;
   height: $xl-4;
   background: $primary-text-20;
-  transition: background .5s;
+  transition: background 0.5s;
   border-radius: $d-1;
   outline: none !important;
   color: $primary-text;
 
-
   &:active {
     background: $primary-text-40;
-    transition: background .5s;
+    transition: background 0.5s;
   }
 
   .icon {

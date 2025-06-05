@@ -7,8 +7,8 @@
     row-key="name"
     v-model:pagination="pagination"
     :rows-per-page-options="[0]"
-    :table-header-style="{ color: 'var(--q-primary)'}"
-    :card-style="{ color: 'var(secondary)'}"
+    :table-header-style="{ color: 'var(--q-primary)' }"
+    :card-style="{ color: 'var(secondary)' }"
     :no-data-label="t('noData')"
     hide-pagination
   />
@@ -17,18 +17,17 @@
 </template>
 
 <script setup>
-import { setupI18n } from '../../i18n.js';
-import { QTable } from 'quasar';
-import 'quasar/dist/quasar.css';
+import { setupI18n } from '../../i18n.js'
+import { QTable } from 'quasar'
+import 'quasar/dist/quasar.css'
 
-const { t } = setupI18n();
+const { t } = setupI18n()
 let props = defineProps({
   /** Значение строк*/
   rows: { type: Array, default: () => [] },
   /** Значение колонок*/
-  columns: { type: Array, default: () => [] }
-});
-
+  columns: { type: Array, default: () => [] },
+})
 </script>
 
 <style lang="scss">
@@ -50,7 +49,6 @@ let props = defineProps({
     position: sticky;
     z-index: 1;
     font-family: Golos UI;
-
   }
 
   thead tr:last-child th {
@@ -84,16 +82,19 @@ let props = defineProps({
   border-radius: $d-1;
 }
 
-.q-table thead, .q-table tr, .q-table th, .q-table td {
+.q-table thead,
+.q-table tr,
+.q-table th,
+.q-table td {
   border-color: $light-gray;
-
 }
 
 .q-table tr {
   width: 100%;
 }
 
-.q-table th, .q-table td {
+.q-table th,
+.q-table td {
   font-size: $s-2;
   padding: 14px $s-1;
 }
@@ -101,7 +102,7 @@ let props = defineProps({
 .q-table tbody td {
   font-size: 18px;
   height: 59px;
-  font-family: "Golos UI-medium";
+  font-family: 'Golos UI-medium';
   padding: $s-3 $s-1 $s-1;
 }
 

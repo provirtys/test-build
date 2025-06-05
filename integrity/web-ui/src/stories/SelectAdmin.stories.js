@@ -1,4 +1,4 @@
-import SelectAdmin from '../components/SelectAdmin.vue';
+import SelectAdmin from '../components/SelectAdmin.vue'
 
 /** Раскрывающийся список в Labeling Admin */
 export default {
@@ -17,21 +17,21 @@ export default {
       },
     },
   },
-};
+}
 
 export const SelectDevice = {
   args: {
     options: ['принтер abc123', 'принтер 12cde', 'принтер bv8fyu'],
     label: 'устройство',
   },
-};
+}
 
 export const SelectEvent = {
   args: {
     options: ['Создать', 'Отменить', 'Обновить', 'Изменить'],
     label: 'событие',
   },
-};
+}
 export const SelectIpAddress = {
   args: {
     options: [
@@ -43,7 +43,7 @@ export const SelectIpAddress = {
     ],
     label: 'ip-дрес отправителя',
   },
-};
+}
 
 export const SelectEmptyLabel = {
   args: {
@@ -55,4 +55,4 @@ export const SelectEmptyLabel = {
       '192.168.123.136',
     ],
   },
-};
+}

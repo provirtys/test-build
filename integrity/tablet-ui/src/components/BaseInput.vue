@@ -1,19 +1,27 @@
 <template>
   <div class="input-amount">
     <div class="full-width">
-      <q-input v-model.number="amount" pattern="[0-9]*" inputmode="numeric" type="number" :label="t('amount')"
-               stack-label outlined autofocus/>
+      <q-input
+        v-model.number="amount"
+        pattern="[0-9]*"
+        inputmode="numeric"
+        type="number"
+        :label="t('amount')"
+        stack-label
+        outlined
+        autofocus
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-import {ref} from "vue";
-import { setupI18n } from '../i18n.js';
-import { QInput } from 'quasar';
+import { ref } from 'vue'
+import { setupI18n } from '../i18n.js'
+import { QInput } from 'quasar'
 import 'quasar/dist/quasar.css'
 
-const { t } = setupI18n();
+const { t } = setupI18n()
 
 const amount = ref(0)
 </script>

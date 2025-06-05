@@ -1,38 +1,45 @@
 <template>
   <button
-      :disabled="props.isDisabled" class="radio-btn" :class="[backgroundColor,buttonSize]" @click="submitAction">
+    :disabled="props.isDisabled"
+    class="radio-btn"
+    :class="[backgroundColor, buttonSize]"
+    @click="submitAction"
+  >
     <CommonIcon :name="isSelect ? 'radioButton-select' : 'radioButton-empty'" :size="sizeIcon" />
     {{ buttonText }}
     <span class="radio-btn__status">
       <CommonIcon v-if="isIcon === 'icon'" name="numbers" :size="sizeIcon" />
-      <StatusIndicator v-if="isIcon === 'status' && isDisabled === false" :is-animate="isAnimate" :color="iconStatus"></StatusIndicator>
+      <StatusIndicator
+        v-if="isIcon === 'status' && isDisabled === false"
+        :is-animate="isAnimate"
+        :color="iconStatus"
+      ></StatusIndicator>
     </span>
   </button>
 </template>
 
 <script setup>
-
-import {computed} from "vue";
-import StatusIndicator from "./StatusIndicator.vue";
-import CommonIcon from '../CommonIcon.vue';
+import { computed } from 'vue'
+import StatusIndicator from './StatusIndicator.vue'
+import CommonIcon from '../CommonIcon.vue'
 
 const props = defineProps({
   /** Вид кнопки */
-  color: {type: String, default: 'primary'},
+  color: { type: String, default: 'primary' },
   /** Дополнительные элементы справа */
-  isIcon: {type: String, default: ''},
+  isIcon: { type: String, default: '' },
   /** Выбранное значение */
-  isSelect: {type: Boolean, default: false},
+  isSelect: { type: Boolean, default: false },
   /** Текст кнопки */
-  buttonText: {type: String, default: ''},
+  buttonText: { type: String, default: '' },
   /** Не активное состояние кнопки */
-  isDisabled: {type: Boolean, default: false},
+  isDisabled: { type: Boolean, default: false },
   /** Высота кнопки */
-  height: {type: String, default: 'large'},
+  height: { type: String, default: 'large' },
 
   /** Цвет иконки статуса и анимированное состояние*/
-  isAnimate: {type: Boolean, default: true},
-  iconStatus: {type: String, default: 'info'},
+  isAnimate: { type: Boolean, default: true },
+  iconStatus: { type: String, default: 'info' },
 })
 
 const emit = defineEmits(['actionSubmitted'])
@@ -149,7 +156,6 @@ const buttonSize = computed(() => {
     padding: $d-1 $s-2;
     gap: $s-1;
     font-size: $font-size-p2;
-
   }
 }
 </style>

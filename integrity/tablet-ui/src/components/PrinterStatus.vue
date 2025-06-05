@@ -13,10 +13,10 @@ const props = defineProps({
   /** Цвет индикатора статуса принтера*/
   color: {
     type: String,
-    default: ''
+    default: '',
   },
   /** Текст статуса принтера*/
-  statusType: { type: String, default: '' }
+  statusType: { type: String, default: '' },
 })
 </script>
 

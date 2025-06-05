@@ -1,36 +1,100 @@
 <script setup>
 import MarkingCard from './MarkingCard.vue'
 import { setupI18n } from '../i18n.js'
-import TabletButton from './redesign/TabletButton.vue';
+import TabletButton from './redesign/TabletButton.vue'
 
 const { t } = setupI18n()
 
 defineProps({
-  isAggregationVisible: {type: Boolean, default: true},
-  isProgressPieVisible: {type: Boolean, default: true},
-  isRepeatVisible: {type: Boolean, default: true},
-  codeInfo: {type: Object, default: () => ({})},
-  btn: {type: String, default: '1'}
+  isAggregationVisible: { type: Boolean, default: true },
+  isProgressPieVisible: { type: Boolean, default: true },
+  isRepeatVisible: { type: Boolean, default: true },
+  codeInfo: { type: Object, default: () => ({}) },
+  btn: { type: String, default: '1' },
 })
 </script>
 
 <template>
   <div class="marking-card-container">
-    <MarkingCard :codeInfo="codeInfo" :is-repeat-visible="isRepeatVisible"
-                 :is-progress-pie-visible="isProgressPieVisible" :is-aggregation-visible="isAggregationVisible">
+    <MarkingCard
+      :codeInfo="codeInfo"
+      :is-repeat-visible="isRepeatVisible"
+      :is-progress-pie-visible="isProgressPieVisible"
+      :is-aggregation-visible="isAggregationVisible"
+    >
       <div class="gap-12">
-        <TabletButton v-if="btn === '1'" :text="t('scan')" icon="scan" location-icon="right" is-radius text-alignment="left" color="red" />
-        <TabletButton v-if="btn === '1'" :text="t('startAggregation')" is-radius text-alignment="left"/>
+        <TabletButton
+          v-if="btn === '1'"
+          :text="t('scan')"
+          icon="scan"
+          location-icon="right"
+          is-radius
+          text-alignment="left"
+          color="red"
+        />
+        <TabletButton
+          v-if="btn === '1'"
+          :text="t('startAggregation')"
+          is-radius
+          text-alignment="left"
+        />
 
-        <TabletButton v-if="btn === '2'" :text="t('repeatLabeling')" icon="restart" location-icon="right" is-radius text-alignment="left" color="red" />
-        <TabletButton v-if="btn === '2'" :text="t('labelingDefect')" icon="bad" location-icon="right" is-radius text-alignment="left" color="secondary" />
+        <TabletButton
+          v-if="btn === '2'"
+          :text="t('repeatLabeling')"
+          icon="restart"
+          location-icon="right"
+          is-radius
+          text-alignment="left"
+          color="red"
+        />
+        <TabletButton
+          v-if="btn === '2'"
+          :text="t('labelingDefect')"
+          icon="bad"
+          location-icon="right"
+          is-radius
+          text-alignment="left"
+          color="secondary"
+        />
 
-        <TabletButton v-if="btn === '3'" :text="t('scan')" icon="scan" location-icon="right" is-radius text-alignment="left" color="red" />
+        <TabletButton
+          v-if="btn === '3'"
+          :text="t('scan')"
+          icon="scan"
+          location-icon="right"
+          is-radius
+          text-alignment="left"
+          color="red"
+        />
 
-        <TabletButton v-if="btn === '4'" :text="t('confirm')" icon="done" location-icon="right" is-radius text-alignment="left" color="red" />
+        <TabletButton
+          v-if="btn === '4'"
+          :text="t('confirm')"
+          icon="done"
+          location-icon="right"
+          is-radius
+          text-alignment="left"
+          color="red"
+        />
 
-        <TabletButton v-if="btn === '5'" :text="t('scan')" icon="scan" location-icon="right" is-radius text-alignment="left" color="red" />
-        <TabletButton v-if="btn === '5'" :text="t('finishAggregation')" icon="aggregation" location-icon="right" is-radius text-alignment="left" />
+        <TabletButton
+          v-if="btn === '5'"
+          :text="t('scan')"
+          icon="scan"
+          location-icon="right"
+          is-radius
+          text-alignment="left"
+          color="red"
+        />
+        <TabletButton
+          v-if="btn === '5'"
+          :text="t('finishAggregation')"
+          icon="aggregation"
+          location-icon="right"
+          is-radius
+          text-alignment="left"
+        />
       </div>
     </MarkingCard>
   </div>

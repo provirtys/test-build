@@ -1,6 +1,10 @@
 <template>
-  <div class="card-job" :class="[isActiveTask ? 'active' : '', backgroundColor]" @click="chooseTask">
-      <LabelingStatus :status="labelingStatus" :isSecondary="isPriority"></LabelingStatus>
+  <div
+    class="card-job"
+    :class="[isActiveTask ? 'active' : '', backgroundColor]"
+    @click="chooseTask"
+  >
+    <LabelingStatus :status="labelingStatus" :isSecondary="isPriority"></LabelingStatus>
     <div class="card-job__content">
       <p class="card-job__title">{{ title }}</p>
       <div class="card-job__info">
@@ -14,33 +18,33 @@
 </template>
 
 <script setup>
-import LabelingStatus from "./LabelingStatus.vue";
-import {computed} from "vue";
+import LabelingStatus from './LabelingStatus.vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   id: {
     type: String,
-    default: ''
+    default: '',
   },
   /** Название задачи*/
   title: {
     type: String,
-    default: ''
+    default: '',
   },
   /** Информация о задаче*/
   toolItems: {
     type: Object,
-    default: () => ({})
+    default: () => ({}),
   },
   /** Статус маркировки*/
   labelingStatus: {
     type: String,
-    default: ''
+    default: '',
   },
   /** Приоритет задания */
   isPriority: {
     type: Boolean,
-    default: true
+    default: true,
   },
   /** Активное состояние/Нажатие */
   isActiveTask: { type: Boolean, default: false },
@@ -59,10 +63,9 @@ const backgroundColor = computed(() => {
       return ''
   }
 })
-function chooseTask () {
+function chooseTask() {
   emit('chooseTask', props.id)
 }
-
 </script>
 
 <style lang="scss">

@@ -1,32 +1,38 @@
 <template>
   <div>
-    <input class="base-input" :class="{ 'error': hasErrorNoEmpty || hasErrorUniqueValue}" :placeholder="placeholder"
-           :type="type" :value="modelValue" @input="updateModelValue"
-           v-bind="$attrs" data-testid="input">
+    <input
+      class="base-input"
+      :class="{ error: hasErrorNoEmpty || hasErrorUniqueValue }"
+      :placeholder="placeholder"
+      :type="type"
+      :value="modelValue"
+      @input="updateModelValue"
+      v-bind="$attrs"
+      data-testid="input"
+    />
     <span v-if="hasErrorNoEmpty" class="error-text">{{ t('error.noEmpty') }}</span>
     <span v-else-if="hasErrorUniqueValue" class="error-text">{{ t('error.uniqueValue') }}</span>
     <span v-if="noPositiveNumber" class="error-text">{{ t('error.noPositiveNumber') }}</span>
   </div>
-
 </template>
 
 <script setup>
-import {computed, ref} from 'vue'
+import { computed, ref } from 'vue'
 import { setupI18n } from '../i18n.js'
 
 const { t } = setupI18n()
 
 const props = defineProps({
   /** Введенное значение */
-  modelValue: {type: String, default: ''},
+  modelValue: { type: String, default: '' },
   /** Уникальное название поля ввода */
-  inputName: {type: String, default: ''},
+  inputName: { type: String, default: '' },
   /** Тип данных для заполнения */
-  type: {type: String, default: 'text'},
+  type: { type: String, default: 'text' },
   /** Пример заполнения */
-  placeholder: {type: String, default: ''},
+  placeholder: { type: String, default: '' },
   /** Правило заполнения */
-  rules: {type: Object, default: () => ({})}
+  rules: { type: Object, default: () => ({}) },
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -37,14 +43,18 @@ const hasErrorUniqueValue = computed(() => {
 const noPositiveNumber = ref(false)
 
 const updateModelValue = ($event) => {
-  if ('regex' in props.rules && $event.target.value && (!$event.target.value.match(props.rules.regex) ||
-      $event.target.value.match(props.rules.regex) !== $event.target.value)) {
-      noPositiveNumber.value = true
+  if (
+    'regex' in props.rules &&
+    $event.target.value &&
+    (!$event.target.value.match(props.rules.regex) ||
+      $event.target.value.match(props.rules.regex) !== $event.target.value)
+  ) {
+    noPositiveNumber.value = true
     $event.target.value = $event.target.value.match(props.rules.regex)
   } else if ('not-empty' in props.rules && $event.target.value === '') {
-    hasErrorNoEmpty.value = true// поле пустое
+    hasErrorNoEmpty.value = true // поле пустое
   } else {
-    hasErrorNoEmpty.value = false// поле не пустое
+    hasErrorNoEmpty.value = false // поле не пустое
   }
   emit('update:modelValue', $event.target.value)
 }

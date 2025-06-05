@@ -1,49 +1,64 @@
 <template>
-  <div class="labeling-code-card" :class="{'aggregation': isAggregation}">
-
-    <div class="labeling-code-card__position" :class="{'error': isErrorLabeling}">
-      <CommonIcon v-if="isAggregation" name="aggregation" size="35"/>
+  <div class="labeling-code-card" :class="{ aggregation: isAggregation }">
+    <div class="labeling-code-card__position" :class="{ error: isErrorLabeling }">
+      <CommonIcon v-if="isAggregation" name="aggregation" size="35" />
       <p v-else>{{ position }}</p>
     </div>
 
     <div class="labeling-code-card__info">
-      <p class="labeling-code-card__title">{{ template }} <span class="code-name">{{ codeText }}</span></p>
-      <p class="labeling-code-card__time"><span v-if="isAggregation" :class="{'error': isErrorLabeling}" class="number" >{{codesGroup}}</span>{{ time }}</p>
+      <p class="labeling-code-card__title">
+        {{ template }} <span class="code-name">{{ codeText }}</span>
+      </p>
+      <p class="labeling-code-card__time">
+        <span v-if="isAggregation" :class="{ error: isErrorLabeling }" class="number">{{
+          codesGroup
+        }}</span
+        >{{ time }}
+      </p>
     </div>
 
     <div v-if="!noCodes" class="labeling-code-card__codes">
-      <StatusCode :status="status1" :codeType="codeType1" :color="color1" :is-animate="status1 === 'synced'"></StatusCode>
-      <StatusCode v-if="secondCode" :status="status2" :codeType="codeType2" :color="color2"
-                  :is-animate="status2 === 'synced'"></StatusCode>
+      <StatusCode
+        :status="status1"
+        :codeType="codeType1"
+        :color="color1"
+        :is-animate="status1 === 'synced'"
+      ></StatusCode>
+      <StatusCode
+        v-if="secondCode"
+        :status="status2"
+        :codeType="codeType2"
+        :color="color2"
+        :is-animate="status2 === 'synced'"
+      ></StatusCode>
     </div>
-
   </div>
 </template>
 
 <script setup>
-import StatusCode from "./StatusCode.vue";
-import CommonIcon from '../CommonIcon.vue';
+import StatusCode from './StatusCode.vue'
+import CommonIcon from '../CommonIcon.vue'
 
 defineProps({
-  codeText: {type: String, default: 'Code name'},
-  time: {type: String, default: ''},
-  template: {type: String, default: 'Code'},
-  position: {type: Number, default: 0},
-  isErrorLabeling: {type: Boolean, default: false},
-  isAggregation: {type: Boolean, default: false},
-  noCodes: {type: Boolean, default: false},
-  codesGroup:{type: String, default: '#'},
+  codeText: { type: String, default: 'Code name' },
+  time: { type: String, default: '' },
+  template: { type: String, default: 'Code' },
+  position: { type: Number, default: 0 },
+  isErrorLabeling: { type: Boolean, default: false },
+  isAggregation: { type: Boolean, default: false },
+  noCodes: { type: Boolean, default: false },
+  codesGroup: { type: String, default: '#' },
   /** Статус индикатора  */
-  status1: {type: String, default: ''},
+  status1: { type: String, default: '' },
   /** Тип кода  */
-  codeType1: {type: String, default: ''},
+  codeType1: { type: String, default: '' },
   /** Цвет индикатора  */
-  color1: {type: String, default: 'info'},
+  color1: { type: String, default: 'info' },
 
-  secondCode: {type: Boolean, default: true},
-  status2: {type: String, default: ''},
-  codeType2: {type: String, default: ''},
-  color2: {type: String, default: 'info'},
+  secondCode: { type: Boolean, default: true },
+  status2: { type: String, default: '' },
+  codeType2: { type: String, default: '' },
+  color2: { type: String, default: 'info' },
 })
 </script>
 
