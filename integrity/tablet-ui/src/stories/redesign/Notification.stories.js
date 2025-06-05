@@ -41,6 +41,7 @@ export const Info = {
     bgColor: '#206dc8',
     iconColor: '#206dc8',
     text: 'Проверьте количество продукции',
+    isTransparent: true
   },
 }
 
@@ -49,6 +50,7 @@ export const ErrorRed = {
     bgColor: '#c83420',
     iconColor: '#c83420',
     text: 'Код не подтвержден',
+    isTransparent: true
   },
 }
 
