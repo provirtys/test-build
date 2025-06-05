@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="legend__item">
-        <div class="legend__color bg-gray2"></div>
+        <div class="legend__color bg-gray-2"></div>
         <div class="legend__title">
           <p>{{ t('withoutErrors') }}</p>
           <p>{{ total - mistakes }}</p>
@@ -30,7 +30,7 @@
         size="320px"
         :thickness="0.4"
         color="primary"
-        track-color="gray2"
+        track-color="gray-2"
         class="q-ma-md"
       />
       <div class="titles" :class="{ alignment: percentage === 100 || percentage === 0 }">

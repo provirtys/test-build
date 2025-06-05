@@ -53,11 +53,27 @@ body {
   background: $primary !important;
 }
 
-.bg-gray2 {
+.bg-gray-2 {
   background: $light-gray-85 !important;
 }
-.text-gray2 {
+.text-gray-2 {
   color: $light-gray-85 !important;
+}
+
+.text-gray-15 {
+  color: $primary-text-20 !important;
+}
+
+.bg-gray-15 {
+  background: $primary-text-20 !important;
+}
+
+.text-dark-1 {
+  color: $primary-text !important;
+}
+
+.bg-dark-1 {
+  background: $primary-text !important;
 }
 
 @font-face {
