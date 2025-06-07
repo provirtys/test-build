@@ -4,8 +4,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "pnpm -r exec build",
-    "build:storybook": "pnpm -r exec build:storybook",
+    "build": "pnpm --parallel -r run build",
+    "build:storybook": "pnpm --parallel -r run build:storybook",
     "lint:check": "biome check --staged",
     "lint": "biome check --write --staged --files-ignore-unknown=true --no-errors-on-unmatched",
     "audit:licenses": "pnpm licenses list --long",
