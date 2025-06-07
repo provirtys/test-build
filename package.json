@@ -1,0 +1,23 @@
+{
+  "name": "integrity",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r exec build",
+    "build:storybook": "pnpm -r exec build:storybook",
+    "lint:check": "biome check --staged",
+    "lint": "biome check --write --staged --files-ignore-unknown=true --no-errors-on-unmatched",
+    "audit:licenses": "pnpm licenses list --long",
+    "update:deps": "pnpm up",
+    "prepare": "husky || true"
+  },
+  "packageManager": "pnpm@10.11.1",
+  "private": true,
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "husky": "^9.1.7",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1"
+  }
+}

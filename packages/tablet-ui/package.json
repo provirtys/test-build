@@ -1,0 +1,50 @@
+{
+  "name": "@integrity/tablet-ui",
+  "version": "1.0.0",
+  "main": "./dist/tablet-ui.umd.js",
+  "module": "./dist/tablet-ui.es.js",
+  "scripts": {
+    "build": "vite build",
+    "storybook": "storybook dev -p 3000",
+    "build:storybook": "storybook build"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/tablet-ui.es.js",
+      "require": "./dist/tablet-ui.umd.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "imports": {
+    "#*": "./src/*"
+  },
+  "publishConfig": {
+    "access": "public",
+    "main": "src/index.js"
+  },
+  "files": ["package.json", "pnpm-lock.yaml", "dist"],
+  "dependencies": {
+    "sass-embedded": "catalog:",
+    "vite-plugin-svg-sprite": "catalog:",
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "@quasar/extras": "catalog:",
+    "@quasar/vite-plugin": "catalog:",
+    "storybook": "catalog:",
+    "@storybook/vue3-vite": "catalog:",
+    "@storybook/addon-docs": "catalog:",
+    "@vitejs/plugin-vue": "catalog:",
+    "quasar": "catalog:",
+    "uuid": "catalog:",
+    "vite": "catalog:",
+    "vite-plugin-dts": "catalog:",
+    "vue": "catalog:",
+    "vue-i18n": "catalog:",
+    "vue-router": "catalog:",
+    "apexcharts": "catalog:",
+    "vue3-apexcharts": "catalog:"
+  },
+  "type": "module",
+  "packageManager": "pnpm@10.11.1"
+}
