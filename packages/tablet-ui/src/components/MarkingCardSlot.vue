@@ -1,19 +1,3 @@
-<script setup>
-import { setupI18n } from "../i18n.js";
-import MarkingCard from "./MarkingCard.vue";
-import TabletButton from "./redesign/TabletButton.vue";
-
-const { t } = setupI18n();
-
-defineProps({
-    isAggregationVisible: { type: Boolean, default: true },
-    isProgressPieVisible: { type: Boolean, default: true },
-    isRepeatVisible: { type: Boolean, default: true },
-    codeInfo: { type: Object, default: () => ({}) },
-    btn: { type: String, default: "1" },
-});
-</script>
-
 <template>
   <div class="marking-card-container">
     <MarkingCard
@@ -99,6 +83,22 @@ defineProps({
     </MarkingCard>
   </div>
 </template>
+
+<script setup>
+import { setupI18n } from "../i18n.js";
+import MarkingCard from "./MarkingCard.vue";
+import TabletButton from "./redesign/TabletButton.vue";
+
+const { t } = setupI18n();
+
+defineProps({
+    isAggregationVisible: { type: Boolean, default: true },
+    isProgressPieVisible: { type: Boolean, default: true },
+    isRepeatVisible: { type: Boolean, default: true },
+    codeInfo: { type: Object, default: () => ({}) },
+    btn: { type: String, default: "1" },
+});
+</script>
 
 <style lang="scss">
 @import '../css/main.scss';

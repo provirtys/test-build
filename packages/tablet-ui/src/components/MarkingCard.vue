@@ -1,26 +1,3 @@
-<script setup>
-import { setupI18n } from "../i18n.js";
-import CommonIcon from "./CommonIcon.vue";
-import ProgressPie from "./ProgressPie.vue";
-
-const { t } = setupI18n();
-
-defineProps({
-    isAggregationVisible: { type: Boolean, default: false },
-    isProgressPieVisible: { type: Boolean, default: false },
-    isRepeatVisible: { type: Boolean, default: false },
-    codeInfo: { type: Object, default: () => ({}) },
-});
-
-function getCodeTime(value) {
-    return new Date(value).toLocaleTimeString("RU-ru");
-}
-
-function getCodeDate(value) {
-    return new Date(value).toLocaleDateString("RU-ru");
-}
-</script>
-
 <template>
   <div class="marking-card">
     <div class="marking-card__main">
@@ -69,6 +46,29 @@ function getCodeDate(value) {
     </slot>
   </div>
 </template>
+
+<script setup>
+import { setupI18n } from "../i18n.js";
+import CommonIcon from "./CommonIcon.vue";
+import ProgressPie from "./ProgressPie.vue";
+
+const { t } = setupI18n();
+
+defineProps({
+    isAggregationVisible: { type: Boolean, default: false },
+    isProgressPieVisible: { type: Boolean, default: false },
+    isRepeatVisible: { type: Boolean, default: false },
+    codeInfo: { type: Object, default: () => ({}) },
+});
+
+function getCodeTime(value) {
+    return new Date(value).toLocaleTimeString("RU-ru");
+}
+
+function getCodeDate(value) {
+    return new Date(value).toLocaleDateString("RU-ru");
+}
+</script>
 
 <style lang="scss">
 @import '../css/main.scss';

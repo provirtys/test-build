@@ -1,23 +1,3 @@
-<script setup>
-import { QTable } from "quasar";
-import { setupI18n } from "../i18n.js";
-import "quasar/dist/quasar.css";
-
-const { t } = setupI18n();
-const props = defineProps({
-    /** Значение строк*/
-    rows: {
-        type: Array,
-        default: () => [],
-    },
-    /** Значение колонок*/
-    columns: {
-        type: Array,
-        default: () => [],
-    },
-});
-</script>
-
 <template>
   <div class="height-table">
     <div class="full-height">
@@ -38,6 +18,26 @@ const props = defineProps({
     </div>
   </div>
 </template>
+
+<script setup>
+import { QTable } from "quasar";
+import { setupI18n } from "../i18n.js";
+import "quasar/dist/quasar.css";
+
+const { t } = setupI18n();
+const props = defineProps({
+    /** Значение строк*/
+    rows: {
+        type: Array,
+        default: () => [],
+    },
+    /** Значение колонок*/
+    columns: {
+        type: Array,
+        default: () => [],
+    },
+});
+</script>
 
 <style lang="scss">
 @import '../css/main.scss';

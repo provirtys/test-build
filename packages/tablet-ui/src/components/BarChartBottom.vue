@@ -1,3 +1,9 @@
+<template>
+  <div class="bar-chart-bottom">
+    <div id="columnchart-bottom"></div>
+  </div>
+</template>
+
 <script setup>
 import ApexCharts from "apexcharts";
 import { onMounted, ref, watch } from "vue";
@@ -14,12 +20,14 @@ const props = defineProps({
 const limit = 200;
 const ok = ref([]);
 const broken = ref([]);
+
 watch(
     () => props.codes,
     () => {
         changeBarData(props.codes);
     },
 );
+
 function changeBarData(codeList) {
     ok.value = [];
     broken.value = [];
@@ -209,12 +217,6 @@ function updateData(broken, ok, x) {
     }
 }
 </script>
-
-<template>
-  <div class="bar-chart-bottom">
-    <div id="columnchart-bottom"></div>
-  </div>
-</template>
 
 <style lang="scss">
 @import '../css/main.scss';

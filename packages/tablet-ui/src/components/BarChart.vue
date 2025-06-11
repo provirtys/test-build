@@ -1,3 +1,9 @@
+<template>
+  <div class="bar-chart">
+    <div id="columnchart"></div>
+  </div>
+</template>
+
 <script setup>
 import ApexCharts from "apexcharts";
 import { onMounted, ref, watch } from "vue";
@@ -202,12 +208,6 @@ function updateData(broken, ok, x) {
     });
 }
 </script>
-
-<template>
-  <div class="bar-chart">
-    <div id="columnchart"></div>
-  </div>
-</template>
 
 <style lang="scss">
 @import '../css/main.scss';
