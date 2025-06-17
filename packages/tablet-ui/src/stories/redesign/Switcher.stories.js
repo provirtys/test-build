@@ -1,4 +1,4 @@
-import Switcher from "../../components/redesign/Switcher.vue";
+import Switcher from "@components/redesign/Switcher.vue";
 
 const options = [
     { label: "Опция 1", value: "left", slot: "one", iconName: "aggregation" },

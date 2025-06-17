@@ -1,4 +1,4 @@
-import InteractiveSystemStatus from "../../components/redesign/InteractiveSystemStatus.vue";
+import InteractiveSystemStatus from "@components/redesign/InteractiveSystemStatus.vue";
 
 const success = "success";
 const error = "error";

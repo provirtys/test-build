@@ -1,4 +1,4 @@
-import LabelingCardSlot from "../../components/redesign/LabelingCardSlot.vue";
+import LabelingCardSlot from "@components/redesign/LabelingCardSlot.vue";
 
 const one = "1";
 const two = "2";

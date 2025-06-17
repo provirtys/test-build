@@ -1,4 +1,4 @@
-import JobCreate from "../components/JobCreate.vue";
+import JobCreate from "@components/JobCreate.vue";
 
 /** Страница для создания нового задания. Максимальное количество атрибутов для добавления 10. Динамическое добавление/редактирование/удаление атрибутов */
 export default {

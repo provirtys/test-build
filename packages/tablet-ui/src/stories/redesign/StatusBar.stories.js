@@ -1,4 +1,4 @@
-import StatusBar from "../../components/redesign/StatusBar.vue";
+import StatusBar from "@components/redesign/StatusBar.vue";
 
 const btnExit = "TaskList";
 const btnBack = "";

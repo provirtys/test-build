@@ -1,4 +1,4 @@
-import LabelType from "../components/LabelType.vue";
+import LabelType from "@components/LabelType.vue";
 
 const long = true;
 const pieces = false;

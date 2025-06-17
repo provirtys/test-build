@@ -1,4 +1,4 @@
-import StatisticsByStatusCard from "../components/StatisticsByStatusCard.vue";
+import StatisticsByStatusCard from "@components/StatisticsByStatusCard.vue";
 
 export default {
     title: "web/StatisticsByStatusCard",

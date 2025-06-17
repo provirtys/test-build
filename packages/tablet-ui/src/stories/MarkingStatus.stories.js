@@ -1,4 +1,4 @@
-import MarkingStatusOtk from "../components/MarkingStatus.vue";
+import MarkingStatusOtk from "@components/MarkingStatus.vue";
 
 const cancelMarking = "";
 const newMarking = "new";

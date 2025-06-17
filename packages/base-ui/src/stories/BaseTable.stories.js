@@ -1,4 +1,4 @@
-import BaseTable from "../components/BaseTable.vue";
+import BaseTable from "@components/BaseTable.vue";
 
 export default {
     title: "BaseTable",

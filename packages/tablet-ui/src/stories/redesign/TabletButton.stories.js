@@ -1,4 +1,4 @@
-import TabletButton from "../../components/redesign/TabletButton.vue";
+import TabletButton from "@components/redesign/TabletButton.vue";
 
 // Расположение иконки
 const empty = "";

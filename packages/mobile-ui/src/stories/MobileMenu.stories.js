@@ -1,4 +1,4 @@
-import MobileMenu from "../components/MobileMenu.vue";
+import MobileMenu from "@components/MobileMenu.vue";
 
 /** Компонент навигационного меню, используемый на мобильных устройствах. Содержит 4 иконки разделов с подписями.
  * В зависимости от текущего раздела или цвета фона меняются цвета иконок. */

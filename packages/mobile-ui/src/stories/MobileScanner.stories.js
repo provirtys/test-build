@@ -1,4 +1,4 @@
-import MobileScanner from "../components/MobileScanner.vue";
+import MobileScanner from "@components/MobileScanner.vue";
 
 /** Компонент сканера, используемый на мобильных устройствах. Может содержать иконку лампочки для управления фонариком.
  * Содержит вспомогательный текст: подсказку или сообщение об ошибке (красного цвета). */

@@ -1,4 +1,4 @@
-import ErrorNotification from "../components/ErrorNotification.vue";
+import ErrorNotification from "@components/ErrorNotification.vue";
 
 export default {
     title: "Tablet/ErrorNotification",

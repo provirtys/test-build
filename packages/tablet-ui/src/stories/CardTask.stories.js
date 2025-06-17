@@ -1,4 +1,4 @@
-import CardTask from "../components/CardTask.vue";
+import CardTask from "@components/CardTask.vue";
 
 const cancelMarking = "";
 const newMarking = "new";

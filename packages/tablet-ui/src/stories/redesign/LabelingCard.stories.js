@@ -1,4 +1,4 @@
-import LabelingCard from "../../components/redesign/LabelingCard.vue";
+import LabelingCard from "@components/redesign/LabelingCard.vue";
 
 const dataMatrix = "DataMatrix";
 const code128 = "Code128";

@@ -1,4 +1,4 @@
-import LabelingStatus from "../../components/redesign/LabelingStatus.vue";
+import LabelingStatus from "@components/redesign/LabelingStatus.vue";
 
 const newTask = "new";
 const labeling = "labeling";

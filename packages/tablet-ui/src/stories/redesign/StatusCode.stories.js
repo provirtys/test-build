@@ -1,4 +1,4 @@
-import StatusCode from "../../components/redesign/StatusCode.vue";
+import StatusCode from "@components/redesign/StatusCode.vue";
 
 const dataMatrix = "DataMatrix";
 const code128 = "Code128";

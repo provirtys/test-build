@@ -1,4 +1,4 @@
-import SystemStatus from "../components/SystemStatus.vue";
+import SystemStatus from "@components/SystemStatus.vue";
 
 const success = "success";
 const error = "error";

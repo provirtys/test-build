@@ -1,4 +1,4 @@
-import BarChartTimeSeries from "../components/BarChartTimeSeries.vue";
+import BarChartTimeSeries from "@components/BarChartTimeSeries.vue";
 
 /** Компонент отображает информацию о наличие/отстуствии ошибок на длине изделия. */
 export default {

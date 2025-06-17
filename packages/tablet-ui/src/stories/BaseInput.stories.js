@@ -1,4 +1,4 @@
-import BaseInput from "../components/BaseInput.vue";
+import BaseInput from "@components/BaseInput.vue";
 
 /** Компонент input для ввода количества продукции в новой задаче (Tablet) */
 export default {

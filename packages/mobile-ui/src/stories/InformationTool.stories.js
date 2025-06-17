@@ -1,5 +1,5 @@
-import imageTool from "../assets/images/scan-zone.svg";
-import InformationTool from "../components/InformationTool.vue";
+import imageTool from "@assets/images/scan-zone.svg";
+import InformationTool from "@components/InformationTool.vue";
 
 const empty = "";
 const take = "take";

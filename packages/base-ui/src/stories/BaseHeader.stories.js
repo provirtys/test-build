@@ -1,4 +1,4 @@
-import BaseHeader from "../components/BaseHeader.vue";
+import BaseHeader from "@components/BaseHeader.vue";
 
 /** Header component with customizable text and icons*/
 

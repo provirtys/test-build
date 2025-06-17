@@ -1,4 +1,4 @@
-import MarkingCard from "../components/MarkingCard.vue";
+import MarkingCard from "@components/MarkingCard.vue";
 
 /** Компонент карточки маркировки */
 export default {

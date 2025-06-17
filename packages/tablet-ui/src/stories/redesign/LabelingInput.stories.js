@@ -1,4 +1,4 @@
-import LabelingInput from "../../components/redesign/LabelingInput.vue";
+import LabelingInput from "@components/redesign/LabelingInput.vue";
 
 // Размеры кнопки
 const large = "large";

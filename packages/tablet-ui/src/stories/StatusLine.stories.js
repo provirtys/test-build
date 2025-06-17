@@ -1,4 +1,4 @@
-import StatusLine from "../components/StatusLine.vue";
+import StatusLine from "@components/StatusLine.vue";
 
 const btnExit = "TaskList";
 const btnBack = "";

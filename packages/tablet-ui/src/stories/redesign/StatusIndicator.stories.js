@@ -1,4 +1,4 @@
-import StatusIndicator from "../../components/redesign/StatusIndicator.vue";
+import StatusIndicator from "@components/redesign/StatusIndicator.vue";
 
 const info = "info";
 const success = "success";

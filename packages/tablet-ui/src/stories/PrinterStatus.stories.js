@@ -1,4 +1,4 @@
-import PrinterStatus from "../components/PrinterStatus.vue";
+import PrinterStatus from "@components/PrinterStatus.vue";
 
 const success = "success";
 const warning = "warning";

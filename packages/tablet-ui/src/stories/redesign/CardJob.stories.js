@@ -1,4 +1,4 @@
-import CardJob from "../../components/redesign/CardJob.vue";
+import CardJob from "@components/redesign/CardJob.vue";
 
 const cancelStatus = "";
 const newStatus = "new";

@@ -1,4 +1,4 @@
-import BaseTable from "../../components/redesign/BaseTable.vue";
+import BaseTable from "@components/redesign/BaseTable.vue";
 
 export default {
     title: "TabletUI-redesign/BaseTable",

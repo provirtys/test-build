@@ -1,4 +1,4 @@
-import RadioButton from "../../components/redesign/RadioButton.vue";
+import RadioButton from "@components/redesign/RadioButton.vue";
 
 // Виды кнопок
 const primary = "primary";

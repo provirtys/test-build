@@ -1,4 +1,4 @@
-import BarChartBottom from "../components/BarChartBottom.vue";
+import BarChartBottom from "@components/BarChartBottom.vue";
 
 /** Компонент отображает информацию о наличие/отстуствии и количестве ошибок на длине изделия. */
 export default {

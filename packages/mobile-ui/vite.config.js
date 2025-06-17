@@ -1,4 +1,5 @@
 import * as path from "node:path";
+import { URL, fileURLToPath } from "node:url";
 import { quasar } from "@quasar/vite-plugin";
 import vue from "@vitejs/plugin-vue";
 /// <reference types='vitest' />
@@ -28,5 +29,14 @@ export default defineConfig({
                 },
             },
         },
+    },
+    resolve: {
+        alias: [
+            { find: "@", replacement: fileURLToPath(new URL("./src/", import.meta.url)) },
+            { find: "@stories", replacement: fileURLToPath(new URL("./src/stories/", import.meta.url)) },
+            { find: "@components", replacement: fileURLToPath(new URL("./src/components/", import.meta.url)) },
+            { find: "@css", replacement: fileURLToPath(new URL("./src/css/", import.meta.url)) },
+            { find: "@assets", replacement: fileURLToPath(new URL("./src/assets/", import.meta.url)) },
+        ],
     },
 });

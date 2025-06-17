@@ -1,4 +1,4 @@
-import CodeCard from "../components/CodeCard.vue";
+import CodeCard from "@components/CodeCard.vue";
 
 const dataMatrix = "DataMatrix";
 const code128 = "Code128";

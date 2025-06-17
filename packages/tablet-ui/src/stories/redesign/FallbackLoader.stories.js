@@ -1,5 +1,5 @@
+import FallbackLoader from "@components/redesign/FallbackLoader.vue";
 import { ref } from "vue";
-import FallbackLoader from "../../components/redesign/FallbackLoader.vue";
 
 /**
  * Компонент представляет собой кастомизируемый лоадер с кнопкой повторной отправки запроса. Можно изменять текст загрузки, текст ошибки, иконку после ошибки и текст для кнопки повторного отправки запроса

@@ -1,5 +1,5 @@
-import scanIconUrl from "../assets/images/scan-icon.svg";
-import MobileInput from "../components/MobileInput.vue";
+import scanIconUrl from "@assets/images/scan-icon.svg";
+import MobileInput from "@components/MobileInput.vue";
 
 const empty = "";
 const icons = { empty, scanIconUrl };

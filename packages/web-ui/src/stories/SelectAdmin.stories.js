@@ -1,4 +1,4 @@
-import SelectAdmin from "../components/SelectAdmin.vue";
+import SelectAdmin from "@components/SelectAdmin.vue";
 
 /** Раскрывающийся список в Labeling Admin */
 export default {

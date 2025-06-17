@@ -1,4 +1,4 @@
-import Notification from "../components/Notification.vue";
+import Notification from "@components/Notification.vue";
 
 /** Notification component with customizable size block*/
 export default {

@@ -1,4 +1,4 @@
-import Checkbox from "../../components/redesign/Checkbox.vue";
+import Checkbox from "@components/redesign/Checkbox.vue";
 
 // Размеры кнопки
 const large = "large";

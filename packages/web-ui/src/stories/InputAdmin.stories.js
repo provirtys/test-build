@@ -1,4 +1,4 @@
-import InputAdmin from "../components/InputAdmin.vue";
+import InputAdmin from "@components/InputAdmin.vue";
 
 /** Компонент input с иконкой поиска  (Labeling Admin) */
 export default {

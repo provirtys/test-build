@@ -1,8 +1,8 @@
-import buttonDeleteUrl from "../assets/images/button-delete.svg";
-import buttonEditUrl from "../assets/images/button-edit.svg";
-import buttonLogoutUrl from "../assets/images/button-logout.svg";
-import buttonSyncUrl from "../assets/images/button-sync.svg";
-import MobileButton from "../components/MobileButton.vue";
+import buttonDeleteUrl from "@assets/images/button-delete.svg";
+import buttonEditUrl from "@assets/images/button-edit.svg";
+import buttonLogoutUrl from "@assets/images/button-logout.svg";
+import buttonSyncUrl from "@assets/images/button-sync.svg";
+import MobileButton from "@components/MobileButton.vue";
 
 const empty = "";
 const red = "red";

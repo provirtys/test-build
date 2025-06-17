@@ -1,4 +1,4 @@
-import ProgressPie from "../components/ProgressPie.vue";
+import ProgressPie from "@components/ProgressPie.vue";
 
 const small = "small";
 const large = "large";

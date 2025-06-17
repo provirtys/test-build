@@ -1,4 +1,4 @@
-import NumericRatio from "../../components/redesign/NumericRatio.vue";
+import NumericRatio from "@components/redesign/NumericRatio.vue";
 
 /**
  * Компонент отображает числовую долю от целого значения. Есть вертикальное и горизонтальное разделение. Также поддерживает светлый режим, который используется когда задний фон становится темнее.

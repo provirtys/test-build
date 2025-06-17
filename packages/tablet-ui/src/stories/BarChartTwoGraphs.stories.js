@@ -1,4 +1,4 @@
-import BarChartTwoGraphs from "../components/BarChartTwoGraphs.vue";
+import BarChartTwoGraphs from "@components/BarChartTwoGraphs.vue";
 
 /** Экран с гафиками отображает информацию о наличие/отстуствии и количестве ошибок на длине изделия. */
 export default {

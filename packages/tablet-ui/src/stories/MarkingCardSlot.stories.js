@@ -1,4 +1,4 @@
-import MarkingCardSlot from "../components/MarkingCardSlot.vue";
+import MarkingCardSlot from "@components/MarkingCardSlot.vue";
 
 const one = "1";
 const two = "2";
