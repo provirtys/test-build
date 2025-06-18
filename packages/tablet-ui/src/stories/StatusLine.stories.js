@@ -12,7 +12,6 @@ const systemStatus = { success, error };
 export default {
     title: "Tablet/StatusLine",
     component: StatusLine,
-    tags: ["autodocs"],
     argTypes: {
         page: {
             description: "Выбор кнопки",

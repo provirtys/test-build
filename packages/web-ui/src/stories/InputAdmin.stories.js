@@ -4,7 +4,6 @@ import InputAdmin from "@components/InputAdmin.vue";
 export default {
     title: "web/InputAdmin",
     component: InputAdmin,
-    tags: ["autodocs"],
     argTypes: {
         parameters: {
             backgrounds: {

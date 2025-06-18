@@ -17,7 +17,6 @@ const colors = { red, dark, gray };
 export default {
     title: "Mobile/Button",
     component: MobileButton,
-    tags: ["autodocs"],
     argTypes: {
         color: {
             description: "Цвет кнопки.",

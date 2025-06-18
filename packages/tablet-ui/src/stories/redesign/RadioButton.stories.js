@@ -30,7 +30,6 @@ const colorIcon = { info, warning, success, error };
 export default {
     title: "TabletUI-redesign/RadioButton",
     component: RadioButton,
-    tags: ["autodocs"],
     argTypes: {
         parameters: {
             backgrounds: {

@@ -4,7 +4,6 @@ import SelectAdmin from "@components/SelectAdmin.vue";
 export default {
     title: "web/SelectAdmin",
     component: SelectAdmin,
-    tags: ["autodocs"],
     argTypes: {
         parameters: {
             backgrounds: {

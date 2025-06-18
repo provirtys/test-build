@@ -4,7 +4,6 @@ import BarChart from "@components/BarChart.vue";
 export default {
     title: "Tablet/BarChart",
     component: BarChart,
-    // tags: ["autodocs"],
     argTypes: {
         codes: {
             description: "Список кодов маркироки",

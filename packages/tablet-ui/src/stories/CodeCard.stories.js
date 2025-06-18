@@ -13,7 +13,6 @@ const statuses = { verified, broken, synced, none };
 export default {
     title: "Tablet/CodeCard",
     component: CodeCard,
-    tags: ["autodocs"],
     argTypes: {
         codeType: {
             description: "Тип кода",

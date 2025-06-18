@@ -13,7 +13,6 @@ const images = { empty, imageTool };
 export default {
     title: "Mobile/InformationTool",
     component: InformationTool,
-    tags: ["autodocs"],
     argTypes: {
         parameters: {
             backgrounds: {

@@ -6,7 +6,6 @@ import Notification from "@components/redesign/Notification.vue";
 export default {
     title: "TabletUI-redesign/Notification",
     component: Notification,
-    tags: ["autodocs"],
     argTypes: {
         bgColor: {
             description: "Задний цвет фона",

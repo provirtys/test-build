@@ -8,7 +8,6 @@ const colors = { success, warning, error };
 export default {
     title: "Tablet/PrinterStatus",
     component: PrinterStatus,
-    tags: ["autodocs"],
     argTypes: {
         color: {
             description: "Цвет индикатора",

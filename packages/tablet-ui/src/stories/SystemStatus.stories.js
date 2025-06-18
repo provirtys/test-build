@@ -7,7 +7,6 @@ const colors = { success, error };
 export default {
     title: "Tablet/SystemStatus",
     component: SystemStatus,
-    tags: ["autodocs"],
     argTypes: {
         color: {
             description: "Цвет индикатора",

@@ -3,7 +3,6 @@ import AdminTable from "@components/AdminTable.vue";
 export default {
     title: "web/AdminTable",
     component: AdminTable,
-    tags: ["autodocs"],
     argTypes: {
         nameTable: {
             description: "Название таблицы",

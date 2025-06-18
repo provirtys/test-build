@@ -81,7 +81,6 @@ const systemStatus = {
 export default {
     title: "TabletUI-redesign/StatusBar",
     component: StatusBar,
-    tags: ["autodocs"],
     argTypes: {
         btnIcon: {
             description: "Иконка кнопки Назад",

@@ -4,7 +4,6 @@ import BaseInput from "@components/BaseInput.vue";
 export default {
     title: "Tablet/BaseInput",
     component: BaseInput,
-    tags: ["autodocs"],
     argTypes: {
         parameters: {
             backgrounds: {

@@ -4,7 +4,6 @@ import JobTemplate from "@components/JobTemplate.vue";
 export default {
     title: "web/JobTemplate",
     component: JobTemplate,
-    tags: ["autodocs"],
     argTypes: {
         parameters: {
             backgrounds: {

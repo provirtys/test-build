@@ -4,7 +4,6 @@ import MarkingCard from "@components/MarkingCard.vue";
 export default {
     title: "Tablet/MarkingCard",
     component: MarkingCard,
-    tags: ["autodocs"],
     argTypes: {
         isAggregationVisible: {
             description: "Идет агрегация",

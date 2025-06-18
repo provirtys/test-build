@@ -10,7 +10,6 @@ const btnTypes = { one, two, three, four, five };
 export default {
     title: "Tablet/MarkingCardSlot",
     component: MarkingCardSlot,
-    tags: ["autodocs"],
     argTypes: {
         isAggregationVisible: {
             description: "Идет агрегация",

@@ -20,7 +20,6 @@ const colors = { info, warning, success, error };
 export default {
     title: "TabletUI-redesign/LabelingCard",
     component: LabelingCard,
-    tags: ["autodocs"],
     argTypes: {
         isAggregationVisible: {
             description: "Идет агрегация",

@@ -10,7 +10,6 @@ const icons = { empty, scanIconUrl };
 export default {
     title: "Mobile/Input",
     component: MobileInput,
-    tags: ["autodocs"],
     args: {
         icon: empty,
     },

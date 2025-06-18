@@ -5,7 +5,6 @@ import { expect, getElementError, userEvent, waitFor, within } from "storybook/t
 export default {
     title: "BaseInput",
     component: BaseInput,
-    tags: ["autodocs"],
 };
 
 // biome-ignore lint/correctness/noUnusedVariables: <explanation>

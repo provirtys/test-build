@@ -11,7 +11,6 @@ const LabelingStatuses = { newStatus, labelingStatus, readyStatus, cancelStatus 
 export default {
     title: "TabletUI-redesign/CardJob",
     component: CardJob,
-    tags: ["autodocs"],
     argTypes: {
         title: {
             description: "Наименование задачи/артикула",

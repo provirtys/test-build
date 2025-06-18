@@ -10,7 +10,6 @@ const markingStatus = { cancelMarking, newMarking, labelingMarking, readyMarking
 export default {
     title: "Tablet/CardTask",
     component: CardTask,
-    tags: ["autodocs"],
     argTypes: {
         title: {
             description: "Название инструмента",

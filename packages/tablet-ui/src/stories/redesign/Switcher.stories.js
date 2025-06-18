@@ -9,7 +9,6 @@ const options = [
 export default {
     title: "TabletUI-redesign/Switcher",
     component: Switcher,
-    tags: ["autodocs"],
     argTypes: {
         modelValue: {
             description: "Значение модели",

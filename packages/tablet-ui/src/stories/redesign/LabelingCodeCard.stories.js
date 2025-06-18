@@ -20,7 +20,6 @@ const colors = { info, warning, success, error };
 export default {
     title: "TabletUI-redesign/LabelingCodeCard",
     component: LabelingCodeCard,
-    tags: ["autodocs"],
     argTypes: {
         codeText: {
             description: "Текст кода",

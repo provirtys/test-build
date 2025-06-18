@@ -6,7 +6,6 @@ import MobileHeader from "@components/MobileHeader.vue";
 export default {
     title: "Mobile/Header",
     component: MobileHeader,
-    tags: ["autodocs"],
     argTypes: {
         page: {
             description: "На какой странице находится пользователь?",

@@ -4,7 +4,6 @@ import JobCreate from "@components/JobCreate.vue";
 export default {
     title: "web/JobCreate",
     component: JobCreate,
-    tags: ["autodocs"],
     argTypes: {
         parameters: {
             backgrounds: {

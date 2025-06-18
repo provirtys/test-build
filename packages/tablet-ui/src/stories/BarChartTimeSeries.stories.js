@@ -4,7 +4,6 @@ import BarChartTimeSeries from "@components/BarChartTimeSeries.vue";
 export default {
     title: "Tablet/BarChartTimeSeries",
     component: BarChartTimeSeries,
-    // tags: ["autodocs"],
     argTypes: {
         codes: {
             description: "Список кодов маркироки",

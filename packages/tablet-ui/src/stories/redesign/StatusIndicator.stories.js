@@ -10,7 +10,6 @@ const colors = { info, warning, success, error };
 export default {
     title: "TabletUI-redesign/StatusIndicator",
     component: StatusIndicator,
-    tags: ["autodocs"],
     argTypes: {
         color: {
             description: "Цвет статуса",

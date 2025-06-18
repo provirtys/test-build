@@ -5,7 +5,6 @@ import { fireEvent, within } from "storybook/test";
 export default {
     title: "BaseScanner",
     component: BaseScanner,
-    tags: ["autodocs"],
     argTypes: {
         codeType: {
             options: ["Code128", "DataMatrix"],

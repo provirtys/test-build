@@ -10,7 +10,6 @@ const statuses = { cancelMarking, newMarking, labelingMarking, readyMarking };
 export default {
     title: "Tablet/MarkingStatus",
     component: MarkingStatusOtk,
-    tags: ["autodocs"],
     argTypes: {
         status: {
             description: "Статус маркировки",

@@ -11,7 +11,6 @@ const sizes = { large, medium, small, extraSmall };
 export default {
     title: "TabletUI-redesign/LabelingInput",
     component: LabelingInput,
-    tags: ["autodocs"],
     argTypes: {
         height: {
             description: "Размер поля ввода",

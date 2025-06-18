@@ -5,7 +5,6 @@ import MobileMenu from "@components/MobileMenu.vue";
 export default {
     title: "Mobile/Menu",
     component: MobileMenu,
-    tags: ["autodocs"],
     argTypes: {
         currentPage: {
             description: "На какой странице находится пользователь?",

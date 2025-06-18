@@ -11,7 +11,6 @@ const colors = { success, error, warning };
 export default {
     title: "TabletUI-redesign/InteractiveSystemStatus",
     component: InteractiveSystemStatus,
-    tags: ["autodocs"],
     argTypes: {
         color: {
             description: "Цвет индикатора системы",

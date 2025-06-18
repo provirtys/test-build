@@ -4,7 +4,6 @@ import BaseButton from "@components/BaseButton.vue";
 export default {
     title: "BaseButton",
     component: BaseButton,
-    tags: ["autodocs"],
     isDisabled: false,
     argTypes: {
         size: {

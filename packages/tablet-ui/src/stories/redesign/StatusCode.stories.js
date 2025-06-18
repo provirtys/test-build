@@ -21,7 +21,6 @@ const statuses = { none, verified, synced, broken };
 export default {
     title: "TabletUI-redesign/StatusCode",
     component: StatusCode,
-    tags: ["autodocs"],
     argTypes: {
         codeType: {
             description: "Тип кода",

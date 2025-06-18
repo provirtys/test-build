@@ -3,7 +3,6 @@ import BaseTable from "@components/redesign/BaseTable.vue";
 export default {
     title: "TabletUI-redesign/BaseTable",
     component: BaseTable,
-    tags: ["autodocs"],
     parameters: {
         backgrounds: {
             default: "white",

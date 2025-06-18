@@ -4,7 +4,6 @@ import ButtonAdmin from "@components/ButtonAdmin.vue";
 export default {
     title: "web/ButtonAdmin",
     component: ButtonAdmin,
-    tags: ["autodocs"],
     argTypes: {},
 };
 export const Create = {

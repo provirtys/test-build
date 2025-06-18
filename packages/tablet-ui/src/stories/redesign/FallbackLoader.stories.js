@@ -7,7 +7,6 @@ import { ref } from "vue";
 export default {
     title: "TabletUI-redesign/FallbackLoader",
     component: FallbackLoader,
-    tags: ["autodocs"],
     argTypes: {
         loadingText: {
             description: "Текст во время загрузки",

@@ -3,7 +3,6 @@ import BaseTable from "@components/BaseTable.vue";
 export default {
     title: "BaseTable",
     component: BaseTable,
-    tags: ["autodocs"],
 };
 
 export const PrimaryList = {

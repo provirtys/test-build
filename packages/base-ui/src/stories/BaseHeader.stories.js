@@ -5,7 +5,6 @@ import BaseHeader from "@components/BaseHeader.vue";
 export default {
     title: "BaseHeader",
     component: BaseHeader,
-    tags: ["autodocs"],
     argTypes: {
         isMain: {
             options: [true, false],

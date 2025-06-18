@@ -3,7 +3,6 @@ import StatisticsCards from "@components/StatisticsCards.vue";
 export default {
     title: "web/StatisticsCards",
     component: StatisticsCards,
-    tags: ["autodocs"],
 };
 
 export const PrimaryStatistics = {

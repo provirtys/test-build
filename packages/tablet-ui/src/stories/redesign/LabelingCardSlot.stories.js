@@ -10,7 +10,6 @@ const btnTypes = { one, two, three, four, five };
 export default {
     title: "TabletUI-redesign/LabelingCardSlot",
     component: LabelingCardSlot,
-    tags: ["autodocs"],
     argTypes: {
         isAggregationVisible: {
             description: "Идет агрегация",

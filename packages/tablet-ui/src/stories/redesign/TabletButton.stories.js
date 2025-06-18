@@ -47,7 +47,6 @@ const iconNames = {
 export default {
     title: "TabletUI-redesign/TabletButton",
     component: TabletButton,
-    tags: ["autodocs"],
     argTypes: {
         parameters: {
             backgrounds: {

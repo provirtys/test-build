@@ -5,7 +5,6 @@ import MobileScanner from "@components/MobileScanner.vue";
 export default {
     title: "Mobile/Scanner",
     component: MobileScanner,
-    tags: ["autodocs"],
     argTypes: {
         lightSwitcher: {
             description: "Нужна ли возможность управления фонариком?",

@@ -4,7 +4,6 @@ import Loading from "@components/Loading.vue";
 export default {
     title: "Loading",
     component: Loading,
-    tags: ["autodocs"],
     argTypes: {
         loadingType: {
             options: ["loading", "photo", "connection", "check", "internet_false", "try_again", "retry"],

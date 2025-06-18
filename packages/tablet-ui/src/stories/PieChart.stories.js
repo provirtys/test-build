@@ -3,7 +3,6 @@ import PieChart from "@components/PieChart.vue";
 export default {
     title: "Tablet/PieChart",
     component: PieChart,
-    tags: ["autodocs"],
 };
 
 export const NoErrors = {

@@ -8,7 +8,6 @@ const sizes = { small, large };
 export default {
     title: "Tablet/ProgressPie",
     component: ProgressPie,
-    tags: ["autodocs"],
     argTypes: {
         size: {
             description: "Размер компонентна",

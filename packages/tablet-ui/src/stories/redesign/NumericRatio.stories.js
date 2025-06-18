@@ -6,7 +6,6 @@ import NumericRatio from "@components/redesign/NumericRatio.vue";
 export default {
     title: "TabletUI-redesign/NumericRatio",
     component: NumericRatio,
-    tags: ["autodocs"],
     argTypes: {
         value: {
             description: "Число над дробью до слэша",

@@ -3,7 +3,6 @@ import StatisticsByStatusCard from "@components/StatisticsByStatusCard.vue";
 export default {
     title: "web/StatisticsByStatusCard",
     component: StatisticsByStatusCard,
-    tags: ["autodocs"],
 };
 
 export const TotalJobs = {

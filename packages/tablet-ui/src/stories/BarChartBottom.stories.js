@@ -4,7 +4,6 @@ import BarChartBottom from "@components/BarChartBottom.vue";
 export default {
     title: "Tablet/BarChartBottom",
     component: BarChartBottom,
-    // tags: ["autodocs"],
     argTypes: {
         codes: {
             description: "Список кодов маркироки",

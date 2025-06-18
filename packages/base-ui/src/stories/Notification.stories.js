@@ -4,7 +4,6 @@ import Notification from "@components/Notification.vue";
 export default {
     title: "Notification",
     component: Notification,
-    tags: ["autodocs"],
 };
 
 /** Максимальный размер блока пустой */

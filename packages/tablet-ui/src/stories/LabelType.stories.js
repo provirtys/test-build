@@ -15,7 +15,6 @@ const selectedTypes = { bc, dm, all, empty };
 export default {
     title: "Tablet/LabelType",
     component: LabelType,
-    tags: ["autodocs"],
     argTypes: {
         isAuto: {
             description: "Режим",

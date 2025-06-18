@@ -4,7 +4,6 @@ import BaseCode from "@components/BaseCode.vue";
 export default {
     title: "BaseCode",
     component: BaseCode,
-    tags: ["autodocs"],
     argTypes: {
         codeType: {
             options: ["Code128", "DataMatrix"],

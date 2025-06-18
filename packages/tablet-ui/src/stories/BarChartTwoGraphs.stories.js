@@ -4,7 +4,6 @@ import BarChartTwoGraphs from "@components/BarChartTwoGraphs.vue";
 export default {
     title: "Tablet/BarChartTwoGraphs",
     component: BarChartTwoGraphs,
-    // tags: ["autodocs"],
     argTypes: {
         codes: {
             description: "Список кодов маркироки",

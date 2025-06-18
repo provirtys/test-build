@@ -20,7 +20,6 @@ const sizes = { large, medium, small, extraSmall };
 export default {
     title: "TabletUI-redesign/Checkbox",
     component: Checkbox,
-    tags: ["autodocs"],
     argTypes: {
         label: {
             description: "Текст кнопки",

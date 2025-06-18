@@ -7,7 +7,6 @@ import BaseDatamatrixTest from "@components/BaseDatamatrixTest.vue";
 export default {
     title: "BaseDatamatrixTest",
     component: BaseDatamatrixTest,
-    tags: ["autodocs"],
     argTypes: {
         isBackgroundDark: {
             description: "Фон на странице темный?",

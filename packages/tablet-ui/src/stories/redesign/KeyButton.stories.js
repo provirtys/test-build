@@ -4,7 +4,6 @@ import KeyButton from "@components/redesign/KeyButton.vue";
 export default {
     title: "TabletUI-redesign/KeyButton",
     component: KeyButton,
-    tags: ["autodocs"],
     argTypes: {
         value: {
             options: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Back"],

@@ -10,7 +10,6 @@ const status = { newTask, labeling, ready, rejected };
 export default {
     title: "TabletUI-redesign/LabelingStatus",
     component: LabelingStatus,
-    tags: ["autodocs"],
     argTypes: {
         status: {
             description: "Варианты состояния задачи",
