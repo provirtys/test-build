@@ -1,8 +1,8 @@
 <template>
   <div class="mobile-header">
     <button v-if="showBackButton" @click="onBackButton" class="back-button">
-      <img v-if="isBackgroundDark" src="../assets/images/back-arrow-light.svg" alt="back" />
-      <img v-else src="../assets/images/back-arrow-dark.svg" alt="back" />
+      <img v-if="isBackgroundDark" src="@assets/images/back-arrow-light.svg" alt="back" />
+      <img v-else src="@assets/images/back-arrow-dark.svg" alt="back" />
     </button>
     <div class="integrity-logo-block">
       <div v-if="getPageHeader" class="integrity-header-name">
@@ -12,13 +12,13 @@
         v-else-if="isBackgroundDark"
         class="integrity-logo"
         alt="integrity"
-        src="../assets/images/integrity-logo-light.svg"
+        src="@assets/images/integrity-logo-light.svg"
       />
       <img
         v-else
         class="integrity-logo"
         alt="integrity"
-        src="../assets/images/integrity-logo.svg"
+        src="@assets/images/integrity-logo.svg"
       />
     </div>
 
@@ -29,9 +29,9 @@
 </template>
 
 <script setup>
+import { setupI18n } from "@/i18n.js";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
-import { setupI18n } from "../i18n.js";
 
 const { t } = setupI18n();
 const router = useRouter();
@@ -93,8 +93,6 @@ const getPageHeader = computed(() => {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .mobile-header {
   --safe-area-inset-top: env(safe-area-inset-top);
   --safe-area-inset-bottom: env(safe-area-inset-bottom);

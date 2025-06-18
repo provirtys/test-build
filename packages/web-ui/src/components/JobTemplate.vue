@@ -90,12 +90,12 @@
 </template>
 
 <script setup>
+import { setupI18n } from "@/i18n.js";
+import DMProto from "@utils/DMProto.js";
 import { v4 as uuidv4 } from "uuid";
 import { reactive, ref, watch } from "vue";
-import { setupI18n } from "../i18n.js";
-import DMProto from "../utils/DMProto.js";
 // TODO: import from @labeling/contracts actual version
-// import { TemplateModel } from "../utils/template_pb.js";
+// import { TemplateModel } from "@utils/template_pb.js";
 
 const dmproto = new DMProto({});
 const { t } = setupI18n();
@@ -249,8 +249,6 @@ function createTemplate() {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .text-secondary {
   color: $secondary !important;
 }

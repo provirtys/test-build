@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import CommonIcon from "../CommonIcon.vue";
+import CommonIcon from "@components/CommonIcon.vue";
 import StatusIndicator from "./StatusIndicator.vue";
 
 defineProps({
@@ -20,8 +20,6 @@ defineProps({
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .labeling-code {
   width: $l-2;
   height: $l-2;

@@ -27,9 +27,9 @@
 </template>
 
 <script setup>
+import CommonIcon from "@components/CommonIcon.vue";
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import CommonIcon from "../CommonIcon.vue";
 import SystemStatus from "./InteractiveSystemStatus.vue";
 import TabletButton from "./TabletButton.vue";
 
@@ -113,8 +113,6 @@ function finishAnimation(event) {
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .status-line {
   width: 100%;
   height: $l-4;

@@ -33,8 +33,8 @@
 </template>
 
 <script setup>
+import CommonIcon from "@components/CommonIcon.vue";
 import { computed, ref } from "vue";
-import CommonIcon from "../CommonIcon.vue";
 
 const props = defineProps({
     color: {
@@ -202,8 +202,6 @@ const finishAnimation = (_evt, finished) => {
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .pointer-icon {
   pointer-events: none;
 }

@@ -57,8 +57,6 @@ const buttonSize = computed(() => {
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .amount {
   .q-field__control {
     display: flex;

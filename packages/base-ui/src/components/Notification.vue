@@ -23,8 +23,6 @@ function swipe() {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .notification {
   position: absolute;
   top: 30px;

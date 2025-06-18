@@ -18,7 +18,6 @@
 
 <script setup>
 import { computed, ref } from "vue";
-import { setupI18n } from "../i18n.js";
 
 const props = defineProps({
     /** Введенное значение */
@@ -59,8 +58,6 @@ const updateModelValue = ($event) => {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .base-input {
   width: 100%;
   outline: none;

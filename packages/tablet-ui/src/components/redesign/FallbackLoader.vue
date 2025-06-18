@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import CommonIcon from "../CommonIcon.vue";
+import CommonIcon from "@components/CommonIcon.vue";
 
 defineProps({
     loadingText: {

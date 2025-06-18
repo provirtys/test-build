@@ -16,9 +16,9 @@
 </template>
 
 <script setup>
+import { setupI18n } from "@/i18n.js";
 import { QInput } from "quasar";
 import { ref } from "vue";
-import { setupI18n } from "../i18n.js";
 import "quasar/dist/quasar.css";
 
 const { t } = setupI18n();
@@ -27,8 +27,6 @@ const amount = ref(0);
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .q-radio__label {
   font-size: $font-size-h6;
   margin-left: $s-1;

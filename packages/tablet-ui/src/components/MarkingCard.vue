@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-import { setupI18n } from "../i18n.js";
+import { setupI18n } from "@/i18n.js";
 import CommonIcon from "./CommonIcon.vue";
 import ProgressPie from "./ProgressPie.vue";
 
@@ -71,8 +71,6 @@ function getCodeDate(value) {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 p {
   margin: 0;
   font-family: 'Golos UI-medium';

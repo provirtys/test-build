@@ -48,9 +48,9 @@
 </template>
 
 <script setup>
+import { setupI18n } from "@/i18n.js";
 import { QBtn, QIcon, QTable, QTd, QToolbar, QToolbarTitle, QTooltip } from "quasar";
 import { computed } from "vue";
-import { setupI18n } from "../i18n.js";
 import "quasar/dist/quasar.css";
 
 const { t } = setupI18n();
@@ -90,8 +90,6 @@ function chooseRowToDelete(props) {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .dark-text {
   color: $dark-gray;
   font-size: $font-size-p4 !important;

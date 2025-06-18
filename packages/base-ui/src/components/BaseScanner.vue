@@ -12,10 +12,10 @@
       <div class="mobile-scanner__border" :style="{ width: props.width, height: props.height }">
         <img
           v-if="codeType === 'Code128'"
-          src="../assets/images/scan-border-wide.png"
+          src="@assets/images/scan-border-wide.png"
           alt="Scan border"
         />
-        <img v-else src="../assets/images/scan-border-square.png" alt="Scan border" />
+        <img v-else src="@assets/images/scan-border-square.png" alt="Scan border" />
       </div>
     </div>
   </div>
@@ -47,8 +47,6 @@ function onCameraLightButton() {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .mobile-scanner {
   width: 100%;
   height: 100%;
@@ -59,7 +57,7 @@ function onCameraLightButton() {
     background-color: transparent;
     box-shadow: none;
     border-width: 0px;
-    background-image: url('../assets/images/camera-flash-off.svg');
+    background-image: url('@assets/images/camera-flash-off.svg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     width: $m-3;
@@ -68,7 +66,7 @@ function onCameraLightButton() {
     cursor: pointer;
 
     &.active {
-      background-image: url('../assets/images/camera-flash-on.svg');
+      background-image: url('@assets/images/camera-flash-on.svg');
     }
   }
 

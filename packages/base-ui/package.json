@@ -13,10 +13,8 @@
       "import": "./dist/base-ui.es.js",
       "require": "./dist/base-ui.umd.js"
     },
-    "./style.css": "./dist/style.css"
-  },
-  "imports": {
-    "#*": "./src/*"
+    "./style.css": "./dist/base-ui.css",
+    "./src/*": "./src/*"
   },
   "publishConfig": {
     "access": "public",

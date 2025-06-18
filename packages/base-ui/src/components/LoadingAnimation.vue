@@ -1,18 +1,16 @@
 <template>
   <div class="loading-animation__wrapper">
-    <img class="animation__bg" src="../assets/images/loading.svg" alt="" />
-    <img class="animation animation_25" src="../assets/images/loading-part.svg" alt="" />
-    <img class="animation animation_50" src="../assets/images/loading-part.svg" alt="" />
-    <img class="animation animation_75" src="../assets/images/loading-part.svg" alt="" />
-    <img class="animation animation_100" src="../assets/images/loading-part.svg" alt="" />
+    <img class="animation__bg" src="@assets/images/loading.svg" alt="" />
+    <img class="animation animation_25" src="@assets/images/loading-part.svg" alt="" />
+    <img class="animation animation_50" src="@assets/images/loading-part.svg" alt="" />
+    <img class="animation animation_75" src="@assets/images/loading-part.svg" alt="" />
+    <img class="animation animation_100" src="@assets/images/loading-part.svg" alt="" />
   </div>
 </template>
 
 <script setup></script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 @keyframes loading {
   0% {
     opacity: 0;

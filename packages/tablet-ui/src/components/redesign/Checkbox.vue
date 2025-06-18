@@ -14,8 +14,8 @@
 </template>
 
 <script setup>
+import CommonIcon from "@components/CommonIcon.vue";
 import { computed } from "vue";
-import CommonIcon from "../CommonIcon.vue";
 
 const props = defineProps({
     /** Выбранное значение */
@@ -80,8 +80,6 @@ const buttonSize = computed(() => {
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .checkbox {
   width: 100%;
   border-radius: $d-1;

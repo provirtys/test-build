@@ -22,8 +22,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .btn-mobile {
   height: $l-2;
   width: 100%;

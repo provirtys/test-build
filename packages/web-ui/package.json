@@ -15,9 +15,6 @@
     },
     "./style.css": "./dist/style.css"
   },
-  "imports": {
-    "#*": "./src/*"
-  },
   "publishConfig": {
     "access": "public",
     "main": "src/index.js"
@@ -25,7 +22,8 @@
   "files": ["package.json", "pnpm-lock.yaml", "dist"],
   "dependencies": {
     "sass-embedded": "catalog:",
-    "vue": "catalog:"
+    "vue": "catalog:",
+    "@integrity/base-ui": "workspace:*"
   },
   "devDependencies": {
     "@quasar/extras": "catalog:",

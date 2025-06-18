@@ -33,8 +33,6 @@ const filter = ref("");
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .bg-secondary {
   background: $secondary !important;
 }

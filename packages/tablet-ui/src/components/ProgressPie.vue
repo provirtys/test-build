@@ -21,8 +21,6 @@ const degrees = computed(() => {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .progress-pie {
   position: relative;
   display: flex;

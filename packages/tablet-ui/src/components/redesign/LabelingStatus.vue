@@ -10,8 +10,8 @@
 </template>
 
 <script setup>
+import { setupI18n } from "@/i18n.js";
 import { computed } from "vue";
-import { setupI18n } from "../../i18n.js";
 
 const { t } = setupI18n();
 /** Статус маркировки */
@@ -70,8 +70,6 @@ const colorSecondary = computed(() => {
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .labeling-status-main {
   display: flex;
   gap: $d-0;

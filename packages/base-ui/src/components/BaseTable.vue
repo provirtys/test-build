@@ -20,8 +20,8 @@
 </template>
 
 <script setup>
+import { setupI18n } from "@/i18n.js";
 import { QTable } from "quasar";
-import { setupI18n } from "../i18n.js";
 import "quasar/dist/quasar.css";
 
 const { t } = setupI18n();
@@ -40,8 +40,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 //стили для надписи пустой таблицы
 .q-table__bottom {
   display: flex;

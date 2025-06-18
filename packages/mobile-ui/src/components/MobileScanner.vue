@@ -37,8 +37,6 @@ function onCameraLightButton() {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .mobile-scanner {
   width: 100%;
   height: 100%;
@@ -50,7 +48,7 @@ function onCameraLightButton() {
     background-color: transparent;
     box-shadow: none;
     border-width: 0px;
-    background-image: url('../assets/images/camera-flash-off.svg');
+    background-image: url('@assets/images/camera-flash-off.svg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     width: $m-3;
@@ -58,7 +56,7 @@ function onCameraLightButton() {
     cursor: pointer;
 
     &.active {
-      background-image: url('../assets/images/camera-flash-on.svg');
+      background-image: url('@assets/images/camera-flash-on.svg');
     }
   }
 
@@ -91,7 +89,7 @@ function onCameraLightButton() {
     height: 100%;
     min-height: $xxxl-3;
     aspect-ratio: 1/1;
-    background-image: url('../assets/images/scan-zone.svg');
+    background-image: url('@assets/images/scan-zone.svg');
     background-size: 100% 100%;
   }
 }

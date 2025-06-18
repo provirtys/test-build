@@ -21,8 +21,6 @@ const errorModal = ref(true);
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .error-message {
   .q-dialog__inner--minimized {
     padding: 0;

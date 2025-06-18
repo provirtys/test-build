@@ -31,9 +31,9 @@
 </template>
 
 <script setup>
+import { setupI18n } from "@/i18n.js";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { setupI18n } from "../i18n.js";
 import CommonIcon from "./CommonIcon.vue";
 import SystemStatus from "./SystemStatus.vue";
 import TabletButton from "./redesign/TabletButton.vue";
@@ -84,8 +84,6 @@ function finishAnimation(event) {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .status-bar {
   width: 100%;
   height: $l-2;

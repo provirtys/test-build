@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import CommonIcon from "../CommonIcon.vue";
+import CommonIcon from "@components/CommonIcon.vue";
 
 const props = defineProps({
     /** Значение кнопки*/
@@ -21,8 +21,6 @@ function pressed() {
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .pin-button {
   cursor: pointer;
   position: relative;

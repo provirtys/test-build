@@ -85,7 +85,7 @@
 </template>
 
 <script setup>
-import { setupI18n } from "../i18n.js";
+import { setupI18n } from "@/i18n.js";
 import MarkingCard from "./MarkingCard.vue";
 import TabletButton from "./redesign/TabletButton.vue";
 
@@ -101,8 +101,6 @@ defineProps({
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .gap-12 {
   display: flex;
   flex-direction: column;

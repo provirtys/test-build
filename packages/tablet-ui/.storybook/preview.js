@@ -2,7 +2,6 @@ import { setup } from "@storybook/vue3-vite";
 import { Quasar } from "quasar";
 import { createI18n } from "vue-i18n";
 
-import "../src/css/main.scss";
 import "@quasar/extras/roboto-font/roboto-font.css";
 import "@quasar/extras/material-icons/material-icons.css";
 import "@quasar/extras/material-icons-outlined/material-icons-outlined.css";

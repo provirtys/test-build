@@ -29,8 +29,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .statistics {
   width: 100%;
   display: flex;

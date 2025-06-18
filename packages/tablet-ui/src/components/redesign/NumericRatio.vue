@@ -39,8 +39,6 @@ const classes = computed(() => ({
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .numeric-ratio {
   --divider-color: #d9d9d9;
   --text-opacity: 0.7;

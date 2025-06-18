@@ -1,6 +1,6 @@
 <template>
   <div class="key" @click="pressed">
-    <img class="icon" v-if="value === 'Back'" alt="" src="../assets/images/backspace.svg" />
+    <img class="icon" v-if="value === 'Back'" alt="" src="@assets/images/backspace.svg" />
     <span v-else class="key__text">{{ value }}</span>
   </div>
 </template>
@@ -19,8 +19,6 @@ function pressed() {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .key {
   cursor: pointer;
   position: relative;

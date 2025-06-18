@@ -4,14 +4,14 @@
       <img
         v-if="isMain"
         class="base-header__logo"
-        src="../assets/images/logo_favicon.svg"
+        src="@assets/images/logo_favicon.svg"
         alt="Integrity"
         @click="toHomePage"
       />
       <img
         v-else
         class="base-header__back"
-        src="../assets/images/back-arrow.svg"
+        src="@assets/images/back-arrow.svg"
         alt="Back"
         @click="onBackButton"
       />
@@ -22,7 +22,7 @@
         <img
           @click="logout"
           class="base-header__logout-icon"
-          src="../assets/images/logout.svg"
+          src="@assets/images/logout.svg"
           alt="Log out"
         />
       </div>
@@ -62,8 +62,6 @@ function toHomePage() {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .base-header {
   display: flex;
   justify-content: space-between;

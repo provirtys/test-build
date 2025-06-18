@@ -5,9 +5,9 @@
 </template>
 
 <script setup>
+import { setupI18n } from "@/i18n.js";
 import ApexCharts from "apexcharts";
 import { onMounted, ref, watch } from "vue";
-import { setupI18n } from "../i18n.js";
 
 const { t } = setupI18n();
 
@@ -219,8 +219,6 @@ function updateData(broken, ok, x) {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .bar-chart-bottom {
   height: 100%;
   max-height: 300px;

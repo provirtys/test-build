@@ -43,8 +43,6 @@ const iconStyles = computed(() => ({
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .notification-message {
   width: 100%;
 

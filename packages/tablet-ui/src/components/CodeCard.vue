@@ -40,8 +40,6 @@ const statusIcon = computed(() => {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .code-card {
   width: 100%;
   border-radius: $s-1;

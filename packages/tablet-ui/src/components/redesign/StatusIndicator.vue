@@ -21,8 +21,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .status-indicator {
   display: flex;
   align-items: center;

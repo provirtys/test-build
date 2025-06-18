@@ -13,10 +13,10 @@
 </template>
 
 <script setup>
+import BarcodeIcon from "@assets/icons/BarcodeIcon.vue";
+import CodesArrow from "@assets/icons/CodesArrow.vue";
+import DatamatrixIcon from "@assets/icons/DatamatrixIcon.vue";
 import { computed } from "vue";
-import BarcodeIcon from "../assets/icons/BarcodeIcon.vue";
-import CodesArrow from "../assets/icons/CodesArrow.vue";
-import DatamatrixIcon from "../assets/icons/DatamatrixIcon.vue";
 
 const props = defineProps({
     /** Вариант изображения кода*/
@@ -63,8 +63,6 @@ const codeColor = (index) => {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .codes {
   display: flex;
   align-items: center;

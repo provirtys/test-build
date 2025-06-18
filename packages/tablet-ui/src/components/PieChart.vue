@@ -50,9 +50,9 @@
 </template>
 
 <script setup>
+import { setupI18n } from "@/i18n.js";
 import { QCircularProgress } from "quasar";
 import { computed } from "vue";
-import { setupI18n } from "../i18n.js";
 import "quasar/dist/quasar.css";
 import TabletButton from "./redesign/TabletButton.vue";
 
@@ -75,8 +75,6 @@ function finishLabeling() {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .circle {
   position: relative;
   margin: $xl-1 0;

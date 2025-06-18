@@ -57,8 +57,6 @@ function openTaskDetails() {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .card-task {
   width: 100%;
   display: flex;

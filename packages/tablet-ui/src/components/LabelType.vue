@@ -34,8 +34,8 @@
 </template>
 
 <script setup>
+import { setupI18n } from "@/i18n.js";
 import { computed } from "vue";
-import { setupI18n } from "../i18n.js";
 import CommonIcon from "./CommonIcon.vue";
 
 const { t } = setupI18n();
@@ -119,8 +119,6 @@ function switchType(value) {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .label-type {
   padding: $s-3;
   width: 100%;

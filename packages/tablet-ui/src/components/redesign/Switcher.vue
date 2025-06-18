@@ -20,8 +20,8 @@
 </template>
 
 <script setup>
+import CommonIcon from "@components/CommonIcon.vue";
 import { computed, onMounted, useAttrs } from "vue";
-import CommonIcon from "../CommonIcon.vue";
 
 const props = defineProps({
     modelValue: { type: String, default: "" },
@@ -68,8 +68,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .switcher {
   background: $primary-text-20;
   color: $primary-text;

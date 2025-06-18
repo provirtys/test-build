@@ -8,9 +8,9 @@
 </template>
 
 <script setup>
+import DATAMatrix from "@/datamatrix.js";
+import { setupI18n } from "@/i18n.js";
 import { computed, onMounted, ref } from "vue";
-import DATAMatrix from "../datamatrix.js";
-import { setupI18n } from "../i18n.js";
 
 const { t } = setupI18n();
 
@@ -57,8 +57,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .binding-barcode {
   margin-top: 5%;
   margin-bottom: $xxxl-3;

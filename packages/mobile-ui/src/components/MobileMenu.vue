@@ -22,8 +22,8 @@
 </template>
 
 <script setup>
-import TabBarIcon from "../assets/icons/TabBarIcon.vue";
-import { setupI18n } from "../i18n.js";
+import { setupI18n } from "@/i18n.js";
+import TabBarIcon from "@assets/icons/TabBarIcon.vue";
 
 const { t } = setupI18n();
 
@@ -72,8 +72,6 @@ function tabbarItemColor(page) {
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .tabbar {
   background-color: $light-gray-55;
   width: 100%;

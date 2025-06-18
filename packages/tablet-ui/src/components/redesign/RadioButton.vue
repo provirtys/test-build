@@ -19,8 +19,8 @@
 </template>
 
 <script setup>
+import CommonIcon from "@components/CommonIcon.vue";
 import { computed } from "vue";
-import CommonIcon from "../CommonIcon.vue";
 import StatusIndicator from "./StatusIndicator.vue";
 
 const props = defineProps({
@@ -83,8 +83,6 @@ const buttonSize = computed(() => {
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .radio-btn {
   width: 100%;
   height: $xxl-4;

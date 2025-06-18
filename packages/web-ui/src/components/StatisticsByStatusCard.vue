@@ -13,8 +13,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .statistics-card {
   flex: 1;
   max-width: 20%;

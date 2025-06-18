@@ -35,8 +35,15 @@ export default defineConfig({
             { find: "@", replacement: fileURLToPath(new URL("./src/", import.meta.url)) },
             { find: "@stories", replacement: fileURLToPath(new URL("./src/stories/", import.meta.url)) },
             { find: "@components", replacement: fileURLToPath(new URL("./src/components/", import.meta.url)) },
-            { find: "@css", replacement: fileURLToPath(new URL("./src/css/", import.meta.url)) },
+            { find: "@styles", replacement: fileURLToPath(new URL("./src/styles/", import.meta.url)) },
             { find: "@assets", replacement: fileURLToPath(new URL("./src/assets/", import.meta.url)) },
         ],
+    },
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: `@import '@integrity/base-ui/src/styles/main.scss';`,
+            },
+        },
     },
 });

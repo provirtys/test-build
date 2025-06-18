@@ -12,16 +12,14 @@
 </template>
 
 <script setup>
+import { setupI18n } from "@/i18n.js";
 import { QBtn } from "quasar";
-import { setupI18n } from "../i18n.js";
 import "quasar/dist/quasar.css";
 
 const { t } = setupI18n();
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .add-btn {
   height: $m-4;
   width: $b-4;

@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { setupI18n } from "../i18n.js";
+import { setupI18n } from "@/i18n.js";
 
 const { t } = setupI18n();
 const props = defineProps({
@@ -21,8 +21,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 .system-status {
   display: flex;
   gap: 13px;

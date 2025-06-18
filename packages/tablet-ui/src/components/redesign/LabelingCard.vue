@@ -60,8 +60,8 @@
 </template>
 
 <script setup>
-import { setupI18n } from "../../i18n.js";
-import CommonIcon from "../CommonIcon.vue";
+import { setupI18n } from "@/i18n.js";
+import CommonIcon from "@components/CommonIcon.vue";
 import StatusCode from "./StatusCode.vue";
 
 const { t } = setupI18n();
@@ -87,8 +87,6 @@ defineProps({
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .code-info {
   display: flex;
   flex-direction: column;

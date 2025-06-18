@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { setupI18n } from "../i18n.js";
+import { setupI18n } from "@/i18n.js";
 import MobileButton from "./MobileButton.vue";
 
 const { t } = setupI18n();
@@ -58,8 +58,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
-
 img {
   width: 100%;
   height: 100%;

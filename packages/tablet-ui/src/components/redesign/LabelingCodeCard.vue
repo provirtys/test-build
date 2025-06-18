@@ -36,7 +36,7 @@
 </template>
 
 <script setup>
-import CommonIcon from "../CommonIcon.vue";
+import CommonIcon from "@components/CommonIcon.vue";
 import StatusCode from "./StatusCode.vue";
 
 defineProps({
@@ -63,8 +63,6 @@ defineProps({
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 .code-name {
   color: $dark-gray-70;
   font-family: Golos UI-medium;

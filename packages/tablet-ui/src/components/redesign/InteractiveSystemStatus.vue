@@ -18,8 +18,8 @@
 </template>
 
 <script setup>
+import { setupI18n } from "@/i18n.js";
 import { computed, ref } from "vue";
-import { setupI18n } from "#i18n.js";
 import StatusIndicator from "./StatusIndicator.vue";
 
 const { t } = setupI18n();
@@ -109,8 +109,6 @@ function finishAnimation(event) {
 </script>
 
 <style lang="scss">
-@import '../../css/main.scss';
-
 // при нажатии на иконку срабатывает клик по кнопке
 .pointer-icon {
   pointer-events: none;

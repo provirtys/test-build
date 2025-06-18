@@ -26,7 +26,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-@import '../css/main.scss';
 .p-0 {
   padding-bottom: 0;
 }
