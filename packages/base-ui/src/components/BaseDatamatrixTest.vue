@@ -32,13 +32,15 @@ onMounted(() => {
         uuid: props.uuid,
         name: props.name,
     };
-    const datamatrix_text = JSON.stringify(data).replace(/[\u007F-\uFFFF]/g, (chr) => {
-        // biome-ignore lint/style/useTemplate: <explanation>
-        return "\\u" + ("0000" + chr.charCodeAt(0).toString(16)).substr(-4);
-    });
+
+    const datamatrixMessage = JSON.stringify(data).replace(
+        /[\u007F-\uFFFF]/g,
+        (chr) => `\\u${chr.charCodeAt(0).toString(16).padStart(4, "0")}`,
+    );
+
     const pad = 5;
     const datamatrix = DATAMatrix({
-        msg: datamatrix_text,
+        msg: datamatrixMessage,
         dim: 180, // dimensions
         rct: 0, // keep datamatrix square
         pad, // padding
