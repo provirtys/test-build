@@ -7,12 +7,6 @@ export default {
     component: BaseInput,
 };
 
-// biome-ignore lint/correctness/noUnusedVariables: <explanation>
-const Template = () => ({
-    components: { BaseInput },
-    template: "<BaseInput />",
-});
-
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
