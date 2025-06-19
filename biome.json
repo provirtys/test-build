@@ -57,7 +57,8 @@
         "all": true
       },
       "performance": {
-        "all": true
+        "all": true,
+        "noBarrelFile": "off"
       },
       "security": {
         "all": true

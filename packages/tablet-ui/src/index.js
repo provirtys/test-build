@@ -1,4 +1,3 @@
-// biome-ignore lint/performance/noBarrelFile: <explanation>
 export { default as BaseTable } from "./components/redesign/BaseTable.vue";
 export { default as CardJob } from "./components/redesign/CardJob.vue";
 export { default as Checkbox } from "./components/redesign/Checkbox.vue";
@@ -13,7 +12,6 @@ export { default as LabelingStatus } from "./components/redesign/LabelingStatus.
 export { default as RadioButton } from "./components/redesign/RadioButton.vue";
 export { default as StatusBar } from "./components/redesign/StatusBar.vue";
 export { default as StatusCode } from "./components/redesign/StatusCode.vue";
-
 export { default as BarChart } from "./components/BarChart.vue";
 export { default as BarChartTimeSeries } from "./components/BarChartTimeSeries.vue";
 export { default as BaseInput } from "./components/BaseInput.vue";

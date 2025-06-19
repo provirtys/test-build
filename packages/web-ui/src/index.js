@@ -1,4 +1,3 @@
-// biome-ignore lint/performance/noBarrelFile: <explanation>
 export { default as AdminTable } from "./components/AdminTable.vue";
 export { default as ButtonAdmin } from "./components/ButtonAdmin.vue";
 export { default as InputAdmin } from "./components/InputAdmin.vue";
