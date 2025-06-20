@@ -4,6 +4,7 @@
   "main": "./dist/base-ui.umd.js",
   "module": "./dist/base-ui.es.js",
   "scripts": {
+    "postinstall": "node scripts/create-symlinks.cjs",
     "build": "vite build",
     "storybook": "storybook dev -p 3000",
     "build:storybook": "storybook build"
