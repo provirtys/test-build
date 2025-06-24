@@ -8,8 +8,8 @@
 </template>
 
 <script setup>
-import DATAMatrix from "@/datamatrix.js";
-import { setupI18n } from "@/i18n.js";
+import DATAMatrix from "@base/datamatrix.js";
+import { setupI18n } from "@base/i18n.js";
 import { computed, onMounted, ref } from "vue";
 
 const { t } = setupI18n();

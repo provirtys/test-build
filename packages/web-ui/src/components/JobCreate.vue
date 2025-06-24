@@ -92,7 +92,7 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@/i18n.js";
+import { setupI18n } from "@base/i18n.js";
 import { QBtn, QCard, QCardSection, QDialog, QIcon, QInput } from "quasar";
 import { v4 as uuidv4 } from "uuid";
 import { reactive, ref, watch } from "vue";

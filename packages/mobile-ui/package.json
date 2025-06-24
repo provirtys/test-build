@@ -26,6 +26,7 @@
     "@integrity/base-ui": "workspace:*"
   },
   "devDependencies": {
+    "@pivanov/vite-plugin-svg-sprite": "catalog:",
     "@quasar/extras": "catalog:",
     "@quasar/vite-plugin": "catalog:",
     "storybook": "catalog:",

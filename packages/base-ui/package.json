@@ -4,7 +4,6 @@
   "main": "./dist/base-ui.umd.js",
   "module": "./dist/base-ui.es.js",
   "scripts": {
-    "postinstall": "node scripts/create-symlinks.cjs",
     "build": "vite build",
     "storybook": "storybook dev -p 3000",
     "build:storybook": "storybook build"
@@ -27,6 +26,7 @@
     "vue": "catalog:"
   },
   "devDependencies": {
+    "@pivanov/vite-plugin-svg-sprite": "catalog:",
     "@quasar/extras": "catalog:",
     "@quasar/vite-plugin": "catalog:",
     "storybook": "catalog:",

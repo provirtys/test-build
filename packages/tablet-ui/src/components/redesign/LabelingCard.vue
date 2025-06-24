@@ -60,8 +60,8 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@/i18n.js";
-import CommonIcon from "@components/CommonIcon.vue";
+import { CommonIcon } from "@base";
+import { setupI18n } from "@base/i18n.js";
 import StatusCode from "./StatusCode.vue";
 
 const { t } = setupI18n();

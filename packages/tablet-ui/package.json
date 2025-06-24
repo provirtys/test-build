@@ -22,11 +22,11 @@
   "files": ["package.json", "pnpm-lock.yaml", "dist"],
   "dependencies": {
     "sass-embedded": "catalog:",
-    "vite-plugin-svg-sprite": "catalog:",
     "vue": "catalog:",
     "@integrity/base-ui": "workspace:*"
   },
   "devDependencies": {
+    "@pivanov/vite-plugin-svg-sprite": "catalog:",
     "@quasar/extras": "catalog:",
     "@quasar/vite-plugin": "catalog:",
     "storybook": "catalog:",

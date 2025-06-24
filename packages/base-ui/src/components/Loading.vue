@@ -3,7 +3,7 @@
     <img
       v-if="isInternetError"
       class="icon"
-      src="@assets/images/no-wifi.svg"
+      src="@base/assets/images/no-wifi.svg"
       :alt="t('loading.internet_false')"
     />
     <LoadingAnimation v-else />
@@ -22,10 +22,9 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@/i18n.js";
+import { BaseButton, LoadingAnimation } from "@base";
+import { setupI18n } from "@base/i18n.js";
 import { computed } from "vue";
-import BaseButton from "./BaseButton.vue";
-import LoadingAnimation from "./LoadingAnimation.vue";
 
 const { t } = setupI18n();
 

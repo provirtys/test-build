@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@/i18n.js";
+import { setupI18n } from "@base/i18n.js";
 import MobileButton from "./MobileButton.vue";
 
 const { t } = setupI18n();

@@ -1,7 +1,8 @@
 {
   "system-status": {
     "READY": "Готово",
-    "NOT_READY": "Не готово"
+    "NOT_READY": "Не готово",
+    "SETTING": "Настройка"
   },
   "printerStatus": {
     "READY": "Принтер готов",

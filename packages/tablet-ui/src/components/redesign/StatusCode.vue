@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import CommonIcon from "@components/CommonIcon.vue";
+import { CommonIcon } from "@base";
 import StatusIndicator from "./StatusIndicator.vue";
 
 defineProps({

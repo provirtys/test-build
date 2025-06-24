@@ -90,7 +90,7 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@/i18n.js";
+import { setupI18n } from "@base/i18n.js";
 import DMProto from "@utils/DMProto.js";
 import { v4 as uuidv4 } from "uuid";
 import { reactive, ref, watch } from "vue";

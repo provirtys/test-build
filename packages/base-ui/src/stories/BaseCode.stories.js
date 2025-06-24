@@ -1,4 +1,4 @@
-import BaseCode from "@components/BaseCode.vue";
+import BaseCode from "@base/components/BaseCode.vue";
 
 /** BaseCode component with customizable number and type of code*/
 export default {

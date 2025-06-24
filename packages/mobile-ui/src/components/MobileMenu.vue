@@ -22,8 +22,8 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@/i18n.js";
-import TabBarIcon from "@assets/icons/TabBarIcon.vue";
+import { setupI18n } from "@base/i18n.js";
+import TabBarIcon from "@components/icons/TabBarIcon.vue";
 
 const { t } = setupI18n();
 

@@ -34,10 +34,9 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@/i18n.js";
+import { CommonIcon } from "@base";
+import { setupI18n } from "@base/i18n.js";
 import { computed } from "vue";
-import CommonIcon from "./CommonIcon.vue";
-
 const { t } = setupI18n();
 
 const props = defineProps({

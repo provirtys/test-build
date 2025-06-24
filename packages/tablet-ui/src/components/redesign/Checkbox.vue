@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import CommonIcon from "@components/CommonIcon.vue";
+import { CommonIcon } from "@base";
 import { computed } from "vue";
 
 const props = defineProps({

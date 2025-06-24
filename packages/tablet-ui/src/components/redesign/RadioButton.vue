@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import CommonIcon from "@components/CommonIcon.vue";
+import { CommonIcon } from "@base";
 import { computed } from "vue";
 import StatusIndicator from "./StatusIndicator.vue";
 

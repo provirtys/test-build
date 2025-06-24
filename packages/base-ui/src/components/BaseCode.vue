@@ -1,21 +1,21 @@
 <template>
   <div class="codes">
     <component
-      :is="codeTypes[currentType]"
-      :border="props.needBorder"
-      :class="[codeTypeClass, firstCodeColor]"
+        :is="codeTypes[currentType]"
+        :border="props.needBorder"
+        :class="[codeTypeClass, firstCodeColor]"
     />
     <div class="code" v-for="index in props.codesLength - 1" :key="index">
-      <CodesArrow class="arrow" :class="[codeColor(index), arrowMargin]" />
-      <component :is="codeTypes[currentType]" :class="[codeTypeClass, codeColor(index)]" />
+      <common-icon name="arrowForward" class="arrow" :class="[codeColor(index), arrowMargin]"/>
+      <component :is="codeTypes[currentType]" :class="[codeTypeClass, codeColor(index)]"/>
     </div>
   </div>
 </template>
 
 <script setup>
-import BarcodeIcon from "@assets/icons/BarcodeIcon.vue";
-import CodesArrow from "@assets/icons/CodesArrow.vue";
-import DatamatrixIcon from "@assets/icons/DatamatrixIcon.vue";
+import { CommonIcon } from "@base";
+import BarcodeIcon from "@base/components/icons/BarcodeIcon.vue";
+import DatamatrixIcon from "@base/components/icons/DatamatrixIcon.vue";
 import { computed } from "vue";
 
 const props = defineProps({

@@ -1,4 +1,4 @@
-import BaseInput from "@components/BaseInput.vue";
+import BaseInput from "@base/components/BaseInput.vue";
 import { expect, getElementError, userEvent, waitFor, within } from "storybook/test";
 
 /** Input component */

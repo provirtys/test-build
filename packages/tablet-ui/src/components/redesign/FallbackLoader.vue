@@ -12,8 +12,8 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import CommonIcon from "@components/CommonIcon.vue";
+<script setup>
+import { CommonIcon } from "@base";
 
 defineProps({
     loadingText: {

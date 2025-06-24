@@ -1,4 +1,4 @@
-import BaseDatamatrixTest from "@components/BaseDatamatrixTest.vue";
+import BaseDatamatrixTest from "@base/components/BaseDatamatrixTest.vue";
 
 /** Компонент Datamatrix код. */
 /** Цвет текста и фон кода могут меняться в зависимости от цвета фона на выбранной странице. */

@@ -36,7 +36,7 @@
 </template>
 
 <script setup>
-import CommonIcon from "@components/CommonIcon.vue";
+import { CommonIcon } from "@base";
 import StatusCode from "./StatusCode.vue";
 
 defineProps({

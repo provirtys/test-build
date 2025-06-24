@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@/i18n.js";
+import { setupI18n } from "@base/i18n.js";
 import { QBtn, QIcon, QTable, QTd, QToolbar, QToolbarTitle, QTooltip } from "quasar";
 import { computed } from "vue";
 import "quasar/dist/quasar.css";

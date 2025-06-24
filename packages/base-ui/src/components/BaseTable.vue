@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@/i18n.js";
+import { setupI18n } from "@base/i18n.js";
 import { QTable } from "quasar";
 import "quasar/dist/quasar.css";
 

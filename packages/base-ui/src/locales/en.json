@@ -1,7 +1,8 @@
 {
   "system-status": {
     "READY": "Ready",
-    "NOT_READY": "Error"
+    "NOT_READY": "Error",
+    "SETTING": "Settings"
   },
   "printerStatus": {
     "READY": "The printer is ready",

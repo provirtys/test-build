@@ -50,7 +50,7 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@/i18n.js";
+import { setupI18n } from "@base/i18n.js";
 import { QCircularProgress } from "quasar";
 import { computed } from "vue";
 import "quasar/dist/quasar.css";

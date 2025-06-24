@@ -1,4 +1,4 @@
-import KeyButton from "@components/KeyButton.vue";
+import KeyButton from "@base/components/KeyButton.vue";
 
 /** KeyButton component with customizable number*/
 export default {

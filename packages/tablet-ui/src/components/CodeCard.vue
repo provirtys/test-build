@@ -15,9 +15,8 @@
 </template>
 
 <script setup>
+import { CommonIcon } from "@base";
 import { computed } from "vue";
-import CommonIcon from "./CommonIcon.vue";
-
 const props = defineProps({
     codeType: { type: String, default: "DataMatrix" },
     codeText: { type: String, default: "" },

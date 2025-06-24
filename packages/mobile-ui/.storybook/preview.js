@@ -8,8 +8,8 @@ import "@quasar/extras/material-icons-outlined/material-icons-outlined.css";
 import "@quasar/extras/material-symbols-outlined/material-symbols-outlined.css";
 import "quasar/dist/quasar.css";
 
-import en from "../src/locales/en.json";
-import ru from "../src/locales/ru.json";
+import en from "@base/locales/en.json";
+import ru from "@base/locales/ru.json";
 
 function loadLocaleMessages() {
     const locales = [{ en }, { ru }];

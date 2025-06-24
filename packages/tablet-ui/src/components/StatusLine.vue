@@ -31,10 +31,10 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@/i18n.js";
+import { CommonIcon } from "@base";
+import { setupI18n } from "@base/i18n.js";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import CommonIcon from "./CommonIcon.vue";
 import SystemStatus from "./SystemStatus.vue";
 import TabletButton from "./redesign/TabletButton.vue";
 

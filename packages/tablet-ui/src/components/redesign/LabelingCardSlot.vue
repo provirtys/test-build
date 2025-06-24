@@ -96,7 +96,7 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@/i18n.js";
+import { setupI18n } from "@base/i18n.js";
 import LabelingCard from "./LabelingCard.vue";
 import TabletButton from "./TabletButton.vue";
 

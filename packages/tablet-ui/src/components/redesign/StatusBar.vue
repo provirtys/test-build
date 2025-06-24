@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import CommonIcon from "@components/CommonIcon.vue";
+import { CommonIcon } from "@base";
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import SystemStatus from "./InteractiveSystemStatus.vue";

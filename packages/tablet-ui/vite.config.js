@@ -1,14 +1,24 @@
 import * as path from "node:path";
-import { URL, fileURLToPath } from "node:url";
+import svgSpritePlugin from "@pivanov/vite-plugin-svg-sprite";
 import { quasar } from "@quasar/vite-plugin";
 import vue from "@vitejs/plugin-vue";
 /// <reference types='vitest' />
 import { defineConfig } from "vite";
+import createPackageConfig from "../../vite.shared.js";
 
 export default defineConfig({
     root: __dirname,
     cacheDir: "./node_modules/.vite/tablet-ui",
-    plugins: [vue(), quasar()],
+    plugins: [
+        vue(),
+        quasar(),
+        svgSpritePlugin({
+            iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
+            symbolId: "[name]",
+            svgDomId: "svg-sprite",
+            inject: "body-last",
+        }),
+    ],
     // Configuration for building your library.
     // See: https://vitejs.dev/guide/build.html#library-mode
     build: {
@@ -29,15 +39,7 @@ export default defineConfig({
             },
         },
     },
-    resolve: {
-        alias: [
-            { find: "@", replacement: fileURLToPath(new URL("./src/", import.meta.url)) },
-            { find: "@stories", replacement: fileURLToPath(new URL("./src/stories/", import.meta.url)) },
-            { find: "@components", replacement: fileURLToPath(new URL("./src/components/", import.meta.url)) },
-            { find: "@styles", replacement: fileURLToPath(new URL("./src/styles/", import.meta.url)) },
-            { find: "@assets", replacement: fileURLToPath(new URL("./src/assets/", import.meta.url)) },
-        ],
-    },
+    ...createPackageConfig("tablet-ui"),
     css: {
         preprocessorOptions: {
             scss: {

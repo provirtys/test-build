@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import CommonIcon from "./CommonIcon.vue";
+import { CommonIcon } from "@base";
 import MarkingStatus from "./MarkingStatus.vue";
 import ProgressPie from "./ProgressPie.vue";
 

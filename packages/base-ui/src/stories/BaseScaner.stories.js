@@ -1,4 +1,4 @@
-import BaseScanner from "@components/BaseScanner.vue";
+import BaseScanner from "@base/components/BaseScanner.vue";
 import { fireEvent, within } from "storybook/test";
 
 /** Scanner component with customizable light, size and type code*/

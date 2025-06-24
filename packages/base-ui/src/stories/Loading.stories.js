@@ -1,4 +1,4 @@
-import Loading from "@components/Loading.vue";
+import Loading from "@base/components/Loading.vue";
 
 /** Loading component with customizable massage*/
 export default {
