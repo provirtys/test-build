@@ -9,11 +9,11 @@
       @mouseup="finishAnimation"
       @touchend="finishAnimation"
     >
-      <CommonIcon name="logout" />
+      <common-icon name="logout" />
       {{ t('logout') }}
     </button>
     <button v-else class="status-bar__button" @click="goBack">
-      <CommonIcon name="arrowBack" />
+      <common-icon name="arrowBack" />
       {{ t('back') }}
     </button>
     <p class="status-bar__task">{{ textTask }}</p>
@@ -25,7 +25,7 @@
       >
         {{ t('newJob') }}
       </button>
-      <SystemStatus :color="systemStatus.status" :statusType="systemStatus.text" />
+      <system-status :color="systemStatus.status" :statusType="systemStatus.text" />
     </div>
   </div>
 </template>

@@ -7,9 +7,9 @@
       :disabled="isDisabled"
       @change="() => $emit('update:modelValue', !modelValue)"
     />
-    <CommonIcon :name="checkboxIconName" :size="iconSizes[height]['checkbox']" />
+    <common-icon :name="checkboxIconName" :size="iconSizes[height]['checkbox']" />
     <span :class="['checkbox__title', buttonSize]">{{ label }}</span>
-    <CommonIcon v-if="iconName" :name="iconName" :size="iconSizes[height]['icon']" />
+    <common-icon v-if="iconName" :name="iconName" :size="iconSizes[height]['icon']" />
   </label>
 </template>
 

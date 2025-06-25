@@ -13,20 +13,20 @@
     @mouseup="finishAnimation"
     @touchend="finishAnimation"
   >
-    <CommonIcon v-if="showSubmittedIcon" name="done" :size="sizeIcon" />
+    <common-icon v-if="showSubmittedIcon" name="done" :size="sizeIcon" />
     <template v-else>
       <span
         v-if="icon && locationIcon === 'left'"
         class="action-tablet-btn__icon-container justify-start"
       >
-        <CommonIcon :name="icon" :size="sizeIcon" />
+        <common-icon :name="icon" :size="sizeIcon" />
       </span>
       <span class="action-tablet-btn__text">{{ text }}</span>
       <span
         v-if="icon && locationIcon === 'right'"
         class="action-tablet-btn__icon-container justify-end"
       >
-        <CommonIcon :name="icon" :size="sizeIcon" />
+        <common-icon :name="icon" :size="sizeIcon" />
       </span>
     </template>
   </q-btn>

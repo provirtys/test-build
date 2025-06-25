@@ -1,7 +1,7 @@
 <template>
   <div class="fallback-loader">
     <div v-if="!isLoading" class="column items-center q-gutter-sm">
-      <CommonIcon v-if="fallbackIcon" :name="fallbackIcon" />
+      <common-icon v-if="fallbackIcon" :name="fallbackIcon" />
       <p v-if="fallbackText">{{ fallbackText }}</p>
       <q-btn class="q-mt-sm" size="md" @click="$emit('onUpdate')">{{ updateBtnText }}</q-btn>
     </div>

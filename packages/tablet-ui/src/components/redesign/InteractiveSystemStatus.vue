@@ -9,11 +9,11 @@
     :class="[{ active: props.isActive }, { done: isActionSubmitted }, backgroundColor]"
   >
     {{ t('system-status.' + statusType) }}
-    <StatusIndicator
+    <status-indicator
       class="pointer-icon"
       :color="props.color"
       :is-animate="props.isSync"
-    ></StatusIndicator>
+    ></status-indicator>
   </button>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="status-line">
-    <TabletButton
+    <tablet-button
       height="small"
       fit-width
       :text="btnText"
@@ -10,17 +10,17 @@
     />
     <p class="status-line__task">{{ title }}</p>
     <div class="row">
-      <SystemStatus
+      <system-status
         :color="systemStatus.status"
         :statusType="systemStatus.text"
         :isSync="systemStatus.sync"
         :is-active="systemStatus.active"
-      ></SystemStatus>
+      ></system-status>
       <div
         class="status-line__button status-line__settings"
         :class="[{ disabled: props.isDisabled }]"
       >
-        <CommonIcon name="settings" />
+        <common-icon name="settings" />
       </div>
     </div>
   </div>

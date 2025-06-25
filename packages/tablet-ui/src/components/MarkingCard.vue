@@ -27,16 +27,16 @@
           </div>
         </div>
 
-        <ProgressPie
+        <progress-pie
           v-if="isProgressPieVisible"
           :size="'large'"
           :percentage="Math.round((codeInfo.labeled / codeInfo.total) * 100)"
-        ></ProgressPie>
+        ></progress-pie>
       </div>
       <div v-if="isRepeatVisible" class="marking-card__repeat">
         <!--Это не кнопка, просто индикатор, если нужна повторная маркировка-->
         <div class="marking-card__repeat-icon">
-          <CommonIcon name="restart" />
+          <common-icon name="restart" />
         </div>
         <p>{{ t('repeatedLabeling') }}</p>
       </div>

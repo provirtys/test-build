@@ -1,7 +1,7 @@
 <template>
   <div class="labeling-code-card" :class="{ aggregation: isAggregation }">
     <div class="labeling-code-card__position" :class="{ error: isErrorLabeling }">
-      <CommonIcon v-if="isAggregation" name="aggregation" size="35" />
+      <common-icon v-if="isAggregation" name="aggregation" size="35" />
       <p v-else>{{ position }}</p>
     </div>
 
@@ -18,19 +18,19 @@
     </div>
 
     <div v-if="!noCodes" class="labeling-code-card__codes">
-      <StatusCode
+      <status-code
         :status="status1"
         :codeType="codeType1"
         :color="color1"
         :is-animate="status1 === 'synced'"
-      ></StatusCode>
-      <StatusCode
+      ></status-code>
+      <status-code
         v-if="secondCode"
         :status="status2"
         :codeType="codeType2"
         :color="color2"
         :is-animate="status2 === 'synced'"
-      ></StatusCode>
+      ></status-code>
     </div>
   </div>
 </template>

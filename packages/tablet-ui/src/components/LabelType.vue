@@ -8,7 +8,7 @@
         data-testid="codeType-DataMatrix"
         @click="switchType('DataMatrix')"
       >
-        <CommonIcon name="dataMatrix" />
+        <common-icon name="dataMatrix" />
         <p>Data Matrix</p>
       </div>
       <div
@@ -17,11 +17,11 @@
         data-testid="codeType-Code128"
         @click="switchType('Code128')"
       >
-        <CommonIcon name="barCode" />
+        <common-icon name="barCode" />
         <p>Barcode</p>
       </div>
       <div v-if="!isAuto" class="label-type__option all-selected">
-        <CommonIcon
+        <common-icon
           :name="allSelected ? 'checkbox-filled' : 'checkbox-empty'"
           data-testid="codeType-all"
           @click="switchType('all')"

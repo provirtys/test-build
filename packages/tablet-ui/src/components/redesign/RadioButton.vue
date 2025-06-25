@@ -5,15 +5,15 @@
     :class="[backgroundColor, buttonSize]"
     @click="submitAction"
   >
-    <CommonIcon :name="isSelect ? 'radioButton-select' : 'radioButton-empty'" :size="sizeIcon" />
+    <common-icon :name="isSelect ? 'radioButton-select' : 'radioButton-empty'" :size="sizeIcon" />
     {{ buttonText }}
     <span class="radio-btn__status">
-      <CommonIcon v-if="isIcon === 'icon'" name="numbers" :size="sizeIcon" />
-      <StatusIndicator
+      <common-icon v-if="isIcon === 'icon'" name="numbers" :size="sizeIcon" />
+      <status-indicator
         v-if="isIcon === 'status' && isDisabled === false"
         :is-animate="isAnimate"
         :color="iconStatus"
-      ></StatusIndicator>
+      ></status-indicator>
     </span>
   </button>
 </template>

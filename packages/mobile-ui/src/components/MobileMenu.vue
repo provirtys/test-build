@@ -2,19 +2,19 @@
   <div class="tabbar" :class="[isBackgroundDark ? 'tabbar-dark' : '']">
     <div class="tabs">
       <router-link tag="div" class="tabbar-item" :to="{ name: 'FrontPage' }">
-        <TabBarIcon class="image" :class="tabbarItemColor('home')" :page="'home'" />
+        <tab-bar-icon class="image" :class="tabbarItemColor('home')" :page="'home'" />
         <div class="label">{{ t('storybook.home') }}</div>
       </router-link>
       <router-link tag="div" class="tabbar-item" :to="{ name: 'CheckScan' }">
-        <TabBarIcon class="image" :class="tabbarItemColor('scan')" :page="'scan'" />
+        <tab-bar-icon class="image" :class="tabbarItemColor('scan')" :page="'scan'" />
         <div class="label">{{ t('storybook.scan') }}</div>
       </router-link>
       <router-link tag="div" class="tabbar-item" :to="{ name: 'History' }">
-        <TabBarIcon class="image" :class="tabbarItemColor('history')" :page="'history'" />
+        <tab-bar-icon class="image" :class="tabbarItemColor('history')" :page="'history'" />
         <div class="label">{{ t('storybook.history') }}</div>
       </router-link>
       <router-link tag="div" class="tabbar-item" :to="{ name: 'Profile' }">
-        <TabBarIcon class="image" :class="tabbarItemColor('profile')" :page="'profile'" />
+        <tab-bar-icon class="image" :class="tabbarItemColor('profile')" :page="'profile'" />
         <div class="label">{{ t('storybook.profile') }}</div>
       </router-link>
     </div>

@@ -1,9 +1,9 @@
 <template>
   <div class="labeling-code" :class="[{ error: status === 'broken' }]">
-    <CommonIcon v-if="codeType === 'Code128'" name="barcodeRedesign" />
-    <CommonIcon v-else name="datamatrixRedesign" />
+    <common-icon v-if="codeType === 'Code128'" name="barcodeRedesign" />
+    <common-icon v-else name="datamatrixRedesign" />
     <div v-if="status === 'verified' || status === 'synced'" class="labeling-code__status">
-      <StatusIndicator :is-animate="status === 'synced'" :color="color"></StatusIndicator>
+      <status-indicator :is-animate="status === 'synced'" :color="color"></status-indicator>
     </div>
   </div>
 </template>

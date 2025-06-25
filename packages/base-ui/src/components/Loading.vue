@@ -6,18 +6,18 @@
       src="@base/assets/images/no-wifi.svg"
       :alt="t('loading.internet_false')"
     />
-    <LoadingAnimation v-else />
+    <loading-animation v-else />
     <div class="loading__text">{{ t('loading.' + loadingType) }}</div>
     <div v-if="isInternetError" class="loading__error">{{ t('loading.try_again') }}</div>
     <div v-else class="loading__error">{{ t('loading.wait') }}</div>
-    <BaseButton
+    <base-button
       v-if="isInternetError"
       :background="'red'"
       :color="'white'"
       :size="'large'"
       :text="t('loading.retry')"
       class="mt-5"
-    ></BaseButton>
+    ></base-button>
   </div>
 </template>
 

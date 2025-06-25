@@ -1,13 +1,13 @@
 <template>
   <div class="marking-card-container">
-    <MarkingCard
+    <marking-card
       :codeInfo="codeInfo"
       :is-repeat-visible="isRepeatVisible"
       :is-progress-pie-visible="isProgressPieVisible"
       :is-aggregation-visible="isAggregationVisible"
     >
       <div class="gap-12">
-        <TabletButton
+        <tablet-button
           v-if="btn === '1'"
           :text="t('scan')"
           icon="scan"
@@ -16,14 +16,14 @@
           text-alignment="left"
           color="red"
         />
-        <TabletButton
+        <tablet-button
           v-if="btn === '1'"
           :text="t('startAggregation')"
           is-radius
           text-alignment="left"
         />
 
-        <TabletButton
+        <tablet-button
           v-if="btn === '2'"
           :text="t('repeatLabeling')"
           icon="restart"
@@ -32,7 +32,7 @@
           text-alignment="left"
           color="red"
         />
-        <TabletButton
+        <tablet-button
           v-if="btn === '2'"
           :text="t('labelingDefect')"
           icon="bad"
@@ -42,7 +42,7 @@
           color="secondary"
         />
 
-        <TabletButton
+        <tablet-button
           v-if="btn === '3'"
           :text="t('scan')"
           icon="scan"
@@ -52,7 +52,7 @@
           color="red"
         />
 
-        <TabletButton
+        <tablet-button
           v-if="btn === '4'"
           :text="t('confirm')"
           icon="done"
@@ -62,7 +62,7 @@
           color="red"
         />
 
-        <TabletButton
+        <tablet-button
           v-if="btn === '5'"
           :text="t('scan')"
           icon="scan"
@@ -71,7 +71,7 @@
           text-alignment="left"
           color="red"
         />
-        <TabletButton
+        <tablet-button
           v-if="btn === '5'"
           :text="t('finishAggregation')"
           icon="aggregation"
@@ -80,7 +80,7 @@
           text-alignment="left"
         />
       </div>
-    </MarkingCard>
+    </marking-card>
   </div>
 </template>
 

@@ -38,7 +38,7 @@
         <p :class="{ 'text-primary': percentage < 97 }">{{ 100 - percentage }}%</p>
       </div>
     </div>
-    <TabletButton
+    <tablet-button
       :text="t('finishLabeling')"
       icon="arrow"
       location-icon="right"

@@ -1,7 +1,7 @@
 <template>
   <div class="statistics">
     <div class="statistics__jobs">
-      <StatisticsByStatusCard
+      <statistics-by-status-card
         v-for="card in jobCards"
         :key="card.id"
         :title="card.title"
@@ -9,7 +9,7 @@
       />
     </div>
     <div class="statistics__tools">
-      <StatisticsByStatusCard
+      <statistics-by-status-card
         v-for="card in toolCards"
         :key="card.id"
         :title="card.title"

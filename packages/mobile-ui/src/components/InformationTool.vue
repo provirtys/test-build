@@ -16,18 +16,18 @@
     </div>
 
     <div class="buttons">
-      <MobileButton
+      <mobile-button
         v-if="props.btn === 'take'"
         :color="'dark'"
         :text="t('storybook.take')"
-      ></MobileButton>
-      <MobileButton
+      ></mobile-button>
+      <mobile-button
         v-if="props.btn === 'returnBtn'"
         :color="'dark'"
         :text="t('storybook.return')"
-      ></MobileButton>
+      ></mobile-button>
 
-      <MobileButton :text="t('storybook.cancel')"></MobileButton>
+      <mobile-button :text="t('storybook.cancel')"></mobile-button>
     </div>
   </div>
 </template>

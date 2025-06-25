@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="card-task__arrow" @click="openTaskDetails">
-      <CommonIcon name="arrow" size="30" />
+      <common-icon name="arrow" size="30" />
     </div>
   </div>
 </template>

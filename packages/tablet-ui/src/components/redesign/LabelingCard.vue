@@ -2,7 +2,7 @@
   <div class="labeling-cart">
     <div class="labeling-main">
       <div v-if="isAggregationVisible" class="aggregation">
-        <CommonIcon name="aggregation" size="28" />
+        <common-icon name="aggregation" size="28" />
         {{ t('aggregationInProgress') }}
       </div>
       <div class="labeling-main__head flex-space-between">
@@ -35,19 +35,19 @@
             <p class="labeling-main__info__title">{{ t('code') }}</p>
             <p class="labeling-main__info__value">{{ codeInfo.code }}</p>
             <div v-if="isCodes" class="labeling-main__info__status-code">
-              <StatusCode
+              <status-code
                 :status="status1"
                 :codeType="codeType1"
                 :color="color1"
                 :is-animate="status1 === 'synced'"
-              ></StatusCode>
-              <StatusCode
+              ></status-code>
+              <status-code
                 v-if="secondCode"
                 :status="status2"
                 :codeType="codeType2"
                 :color="color2"
                 :is-animate="status2 === 'synced'"
-              ></StatusCode>
+              ></status-code>
             </div>
           </div>
         </div>

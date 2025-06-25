@@ -1,8 +1,8 @@
 <template>
   <div class="code-card">
     <div class="code-card__code">
-      <CommonIcon :name="codeType === 'Code128' ? 'dataMatrix' : 'barCode'" />
-      <CommonIcon v-if="statusIcon" class="code-card__status" :name="statusIcon" />
+      <common-icon :name="codeType === 'Code128' ? 'dataMatrix' : 'barCode'" />
+      <common-icon v-if="statusIcon" class="code-card__status" :name="statusIcon" />
     </div>
     <div class="code-card__info">
       <p class="code-card__title">{{ codeText }}</p>

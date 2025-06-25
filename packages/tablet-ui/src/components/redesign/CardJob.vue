@@ -4,7 +4,7 @@
     :class="[isActiveTask ? 'active' : '', backgroundColor]"
     @click="chooseTask"
   >
-    <LabelingStatus :status="labelingStatus" :isSecondary="isPriority"></LabelingStatus>
+    <labeling-status :status="labelingStatus" :isSecondary="isPriority"></labeling-status>
     <div class="card-job__content">
       <p class="card-job__title">{{ title }}</p>
       <div class="card-job__info">
