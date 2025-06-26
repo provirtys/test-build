@@ -7,7 +7,7 @@
       :is-aggregation-visible="isAggregationVisible"
     >
       <div class="gap-12">
-        <tablet-button
+        <v-button
           v-if="btn === '1'"
           :text="t('scan')"
           icon="scan"
@@ -16,14 +16,14 @@
           text-alignment="left"
           color="red"
         />
-        <tablet-button
+        <v-button
           v-if="btn === '1'"
           :text="t('startAggregation')"
           is-radius
           text-alignment="left"
         />
 
-        <tablet-button
+        <v-button
           v-if="btn === '2'"
           :text="t('repeatLabeling')"
           icon="restart"
@@ -32,7 +32,7 @@
           text-alignment="left"
           color="red"
         />
-        <tablet-button
+        <v-button
           v-if="btn === '2'"
           :text="t('labelingDefect')"
           icon="bad"
@@ -42,7 +42,7 @@
           color="secondary"
         />
 
-        <tablet-button
+        <v-button
           v-if="btn === '3'"
           :text="t('scan')"
           icon="scan"
@@ -52,7 +52,7 @@
           color="red"
         />
 
-        <tablet-button
+        <v-button
           v-if="btn === '4'"
           :text="t('confirm')"
           icon="done"
@@ -62,7 +62,7 @@
           color="red"
         />
 
-        <tablet-button
+        <v-button
           v-if="btn === '5'"
           :text="t('scan')"
           icon="scan"
@@ -71,7 +71,7 @@
           text-alignment="left"
           color="red"
         />
-        <tablet-button
+        <v-button
           v-if="btn === '5'"
           :text="t('finishAggregation')"
           icon="aggregation"
@@ -85,9 +85,9 @@
 </template>
 
 <script setup>
+import { VButton } from "@base";
 import { setupI18n } from "@base/i18n.js";
 import MarkingCard from "./MarkingCard.vue";
-import TabletButton from "./redesign/TabletButton.vue";
 
 const { t } = setupI18n();
 

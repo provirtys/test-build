@@ -1,6 +1,6 @@
 <template>
   <q-btn
-    class="action-tablet-btn"
+    class="v-btn"
     :class="btnClasses"
     :disabled="btnDisabled"
     no-caps
@@ -13,27 +13,27 @@
     @mouseup="finishAnimation"
     @touchend="finishAnimation"
   >
-    <common-icon v-if="showSubmittedIcon" name="done" :size="sizeIcon" />
+    <v-icon v-if="showSubmittedIcon" name="done" :size="sizeIcon" />
     <template v-else>
       <span
         v-if="icon && locationIcon === 'left'"
-        class="action-tablet-btn__icon-container justify-start"
+        class="v-btn__icon-container justify-start"
       >
-        <common-icon :name="icon" :size="sizeIcon" />
+        <v-icon :name="icon" :size="sizeIcon" />
       </span>
-      <span class="action-tablet-btn__text">{{ text }}</span>
+      <span class="v-btn__text">{{ text }}</span>
       <span
         v-if="icon && locationIcon === 'right'"
-        class="action-tablet-btn__icon-container justify-end"
+        class="v-btn__icon-container justify-end"
       >
-        <common-icon :name="icon" :size="sizeIcon" />
+        <v-icon :name="icon" :size="sizeIcon" />
       </span>
     </template>
   </q-btn>
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 import { computed, ref } from "vue";
 
 const props = defineProps({
@@ -77,6 +77,10 @@ const props = defineProps({
         required: false,
     },
     changeIcon: {
+        type: Boolean,
+        required: false,
+    },
+    progress: {
         type: Boolean,
         required: false,
     },
@@ -165,7 +169,7 @@ const buttonSize = computed(() => {
 const btnDisabled = computed(() => props.isDisabled || btnStatus.value === "done");
 
 const handleHold = ({ evt }) => {
-    if (btnDisabled.value) return;
+    if (btnDisabled.value || !props.progress) return;
 
     if (props.changeIcon && btnRef.value) {
         btnStatus.value = "done";
@@ -181,7 +185,7 @@ const submitAction = () => {
 const stopAnimation = () => finishAnimation();
 
 const startAnimation = () => {
-    if (btnDisabled.value) return;
+    if (btnDisabled.value || !props.progress) return;
 
     btnStatus.value = "progress";
     document.addEventListener("mouseup", stopAnimation);
@@ -189,7 +193,7 @@ const startAnimation = () => {
 };
 
 const finishAnimation = (_evt, finished) => {
-    if (btnDisabled.value) return;
+    if (btnDisabled.value || !props.progress) return;
 
     if (props.changeIcon && finished) {
         btnStatus.value = "done";
@@ -206,13 +210,13 @@ const finishAnimation = (_evt, finished) => {
   pointer-events: none;
 }
 
-.action-tablet-btn {
+.v-btn {
   width: 100%;
   height: $xl-4;
   border-radius: $d-1;
   text-align: center;
   font-size: $font-size-p1;
-  font-family: Golos UI-medium;
+  font-family: Golos UI-medium, sans-serif;
   letter-spacing: -0.24px;
   line-height: $s-4;
   display: flex;

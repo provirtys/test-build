@@ -8,7 +8,7 @@
         data-testid="codeType-DataMatrix"
         @click="switchType('DataMatrix')"
       >
-        <common-icon name="dataMatrix" />
+        <v-icon name="dataMatrix" />
         <p>Data Matrix</p>
       </div>
       <div
@@ -17,11 +17,11 @@
         data-testid="codeType-Code128"
         @click="switchType('Code128')"
       >
-        <common-icon name="barCode" />
+        <v-icon name="barCode" />
         <p>Barcode</p>
       </div>
       <div v-if="!isAuto" class="label-type__option all-selected">
-        <common-icon
+        <v-icon
           :name="allSelected ? 'checkbox-filled' : 'checkbox-empty'"
           data-testid="codeType-all"
           @click="switchType('all')"
@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 import { setupI18n } from "@base/i18n.js";
 import { computed } from "vue";
 const { t } = setupI18n();

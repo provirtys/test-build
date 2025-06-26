@@ -1,8 +1,8 @@
 <template>
   <div class="code-card">
     <div class="code-card__code">
-      <common-icon :name="codeType === 'Code128' ? 'dataMatrix' : 'barCode'" />
-      <common-icon v-if="statusIcon" class="code-card__status" :name="statusIcon" />
+      <v-icon :name="codeType === 'Code128' ? 'dataMatrix' : 'barCode'" />
+      <v-icon v-if="statusIcon" class="code-card__status" :name="statusIcon" />
     </div>
     <div class="code-card__info">
       <p class="code-card__title">{{ codeText }}</p>
@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 import { computed } from "vue";
 const props = defineProps({
     codeType: { type: String, default: "DataMatrix" },

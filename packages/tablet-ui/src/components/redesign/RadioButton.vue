@@ -5,10 +5,10 @@
     :class="[backgroundColor, buttonSize]"
     @click="submitAction"
   >
-    <common-icon :name="isSelect ? 'radioButton-select' : 'radioButton-empty'" :size="sizeIcon" />
+    <v-icon :name="isSelect ? 'radioButton-select' : 'radioButton-empty'" :size="sizeIcon" />
     {{ buttonText }}
     <span class="radio-btn__status">
-      <common-icon v-if="isIcon === 'icon'" name="numbers" :size="sizeIcon" />
+      <v-icon v-if="isIcon === 'icon'" name="numbers" :size="sizeIcon" />
       <status-indicator
         v-if="isIcon === 'status' && isDisabled === false"
         :is-animate="isAnimate"
@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 import { computed } from "vue";
 import StatusIndicator from "./StatusIndicator.vue";
 

@@ -1,6 +1,6 @@
 <template>
   <div class="status-line">
-    <tablet-button
+    <v-button
       height="small"
       fit-width
       :text="btnText"
@@ -20,18 +20,18 @@
         class="status-line__button status-line__settings"
         :class="[{ disabled: props.isDisabled }]"
       >
-        <common-icon name="settings" />
+        <v-icon name="settings" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
+import { VButton } from "@base";
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import SystemStatus from "./InteractiveSystemStatus.vue";
-import TabletButton from "./TabletButton.vue";
 
 const route = useRoute();
 const router = useRouter();

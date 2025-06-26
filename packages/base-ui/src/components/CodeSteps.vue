@@ -1,19 +1,21 @@
 <template>
   <div class="codes">
+    <div class="code">
     <component
         :is="codeTypes[currentType]"
         :border="props.needBorder"
         :class="[codeTypeClass, firstCodeColor]"
     />
+    </div>
     <div class="code" v-for="index in props.codesLength - 1" :key="index">
-      <common-icon name="arrowForward" class="arrow" :class="[codeColor(index), arrowMargin]"/>
+      <v-icon name="arrowForward" class="arrow" :class="[codeColor(index), arrowMargin]"/>
       <component :is="codeTypes[currentType]" :class="[codeTypeClass, codeColor(index)]"/>
     </div>
   </div>
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 import BarcodeIcon from "@base/components/icons/BarcodeIcon.vue";
 import DatamatrixIcon from "@base/components/icons/DatamatrixIcon.vue";
 import { computed } from "vue";

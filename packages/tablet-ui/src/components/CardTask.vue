@@ -16,13 +16,13 @@
       </div>
     </div>
     <div class="card-task__arrow" @click="openTaskDetails">
-      <common-icon name="arrow" size="30" />
+      <v-icon name="arrow" size="30" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 import MarkingStatus from "./MarkingStatus.vue";
 import ProgressPie from "./ProgressPie.vue";
 

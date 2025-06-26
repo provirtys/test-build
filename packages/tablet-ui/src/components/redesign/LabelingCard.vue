@@ -2,7 +2,7 @@
   <div class="labeling-cart">
     <div class="labeling-main">
       <div v-if="isAggregationVisible" class="aggregation">
-        <common-icon name="aggregation" size="28" />
+        <v-icon name="aggregation" size="28" />
         {{ t('aggregationInProgress') }}
       </div>
       <div class="labeling-main__head flex-space-between">
@@ -60,7 +60,7 @@
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 import { setupI18n } from "@base/i18n.js";
 import StatusCode from "./StatusCode.vue";
 

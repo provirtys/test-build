@@ -1,7 +1,7 @@
 <template>
   <div class="labeling-code" :class="[{ error: status === 'broken' }]">
-    <common-icon v-if="codeType === 'Code128'" name="barcodeRedesign" />
-    <common-icon v-else name="datamatrixRedesign" />
+    <v-icon v-if="codeType === 'Code128'" name="barcodeRedesign" />
+    <v-icon v-else name="datamatrixRedesign" />
     <div v-if="status === 'verified' || status === 'synced'" class="labeling-code__status">
       <status-indicator :is-animate="status === 'synced'" :color="color"></status-indicator>
     </div>
@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 import StatusIndicator from "./StatusIndicator.vue";
 
 defineProps({

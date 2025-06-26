@@ -8,19 +8,19 @@
   >
     <template v-if="options[0].iconName" v-slot:one>
       <div class="switcher__item-icon">
-        <common-icon :name="options[0].iconName" />
+        <v-icon :name="options[0].iconName" />
       </div>
     </template>
     <template v-if="options[1].iconName" v-slot:two>
       <div class="switcher__item-icon">
-        <common-icon :name="options[1].iconName" />
+        <v-icon :name="options[1].iconName" />
       </div>
     </template>
   </q-btn-toggle>
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 import { computed, onMounted, useAttrs } from "vue";
 
 const props = defineProps({

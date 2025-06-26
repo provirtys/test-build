@@ -10,19 +10,19 @@
     <div class="loading__text">{{ t('loading.' + loadingType) }}</div>
     <div v-if="isInternetError" class="loading__error">{{ t('loading.try_again') }}</div>
     <div v-else class="loading__error">{{ t('loading.wait') }}</div>
-    <base-button
+    <v-button
       v-if="isInternetError"
       :background="'red'"
       :color="'white'"
       :size="'large'"
       :text="t('loading.retry')"
       class="mt-5"
-    ></base-button>
+    ></v-button>
   </div>
 </template>
 
 <script setup>
-import { BaseButton, LoadingAnimation } from "@base";
+import { LoadingAnimation, VButton } from "@base";
 import { setupI18n } from "@base/i18n.js";
 import { computed } from "vue";
 

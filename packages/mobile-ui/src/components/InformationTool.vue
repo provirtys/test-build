@@ -16,25 +16,25 @@
     </div>
 
     <div class="buttons">
-      <mobile-button
+      <v-button
         v-if="props.btn === 'take'"
         :color="'dark'"
         :text="t('storybook.take')"
-      ></mobile-button>
-      <mobile-button
+      ></v-button>
+      <v-button
         v-if="props.btn === 'returnBtn'"
         :color="'dark'"
         :text="t('storybook.return')"
-      ></mobile-button>
+      ></v-button>
 
-      <mobile-button :text="t('storybook.cancel')"></mobile-button>
+      <v-button :text="t('storybook.cancel')"></v-button>
     </div>
   </div>
 </template>
 
 <script setup>
+import { VButton } from "@base";
 import { setupI18n } from "@base/i18n.js";
-import MobileButton from "./MobileButton.vue";
 
 const { t } = setupI18n();
 

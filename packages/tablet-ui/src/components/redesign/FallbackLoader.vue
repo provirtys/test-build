@@ -1,7 +1,7 @@
 <template>
   <div class="fallback-loader">
     <div v-if="!isLoading" class="column items-center q-gutter-sm">
-      <common-icon v-if="fallbackIcon" :name="fallbackIcon" />
+      <v-icon v-if="fallbackIcon" :name="fallbackIcon" />
       <p v-if="fallbackText">{{ fallbackText }}</p>
       <q-btn class="q-mt-sm" size="md" @click="$emit('onUpdate')">{{ updateBtnText }}</q-btn>
     </div>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 
 defineProps({
     loadingText: {

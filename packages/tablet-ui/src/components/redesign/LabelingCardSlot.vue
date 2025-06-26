@@ -6,7 +6,7 @@
       :is-auto="isAutoLabeling"
     >
       <div class="gap-10">
-        <tablet-button
+        <v-button
           v-if="btn === '1'"
           :text="t('startAggregation')"
           icon="startAggregation"
@@ -15,7 +15,7 @@
           is-radius
           text-alignment="left"
         />
-        <tablet-button
+        <v-button
           v-if="btn === '1'"
           :text="t('startLabeling')"
           icon="openTask"
@@ -24,7 +24,7 @@
           text-alignment="left"
         />
 
-        <tablet-button
+        <v-button
           v-if="btn === '2'"
           :text="t('newJob')"
           icon="newTask"
@@ -33,7 +33,7 @@
           is-radius
           text-alignment="left"
         />
-        <tablet-button
+        <v-button
           v-if="btn === '2'"
           :text="t('continueLabeling')"
           icon="openTask"
@@ -42,7 +42,7 @@
           text-alignment="left"
         />
 
-        <tablet-button
+        <v-button
           v-if="btn === '3'"
           :text="t('finishAggregation')"
           icon="finishAggregation"
@@ -52,7 +52,7 @@
           text-alignment="left"
         />
 
-        <tablet-button
+        <v-button
           v-if="btn === '4'"
           :text="t('labelPrint')"
           icon="labelPrinting"
@@ -61,7 +61,7 @@
           is-radius
           text-alignment="left"
         />
-        <tablet-button
+        <v-button
           v-if="btn === '4'"
           :text="t('startLabeling')"
           is-disabled
@@ -71,7 +71,7 @@
           text-alignment="left"
         />
 
-        <tablet-button
+        <v-button
           v-if="btn === '5'"
           is-disabled
           :text="t('labelingDefect')"
@@ -81,7 +81,7 @@
           is-radius
           text-alignment="left"
         />
-        <tablet-button
+        <v-button
           v-if="btn === '5'"
           is-disabled
           :text="t('confirm')"
@@ -96,9 +96,9 @@
 </template>
 
 <script setup>
+import { VButton } from "@base";
 import { setupI18n } from "@base/i18n.js";
 import LabelingCard from "./LabelingCard.vue";
-import TabletButton from "./TabletButton.vue";
 
 const { t } = setupI18n();
 

@@ -36,7 +36,7 @@
       <div v-if="isRepeatVisible" class="marking-card__repeat">
         <!--Это не кнопка, просто индикатор, если нужна повторная маркировка-->
         <div class="marking-card__repeat-icon">
-          <common-icon name="restart" />
+          <v-icon name="restart" />
         </div>
         <p>{{ t('repeatedLabeling') }}</p>
       </div>
@@ -48,7 +48,7 @@
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 import { setupI18n } from "@base/i18n.js";
 import ProgressPie from "./ProgressPie.vue";
 

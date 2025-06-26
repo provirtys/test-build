@@ -7,14 +7,14 @@
       :disabled="isDisabled"
       @change="() => $emit('update:modelValue', !modelValue)"
     />
-    <common-icon :name="checkboxIconName" :size="iconSizes[height]['checkbox']" />
+    <v-icon :name="checkboxIconName" :size="iconSizes[height]['checkbox']" />
     <span :class="['checkbox__title', buttonSize]">{{ label }}</span>
-    <common-icon v-if="iconName" :name="iconName" :size="iconSizes[height]['icon']" />
+    <v-icon v-if="iconName" :name="iconName" :size="iconSizes[height]['icon']" />
   </label>
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 import { computed } from "vue";
 
 const props = defineProps({

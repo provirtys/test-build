@@ -1,4 +1,4 @@
-import TabletButton from "@components/redesign/TabletButton.vue";
+import { VButton } from "@base";
 
 // Расположение иконки
 const empty = "";
@@ -45,8 +45,8 @@ const iconNames = {
 /** Компонент кнопки с длительным нажатием, используемый на планшетах. Можно регулировать цвет кнопки, её текст и управлять
  * наличием иконки и её расположением */
 export default {
-    title: "TabletUI-redesign/TabletButton",
-    component: TabletButton,
+    title: "VButton",
+    component: VButton,
     argTypes: {
         parameters: {
             backgrounds: {
@@ -139,6 +139,22 @@ export default {
             options: [true, false],
             control: { type: "radio" },
         },
+        progress: {
+            description: "Удерживание кнопки с прогресс баром",
+            options: [true, false],
+            control: { type: "radio" },
+        },
+    },
+};
+
+export const Simple = {
+    args: {
+        text: "Кнопка",
+        height: medium,
+        color: primary,
+        isRadius: false,
+        changeIcon: true,
+        progress: false,
     },
 };
 
@@ -148,6 +164,7 @@ export const Primary = {
         height: medium,
         isRadius: true,
         color: primary,
+        progress: true,
     },
 };
 
@@ -157,6 +174,7 @@ export const Secondary = {
         height: medium,
         color: secondary,
         isRadius: true,
+        progress: true,
     },
 };
 
@@ -166,6 +184,7 @@ export const Plane = {
         height: medium,
         color: plane,
         isRadius: true,
+        progress: true,
     },
 };
 
@@ -175,6 +194,7 @@ export const Outline = {
         height: medium,
         color: outline,
         isRadius: true,
+        progress: true,
     },
 };
 
@@ -185,6 +205,7 @@ export const Disabled = {
         isDisabled: true,
         color: primary,
         isRadius: true,
+        progress: true,
     },
 };
 
@@ -194,6 +215,7 @@ export const NotRounded = {
         height: medium,
         color: primary,
         isRadius: false,
+        progress: true,
     },
 };
 
@@ -204,6 +226,7 @@ export const TextCenter = {
         color: primary,
         isRadius: false,
         textAlignment: "center",
+        progress: true,
     },
 };
 
@@ -214,6 +237,7 @@ export const TextRight = {
         color: primary,
         isRadius: false,
         textAlignment: "right",
+        progress: true,
     },
 };
 
@@ -226,6 +250,7 @@ export const IconLeftWithTextLeft = {
         locationIcon: "left",
         icon: "bad",
         textAlignment: "left",
+        progress: true,
     },
 };
 
@@ -238,6 +263,7 @@ export const IconLeftWithTextCenter = {
         locationIcon: "left",
         icon: "bad",
         textAlignment: "center",
+        progress: true,
     },
 };
 
@@ -250,6 +276,7 @@ export const IconLeftWithTextRight = {
         locationIcon: "left",
         icon: "bad",
         textAlignment: "right",
+        progress: true,
     },
 };
 
@@ -262,6 +289,7 @@ export const IconRightWithTextLeft = {
         locationIcon: "right",
         icon: "bad",
         textAlignment: "left",
+        progress: true,
     },
 };
 
@@ -274,6 +302,7 @@ export const IconRightTextCenter = {
         locationIcon: "right",
         icon: "bad",
         textAlignment: "center",
+        progress: true,
     },
 };
 
@@ -286,6 +315,7 @@ export const IconRightWithTextCenter = {
         locationIcon: "right",
         icon: "bad",
         textAlignment: "right",
+        progress: true,
     },
 };
 
@@ -296,5 +326,6 @@ export const ShowIconOnAction = {
         color: primary,
         isRadius: false,
         changeIcon: true,
+        progress: true,
     },
 };

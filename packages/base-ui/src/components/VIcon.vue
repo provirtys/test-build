@@ -1,12 +1,12 @@
 <template>
   <svg
-    :width="iconSize.width"
-    :height="iconSize.height"
-    aria-hidden="true"
-    class="flex"
-    :viewBox="`0 0 ${iconSize.width} ${iconSize.height}`"
+      :width="iconSize.width"
+      :height="iconSize.height"
+      aria-hidden="true"
+      class="flex"
+      :viewBox="`0 0 ${iconSize.width} ${iconSize.height}`"
   >
-    <use :xlink:href="`#${name}`" />
+    <use :xlink:href="`#${name}`"/>
   </svg>
 </template>
 

@@ -9,11 +9,11 @@
       @mouseup="finishAnimation"
       @touchend="finishAnimation"
     >
-      <common-icon name="logout" />
+      <v-icon name="logout" />
       {{ t('logout') }}
     </button>
     <button v-else class="status-bar__button" @click="goBack">
-      <common-icon name="arrowBack" />
+      <v-icon name="arrowBack" />
       {{ t('back') }}
     </button>
     <p class="status-bar__task">{{ textTask }}</p>
@@ -31,12 +31,11 @@
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 import { setupI18n } from "@base/i18n.js";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import SystemStatus from "./SystemStatus.vue";
-import TabletButton from "./redesign/TabletButton.vue";
 
 const { t } = setupI18n();
 const router = useRouter();

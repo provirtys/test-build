@@ -1,6 +1,5 @@
-export { default as BaseButton } from "./components/BaseButton.vue";
-export { default as BaseCode } from "./components/BaseCode.vue";
-export { default as BaseDatamatrixTest } from "./components/BaseDatamatrixTest.vue";
+export { default as CodeSteps } from "./components/CodeSteps.vue";
+export { default as GeneratedDatamtrix } from "./components/GeneratedDatamtrix.vue";
 export { default as BaseHeader } from "./components/BaseHeader.vue";
 export { default as BaseInput } from "./components/BaseInput.vue";
 export { default as BaseScanner } from "./components/BaseScanner.vue";
@@ -9,4 +8,6 @@ export { default as KeyButton } from "./components/KeyButton.vue";
 export { default as Loading } from "./components/Loading.vue";
 export { default as LoadingAnimation } from "./components/LoadingAnimation.vue";
 export { default as Notification } from "./components/Notification.vue";
-export { default as CommonIcon } from "./components/CommonIcon.vue";
+export { default as VIcon } from "./components/VIcon.vue";
+export { default as VButton } from "./components/VButton.vue";
+export { default as VInput } from "./components/VInput.vue";

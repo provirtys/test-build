@@ -1,12 +1,12 @@
 <template>
   <div class="pin-button" @click="pressed" v-touch-hold:500.mouse="pressed">
-    <common-icon v-if="value === 'Back'" name="backspaceRedesign" />
+    <v-icon v-if="value === 'Back'" name="backspaceRedesign" />
     <span v-else class="pin-button__h2">{{ value }}</span>
   </div>
 </template>
 
 <script setup>
-import { CommonIcon } from "@base";
+import { VIcon } from "@base";
 
 const props = defineProps({
     /** Значение кнопки*/
