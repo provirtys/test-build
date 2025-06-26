@@ -1,12 +1,12 @@
-import BaseDatamatrixTest from "@base/components/BaseDatamatrixTest.vue";
+import GeneratedDatamatrix from "@base/components/GeneratedDatamtrix.vue";
 
 /** Компонент Datamatrix код. */
 /** Цвет текста и фон кода могут меняться в зависимости от цвета фона на выбранной странице. */
 /** При изменении параметров uuid, name, isBackgroundDark нужно нажать remount component для обновления кода.*/
 
 export default {
-    title: "BaseDatamatrixTest",
-    component: BaseDatamatrixTest,
+    title: "GeneratedDatamatrix",
+    component: GeneratedDatamatrix,
     argTypes: {
         isBackgroundDark: {
             description: "Фон на странице темный?",

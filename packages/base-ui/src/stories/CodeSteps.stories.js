@@ -1,9 +1,9 @@
-import BaseCode from "@base/components/BaseCode.vue";
+import CodeSteps from "@base/components/CodeSteps.vue";
 
-/** BaseCode component with customizable number and type of code*/
+/** CodeSteps component with customizable number and type of code*/
 export default {
-    title: "BaseCode",
-    component: BaseCode,
+    title: "CodeSteps",
+    component: CodeSteps,
     argTypes: {
         codeType: {
             options: ["Code128", "DataMatrix"],

@@ -97,9 +97,6 @@ const BaseComponent = (args) => ({
       @on-update="handleUpdate"
     />
   `,
-    args: {
-        loadingText: "teqwe",
-    },
 });
 
 export const Primary = BaseComponent.bind({});
