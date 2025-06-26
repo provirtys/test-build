@@ -19,7 +19,6 @@
 import { setupI18n } from "@base/i18n.js";
 import { QInput } from "quasar";
 import { ref } from "vue";
-import "quasar/dist/quasar.css";
 
 const { t } = setupI18n();
 

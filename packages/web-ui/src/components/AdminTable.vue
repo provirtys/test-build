@@ -51,7 +51,6 @@
 import { setupI18n } from "@base/i18n.js";
 import { QBtn, QIcon, QTable, QTd, QToolbar, QToolbarTitle, QTooltip } from "quasar";
 import { computed } from "vue";
-import "quasar/dist/quasar.css";
 
 const { t } = setupI18n();
 

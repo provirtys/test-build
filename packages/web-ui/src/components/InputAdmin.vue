@@ -19,7 +19,6 @@
 <script setup>
 import { QIcon, QInput } from "quasar";
 import { ref } from "vue";
-import "quasar/dist/quasar.css";
 
 const props = defineProps({
     /** Подпись элемента*/

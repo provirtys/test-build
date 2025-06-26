@@ -38,7 +38,7 @@
         <p :class="{ 'text-primary': percentage < 97 }">{{ 100 - percentage }}%</p>
       </div>
     </div>
-    <tablet-button
+    <v-button
       :text="t('finishLabeling')"
       icon="arrow"
       location-icon="right"
@@ -50,11 +50,10 @@
 </template>
 
 <script setup>
+import { VButton } from "@base";
 import { setupI18n } from "@base/i18n.js";
 import { QCircularProgress } from "quasar";
 import { computed } from "vue";
-import "quasar/dist/quasar.css";
-import TabletButton from "./redesign/TabletButton.vue";
 
 const { t } = setupI18n();
 

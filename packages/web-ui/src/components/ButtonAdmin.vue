@@ -14,7 +14,6 @@
 <script setup>
 import { setupI18n } from "@base/i18n.js";
 import { QBtn } from "quasar";
-import "quasar/dist/quasar.css";
 
 const { t } = setupI18n();
 </script>

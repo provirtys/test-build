@@ -15,7 +15,6 @@
 <script setup>
 import { QSelect } from "quasar";
 import { ref } from "vue";
-import "quasar/dist/quasar.css";
 
 const props = defineProps({
     /** Значения раскрывющегося списка*/

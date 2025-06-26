@@ -34,7 +34,6 @@
 <script setup>
 import { QIcon, QInput } from "quasar";
 import { computed, ref } from "vue";
-import "quasar/dist/quasar.css";
 
 const props = defineProps({
     height: { type: String, default: "large" },

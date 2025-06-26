@@ -11,7 +11,6 @@
 <script setup>
 import { QCard, QCardSection, QDialog } from "quasar";
 import { ref } from "vue";
-import "quasar/dist/quasar.css";
 
 const props = defineProps({
     /** Текст ошибки */
