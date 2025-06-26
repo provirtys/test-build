@@ -10,7 +10,7 @@ export default function createPackageConfig(packageName) {
                 { find: "@components", replacement: fileURLToPath(new URL("./src/components/", packageURL)) },
                 { find: "@assets", replacement: fileURLToPath(new URL("./src/assets/", packageURL)) },
                 { find: "@utils", replacement: fileURLToPath(new URL("./src/utils/", packageURL)) },
-                { find: "@styles", replacement: fileURLToPath(new URL("./src/styles/", packageURL)) },
+                { find: "@css", replacement: fileURLToPath(new URL("./src/css/", packageURL)) },
                 { find: "@stories", replacement: fileURLToPath(new URL("./src/stories/", packageURL)) },
 
                 // Глобальные алиасы
