@@ -45,6 +45,9 @@ const preview = {
         },
     },
     tags: ["autodocs"],
+    initialGlobals: {
+        backgrounds: { value: "light" },
+    },
 };
 
 export default preview;
