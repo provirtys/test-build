@@ -1,7 +1,6 @@
 export { default as CodeSteps } from "./components/CodeSteps.vue";
 export { default as GeneratedDatamtrix } from "./components/GeneratedDatamtrix.vue";
 export { default as BaseHeader } from "./components/BaseHeader.vue";
-export { default as BaseInput } from "./components/BaseInput.vue";
 export { default as BaseScanner } from "./components/BaseScanner.vue";
 export { default as BaseTable } from "./components/BaseTable.vue";
 export { default as KeyButton } from "./components/KeyButton.vue";

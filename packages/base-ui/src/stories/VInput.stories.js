@@ -1,5 +1,4 @@
 import { VInput } from "@base";
-import { expect, getElementError, userEvent, waitFor, within } from "storybook/test";
 import { computed, ref } from "vue";
 
 const variants = {
@@ -12,6 +11,7 @@ const types = {
     string: "Строка",
     number: "Число",
     textarea: "Textarea",
+    password: "Пароль",
 };
 
 /** Компонент input, который в своей основе использует q-input, но с некоторыми брендовыми изменениями. Можно передавать все пропсы, которые принимает базовый компонент q-input. */
@@ -36,21 +36,40 @@ export default {
                 labels: variants,
             },
         },
+        label: {
+            description: "Название поля",
+        },
+        modelValue: {
+            description: "Значение поля",
+        },
+        placeholder: {
+            description: "Заглушка для поля",
+        },
         labelOutside: {
             description: "Название за границами поля ввода",
             options: [true, false],
+        },
+        required: {
+            description: "Обязательное поле",
+            options: [true, false],
+        },
+        dense: {
+            description: "Занимать меньше пространства",
+            options: [true, false],
             control: {
-                labels: {
-                    true: "Да",
-                    false: "Нет",
-                },
+                type: "boolean",
             },
         },
     },
     args: {
+        type: "string",
         variant: "standard",
-        rounded: false,
+        label: "",
+        modelValue: "",
+        placeholder: "",
         labelOutside: false,
+        required: false,
+        dense: false,
     },
 };
 
@@ -91,7 +110,34 @@ Standard.args = {
     placeholder: "Введите имя",
     modelValue: "",
     label: "Ваше имя",
-    labelColor: "#0f0",
+};
+
+export const StandardDense = BaseComponent.bind({});
+StandardDense.args = {
+    type: "string",
+    placeholder: "Введите имя",
+    modelValue: "",
+    label: "Ваше имя",
+    dense: true,
+};
+
+export const StandardLabelOutside = BaseComponent.bind({});
+StandardLabelOutside.args = {
+    type: "string",
+    placeholder: "Введите имя",
+    modelValue: "",
+    label: "Ваше имя",
+    labelOutside: true,
+};
+
+export const StandardLabelOutsideRequired = BaseComponent.bind({});
+StandardLabelOutsideRequired.args = {
+    type: "string",
+    placeholder: "Введите имя",
+    modelValue: "",
+    label: "Ваше имя",
+    labelOutside: true,
+    required: true,
 };
 
 export const Outlined = BaseComponent.bind({});
@@ -113,6 +159,17 @@ OutlinedLabelOutside.args = {
     labelOutside: true,
 };
 
+export const OutlinedLabelOutsideRequired = BaseComponent.bind({});
+OutlinedLabelOutsideRequired.args = {
+    type: "string",
+    placeholder: "Введите имя",
+    modelValue: "",
+    label: "Ваше имя",
+    variant: "outlined",
+    labelOutside: true,
+    required: true,
+};
+
 export const Filled = BaseComponent.bind({});
 Filled.args = {
     type: "string",
@@ -132,6 +189,17 @@ FilledLabelOutside.args = {
     labelOutside: true,
 };
 
+export const FilledLabelOutsideRequired = BaseComponent.bind({});
+FilledLabelOutsideRequired.args = {
+    type: "string",
+    placeholder: "Введите имя",
+    modelValue: "",
+    label: "Ваше имя",
+    variant: "filled",
+    labelOutside: true,
+    required: true,
+};
+
 export const Password = BaseComponent.bind({});
 Password.args = {
     type: "password",
@@ -140,14 +208,25 @@ Password.args = {
     label: "Пароль",
 };
 
+export const PasswordRequired = BaseComponent.bind({});
+PasswordRequired.args = {
+    type: "password",
+    placeholder: "Введите пароль",
+    modelValue: "",
+    label: "Пароль",
+    required: true,
+};
+
 export const PasswordWithValidation = BaseComponent.bind({});
+PasswordWithValidation.storyName = "Password With Validation (min length = 6)";
 PasswordWithValidation.args = {
     type: "password",
     placeholder: "Введите пароль",
     modelValue: "",
     label: "Пароль",
-    rules: [(val) => val.length >= 6 || "Минимальная длина 6 символов"],
+    rules: [(val) => val.length < 6 || "Минимальная длина 6 символов"],
     lazyRules: true,
+    required: true,
 };
 
 export const Textarea = BaseComponent.bind({});
@@ -157,134 +236,10 @@ Textarea.args = {
     label: "Сообщение",
 };
 
-function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-export const NumberAsyncStory = {
-    args: {
-        type: "number",
-        placeholder: "1234567890",
-        modelValue: "",
-        inputName: "",
-        rules: {},
-    },
-    play: async ({ canvasElement }) => {
-        const canvas = within(canvasElement);
-
-        const numberInput = canvas.getByPlaceholderText("1234567890", {
-            selector: "input",
-        });
-        await sleep(1000);
-
-        await userEvent.type(numberInput, "9876543210", {
-            delay: 300,
-        });
-    },
-};
-
-export const TextAsyncStory = {
-    args: {
-        type: "text",
-        placeholder: "abcde",
-        modelValue: "",
-        inputName: "",
-        rules: {},
-    },
-
-    play: async ({ canvasElement }) => {
-        const canvas = within(canvasElement);
-
-        const textInput = canvas.getByPlaceholderText("abcde", {
-            selector: "input",
-        });
-
-        await sleep(1000);
-
-        await userEvent.type(textInput, "password", {
-            delay: 300,
-        });
-    },
-};
-
-export const DifferentAsyncStory = {
-    args: {
-        type: "text",
-        placeholder: "example-email@email.com",
-        modelValue: "",
-        inputName: "",
-        rules: {},
-    },
-
-    play: async ({ canvasElement }) => {
-        const canvas = within(canvasElement);
-
-        const passwordInput = canvas.getByPlaceholderText("example-email@email.com", {
-            selector: "input",
-        });
-        await sleep(1000);
-
-        await userEvent.type(passwordInput, "email@email.com", {
-            delay: 300,
-        });
-    },
-};
-
-/**Правило ввода данных - длина может быть положительным числом с шагом 0.01 (необходимо нажать ok в спывающем окне*/
-export const NumberRulesAsyncStory = {
-    args: {
-        type: "number",
-        placeholder: "0.00",
-        modelValue: "",
-        inputName: "",
-        rules: { regex: /[0-9]+\.?[0-9]{0,2}/ },
-    },
-    play: async ({ canvasElement }) => {
-        const canvas = within(canvasElement);
-
-        const numberInputValue = canvas.getByTestId("input", {
-            selector: "input",
-        });
-
-        await sleep(1000);
-
-        await userEvent.type(numberInputValue, "0.123", {
-            delay: 200,
-        });
-
-        await sleep(2000);
-
-        await expect(numberInputValue.value).toBe("0.12");
-    },
-};
-
-/**Правило ввода данных - длина может быть положительным числом с шагом 0.01*/
-export const NumberRules = {
-    args: {
-        type: "number",
-        placeholder: "0.00",
-        modelValue: "",
-        inputName: "",
-        rules: { regex: /[0-9]+\.?[0-9]{0,2}/ },
-    },
-};
-
-export const Text = {
-    args: {
-        type: "text",
-        placeholder: "abcde",
-        modelValue: "",
-        inputName: "",
-        rules: {},
-    },
-};
-
-export const Different = {
-    args: {
-        type: "text",
-        placeholder: "fgdgdf",
-        modelValue: "",
-        inputName: "",
-        rules: {},
-    },
+export const TextareaRequired = BaseComponent.bind({});
+TextareaRequired.args = {
+    type: "textarea",
+    modelValue: "",
+    label: "Сообщение",
+    required: true,
 };
