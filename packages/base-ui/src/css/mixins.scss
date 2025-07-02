@@ -1,15 +1,26 @@
-@mixin font($fontFamily, $size, $lineHeight, $weight) {
+@mixin font($fontFamily, $size, $lineHeight, $weight: null, $letterSpacing: null) {
   font-family: $fontFamily, sans-serif;
-  font-size: $size;
-  line-height: $lineHeight;
-  font-weight: $weight;
-}
-
-@mixin fontAdaptive($size, $lineHeight, $weight: null) {
   font-size: $size;
   line-height: $lineHeight;
 
   @if($weight) {
     font-weight: $weight;
+  }
+
+  @if $letterSpacing != null {
+    letter-spacing: $letterSpacing;
+  }
+}
+
+@mixin fontAdaptive($size, $lineHeight, $weight: null, $letterSpacing: null) {
+  font-size: $size;
+  line-height: $lineHeight;
+
+  @if($weight) {
+    font-weight: $weight;
+  }
+
+  @if $letterSpacing != null {
+    letter-spacing: $letterSpacing;
   }
 }
