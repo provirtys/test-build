@@ -1,6 +1,6 @@
 <template>
   <div class="pin-button" @click="pressed" v-touch-hold:500.mouse="pressed">
-    <v-icon v-if="value === 'Back'" name="backspaceRedesign" />
+    <v-icon v-if="value === 'Back'" name="backspace" />
     <span v-else class="pin-button__h2">{{ value }}</span>
   </div>
 </template>
