@@ -17,7 +17,7 @@ export const PrimaryCode = {
     args: {
         codeType: "barcode",
         currentCodeIndex: 0,
-        codesLength: 5,
+        codesLength: 2,
         needBorder: true,
     },
 };
@@ -47,7 +47,7 @@ export const PrimaryDatamatrix = {
     args: {
         codeType: "dataMatrix",
         currentCodeIndex: 0,
-        codesLength: 5,
+        codesLength: 2,
         needBorder: true,
     },
 };
