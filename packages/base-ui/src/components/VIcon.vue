@@ -6,7 +6,7 @@
       class="flex"
       :viewBox="`0 0 ${iconSize.width} ${iconSize.height}`"
   >
-    <use :xlink:href="`#${name}`"/>
+    <use :xlink:href="`#icon-${name}`"/>
   </svg>
 </template>
 
@@ -45,7 +45,7 @@ const iconSize = computed(() => ({
 const REGEXP_SPLIT = /[\s,]+/;
 
 onMounted(() => {
-    const svgElement = document.querySelector(`#${props.name}`);
+    const svgElement = document.querySelector(`#icon-${props.name}`);
     if (svgElement) {
         const originalViewBox = svgElement.getAttribute("viewBox");
         if (originalViewBox) {

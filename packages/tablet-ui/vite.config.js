@@ -14,7 +14,7 @@ export default defineConfig({
         quasar(),
         svgSpritePlugin({
             iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
-            symbolId: "[name]",
+            symbolId: "icon-[name]",
             svgDomId: "svg-sprite",
             inject: "body-last",
         }),
