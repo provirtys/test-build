@@ -1,65 +1,62 @@
-import GeneratedDatamatrix from "@base/components/GeneratedDatamtrix.vue";
+import { GeneratedDatamatrix } from "@base";
+import { computed } from "vue";
 
-/** Компонент Datamatrix код. */
-/** Цвет текста и фон кода могут меняться в зависимости от цвета фона на выбранной странице. */
-/** При изменении параметров uuid, name, isBackgroundDark нужно нажать remount component для обновления кода.*/
+/** Компонент для генерации Datamatrix изображения на основе получаемого сообщения. Можно менять размер изображения и переключать светлый/темный режим. */
 
 export default {
     title: "GeneratedDatamatrix",
     component: GeneratedDatamatrix,
     argTypes: {
-        isBackgroundDark: {
-            description: "Фон на странице темный?",
+        data: {
+            description: "Сообщение для генерации",
         },
-        uuid: {
-            description: "Строка для генерации кода",
+        size: {
+            description: "Размер изображения",
+            control: {
+                type: "number",
+            },
         },
-        name: {
-            description: "Строка для генерации кода",
-        },
-    },
-    parameters: {
-        backgrounds: {
-            default: "light",
-            values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "light", value: "#f8f9fb" },
-            ],
+        darkMode: {
+            description: "Темный режим",
+            control: {
+                type: "boolean",
+            },
         },
     },
-};
-/** Datamatrix код на светлом фоне страницы */
-export const PrimaryLight = {
     args: {
-        uuid: "testing",
-        name: "testing",
-        isBackgroundDark: false,
-    },
-    parameters: {
-        backgrounds: {
-            default: "light",
-            values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "light", value: "#f8f9fb" },
-            ],
-        },
+        data: false,
+        size: 180,
+        darkMode: false,
     },
 };
 
-/** Datamatrix код на черном фоне страницы*/
-export const PrimaryDark = {
-    args: {
-        uuid: "test",
-        name: "test",
-        isBackgroundDark: true,
+const BaseComponent = (args) => ({
+    components: { GeneratedDatamatrix },
+    setup() {
+        const componentKey = computed(() => JSON.stringify(args.data) + args.darkMode);
+        return { args, componentKey };
     },
-    parameters: {
-        backgrounds: {
-            default: "dark",
-            values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "light", value: "#f8f9fb" },
-            ],
-        },
+    template: `<generated-datamatrix :key="componentKey" :data="args.data" :size="args.size" :dark-mode="args.darkMode" />`,
+});
+
+export const Standard = BaseComponent.bind({});
+Standard.args = {
+    data: {
+        name: "Вода Артезианская 1 л.",
+        stackSize: 6,
+        palletSize: 100,
     },
+};
+
+export const DarkMode = BaseComponent.bind({});
+DarkMode.args = {
+    data: {
+        name: "Вода Артезианская 1 л.",
+        stackSize: 6,
+        palletSize: 100,
+    },
+    darkMode: true,
+};
+DarkMode.globals = {
+    backgrounds: { value: "dark" },
 };
