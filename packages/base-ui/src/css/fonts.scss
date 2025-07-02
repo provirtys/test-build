@@ -1,24 +1,29 @@
 @font-face {
-  font-family: Ubuntu-medium;
-  src: url('../assets/fonts/Ubuntu/Ubuntu-Medium.ttf');
-}
-
-@font-face {
-  font-family: Ubuntu-regular;
+  font-family: Ubuntu;
   src: url('../assets/fonts/Ubuntu/Ubuntu-Regular.ttf');
+  font-weight: 400;
 }
 
 @font-face {
-  font-family: Golos UI;
+  font-family: Ubuntu;
+  src: url('../assets/fonts/Ubuntu/Ubuntu-Medium.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Golos;
   src: url('../assets/fonts/Golos/Golos-Regular.ttf');
+  font-weight: 400;
 }
 
 @font-face {
-  font-family: Golos UI-medium;
+  font-family: Golos;
   src: url('../assets/fonts/Golos/Golos-Medium.ttf');
+  font-weight: 500;
 }
 
 @font-face {
-  font-family: Golos UI-bold;
+  font-family: Golos;
   src: url('../assets/fonts/Golos/Golos-Bold.ttf');
+  font-weight: 700;
 }
