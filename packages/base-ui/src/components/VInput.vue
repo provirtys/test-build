@@ -25,7 +25,7 @@
 <script setup>
 import { isQuasarColor } from "@base/utils/resolveColor.js";
 import { QInput } from "quasar";
-import { computed, onMounted, ref, useAttrs, watch } from "vue";
+import { computed, ref, useAttrs, watch } from "vue";
 
 defineOptions({
     inheritAttrs: false,
