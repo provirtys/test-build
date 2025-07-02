@@ -1,15 +1,12 @@
 <template>
   <div class="codes">
-    <div class="code">
-    <component
-        :is="codeTypes[currentType]"
-        :border="props.needBorder"
-        :class="[codeTypeClass, firstCodeColor]"
-    />
-    </div>
-    <div class="code" v-for="index in props.codesLength - 1" :key="index">
-      <v-icon name="arrowForward" class="arrow" :class="[codeColor(index), arrowMargin]"/>
-      <component :is="codeTypes[currentType]" :class="[codeTypeClass, codeColor(index)]"/>
+    <div class="code" v-for="index in props.codesLength" :key="index">
+      <v-icon v-if="index > 1" name="arrowForward" class="arrow" :class="[codeColor(index-1), arrowMargin]"/>
+      <component
+          :is="codeTypes[currentType]"
+          :border="props.needBorder"
+          :class="[codeTypeClass, index === 1 ? firstCodeColor : codeColor(index-1)]"
+      />
     </div>
   </div>
 </template>
@@ -22,9 +19,9 @@ import { computed } from "vue";
 
 const props = defineProps({
     /** Вариант изображения кода*/
-    codeType: { type: String, default: "DataMatrix" },
+    codeType: { type: String, default: "dataMatrix" },
     /** Индекс сканируемого кода*/
-    currentCode: { type: Number, default: 0 },
+    currentCodeIndex: { type: Number, default: 0 },
     /** Количество сканируемых кодов */
     codesLength: { type: Number, default: 2 },
     /** Видимость рамки сканирования кода*/
@@ -38,29 +35,28 @@ const codeTypes = {
 
 const currentType = computed(() => {
     switch (props.codeType) {
-        case "Code128":
+        case "barcode":
             return "BarcodeIcon";
-        case "DataMatrix":
+        case "dataMatrix":
             return "DatamatrixIcon";
         default:
-            return "";
+            return "DatamatrixIcon";
     }
 });
 
-const codeTypeClass = computed(() => {
-    props.codeType === "Code128" ? "barcode" : "datamatrix";
-});
+const codeTypeClass = computed(() => (props.codeType === "barcode" ? "barcode" : "datamatrix"));
 
 const firstCodeColor = computed(() => {
-    return props.currentCode === -1 ? "gray" : props.currentCode === 0 ? "red" : "black";
+    if (props.currentCodeIndex === -1) return "gray";
+    if (props.currentCodeIndex === 0) return "red";
+    return "black";
 });
-
-const arrowMargin = computed(() => {
-    return props.codeType === "Code128" ? "medium" : "large";
-});
+const arrowMargin = computed(() => (props.codeType === "barcode" ? "medium" : "large"));
 
 const codeColor = (index) => {
-    return index === props.currentCode ? "red" : index < props.currentCode + 1 ? "black" : "gray";
+    if (index === props.currentCodeIndex) return "red";
+    if (index < props.currentCodeIndex + 1) return "black";
+    return "gray";
 };
 </script>
 
@@ -99,21 +95,17 @@ const codeColor = (index) => {
       margin: 0 $m-1;
     }
   }
-}
 
-.red {
-  color: $primary;
-}
+  .red {
+    color: $primary;
+  }
 
-.gray {
-  color: $dark-gray-40;
-}
+  .gray {
+    color: $dark-gray-40;
+  }
 
-.black {
-  color: $dark-gray;
-}
-
-.none {
-  display: none;
+  .black {
+    color: $dark-gray;
+  }
 }
 </style>

@@ -6,7 +6,7 @@ export default {
     component: CodeSteps,
     argTypes: {
         codeType: {
-            options: ["Code128", "DataMatrix"],
+            options: ["barcode", "dataMatrix"],
             control: { type: "radio" },
         },
     },
@@ -15,9 +15,9 @@ export default {
 /** Cканирование первого кода, всего кодов для сканирования 2 */
 export const PrimaryCode = {
     args: {
-        codeType: "Code128",
-        currentCode: 0,
-        codesLength: 2,
+        codeType: "barcode",
+        currentCodeIndex: 0,
+        codesLength: 5,
         needBorder: true,
     },
 };
@@ -25,8 +25,8 @@ export const PrimaryCode = {
 /** Cканирование кода с индексом 3, всего кодов для сканирования 5 */
 export const PrimaryCodeLength = {
     args: {
-        codeType: "Code128",
-        currentCode: 3,
+        codeType: "barcode",
+        currentCodeIndex: 3,
         codesLength: 5,
         needBorder: true,
     },
@@ -35,8 +35,8 @@ export const PrimaryCodeLength = {
 /** Выброр типа кода для сканирования */
 export const PrimaryCodeSelect = {
     args: {
-        codeType: "Code128",
-        currentCode: -1,
+        codeType: "barcode",
+        currentCodeIndex: -1,
         codesLength: 1,
         needBorder: false,
     },
@@ -45,9 +45,9 @@ export const PrimaryCodeSelect = {
 /** Cканирование первого кода, всего кодов для сканирования 2 */
 export const PrimaryDatamatrix = {
     args: {
-        codeType: "DataMatrix",
-        currentCode: 0,
-        codesLength: 2,
+        codeType: "dataMatrix",
+        currentCodeIndex: 0,
+        codesLength: 5,
         needBorder: true,
     },
 };
@@ -55,8 +55,8 @@ export const PrimaryDatamatrix = {
 /** Cканирование кода с индексом 3, всего кодов для сканирования 5 */
 export const PrimaryDatamatrixLength = {
     args: {
-        codeType: "DataMatrix",
-        currentCode: 3,
+        codeType: "dataMatrix",
+        currentCodeIndex: 3,
         codesLength: 5,
         needBorder: true,
     },
@@ -65,8 +65,8 @@ export const PrimaryDatamatrixLength = {
 /** Выброр типа кода для сканирования */
 export const PrimaryDatamatrixSelect = {
     args: {
-        codeType: "DataMatrix",
-        currentCode: -1,
+        codeType: "dataMatrix",
+        currentCodeIndex: -1,
         codesLength: 1,
         needBorder: false,
     },
