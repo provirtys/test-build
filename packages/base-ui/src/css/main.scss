@@ -1,4 +1,6 @@
+@import './mixins';
 @import './variables';
+@import './fonts';
 
 * {
   margin: 0;
@@ -60,45 +62,12 @@ body {
   color: $light-gray-85 !important;
 }
 
-.text-gray-15 {
-  color: $primary-text-20 !important;
-}
-
-.bg-gray-15 {
-  background: $primary-text-20 !important;
-}
-
 .text-dark-1 {
   color: $primary-text !important;
 }
 
 .bg-dark-1 {
   background: $primary-text !important;
-}
-
-@font-face {
-  font-family: Ubuntu-medium;
-  src: url('../assets/fonts/Ubuntu/Ubuntu-Medium.ttf');
-}
-
-@font-face {
-  font-family: Ubuntu-regular;
-  src: url('../assets/fonts/Ubuntu/Ubuntu-Regular.ttf');
-}
-
-@font-face {
-  font-family: Golos UI;
-  src: url('../assets/fonts/Golos/Golos-Regular.ttf');
-}
-
-@font-face {
-  font-family: Golos UI-medium;
-  src: url('../assets/fonts/Golos/Golos-Medium.ttf');
-}
-
-@font-face {
-  font-family: Golos UI-bold;
-  src: url('../assets/fonts/Golos/Golos-Bold.ttf');
 }
 
 .fade-enter-active,

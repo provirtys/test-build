@@ -1,0 +1,15 @@
+@mixin font($fontFamily, $size, $lineHeight, $weight) {
+  font-family: $fontFamily, sans-serif;
+  font-size: $size;
+  line-height: $lineHeight;
+  font-weight: $weight;
+}
+
+@mixin fontAdaptive($size, $lineHeight, $weight: null) {
+  font-size: $size;
+  line-height: $lineHeight;
+
+  @if($weight) {
+    font-weight: $weight;
+  }
+}
