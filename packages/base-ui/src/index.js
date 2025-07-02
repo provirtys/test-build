@@ -10,3 +10,4 @@ export { default as Notification } from "./components/Notification.vue";
 export { default as VIcon } from "./components/VIcon.vue";
 export { default as VButton } from "./components/VButton.vue";
 export { default as VInput } from "./components/VInput.vue";
+export { default as VTable } from "./components/VTable.vue";

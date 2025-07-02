@@ -38,75 +38,75 @@ const props = defineProps({
 });
 </script>
 
-<style lang="scss">
-//стили для надписи пустой таблицы
-.q-table__bottom {
-  display: flex;
-  justify-content: center;
-  //48px - высота header-ячейки в таблице, элемент занимает все пространство, кроме высоты верхней ячейки
-  height: calc(100% - $l-2);
+<!--<style lang="scss">-->
+<!--//стили для надписи пустой таблицы-->
+<!--.q-table__bottom {-->
+<!--  display: flex;-->
+<!--  justify-content: center;-->
+<!--  //48px - высота header-ячейки в таблице, элемент занимает все пространство, кроме высоты верхней ячейки-->
+<!--  height: calc(100% - $l-2);-->
 
-  font-size: $font-size-p4;
-  color: #909399;
-}
+<!--  font-size: $font-size-p4;-->
+<!--  color: #909399;-->
+<!--}-->
 
-//Заполняет цветом всю высоту экрана
-.height-table {
-  height: 100%;
-  background: #fff;
-  border-radius: $d-0;
-}
+<!--//Заполняет цветом всю высоту экрана-->
+<!--.height-table {-->
+<!--  height: 100%;-->
+<!--  background: #fff;-->
+<!--  border-radius: $d-0;-->
+<!--}-->
 
-.q-table tr {
-  width: 100%;
-}
+<!--.q-table tr {-->
+<!--  width: 100%;-->
+<!--}-->
 
-.q-table th,
-.q-table td {
-  padding: $s-1 10px;
-  font-size: $font-size-p4;
-}
+<!--.q-table th,-->
+<!--.q-table td {-->
+<!--  padding: $s-1 10px;-->
+<!--  font-size: $font-size-p4;-->
+<!--}-->
 
-.q-table tbody td {
-  font-size: $font-size-p4;
+<!--.q-table tbody td {-->
+<!--  font-size: $font-size-p4;-->
 
-  //перенос слов на следующую строку работает переписывает все
-  //white-space: pre-wrap; word-break: break-all;
-}
+<!--  //перенос слов на следующую строку работает переписывает все-->
+<!--  //white-space: pre-wrap; word-break: break-all;-->
+<!--}-->
 
-//стиль для таблицы q-table
-.my-table {
-  height: 100%;
-  max-height: 100%;
-  background: #fff;
-}
+<!--//стиль для таблицы q-table-->
+<!--.my-table {-->
+<!--  height: 100%;-->
+<!--  max-height: 100%;-->
+<!--  background: #fff;-->
+<!--}-->
 
-.base-table-header {
-  color: #909399;
-  text-align: left;
-  font-weight: normal;
-}
+<!--.base-table-header {-->
+<!--  color: #909399;-->
+<!--  text-align: left;-->
+<!--  font-weight: normal;-->
+<!--}-->
 
-.base-table-row {
-  color: #606266;
-  font-family: Ubuntu-regular, serif;
-}
+<!--.base-table-row {-->
+<!--  color: #606266;-->
+<!--  font-family: Ubuntu-regular, serif;-->
+<!--}-->
 
-.text-medium {
-  font-family: Ubuntu-medium, serif;
-}
+<!--.text-medium {-->
+<!--  font-family: Ubuntu-medium, serif;-->
+<!--}-->
 
-//перенос слов на следующую строку
-.move-word {
-  white-space: pre-wrap !important;
-  word-break: break-all;
-}
+<!--//перенос слов на следующую строку-->
+<!--.move-word {-->
+<!--  white-space: pre-wrap !important;-->
+<!--  word-break: break-all;-->
+<!--}-->
 
-//скрыть текст многоточием
-.truncate-text {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 50px;
-}
-</style>
+<!--//скрыть текст многоточием-->
+<!--.truncate-text {-->
+<!--  white-space: nowrap;-->
+<!--  overflow: hidden;-->
+<!--  text-overflow: ellipsis;-->
+<!--  max-width: 50px;-->
+<!--}-->
+<!--</style>-->
