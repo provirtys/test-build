@@ -1,5 +1,5 @@
 import { setup } from "@storybook/vue3-vite";
-import { Quasar } from "quasar";
+import { Notify, Quasar } from "quasar";
 import { createI18n } from "vue-i18n";
 
 import "@quasar/extras/roboto-font/roboto-font.css";
@@ -31,7 +31,19 @@ const i18n = createI18n({
 
 setup((app) => {
     app.use(i18n);
-    app.use(Quasar, {});
+    app.use(Quasar, {
+        plugins: {
+            Notify,
+        },
+    });
+});
+
+Notify.registerType("error", {
+    position: "top",
+    classes: ["main-notification"],
+    timeout: 3000,
+    color: "error",
+    textColor: "white",
 });
 
 /** @type { import('@storybook/vue3-vite').Preview } */

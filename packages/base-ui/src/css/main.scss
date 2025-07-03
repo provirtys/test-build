@@ -70,6 +70,14 @@ body {
   background: $primary-text !important;
 }
 
+.bg-error {
+  background: $error;
+}
+
+.text-error {
+  color: $error
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 1s ease;
@@ -78,4 +86,21 @@ body {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+//Notification
+.main-notification {
+  width: 100%;
+  max-width: unset;
+  border-radius: 16px;
+  padding: 28px;
+  @include font('Golos', 20px, 24px, 400);
+
+  .q-notification__message {
+    padding: 0;
+  }
+
+  .q-notification__badge--top-left {
+    top: -26px;
+  }
 }

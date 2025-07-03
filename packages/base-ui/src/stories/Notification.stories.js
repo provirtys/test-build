@@ -1,36 +1,30 @@
-import Notification from "@base/components/Notification.vue";
+import { VButton } from "@base";
+import { Notify } from "quasar";
 
-/** Notification component with customizable size block*/
+/** Пример того, как можно создать уведомление. Необходимо вызвать Notify.create с типом `error`   */
 export default {
     title: "Notification",
     component: Notification,
 };
 
-/** Максимальный размер блока пустой */
-export const BigEmptyBlock = {
-    args: {
-        isMin: false,
-        text: "",
+const BaseComponent = (args) => ({
+    components: { VButton },
+    setup() {
+        const createNotification = () => {
+            Notify.create({
+                type: args.type,
+                message: args.message,
+            });
+        };
+        return {
+            createNotification,
+        };
     },
-};
-/** Максимальный размер блока с текстом */
-export const BigBlockText = {
-    args: {
-        isMin: false,
-        text: "BigBlockText",
-    },
-};
-/** Минимальный размер блока пустой */
-export const SmallEmptyBlock = {
-    args: {
-        isMin: true,
-        text: "",
-    },
-};
-/** Минимальный размер блока с текстом */
-export const SmallBlockText = {
-    args: {
-        isMin: true,
-        text: "SmallBlockText",
-    },
+    template: `<v-button height="xs" text-alignment="center" @click="createNotification">Показать сообщение</v-button>`,
+});
+
+export const Standard = BaseComponent.bind({});
+Standard.args = {
+    type: "error",
+    message: "{{Статус/описание ошибки}}",
 };
