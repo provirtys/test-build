@@ -3,11 +3,12 @@
     <v-button
       height="small"
       fit-width
-      :text="btnText"
       color="secondary"
       :icon="btnIcon"
       location-icon="left"
-    />
+    >
+      {{btnText}}
+    </v-button>
     <p class="status-line__task">{{ title }}</p>
     <div class="row">
       <system-status
@@ -134,7 +135,7 @@ function finishAnimation(event) {
   &__button {
     background: $primary-text-20;
     color: $primary-text;
-    font-family: Golos UI-medium;
+    font-family: 'Golos';
     font-size: $font-size-p1;
     height: 100%;
     padding: 14px $s-3;
@@ -167,7 +168,7 @@ function finishAnimation(event) {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-family: Golos UI-medium;
+    font-family: 'Golos';
   }
 
   &__settings {

@@ -80,7 +80,7 @@ function openTaskDetails() {
       text-overflow: ellipsis;
 
       p {
-        font-family: 'Golos UI-medium';
+        font-family: 'Golos';
         font-size: $font-size-p1;
         line-height: $line-height-120;
         letter-spacing: -0.24px;
@@ -122,12 +122,12 @@ dl dt {
   padding-right: $s-1;
   color: $dark-gray-40;
   font-size: $font-size-p2;
-  font-family: 'Golos UI-medium';
+  font-family: 'Golos';
 }
 
 dl dd {
   padding: 5px 0;
   font-size: $font-size-p3;
-  font-family: 'Golos UI-medium';
+  font-family: 'Golos';
 }
 </style>

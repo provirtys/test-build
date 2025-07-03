@@ -44,7 +44,7 @@ const props = defineProps({
   }
 
   &__text {
-    font-family: Golos UI-medium;
+    font-family: 'Golos';
     color: $dark-gray;
     font-size: $font-size-p4;
     letter-spacing: -0.02em;

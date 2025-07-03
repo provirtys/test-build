@@ -96,7 +96,7 @@ const getPageHeader = computed(() => {
 .mobile-header {
   --safe-area-inset-top: env(safe-area-inset-top);
   --safe-area-inset-bottom: env(safe-area-inset-bottom);
-  font-family: Golos UI;
+  font-family: 'Golos';
   width: calc(100% - $m-2);
   height: $xxl-2;
   margin: auto;

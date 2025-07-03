@@ -73,7 +73,7 @@ const classes = computed(() => ({
   &__value {
     /* actual */
 
-    font-family: 'Golos UI';
+    font-family: 'Golos';
     font-style: normal;
     font-weight: 500;
     font-size: 28px;
@@ -111,7 +111,7 @@ const classes = computed(() => ({
 
     height: 19px;
     margin-top: 5px;
-    font-family: 'Golos UI';
+    font-family: 'Golos';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -136,7 +136,7 @@ const classes = computed(() => ({
     width: 35px;
     height: 19px;
 
-    font-family: 'Golos UI';
+    font-family: 'Golos';
     font-style: normal;
     font-weight: 500;
     font-size: 20px;

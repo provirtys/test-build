@@ -91,7 +91,7 @@ const colorSecondary = computed(() => {
 
   &__text {
     margin: 0;
-    font-family: 'Golos UI-bold';
+    font-family: 'Golos';
   }
 
   //Primary

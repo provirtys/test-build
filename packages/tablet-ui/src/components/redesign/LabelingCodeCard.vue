@@ -65,7 +65,7 @@ defineProps({
 <style lang="scss">
 .code-name {
   color: $dark-gray-70;
-  font-family: Golos UI-medium;
+  font-family: 'Golos';
   font-size: $font-size-p2;
   line-height: 18px;
   letter-spacing: -0.24px;
@@ -96,7 +96,7 @@ defineProps({
     align-items: center;
     justify-content: center;
     color: $dark-gray;
-    font-family: Golos UI-medium;
+    font-family: 'Golos';
     font-size: $font-size-p1;
     line-height: 20px;
     letter-spacing: -0.24px;
@@ -104,7 +104,7 @@ defineProps({
 
     p {
       margin-bottom: 0;
-      font-family: Golos UI-medium;
+      font-family: 'Golos';
     }
   }
 
@@ -113,7 +113,7 @@ defineProps({
   }
 
   &__title {
-    font-family: Golos UI-medium;
+    font-family: 'Golos';
     font-size: $font-size-p1;
     line-height: 20px;
     letter-spacing: -0.24px;
@@ -126,7 +126,7 @@ defineProps({
   }
 
   &__time {
-    font-family: Golos UI-medium;
+    font-family: 'Golos';
     font-size: $font-size-p2;
     line-height: 18px;
     letter-spacing: -0.24px;
@@ -138,7 +138,7 @@ defineProps({
   }
 
   .number {
-    font-family: Golos UI-medium;
+    font-family: 'Golos';
     color: $dark-gray;
 
     &.error {

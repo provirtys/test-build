@@ -126,7 +126,7 @@ watch(
 .v-input {
   --label-width: v-bind(labelWidth);
 
-  font-family: "Golos UI", sans-serif;
+  font-family: 'Golos', sans-serif;
   position: relative;
 
   &--outlined {

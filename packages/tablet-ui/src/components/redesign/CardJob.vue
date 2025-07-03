@@ -89,7 +89,7 @@ function chooseTask() {
 
   &__title {
     color: $dark-gray;
-    font-family: Golos UI-Medium;
+    font-family: 'Golos';
     font-size: $font-size-p1;
     line-height: $s-3;
     letter-spacing: -0.24px;
@@ -107,7 +107,7 @@ function chooseTask() {
     margin-bottom: $s-1;
 
     dt {
-      font-family: Golos UI;
+      font-family: 'Golos';
       float: left;
       padding-right: $d-1;
       color: $dark-gray-55;
@@ -116,7 +116,7 @@ function chooseTask() {
     }
 
     dd {
-      font-family: Golos UI-medium;
+      font-family: 'Golos';
       font-size: 18px;
       line-height: 18px;
       color: $dark-gray;

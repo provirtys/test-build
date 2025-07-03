@@ -124,13 +124,13 @@ function switchType(value) {
   height: 100%;
   border-radius: $s-1;
   background: $secondary;
-  font-family: Golos UI;
+  font-family: 'Golos';
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   p {
-    font-family: Golos UI;
+    font-family: 'Golos';
   }
 
   &__title {

@@ -101,7 +101,7 @@ defineProps({
 
 p {
   margin: 0;
-  font-family: 'Golos UI-medium';
+  font-family: 'Golos';
 }
 
 .mb-6 {
@@ -142,7 +142,7 @@ p {
   text-align: center;
   line-height: $s-1;
   color: $info;
-  font-family: 'Golos UI-medium';
+  font-family: 'Golos';
   font-size: $font-size-p1;
 }
 

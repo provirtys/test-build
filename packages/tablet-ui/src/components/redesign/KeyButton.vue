@@ -45,7 +45,7 @@ function pressed() {
   }
 
   &__h2 {
-    font-family: Golos UI-medium;
+    font-family: 'Golos';
     font-size: $font-size-p1;
     color: $dark-gray;
   }

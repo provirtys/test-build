@@ -48,7 +48,7 @@ const degrees = computed(() => {
   &__percentage {
     position: absolute;
     color: $dark-gray;
-    font-family: 'Golos UI-medium';
+    font-family: 'Golos';
   }
 
   &.done {

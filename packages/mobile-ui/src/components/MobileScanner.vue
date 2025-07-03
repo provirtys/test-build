@@ -102,7 +102,7 @@ function onCameraLightButton() {
   justify-content: center;
   text-align: center;
   color: $light-gray-55;
-  font-family: Golos UI;
+  font-family: 'Golos';
   white-space: pre-line;
 
   &.text-red {

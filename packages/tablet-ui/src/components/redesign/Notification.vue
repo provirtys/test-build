@@ -55,7 +55,7 @@ const iconStyles = computed(() => ({
   }
 
   &__label {
-    font-family: Golos UI;
+    font-family: 'Golos';
     color: $dark-gray;
     font-size: 18px;
     line-height: 24px;

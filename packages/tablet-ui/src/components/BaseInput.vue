@@ -41,7 +41,7 @@ const amount = ref(0);
   align-items: center;
   border-radius: $s-3;
   background: $secondary;
-  font-family: Golos UI;
+  font-family: 'Golos';
 
   .q-field__label {
     top: 0;

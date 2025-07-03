@@ -111,7 +111,7 @@ function tabbarItemColor(page) {
         text-align: center;
         vertical-align: text-top;
         font-size: $font-size-p6;
-        font-family: Golos UI;
+        font-family: 'Golos';
         left: 14.77px;
         top: 35px;
         height: $s-1;

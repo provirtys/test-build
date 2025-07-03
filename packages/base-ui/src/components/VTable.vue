@@ -36,7 +36,7 @@ const props = defineProps({
 <style lang="scss">
 
 .v-table {
-  font-family: "Golos UI",sans-serif;
+  font-family: 'Golos',sans-serif;
   padding: 20px;
   border-radius: 8px;
 

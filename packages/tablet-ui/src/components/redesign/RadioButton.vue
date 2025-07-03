@@ -89,7 +89,7 @@ const buttonSize = computed(() => {
   border-radius: $d-1;
   text-align: center;
   font-size: $font-size-p1;
-  font-family: Golos UI-medium;
+  font-family: 'Golos';
   letter-spacing: -0.24px;
   line-height: $s-4;
   display: flex;

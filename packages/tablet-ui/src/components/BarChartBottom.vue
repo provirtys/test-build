@@ -102,7 +102,7 @@ window.Apex = {
         stacked: true,
         height: "100%",
         foreColor: "#000",
-        fontFamily: "Golos UI-medium",
+        fontFamily: "Golos",
         // меню для скачивания графика
         toolbar: {
             show: false,

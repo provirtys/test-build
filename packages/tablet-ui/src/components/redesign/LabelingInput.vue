@@ -60,7 +60,7 @@ const buttonSize = computed(() => {
   .q-field__control {
     display: flex;
     align-items: center;
-    font-family: Golos UI;
+    font-family: 'Golos';
     font-size: $font-size-h6;
     line-height: $s-4;
     flex-direction: row-reverse;
@@ -142,7 +142,7 @@ const buttonSize = computed(() => {
     z-index: 2;
     color: $dark-gray-70;
     font-size: $font-size-p5;
-    font-family: Golos UI;
+    font-family: 'Golos';
   }
 
   .q-field--outlined .q-field__control {
@@ -167,12 +167,12 @@ const buttonSize = computed(() => {
 
   .q-field--labeled {
     color: $dark-gray-70;
-    font-family: Golos UI;
+    font-family: 'Golos';
   }
 
   .q-field__native {
     color: $dark-gray;
-    font-family: Golos UI;
+    font-family: 'Golos';
   }
 
   //Ширина рамки при активном элементе

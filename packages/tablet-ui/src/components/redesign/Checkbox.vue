@@ -134,7 +134,7 @@ const buttonSize = computed(() => {
 
   &__title {
     font-size: $font-size-p1;
-    font-family: Golos UI-medium, sans-serif;
+    font-family: Golos, sans-serif;
     letter-spacing: -0.24px;
     line-height: $s-4;
     color: $dark-gray;

@@ -74,7 +74,7 @@ onMounted(() => {
   border-radius: 12px;
   padding: 4px;
   height: 52px;
-  font-family: Golos UI-medium, sans-serif;
+  font-family: Golos, sans-serif;
 
   &.row.inline {
     display: inline-grid;
@@ -105,7 +105,7 @@ onMounted(() => {
     border-radius: 8px;
     padding: 8px 16px;
     align-items: center;
-    font-family: Golos UI-medium, sans-serif;
+    font-family: Golos, sans-serif;
   }
 
   .q-btn__content {

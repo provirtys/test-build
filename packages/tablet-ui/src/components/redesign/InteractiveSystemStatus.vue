@@ -128,7 +128,7 @@ function finishAnimation(event) {
   border: none;
   animation: none;
 
-  font-family: Golos UI-medium;
+  font-family: 'Golos';
   color: $dark-gray-85;
   font-size: $font-size-p2;
   line-height: 24px;

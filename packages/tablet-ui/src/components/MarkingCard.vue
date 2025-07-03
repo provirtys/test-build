@@ -73,7 +73,7 @@ function getCodeDate(value) {
 <style lang="scss">
 p {
   margin: 0;
-  font-family: 'Golos UI-medium';
+  font-family: 'Golos';
 }
 
 .mb-6 {
@@ -169,7 +169,7 @@ p {
   text-align: center;
   line-height: $s-1;
   color: $dark-gray-70;
-  font-family: 'Golos UI-medium';
+  font-family: 'Golos';
 }
 
 .grey-text {

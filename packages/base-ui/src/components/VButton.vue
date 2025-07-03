@@ -21,7 +21,7 @@
       >
         <v-icon :name="icon" :size="sizeIcon" />
       </span>
-      <span class="v-btn__text">{{ text }}</span>
+      <span class="v-btn__text"><slot></slot></span>
       <span
         v-if="icon && locationIcon === 'right'"
         class="v-btn__icon-container justify-end"
@@ -42,10 +42,6 @@ const props = defineProps({
         required: false,
         validator: (val) => ["primary", "secondary", "plane", "outline", "red"].includes(val),
     },
-    text: {
-        type: String,
-        required: false,
-    },
     isDisabled: {
         type: Boolean,
         required: false,
@@ -53,7 +49,7 @@ const props = defineProps({
     height: {
         type: String,
         required: false,
-        validator: (val) => ["large", "medium", "small", "extra-small"].includes(val),
+        validator: (val) => ["lg", "md", "sm", "xs"].includes(val),
     },
     isRadius: {
         type: Boolean,
@@ -128,7 +124,7 @@ const doneOpacity = computed(() => {
 
 const sizeIcon = computed(() => {
     switch (props.height) {
-        case "large":
+        case "lg":
             return 36;
         default:
             return 28;
@@ -157,12 +153,12 @@ const backgroundColor = computed(() => {
 
 const buttonSize = computed(() => {
     switch (props.height) {
-        case "medium":
-        case "small":
-        case "extra-small":
+        case "md":
+        case "sm":
+        case "xs":
             return props.height;
         default:
-            return "large";
+            return "lg";
     }
 });
 
@@ -216,7 +212,7 @@ const finishAnimation = (_evt, finished) => {
   border-radius: $d-1;
   text-align: center;
   font-size: $font-size-p1;
-  font-family: Golos UI-medium, sans-serif;
+  font-family: 'Golos', sans-serif;
   letter-spacing: -0.24px;
   line-height: $s-4;
   display: flex;
@@ -300,21 +296,21 @@ const finishAnimation = (_evt, finished) => {
     text-align: right;
   }
 
-  &.large {
+  &.lg {
     height: $xxl-4;
     padding: $m-2 $m-1;
   }
 
-  &.medium {
+  &.md {
     padding: $s-4;
   }
 
-  &.small {
+  &.sm {
     height: $l-4;
     padding: $s-2 $s-3;
   }
 
-  &.extra-small {
+  &.xs {
     height: $l-1;
     gap: $s-1;
     font-size: $font-size-p2;
