@@ -361,7 +361,8 @@ function createTemplate() {
     p {
       color: #242a2b;
       font-size: 20px;
-      font-family: Ubuntu-medium, serif;
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 500;
     }
 
     #factory-barcode {
@@ -411,7 +412,8 @@ function createTemplate() {
       display: block;
       color: #242a2b;
       font-size: 20px;
-      font-family: Ubuntu-medium, serif;
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 500;
     }
 
     &-title {

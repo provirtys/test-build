@@ -67,7 +67,7 @@ function pressed() {
   }
 
   &__text {
-    font-family: Ubuntu-regular, serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: $m-2;
     margin-bottom: 10px;
   }

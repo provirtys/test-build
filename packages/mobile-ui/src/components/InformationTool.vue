@@ -82,12 +82,14 @@ img {
 .info {
   width: 90%;
   max-height: 80%;
-  font-family: Ubuntu-medium, serif;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
   color: $dark-gray;
 
   &__title {
     margin-bottom: $s-3;
-    font-family: Ubuntu-medium, serif;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
     text-align: center;
     font-size: $font-size-p3;
   }
@@ -120,7 +122,8 @@ dl {
 }
 
 dl dt {
-  font-family: Ubuntu-medium, serif;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 500;
   float: left;
   margin-right: 10px;
   padding: 5px;

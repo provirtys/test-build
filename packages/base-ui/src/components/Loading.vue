@@ -53,12 +53,12 @@ const isInternetError = computed(() => {
     z-index: 9999;
   }
   &__text {
-    font-family: Ubuntu-regular, serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: $m-2;
     margin-bottom: 10px;
   }
   &__error {
-    font-family: Ubuntu-regular, serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: $font-size-h6;
   }
 }

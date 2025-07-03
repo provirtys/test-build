@@ -135,7 +135,8 @@ function finishAnimation(event) {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-family: Ubuntu-medium, serif;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
   }
 }
 
