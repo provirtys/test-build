@@ -115,7 +115,7 @@ function tabbarItemColor(page) {
         left: 14.77px;
         top: 35px;
         height: $s-1;
-        letter-spacing: -0.23999999463558197px;
+        letter-spacing: -0.24px;
         line-height: auto;
       }
 
