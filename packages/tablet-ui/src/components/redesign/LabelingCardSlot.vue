@@ -8,88 +8,97 @@
       <div class="gap-10">
         <v-button
           v-if="btn === '1'"
-          :text="t('startAggregation')"
           icon="startAggregation"
           location-icon="right"
           color="outline"
           is-radius
           text-alignment="left"
-        />
+        >
+          {{ t('startAggregation') }}
+        </v-button>
         <v-button
           v-if="btn === '1'"
-          :text="t('startLabeling')"
           icon="openTask"
           location-icon="right"
           is-radius
           text-alignment="left"
-        />
+        >
+          {{ t('startLabeling') }}
+        </v-button>
 
         <v-button
           v-if="btn === '2'"
-          :text="t('newJob')"
           icon="newTask"
           location-icon="right"
           color="outline"
           is-radius
           text-alignment="left"
-        />
+        >
+          {{ t('newJob') }}
+        </v-button>
         <v-button
           v-if="btn === '2'"
-          :text="t('continueLabeling')"
           icon="openTask"
           location-icon="right"
           is-radius
           text-alignment="left"
-        />
+        >
+          {{ t('continueLabeling') }}
+        </v-button>
 
         <v-button
           v-if="btn === '3'"
-          :text="t('finishAggregation')"
           icon="finishAggregation"
           location-icon="right"
           color="outline"
           is-radius
           text-alignment="left"
-        />
+        >
+          {{ t('finishAggregation') }}
+        </v-button>
 
         <v-button
           v-if="btn === '4'"
-          :text="t('labelPrint')"
           icon="labelPrinting"
           location-icon="right"
           color="outline"
           is-radius
           text-alignment="left"
-        />
+        >
+          {{ t('labelPrint') }}
+        </v-button>
         <v-button
           v-if="btn === '4'"
-          :text="t('startLabeling')"
           is-disabled
           icon="openTask"
           location-icon="right"
           is-radius
           text-alignment="left"
-        />
+        >
+          {{ t('startLabeling') }}
+        </v-button>
 
         <v-button
           v-if="btn === '5'"
           is-disabled
-          :text="t('labelingDefect')"
           icon="restart"
           location-icon="right"
           color="outline"
           is-radius
           text-alignment="left"
-        />
+        >
+          {{ t('labelingDefect') }}
+        </v-button>
         <v-button
           v-if="btn === '5'"
           is-disabled
-          :text="t('confirm')"
           icon="verify"
           location-icon="right"
           is-radius
           text-alignment="left"
-        />
+        >
+          {{ t('confirm') }}
+        </v-button>
       </div>
     </labeling-card>
   </div>

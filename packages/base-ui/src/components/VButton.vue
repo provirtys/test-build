@@ -1,6 +1,5 @@
 <template>
   <q-btn
-    class="v-btn"
     :class="btnClasses"
     :disabled="btnDisabled"
     no-caps
@@ -90,10 +89,10 @@ const btnStatus = ref("default"); // default, progress or done
 const showSubmittedIcon = computed(() => props.changeIcon && btnStatus.value === "done");
 
 const btnClasses = computed(() => [
+    "v-btn",
+    `v-btn--${buttonSize.value}`,
     showSubmittedIcon.value ? doneOpacity.value : "",
     backgroundColor.value,
-    buttonSize.value,
-    borderRadius.value,
     {
         disabled: btnDisabled.value,
         "fit-width": props.fitWidth,
@@ -129,13 +128,6 @@ const sizeIcon = computed(() => {
         default:
             return 28;
     }
-});
-
-const borderRadius = computed(() => {
-    if (!props.isRadius) {
-        return "without-rounding";
-    }
-    return "";
 });
 
 const backgroundColor = computed(() => {
@@ -296,29 +288,25 @@ const finishAnimation = (_evt, finished) => {
     text-align: right;
   }
 
-  &.lg {
+  &--lg {
     height: $xxl-4;
     padding: $m-2 $m-1;
   }
 
-  &.md {
+  &--md {
     padding: $s-4;
   }
 
-  &.sm {
+  &--sm {
     height: $l-4;
     padding: $s-2 $s-3;
   }
 
-  &.xs {
+  &--xs {
     height: $l-1;
     gap: $s-1;
     font-size: $font-size-p2;
     padding: 10px $s-2;
-  }
-
-  &.without-rounding {
-    border-radius: 0;
   }
 
   &.in-progress {

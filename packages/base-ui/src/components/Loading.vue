@@ -12,12 +12,11 @@
     <div v-else class="loading__error">{{ t('loading.wait') }}</div>
     <v-button
       v-if="isInternetError"
-      :background="'red'"
-      :color="'white'"
-      :size="'large'"
-      :text="t('loading.retry')"
+      background="red"
+      color="white"
+      size="lg"
       class="mt-5"
-    ></v-button>
+    >{{t('loading.retry')}}</v-button>
   </div>
 </template>
 

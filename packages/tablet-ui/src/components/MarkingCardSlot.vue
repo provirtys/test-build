@@ -9,76 +9,80 @@
       <div class="gap-12">
         <v-button
           v-if="btn === '1'"
-          :text="t('scan')"
           icon="scan"
           location-icon="right"
           is-radius
           text-alignment="left"
           color="red"
-        />
+        >
+          {{ t('scan') }}
+        </v-button>
         <v-button
           v-if="btn === '1'"
-          :text="t('startAggregation')"
           is-radius
           text-alignment="left"
-        />
-
+        >
+          {{t('startAggregation')}}
+        </v-button>
         <v-button
           v-if="btn === '2'"
-          :text="t('repeatLabeling')"
           icon="restart"
           location-icon="right"
           is-radius
           text-alignment="left"
           color="red"
-        />
+        >
+          {{ t('repeatLabeling')}}
+        </v-button>
         <v-button
           v-if="btn === '2'"
-          :text="t('labelingDefect')"
           icon="bad"
           location-icon="right"
           is-radius
           text-alignment="left"
           color="secondary"
-        />
-
+        >
+          {{ t('labelingDefect') }}
+        </v-button>
         <v-button
           v-if="btn === '3'"
-          :text="t('scan')"
           icon="scan"
           location-icon="right"
           is-radius
           text-alignment="left"
           color="red"
-        />
-
+        >
+          {{ t('scan') }}
+        </v-button>
         <v-button
           v-if="btn === '4'"
-          :text="t('confirm')"
           icon="done"
           location-icon="right"
           is-radius
           text-alignment="left"
           color="red"
-        />
-
+        >
+          {{ t('confirm') }}
+        </v-button>
         <v-button
           v-if="btn === '5'"
-          :text="t('scan')"
           icon="scan"
           location-icon="right"
           is-radius
           text-alignment="left"
           color="red"
-        />
+        >
+          {{ t('scan') }}
+        </v-button>
         <v-button
           v-if="btn === '5'"
-          :text="t('finishAggregation')"
           icon="aggregation"
           location-icon="right"
           is-radius
           text-alignment="left"
-        />
+        >
+          {{ t('finishAggregation') }}
+        </v-button>
       </div>
     </marking-card>
   </div>

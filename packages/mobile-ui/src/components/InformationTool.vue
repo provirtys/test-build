@@ -19,15 +19,16 @@
       <v-button
         v-if="props.btn === 'take'"
         :color="'dark'"
-        :text="t('storybook.take')"
-      ></v-button>
+      >
+        {{ t('storybook.take') }}
+      </v-button>
       <v-button
         v-if="props.btn === 'returnBtn'"
         :color="'dark'"
-        :text="t('storybook.return')"
-      ></v-button>
-
-      <v-button :text="t('storybook.cancel')"></v-button>
+      >
+        {{ t('storybook.return') }}
+      </v-button>
+      <v-button>{{ t('storybook.cancel') }}</v-button>
     </div>
   </div>
 </template>

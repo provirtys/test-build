@@ -39,13 +39,14 @@
       </div>
     </div>
     <v-button
-      :text="t('finishLabeling')"
       icon="arrow"
       location-icon="right"
       is-radius
       color="red"
       @action-submitted="finishLabeling"
-    />
+    >
+      {{ t('finishLabeling') }}
+    </v-button>
   </div>
 </template>
 
