@@ -51,10 +51,10 @@
 </template>
 
 <script setup>
-import { VButton } from "@base";
-import { setupI18n } from "@base/i18n.js";
-import { QCircularProgress } from "quasar";
-import { computed } from "vue";
+import { VButton } from '@base';
+import { setupI18n } from '@base/i18n.js';
+import { QCircularProgress } from 'quasar';
+import { computed } from 'vue';
 
 const { t } = setupI18n();
 
@@ -67,10 +67,10 @@ const percentage = computed(() => {
     return Math.round((props.mistakes / props.total) * 100);
 });
 
-const emit = defineEmits(["finishLabeling"]);
+const emit = defineEmits(['finishLabeling']);
 
 function finishLabeling() {
-    emit("finishLabeling");
+    emit('finishLabeling');
 }
 </script>
 

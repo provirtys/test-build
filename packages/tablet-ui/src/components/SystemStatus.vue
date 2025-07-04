@@ -6,17 +6,17 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@base/i18n.js";
+import { setupI18n } from '@base/i18n.js';
 
 const { t } = setupI18n();
 const props = defineProps({
     /** Цвет индикатора статуса принтера */
     color: {
         type: String,
-        default: "",
+        default: '',
     },
     /** Текст статуса принтера */
-    statusType: { type: String, default: "" },
+    statusType: { type: String, default: '' },
 });
 </script>
 

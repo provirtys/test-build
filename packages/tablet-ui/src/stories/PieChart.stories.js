@@ -1,7 +1,7 @@
-import PieChart from "@components/PieChart.vue";
+import PieChart from '@components/PieChart.vue';
 
 export default {
-    title: "Tablet/PieChart",
+    title: 'Tablet/PieChart',
     component: PieChart,
 };
 

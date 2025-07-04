@@ -36,29 +36,29 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import StatusCode from "./StatusCode.vue";
+import { VIcon } from '@base';
+import StatusCode from './StatusCode.vue';
 
 defineProps({
-    codeText: { type: String, default: "Code name" },
-    time: { type: String, default: "" },
-    template: { type: String, default: "Code" },
+    codeText: { type: String, default: 'Code name' },
+    time: { type: String, default: '' },
+    template: { type: String, default: 'Code' },
     position: { type: Number, default: 0 },
     isErrorLabeling: { type: Boolean, default: false },
     isAggregation: { type: Boolean, default: false },
     noCodes: { type: Boolean, default: false },
-    codesGroup: { type: String, default: "#" },
+    codesGroup: { type: String, default: '#' },
     /** Статус индикатора  */
-    status1: { type: String, default: "" },
+    status1: { type: String, default: '' },
     /** Тип кода  */
-    codeType1: { type: String, default: "" },
+    codeType1: { type: String, default: '' },
     /** Цвет индикатора  */
-    color1: { type: String, default: "info" },
+    color1: { type: String, default: 'info' },
 
     secondCode: { type: Boolean, default: true },
-    status2: { type: String, default: "" },
-    codeType2: { type: String, default: "" },
-    color2: { type: String, default: "info" },
+    status2: { type: String, default: '' },
+    codeType2: { type: String, default: '' },
+    color2: { type: String, default: 'info' },
 });
 </script>
 

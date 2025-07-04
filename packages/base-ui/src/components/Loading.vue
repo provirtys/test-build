@@ -21,19 +21,19 @@
 </template>
 
 <script setup>
-import { LoadingAnimation, VButton } from "@base";
-import { setupI18n } from "@base/i18n.js";
-import { computed } from "vue";
+import { LoadingAnimation, VButton } from '@base';
+import { setupI18n } from '@base/i18n.js';
+import { computed } from 'vue';
 
 const { t } = setupI18n();
 
 const props = defineProps({
     /** Тип загрузки*/
-    loadingType: { type: String, default: "" },
+    loadingType: { type: String, default: '' },
 });
 
 const isInternetError = computed(() => {
-    return props.loadingType === "internet_false";
+    return props.loadingType === 'internet_false';
 });
 </script>
 

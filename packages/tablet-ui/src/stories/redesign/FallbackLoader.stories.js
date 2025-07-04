@@ -1,37 +1,37 @@
-import FallbackLoader from "@components/redesign/FallbackLoader.vue";
-import { ref } from "vue";
+import FallbackLoader from '@components/redesign/FallbackLoader.vue';
+import { ref } from 'vue';
 
 /**
  * Компонент представляет собой кастомизируемый лоадер с кнопкой повторной отправки запроса. Можно изменять текст загрузки, текст ошибки, иконку после ошибки и текст для кнопки повторного отправки запроса
  */
 export default {
-    title: "TabletUI-redesign/FallbackLoader",
+    title: 'TabletUI-redesign/FallbackLoader',
     component: FallbackLoader,
     argTypes: {
         loadingText: {
-            description: "Текст во время загрузки",
+            description: 'Текст во время загрузки',
         },
         fallbackText: {
-            description: "Текст когда загрузка завершилась с ошибкой",
+            description: 'Текст когда загрузка завершилась с ошибкой',
         },
         fallbackIcon: {
-            description: "Имя иконки",
+            description: 'Имя иконки',
         },
         updateBtnText: {
-            description: "Текст для перезагрузки",
+            description: 'Текст для перезагрузки',
         },
         isLoading: {
-            type: "boolean",
+            type: 'boolean',
         },
     },
     parameters: {
         backgrounds: {
-            default: "white",
+            default: 'white',
             values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "white", value: "#ffffff" },
-                { name: "light", value: "#ededed" },
-                { name: "light-gray", value: "#f1f1f1" },
+                { name: 'dark', value: '#242a2b' },
+                { name: 'white', value: '#ffffff' },
+                { name: 'light', value: '#ededed' },
+                { name: 'light-gray', value: '#f1f1f1' },
             ],
         },
     },
@@ -42,7 +42,7 @@ const createMockFetch = (loadingTime, shouldFail, mockData) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (shouldFail) {
-                    reject(new Error("Ошибка загрузки данных"));
+                    reject(new Error('Ошибка загрузки данных'));
                 } else {
                     resolve(mockData);
                 }
@@ -52,10 +52,10 @@ const createMockFetch = (loadingTime, shouldFail, mockData) => {
 };
 
 const BaseArgs = {
-    fallbackIcon: "status-error",
-    loadingText: "Обновление...",
-    fallbackText: "Ошибка",
-    updateBtnText: "Обновить",
+    fallbackIcon: 'status-error',
+    loadingText: 'Обновление...',
+    fallbackText: 'Ошибка',
+    updateBtnText: 'Обновить',
     isLoading: false,
 };
 
@@ -107,31 +107,31 @@ Primary.args = {
 export const IconChange = BaseComponent.bind({});
 IconChange.args = {
     ...BaseArgs,
-    fallbackIcon: "bad",
+    fallbackIcon: 'bad',
 };
 
 export const CustomText = BaseComponent.bind({});
 CustomText.args = {
     ...BaseArgs,
-    fallbackText: "Что-то пошло не так",
-    loadingText: "Загрузка данных...",
-    updateBtnText: "Повторить запрос",
+    fallbackText: 'Что-то пошло не так',
+    loadingText: 'Загрузка данных...',
+    updateBtnText: 'Повторить запрос',
 };
 
 export const NoLoadingText = BaseComponent.bind({});
 NoLoadingText.args = {
     ...BaseArgs,
-    loadingText: "",
+    loadingText: '',
 };
 
 export const NoFallbackText = BaseComponent.bind({});
 NoFallbackText.args = {
     ...BaseArgs,
-    fallbackText: "",
+    fallbackText: '',
 };
 
 export const NoFallbackIcon = BaseComponent.bind({});
 NoFallbackIcon.args = {
     ...BaseArgs,
-    fallbackIcon: "",
+    fallbackIcon: '',
 };

@@ -14,28 +14,28 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import { computed } from "vue";
+import { VIcon } from '@base';
+import { computed } from 'vue';
 
 const props = defineProps({
     /** Выбранное значение */
     modelValue: { type: Boolean, default: false },
     /** Имя иконки */
-    iconName: { type: String, default: "" },
+    iconName: { type: String, default: '' },
     /** Вид Plane */
     isPlane: { type: Boolean, default: false },
     /** Высота */
-    height: { type: String, default: "large" },
+    height: { type: String, default: 'large' },
     /** Текст кнопки */
-    label: { type: String, default: "Checkbox" },
+    label: { type: String, default: 'Checkbox' },
     /** Активность чекбокса */
     isDisabled: { type: Boolean, default: false },
 });
 
-defineEmits(["update:modelValue"]);
+defineEmits(['update:modelValue']);
 
 const classes = computed(() => [
-    "checkbox",
+    'checkbox',
     buttonSize.value,
     {
         active: props.modelValue,
@@ -45,7 +45,7 @@ const classes = computed(() => [
 ]);
 
 const checkboxIconName = computed(() =>
-    props.modelValue ? "checkbox-transparent-select" : "checkbox-transparent-empty",
+    props.modelValue ? 'checkbox-transparent-select' : 'checkbox-transparent-empty',
 );
 
 const iconSizes = {
@@ -61,7 +61,7 @@ const iconSizes = {
         icon: 44,
         checkbox: 28,
     },
-    "extra-small": {
+    'extra-small': {
         icon: 36,
         checkbox: 28,
     },
@@ -69,12 +69,12 @@ const iconSizes = {
 
 const buttonSize = computed(() => {
     switch (props.height) {
-        case "medium":
-        case "small":
-        case "extra-small":
+        case 'medium':
+        case 'small':
+        case 'extra-small':
             return props.height;
         default:
-            return "large";
+            return 'large';
     }
 });
 </script>

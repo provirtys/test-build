@@ -31,11 +31,11 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import { setupI18n } from "@base/i18n.js";
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-import SystemStatus from "./SystemStatus.vue";
+import { VIcon } from '@base';
+import { setupI18n } from '@base/i18n.js';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import SystemStatus from './SystemStatus.vue';
 
 const { t } = setupI18n();
 const router = useRouter();
@@ -49,18 +49,18 @@ const props = defineProps({
     },
     page: {
         type: String,
-        default: "TaskList",
+        default: 'TaskList',
     },
     textTask: {
         type: String,
-        default: "Наименование задачи",
+        default: 'Наименование задачи',
     },
 });
 
-const emit = defineEmits(["createNewJob", "logout"]);
+const emit = defineEmits(['createNewJob', 'logout']);
 
 function toNewJob() {
-    emit("createNewJob");
+    emit('createNewJob');
 }
 
 function goBack() {
@@ -70,15 +70,15 @@ function goBack() {
 function handleHold({ evt, ...newInfo }) {
     isLogoutSubmitted.value = newInfo;
     finishAnimation(evt);
-    emit("logout");
+    emit('logout');
 }
 
 function startAnimation(event) {
-    event.target.classList.add("in-progress");
+    event.target.classList.add('in-progress');
 }
 
 function finishAnimation(event) {
-    event.target.classList.remove("in-progress");
+    event.target.classList.remove('in-progress');
 }
 </script>
 

@@ -1,73 +1,73 @@
-import Checkbox from "@components/redesign/Checkbox.vue";
+import Checkbox from '@components/redesign/Checkbox.vue';
 
 // Размеры кнопки
-const large = "large";
-const medium = "medium";
-const small = "small";
-const extraSmall = "extra-small";
+const large = 'large';
+const medium = 'medium';
+const small = 'small';
+const extraSmall = 'extra-small';
 
 //Названия иконок
-const qr = "qr";
-const aggregation = "aggregation";
-const finishAggregation = "finishAggregation";
-const barCode = "barCode";
-const dataMatrix = "dataMatrix";
-const done = "done";
+const qr = 'qr';
+const aggregation = 'aggregation';
+const finishAggregation = 'finishAggregation';
+const barCode = 'barCode';
+const dataMatrix = 'dataMatrix';
+const done = 'done';
 const iconNames = { qr, aggregation, finishAggregation, barCode, dataMatrix, done };
 
 const sizes = { large, medium, small, extraSmall };
 
 export default {
-    title: "TabletUI-redesign/Checkbox",
+    title: 'TabletUI-redesign/Checkbox',
     component: Checkbox,
     argTypes: {
         label: {
-            description: "Текст кнопки",
+            description: 'Текст кнопки',
         },
         modelValue: {
-            description: "Выбранное значение",
+            description: 'Выбранное значение',
             options: [true, false],
         },
         iconName: {
-            description: "Имя иконки (название файла из папки с иконками без расширения)",
+            description: 'Имя иконки (название файла из папки с иконками без расширения)',
             options: Object.keys(iconNames),
             mapping: iconNames,
             control: {
-                type: "radio",
+                type: 'radio',
                 labels: iconNames,
             },
         },
         isPlane: {
-            description: "Вид Plane",
+            description: 'Вид Plane',
             options: [true, false],
         },
         height: {
-            description: "Размеры кнопки.",
+            description: 'Размеры кнопки.',
             options: Object.keys(sizes),
             mapping: sizes,
             control: {
-                type: "radio",
+                type: 'radio',
                 labels: {
-                    large: "Large (L)",
-                    medium: "Medium (M)",
-                    small: "Small (S)",
-                    extraSmall: "Extra small (XS)",
+                    large: 'Large (L)',
+                    medium: 'Medium (M)',
+                    small: 'Small (S)',
+                    extraSmall: 'Extra small (XS)',
                 },
             },
         },
         isDisabled: {
-            description: "Активность чекбокса",
+            description: 'Активность чекбокса',
             options: [true, false],
         },
     },
     parameters: {
         backgrounds: {
-            default: "white",
+            default: 'white',
             values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "white", value: "#ffffff" },
-                { name: "light", value: "#ededed" },
-                { name: "light-gray", value: "#f1f1f1" },
+                { name: 'dark', value: '#242a2b' },
+                { name: 'white', value: '#ffffff' },
+                { name: 'light', value: '#ededed' },
+                { name: 'light-gray', value: '#f1f1f1' },
             ],
         },
     },
@@ -78,38 +78,38 @@ export const Primary = {
         modelValue: false,
         iconName: qr,
         isPlane: false,
-        height: "large",
-        label: "Checkbox",
+        height: 'large',
+        label: 'Checkbox',
         isDisabled: false,
     },
 };
 export const SelectedValue = {
     args: {
         modelValue: true,
-        iconName: "",
+        iconName: '',
         isPlane: false,
-        height: "large",
-        label: "Checkbox",
+        height: 'large',
+        label: 'Checkbox',
         isDisabled: false,
     },
 };
 export const Default = {
     args: {
         modelValue: false,
-        iconName: "",
+        iconName: '',
         isPlane: false,
-        height: "large",
-        label: "Checkbox",
+        height: 'large',
+        label: 'Checkbox',
         isDisabled: false,
     },
 };
 export const Plane = {
     args: {
         modelValue: false,
-        iconName: "",
+        iconName: '',
         isPlane: true,
-        height: "large",
-        label: "Checkbox",
+        height: 'large',
+        label: 'Checkbox',
         isDisabled: false,
     },
 };
@@ -117,10 +117,10 @@ export const Plane = {
 export const MediumHeight = {
     args: {
         modelValue: false,
-        iconName: "",
+        iconName: '',
         isPlane: false,
-        height: "medium",
-        label: "Checkbox",
+        height: 'medium',
+        label: 'Checkbox',
         isDisabled: false,
     },
 };
@@ -128,10 +128,10 @@ export const MediumHeight = {
 export const SmallHeight = {
     args: {
         modelValue: false,
-        iconName: "",
+        iconName: '',
         isPlane: false,
-        height: "small",
-        label: "Checkbox",
+        height: 'small',
+        label: 'Checkbox',
         isDisabled: false,
     },
 };
@@ -139,10 +139,10 @@ export const SmallHeight = {
 export const ExtraSmallHeight = {
     args: {
         modelValue: false,
-        iconName: "",
+        iconName: '',
         isPlane: false,
-        height: "extra-small",
-        label: "Checkbox",
+        height: 'extra-small',
+        label: 'Checkbox',
         isDisabled: false,
     },
 };
@@ -152,8 +152,8 @@ export const WithIcon = {
         modelValue: false,
         iconName: qr,
         isPlane: false,
-        height: "large",
-        label: "Checkbox",
+        height: 'large',
+        label: 'Checkbox',
         isDisabled: false,
     },
 };
@@ -161,10 +161,10 @@ export const WithIcon = {
 export const Disabled = {
     args: {
         modelValue: false,
-        iconName: "",
+        iconName: '',
         isPlane: false,
-        height: "large",
-        label: "Checkbox",
+        height: 'large',
+        label: 'Checkbox',
         isDisabled: true,
     },
 };

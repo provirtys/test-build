@@ -1,41 +1,41 @@
-import MobileMenu from "@components/MobileMenu.vue";
+import MobileMenu from '@components/MobileMenu.vue';
 
 /** Компонент навигационного меню, используемый на мобильных устройствах. Содержит 4 иконки разделов с подписями.
  * В зависимости от текущего раздела или цвета фона меняются цвета иконок. */
 export default {
-    title: "Mobile/Menu",
+    title: 'Mobile/Menu',
     component: MobileMenu,
     argTypes: {
         currentPage: {
-            description: "На какой странице находится пользователь?",
+            description: 'На какой странице находится пользователь?',
             control: {
-                type: "select",
+                type: 'select',
             },
             options: [
-                "Index",
-                "FrontPage",
-                "Checking",
-                "CheckScan",
-                "CheckResult",
-                "History",
-                "Profile",
-                "ProfileAuth",
-                "ProfileRegister",
-                "ProfileEdit",
-                "BindingCodeScan",
-                "BindingCodeConfirm",
+                'Index',
+                'FrontPage',
+                'Checking',
+                'CheckScan',
+                'CheckResult',
+                'History',
+                'Profile',
+                'ProfileAuth',
+                'ProfileRegister',
+                'ProfileEdit',
+                'BindingCodeScan',
+                'BindingCodeConfirm',
             ],
         },
         isBackgroundDark: {
-            description: "Фон на странице темный?",
+            description: 'Фон на странице темный?',
         },
     },
     parameters: {
         backgrounds: {
-            default: "light",
+            default: 'light',
             values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "light", value: "#f4f4f4" },
+                { name: 'dark', value: '#242a2b' },
+                { name: 'light', value: '#f4f4f4' },
             ],
         },
     },
@@ -45,7 +45,7 @@ export default {
 export const FrontPageMenu = {
     args: {
         isBackgroundDark: false,
-        currentPage: "FrontPage",
+        currentPage: 'FrontPage',
     },
 };
 
@@ -53,14 +53,14 @@ export const FrontPageMenu = {
 export const CheckScanMenu = {
     args: {
         isBackgroundDark: true,
-        currentPage: "CheckScan",
+        currentPage: 'CheckScan',
     },
     parameters: {
         backgrounds: {
-            default: "dark",
+            default: 'dark',
             values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "light", value: "#f4f4f4" },
+                { name: 'dark', value: '#242a2b' },
+                { name: 'light', value: '#f4f4f4' },
             ],
         },
     },
@@ -70,7 +70,7 @@ export const CheckScanMenu = {
 export const HistoryMenu = {
     args: {
         isBackgroundDark: false,
-        currentPage: "History",
+        currentPage: 'History',
     },
 };
 
@@ -78,6 +78,6 @@ export const HistoryMenu = {
 export const ProfileMenu = {
     args: {
         isBackgroundDark: false,
-        currentPage: "Profile",
+        currentPage: 'Profile',
     },
 };

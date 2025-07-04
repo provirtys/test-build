@@ -22,17 +22,17 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue';
 
 const props = defineProps({
     /** Переключение света*/
     lightSwitcher: { type: Boolean, default: false },
     /** Ширина сканера */
-    width: { type: String, default: "50%" },
+    width: { type: String, default: '50%' },
     /** Высота сканера */
-    height: { type: String, default: "auto" },
+    height: { type: String, default: 'auto' },
     /** Вариант изображения кода*/
-    codeType: { type: String, default: "Code128" },
+    codeType: { type: String, default: 'Code128' },
 });
 
 const isLightOn = ref(false);
@@ -41,7 +41,7 @@ function onCameraLightButton() {
     try {
         isLightOn.value = !isLightOn.value; // далее это убрать и сделать через store setCameraTorchState
     } catch (e) {
-        console.error("onCameraLightButton():", JSON.stringify(e));
+        console.error('onCameraLightButton():', JSON.stringify(e));
     }
 }
 </script>

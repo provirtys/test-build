@@ -12,14 +12,14 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import BarcodeIcon from "@base/components/icons/BarcodeIcon.vue";
-import DatamatrixIcon from "@base/components/icons/DatamatrixIcon.vue";
-import { computed } from "vue";
+import { VIcon } from '@base';
+import BarcodeIcon from '@base/components/icons/BarcodeIcon.vue';
+import DatamatrixIcon from '@base/components/icons/DatamatrixIcon.vue';
+import { computed } from 'vue';
 
 const props = defineProps({
     /** Вариант изображения кода*/
-    codeType: { type: String, default: "dataMatrix" },
+    codeType: { type: String, default: 'dataMatrix' },
     /** Индекс сканируемого кода*/
     currentCodeIndex: { type: Number, default: 0 },
     /** Количество сканируемых кодов */
@@ -35,28 +35,28 @@ const codeTypes = {
 
 const currentType = computed(() => {
     switch (props.codeType) {
-        case "barcode":
-            return "BarcodeIcon";
-        case "dataMatrix":
-            return "DatamatrixIcon";
+        case 'barcode':
+            return 'BarcodeIcon';
+        case 'dataMatrix':
+            return 'DatamatrixIcon';
         default:
-            return "DatamatrixIcon";
+            return 'DatamatrixIcon';
     }
 });
 
-const codeTypeClass = computed(() => (props.codeType === "barcode" ? "barcode" : "datamatrix"));
+const codeTypeClass = computed(() => (props.codeType === 'barcode' ? 'barcode' : 'datamatrix'));
 
 const firstCodeColor = computed(() => {
-    if (props.currentCodeIndex === -1) return "gray";
-    if (props.currentCodeIndex === 0) return "red";
-    return "black";
+    if (props.currentCodeIndex === -1) return 'gray';
+    if (props.currentCodeIndex === 0) return 'red';
+    return 'black';
 });
-const arrowMargin = computed(() => (props.codeType === "barcode" ? "medium" : "large"));
+const arrowMargin = computed(() => (props.codeType === 'barcode' ? 'medium' : 'large'));
 
 const codeColor = (index) => {
-    if (index === props.currentCodeIndex) return "red";
-    if (index < props.currentCodeIndex + 1) return "black";
-    return "gray";
+    if (index === props.currentCodeIndex) return 'red';
+    if (index < props.currentCodeIndex + 1) return 'black';
+    return 'gray';
 };
 </script>
 

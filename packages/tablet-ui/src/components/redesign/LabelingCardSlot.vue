@@ -105,9 +105,9 @@
 </template>
 
 <script setup>
-import { VButton } from "@base";
-import { setupI18n } from "@base/i18n.js";
-import LabelingCard from "./LabelingCard.vue";
+import { VButton } from '@base';
+import { setupI18n } from '@base/i18n.js';
+import LabelingCard from './LabelingCard.vue';
 
 const { t } = setupI18n();
 
@@ -115,7 +115,7 @@ defineProps({
     isAggregationVisible: { type: Boolean, default: true },
     isAutoLabeling: { type: Boolean, default: true },
     codeInfo: { type: Object, default: () => ({}) },
-    btn: { type: String, default: "1" },
+    btn: { type: String, default: '1' },
 });
 </script>
 

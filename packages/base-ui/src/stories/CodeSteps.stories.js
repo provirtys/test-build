@@ -1,13 +1,13 @@
-import CodeSteps from "@base/components/CodeSteps.vue";
+import CodeSteps from '@base/components/CodeSteps.vue';
 
 /** CodeSteps component with customizable number and type of code*/
 export default {
-    title: "CodeSteps",
+    title: 'CodeSteps',
     component: CodeSteps,
     argTypes: {
         codeType: {
-            options: ["barcode", "dataMatrix"],
-            control: { type: "radio" },
+            options: ['barcode', 'dataMatrix'],
+            control: { type: 'radio' },
         },
     },
 };
@@ -15,7 +15,7 @@ export default {
 /** Cканирование первого кода, всего кодов для сканирования 2 */
 export const PrimaryCode = {
     args: {
-        codeType: "barcode",
+        codeType: 'barcode',
         currentCodeIndex: 0,
         codesLength: 2,
         needBorder: true,
@@ -25,7 +25,7 @@ export const PrimaryCode = {
 /** Cканирование кода с индексом 3, всего кодов для сканирования 5 */
 export const PrimaryCodeLength = {
     args: {
-        codeType: "barcode",
+        codeType: 'barcode',
         currentCodeIndex: 3,
         codesLength: 5,
         needBorder: true,
@@ -35,7 +35,7 @@ export const PrimaryCodeLength = {
 /** Выброр типа кода для сканирования */
 export const PrimaryCodeSelect = {
     args: {
-        codeType: "barcode",
+        codeType: 'barcode',
         currentCodeIndex: -1,
         codesLength: 1,
         needBorder: false,
@@ -45,7 +45,7 @@ export const PrimaryCodeSelect = {
 /** Cканирование первого кода, всего кодов для сканирования 2 */
 export const PrimaryDatamatrix = {
     args: {
-        codeType: "dataMatrix",
+        codeType: 'dataMatrix',
         currentCodeIndex: 0,
         codesLength: 2,
         needBorder: true,
@@ -55,7 +55,7 @@ export const PrimaryDatamatrix = {
 /** Cканирование кода с индексом 3, всего кодов для сканирования 5 */
 export const PrimaryDatamatrixLength = {
     args: {
-        codeType: "dataMatrix",
+        codeType: 'dataMatrix',
         currentCodeIndex: 3,
         codesLength: 5,
         needBorder: true,
@@ -65,7 +65,7 @@ export const PrimaryDatamatrixLength = {
 /** Выброр типа кода для сканирования */
 export const PrimaryDatamatrixSelect = {
     args: {
-        codeType: "dataMatrix",
+        codeType: 'dataMatrix',
         currentCodeIndex: -1,
         codesLength: 1,
         needBorder: false,

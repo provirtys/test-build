@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter } from 'vue-router';
 
 const router = useRouter();
 const route = useRoute();
@@ -40,24 +40,24 @@ const props = defineProps({
     /** Переключение логотипа*/
     isMain: { type: Boolean, default: true },
     /** Наименование организации*/
-    factoryName: { type: String, default: "integrity" },
+    factoryName: { type: String, default: 'integrity' },
     /** Кнопка выхода*/
     needLogout: { type: Boolean, default: false },
 });
 
-const emit = defineEmits(["toHomePage"]);
+const emit = defineEmits(['toHomePage']);
 function logout() {
-    router.push({ name: "Auth" });
+    router.push({ name: 'Auth' });
 }
 function onBackButton() {
-    if (route.name === "ScanMode") {
-        router.push({ name: "Auth" });
+    if (route.name === 'ScanMode') {
+        router.push({ name: 'Auth' });
     } else {
         router.go(-1);
     }
 }
 function toHomePage() {
-    emit("toHomePage");
+    emit('toHomePage');
 }
 </script>
 

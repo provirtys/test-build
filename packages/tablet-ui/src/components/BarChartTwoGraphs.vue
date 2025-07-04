@@ -10,8 +10,8 @@
 </template>
 
 <script setup>
-import BarChart from "./BarChart.vue";
-import BarChartTimeSeries from "./BarChartTimeSeries.vue";
+import BarChart from './BarChart.vue';
+import BarChartTimeSeries from './BarChartTimeSeries.vue';
 
 const props = defineProps({
     codes: {

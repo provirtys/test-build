@@ -32,14 +32,14 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import { computed, ref } from "vue";
+import { VIcon } from '@base';
+import { computed, ref } from 'vue';
 
 const props = defineProps({
     color: {
         type: String,
         required: false,
-        validator: (val) => ["primary", "secondary", "plane", "outline", "red"].includes(val),
+        validator: (val) => ['primary', 'secondary', 'plane', 'outline', 'red'].includes(val),
     },
     isDisabled: {
         type: Boolean,
@@ -48,7 +48,7 @@ const props = defineProps({
     height: {
         type: String,
         required: false,
-        validator: (val) => ["lg", "md", "sm", "xs"].includes(val),
+        validator: (val) => ['lg', 'md', 'sm', 'xs'].includes(val),
     },
     locationIcon: {
         type: String,
@@ -61,7 +61,7 @@ const props = defineProps({
     textAlignment: {
         type: String,
         required: false,
-        validator: (val) => ["left", "center", "right"].includes(val),
+        validator: (val) => ['left', 'center', 'right'].includes(val),
     },
     fitWidth: {
         type: Boolean,
@@ -77,48 +77,48 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(["actionSubmitted"]);
+const emit = defineEmits(['actionSubmitted']);
 
 const btnRef = ref(null);
-const btnStatus = ref("default"); // default, progress or done
+const btnStatus = ref('default'); // default, progress or done
 
-const showSubmittedIcon = computed(() => props.changeIcon && btnStatus.value === "done");
+const showSubmittedIcon = computed(() => props.changeIcon && btnStatus.value === 'done');
 
 const btnClasses = computed(() => [
-    "v-btn",
+    'v-btn',
     `v-btn--${buttonSize.value}`,
-    showSubmittedIcon.value ? doneOpacity.value : "",
+    showSubmittedIcon.value ? doneOpacity.value : '',
     backgroundColor.value,
     {
         disabled: btnDisabled.value,
-        "fit-width": props.fitWidth,
-        "min-width-empty": props.locationIcon === "",
+        'fit-width': props.fitWidth,
+        'min-width-empty': props.locationIcon === '',
         [`text-${props.textAlignment}`]: props.textAlignment,
-        "in-progress": btnStatus.value === "progress",
+        'in-progress': btnStatus.value === 'progress',
         done: showSubmittedIcon.value,
     },
 ]);
 
 const doneOpacity = computed(() => {
     switch (props.color) {
-        case "secondary":
-            return "done-secondary";
-        case "plane":
-            return "done-plane";
-        case "outline":
-            return "done-outline";
-        case "red":
-            return "done-red";
-        case "primary":
-            return "done-primary";
+        case 'secondary':
+            return 'done-secondary';
+        case 'plane':
+            return 'done-plane';
+        case 'outline':
+            return 'done-outline';
+        case 'red':
+            return 'done-red';
+        case 'primary':
+            return 'done-primary';
         default:
-            return "done-primary";
+            return 'done-primary';
     }
 });
 
 const sizeIcon = computed(() => {
     switch (props.height) {
-        case "lg":
+        case 'lg':
             return 36;
         default:
             return 28;
@@ -127,42 +127,42 @@ const sizeIcon = computed(() => {
 
 const backgroundColor = computed(() => {
     switch (props.color) {
-        case "secondary":
-        case "plane":
-        case "outline":
-        case "red":
-        case "primary":
+        case 'secondary':
+        case 'plane':
+        case 'outline':
+        case 'red':
+        case 'primary':
             return props.color;
         default:
-            return "primary";
+            return 'primary';
     }
 });
 
 const buttonSize = computed(() => {
     switch (props.height) {
-        case "md":
-        case "sm":
-        case "xs":
+        case 'md':
+        case 'sm':
+        case 'xs':
             return props.height;
         default:
-            return "lg";
+            return 'lg';
     }
 });
 
-const btnDisabled = computed(() => props.isDisabled || btnStatus.value === "done");
+const btnDisabled = computed(() => props.isDisabled || btnStatus.value === 'done');
 
 const handleHold = ({ evt }) => {
     if (btnDisabled.value || !props.progress) return;
 
     if (props.changeIcon && btnRef.value) {
-        btnStatus.value = "done";
+        btnStatus.value = 'done';
         finishAnimation(evt, true);
     }
     submitAction(evt);
 };
 
 const submitAction = () => {
-    emit("actionSubmitted");
+    emit('actionSubmitted');
 };
 
 const stopAnimation = () => finishAnimation();
@@ -170,21 +170,21 @@ const stopAnimation = () => finishAnimation();
 const startAnimation = () => {
     if (btnDisabled.value || !props.progress) return;
 
-    btnStatus.value = "progress";
-    document.addEventListener("mouseup", stopAnimation);
-    document.addEventListener("touchend", stopAnimation);
+    btnStatus.value = 'progress';
+    document.addEventListener('mouseup', stopAnimation);
+    document.addEventListener('touchend', stopAnimation);
 };
 
 const finishAnimation = (_evt, finished) => {
     if (btnDisabled.value || !props.progress) return;
 
     if (props.changeIcon && finished) {
-        btnStatus.value = "done";
+        btnStatus.value = 'done';
     } else {
-        btnStatus.value = "default";
+        btnStatus.value = 'default';
     }
-    document.removeEventListener("mouseup", stopAnimation);
-    document.removeEventListener("touchend", stopAnimation);
+    document.removeEventListener('mouseup', stopAnimation);
+    document.removeEventListener('touchend', stopAnimation);
 };
 </script>
 

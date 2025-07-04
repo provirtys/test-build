@@ -18,9 +18,9 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@base/i18n.js";
-import { computed, ref } from "vue";
-import StatusIndicator from "./StatusIndicator.vue";
+import { setupI18n } from '@base/i18n.js';
+import { computed, ref } from 'vue';
+import StatusIndicator from './StatusIndicator.vue';
 
 const { t } = setupI18n();
 
@@ -28,12 +28,12 @@ const props = defineProps({
     /** Цвет индикатора статуса принтера */
     color: {
         type: String,
-        default: "",
+        default: '',
     },
     /** Текст статуса принтера */
     statusType: {
         type: String,
-        default: "",
+        default: '',
     },
     /** Текст статуса принтера */
     isSync: {
@@ -48,21 +48,21 @@ const props = defineProps({
 });
 
 const isActionSubmitted = ref(null);
-const emit = defineEmits(["actionSubmitted"]);
+const emit = defineEmits(['actionSubmitted']);
 
 const backgroundColor = computed(() => {
     if (!props.isActive) {
-        return "";
+        return '';
     }
     switch (props.color) {
-        case "warning":
-            return "active-warning";
-        case "error":
-            return "active-error";
-        case "success":
-            return "active-success";
+        case 'warning':
+            return 'active-warning';
+        case 'error':
+            return 'active-error';
+        case 'success':
+            return 'active-success';
         default:
-            return "";
+            return '';
     }
 });
 
@@ -74,35 +74,35 @@ function handleHold({ evt }) {
 }
 
 function submitAction() {
-    emit("actionSubmitted");
+    emit('actionSubmitted');
 }
 
 function startAnimation(event) {
     if (props.isActive) {
-        event.target.classList.add("in-progress");
-        if (props.color === "success") {
-            event.target.classList.add("in-progress-success");
+        event.target.classList.add('in-progress');
+        if (props.color === 'success') {
+            event.target.classList.add('in-progress-success');
         }
-        if (props.color === "error") {
-            event.target.classList.add("in-progress-error");
+        if (props.color === 'error') {
+            event.target.classList.add('in-progress-error');
         }
-        if (props.color === "warning") {
-            event.target.classList.add("in-progress-warning");
+        if (props.color === 'warning') {
+            event.target.classList.add('in-progress-warning');
         }
     }
 }
 
 function finishAnimation(event) {
     if (props.isActive) {
-        event.target.classList.remove("in-progress");
-        if (props.color === "success") {
-            event.target.classList.remove("in-progress-success");
+        event.target.classList.remove('in-progress');
+        if (props.color === 'success') {
+            event.target.classList.remove('in-progress-success');
         }
-        if (props.color === "error") {
-            event.target.classList.remove("in-progress-error");
+        if (props.color === 'error') {
+            event.target.classList.remove('in-progress-error');
         }
-        if (props.color === "warning") {
-            event.target.classList.remove("in-progress-warning");
+        if (props.color === 'warning') {
+            event.target.classList.remove('in-progress-warning');
         }
     }
 }

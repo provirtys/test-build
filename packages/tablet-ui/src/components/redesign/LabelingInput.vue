@@ -32,25 +32,25 @@
 </template>
 
 <script setup>
-import { QIcon, QInput } from "quasar";
-import { computed, ref } from "vue";
+import { QIcon, QInput } from 'quasar';
+import { computed, ref } from 'vue';
 
 const props = defineProps({
-    height: { type: String, default: "large" },
+    height: { type: String, default: 'large' },
     isIcon: { type: Boolean, default: false },
-    label: { type: String, default: "Label" },
+    label: { type: String, default: 'Label' },
 });
 
 const amount = ref(undefined);
 
 const buttonSize = computed(() => {
     switch (props.height) {
-        case "medium":
-        case "small":
-        case "extra-small":
+        case 'medium':
+        case 'small':
+        case 'extra-small':
             return props.height;
         default:
-            return "large";
+            return 'large';
     }
 });
 </script>

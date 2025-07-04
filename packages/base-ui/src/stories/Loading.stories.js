@@ -1,32 +1,32 @@
-import Loading from "@base/components/Loading.vue";
+import Loading from '@base/components/Loading.vue';
 
 /** Loading component with customizable massage*/
 export default {
-    title: "Loading",
+    title: 'Loading',
     component: Loading,
     argTypes: {
         loadingType: {
-            options: ["loading", "photo", "connection", "check", "internet_false", "try_again", "retry"],
-            control: { type: "select" },
+            options: ['loading', 'photo', 'connection', 'check', 'internet_false', 'try_again', 'retry'],
+            control: { type: 'select' },
         },
     },
 };
 /** Происходит загрузка в базу*/
 export const Primary = {
     args: {
-        loadingType: "loading",
+        loadingType: 'loading',
     },
 };
 /** Нет интернет-соединения*/
 export const InternetFalse = {
     args: {
-        loadingType: "internet_false",
+        loadingType: 'internet_false',
     },
 };
 
 /** Идет обработка фотографии*/
 export const PhotoProcessing = {
     args: {
-        loadingType: "photo",
+        loadingType: 'photo',
     },
 };

@@ -22,8 +22,8 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@base/i18n.js";
-import TabBarIcon from "@components/icons/TabBarIcon.vue";
+import { setupI18n } from '@base/i18n.js';
+import TabBarIcon from '@components/icons/TabBarIcon.vue';
 
 const { t } = setupI18n();
 
@@ -34,26 +34,26 @@ const props = defineProps({
     },
     currentPage: {
         type: String,
-        default: "",
+        default: '',
     },
 });
 
 function isPageActive(page) {
     switch (page) {
-        case "home":
-            return props.currentPage === "FrontPage";
-        case "scan":
-            return ["Checking", "CheckScan", "CheckResult"].includes(props.currentPage);
-        case "history":
-            return props.currentPage === "History";
-        case "profile":
+        case 'home':
+            return props.currentPage === 'FrontPage';
+        case 'scan':
+            return ['Checking', 'CheckScan', 'CheckResult'].includes(props.currentPage);
+        case 'history':
+            return props.currentPage === 'History';
+        case 'profile':
             return [
-                "Profile",
-                "ProfileAuth",
-                "ProfileRegister",
-                "BindingCodeScan",
-                "BindingCodeConfirm",
-                "ProfileEdit",
+                'Profile',
+                'ProfileAuth',
+                'ProfileRegister',
+                'BindingCodeScan',
+                'BindingCodeConfirm',
+                'ProfileEdit',
             ].includes(props.currentPage);
         default:
             return false;
@@ -63,9 +63,9 @@ function isPageActive(page) {
 function tabbarItemColor(page) {
     let style;
     if (isPageActive(page)) {
-        style = "active";
+        style = 'active';
     } else if (props.isBackgroundDark) {
-        style = "light";
+        style = 'light';
     }
     return style;
 }

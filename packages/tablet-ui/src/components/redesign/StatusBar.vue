@@ -28,11 +28,11 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import { VButton } from "@base";
-import { ref } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import SystemStatus from "./InteractiveSystemStatus.vue";
+import { VIcon } from '@base';
+import { VButton } from '@base';
+import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import SystemStatus from './InteractiveSystemStatus.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -43,15 +43,15 @@ const props = defineProps({
     systemStatus: {
         type: Object,
         default: () => ({
-            status: "error",
-            text: "NOT_READY",
+            status: 'error',
+            text: 'NOT_READY',
             sync: true,
             active: false,
         }),
     },
     title: {
         type: String,
-        default: "Список заданий",
+        default: 'Список заданий',
     },
     isDisabled: {
         type: Boolean,
@@ -59,15 +59,15 @@ const props = defineProps({
     },
     btnText: {
         type: String,
-        default: "Назад",
+        default: 'Назад',
     },
     btnIcon: {
         type: String,
-        default: "arrowBackRedesign",
+        default: 'arrowBackRedesign',
     },
 });
 
-const emit = defineEmits(["logout"]);
+const emit = defineEmits(['logout']);
 
 function handleHoldGoBack({ evt, ...newInfo }) {
     isLogoutSubmitted.value = newInfo;
@@ -77,23 +77,23 @@ function handleHoldGoBack({ evt, ...newInfo }) {
 
 function goBack() {
     switch (route.name) {
-        case "TaskDetails":
-        case "NewTaskDetails":
-            router.push({ name: "TaskList" });
+        case 'TaskDetails':
+        case 'NewTaskDetails':
+            router.push({ name: 'TaskList' });
             break;
-        case "LabelingAuto":
-        case "LabelingManual":
-            router.push({ name: "TaskDetails", params: { id: route.params.id } });
+        case 'LabelingAuto':
+        case 'LabelingManual':
+            router.push({ name: 'TaskDetails', params: { id: route.params.id } });
             break;
-        case "LabelScan":
-            if (otkStore.mode === "auto") {
-                router.push({ name: "LabelingAuto", params: { id: route.params.id } });
+        case 'LabelScan':
+            if (otkStore.mode === 'auto') {
+                router.push({ name: 'LabelingAuto', params: { id: route.params.id } });
             } else {
-                router.push({ name: "LabelingManual", params: { id: route.params.id } });
+                router.push({ name: 'LabelingManual', params: { id: route.params.id } });
             }
             break;
-        case "CodeScan":
-            router.push({ name: "LabelingManual", params: { id: route.params.id } });
+        case 'CodeScan':
+            router.push({ name: 'LabelingManual', params: { id: route.params.id } });
             break;
     }
 }
@@ -101,15 +101,15 @@ function goBack() {
 function handleHold({ evt, ...newInfo }) {
     isLogoutSubmitted.value = newInfo;
     finishAnimation(evt);
-    emit("logout");
+    emit('logout');
 }
 
 function startAnimation(event) {
-    event.target.classList.add("in-progress");
+    event.target.classList.add('in-progress');
 }
 
 function finishAnimation(event) {
-    event.target.classList.remove("in-progress");
+    event.target.classList.remove('in-progress');
 }
 </script>
 

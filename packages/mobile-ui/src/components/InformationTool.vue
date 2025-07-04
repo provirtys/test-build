@@ -34,8 +34,8 @@
 </template>
 
 <script setup>
-import { VButton } from "@base";
-import { setupI18n } from "@base/i18n.js";
+import { VButton } from '@base';
+import { setupI18n } from '@base/i18n.js';
 
 const { t } = setupI18n();
 
@@ -48,12 +48,12 @@ const props = defineProps({
     /** Изображение инструмента */
     img: {
         type: String,
-        default: "",
+        default: '',
     },
     /** Тип кнопки Получить/Вернуть*/
     btn: {
         type: String,
-        default: "take",
+        default: 'take',
     },
 });
 </script>

@@ -17,8 +17,8 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@base/i18n.js";
-import { QTable } from "quasar";
+import { setupI18n } from '@base/i18n.js';
+import { QTable } from 'quasar';
 
 const { t } = setupI18n();
 const props = defineProps({

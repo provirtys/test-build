@@ -90,27 +90,27 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@base/i18n.js";
-import DMProto from "@utils/DMProto.js";
-import { v4 as uuidv4 } from "uuid";
-import { reactive, ref, watch } from "vue";
+import { setupI18n } from '@base/i18n.js';
+import DMProto from '@utils/DMProto.js';
+import { v4 as uuidv4 } from 'uuid';
+import { reactive, ref, watch } from 'vue';
 // TODO: import from @labeling/contracts actual version
 // import { TemplateModel } from "@utils/template_pb.js";
 
 const dmproto = new DMProto({});
 const { t } = setupI18n();
 
-const emit = defineEmits(["createTemplate"]);
+const emit = defineEmits(['createTemplate']);
 
-const rows = reactive([{ uuid: uuidv4(), key: "", value: "" }]);
-const svgnode = ref("");
+const rows = reactive([{ uuid: uuidv4(), key: '', value: '' }]);
+const svgnode = ref('');
 const attributes = ref([]);
-const taskText = ref("");
-const taskSku = ref("");
+const taskText = ref('');
+const taskSku = ref('');
 const isDisabledButton = ref(true);
 
 const addRow = () => {
-    rows.push({ uuid: uuidv4(), key: "", value: "" });
+    rows.push({ uuid: uuidv4(), key: '', value: '' });
 };
 const removeRow = (row) => {
     const idx = rows.indexOf(row);
@@ -121,7 +121,7 @@ const removeRow = (row) => {
 
 // Проверка на пустое поле Название задачи
 function notEmptyInputs() {
-    if (taskText.value !== "" && taskSku.value !== "") {
+    if (taskText.value !== '' && taskSku.value !== '') {
         return true;
     }
 }
@@ -130,7 +130,7 @@ function notEmptyInputs() {
 function notEmpty() {
     let hasErrorNoEmpty = false;
     for (let i = 0; i <= rows.length - 1; i++) {
-        if (rows[i].key === "" || rows[i].value === "") {
+        if (rows[i].key === '' || rows[i].value === '') {
             hasErrorNoEmpty = true; // поле пустое
             break;
         }
@@ -190,8 +190,8 @@ function saveData() {
     const form = {};
     // Добавление свойства в объект
     for (let i = 0; i <= rows.length - 1; i++) {
-        if (rows[i].key === "" || rows[i].value === "") {
-            rows.filter((item) => item.key !== "" || item.key !== "");
+        if (rows[i].key === '' || rows[i].value === '') {
+            rows.filter((item) => item.key !== '' || item.key !== '');
         } else {
             form[rows[i].key] = rows[i].value;
         }
@@ -216,23 +216,23 @@ function generateDataMatrix() {
     console.debug(`Decode product: ${JSON.stringify(decodeProduct)}`);
     console.debug(JSON.parse(JSON.stringify(decodeProduct)));
     const svg = bwipjs.toSVG({
-        bcid: "datamatrix",
+        bcid: 'datamatrix',
         text: product,
         binarytext: true,
         parse: true,
         parsefnc: true,
     });
 
-    const e = document.getElementById("factory-barcode");
+    const e = document.getElementById('factory-barcode');
     if (e) {
         while (e.childNodes[0]) {
             e.removeChild(e.childNodes[0]);
         }
         // const [, width, height] = /viewBox="0 0 (\d+) (\d+)"/.exec(svg)
-        const span = document.createElement("span");
-        span.style.display = "inline-block";
-        span.style.width = "90%";
-        span.style.height = "90%";
+        const span = document.createElement('span');
+        span.style.display = 'inline-block';
+        span.style.width = '90%';
+        span.style.height = '90%';
         span.innerHTML = svg;
         e.appendChild(span);
     }
@@ -240,7 +240,7 @@ function generateDataMatrix() {
 
 function createTemplate() {
     saveData();
-    emit("createTemplate", {
+    emit('createTemplate', {
         title: taskText.value,
         sku: taskSku.value,
         attributes: attributes.value,

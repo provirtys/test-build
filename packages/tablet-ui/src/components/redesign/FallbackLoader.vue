@@ -13,24 +13,24 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
+import { VIcon } from '@base';
 
 defineProps({
     loadingText: {
         type: String,
-        default: "Обновление...",
+        default: 'Обновление...',
     },
     fallbackText: {
         type: String,
-        default: "Ошибка",
+        default: 'Ошибка',
     },
     fallbackIcon: {
         type: String,
-        default: "status-error",
+        default: 'status-error',
     },
     updateBtnText: {
         type: String,
-        default: "Обновить",
+        default: 'Обновить',
     },
     isLoading: {
         type: Boolean,
@@ -38,5 +38,5 @@ defineProps({
     },
 });
 
-defineEmits(["onUpdate"]);
+defineEmits(['onUpdate']);
 </script>

@@ -1,48 +1,48 @@
-import MobileHeader from "@components/MobileHeader.vue";
+import MobileHeader from '@components/MobileHeader.vue';
 
 /** Компонент шапки, используемый на мобильных устройствах. Содержит кнопку "назад", заголовок и иконку оффлайн режима
  *  при необходимости. Кнопка "назад" перенаправляет пользователя на другую страницу в зависимости от текущей.
  * Цвета в шапке могут меняться в зависимости от цвета фона на выбранной странице. */
 export default {
-    title: "Mobile/Header",
+    title: 'Mobile/Header',
     component: MobileHeader,
     argTypes: {
         page: {
-            description: "На какой странице находится пользователь?",
+            description: 'На какой странице находится пользователь?',
             control: {
-                type: "select",
+                type: 'select',
             },
             options: [
-                "Index",
-                "FrontPage",
-                "Checking",
-                "CheckScan",
-                "CheckResult",
-                "History",
-                "Profile",
-                "ProfileAuth",
-                "ProfileRegister",
-                "ProfileEdit",
-                "BindingCodeScan",
-                "BindingCodeConfirm",
+                'Index',
+                'FrontPage',
+                'Checking',
+                'CheckScan',
+                'CheckResult',
+                'History',
+                'Profile',
+                'ProfileAuth',
+                'ProfileRegister',
+                'ProfileEdit',
+                'BindingCodeScan',
+                'BindingCodeConfirm',
             ],
         },
         showBackButton: {
             description: 'Должна ли отображаться кнопка "назад"?',
         },
         isBackgroundDark: {
-            description: "Фон на странице темный?",
+            description: 'Фон на странице темный?',
         },
         isOffline: {
-            description: "Пользователь в оффлайн режиме?",
+            description: 'Пользователь в оффлайн режиме?',
         },
     },
     parameters: {
         backgrounds: {
-            default: "light",
+            default: 'light',
             values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "light", value: "#f4f4f4" },
+                { name: 'dark', value: '#242a2b' },
+                { name: 'light', value: '#f4f4f4' },
             ],
         },
     },
@@ -54,7 +54,7 @@ export const BaseHeader = {
         showBackButton: true,
         isBackgroundDark: false,
         isOffline: false,
-        page: "Index",
+        page: 'Index',
     },
 };
 
@@ -64,7 +64,7 @@ export const OfflineMode = {
         showBackButton: true,
         isBackgroundDark: false,
         isOffline: true,
-        page: "Index",
+        page: 'Index',
     },
 };
 
@@ -74,7 +74,7 @@ export const FrontPageHeader = {
         showBackButton: false,
         isBackgroundDark: false,
         isOffline: false,
-        page: "FrontPage",
+        page: 'FrontPage',
     },
 };
 
@@ -84,7 +84,7 @@ export const ProfileHeader = {
         showBackButton: true,
         isBackgroundDark: false,
         isOffline: false,
-        page: "Profile",
+        page: 'Profile',
     },
 };
 
@@ -94,14 +94,14 @@ export const CheckScanHeader = {
         showBackButton: false,
         isBackgroundDark: true,
         isOffline: false,
-        page: "CheckScan",
+        page: 'CheckScan',
     },
     parameters: {
         backgrounds: {
-            default: "dark",
+            default: 'dark',
             values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "light", value: "#f4f4f4" },
+                { name: 'dark', value: '#242a2b' },
+                { name: 'light', value: '#f4f4f4' },
             ],
         },
     },
@@ -113,14 +113,14 @@ export const ProfileAuthHeader = {
         showBackButton: true,
         isBackgroundDark: true,
         isOffline: false,
-        page: "ProfileAuth",
+        page: 'ProfileAuth',
     },
     parameters: {
         backgrounds: {
-            default: "dark",
+            default: 'dark',
             values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "light", value: "#f4f4f4" },
+                { name: 'dark', value: '#242a2b' },
+                { name: 'light', value: '#f4f4f4' },
             ],
         },
     },

@@ -92,26 +92,26 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@base/i18n.js";
-import { QBtn, QCard, QCardSection, QDialog, QIcon, QInput } from "quasar";
-import { v4 as uuidv4 } from "uuid";
-import { reactive, ref, watch } from "vue";
+import { setupI18n } from '@base/i18n.js';
+import { QBtn, QCard, QCardSection, QDialog, QIcon, QInput } from 'quasar';
+import { v4 as uuidv4 } from 'uuid';
+import { reactive, ref, watch } from 'vue';
 
 const { t } = setupI18n();
 
-const emit = defineEmits(["createJob"]);
+const emit = defineEmits(['createJob']);
 
-const rows = reactive([{ uuid: uuidv4(), key: "", value: "" }]);
+const rows = reactive([{ uuid: uuidv4(), key: '', value: '' }]);
 const attributes = ref([]);
-const taskText = ref("");
+const taskText = ref('');
 const amount = ref(null);
 const sku = ref(null);
 const isDisabledButton = ref(true);
 const errorModal = ref(false);
-const errorText = ref("");
+const errorText = ref('');
 
 const addRow = () => {
-    rows.push({ uuid: uuidv4(), key: "", value: "" });
+    rows.push({ uuid: uuidv4(), key: '', value: '' });
 };
 const removeRow = (row) => {
     const idx = rows.indexOf(row);
@@ -121,7 +121,7 @@ const removeRow = (row) => {
 };
 // Проверка на пустое поле Название задачи
 function notEmptyTaskText() {
-    if (taskText.value !== "") {
+    if (taskText.value !== '') {
         return true;
     }
 }
@@ -129,7 +129,7 @@ function notEmptyTaskText() {
 function notEmpty() {
     let hasErrorNoEmpty = false;
     for (let i = 0; i <= rows.length - 1; i++) {
-        if (rows[i].key === "" || rows[i].value === "") {
+        if (rows[i].key === '' || rows[i].value === '') {
             hasErrorNoEmpty = true; // поле пустое
             break;
         }
@@ -194,8 +194,8 @@ function saveData() {
     const form = {};
     // Добавление свойства в объект
     for (let i = 0; i <= rows.length - 1; i++) {
-        if (rows[i].key === "" || rows[i].value === "") {
-            rows.filter((item) => item.key !== "" || item.key !== "");
+        if (rows[i].key === '' || rows[i].value === '') {
+            rows.filter((item) => item.key !== '' || item.key !== '');
         } else {
             form[rows[i].key] = rows[i].value;
         }
@@ -208,7 +208,7 @@ function saveData() {
 
 function createTask() {
     saveData();
-    emit("createJob", {
+    emit('createJob', {
         title: taskText.value,
         sku: sku.value,
         attributes: attributes.value,

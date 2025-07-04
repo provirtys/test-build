@@ -22,18 +22,18 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import MarkingStatus from "./MarkingStatus.vue";
-import ProgressPie from "./ProgressPie.vue";
+import { VIcon } from '@base';
+import MarkingStatus from './MarkingStatus.vue';
+import ProgressPie from './ProgressPie.vue';
 
 const props = defineProps({
     id: {
         type: String,
-        default: "",
+        default: '',
     },
     title: {
         type: String,
-        default: "",
+        default: '',
     },
     toolItems: {
         type: Object,
@@ -41,7 +41,7 @@ const props = defineProps({
     },
     markingStatus: {
         type: String,
-        default: "",
+        default: '',
     },
     progress: {
         type: Number,
@@ -49,10 +49,10 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(["openTaskDetails"]);
+const emit = defineEmits(['openTaskDetails']);
 
 function openTaskDetails() {
-    emit("openTaskDetails", props.id);
+    emit('openTaskDetails', props.id);
 }
 </script>
 

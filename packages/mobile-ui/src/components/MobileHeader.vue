@@ -29,9 +29,9 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@base/i18n.js";
-import { computed } from "vue";
-import { useRouter } from "vue-router";
+import { setupI18n } from '@base/i18n.js';
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 
 const { t } = setupI18n();
 const router = useRouter();
@@ -51,27 +51,27 @@ const props = defineProps({
     },
     page: {
         type: String,
-        default: "",
+        default: '',
     },
 });
 
 function onBackButton() {
     switch (props.page) {
-        case "FrontPage":
+        case 'FrontPage':
             break;
 
-        case "CheckResult":
-            router.push({ name: "CheckScan" });
+        case 'CheckResult':
+            router.push({ name: 'CheckScan' });
             break;
 
-        case "Checking":
-        case "History":
-        case "CheckScan":
-        case "Settings":
-        case "Auth":
-        case "ProfileRegister":
-        case "ForgotPassword":
-            router.push({ name: "FrontPage" });
+        case 'Checking':
+        case 'History':
+        case 'CheckScan':
+        case 'Settings':
+        case 'Auth':
+        case 'ProfileRegister':
+        case 'ForgotPassword':
+            router.push({ name: 'FrontPage' });
             break;
 
         default:
@@ -82,10 +82,10 @@ function onBackButton() {
 
 const getPageHeader = computed(() => {
     switch (props.page) {
-        case "Profile":
-            return t("storybook.profile");
-        case "ProfileRegister":
-            return t("storybook.register");
+        case 'Profile':
+            return t('storybook.profile');
+        case 'ProfileRegister':
+            return t('storybook.register');
         default:
             return undefined;
     }

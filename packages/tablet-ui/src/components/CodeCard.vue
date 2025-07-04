@@ -15,25 +15,25 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import { computed } from "vue";
+import { VIcon } from '@base';
+import { computed } from 'vue';
 const props = defineProps({
-    codeType: { type: String, default: "DataMatrix" },
-    codeText: { type: String, default: "" },
-    status: { type: String, default: "none" },
-    time: { type: String, default: "" },
+    codeType: { type: String, default: 'DataMatrix' },
+    codeText: { type: String, default: '' },
+    status: { type: String, default: 'none' },
+    time: { type: String, default: '' },
     position: { type: Number, default: 0 },
 });
 
 const statusIcon = computed(() => {
     switch (props.status) {
-        case "verified":
-        case "synced":
-            return "status-success";
-        case "broken":
-            return "status-error";
+        case 'verified':
+        case 'synced':
+            return 'status-success';
+        case 'broken':
+            return 'status-error';
         default:
-            return "";
+            return '';
     }
 });
 </script>

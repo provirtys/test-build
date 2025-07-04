@@ -34,9 +34,9 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import { setupI18n } from "@base/i18n.js";
-import { computed } from "vue";
+import { VIcon } from '@base';
+import { setupI18n } from '@base/i18n.js';
+import { computed } from 'vue';
 const { t } = setupI18n();
 
 const props = defineProps({
@@ -50,54 +50,54 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(["typeChosen"]);
+const emit = defineEmits(['typeChosen']);
 
 const dmSelected = computed(() => {
-    return props.selectedTypes.includes("DataMatrix");
+    return props.selectedTypes.includes('DataMatrix');
 });
 
 const bcSelected = computed(() => {
-    return props.selectedTypes.includes("Code128");
+    return props.selectedTypes.includes('Code128');
 });
 
 const allSelected = computed(() => {
-    return props.selectedTypes.includes("DataMatrix") && props.selectedTypes.includes("Code128");
+    return props.selectedTypes.includes('DataMatrix') && props.selectedTypes.includes('Code128');
 });
 
 function switchType(value) {
     let newState = { dm: false, bc: false };
     if (props.isAuto) {
         switch (value) {
-            case "DataMatrix":
+            case 'DataMatrix':
                 newState = { dm: true, bc: false };
                 break;
-            case "Code128":
+            case 'Code128':
                 newState = { dm: false, bc: true };
                 break;
         }
         if (newState.bc) {
-            emit("typeChosen", ["Code128"]);
+            emit('typeChosen', ['Code128']);
         } else {
-            emit("typeChosen", ["DataMatrix"]);
+            emit('typeChosen', ['DataMatrix']);
         }
         return;
     }
 
     switch (value) {
-        case "all":
+        case 'all':
             if (!allSelected.value) {
                 newState = { dm: true, bc: true };
                 break;
             }
             break;
-        case "DataMatrix":
+        case 'DataMatrix':
             if (dmSelected.value) {
                 newState = { dm: false, bc: bcSelected.value };
                 break;
             }
             newState = { dm: true, bc: bcSelected.value };
             break;
-        case "Code128":
+        case 'Code128':
             if (bcSelected.value) {
                 newState = { dm: dmSelected.value, bc: false };
                 break;
@@ -107,13 +107,13 @@ function switchType(value) {
     }
     const result = [];
     if (newState.dm) {
-        result.push("DataMatrix");
+        result.push('DataMatrix');
     }
     if (newState.bc) {
-        result.push("Code128");
+        result.push('Code128');
     }
 
-    emit("typeChosen", result);
+    emit('typeChosen', result);
 }
 </script>
 

@@ -1,14 +1,14 @@
-import BaseHeader from "@base/components/BaseHeader.vue";
+import BaseHeader from '@base/components/BaseHeader.vue';
 
 /** Header component with customizable text and icons*/
 
 export default {
-    title: "BaseHeader",
+    title: 'BaseHeader',
     component: BaseHeader,
     argTypes: {
         isMain: {
             options: [true, false],
-            control: { type: "radio" },
+            control: { type: 'radio' },
         },
     },
 };
@@ -16,7 +16,7 @@ export default {
 export const Primary = {
     args: {
         isMain: true,
-        factoryName: "integrity",
+        factoryName: 'integrity',
         needLogout: false,
     },
 };
@@ -24,7 +24,7 @@ export const Primary = {
 export const PrimaryLogout = {
     args: {
         isMain: true,
-        factoryName: "integrity",
+        factoryName: 'integrity',
         needLogout: true,
     },
 };
@@ -32,7 +32,7 @@ export const PrimaryLogout = {
 export const PrimaryLogoutReturn = {
     args: {
         isMain: false,
-        factoryName: "integrity",
+        factoryName: 'integrity',
         needLogout: true,
     },
 };
@@ -40,7 +40,7 @@ export const PrimaryLogoutReturn = {
 export const ReturnToMainPage = {
     args: {
         isMain: false,
-        factoryName: "Section name",
+        factoryName: 'Section name',
         needLogout: false,
     },
 };
@@ -48,7 +48,7 @@ export const ReturnToMainPage = {
 export const LogoutReturn = {
     args: {
         isMain: false,
-        factoryName: "Section name",
+        factoryName: 'Section name',
         needLogout: true,
     },
 };

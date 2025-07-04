@@ -6,17 +6,17 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
+import { VIcon } from '@base';
 
 const props = defineProps({
     /** Значение кнопки*/
-    value: { type: String, default: "" },
+    value: { type: String, default: '' },
 });
 
-const emit = defineEmits(["pressed"]);
+const emit = defineEmits(['pressed']);
 
 function pressed() {
-    emit("pressed", props.value);
+    emit('pressed', props.value);
 }
 </script>
 

@@ -13,8 +13,8 @@
 </template>
 
 <script setup>
-import { QSelect } from "quasar";
-import { ref } from "vue";
+import { QSelect } from 'quasar';
+import { ref } from 'vue';
 
 const props = defineProps({
     /** Значения раскрывющегося списка*/
@@ -25,11 +25,11 @@ const props = defineProps({
     /** Подпись элемента*/
     label: {
         type: String,
-        default: "",
+        default: '',
     },
 });
 
-const filter = ref("");
+const filter = ref('');
 </script>
 
 <style lang="scss">

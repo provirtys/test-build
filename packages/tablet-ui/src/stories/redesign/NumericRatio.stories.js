@@ -1,36 +1,36 @@
-import NumericRatio from "@components/redesign/NumericRatio.vue";
+import NumericRatio from '@components/redesign/NumericRatio.vue';
 
 /**
  * Компонент отображает числовую долю от целого значения. Есть вертикальное и горизонтальное разделение. Также поддерживает светлый режим, который используется когда задний фон становится темнее.
  */
 export default {
-    title: "TabletUI-redesign/NumericRatio",
+    title: 'TabletUI-redesign/NumericRatio',
     component: NumericRatio,
     argTypes: {
         value: {
-            description: "Число над дробью до слэша",
+            description: 'Число над дробью до слэша',
         },
         secondaryValue: {
-            description: "Число над дробью после слэша",
-            type: "number",
+            description: 'Число над дробью после слэша',
+            type: 'number',
         },
         total: {
-            description: "Число под дробью",
+            description: 'Число под дробью',
         },
         isLight: {
-            description: "Светлый режим",
-            type: "boolean",
+            description: 'Светлый режим',
+            type: 'boolean',
         },
     },
     parameters: {
         backgrounds: {
-            default: "white",
+            default: 'white',
             values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "white", value: "#ffffff" },
-                { name: "light", value: "#ededed" },
-                { name: "light-gray", value: "#f1f1f1" },
-                { name: "red", value: "rgba(211, 20, 28, 0.85)" },
+                { name: 'dark', value: '#242a2b' },
+                { name: 'white', value: '#ffffff' },
+                { name: 'light', value: '#ededed' },
+                { name: 'light-gray', value: '#f1f1f1' },
+                { name: 'red', value: 'rgba(211, 20, 28, 0.85)' },
             ],
         },
     },
@@ -67,7 +67,7 @@ export const LightMode = {
     },
     parameters: {
         backgrounds: {
-            default: "red",
+            default: 'red',
         },
     },
 };

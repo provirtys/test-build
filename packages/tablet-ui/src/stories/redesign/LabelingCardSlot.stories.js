@@ -1,49 +1,49 @@
-import LabelingCardSlot from "@components/redesign/LabelingCardSlot.vue";
+import LabelingCardSlot from '@components/redesign/LabelingCardSlot.vue';
 
-const one = "1";
-const two = "2";
-const three = "3";
-const four = "4";
-const five = "5";
+const one = '1';
+const two = '2';
+const three = '3';
+const four = '4';
+const five = '5';
 const btnTypes = { one, two, three, four, five };
 /** Компонент карточки маркировки c кнопками. Можно настраивать кнопки в заваисимотри от этапа маркировки*/
 export default {
-    title: "TabletUI-redesign/LabelingCardSlot",
+    title: 'TabletUI-redesign/LabelingCardSlot',
     component: LabelingCardSlot,
     argTypes: {
         isAggregationVisible: {
-            description: "Идет агрегация",
+            description: 'Идет агрегация',
         },
         isAutoLabeling: {
-            description: "Автоматическая маркировка",
+            description: 'Автоматическая маркировка',
         },
         btn: {
-            description: "Кнопка",
+            description: 'Кнопка',
             options: Object.keys(btnTypes),
             mapping: btnTypes,
             control: {
-                type: "radio",
+                type: 'radio',
                 labels: {
-                    one: "Начать агрегацию Начать маркировку",
-                    two: "Новое задание Продолжить маркировку",
-                    three: "Закончить агрегацию",
-                    four: "Печать этикетки Начать маркировку",
-                    five: "Брак маркировки Подтвердить",
+                    one: 'Начать агрегацию Начать маркировку',
+                    two: 'Новое задание Продолжить маркировку',
+                    three: 'Закончить агрегацию',
+                    four: 'Печать этикетки Начать маркировку',
+                    five: 'Брак маркировки Подтвердить',
                 },
             },
         },
         codeInfo: {
-            description: "Информация по объекту",
+            description: 'Информация по объекту',
         },
     },
     parameters: {
         backgrounds: {
-            default: "white",
+            default: 'white',
             values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "white", value: "#ffffff" },
-                { name: "light", value: "#ededed" },
-                { name: "light-gray", value: "#f1f1f1" },
+                { name: 'dark', value: '#242a2b' },
+                { name: 'white', value: '#ffffff' },
+                { name: 'light', value: '#ededed' },
+                { name: 'light-gray', value: '#f1f1f1' },
             ],
         },
     },
@@ -57,11 +57,11 @@ export const ProgressSlot1 = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
-        btn: "1",
+        btn: '1',
     },
 };
 
@@ -72,11 +72,11 @@ export const ProgressSlot2 = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
-        btn: "2",
+        btn: '2',
     },
 };
 /**Закончить агрегацию*/
@@ -87,11 +87,11 @@ export const ProgressSlot3 = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
-        btn: "3",
+        btn: '3',
     },
 };
 
@@ -102,11 +102,11 @@ export const ProgressSlot4 = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
-        btn: "4",
+        btn: '4',
     },
 };
 export const ProgressSlot5 = {
@@ -116,10 +116,10 @@ export const ProgressSlot5 = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
-        btn: "5",
+        btn: '5',
     },
 };

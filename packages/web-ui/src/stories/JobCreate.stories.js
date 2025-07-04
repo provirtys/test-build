@@ -1,17 +1,17 @@
-import JobCreate from "@components/JobCreate.vue";
+import JobCreate from '@components/JobCreate.vue';
 
 /** Страница для создания нового задания. Максимальное количество атрибутов для добавления 10. Динамическое добавление/редактирование/удаление атрибутов */
 export default {
-    title: "web/JobCreate",
+    title: 'web/JobCreate',
     component: JobCreate,
     argTypes: {
         parameters: {
             backgrounds: {
-                default: "white",
+                default: 'white',
                 values: [
-                    { name: "white", value: "#ffffff" },
-                    { name: "dark", value: "#242a2b" },
-                    { name: "light", value: "#f8f9fb" },
+                    { name: 'white', value: '#ffffff' },
+                    { name: 'dark', value: '#242a2b' },
+                    { name: 'light', value: '#f8f9fb' },
                 ],
             },
         },

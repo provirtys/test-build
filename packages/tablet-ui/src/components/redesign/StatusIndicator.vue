@@ -10,7 +10,7 @@ const props = defineProps({
     /** Цвет индикатора*/
     color: {
         type: String,
-        default: "info",
+        default: 'info',
     },
     /** Анимированное состояние иконки*/
     isAnimate: {

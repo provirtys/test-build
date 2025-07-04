@@ -9,13 +9,13 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import StatusIndicator from "./StatusIndicator.vue";
+import { VIcon } from '@base';
+import StatusIndicator from './StatusIndicator.vue';
 
 defineProps({
-    codeType: { type: String, default: "DataMatrix" },
-    status: { type: String, default: "" },
-    color: { type: String, default: "info" },
+    codeType: { type: String, default: 'DataMatrix' },
+    status: { type: String, default: '' },
+    color: { type: String, default: 'info' },
 });
 </script>
 

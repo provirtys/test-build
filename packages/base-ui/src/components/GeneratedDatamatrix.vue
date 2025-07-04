@@ -3,8 +3,8 @@
 </template>
 
 <script setup>
-import DATAMatrix from "@base/datamatrix.js";
-import { computed, onMounted, ref } from "vue";
+import DATAMatrix from '@base/datamatrix.js';
+import { computed, onMounted, ref } from 'vue';
 
 const props = defineProps({
     data: {
@@ -24,7 +24,7 @@ const props = defineProps({
     },
 });
 
-const svgHtml = ref("");
+const svgHtml = ref('');
 
 const computedSize = computed(() => `${props.size}px`);
 
@@ -32,7 +32,7 @@ onMounted(() => {
     if (props.data) {
         const datamatrixMessage = JSON.stringify(props.data).replace(
             /[\u007F-\uFFFF]/g,
-            (chr) => `\\u${chr.charCodeAt(0).toString(16).padStart(4, "0")}`,
+            (chr) => `\\u${chr.charCodeAt(0).toString(16).padStart(4, '0')}`,
         );
 
         const pad = 5;
@@ -41,7 +41,7 @@ onMounted(() => {
             dim: 180, // dimensions
             rct: 0, // keep datamatrix square
             pad, // padding
-            pal: props.darkMode ? ["#fff", ""] : ["#000", ""], // palette
+            pal: props.darkMode ? ['#fff', ''] : ['#000', ''], // palette
             vrb: 1, // verbose
         });
 

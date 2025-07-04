@@ -1,29 +1,29 @@
-import MarkingCard from "@components/MarkingCard.vue";
+import MarkingCard from '@components/MarkingCard.vue';
 
 /** Компонент карточки маркировки */
 export default {
-    title: "Tablet/MarkingCard",
+    title: 'Tablet/MarkingCard',
     component: MarkingCard,
     argTypes: {
         isAggregationVisible: {
-            description: "Идет агрегация",
+            description: 'Идет агрегация',
         },
         isProgressPieVisible: {
-            description: "Прогресс",
+            description: 'Прогресс',
         },
         isRepeatVisible: {
-            description: "Повторная маркировка",
+            description: 'Повторная маркировка',
         },
         codeInfo: {
-            description: "Информация по объекту",
+            description: 'Информация по объекту',
         },
     },
     parameters: {
         backgrounds: {
-            default: "light",
+            default: 'light',
             values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "light", value: "#ededed" },
+                { name: 'dark', value: '#242a2b' },
+                { name: 'light', value: '#ededed' },
             ],
         },
     },
@@ -38,8 +38,8 @@ export const Progress = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
     },
@@ -54,8 +54,8 @@ export const goAggregation = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
     },
@@ -70,8 +70,8 @@ export const repeatAggregation = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
     },

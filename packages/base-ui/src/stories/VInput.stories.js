@@ -1,72 +1,72 @@
-import { VInput } from "@base";
-import { computed, ref } from "vue";
+import { VInput } from '@base';
+import { computed, ref } from 'vue';
 
 const variants = {
-    standard: "Обычный",
-    outlined: "С границами",
-    filled: "Заполненный",
+    standard: 'Обычный',
+    outlined: 'С границами',
+    filled: 'Заполненный',
 };
 
 const types = {
-    string: "Строка",
-    number: "Число",
-    textarea: "Textarea",
-    password: "Пароль",
+    string: 'Строка',
+    number: 'Число',
+    textarea: 'Textarea',
+    password: 'Пароль',
 };
 
 /** Компонент input, который в своей основе использует q-input, но с некоторыми брендовыми изменениями. Можно передавать все пропсы, которые принимает базовый компонент q-input. */
 
 export default {
-    title: "VInput",
+    title: 'VInput',
     component: VInput,
     argTypes: {
         type: {
-            description: "Тип поля ввода",
+            description: 'Тип поля ввода',
             options: Object.keys(types),
             control: {
-                type: "select",
+                type: 'select',
                 labels: types,
             },
         },
         variant: {
-            description: "Стиль поля ввода",
+            description: 'Стиль поля ввода',
             options: Object.keys(variants),
             control: {
-                type: "select",
+                type: 'select',
                 labels: variants,
             },
         },
         label: {
-            description: "Название поля",
+            description: 'Название поля',
         },
         modelValue: {
-            description: "Значение поля",
+            description: 'Значение поля',
         },
         placeholder: {
-            description: "Заглушка для поля",
+            description: 'Заглушка для поля',
         },
         labelOutside: {
-            description: "Название за границами поля ввода",
+            description: 'Название за границами поля ввода',
             options: [true, false],
         },
         required: {
-            description: "Обязательное поле",
+            description: 'Обязательное поле',
             options: [true, false],
         },
         dense: {
-            description: "Занимать меньше пространства",
+            description: 'Занимать меньше пространства',
             options: [true, false],
             control: {
-                type: "boolean",
+                type: 'boolean',
             },
         },
     },
     args: {
-        type: "string",
-        variant: "standard",
-        label: "",
-        modelValue: "",
-        placeholder: "",
+        type: 'string',
+        variant: 'standard',
+        label: '',
+        modelValue: '',
+        placeholder: '',
         labelOutside: false,
         required: false,
         dense: false,
@@ -106,140 +106,140 @@ const BaseComponent = (args) => ({
 
 export const Standard = BaseComponent.bind({});
 Standard.args = {
-    type: "string",
-    placeholder: "Введите имя",
-    modelValue: "",
-    label: "Ваше имя",
+    type: 'string',
+    placeholder: 'Введите имя',
+    modelValue: '',
+    label: 'Ваше имя',
 };
 
 export const StandardDense = BaseComponent.bind({});
 StandardDense.args = {
-    type: "string",
-    placeholder: "Введите имя",
-    modelValue: "",
-    label: "Ваше имя",
+    type: 'string',
+    placeholder: 'Введите имя',
+    modelValue: '',
+    label: 'Ваше имя',
     dense: true,
 };
 
 export const StandardLabelOutside = BaseComponent.bind({});
 StandardLabelOutside.args = {
-    type: "string",
-    placeholder: "Введите имя",
-    modelValue: "",
-    label: "Ваше имя",
+    type: 'string',
+    placeholder: 'Введите имя',
+    modelValue: '',
+    label: 'Ваше имя',
     labelOutside: true,
 };
 
 export const StandardLabelOutsideRequired = BaseComponent.bind({});
 StandardLabelOutsideRequired.args = {
-    type: "string",
-    placeholder: "Введите имя",
-    modelValue: "",
-    label: "Ваше имя",
+    type: 'string',
+    placeholder: 'Введите имя',
+    modelValue: '',
+    label: 'Ваше имя',
     labelOutside: true,
     required: true,
 };
 
 export const Outlined = BaseComponent.bind({});
 Outlined.args = {
-    type: "string",
-    placeholder: "Введите имя",
-    modelValue: "",
-    label: "Ваше имя",
-    variant: "outlined",
+    type: 'string',
+    placeholder: 'Введите имя',
+    modelValue: '',
+    label: 'Ваше имя',
+    variant: 'outlined',
 };
 
 export const OutlinedLabelOutside = BaseComponent.bind({});
 OutlinedLabelOutside.args = {
-    type: "string",
-    placeholder: "Введите имя",
-    modelValue: "",
-    label: "Ваше имя",
-    variant: "outlined",
+    type: 'string',
+    placeholder: 'Введите имя',
+    modelValue: '',
+    label: 'Ваше имя',
+    variant: 'outlined',
     labelOutside: true,
 };
 
 export const OutlinedLabelOutsideRequired = BaseComponent.bind({});
 OutlinedLabelOutsideRequired.args = {
-    type: "string",
-    placeholder: "Введите имя",
-    modelValue: "",
-    label: "Ваше имя",
-    variant: "outlined",
+    type: 'string',
+    placeholder: 'Введите имя',
+    modelValue: '',
+    label: 'Ваше имя',
+    variant: 'outlined',
     labelOutside: true,
     required: true,
 };
 
 export const Filled = BaseComponent.bind({});
 Filled.args = {
-    type: "string",
-    placeholder: "Введите имя",
-    modelValue: "",
-    label: "Ваше имя",
-    variant: "filled",
+    type: 'string',
+    placeholder: 'Введите имя',
+    modelValue: '',
+    label: 'Ваше имя',
+    variant: 'filled',
 };
 
 export const FilledLabelOutside = BaseComponent.bind({});
 FilledLabelOutside.args = {
-    type: "string",
-    placeholder: "Введите имя",
-    modelValue: "",
-    label: "Ваше имя",
-    variant: "filled",
+    type: 'string',
+    placeholder: 'Введите имя',
+    modelValue: '',
+    label: 'Ваше имя',
+    variant: 'filled',
     labelOutside: true,
 };
 
 export const FilledLabelOutsideRequired = BaseComponent.bind({});
 FilledLabelOutsideRequired.args = {
-    type: "string",
-    placeholder: "Введите имя",
-    modelValue: "",
-    label: "Ваше имя",
-    variant: "filled",
+    type: 'string',
+    placeholder: 'Введите имя',
+    modelValue: '',
+    label: 'Ваше имя',
+    variant: 'filled',
     labelOutside: true,
     required: true,
 };
 
 export const Password = BaseComponent.bind({});
 Password.args = {
-    type: "password",
-    placeholder: "Введите пароль",
-    modelValue: "",
-    label: "Пароль",
+    type: 'password',
+    placeholder: 'Введите пароль',
+    modelValue: '',
+    label: 'Пароль',
 };
 
 export const PasswordRequired = BaseComponent.bind({});
 PasswordRequired.args = {
-    type: "password",
-    placeholder: "Введите пароль",
-    modelValue: "",
-    label: "Пароль",
+    type: 'password',
+    placeholder: 'Введите пароль',
+    modelValue: '',
+    label: 'Пароль',
     required: true,
 };
 
 export const PasswordWithValidation = BaseComponent.bind({});
-PasswordWithValidation.storyName = "Password With Validation (min length = 6)";
+PasswordWithValidation.storyName = 'Password With Validation (min length = 6)';
 PasswordWithValidation.args = {
-    type: "password",
-    placeholder: "Введите пароль",
-    modelValue: "",
-    label: "Пароль",
-    rules: [(val) => val.length < 6 || "Минимальная длина 6 символов"],
+    type: 'password',
+    placeholder: 'Введите пароль',
+    modelValue: '',
+    label: 'Пароль',
+    rules: [(val) => val.length < 6 || 'Минимальная длина 6 символов'],
     lazyRules: true,
     required: true,
 };
 
 export const Textarea = BaseComponent.bind({});
 Textarea.args = {
-    type: "textarea",
-    modelValue: "",
-    label: "Сообщение",
+    type: 'textarea',
+    modelValue: '',
+    label: 'Сообщение',
 };
 
 export const TextareaRequired = BaseComponent.bind({});
 TextareaRequired.args = {
-    type: "textarea",
-    modelValue: "",
-    label: "Сообщение",
+    type: 'textarea',
+    modelValue: '',
+    label: 'Сообщение',
     required: true,
 };

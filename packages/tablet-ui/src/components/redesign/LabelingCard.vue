@@ -60,9 +60,9 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import { setupI18n } from "@base/i18n.js";
-import StatusCode from "./StatusCode.vue";
+import { VIcon } from '@base';
+import { setupI18n } from '@base/i18n.js';
+import StatusCode from './StatusCode.vue';
 
 const { t } = setupI18n();
 
@@ -73,16 +73,16 @@ defineProps({
     isScan: { type: Boolean, default: false },
     codeInfo: { type: Object, default: () => ({}) },
     /** Статус индикатора  */
-    status1: { type: String, default: "" },
+    status1: { type: String, default: '' },
     /** Тип кода  */
-    codeType1: { type: String, default: "" },
+    codeType1: { type: String, default: '' },
     /** Цвет индикатора  */
-    color1: { type: String, default: "info" },
+    color1: { type: String, default: 'info' },
 
     secondCode: { type: Boolean, default: true },
-    status2: { type: String, default: "" },
-    codeType2: { type: String, default: "" },
-    color2: { type: String, default: "info" },
+    status2: { type: String, default: '' },
+    codeType2: { type: String, default: '' },
+    color2: { type: String, default: 'info' },
 });
 </script>
 

@@ -1,25 +1,25 @@
-import { GeneratedDatamatrix } from "@base";
-import { computed } from "vue";
+import { GeneratedDatamatrix } from '@base';
+import { computed } from 'vue';
 
 /** Компонент для генерации Datamatrix изображения на основе получаемого сообщения. Можно менять размер изображения и переключать светлый/темный режим. */
 
 export default {
-    title: "GeneratedDatamatrix",
+    title: 'GeneratedDatamatrix',
     component: GeneratedDatamatrix,
     argTypes: {
         data: {
-            description: "Сообщение для генерации",
+            description: 'Сообщение для генерации',
         },
         size: {
-            description: "Размер изображения",
+            description: 'Размер изображения',
             control: {
-                type: "number",
+                type: 'number',
             },
         },
         darkMode: {
-            description: "Темный режим",
+            description: 'Темный режим',
             control: {
-                type: "boolean",
+                type: 'boolean',
             },
         },
     },
@@ -42,7 +42,7 @@ const BaseComponent = (args) => ({
 export const Standard = BaseComponent.bind({});
 Standard.args = {
     data: {
-        name: "Вода Артезианская 1 л.",
+        name: 'Вода Артезианская 1 л.',
         stackSize: 6,
         palletSize: 100,
     },
@@ -51,12 +51,12 @@ Standard.args = {
 export const DarkMode = BaseComponent.bind({});
 DarkMode.args = {
     data: {
-        name: "Вода Артезианская 1 л.",
+        name: 'Вода Артезианская 1 л.',
         stackSize: 6,
         palletSize: 100,
     },
     darkMode: true,
 };
 DarkMode.globals = {
-    backgrounds: { value: "dark" },
+    backgrounds: { value: 'dark' },
 };

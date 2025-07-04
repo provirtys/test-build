@@ -48,9 +48,9 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import { setupI18n } from "@base/i18n.js";
-import ProgressPie from "./ProgressPie.vue";
+import { VIcon } from '@base';
+import { setupI18n } from '@base/i18n.js';
+import ProgressPie from './ProgressPie.vue';
 
 const { t } = setupI18n();
 
@@ -62,11 +62,11 @@ defineProps({
 });
 
 function getCodeTime(value) {
-    return new Date(value).toLocaleTimeString("RU-ru");
+    return new Date(value).toLocaleTimeString('RU-ru');
 }
 
 function getCodeDate(value) {
-    return new Date(value).toLocaleDateString("RU-ru");
+    return new Date(value).toLocaleDateString('RU-ru');
 }
 </script>
 

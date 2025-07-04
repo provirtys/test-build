@@ -18,18 +18,18 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import LabelingStatus from "./LabelingStatus.vue";
+import { computed } from 'vue';
+import LabelingStatus from './LabelingStatus.vue';
 
 const props = defineProps({
     id: {
         type: String,
-        default: "",
+        default: '',
     },
     /** Название задачи*/
     title: {
         type: String,
-        default: "",
+        default: '',
     },
     /** Информация о задаче*/
     toolItems: {
@@ -39,7 +39,7 @@ const props = defineProps({
     /** Статус маркировки*/
     labelingStatus: {
         type: String,
-        default: "",
+        default: '',
     },
     /** Приоритет задания */
     isPriority: {
@@ -50,21 +50,21 @@ const props = defineProps({
     isActiveTask: { type: Boolean, default: false },
 });
 
-const emit = defineEmits(["chooseTask"]);
+const emit = defineEmits(['chooseTask']);
 
 const backgroundColor = computed(() => {
     switch (props.labelingStatus) {
-        case "ready":
-        case "": //стату Отменено
-            return "no-bg";
-        case "labeling": //Задание в процессе выполнения всегда выделяются активным состоянием
-            return "active";
+        case 'ready':
+        case '': //стату Отменено
+            return 'no-bg';
+        case 'labeling': //Задание в процессе выполнения всегда выделяются активным состоянием
+            return 'active';
         default:
-            return "";
+            return '';
     }
 });
 function chooseTask() {
-    emit("chooseTask", props.id);
+    emit('chooseTask', props.id);
 }
 </script>
 

@@ -6,28 +6,28 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import { computed } from "vue";
+import { VIcon } from '@base';
+import { computed } from 'vue';
 
 const props = defineProps({
     /** Значение кнопки*/
     value: {
         type: String,
-        default: "",
+        default: '',
     },
     size: {
         type: String,
-        default: "lg",
-        validator: (val) => ["sm", "md", "lg"].includes(val),
+        default: 'lg',
+        validator: (val) => ['sm', 'md', 'lg'].includes(val),
     },
 });
 
-const emit = defineEmits(["pressed"]);
+const emit = defineEmits(['pressed']);
 
-const buttonClasses = computed(() => ["key-button", `key-button--${props.size}`]);
+const buttonClasses = computed(() => ['key-button', `key-button--${props.size}`]);
 
 function pressed() {
-    emit("pressed", props.value);
+    emit('pressed', props.value);
 }
 </script>
 

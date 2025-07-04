@@ -13,20 +13,20 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed } from 'vue';
 
 const props = defineProps({
     bgColor: {
         type: String,
-        default: "#206DC8",
+        default: '#206DC8',
     },
     iconColor: {
         type: String,
-        default: "#206DC8",
+        default: '#206DC8',
     },
     text: {
         type: String,
-        default: "Info",
+        default: 'Info',
     },
     isTransparent: {
         type: Boolean,

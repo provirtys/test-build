@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed } from 'vue';
 
 const props = defineProps({
     value: {
@@ -34,7 +34,7 @@ const props = defineProps({
 });
 
 const classes = computed(() => ({
-    "numeric-ratio--light": props.isLight,
+    'numeric-ratio--light': props.isLight,
 }));
 </script>
 

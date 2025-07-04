@@ -19,51 +19,51 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import { computed } from "vue";
-import StatusIndicator from "./StatusIndicator.vue";
+import { VIcon } from '@base';
+import { computed } from 'vue';
+import StatusIndicator from './StatusIndicator.vue';
 
 const props = defineProps({
     /** Вид кнопки */
-    color: { type: String, default: "primary" },
+    color: { type: String, default: 'primary' },
     /** Дополнительные элементы справа */
-    isIcon: { type: String, default: "" },
+    isIcon: { type: String, default: '' },
     /** Выбранное значение */
     isSelect: { type: Boolean, default: false },
     /** Текст кнопки */
-    buttonText: { type: String, default: "" },
+    buttonText: { type: String, default: '' },
     /** Не активное состояние кнопки */
     isDisabled: { type: Boolean, default: false },
     /** Высота кнопки */
-    height: { type: String, default: "large" },
+    height: { type: String, default: 'large' },
 
     /** Цвет иконки статуса и анимированное состояние*/
     isAnimate: { type: Boolean, default: true },
-    iconStatus: { type: String, default: "info" },
+    iconStatus: { type: String, default: 'info' },
 });
 
-const emit = defineEmits(["actionSubmitted"]);
+const emit = defineEmits(['actionSubmitted']);
 function submitAction() {
-    emit("actionSubmitted");
+    emit('actionSubmitted');
 }
 
 const backgroundColor = computed(() => {
     if (props.isDisabled) {
-        return "disabled";
+        return 'disabled';
     }
     switch (props.color) {
-        case "secondary":
-        case "plane":
-        case "outline":
+        case 'secondary':
+        case 'plane':
+        case 'outline':
             return props.color;
         default:
-            return "primary";
+            return 'primary';
     }
 });
 
 const sizeIcon = computed(() => {
     switch (props.height) {
-        case "large":
+        case 'large':
             return 36;
         default:
             return 28;
@@ -72,12 +72,12 @@ const sizeIcon = computed(() => {
 
 const buttonSize = computed(() => {
     switch (props.height) {
-        case "medium":
-        case "small":
-        case "extra-small":
+        case 'medium':
+        case 'small':
+        case 'extra-small':
             return props.height;
         default:
-            return "large";
+            return 'large';
     }
 });
 </script>

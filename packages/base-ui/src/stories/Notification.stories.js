@@ -1,9 +1,9 @@
-import { VButton } from "@base";
-import { Notify } from "quasar";
+import { VButton } from '@base';
+import { Notify } from 'quasar';
 
 /** Пример того, как можно создать уведомление. Необходимо вызвать Notify.create с типом `error`   */
 export default {
-    title: "Notification",
+    title: 'Notification',
     component: Notification,
 };
 
@@ -25,6 +25,6 @@ const BaseComponent = (args) => ({
 
 export const Standard = BaseComponent.bind({});
 Standard.args = {
-    type: "error",
-    message: "{{Статус/описание ошибки}}",
+    type: 'error',
+    message: '{{Статус/описание ошибки}}',
 };

@@ -20,16 +20,16 @@
 </template>
 
 <script setup>
-import { VIcon } from "@base";
-import { computed, onMounted, useAttrs } from "vue";
+import { VIcon } from '@base';
+import { computed, onMounted, useAttrs } from 'vue';
 
 const props = defineProps({
-    modelValue: { type: String, default: "" },
+    modelValue: { type: String, default: '' },
     options: { type: Array, default: () => [] },
-    align: { type: String, default: "center" },
+    align: { type: String, default: 'center' },
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(['update:modelValue']);
 
 defineOptions({
     inheritAttrs: false,
@@ -38,7 +38,7 @@ defineOptions({
 const attrs = useAttrs();
 
 const classes = computed(() => [
-    "switcher",
+    'switcher',
     {
         [`switcher--text-${props.align}`]: props.align,
     },
@@ -47,9 +47,9 @@ const classes = computed(() => [
 const computedAttrs = computed(() => ({
     disable: attrs.disable,
     spread: attrs.spread,
-    textColor: "dark-1",
-    toggleColor: "dark-1",
-    toggleTextColor: "white",
+    textColor: 'dark-1',
+    toggleColor: 'dark-1',
+    toggleTextColor: 'white',
     ripple: false,
     rounded: true,
     unelevated: true,
@@ -57,12 +57,12 @@ const computedAttrs = computed(() => ({
 }));
 
 const updateValue = (val) => {
-    emit("update:modelValue", val);
+    emit('update:modelValue', val);
 };
 
 onMounted(() => {
     if (!props.modelValue) {
-        emit("update:modelValue", props.options[0].value);
+        emit('update:modelValue', props.options[0].value);
     }
 });
 </script>

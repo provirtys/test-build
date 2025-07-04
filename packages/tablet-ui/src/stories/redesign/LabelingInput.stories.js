@@ -1,73 +1,73 @@
-import LabelingInput from "@components/redesign/LabelingInput.vue";
+import LabelingInput from '@components/redesign/LabelingInput.vue';
 
 // Размеры кнопки
-const large = "large";
-const medium = "medium";
-const small = "small";
-const extraSmall = "extra-small";
+const large = 'large';
+const medium = 'medium';
+const small = 'small';
+const extraSmall = 'extra-small';
 
 const sizes = { large, medium, small, extraSmall };
 /** Компонент input для ввода количества продукции в новой задаче (Tablet) */
 export default {
-    title: "TabletUI-redesign/LabelingInput",
+    title: 'TabletUI-redesign/LabelingInput',
     component: LabelingInput,
     argTypes: {
         height: {
-            description: "Размер поля ввода",
+            description: 'Размер поля ввода',
             options: Object.keys(sizes),
             mapping: sizes,
             control: {
-                type: "radio",
+                type: 'radio',
                 labels: {
-                    large: "Large (L)",
-                    medium: "Medium (M)",
-                    small: "Small (S)",
-                    extraSmall: "Extra small (XS)",
+                    large: 'Large (L)',
+                    medium: 'Medium (M)',
+                    small: 'Small (S)',
+                    extraSmall: 'Extra small (XS)',
                 },
             },
         },
         isIcon: {
-            description: "Варианты с иконкой/без иконки",
+            description: 'Варианты с иконкой/без иконки',
             options: [true, false],
-            control: { type: "radio" },
+            control: { type: 'radio' },
         },
         label: {
-            description: "label",
+            description: 'label',
         },
     },
     parameters: {
         backgrounds: {
-            default: "white",
+            default: 'white',
             values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "white", value: "#ffffff" },
-                { name: "light", value: "#ededed" },
-                { name: "light-gray", value: "#f1f1f1" },
+                { name: 'dark', value: '#242a2b' },
+                { name: 'white', value: '#ffffff' },
+                { name: 'light', value: '#ededed' },
+                { name: 'light-gray', value: '#f1f1f1' },
             ],
         },
     },
 };
 export const InputLargeL = {
     args: {
-        height: "large",
-        label: "Label",
+        height: 'large',
+        label: 'Label',
     },
 };
 export const InputMediumM = {
     args: {
-        height: "medium",
-        label: "Label",
+        height: 'medium',
+        label: 'Label',
     },
 };
 export const InputSmallS = {
     args: {
-        height: "small",
-        label: "Label",
+        height: 'small',
+        label: 'Label',
     },
 };
 export const InputExtraSmallXS = {
     args: {
-        height: "extra-small",
-        label: "Label",
+        height: 'extra-small',
+        label: 'Label',
     },
 };

@@ -5,9 +5,9 @@
 </template>
 
 <script setup>
-import { setupI18n } from "@base/i18n.js";
-import ApexCharts from "apexcharts";
-import { onMounted, ref, watch } from "vue";
+import { setupI18n } from '@base/i18n.js';
+import ApexCharts from 'apexcharts';
+import { onMounted, ref, watch } from 'vue';
 
 const { t } = setupI18n();
 
@@ -34,9 +34,9 @@ function changeBarData(codeList) {
     // заполнение result
     if (totalItems <= limit) {
         codeList.forEach(({ status }, index) => {
-            if (status === "generated" || status === "printed" || status === "verified" || status === "synced") {
+            if (status === 'generated' || status === 'printed' || status === 'verified' || status === 'synced') {
                 result[index].ok++;
-            } else if (status === "broken") {
+            } else if (status === 'broken') {
                 result[index].broken++;
             }
         });
@@ -45,9 +45,9 @@ function changeBarData(codeList) {
         let codesInCurrentColumn = 0;
         let currentColumn = 0;
         codeList.forEach(({ status }, index) => {
-            if (status === "generated" || status === "printed" || status === "verified" || status === "synced") {
+            if (status === 'generated' || status === 'printed' || status === 'verified' || status === 'synced') {
                 result[currentColumn].ok++;
-            } else if (status === "broken") {
+            } else if (status === 'broken') {
                 result[currentColumn].broken++;
             }
             codesInCurrentColumn++;
@@ -87,7 +87,7 @@ function changeBarData(codeList) {
         for (let i = 0; i < limit; i++) {
             // если остаток от деление на 20 != 0 и i != последнему элементу
             if (i % 20 !== 0 && i !== xax.length - 1) {
-                xax[i] = "";
+                xax[i] = '';
             }
         }
     }
@@ -96,11 +96,11 @@ function changeBarData(codeList) {
 
 window.Apex = {
     chart: {
-        type: "bar",
+        type: 'bar',
         stacked: true,
-        height: "100%", // storybook
-        foreColor: "#000",
-        fontFamily: "Golos",
+        height: '100%', // storybook
+        foreColor: '#000',
+        fontFamily: 'Golos',
         // меню для скачивания графика
         toolbar: {
             show: false,
@@ -109,7 +109,7 @@ window.Apex = {
             enabled: false,
         },
     },
-    colors: ["#d3141c", "#e3e3e3"],
+    colors: ['#d3141c', '#e3e3e3'],
     dataLabels: {
         enabled: false,
     },
@@ -119,16 +119,16 @@ window.Apex = {
     xaxis: {
         tickAmount: 15,
         axisTicks: {
-            color: "#000",
+            color: '#000',
             width: 2,
             height: 6,
         },
         axisBorder: {
-            color: "#000",
+            color: '#000',
             height: 2,
         },
         title: {
-            text: t("length"),
+            text: t('length'),
         },
     },
     // Высплывающая подсказка
@@ -147,7 +147,7 @@ const optionsColumn = {
     },
     plotOptions: {
         bar: {
-            columnWidth: "90%",
+            columnWidth: '90%',
         },
     },
     stroke: {
@@ -170,7 +170,7 @@ const optionsColumn = {
         },
     ],
     xaxis: {
-        tickPlacement: "on",
+        tickPlacement: 'on',
         labels: {
             rotate: 0,
         },
@@ -185,7 +185,7 @@ const optionsColumn = {
 };
 
 onMounted(() => {
-    chartColumn = new ApexCharts(document.querySelector("#columnchart-time"), optionsColumn);
+    chartColumn = new ApexCharts(document.querySelector('#columnchart-time'), optionsColumn);
     chartColumn.render();
     changeBarData(props.codes);
 });
@@ -194,26 +194,26 @@ function updateData(broken, ok, x) {
     chartColumn.updateOptions({
         series: [{ data: broken }, { data: ok }],
         xaxis: {
-            type: "category",
+            type: 'category',
             categories: x,
             axisTicks: {
-                color: "#ffffff",
+                color: '#ffffff',
             },
         },
     });
     const xaxisTicks = document
-        .getElementById("columnchart-time")
-        .getElementsByClassName("apexcharts-inner apexcharts-graphical")[0]
-        .getElementsByClassName("apexcharts-xaxis-tick");
+        .getElementById('columnchart-time')
+        .getElementsByClassName('apexcharts-inner apexcharts-graphical')[0]
+        .getElementsByClassName('apexcharts-xaxis-tick');
     if (xaxisTicks.length > 20) {
         for (let i = 0; i < xaxisTicks.length; i++) {
             if (i % 20 === 0 || i === xaxisTicks.length - 1) {
-                xaxisTicks[i].setAttribute("stroke", "#000000");
+                xaxisTicks[i].setAttribute('stroke', '#000000');
             }
         }
     } else {
         for (let i = 0; i < xaxisTicks.length; i++) {
-            xaxisTicks[i].setAttribute("stroke", "#000000");
+            xaxisTicks[i].setAttribute('stroke', '#000000');
         }
     }
 }

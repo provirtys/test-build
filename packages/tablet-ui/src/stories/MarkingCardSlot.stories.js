@@ -1,50 +1,50 @@
-import MarkingCardSlot from "@components/MarkingCardSlot.vue";
+import MarkingCardSlot from '@components/MarkingCardSlot.vue';
 
-const one = "1";
-const two = "2";
-const three = "3";
-const four = "4";
-const five = "5";
+const one = '1';
+const two = '2';
+const three = '3';
+const four = '4';
+const five = '5';
 const btnTypes = { one, two, three, four, five };
 /** Компонент карточки маркировки c кнопками. Можно настраивать кнопки в заваисимотри от этапа маркировки*/
 export default {
-    title: "Tablet/MarkingCardSlot",
+    title: 'Tablet/MarkingCardSlot',
     component: MarkingCardSlot,
     argTypes: {
         isAggregationVisible: {
-            description: "Идет агрегация",
+            description: 'Идет агрегация',
         },
         isProgressPieVisible: {
-            description: "Прогресс",
+            description: 'Прогресс',
         },
         isRepeatVisible: {
-            description: "Повторная маркировка",
+            description: 'Повторная маркировка',
         },
         codeInfo: {
-            description: "Информация по объекту",
+            description: 'Информация по объекту',
         },
         btn: {
-            description: "Кнопка",
+            description: 'Кнопка',
             options: Object.keys(btnTypes),
             mapping: btnTypes,
             control: {
-                type: "radio",
+                type: 'radio',
                 labels: {
-                    one: "Начало агрегации",
-                    two: "Идет агрегация Сканирование кода",
-                    three: "Брак маркировки Сканирование",
-                    four: "Брак маркировки Подтверждение",
-                    five: "Завершение агрегации",
+                    one: 'Начало агрегации',
+                    two: 'Идет агрегация Сканирование кода',
+                    three: 'Брак маркировки Сканирование',
+                    four: 'Брак маркировки Подтверждение',
+                    five: 'Завершение агрегации',
                 },
             },
         },
     },
     parameters: {
         backgrounds: {
-            default: "light",
+            default: 'light',
             values: [
-                { name: "dark", value: "#242a2b" },
-                { name: "light", value: "#ededed" },
+                { name: 'dark', value: '#242a2b' },
+                { name: 'light', value: '#ededed' },
             ],
         },
     },
@@ -59,11 +59,11 @@ export const ProgressSlot1 = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
-        btn: "1",
+        btn: '1',
     },
 };
 /**Идет агрегация - Брак маркировки/Повторить маркировку */
@@ -75,11 +75,11 @@ export const ProgressSlot2 = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
-        btn: "2",
+        btn: '2',
     },
 };
 /** Идет агрегация - Брак маркировки/Повторить маркировку */
@@ -91,11 +91,11 @@ export const ProgressSlot3 = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
-        btn: "2",
+        btn: '2',
     },
 };
 /** Брак маркировки - Сканировать */
@@ -107,11 +107,11 @@ export const ProgressSlot4 = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
-        btn: "3",
+        btn: '3',
     },
 };
 /** Брак маркировки - Подтвердить */
@@ -123,11 +123,11 @@ export const ProgressSlot5 = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
-        btn: "4",
+        btn: '4',
     },
 };
 /** Завершение агрегации */
@@ -139,10 +139,10 @@ export const ProgressSlot6 = {
         codeInfo: {
             labeled: 50,
             total: 120,
-            ts: "12:11:12",
-            code: "wv985fjs934",
+            ts: '12:11:12',
+            code: 'wv985fjs934',
             position: 10,
         },
-        btn: "5",
+        btn: '5',
     },
 };

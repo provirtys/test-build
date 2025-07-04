@@ -89,9 +89,9 @@
 </template>
 
 <script setup>
-import { VButton } from "@base";
-import { setupI18n } from "@base/i18n.js";
-import MarkingCard from "./MarkingCard.vue";
+import { VButton } from '@base';
+import { setupI18n } from '@base/i18n.js';
+import MarkingCard from './MarkingCard.vue';
 
 const { t } = setupI18n();
 
@@ -100,7 +100,7 @@ defineProps({
     isProgressPieVisible: { type: Boolean, default: true },
     isRepeatVisible: { type: Boolean, default: true },
     codeInfo: { type: Object, default: () => ({}) },
-    btn: { type: String, default: "1" },
+    btn: { type: String, default: '1' },
 });
 </script>
 
