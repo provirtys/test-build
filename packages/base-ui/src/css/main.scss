@@ -1,6 +1,7 @@
 @import './mixins';
 @import './variables';
 @import './fonts';
+@import './quasar.classes';
 
 * {
   margin: 0;
@@ -47,36 +48,7 @@ body {
   margin-top: $m-2;
 }
 
-.text-primary {
-  color: $primary !important;
-}
 
-.bg-primary {
-  background: $primary !important;
-}
-
-.bg-gray-2 {
-  background: $light-gray-85 !important;
-}
-.text-gray-2 {
-  color: $light-gray-85 !important;
-}
-
-.text-dark-1 {
-  color: $primary-text !important;
-}
-
-.bg-dark-1 {
-  background: $primary-text !important;
-}
-
-.bg-error {
-  background: $error;
-}
-
-.text-error {
-  color: $error
-}
 
 .fade-enter-active,
 .fade-leave-active {
