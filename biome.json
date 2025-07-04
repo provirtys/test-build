@@ -34,7 +34,8 @@
       "quoteProperties": "asNeeded",
       "semicolons": "always",
       "lineEnding": "lf",
-      "lineWidth": 120
+      "lineWidth": 120,
+      "quoteStyle": "single"
     }
   },
   "json": {
