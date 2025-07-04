@@ -50,10 +50,6 @@ const props = defineProps({
         required: false,
         validator: (val) => ["lg", "md", "sm", "xs"].includes(val),
     },
-    isRadius: {
-        type: Boolean,
-        required: false,
-    },
     locationIcon: {
         type: String,
         required: false,
@@ -100,7 +96,6 @@ const btnClasses = computed(() => [
         [`text-${props.textAlignment}`]: props.textAlignment,
         "in-progress": btnStatus.value === "progress",
         done: showSubmittedIcon.value,
-        "not-radius": btnStatus.value === "done" && !props.isRadius,
     },
 ]);
 
@@ -334,12 +329,6 @@ const finishAnimation = (_evt, finished) => {
       &::before {
         background: $secondary;
         opacity: 0.25;
-      }
-    }
-
-    &.not-radius {
-      &::before {
-        border-radius: 0;
       }
     }
 

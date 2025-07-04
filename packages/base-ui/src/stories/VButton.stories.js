@@ -1,4 +1,5 @@
-import { VButton } from "@base";
+import { VButton, VInput } from "@base";
+import { computed, ref } from "vue";
 
 // Расположение иконки
 const empty = "";
@@ -12,10 +13,10 @@ const plane = "plane";
 const outline = "outline";
 
 // Размеры кнопки
-const large = "large";
-const medium = "medium";
-const small = "small";
-const extraSmall = "extra-small";
+const lg = "lg";
+const md = "md";
+const sm = "sm";
+const xs = "xs";
 
 const center = "center";
 
@@ -30,7 +31,7 @@ const restart = "restart";
 
 const location = { left, right, empty };
 const colors = { primary, secondary, plane, outline };
-const sizes = { large, medium, small, extraSmall };
+const sizes = { lg, md, sm, xs };
 const textAlignments = { left, center, right };
 const iconNames = {
     bad,
@@ -48,34 +49,27 @@ export default {
     title: "VButton",
     component: VButton,
     argTypes: {
-        parameters: {
-            backgrounds: {
-                default: "white",
-            },
-        },
         color: {
             description: "Цвет кнопки",
             options: Object.keys(colors),
-            mapping: colors,
             control: {
-                type: "radio",
+                type: "select",
                 labels: {
-                    primary: "Primary",
-                    secondary: "Secondary",
-                    plane: "Plane",
-                    outline: "Outline",
+                    primary: "Основной",
+                    secondary: "Второстепенный",
+                    plane: "Плоский",
+                    outline: "С границей",
                 },
             },
         },
         text: {
-            description: "Текст кнопки.",
+            description: "Текст кнопки",
         },
         textAlignment: {
             description: "Положение текста",
             options: Object.keys(textAlignments),
-            mapping: textAlignments,
             control: {
-                type: "radio",
+                type: "select",
                 labels: {
                     left: "Слева",
                     center: "По центру",
@@ -86,33 +80,27 @@ export default {
         isDisabled: {
             description: "Неактивное состояние",
             options: [true, false],
-            control: { type: "radio" },
+            control: { type: "boolean" },
         },
         height: {
-            description: "Размеры кнопки",
+            description: "Размер кнопки",
             options: Object.keys(sizes),
-            mapping: sizes,
             control: {
-                type: "radio",
+                type: "select",
                 labels: {
-                    large: "Large (L)",
-                    medium: "Medium (M)",
-                    small: "Small (S)",
-                    extraSmall: "Extra small (XS)",
+                    lg: "Большой",
+                    md: "Средний",
+                    sm: "Маленький",
+                    xs: "Очень маленький",
                 },
             },
-        },
-        isRadius: {
-            description: "Скругление углов.",
-            options: [true, false],
-            control: { type: "radio" },
         },
         icon: {
             description: "Имя иконки (название файла из папки с иконками без расширения)",
             options: Object.keys(iconNames),
             mapping: iconNames,
             control: {
-                type: "radio",
+                type: "select",
                 labels: iconNames,
             },
         },
@@ -121,7 +109,7 @@ export default {
             options: Object.keys(location),
             mapping: location,
             control: {
-                type: "radio",
+                type: "select",
                 labels: {
                     empty: "Без иконки",
                     left: "Слева",
@@ -132,37 +120,74 @@ export default {
         fitWidth: {
             description: "Отменить растягивание кнопки",
             options: [true, false],
-            control: { type: "radio" },
+            control: { type: "boolean" },
         },
         changeIcon: {
             description: "Показывать иконку галочки при отработке нажатия",
             options: [true, false],
-            control: { type: "radio" },
+            control: { type: "boolean" },
         },
         progress: {
             description: "Удерживание кнопки с прогресс баром",
             options: [true, false],
-            control: { type: "radio" },
+            control: { type: "boolean" },
         },
     },
-};
-
-export const Simple = {
     args: {
-        text: "Кнопка",
-        height: medium,
         color: primary,
-        isRadius: false,
-        changeIcon: true,
+        height: md,
+        text: "Кнопка",
+        textAlignment: center,
+        isDisabled: false,
+        icon: "",
+        locationIcon: empty,
+        fitWidth: false,
+        changeIcon: false,
         progress: false,
     },
 };
 
+const BaseComponent = (args) => ({
+    components: { VButton },
+    setup() {
+        const bindingArgs = computed(() => {
+            const { text, ...restArgs } = args;
+            return restArgs;
+        });
+
+        const text = computed(() => args.text);
+
+        return {
+            bindingArgs,
+            text,
+        };
+    },
+    template: `<v-button v-bind="bindingArgs">{{ text }}</v-button>`,
+});
+
+export const Simple = BaseComponent.bind({});
+Simple.args = {
+    text: "Кнопка",
+    height: "md",
+    color: primary,
+    changeIcon: true,
+    progress: false,
+};
+
+// export const Simple = {
+//     args: {
+//         text: "Кнопка",
+//         height: md,
+//         color: primary,
+//         changeIcon: true,
+//         progress: false,
+//     },
+// };
+
 export const Primary = {
     args: {
         text: "Начать маркировку",
-        height: medium,
-        isRadius: true,
+        height: md,
         color: primary,
         progress: true,
     },
@@ -171,9 +196,8 @@ export const Primary = {
 export const Secondary = {
     args: {
         text: "Начать маркировку",
-        height: medium,
+        height: md,
         color: secondary,
-        isRadius: true,
         progress: true,
     },
 };
@@ -181,9 +205,8 @@ export const Secondary = {
 export const Plane = {
     args: {
         text: "Начать маркировку",
-        height: medium,
+        height: md,
         color: plane,
-        isRadius: true,
         progress: true,
     },
 };
@@ -191,9 +214,8 @@ export const Plane = {
 export const Outline = {
     args: {
         text: "Начать маркировку",
-        height: medium,
+        height: md,
         color: outline,
-        isRadius: true,
         progress: true,
     },
 };
@@ -201,10 +223,9 @@ export const Outline = {
 export const Disabled = {
     args: {
         text: "Неактивная кнопка",
-        height: medium,
+        height: md,
         isDisabled: true,
         color: primary,
-        isRadius: true,
         progress: true,
     },
 };
@@ -212,9 +233,8 @@ export const Disabled = {
 export const NotRounded = {
     args: {
         text: "Не скругленная",
-        height: medium,
+        height: md,
         color: primary,
-        isRadius: false,
         progress: true,
     },
 };
@@ -222,9 +242,8 @@ export const NotRounded = {
 export const TextCenter = {
     args: {
         text: "Текст по центру",
-        height: medium,
+        height: md,
         color: primary,
-        isRadius: false,
         textAlignment: "center",
         progress: true,
     },
@@ -233,9 +252,8 @@ export const TextCenter = {
 export const TextRight = {
     args: {
         text: "Текст справа",
-        height: medium,
+        height: md,
         color: primary,
-        isRadius: false,
         textAlignment: "right",
         progress: true,
     },
@@ -244,9 +262,8 @@ export const TextRight = {
 export const IconLeftWithTextLeft = {
     args: {
         text: "Иконка слева текст слева",
-        height: medium,
+        height: md,
         color: primary,
-        isRadius: false,
         locationIcon: "left",
         icon: "bad",
         textAlignment: "left",
@@ -257,9 +274,8 @@ export const IconLeftWithTextLeft = {
 export const IconLeftWithTextCenter = {
     args: {
         text: "Иконка слева текст по центру",
-        height: medium,
+        height: md,
         color: primary,
-        isRadius: false,
         locationIcon: "left",
         icon: "bad",
         textAlignment: "center",
@@ -270,9 +286,8 @@ export const IconLeftWithTextCenter = {
 export const IconLeftWithTextRight = {
     args: {
         text: "Иконка слева текст справа",
-        height: medium,
+        height: md,
         color: primary,
-        isRadius: false,
         locationIcon: "left",
         icon: "bad",
         textAlignment: "right",
@@ -283,9 +298,8 @@ export const IconLeftWithTextRight = {
 export const IconRightWithTextLeft = {
     args: {
         text: "Иконка справа текст слева",
-        height: medium,
+        height: md,
         color: primary,
-        isRadius: false,
         locationIcon: "right",
         icon: "bad",
         textAlignment: "left",
@@ -296,9 +310,8 @@ export const IconRightWithTextLeft = {
 export const IconRightTextCenter = {
     args: {
         text: "Иконка справа текст по центру",
-        height: medium,
+        height: md,
         color: primary,
-        isRadius: false,
         locationIcon: "right",
         icon: "bad",
         textAlignment: "center",
@@ -309,9 +322,8 @@ export const IconRightTextCenter = {
 export const IconRightWithTextCenter = {
     args: {
         text: "Иконка справа текст справа",
-        height: medium,
+        height: md,
         color: primary,
-        isRadius: false,
         locationIcon: "right",
         icon: "bad",
         textAlignment: "right",
@@ -322,9 +334,8 @@ export const IconRightWithTextCenter = {
 export const ShowIconOnAction = {
     args: {
         text: "Показывать иконку при отработке нажатия",
-        height: medium,
+        height: md,
         color: primary,
-        isRadius: false,
         changeIcon: true,
         progress: true,
     },
