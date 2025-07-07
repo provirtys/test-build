@@ -1,73 +1,68 @@
 <template>
   <div class="marking-card">
     <div class="marking-card__main">
-      <div v-if="isAggregationVisible" class="aggregation">{{ t('aggregationInProgress') }}</div>
+      <div v-if="showProgressBadge" class="marking-card__badge">{{ t('aggregationInProgress') }}</div>
       <div class="marking-card__head flex-space-between">
         <p>{{ t('labeled') }}</p>
         <p>
-          {{ codeInfo.labeled }} <span class="grey-text">/ {{ codeInfo.total }}</span>
+          {{ codeInfo.labeled }} <span class="marking-card__total-text">/ {{ codeInfo.total }}</span>
         </p>
       </div>
 
       <div class="marking-card__info">
         <div class="marking-card__code-info">
           <div>
-            <p class="marking-card__info__title grey-text">{{ t('datetime') }}</p>
-            <p class="marking-card__info__date">{{ getCodeDate(codeInfo.ts) }}</p>
-            <!-- <p class="main__info__date">{{ getCodeDate(codeInfo.ts) }}</p>-->
-            <p class="marking-card__info__value grey-text">{{ getCodeTime(codeInfo.ts) }}</p>
+            <p class="marking-card__info-title">{{ t('datetime') }}</p>
+            <p class="marking-card__info-date">{{ codeDate }}</p>
+            <p class="marking-card__info-value marking-card__info-value--grey">{{ codeTime }}</p>
           </div>
           <div>
-            <p class="marking-card__info__title grey-text">{{ t('code') }}</p>
-            <p class="marking-card__info__value">{{ codeInfo.code }}</p>
+            <p class="marking-card__info-title">{{ t('code') }}</p>
+            <p class="marking-card__info-value">{{ codeInfo.code }}</p>
           </div>
           <div>
-            <p class="marking-card__info__title grey-text">{{ t('position') }}</p>
-            <p class="marking-card__info__value">{{ codeInfo.position }}</p>
+            <p class="marking-card__info-title">{{ t('position') }}</p>
+            <p class="marking-card__info-value">{{ codeInfo.position }}</p>
           </div>
         </div>
 
         <progress-pie
-          v-if="isProgressPieVisible"
-          :size="'large'"
-          :percentage="Math.round((codeInfo.labeled / codeInfo.total) * 100)"
+            v-if="showProgressPie"
+            size="large"
+            :percentage="Math.round((codeInfo.labeled / codeInfo.total) * 100)"
         ></progress-pie>
       </div>
-      <div v-if="isRepeatVisible" class="marking-card__repeat">
+      <div v-if="showRepeat" class="marking-card__repeat">
         <!--Это не кнопка, просто индикатор, если нужна повторная маркировка-->
         <div class="marking-card__repeat-icon">
-          <v-icon name="restart" />
+          <v-icon name="restart"/>
         </div>
         <p>{{ t('repeatedLabeling') }}</p>
       </div>
     </div>
-    <slot>
-      <!--Слот для кнопок, которые нужно настраивать-->
-    </slot>
+    <div v-if="$slots.buttons" class="marking-card__buttons">
+       <slot name="buttons" />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { VIcon } from '@base';
 import { setupI18n } from '@base/i18n.js';
+import { computed } from 'vue';
 import ProgressPie from './ProgressPie.vue';
 
 const { t } = setupI18n();
 
-defineProps({
-    isAggregationVisible: { type: Boolean, default: false },
-    isProgressPieVisible: { type: Boolean, default: false },
-    isRepeatVisible: { type: Boolean, default: false },
+const props = defineProps({
+    showProgressBadge: { type: Boolean, default: false },
+    showProgressPie: { type: Boolean, default: false },
+    showRepeat: { type: Boolean, default: false },
     codeInfo: { type: Object, default: () => ({}) },
 });
 
-function getCodeTime(value) {
-    return new Date(value).toLocaleTimeString('RU-ru');
-}
-
-function getCodeDate(value) {
-    return new Date(value).toLocaleDateString('RU-ru');
-}
+const codeTime = computed(() => new Date(props.codeInfo.time).toLocaleTimeString('RU-ru'));
+const codeDate = computed(() => new Date(props.codeInfo.time).toLocaleDateString('RU-ru'));
 </script>
 
 <style lang="scss">
@@ -108,6 +103,20 @@ p {
     gap: $s-2;
   }
 
+  &__badge {
+    background: $warning-40;
+    border-radius: $d-1;
+    padding: $s-2 $d-1;
+    text-align: center;
+    line-height: $s-1;
+    color: $dark-gray-70;
+    font-family: 'Golos';
+  }
+
+  &__total-text {
+    color: $dark-gray-40;
+  }
+
   &__code-info {
     display: flex;
     flex-direction: column;
@@ -120,21 +129,26 @@ p {
     justify-content: space-between;
 
     text-align: left;
-    letter-spacing: -0.23999999463558197px;
+    letter-spacing: -0.24px;
 
-    &__title {
+    &-title {
       font-size: $font-size-p4;
       line-height: $line-height-120;
+      color: $dark-gray-40;
     }
 
-    &__date {
+    &-date {
       font-size: $m-2;
       line-height: $line-height-120;
     }
 
-    &__value {
+    &-value {
       font-size: $font-size-h6;
       line-height: $line-height-100;
+
+      &--grey {
+        color: $dark-gray-40;
+      }
     }
   }
 
@@ -160,19 +174,11 @@ p {
       font-size: $font-size-p1;
     }
   }
-}
 
-.aggregation {
-  background: $warning-40;
-  border-radius: $d-1;
-  padding: $s-2 $d-1;
-  text-align: center;
-  line-height: $s-1;
-  color: $dark-gray-70;
-  font-family: 'Golos';
-}
-
-.grey-text {
-  color: $dark-gray-40;
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: $s-1;
+  }
 }
 </style>

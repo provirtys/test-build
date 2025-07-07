@@ -38,6 +38,14 @@
   color: $error-10 !important;
 }
 
+.bg-error-25 {
+  background: $error-25 !important;
+}
+
+.text-error-25 {
+  color: $error-25 !important;
+}
+
 .bg-success {
   background: $success !important;
 }
@@ -52,6 +60,14 @@
 
 .text-success-10 {
   color: $success-10 !important;
+}
+
+.bg-success-25 {
+  background: $success-25 !important;
+}
+
+.text-success-25 {
+  color: $success-25 !important;
 }
 
 .bg-info {
@@ -70,6 +86,14 @@
   color: $info-10 !important;
 }
 
+.bg-info-25 {
+  background: $info-25 !important;
+}
+
+.text-info-25 {
+  color: $info-25 !important;
+}
+
 .bg-warning {
   background: $warning !important;
 }
@@ -84,4 +108,12 @@
 
 .text-warning-10 {
   color: $warning-10 !important;
+}
+
+.bg-warning-25 {
+  background: $warning-25 !important;
+}
+
+.text-warning-25 {
+  color: $warning-25 !important;
 }

@@ -15,6 +15,7 @@ const props = defineProps({
     size: {
         type: String,
         required: false,
+        default: 'lg',
         validator: (val) => ['lg', 'md', 'sm'].includes(val),
     },
     isInverted: {
@@ -34,10 +35,12 @@ const badgeClasses = computed(() => [`v-badge--${props.size}`]);
 const bindingAttrs = computed(() => {
     if (!props.isInverted) return attrs;
 
+    const color = attrs.color ?? 'info';
+
     return {
         ...attrs,
-        textColor: attrs.color,
-        color: `${attrs.color}-10`,
+        textColor: color,
+        color: `${color}-10`,
     };
 });
 </script>

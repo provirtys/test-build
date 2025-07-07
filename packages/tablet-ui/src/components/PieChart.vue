@@ -1,49 +1,49 @@
 <template>
-  <div class="labeling__pie">
-    <div class="legend">
-      <div class="legend__item">
-        <div class="legend__title">
+  <div class="marking-progress">
+    <div class="marking-progress__legend">
+      <div class="marking-progress__legend-item">
+        <div class="marking-progress__legend-title">
           <p>{{ t('total') }}</p>
           <p>{{ total }}</p>
         </div>
       </div>
-      <div class="legend__item">
-        <div class="legend__color bg-primary"></div>
-        <div class="legend__title">
+      <div class="marking-progress__legend-item">
+        <div class="marking-progress__legend-color bg-primary"></div>
+        <div class="marking-progress__legend-title">
           <p>{{ t('errors') }}</p>
           <p>{{ mistakes }}</p>
         </div>
       </div>
-      <div class="legend__item">
-        <div class="legend__color bg-gray-2"></div>
-        <div class="legend__title">
+      <div class="marking-progress__legend-item">
+        <div class="marking-progress__legend-color bg-gray-2"></div>
+        <div class="marking-progress__legend-title">
           <p>{{ t('withoutErrors') }}</p>
           <p>{{ total - mistakes }}</p>
         </div>
       </div>
     </div>
-    <div class="circle">
+    <div class="marking-progress__indicator">
       <q-circular-progress
-        :value="percentage"
-        reverse
-        :angle="90"
-        size="320px"
-        :thickness="0.4"
-        color="primary"
-        track-color="gray-2"
-        class="q-ma-md"
+          :value="percentage"
+          reverse
+          :angle="90"
+          size="320px"
+          :thickness="0.4"
+          color="primary"
+          track-color="gray-2"
+          class="q-ma-md"
       />
-      <div class="titles" :class="{ alignment: percentage === 100 || percentage === 0 }">
+      <div class="marking-progress__indicator-titles" :class="{ alignment: percentage === 100 || percentage === 0 }">
         <p :class="{ 'text-primary': percentage < 3 }">{{ percentage }}%</p>
         <p :class="{ 'text-primary': percentage < 97 }">{{ 100 - percentage }}%</p>
       </div>
     </div>
     <v-button
-      icon="arrow"
-      location-icon="right"
-      is-radius
-      color="red"
-      @action-submitted="finishLabeling"
+        icon="arrow"
+        location-icon="right"
+        is-radius
+        color="red"
+        @action-submitted="finishLabeling"
     >
       {{ t('finishLabeling') }}
     </v-button>
@@ -73,13 +73,49 @@ function finishLabeling() {
     emit('finishLabeling');
 }
 </script>
-
 <style lang="scss">
-.circle {
-  position: relative;
-  margin: $xl-1 0;
+.marking-progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 360px;
+  background: $secondary;
+  border-radius: $s-1;
+  padding: $s-3;
+  min-height: 570px;
 
-  .titles {
+  &__legend-item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: $d-0;
+    margin-right: $s-1;
+  }
+
+  &__legend-title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      margin: 0;
+      font-size: $font-size-p1;
+      color: $dark-gray;
+    }
+  }
+
+  &__indicator {
+    position: relative;
+    margin: $xl-1 0;
+  }
+
+  &__indicator-titles {
     position: absolute;
     right: -10px;
     top: 52%;
@@ -92,48 +128,9 @@ function finishLabeling() {
       right: -16px;
     }
   }
-}
 
-.legend {
-  &__item {
-    display: flex;
-    align-items: center;
+  .q-circular-progress {
+    margin: 0 !important;
   }
-
-  &__color {
-    width: 15px;
-    height: 15px;
-    border-radius: $d-0;
-    margin-right: $s-1;
-  }
-
-  &__title {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    p {
-      margin: 0;
-      font-size: $font-size-p1;
-      color: $dark-gray;
-    }
-  }
-}
-
-.q-circular-progress {
-  margin: 0 !important;
-}
-
-.labeling__pie {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  width: 360px;
-  background: $secondary;
-  border-radius: $s-1;
-  padding: $s-3;
-  min-height: 570px;
 }
 </style>

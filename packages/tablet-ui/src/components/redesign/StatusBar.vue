@@ -11,12 +11,12 @@
     </v-button>
     <p class="status-line__task">{{ title }}</p>
     <div class="row">
-      <system-status
+      <status-label
         :color="systemStatus.status"
         :statusType="systemStatus.text"
         :isSync="systemStatus.sync"
         :is-active="systemStatus.active"
-      ></system-status>
+      ></status-label>
       <div
         class="status-line__button status-line__settings"
         :class="[{ disabled: props.isDisabled }]"
@@ -32,7 +32,7 @@ import { VIcon } from '@base';
 import { VButton } from '@base';
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import SystemStatus from './InteractiveSystemStatus.vue';
+import StatusLabel from '../StatusLabel.vue';
 
 const route = useRoute();
 const router = useRouter();
