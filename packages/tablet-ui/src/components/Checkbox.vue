@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { VIcon } from '@base';
+import { VIcon } from '@integrity/base-ui/src/index.js';
 import { computed } from 'vue';
 
 const props = defineProps({

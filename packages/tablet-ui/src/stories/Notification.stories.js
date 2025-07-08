@@ -1,10 +1,10 @@
-import Notification from '@components/redesign/Notification.vue';
+import Notification from '@components/Notification.vue';
 
 /**
  * Компонент отображает информацию, на которую стоит обратить внимание пользователю. Содержит в себе иконку и текст. Можно настраивать цвет иконки, цвет и прозрачность заднего фона.
  */
 export default {
-    title: 'TabletUI-redesign/Notification',
+    title: 'Tablet/Notification',
     component: Notification,
     argTypes: {
         bgColor: {

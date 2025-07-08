@@ -1,4 +1,4 @@
-import Switcher from '@components/redesign/Switcher.vue';
+import Switcher from '@components/Switcher.vue';
 
 const options = [
     { label: 'Опция 1', value: 'left', slot: 'one', iconName: 'aggregation' },
@@ -7,7 +7,7 @@ const options = [
 
 /** Компонент переключатель. Принимает в себя 2 опции, у которых настраивается выводимый текст и иконка. Можно растягивать компонент на всю доступную ширину, позиционировать контент, а также сделать компонент отключенным.  */
 export default {
-    title: 'TabletUI-redesign/Switcher',
+    title: 'Tablet/Switcher',
     component: Switcher,
     argTypes: {
         modelValue: {

@@ -1,4 +1,4 @@
-import StatusIndicator from '@components/redesign/StatusIndicator.vue';
+import StatusIndicator from '@components/StatusIndicator.vue';
 
 const info = 'info';
 const success = 'success';
@@ -8,7 +8,7 @@ const warning = 'warning';
 const colors = { info, warning, success, error };
 /** Компонент для отображения статуса сервиса. Можно регулировать цвет и включать/отключать анимацию. */
 export default {
-    title: 'TabletUI-redesign/StatusIndicator',
+    title: 'Tablet/StatusIndicator',
     component: StatusIndicator,
     argTypes: {
         color: {

@@ -28,11 +28,11 @@
 </template>
 
 <script setup>
-import { VIcon } from '@base';
-import { VButton } from '@base';
+import { VIcon } from '@integrity/base-ui/src/index.js';
+import { VButton } from '@integrity/base-ui/src/index.js';
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import StatusLabel from '../StatusLabel.vue';
+import StatusLabel from './StatusLabel.vue';
 
 const route = useRoute();
 const router = useRouter();

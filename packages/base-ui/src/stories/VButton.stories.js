@@ -1,5 +1,5 @@
-import { VButton, VInput } from '@base';
-import { computed, ref } from 'vue';
+import { VButton } from '@base';
+import { computed } from 'vue';
 
 // Расположение иконки
 const empty = '';
@@ -25,7 +25,7 @@ const bad = 'bad';
 const arrow = 'arrow';
 const aggregation = 'aggregation';
 const finishAggregation = 'finishAggregation';
-const barCode = 'barCode';
+const barcode = 'barcode';
 const dataMatrix = 'dataMatrix';
 const restart = 'restart';
 
@@ -38,7 +38,7 @@ const iconNames = {
     arrow,
     aggregation,
     finishAggregation,
-    barCode,
+    barcode,
     dataMatrix,
     restart,
 };

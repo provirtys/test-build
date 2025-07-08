@@ -17,18 +17,33 @@
 <script setup>
 import { VIcon } from '@base';
 import { computed } from 'vue';
+
 const props = defineProps({
-    codeType: { type: String, default: 'DataMatrix' },
-    codeText: { type: String, default: '' },
-    status: { type: String, default: 'none' },
-    time: { type: String, default: '' },
-    position: { type: Number, default: 0 },
+    codeType: {
+        type: String,
+        default: 'DataMatrix',
+    },
+    codeText: {
+        type: String,
+        default: '',
+    },
+    status: {
+        type: String,
+        default: 'none',
+    },
+    time: {
+        type: String,
+        default: '',
+    },
+    position: {
+        type: Number,
+        default: 0,
+    },
 });
 
 const statusIcon = computed(() => {
     switch (props.status) {
         case 'verified':
-        case 'synced':
             return 'status-success';
         case 'broken':
             return 'status-error';
@@ -83,10 +98,7 @@ const statusIcon = computed(() => {
   &__position {
     font-size: $font-size-p1;
     color: $dark-gray-40;
-    margin: 0;
-    margin-bottom: auto;
-    margin-top: -6px;
-    margin-right: -6px;
+    align-self: flex-start;
   }
 }
 </style>

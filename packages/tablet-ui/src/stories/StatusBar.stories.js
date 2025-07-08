@@ -1,4 +1,4 @@
-import StatusBar from '@components/redesign/StatusBar.vue';
+import StatusBar from '@components/StatusBar.vue';
 
 const btnExit = 'TaskList';
 const btnBack = '';
@@ -79,7 +79,7 @@ const systemStatus = {
 /** Компонент StatusBar отображает кнопку Выход/Назад, Список задач/Актикул изделия и статус готовности принтера,
  * а также кнопку Настройки. Для кнопки Назад есть два варианта иконки - home/arrow */
 export default {
-    title: 'TabletUI-redesign/StatusBar',
+    title: 'Tablet/StatusBar',
     component: StatusBar,
     argTypes: {
         btnIcon: {

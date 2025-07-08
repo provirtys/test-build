@@ -1,8 +1,8 @@
-import PieChart from '@components/PieChart.vue';
+import LabelingProgress from '@components/LabelingProgress.vue';
 
 export default {
-    title: 'Tablet/PieChart',
-    component: PieChart,
+    title: 'Tablet/LabelingProgress',
+    component: LabelingProgress,
 };
 
 export const NoErrors = {

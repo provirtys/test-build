@@ -1,4 +1,4 @@
-import Checkbox from '@components/redesign/Checkbox.vue';
+import Checkbox from '@components/Checkbox.vue';
 
 // Размеры кнопки
 const large = 'large';
@@ -18,7 +18,7 @@ const iconNames = { qr, aggregation, finishAggregation, barCode, dataMatrix, don
 const sizes = { large, medium, small, extraSmall };
 
 export default {
-    title: 'TabletUI-redesign/Checkbox',
+    title: 'Tablet/Checkbox',
     component: Checkbox,
     argTypes: {
         label: {

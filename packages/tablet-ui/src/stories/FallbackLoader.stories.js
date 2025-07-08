@@ -1,11 +1,11 @@
-import FallbackLoader from '@components/redesign/FallbackLoader.vue';
+import FallbackLoader from '@components/FallbackLoader.vue';
 import { ref } from 'vue';
 
 /**
  * Компонент представляет собой кастомизируемый лоадер с кнопкой повторной отправки запроса. Можно изменять текст загрузки, текст ошибки, иконку после ошибки и текст для кнопки повторного отправки запроса
  */
 export default {
-    title: 'TabletUI-redesign/FallbackLoader',
+    title: 'Tablet/FallbackLoader',
     component: FallbackLoader,
     argTypes: {
         loadingText: {

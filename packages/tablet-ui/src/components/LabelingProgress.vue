@@ -1,28 +1,28 @@
 <template>
-  <div class="marking-progress">
-    <div class="marking-progress__legend">
-      <div class="marking-progress__legend-item">
-        <div class="marking-progress__legend-title">
+  <div class="labeling-progress">
+    <div class="labeling-progress__legend">
+      <div class="labeling-progress__legend-item">
+        <div class="labeling-progress__legend-title">
           <p>{{ t('total') }}</p>
           <p>{{ total }}</p>
         </div>
       </div>
-      <div class="marking-progress__legend-item">
-        <div class="marking-progress__legend-color bg-primary"></div>
-        <div class="marking-progress__legend-title">
+      <div class="labeling-progress__legend-item">
+        <div class="labeling-progress__legend-color bg-primary"></div>
+        <div class="labeling-progress__legend-title">
           <p>{{ t('errors') }}</p>
           <p>{{ mistakes }}</p>
         </div>
       </div>
-      <div class="marking-progress__legend-item">
-        <div class="marking-progress__legend-color bg-gray-2"></div>
-        <div class="marking-progress__legend-title">
+      <div class="labeling-progress__legend-item">
+        <div class="labeling-progress__legend-color bg-gray-2"></div>
+        <div class="labeling-progress__legend-title">
           <p>{{ t('withoutErrors') }}</p>
           <p>{{ total - mistakes }}</p>
         </div>
       </div>
     </div>
-    <div class="marking-progress__indicator">
+    <div class="labeling-progress__indicator">
       <q-circular-progress
           :value="percentage"
           reverse
@@ -33,7 +33,7 @@
           track-color="gray-2"
           class="q-ma-md"
       />
-      <div class="marking-progress__indicator-titles" :class="{ alignment: percentage === 100 || percentage === 0 }">
+      <div class="labeling-progress__indicator-titles" :class="{ alignment: percentage === 100 || percentage === 0 }">
         <p :class="{ 'text-primary': percentage < 3 }">{{ percentage }}%</p>
         <p :class="{ 'text-primary': percentage < 97 }">{{ 100 - percentage }}%</p>
       </div>
@@ -74,7 +74,7 @@ function finishLabeling() {
 }
 </script>
 <style lang="scss">
-.marking-progress {
+.labeling-progress {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

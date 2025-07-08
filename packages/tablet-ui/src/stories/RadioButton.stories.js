@@ -1,4 +1,4 @@
-import RadioButton from '@components/redesign/RadioButton.vue';
+import RadioButton from '@components/RadioButton.vue';
 
 // Виды кнопок
 const primary = 'primary';
@@ -28,7 +28,7 @@ const warning = 'warning';
 
 const colorIcon = { info, warning, success, error };
 export default {
-    title: 'TabletUI-redesign/RadioButton',
+    title: 'Tablet/RadioButton',
     component: RadioButton,
     argTypes: {
         parameters: {

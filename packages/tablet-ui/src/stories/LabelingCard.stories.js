@@ -1,5 +1,5 @@
 import { setupI18n } from '@base/i18n.js';
-import MarkingCard from '@components/MarkingCard.vue';
+import LabelingCard from '@components/LabelingCard.vue';
 import { VButton } from '@integrity/base-ui/src/index.js';
 import { computed } from 'vue';
 
@@ -8,8 +8,8 @@ const currentTimestamp = Date.now();
 /** Компонент карточки маркировки */
 export default {
     components: { VButton },
-    title: 'Tablet/MarkingCard',
-    component: MarkingCard,
+    title: 'Tablet/LabelingCard',
+    component: LabelingCard,
     argTypes: {
         showProgressBadge: {
             description: 'Идет агрегация',
@@ -45,7 +45,7 @@ export default {
 };
 
 const BaseComponent = (args) => ({
-    components: { MarkingCard, VButton },
+    components: { MarkingCard: LabelingCard, VButton },
     setup() {
         const bindingArgs = computed(() => args);
         const { t } = setupI18n();

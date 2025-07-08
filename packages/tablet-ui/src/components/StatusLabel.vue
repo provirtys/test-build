@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import StatusIndicator from '@components/redesign/StatusIndicator.vue';
+import StatusIndicator from '@components/StatusIndicator.vue';
 import { computed } from 'vue';
 
 const props = defineProps({
