@@ -1,4 +1,4 @@
-export { default as CardJob } from './components/redesign/CardJob.vue';
+export { default as TaskCard } from '@components/TaskCard.vue';
 export { default as Checkbox } from './components/redesign/Checkbox.vue';
 export { default as StatusIndicator } from './components/redesign/StatusIndicator.vue';
 export { default as StatusLabel } from '@components/StatusLabel.vue';
