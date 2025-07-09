@@ -7,7 +7,13 @@ export default {
     argTypes: {
         codeType: {
             options: ['barcode', 'dataMatrix'],
-            control: { type: 'radio' },
+            control: {
+                type: 'radio',
+                labels: {
+                    barcode: 'Barcode',
+                    dataMatrix: 'DataMatrix',
+                },
+            },
         },
     },
 };
@@ -18,7 +24,7 @@ export const PrimaryCode = {
         codeType: 'barcode',
         currentCodeIndex: 0,
         codesLength: 2,
-        needBorder: true,
+        showBorder: true,
     },
 };
 
@@ -28,7 +34,7 @@ export const PrimaryCodeLength = {
         codeType: 'barcode',
         currentCodeIndex: 3,
         codesLength: 5,
-        needBorder: true,
+        showBorder: true,
     },
 };
 
@@ -38,7 +44,7 @@ export const PrimaryCodeSelect = {
         codeType: 'barcode',
         currentCodeIndex: -1,
         codesLength: 1,
-        needBorder: false,
+        showBorder: false,
     },
 };
 
@@ -48,7 +54,7 @@ export const PrimaryDatamatrix = {
         codeType: 'dataMatrix',
         currentCodeIndex: 0,
         codesLength: 2,
-        needBorder: true,
+        showBorder: true,
     },
 };
 
@@ -58,7 +64,7 @@ export const PrimaryDatamatrixLength = {
         codeType: 'dataMatrix',
         currentCodeIndex: 3,
         codesLength: 5,
-        needBorder: true,
+        showBorder: true,
     },
 };
 
@@ -68,6 +74,6 @@ export const PrimaryDatamatrixSelect = {
         codeType: 'dataMatrix',
         currentCodeIndex: -1,
         codesLength: 1,
-        needBorder: false,
+        showBorder: false,
     },
 };

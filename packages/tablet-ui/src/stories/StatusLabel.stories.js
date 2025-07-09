@@ -14,7 +14,6 @@ export default {
     component: StatusLabel,
     argTypes: {
         color: {
-            description: 'Цвет индикатора системы',
             options: Object.keys(colors),
             mapping: colors,
             control: {
@@ -27,15 +26,10 @@ export default {
                 },
             },
         },
-        label: {
-            description: 'Текст элемента',
-        },
         isAnimate: {
-            description: 'Состояние синхронизации',
             options: [true, false],
         },
         showBackground: {
-            description: 'Режим отладки',
             options: [true, false],
         },
     },

@@ -1,13 +1,9 @@
 import StatusBar from '@components/StatusBar.vue';
 
-const btnExit = 'TaskList';
-const btnBack = '';
-const _buttons = { btnExit, btnBack };
-
 const home = 'home';
 const logoutDark = 'logout-dark';
-const arrowBackRedesign = 'arrowBackRedesign';
-const icons = { home, logoutDark, arrowBackRedesign };
+const arrowBack = 'arrow-back';
+const icons = { home, logoutDark, arrowBack };
 
 const StandardState = {
     status: 'success',
@@ -91,7 +87,7 @@ export default {
                 labels: {
                     home: 'Домой',
                     logoutDark: 'Выйти',
-                    arrowBackRedesign: 'Назад',
+                    arrowBack: 'Назад',
                 },
             },
         },
@@ -169,7 +165,7 @@ export const BackBtn = {
     args: {
         title: 'Артикул изделия',
         btnText: 'Назад',
-        btnIcon: arrowBackRedesign,
+        btnIcon: arrowBack,
         systemStatus: {
             status: 'ok',
             text: 'READY',

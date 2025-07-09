@@ -1,5 +1,5 @@
 export { default as TaskCard } from '@components/TaskCard.vue';
-export { default as Checkbox } from '@components/Checkbox.vue';
+export { default as CheckboxButton } from '@components/CheckboxButton.vue';
 export { default as StatusIndicator } from '@components/StatusIndicator.vue';
 export { default as StatusLabel } from '@components/StatusLabel.vue';
 export { default as KeyButton } from '@components/KeyButton.vue';

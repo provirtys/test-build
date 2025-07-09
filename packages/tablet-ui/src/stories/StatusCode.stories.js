@@ -29,8 +29,8 @@ export default {
             control: {
                 type: 'radio',
                 labels: {
-                    dataMatrix: 'dataMatrix',
-                    barcode: 'barcode',
+                    dataMatrix: 'DataMatrix',
+                    barcode: 'Barcode',
                 },
             },
         },

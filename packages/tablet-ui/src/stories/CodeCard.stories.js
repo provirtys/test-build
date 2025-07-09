@@ -1,11 +1,11 @@
 import CodeCard from '@components/CodeCard.vue';
 
-const dataMatrix = 'DataMatrix';
-const code128 = 'Code128';
+const dataMatrix = 'dataMatrix';
+const barcode = 'barcode';
 const verified = 'verified';
 const broken = 'broken';
 const none = 'none';
-const codeTypes = { dataMatrix, code128 };
+const codeTypes = { dataMatrix, barcode };
 const statuses = { none, verified, broken };
 
 /** Компонент отображает информацию о маркировке кода. Можно настроить тип, текст, статус кода, время и номер позиции.  */
@@ -21,7 +21,7 @@ export default {
                 type: 'radio',
                 labels: {
                     dataMatrix: 'DataMatrix',
-                    code128: 'Code128',
+                    barcode: 'Barcode',
                 },
             },
         },
@@ -73,24 +73,24 @@ export const DataMatrixBroken = {
     },
 };
 
-export const Code128 = {
+export const Barcode = {
     args: {
-        codeType: 'code128',
+        codeType: 'barcode',
         position: 4,
     },
 };
 
-export const Code128Verified = {
+export const BarcodeVerified = {
     args: {
-        codeType: 'code128',
+        codeType: 'barcode',
         status: 'verified',
         position: 5,
     },
 };
 
-export const Code128Broken = {
+export const BarcodeBroken = {
     args: {
-        codeType: 'code128',
+        codeType: 'barcode',
         status: 'broken',
         position: 6,
     },

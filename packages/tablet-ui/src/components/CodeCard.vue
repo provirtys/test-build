@@ -1,7 +1,7 @@
 <template>
   <div class="code-card">
     <div class="code-card__code">
-      <v-icon :name="codeType === 'Code128' ? 'dataMatrix' : 'barCode'" />
+      <v-icon :name="iconName" />
       <v-icon v-if="statusIcon" class="code-card__status" :name="statusIcon" />
     </div>
     <div class="code-card__info">
@@ -21,7 +21,7 @@ import { computed } from 'vue';
 const props = defineProps({
     codeType: {
         type: String,
-        default: 'DataMatrix',
+        default: 'dataMatrix',
     },
     codeText: {
         type: String,
@@ -40,6 +40,8 @@ const props = defineProps({
         default: 0,
     },
 });
+
+const iconName = computed(() => (props.codeType === 'barcode' ? 'barcode' : 'data-matrix'));
 
 const statusIcon = computed(() => {
     switch (props.status) {

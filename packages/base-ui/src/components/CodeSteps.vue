@@ -1,10 +1,10 @@
 <template>
   <div class="codes">
     <div class="code" v-for="index in props.codesLength" :key="index">
-      <v-icon v-if="index > 1" name="arrowForward" class="arrow" :class="[codeColor(index-1), arrowMargin]"/>
+      <v-icon v-if="index > 1" name="arrow-forward" class="arrow" :class="[codeColor(index-1), arrowMargin]"/>
       <component
           :is="codeTypes[currentType]"
-          :border="props.needBorder"
+          :border="props.showBorder"
           :class="[codeTypeClass, index === 1 ? firstCodeColor : codeColor(index-1)]"
       />
     </div>
@@ -19,13 +19,13 @@ import { computed } from 'vue';
 
 const props = defineProps({
     /** Вариант изображения кода*/
-    codeType: { type: String, default: 'dataMatrix' },
+    codeType: { type: String, default: 'data-matrix' },
     /** Индекс сканируемого кода*/
     currentCodeIndex: { type: Number, default: 0 },
     /** Количество сканируемых кодов */
     codesLength: { type: Number, default: 2 },
     /** Видимость рамки сканирования кода*/
-    needBorder: { type: Boolean, default: true },
+    showBorder: { type: Boolean, default: true },
 });
 
 const codeTypes = {

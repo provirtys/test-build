@@ -5,7 +5,7 @@
     :class="[backgroundColor, buttonSize]"
     @click="submitAction"
   >
-    <v-icon :name="isSelect ? 'radioButton-select' : 'radioButton-empty'" :size="sizeIcon" />
+    <v-icon :name="isSelect ? 'radio-button-select' : 'radio-button-empty'" :size="sizeIcon" />
     {{ buttonText }}
     <span class="radio-btn__status">
       <v-icon v-if="isIcon === 'icon'" name="numbers" :size="sizeIcon" />

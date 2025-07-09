@@ -1,5 +1,6 @@
 <template>
   <q-btn
+    class="v-button"
     :class="btnClasses"
     :disabled="btnDisabled"
     no-caps
@@ -16,14 +17,14 @@
     <template v-else>
       <span
         v-if="icon && locationIcon === 'left'"
-        class="v-btn__icon-container justify-start"
+        class="v-button__icon-container justify-start"
       >
         <v-icon :name="icon" :size="sizeIcon" />
       </span>
-      <span class="v-btn__text"><slot></slot></span>
+      <span class="v-button__text"><slot></slot></span>
       <span
         v-if="icon && locationIcon === 'right'"
-        class="v-btn__icon-container justify-end"
+        class="v-button__icon-container justify-end"
       >
         <v-icon :name="icon" :size="sizeIcon" />
       </span>
@@ -50,6 +51,11 @@ const props = defineProps({
         required: false,
         validator: (val) => ['lg', 'md', 'sm', 'xs'].includes(val),
     },
+    isRounded: {
+        type: Boolean,
+        required: false,
+        default: true,
+    },
     locationIcon: {
         type: String,
         required: false,
@@ -71,7 +77,7 @@ const props = defineProps({
         type: Boolean,
         required: false,
     },
-    progress: {
+    enableHold: {
         type: Boolean,
         required: false,
     },
@@ -80,41 +86,22 @@ const props = defineProps({
 const emit = defineEmits(['actionSubmitted']);
 
 const btnRef = ref(null);
-const btnStatus = ref('default'); // default, progress or done
+const btnStatus = ref('default'); // default, holding or done
 
 const showSubmittedIcon = computed(() => props.changeIcon && btnStatus.value === 'done');
 
 const btnClasses = computed(() => [
-    'v-btn',
-    `v-btn--${buttonSize.value}`,
-    showSubmittedIcon.value ? doneOpacity.value : '',
+    `v-button--${buttonSize.value}`,
     backgroundColor.value,
     {
-        disabled: btnDisabled.value,
-        'fit-width': props.fitWidth,
-        'min-width-empty': props.locationIcon === '',
+        'v-button--disabled': btnDisabled.value,
+        'v-button--rounded': props.isRounded,
+        'v-button--fit-width': props.fitWidth,
         [`text-${props.textAlignment}`]: props.textAlignment,
-        'in-progress': btnStatus.value === 'progress',
-        done: showSubmittedIcon.value,
+        'v-button--holding': btnStatus.value === 'holding',
+        'v-button--done': showSubmittedIcon.value,
     },
 ]);
-
-const doneOpacity = computed(() => {
-    switch (props.color) {
-        case 'secondary':
-            return 'done-secondary';
-        case 'plane':
-            return 'done-plane';
-        case 'outline':
-            return 'done-outline';
-        case 'red':
-            return 'done-red';
-        case 'primary':
-            return 'done-primary';
-        default:
-            return 'done-primary';
-    }
-});
 
 const sizeIcon = computed(() => {
     switch (props.height) {
@@ -152,7 +139,7 @@ const buttonSize = computed(() => {
 const btnDisabled = computed(() => props.isDisabled || btnStatus.value === 'done');
 
 const handleHold = ({ evt }) => {
-    if (btnDisabled.value || !props.progress) return;
+    if (btnDisabled.value || !props.enableHold) return;
 
     if (props.changeIcon && btnRef.value) {
         btnStatus.value = 'done';
@@ -168,15 +155,15 @@ const submitAction = () => {
 const stopAnimation = () => finishAnimation();
 
 const startAnimation = () => {
-    if (btnDisabled.value || !props.progress) return;
+    if (btnDisabled.value || !props.enableHold) return;
 
-    btnStatus.value = 'progress';
+    btnStatus.value = 'holding';
     document.addEventListener('mouseup', stopAnimation);
     document.addEventListener('touchend', stopAnimation);
 };
 
 const finishAnimation = (_evt, finished) => {
-    if (btnDisabled.value || !props.progress) return;
+    if (btnDisabled.value || !props.enableHold) return;
 
     if (props.changeIcon && finished) {
         btnStatus.value = 'done';
@@ -193,10 +180,10 @@ const finishAnimation = (_evt, finished) => {
   pointer-events: none;
 }
 
-.v-btn {
+.v-button {
   width: 100%;
   height: $xl-4;
-  border-radius: $d-1;
+  border-radius: 0;
   text-align: center;
   font-size: $font-size-p1;
   font-family: 'Golos', sans-serif;
@@ -211,14 +198,6 @@ const finishAnimation = (_evt, finished) => {
   box-shadow: none;
   border: none;
   animation: none;
-
-  &.done-icon {
-    justify-content: center;
-  }
-
-  &.min-width-empty {
-    justify-content: center;
-  }
 
   &.primary {
     background-color: $primary-text;
@@ -246,29 +225,16 @@ const finishAnimation = (_evt, finished) => {
     color: $secondary;
   }
 
-  //Для любого не активного элемента прозрачность – 0.1 (10%)
-  &.disabled {
+  &.v-button--disabled {
     opacity: 0.1 !important;
   }
 
-  &.done-primary {
-    opacity: 1 !important;
-    background-color: $primary-text-70;
-  }
+  &.v-button--rounded {
+    border-radius: $d-1;
 
-  &.done-secondary {
-    opacity: 1 !important;
-    background-color: $primary-text-5;
-  }
-
-  &.done-plane {
-    opacity: 1 !important;
-    background-color: $primary-text-5;
-  }
-
-  &.done-outline {
-    opacity: 1 !important;
-    background-color: $primary-text-20;
+    &.v-button--holding:before {
+      border-radius: $d-1 0 0 $d-1;
+      }
   }
 
   &.text-left &__text {
@@ -304,7 +270,7 @@ const finishAnimation = (_evt, finished) => {
     padding: 10px $s-2;
   }
 
-  &.in-progress {
+  &.v-button--holding {
     &::before {
       content: '';
       position: absolute;
@@ -314,7 +280,6 @@ const finishAnimation = (_evt, finished) => {
       height: 100%;
       top: 0;
       left: 0;
-      border-radius: $d-1 0 0 $d-1;
       animation: filling 1s linear 0s 1 normal backwards;
     }
 
@@ -339,7 +304,9 @@ const finishAnimation = (_evt, finished) => {
     }
   }
 
-  &.done {
+  &.v-button--done {
+    opacity: 1 !important;
+
     &::before {
       content: '';
       background-size: $m-1 $m-1;
@@ -355,12 +322,22 @@ const finishAnimation = (_evt, finished) => {
       align-items: center;
     }
 
+    &.primary {
+      background-color: $primary-text-70;
+    }
+    &.secondary {
+      background-color: $primary-text-5;
+    }
+    &.outline {
+      background-color: $primary-text-20;
+    }
+
     .q-btn__content {
       justify-content: center;
     }
   }
 
-  &.fit-width {
+  &.v-button--fit-width {
     width: auto;
   }
 

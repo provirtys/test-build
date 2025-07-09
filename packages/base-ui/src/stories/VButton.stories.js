@@ -11,6 +11,7 @@ const primary = 'primary';
 const secondary = 'secondary';
 const plane = 'plane';
 const outline = 'outline';
+const red = 'red';
 
 // Размеры кнопки
 const lg = 'lg';
@@ -24,13 +25,13 @@ const center = 'center';
 const bad = 'bad';
 const arrow = 'arrow';
 const aggregation = 'aggregation';
-const finishAggregation = 'finishAggregation';
+const finishAggregation = 'finish-aggregation';
 const barcode = 'barcode';
-const dataMatrix = 'dataMatrix';
+const dataMatrix = 'data-matrix';
 const restart = 'restart';
 
 const location = { left, right, empty };
-const colors = { primary, secondary, plane, outline };
+const colors = { primary, secondary, plane, outline, red };
 const sizes = { lg, md, sm, xs };
 const textAlignments = { left, center, right };
 const iconNames = {
@@ -59,6 +60,7 @@ export default {
                     secondary: 'Второстепенный',
                     plane: 'Плоский',
                     outline: 'С границей',
+                    red: 'Красная',
                 },
             },
         },
@@ -95,6 +97,11 @@ export default {
                 },
             },
         },
+        isRounded: {
+            description: 'Скругленные края',
+            options: [true, false],
+            control: { type: 'boolean' },
+        },
         icon: {
             description: 'Имя иконки (название файла из папки с иконками без расширения)',
             options: Object.keys(iconNames),
@@ -127,7 +134,7 @@ export default {
             options: [true, false],
             control: { type: 'boolean' },
         },
-        progress: {
+        enableHold: {
             description: 'Удерживание кнопки с прогресс баром',
             options: [true, false],
             control: { type: 'boolean' },
@@ -139,11 +146,12 @@ export default {
         text: 'Кнопка',
         textAlignment: center,
         isDisabled: false,
+        isRounded: true,
         icon: '',
         locationIcon: empty,
         fitWidth: false,
         changeIcon: false,
-        progress: false,
+        enableHold: false,
     },
 };
 
@@ -165,178 +173,162 @@ const BaseComponent = (args) => ({
     template: `<v-button v-bind="bindingArgs">{{ text }}</v-button>`,
 });
 
-export const Simple = BaseComponent.bind({});
-Simple.args = {
+export const Standard = BaseComponent.bind({});
+Standard.args = {
     text: 'Кнопка',
     height: 'md',
     color: primary,
     changeIcon: true,
-    progress: false,
+    enableHold: false,
 };
 
-// export const Simple = {
-//     args: {
-//         text: "Кнопка",
-//         height: md,
-//         color: primary,
-//         changeIcon: true,
-//         progress: false,
-//     },
-// };
-
-export const Primary = {
-    args: {
-        text: 'Начать маркировку',
-        height: md,
-        color: primary,
-        progress: true,
-    },
+export const Primary = BaseComponent.bind({});
+Primary.args = {
+    text: 'Начать маркировку',
+    height: md,
+    color: primary,
+    enableHold: true,
 };
 
-export const Secondary = {
-    args: {
-        text: 'Начать маркировку',
-        height: md,
-        color: secondary,
-        progress: true,
-    },
+export const Secondary = BaseComponent.bind({});
+Secondary.args = {
+    text: 'Начать маркировку',
+    height: md,
+    color: secondary,
+    enableHold: true,
 };
 
-export const Plane = {
-    args: {
-        text: 'Начать маркировку',
-        height: md,
-        color: plane,
-        progress: true,
-    },
+export const Plane = BaseComponent.bind({});
+Plane.args = {
+    text: 'Начать маркировку',
+    height: md,
+    color: plane,
+    enableHold: true,
 };
 
-export const Outline = {
-    args: {
-        text: 'Начать маркировку',
-        height: md,
-        color: outline,
-        progress: true,
-    },
+export const Outline = BaseComponent.bind({});
+Outline.args = {
+    text: 'Начать маркировку',
+    height: md,
+    color: outline,
+    enableHold: true,
 };
 
-export const Disabled = {
-    args: {
-        text: 'Неактивная кнопка',
-        height: md,
-        isDisabled: true,
-        color: primary,
-        progress: true,
-    },
+export const Red = BaseComponent.bind({});
+Red.args = {
+    text: 'Начать маркировку',
+    height: md,
+    color: red,
+    enableHold: true,
 };
 
-export const NotRounded = {
-    args: {
-        text: 'Не скругленная',
-        height: md,
-        color: primary,
-        progress: true,
-    },
+export const Disabled = BaseComponent.bind({});
+Disabled.args = {
+    text: 'Неактивная кнопка',
+    height: md,
+    isDisabled: true,
+    color: primary,
+    enableHold: true,
 };
 
-export const TextCenter = {
-    args: {
-        text: 'Текст по центру',
-        height: md,
-        color: primary,
-        textAlignment: 'center',
-        progress: true,
-    },
+export const Square = BaseComponent.bind({});
+Square.args = {
+    text: 'Не скругленная',
+    height: md,
+    color: primary,
+    enableHold: true,
+    isRounded: false,
 };
 
-export const TextRight = {
-    args: {
-        text: 'Текст справа',
-        height: md,
-        color: primary,
-        textAlignment: 'right',
-        progress: true,
-    },
+export const TextCenter = BaseComponent.bind({});
+TextCenter.args = {
+    text: 'Текст по центру',
+    height: md,
+    color: primary,
+    textAlignment: 'center',
+    enableHold: true,
 };
 
-export const IconLeftWithTextLeft = {
-    args: {
-        text: 'Иконка слева текст слева',
-        height: md,
-        color: primary,
-        locationIcon: 'left',
-        icon: 'bad',
-        textAlignment: 'left',
-        progress: true,
-    },
+export const TextRight = BaseComponent.bind({});
+TextRight.args = {
+    text: 'Текст справа',
+    height: md,
+    color: primary,
+    textAlignment: 'right',
+    enableHold: true,
 };
 
-export const IconLeftWithTextCenter = {
-    args: {
-        text: 'Иконка слева текст по центру',
-        height: md,
-        color: primary,
-        locationIcon: 'left',
-        icon: 'bad',
-        textAlignment: 'center',
-        progress: true,
-    },
+export const IconLeftWithTextLeft = BaseComponent.bind({});
+IconLeftWithTextLeft.args = {
+    text: 'Иконка слева текст слева',
+    height: md,
+    color: primary,
+    locationIcon: 'left',
+    icon: 'bad',
+    textAlignment: 'left',
+    enableHold: true,
 };
 
-export const IconLeftWithTextRight = {
-    args: {
-        text: 'Иконка слева текст справа',
-        height: md,
-        color: primary,
-        locationIcon: 'left',
-        icon: 'bad',
-        textAlignment: 'right',
-        progress: true,
-    },
+export const IconLeftWithTextCenter = BaseComponent.bind({});
+IconLeftWithTextCenter.args = {
+    text: 'Иконка слева текст по центру',
+    height: md,
+    color: primary,
+    locationIcon: 'left',
+    icon: 'bad',
+    textAlignment: 'center',
+    enableHold: true,
 };
 
-export const IconRightWithTextLeft = {
-    args: {
-        text: 'Иконка справа текст слева',
-        height: md,
-        color: primary,
-        locationIcon: 'right',
-        icon: 'bad',
-        textAlignment: 'left',
-        progress: true,
-    },
+export const IconLeftWithTextRight = BaseComponent.bind({});
+IconLeftWithTextRight.args = {
+    text: 'Иконка слева текст справа',
+    height: md,
+    color: primary,
+    locationIcon: 'left',
+    icon: 'bad',
+    textAlignment: 'right',
+    enableHold: true,
 };
 
-export const IconRightTextCenter = {
-    args: {
-        text: 'Иконка справа текст по центру',
-        height: md,
-        color: primary,
-        locationIcon: 'right',
-        icon: 'bad',
-        textAlignment: 'center',
-        progress: true,
-    },
+export const IconRightWithTextLeft = BaseComponent.bind({});
+IconRightWithTextLeft.args = {
+    text: 'Иконка справа текст слева',
+    height: md,
+    color: primary,
+    locationIcon: 'right',
+    icon: 'bad',
+    textAlignment: 'left',
+    enableHold: true,
 };
 
-export const IconRightWithTextCenter = {
-    args: {
-        text: 'Иконка справа текст справа',
-        height: md,
-        color: primary,
-        locationIcon: 'right',
-        icon: 'bad',
-        textAlignment: 'right',
-        progress: true,
-    },
+export const IconRightTextCenter = BaseComponent.bind({});
+IconRightTextCenter.args = {
+    text: 'Иконка справа текст по центру',
+    height: md,
+    color: primary,
+    locationIcon: 'right',
+    icon: 'bad',
+    textAlignment: 'center',
+    enableHold: true,
 };
 
-export const ShowIconOnAction = {
-    args: {
-        text: 'Показывать иконку при отработке нажатия',
-        height: md,
-        color: primary,
-        changeIcon: true,
-        progress: true,
-    },
+export const IconRightWithTextCenter = BaseComponent.bind({});
+IconRightWithTextCenter.args = {
+    text: 'Иконка справа текст справа',
+    height: md,
+    color: primary,
+    locationIcon: 'right',
+    icon: 'bad',
+    textAlignment: 'right',
+    enableHold: true,
+};
+
+export const ShowIconOnAction = BaseComponent.bind({});
+ShowIconOnAction.args = {
+    text: 'Показывать иконку при отработке нажатия',
+    height: md,
+    color: primary,
+    changeIcon: true,
+    enableHold: true,
 };

@@ -1,11 +1,13 @@
 <template>
   <div class="status-line">
     <v-button
-      height="small"
+      height="sm"
       fit-width
       color="secondary"
       :icon="btnIcon"
       location-icon="left"
+      :is-rounded="false"
+      enable-hold
     >
       {{btnText}}
     </v-button>
@@ -30,14 +32,7 @@
 <script setup>
 import { VIcon } from '@integrity/base-ui/src/index.js';
 import { VButton } from '@integrity/base-ui/src/index.js';
-import { ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
 import StatusLabel from './StatusLabel.vue';
-
-const route = useRoute();
-const router = useRouter();
-
-const isLogoutSubmitted = ref(false);
 
 const props = defineProps({
     systemStatus: {
@@ -63,54 +58,11 @@ const props = defineProps({
     },
     btnIcon: {
         type: String,
-        default: 'arrowBackRedesign',
+        default: 'arrow-back',
     },
 });
 
 const emit = defineEmits(['logout']);
-
-function handleHoldGoBack({ evt, ...newInfo }) {
-    isLogoutSubmitted.value = newInfo;
-    finishAnimation(evt);
-    goBack();
-}
-
-function goBack() {
-    switch (route.name) {
-        case 'TaskDetails':
-        case 'NewTaskDetails':
-            router.push({ name: 'TaskList' });
-            break;
-        case 'LabelingAuto':
-        case 'LabelingManual':
-            router.push({ name: 'TaskDetails', params: { id: route.params.id } });
-            break;
-        case 'LabelScan':
-            if (otkStore.mode === 'auto') {
-                router.push({ name: 'LabelingAuto', params: { id: route.params.id } });
-            } else {
-                router.push({ name: 'LabelingManual', params: { id: route.params.id } });
-            }
-            break;
-        case 'CodeScan':
-            router.push({ name: 'LabelingManual', params: { id: route.params.id } });
-            break;
-    }
-}
-
-function handleHold({ evt, ...newInfo }) {
-    isLogoutSubmitted.value = newInfo;
-    finishAnimation(evt);
-    emit('logout');
-}
-
-function startAnimation(event) {
-    event.target.classList.add('in-progress');
-}
-
-function finishAnimation(event) {
-    event.target.classList.remove('in-progress');
-}
 </script>
 
 <style lang="scss">

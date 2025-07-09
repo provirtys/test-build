@@ -17,7 +17,7 @@ import StatusIndicator from './StatusIndicator.vue';
 const props = defineProps({
     type: {
         type: String,
-        default: 'dataMatrix',
+        default: 'data-matrix',
     },
     status: {
         type: String,
@@ -34,7 +34,7 @@ const classList = computed(() => ({
     [`bg-${props.color}-25`]: props.color,
 }));
 
-const iconName = computed(() => (props.type === 'dataMatrix' ? 'dataMatrix' : 'barcode'));
+const iconName = computed(() => (props.type === 'dataMatrix' ? 'data-matrix' : 'barcode'));
 
 const showPoint = computed(() => props.status && props.color);
 </script>

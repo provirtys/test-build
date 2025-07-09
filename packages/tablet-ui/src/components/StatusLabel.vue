@@ -14,22 +14,22 @@ import StatusIndicator from '@components/StatusIndicator.vue';
 import { computed } from 'vue';
 
 const props = defineProps({
-    /** Цвет индикатора статуса принтера */
+    /** Цвет точки */
     color: {
         type: String,
         default: '',
     },
-    /** Текст статуса принтера */
+    /** Текст надписи */
     label: {
         type: String,
         default: '',
     },
-    /** Текст статуса принтера */
+    /** Включить анимацию у точки */
     isAnimate: {
         type: Boolean,
         default: false,
     },
-    /** Режим отладки */
+    /** Показывать задний фон */
     showBackground: {
         type: Boolean,
         default: false,
