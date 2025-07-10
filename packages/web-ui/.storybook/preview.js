@@ -1,15 +1,15 @@
-import { setup } from "@storybook/vue3-vite";
-import { Notify, Quasar } from "quasar";
-import { createI18n } from "vue-i18n";
+import { setup } from '@storybook/vue3-vite';
+import { Notify, Quasar } from 'quasar';
+import { createI18n } from 'vue-i18n';
 
-import "@quasar/extras/roboto-font/roboto-font.css";
-import "@quasar/extras/material-icons/material-icons.css";
-import "@quasar/extras/material-icons-outlined/material-icons-outlined.css";
-import "@quasar/extras/material-symbols-outlined/material-symbols-outlined.css";
-import "quasar/dist/quasar.css";
+import '@quasar/extras/roboto-font/roboto-font.css';
+import '@quasar/extras/material-icons/material-icons.css';
+import '@quasar/extras/material-icons-outlined/material-icons-outlined.css';
+import '@quasar/extras/material-symbols-outlined/material-symbols-outlined.css';
+import 'quasar/dist/quasar.css';
 
-import en from "@base/locales/en.json";
-import ru from "@base/locales/ru.json";
+import en from '@base/locales/en.json';
+import ru from '@base/locales/ru.json';
 
 function loadLocaleMessages() {
     const locales = [{ en }, { ru }];
@@ -22,8 +22,8 @@ function loadLocaleMessages() {
 }
 
 const i18n = createI18n({
-    locale: navigator.language.split("-")[0] || "en",
-    fallbackLocale: "en",
+    locale: navigator.language.split('-')[0] || 'en',
+    fallbackLocale: 'en',
     globalInjection: true,
     legacy: false,
     messages: loadLocaleMessages(),
@@ -38,12 +38,12 @@ setup((app) => {
     });
 });
 
-Notify.registerType("error", {
-    position: "top",
-    classes: ["main-notification"],
+Notify.registerType('error', {
+    position: 'top',
+    classes: ['main-notification'],
     timeout: 3000,
-    color: "error",
-    textColor: "white",
+    color: 'error',
+    textColor: 'white',
 });
 
 /** @type { import('@storybook/vue3-vite').Preview } */
@@ -55,10 +55,15 @@ const preview = {
                 date: /Date$/i,
             },
         },
+        options: {
+            storySort: {
+                order: ['ui', 'Elements', 'Blocks', 'Complexes', 'Layouts', 'Pages'],
+            },
+        },
     },
-    tags: ["autodocs"],
+    tags: ['autodocs'],
     initialGlobals: {
-        backgrounds: { value: "light" },
+        backgrounds: { value: 'light' },
     },
 };
 

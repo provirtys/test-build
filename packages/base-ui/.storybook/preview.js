@@ -55,6 +55,11 @@ const preview = {
                 date: /Date$/i,
             },
         },
+        options: {
+            storySort: {
+                order: ['ui', 'Elements', 'Blocks', 'Complexes', 'Layouts', 'Pages'],
+            },
+        },
     },
     tags: ['autodocs'],
     initialGlobals: {
