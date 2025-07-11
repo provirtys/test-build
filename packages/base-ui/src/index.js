@@ -9,4 +9,5 @@ export { VInput } from './components/ui/VInput';
 export { VTable } from './components/ui/VTable';
 export { VBadge } from './components/ui/VBadge';
 export { VAlert } from './components/ui/VAlert';
+export { VRadio } from './components/ui/VRadio';
 export { VRadioGroup } from './components/ui/VRadioGroup';
