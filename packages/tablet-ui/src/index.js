@@ -3,7 +3,7 @@ export { VCheckboxButton } from '@components/ui/VCheckboxButton';
 export { StatusIndicator } from '@components/Elements/StatusIndicator';
 export { StatusLabel } from '@components/Blocks/StatusLabel';
 export { LabelingCard } from '@components/Complexes/LabelingCard';
-export { StatusBar } from '@components/StatusBar';
+export { StatusBar } from '@components/Complexes/StatusBar';
 export { StatusCode } from '@components/Blocks/StatusCode';
 export { BarChart } from '@components/Blocks/BarChart';
 export { BarChartTimeSeries } from '@components/Blocks/BarChartTimeSeries';

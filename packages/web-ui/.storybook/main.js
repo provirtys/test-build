@@ -1,15 +1,15 @@
 /** @type { import('@storybook/vue3-vite').StorybookConfig } */
 const config = {
-    stories: ["../src/stories/**/*.mdx", "../src/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-    addons: ["@chromatic-com/storybook", "@storybook/addon-docs", "@storybook/addon-a11y", "@storybook/addon-vitest"],
-    framework: {
-        name: "@storybook/vue3-vite",
-        options: {
-            builder: {
-                viteConfigPath: "vite.config.js",
-            },
-        },
+  stories: ['../src/components/**/*.mdx', '../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  addons: ['@chromatic-com/storybook', '@storybook/addon-docs', '@storybook/addon-a11y', '@storybook/addon-vitest'],
+  framework: {
+    name: '@storybook/vue3-vite',
+    options: {
+      builder: {
+        viteConfigPath: 'vite.config.js',
+      },
     },
+  },
 };
 
 export default config;
