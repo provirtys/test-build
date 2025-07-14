@@ -4,6 +4,7 @@
       :model-value="modelValue"
       :val="val"
       :label="label"
+      keep-color
       v-bind="bindingProps"
       @update:model-value="updateValue"
     />
@@ -40,7 +41,13 @@ const props = defineProps({
     required: false,
     validator: (val) => ['lg', 'md', 'sm', 'xs'].includes(val),
   },
-  dense: Boolean,
+  width: {
+    type: String,
+    default: 'auto',
+    required: false,
+    validator: (val) => ['auto', 'dense', 'full'].includes(val),
+  },
+  dark: Boolean,
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -50,14 +57,15 @@ defineOptions({
 });
 
 const bindingProps = computed(() => ({
-  color: 'dark-1',
+  color: props.dark ? 'gray-3' : 'dark-1',
   size: SIZES[props.size],
 }));
 
 const classList = computed(() => [
   `v-radio--${props.size}`,
   {
-    'v-radio--dense': props.dense,
+    [`v-radio--${props.width}`]: props.width !== 'auto',
+    'v-radio--dark': props.dark,
   },
 ]);
 
@@ -142,7 +150,30 @@ const updateValue = (val) => {
     }
   }
 
+  &.v-radio--full {
+
+    .q-radio {
+      width: 100%;
+    }
+  }
+
+  &.v-radio--dark {
+
+    .q-radio {
+      background-color: $primary-text;
+
+      &__inner {
+        color: $light-gray-40
+      }
+
+      &__label {
+        color: $light-gray-40;
+      }
+    }
+  }
+
   .q-radio {
+    border-radius: 8px;
 
     &__inner {
       color: $primary-text;

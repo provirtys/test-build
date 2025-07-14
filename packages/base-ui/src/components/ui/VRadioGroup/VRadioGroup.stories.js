@@ -8,6 +8,12 @@ const sm = 'sm';
 const xs = 'xs';
 const sizes = { lg, md, sm, xs };
 
+// Ширина
+const auto = 'auto';
+const full = 'full';
+const dense = 'dense';
+const widths = { auto, dense, full };
+
 /** Компонент для группировки радио кнопок. <br>
  * Можно задавать отображаемое название для группы, менять размеры кнопок и делать их в одну строку. <br>
  * Если нужна отдельная радио кнопка, то используй компонент [VRadio](/docs/ui-vradio--docs)*/
@@ -20,12 +26,6 @@ export default {
     options: {
       description: 'Опции для кнопок',
     },
-    inline: {
-      description: 'Отображать кнопки в одну строку',
-      control: {
-        type: 'boolean',
-      },
-    },
     size: {
       description:
         'Размер кнопок <br> Поддерживаемые значения - <code>lg</code>, <code>md</code>, <code>sm</code>, <code>xs</code>',
@@ -37,6 +37,18 @@ export default {
           md: 'Средний',
           sm: 'Маленький',
           xs: 'Очень маленький',
+        },
+      },
+    },
+    width: {
+      description: 'Ширина кнопок. ',
+      options: Object.keys(widths),
+      control: {
+        type: 'select',
+        labels: {
+          auto: 'Автоматически',
+          dense: 'В одну строку',
+          full: 'На всего родителя',
         },
       },
     },
@@ -58,8 +70,9 @@ export default {
       },
     ],
     modelValue: '',
-    inline: false,
     size: 'lg',
+    width: 'auto',
+    dark: false,
   },
 };
 
@@ -89,11 +102,6 @@ Standard.args = {
 
 export const WithoutLabel = BaseComponent.bind({});
 
-export const Inline = BaseComponent.bind({});
-Inline.args = {
-  inline: true,
-};
-
 export const OneOption = BaseComponent.bind({});
 OneOption.args = {
   label: 'Одна опция',
@@ -118,4 +126,19 @@ SmallSize.args = {
 export const ExtraSmallSize = BaseComponent.bind({});
 ExtraSmallSize.args = {
   size: 'xs',
+};
+
+export const Dark = BaseComponent.bind({});
+Dark.args = {
+  dark: true,
+};
+
+export const Inline = BaseComponent.bind({});
+Inline.args = {
+  width: dense,
+};
+
+export const FullWidth = BaseComponent.bind({});
+FullWidth.args = {
+  width: full,
 };

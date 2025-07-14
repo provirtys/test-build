@@ -8,6 +8,12 @@ const sm = 'sm';
 const xs = 'xs';
 const sizes = { lg, md, sm, xs };
 
+// Ширина
+const auto = 'auto';
+const full = 'full';
+const dense = 'dense';
+const widths = { auto, dense, full };
+
 /** Компонент радио кнопки. Можно менять подпись и размеры.<br>
  *  Чтобы создать группу радио кнопок, используй компонент [VRadioGroup](/docs/ui-vradiogroup--docs)<br> */
 export default {
@@ -33,8 +39,20 @@ export default {
         },
       },
     },
-    dense: {
-      description: 'Маленький отступ между кнопкой и подписью',
+    width: {
+      description: 'Ширина элемента',
+      options: Object.keys(widths),
+      control: {
+        type: 'select',
+        labels: {
+          auto: 'Автоматически',
+          dense: 'Уменьшенный',
+          full: 'На всего родителя',
+        },
+      },
+    },
+    dark: {
+      description: 'Темный режим',
       control: {
         type: 'boolean',
       },
@@ -45,7 +63,8 @@ export default {
     modelValue: '',
     label: 'Опция 1',
     size: 'lg',
-    dense: false,
+    width: 'auto',
+    dark: false,
   },
 };
 
@@ -87,5 +106,10 @@ ExtraSmallSize.args = {
 
 export const Dense = BaseComponent.bind({});
 ExtraSmallSize.args = {
-  dense: true,
+  width: dense,
+};
+
+export const FullWidth = BaseComponent.bind({});
+ExtraSmallSize.args = {
+  width: full,
 };

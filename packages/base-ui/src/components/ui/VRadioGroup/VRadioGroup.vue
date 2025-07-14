@@ -34,16 +34,19 @@ const props = defineProps({
     default: () => [],
     required: true,
   },
-  inline: {
-    type: Boolean,
-    required: false,
-  },
   size: {
     type: String,
     default: 'lg',
     required: false,
     validator: (val) => ['lg', 'md', 'sm', 'xs'].includes(val),
   },
+  width: {
+    type: String,
+    default: 'auto',
+    required: false,
+    validator: (val) => ['auto', 'dense', 'full'].includes(val),
+  },
+  dark: Boolean,
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -54,13 +57,14 @@ defineOptions({
 
 const bindingProps = computed(() => ({
   size: props.size,
-  dense: props.inline,
+  dark: props.dark,
+  width: props.width,
 }));
 
 const classList = computed(() => [
   [`v-radio-group--${props.size}`],
   {
-    'v-radio-group--inline': props.inline,
+    'v-radio-group--inline': props.width === 'dense',
   },
 ]);
 
@@ -74,6 +78,7 @@ const updateValue = (val) => {
   font-family: 'Golos', sans-serif;
 
   &.v-radio-group--inline .v-radio-group__items {
+    justify-content: start;
     grid-auto-flow: column;
   }
 
@@ -132,7 +137,6 @@ const updateValue = (val) => {
 
   &__items {
     display: grid;
-    justify-content: start;
     gap: 12px;
   }
 }
