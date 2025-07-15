@@ -1,0 +1,52 @@
+variables:
+  CI: true
+  PNPM_CACHE_FOLDER: .pnpm-store
+  NPM_TOKEN: ${CI_JOB_TOKEN}
+
+stages:
+  - lint
+  - release
+
+code-check:
+  image: node:24-alpine
+  tags:
+    - docker
+  stage: lint
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "refactor/dev-203")
+      when: always
+    - when: never
+  script:
+    - apk add --no-cache git
+    - corepack enable
+    - corepack prepare pnpm@latest --activate
+    - pnpm i
+    - pnpm lint
+  allow_failure: true
+
+
+publish-npm:
+  image: node:24-alpine
+  tags:
+    - docker
+  stage: release
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "refactor/dev-203")
+      when: always
+    - when: never
+  script:
+    - apk add --no-cache curl jq
+    - corepack enable
+    - corepack prepare pnpm@latest --activate
+    - pnpm i
+    - pnpm build
+    - pnpm config set @integrity:registry ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/npm/
+    - pnpm config set -- //${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken ${CI_JOB_TOKEN}
+    - |
+      echo "🔍 Удаление всех пакетов..."
+      curl -sS --header "PRIVATE-TOKEN:${API_GITLAB_TOKEN}" "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages" \
+      | jq -r '.[].id' \
+      | xargs -r -I{} curl -sS --request DELETE \
+          --header "PRIVATE-TOKEN:${API_GITLAB_TOKEN}" \
+          "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/{}" || true
+    - pnpm publish -r --no-git-checks --verbose
