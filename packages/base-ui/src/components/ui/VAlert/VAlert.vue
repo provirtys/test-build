@@ -1,9 +1,9 @@
 <template>
-  <div class="v-alert">
-    <div class="v-alert__alert flex items-center" :style="alertStyles">
+  <div class="v-alert" :class="classList">
+    <div class="v-alert__alert flex items-center">
       <q-icon
         name="report_gmailerrorred"
-        :style="iconStyles"
+        :color="color"
         size="21px"
         class="v-alert__icon q-pa-sm"
       />
@@ -16,35 +16,31 @@
 import { computed } from 'vue';
 
 const props = defineProps({
-    bgColor: {
-        type: String,
-        default: '#206DC8',
-    },
-    iconColor: {
-        type: String,
-        default: '#206DC8',
-    },
-    text: {
-        type: String,
-        default: 'Info',
-    },
-    isTransparent: {
-        type: Boolean,
-        default: true,
-    },
+  color: {
+    type: String,
+    default: 'info',
+    required: false,
+    validator: (val) => ['success', 'error', 'info', 'warning'].includes(val),
+  },
+  text: {
+    type: String,
+    default: 'Info',
+  },
+  isBackgroundWhite: Boolean,
 });
 
-const alertStyles = computed(() => ({
-    backgroundColor: props.isTransparent ? `${props.bgColor}10` : `${props.bgColor}`,
-}));
-const iconStyles = computed(() => ({
-    color: props.iconColor,
-}));
+const classList = computed(() => [
+  {
+    [`bg-${props.color}-10`]: !props.isBackgroundWhite,
+  },
+]);
 </script>
 
 <style lang="scss">
 .v-alert {
   width: 100%;
+  background-color: $secondary;
+  border-radius: $d-1;
 
   &__alert {
     border-radius: 8px;

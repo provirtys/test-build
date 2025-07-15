@@ -1,67 +1,73 @@
 import { VAlert } from './index.js';
 
+const info = 'info';
+const success = 'success';
+const error = 'error';
+const warning = 'warning';
+
+const colors = { info, warning, success, error };
 /**
- * Компонент отображает информацию, на которую стоит обратить внимание пользователю. Содержит в себе иконку и текст. Можно настраивать цвет иконки, цвет и прозрачность заднего фона.
+ * Компонент отображает информацию, на которую стоит обратить внимание пользователю. Фон может быть белым или с непрозрачностью 10% для выбранного цвета.
  */
 export default {
-    component: VAlert,
-    argTypes: {
-        bgColor: {
-            description: 'Задний цвет фона',
+  component: VAlert,
+  argTypes: {
+    color: {
+      description: 'Цвет элемента - `success`, `error`, `info`, `warning`',
+      options: Object.keys(colors),
+      control: {
+        type: 'select',
+        labels: {
+          success: 'Зеленый',
+          error: 'Красный',
+          info: 'Синий',
+          warning: 'Желтый',
         },
-        iconColor: {
-            description: 'Цвет иконки',
-        },
-        text: {
-            description: 'Текст уведомления',
-        },
-        isTransparent: {
-            description: 'Прозрачность фона',
-            control: { type: 'boolean' },
-        },
+      },
     },
-    parameters: {
-        backgrounds: {
-            default: 'white',
-            values: [
-                { name: 'dark', value: '#242a2b' },
-                { name: 'white', value: '#ffffff' },
-                { name: 'light', value: '#ededed' },
-                { name: 'light-gray', value: '#f1f1f1' },
-                { name: 'red', value: 'rgba(211, 20, 28, 0.85)' },
-            ],
-        },
+    text: {
+      description: 'Текст уведомления',
     },
+    isBackgroundWhite: {
+      description: 'Прозрачность фона',
+      control: { type: 'boolean' },
+    },
+  },
+  args: {
+    color: info,
+    text: 'Обычное уведомление',
+    isBackgroundWhite: false,
+  },
 };
 
-export const Info = {
-    args: {
-        bgColor: '#206dc8',
-        iconColor: '#206dc8',
-        text: 'Проверьте количество продукции',
-        isTransparent: true,
-    },
+export const ColorInfo = {};
+
+export const ColorSuccess = {
+  args: {
+    color: success,
+  },
 };
 
-export const ErrorRed = {
-    args: {
-        bgColor: '#c83420',
-        iconColor: '#c83420',
-        text: 'Код не подтвержден',
-        isTransparent: true,
-    },
+export const ColorError = {
+  args: {
+    color: error,
+  },
 };
 
-export const ErrorWhite = {
-    args: {
-        bgColor: '#f1f1f1',
-        iconColor: '#c83420',
-        text: 'Не все коды подтверждены',
-        isTransparent: false,
+export const ColorWarning = {
+  args: {
+    color: warning,
+  },
+};
+
+export const WhiteBackground = {
+  args: {
+    color: error,
+    isBackgroundWhite: true,
+  },
+  globals: {
+    backgrounds: {
+      value: 'red',
     },
-    parameters: {
-        backgrounds: {
-            default: 'red',
-        },
-    },
+  },
 };

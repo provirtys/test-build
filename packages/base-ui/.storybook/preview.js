@@ -12,59 +12,64 @@ import en from '@base/locales/en.json';
 import ru from '@base/locales/ru.json';
 
 function loadLocaleMessages() {
-    const locales = [{ en }, { ru }];
-    const messages = {};
-    for (const lang of locales) {
-        const key = Object.keys(lang)[0];
-        messages[key] = lang[key];
-    }
-    return messages;
+  const locales = [{ en }, { ru }];
+  const messages = {};
+  for (const lang of locales) {
+    const key = Object.keys(lang)[0];
+    messages[key] = lang[key];
+  }
+  return messages;
 }
 
 const i18n = createI18n({
-    locale: navigator.language.split('-')[0] || 'en',
-    fallbackLocale: 'en',
-    globalInjection: true,
-    legacy: false,
-    messages: loadLocaleMessages(),
+  locale: navigator.language.split('-')[0] || 'en',
+  fallbackLocale: 'en',
+  globalInjection: true,
+  legacy: false,
+  messages: loadLocaleMessages(),
 });
 
 setup((app) => {
-    app.use(i18n);
-    app.use(Quasar, {
-        plugins: {
-            Notify,
-        },
-    });
+  app.use(i18n);
+  app.use(Quasar, {
+    plugins: {
+      Notify,
+    },
+  });
 });
 
 Notify.registerType('error', {
-    position: 'top',
-    classes: ['main-notification'],
-    timeout: 3000,
-    color: 'error',
-    textColor: 'white',
+  position: 'top',
+  classes: ['main-notification'],
+  timeout: 3000,
+  color: 'error',
+  textColor: 'white',
 });
 
 /** @type { import('@storybook/vue3-vite').Preview } */
 const preview = {
-    parameters: {
-        controls: {
-            matchers: {
-                color: /(background|color)$/i,
-                date: /Date$/i,
-            },
-        },
-        options: {
-            storySort: {
-                order: ['ui', 'Elements', 'Blocks', 'Complexes', 'Layouts', 'Pages'],
-            },
-        },
+  parameters: {
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
     },
-    tags: ['autodocs'],
-    initialGlobals: {
-        backgrounds: { value: 'light' },
+    options: {
+      storySort: {
+        order: ['ui', 'Elements', 'Blocks', 'Complexes', 'Layouts', 'Pages'],
+      },
     },
+    backgrounds: {
+      options: {
+        red: { name: 'red', value: '#D3141CD9' },
+      },
+    },
+  },
+  tags: ['autodocs'],
+  initialGlobals: {
+    backgrounds: { value: 'light' },
+  },
 };
 
 export default preview;
