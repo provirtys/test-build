@@ -1,3 +1,4 @@
+export { VButton } from '@base';
 export { TaskCard } from '@components/Blocks/TaskCard';
 export { VCheckboxButton } from '@components/ui/VCheckboxButton';
 export { StatusIndicator } from '@components/Elements/StatusIndicator';

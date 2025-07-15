@@ -13,7 +13,7 @@
       "import": "./dist/tablet-ui.es.js",
       "require": "./dist/tablet-ui.umd.js"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/tablet-ui.css"
   },
   "publishConfig": {
     "access": "public",
