@@ -23,7 +23,8 @@
   "dependencies": {
     "sass-embedded": "catalog:",
     "vue": "catalog:",
-    "@integrity/base-ui": "workspace:*"
+    "@integrity/base-ui": "workspace:*",
+    "@integrity/icons": "workspace:*"
   },
   "devDependencies": {
     "@pivanov/vite-plugin-svg-sprite": "catalog:",

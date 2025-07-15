@@ -23,7 +23,8 @@
   "files": ["package.json", "pnpm-lock.yaml", "dist"],
   "dependencies": {
     "sass-embedded": "catalog:",
-    "vue": "catalog:"
+    "vue": "catalog:",
+    "@integrity/icons": "workspace:*"
   },
   "devDependencies": {
     "@pivanov/vite-plugin-svg-sprite": "catalog:",

@@ -80,6 +80,9 @@ importers:
 
   packages/base-ui:
     dependencies:
+      '@integrity/icons':
+        specifier: workspace:*
+        version: link:../icons
       sass-embedded:
         specifier: 'catalog:'
         version: 1.89.2
@@ -124,11 +127,16 @@ importers:
         specifier: 'catalog:'
         version: 4.5.1(vue@3.5.17(typescript@5.8.3))
 
+  packages/icons: {}
+
   packages/mobile-ui:
     dependencies:
       '@integrity/base-ui':
         specifier: workspace:*
         version: link:../base-ui
+      '@integrity/icons':
+        specifier: workspace:*
+        version: link:../icons
       sass-embedded:
         specifier: 'catalog:'
         version: 1.89.2
@@ -184,6 +192,9 @@ importers:
       '@integrity/base-ui':
         specifier: workspace:*
         version: link:../base-ui
+      '@integrity/icons':
+        specifier: workspace:*
+        version: link:../icons
       sass-embedded:
         specifier: 'catalog:'
         version: 1.89.2
@@ -242,6 +253,9 @@ importers:
       '@integrity/base-ui':
         specifier: workspace:*
         version: link:../base-ui
+      '@integrity/icons':
+        specifier: workspace:*
+        version: link:../icons
       sass-embedded:
         specifier: 'catalog:'
         version: 1.89.2
@@ -2148,6 +2162,9 @@ packages:
   vue-component-type-helpers@2.2.10:
     resolution: {integrity: sha512-iDUO7uQK+Sab2tYuiP9D1oLujCWlhHELHMgV/cB13cuGbG4qwkLHvtfWb6FzvxrIOPDnU0oHsz2MlQjhYDeaHA==}
 
+  vue-component-type-helpers@3.0.1:
+    resolution: {integrity: sha512-j23mCB5iEbGsyIhnVdXdWUOg+UdwmVxpKnYYf2j+4ppCt5VSFXKjwu9YFt0QYxUaf5G99PuHsVfRScjHCRSsGQ==}
+
   vue-docgen-api@4.79.2:
     resolution: {integrity: sha512-n9ENAcs+40awPZMsas7STqjkZiVlIjxIKgiJr5rSohDP0/JCrD9VtlzNojafsA1MChm/hz2h3PDtUedx3lbgfA==}
     peerDependencies:
@@ -2712,7 +2729,7 @@ snapshots:
       storybook: 9.0.12(@testing-library/dom@10.4.0)
       type-fest: 2.19.0
       vue: 3.5.17(typescript@5.8.3)
-      vue-component-type-helpers: 2.2.10
+      vue-component-type-helpers: 3.0.1
 
   '@svgdotjs/svg.draggable.js@3.0.6(@svgdotjs/svg.js@3.2.4)':
     dependencies:
@@ -4023,6 +4040,8 @@ snapshots:
       typescript: 5.8.3
 
   vue-component-type-helpers@2.2.10: {}
+
+  vue-component-type-helpers@3.0.1: {}
 
   vue-docgen-api@4.79.2(vue@3.5.17(typescript@5.8.3)):
     dependencies:

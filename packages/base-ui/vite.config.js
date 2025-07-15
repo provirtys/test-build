@@ -7,44 +7,44 @@ import { defineConfig } from 'vite';
 import createPackageConfig from '../../vite.shared.js';
 
 export default defineConfig({
-    root: __dirname,
-    cacheDir: './node_modules/.vite/base-ui',
-    plugins: [
-        vue(),
-        quasar(),
-        svgSpritePlugin({
-            iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-            symbolId: 'icon-[name]',
-            svgDomId: 'svg-sprite',
-            inject: 'body-last',
-        }),
-    ],
-    // Configuration for building your library.
-    // See: https://vitejs.dev/guide/build.html#library-mode
-    build: {
-        lib: {
-            // Could also be a dictionary or array of multiple entry points.
-            entry: path.resolve(__dirname, 'src/index.js'),
-            name: 'base-ui',
-            fileName: (format) => `base-ui.${format}.js`,
-        },
-        rollupOptions: {
-            // External packages that should not be bundled into your library.
-            external: ['vue'],
-            output: {
-                globals: {
-                    vue: 'Vue',
-                    quasar: 'quasar',
-                },
-            },
-        },
+  root: __dirname,
+  cacheDir: './node_modules/.vite/base-ui',
+  plugins: [
+    vue(),
+    quasar(),
+    svgSpritePlugin({
+      iconDirs: [path.resolve(__dirname, '../icons/icons')],
+      symbolId: 'icon-[name]',
+      svgDomId: 'svg-sprite',
+      inject: 'body-last',
+    }),
+  ],
+  // Configuration for building your library.
+  // See: https://vitejs.dev/guide/build.html#library-mode
+  build: {
+    lib: {
+      // Could also be a dictionary or array of multiple entry points.
+      entry: path.resolve(__dirname, 'src/index.js'),
+      name: 'base-ui',
+      fileName: (format) => `base-ui.${format}.js`,
     },
-    ...createPackageConfig(),
-    css: {
-        preprocessorOptions: {
-            scss: {
-                additionalData: `@import "@base/css/main.scss";`,
-            },
+    rollupOptions: {
+      // External packages that should not be bundled into your library.
+      external: ['vue'],
+      output: {
+        globals: {
+          vue: 'Vue',
+          quasar: 'quasar',
         },
+      },
     },
+  },
+  ...createPackageConfig(),
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@base/css/main.scss";`,
+      },
+    },
+  },
 });
