@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "./dist/tablet-ui.umd.js",
   "module": "./dist/tablet-ui.es.js",
+  "types": "index.d.ts",
   "scripts": {
     "build": "vite build",
     "storybook": "storybook dev -p 3002",
