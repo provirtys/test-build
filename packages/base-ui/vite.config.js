@@ -39,7 +39,7 @@ export default defineConfig({
       },
     },
   },
-  ...createPackageConfig(),
+  ...createPackageConfig('base-ui'),
   css: {
     preprocessorOptions: {
       scss: {
