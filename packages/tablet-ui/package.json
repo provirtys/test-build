@@ -12,7 +12,8 @@
   "exports": {
     ".": {
       "import": "./dist/tablet-ui.es.js",
-      "require": "./dist/tablet-ui.umd.js"
+      "require": "./dist/tablet-ui.umd.js",
+      "types": "./dist/index.d.ts"
     },
     "./style.css": "./dist/tablet-ui.css"
   },
