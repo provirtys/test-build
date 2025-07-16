@@ -79,7 +79,7 @@ export default {
 const BaseComponent = (args) => ({
   components: { VRadioGroup },
   setup() {
-    const value = ref('');
+    const value = ref(args.modelValue);
 
     const bindingAttrs = computed(() => {
       const { modelValue, ...restArgs } = args;
