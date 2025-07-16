@@ -20,7 +20,7 @@
     "access": "public",
     "main": "src/index.js"
   },
-  "files": ["package.json", "pnpm-lock.yaml", "dist"],
+  "files": ["package.json", "pnpm-lock.yaml", "dist", "index.d.ts"],
   "dependencies": {
     "sass-embedded": "catalog:",
     "vue": "catalog:",
