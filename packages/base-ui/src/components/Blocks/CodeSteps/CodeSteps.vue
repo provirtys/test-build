@@ -12,51 +12,49 @@
 </template>
 
 <script setup>
-import { VIcon } from '@base';
-import BarcodeIcon from '@base/components/Elements/BarcodeIcon.vue';
-import DatamatrixIcon from '@base/components/Elements/DatamatrixIcon.vue';
+import { BarcodeIcon, DatamatrixIcon, VIcon } from '@base';
 import { computed } from 'vue';
 
 const props = defineProps({
-    /** Вариант изображения кода*/
-    codeType: { type: String, default: 'data-matrix' },
-    /** Индекс сканируемого кода*/
-    currentCodeIndex: { type: Number, default: 0 },
-    /** Количество сканируемых кодов */
-    codesLength: { type: Number, default: 2 },
-    /** Видимость рамки сканирования кода*/
-    showBorder: { type: Boolean, default: true },
+  /** Вариант изображения кода*/
+  codeType: { type: String, default: 'data-matrix' },
+  /** Индекс сканируемого кода*/
+  currentCodeIndex: { type: Number, default: 0 },
+  /** Количество сканируемых кодов */
+  codesLength: { type: Number, default: 2 },
+  /** Видимость рамки сканирования кода*/
+  showBorder: { type: Boolean, default: true },
 });
 
 const codeTypes = {
-    DatamatrixIcon,
-    BarcodeIcon,
+  DatamatrixIcon,
+  BarcodeIcon,
 };
 
 const currentType = computed(() => {
-    switch (props.codeType) {
-        case 'barcode':
-            return 'BarcodeIcon';
-        case 'dataMatrix':
-            return 'DatamatrixIcon';
-        default:
-            return 'DatamatrixIcon';
-    }
+  switch (props.codeType) {
+    case 'barcode':
+      return 'BarcodeIcon';
+    case 'dataMatrix':
+      return 'DatamatrixIcon';
+    default:
+      return 'DatamatrixIcon';
+  }
 });
 
 const codeTypeClass = computed(() => (props.codeType === 'barcode' ? 'barcode' : 'datamatrix'));
 
 const firstCodeColor = computed(() => {
-    if (props.currentCodeIndex === -1) return 'gray';
-    if (props.currentCodeIndex === 0) return 'red';
-    return 'black';
+  if (props.currentCodeIndex === -1) return 'gray';
+  if (props.currentCodeIndex === 0) return 'red';
+  return 'black';
 });
 const arrowMargin = computed(() => (props.codeType === 'barcode' ? 'medium' : 'large'));
 
 const codeColor = (index) => {
-    if (index === props.currentCodeIndex) return 'red';
-    if (index < props.currentCodeIndex + 1) return 'black';
-    return 'gray';
+  if (index === props.currentCodeIndex) return 'red';
+  if (index < props.currentCodeIndex + 1) return 'black';
+  return 'gray';
 };
 </script>
 
