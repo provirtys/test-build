@@ -18,20 +18,16 @@ export default {
     },
     isLight: {
       description: 'Светлый режим',
-      type: 'boolean',
+      control: {
+        type: 'boolean',
+      },
     },
   },
-  parameters: {
-    backgrounds: {
-      default: 'white',
-      values: [
-        { name: 'dark', value: '#242a2b' },
-        { name: 'white', value: '#ffffff' },
-        { name: 'light', value: '#ededed' },
-        { name: 'light-gray', value: '#f1f1f1' },
-        { name: 'red', value: 'rgba(211, 20, 28, 0.85)' },
-      ],
-    },
+  args: {
+    value: 0,
+    secondaryValue: 0,
+    total: 0,
+    isLight: false,
   },
 };
 
@@ -64,9 +60,7 @@ export const LightMode = {
     total: 42,
     isLight: true,
   },
-  parameters: {
-    backgrounds: {
-      default: 'red',
-    },
+  globals: {
+    backgrounds: { value: 'red' },
   },
 };

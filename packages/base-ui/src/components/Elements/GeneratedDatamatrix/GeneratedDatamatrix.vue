@@ -7,21 +7,21 @@ import DATAMatrix from '@base/datamatrix.js';
 import { computed, onMounted, ref } from 'vue';
 
 const props = defineProps({
-    data: {
-        type: [Object, String, Number],
-        default: null,
-        required: true,
-    },
-    size: {
-        type: Number,
-        default: 180,
-        required: false,
-    },
-    darkMode: {
-        type: Boolean,
-        default: false,
-        required: false,
-    },
+  data: {
+    type: [Object, String, Number],
+    default: null,
+    required: true,
+  },
+  size: {
+    type: Number,
+    default: 180,
+    required: false,
+  },
+  dark: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
 });
 
 const svgHtml = ref('');
@@ -29,24 +29,24 @@ const svgHtml = ref('');
 const computedSize = computed(() => `${props.size}px`);
 
 onMounted(() => {
-    if (props.data) {
-        const datamatrixMessage = JSON.stringify(props.data).replace(
-            /[\u007F-\uFFFF]/g,
-            (chr) => `\\u${chr.charCodeAt(0).toString(16).padStart(4, '0')}`,
-        );
+  if (props.data) {
+    const datamatrixMessage = JSON.stringify(props.data).replace(
+      /[\u007F-\uFFFF]/g,
+      (chr) => `\\u${chr.charCodeAt(0).toString(16).padStart(4, '0')}`,
+    );
 
-        const pad = 5;
-        const datamatrix = DATAMatrix({
-            msg: datamatrixMessage,
-            dim: 180, // dimensions
-            rct: 0, // keep datamatrix square
-            pad, // padding
-            pal: props.darkMode ? ['#fff', ''] : ['#000', ''], // palette
-            vrb: 1, // verbose
-        });
+    const pad = 5;
+    const datamatrix = DATAMatrix({
+      msg: datamatrixMessage,
+      dim: 180, // dimensions
+      rct: 0, // keep datamatrix square
+      pad, // padding
+      pal: props.dark ? ['#fff', ''] : ['#000', ''], // palette
+      vrb: 1, // verbose
+    });
 
-        svgHtml.value = datamatrix.outerHTML;
-    }
+    svgHtml.value = datamatrix.outerHTML;
+  }
 });
 </script>
 

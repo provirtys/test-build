@@ -1,3 +1,4 @@
+import { computed, ref } from 'vue';
 import { VSwitcher } from './index.js';
 
 const options = [
@@ -52,65 +53,78 @@ export default {
   },
 };
 
-export const Primary = {
-  args: {
-    options: options,
-    modelValue: 'left',
-    disable: false,
-    align: 'left',
-    spread: true,
+const BaseComponent = (args) => ({
+  components: { VSwitcher },
+  setup() {
+    const modelValue = ref(args.modelValue);
+
+    const bindingProps = computed(() => {
+      const { modelValue, ...restArgs } = args;
+
+      return restArgs;
+    });
+
+    return {
+      modelValue,
+      bindingProps,
+    };
   },
+  template: `<v-switcher v-model="modelValue" v-bind="bindingProps" />`,
+});
+
+export const Primary = BaseComponent.bind({});
+Primary.args = {
+  options: options,
+  modelValue: 'left',
+  disable: false,
+  align: 'left',
+  spread: true,
 };
 
-export const AlignCenter = {
-  args: {
-    options: options,
-    modelValue: 'left',
-    disable: false,
-    align: 'center',
-    spread: true,
-  },
+export const AlignCenter = BaseComponent.bind({});
+AlignCenter.args = {
+  options: options,
+  modelValue: 'left',
+  disable: false,
+  align: 'center',
+  spread: true,
 };
 
-export const AlignRight = {
-  args: {
-    options: options,
-    modelValue: 'left',
-    disable: false,
-    align: 'right',
-    spread: true,
-  },
+export const AlignRight = BaseComponent.bind({});
+AlignRight.args = {
+  options: options,
+  modelValue: 'left',
+  disable: false,
+  align: 'right',
+  spread: true,
 };
 
-export const WithoutIcons = {
-  args: {
-    options: options.map((option) => ({
-      ...option,
-      iconName: undefined,
-    })),
-    modelValue: 'left',
-    disable: false,
-    align: 'left',
-    spread: true,
-  },
+export const WithoutIcons = BaseComponent.bind({});
+WithoutIcons.args = {
+  options: options.map((option) => ({
+    ...option,
+    iconName: undefined,
+  })),
+  modelValue: 'left',
+  disable: false,
+  align: 'left',
+  spread: true,
 };
 
-export const Disable = {
-  args: {
-    options: options,
-    modelValue: 'left',
-    disable: true,
-    align: 'left',
-    spread: true,
-  },
+export const Disable = BaseComponent.bind({});
+Disable.args = {
+  options: options,
+  modelValue: 'left',
+  disable: true,
+  align: 'left',
+  spread: true,
 };
 
-export const NotSpread = {
-  args: {
-    options: options,
-    modelValue: 'left',
-    disable: false,
-    align: 'left',
-    spread: false,
-  },
+export const NotSpread = BaseComponent.bind({});
+NotSpread.args = {
+  options: options,
+  modelValue: 'left',
+  disable: false,
+  align: 'left',
+  spread: false,
 };
