@@ -37,50 +37,53 @@ import { VIcon } from '@base';
 import { computed, ref } from 'vue';
 
 const props = defineProps({
-    color: {
-        type: String,
-        required: false,
-        validator: (val) => ['primary', 'secondary', 'plane', 'outline', 'red'].includes(val),
-    },
-    isDisabled: {
-        type: Boolean,
-        required: false,
-    },
-    height: {
-        type: String,
-        required: false,
-        validator: (val) => ['lg', 'md', 'sm', 'xs'].includes(val),
-    },
-    isRounded: {
-        type: Boolean,
-        required: false,
-        default: true,
-    },
-    locationIcon: {
-        type: String,
-        required: false,
-    },
-    icon: {
-        type: String,
-        required: false,
-    },
-    textAlignment: {
-        type: String,
-        required: false,
-        validator: (val) => ['left', 'center', 'right'].includes(val),
-    },
-    fitWidth: {
-        type: Boolean,
-        required: false,
-    },
-    changeIcon: {
-        type: Boolean,
-        required: false,
-    },
-    enableHold: {
-        type: Boolean,
-        required: false,
-    },
+  color: {
+    type: String,
+    default: 'primary',
+    required: false,
+    validator: (val) => ['primary', 'secondary', 'plane', 'outline', 'red'].includes(val),
+  },
+  isDisabled: {
+    type: Boolean,
+    required: false,
+  },
+  height: {
+    type: String,
+    default: 'lg',
+    required: false,
+    validator: (val) => ['lg', 'md', 'sm', 'xs'].includes(val),
+  },
+  isRounded: {
+    type: Boolean,
+    default: true,
+    required: false,
+  },
+  locationIcon: {
+    type: String,
+    required: false,
+  },
+  icon: {
+    type: String,
+    required: false,
+  },
+  textAlignment: {
+    type: String,
+    default: 'center',
+    required: false,
+    validator: (val) => ['left', 'center', 'right'].includes(val),
+  },
+  fitWidth: {
+    type: Boolean,
+    required: false,
+  },
+  changeIcon: {
+    type: Boolean,
+    required: false,
+  },
+  enableHold: {
+    type: Boolean,
+    required: false,
+  },
 });
 
 const emit = defineEmits(['actionSubmitted']);
@@ -91,87 +94,87 @@ const btnStatus = ref('default'); // default, holding or done
 const showSubmittedIcon = computed(() => props.changeIcon && btnStatus.value === 'done');
 
 const btnClasses = computed(() => [
-    `v-button--${buttonSize.value}`,
-    backgroundColor.value,
-    {
-        'v-button--disabled': btnDisabled.value,
-        'v-button--rounded': props.isRounded,
-        'v-button--fit-width': props.fitWidth,
-        [`text-${props.textAlignment}`]: props.textAlignment,
-        'v-button--holding': btnStatus.value === 'holding',
-        'v-button--done': showSubmittedIcon.value,
-    },
+  `v-button--${buttonSize.value}`,
+  backgroundColor.value,
+  {
+    'v-button--disabled': btnDisabled.value,
+    'v-button--rounded': props.isRounded,
+    'v-button--fit-width': props.fitWidth,
+    [`text-${props.textAlignment}`]: props.textAlignment,
+    'v-button--holding': btnStatus.value === 'holding',
+    'v-button--done': showSubmittedIcon.value,
+  },
 ]);
 
 const sizeIcon = computed(() => {
-    switch (props.height) {
-        case 'lg':
-            return 36;
-        default:
-            return 28;
-    }
+  switch (props.height) {
+    case 'lg':
+      return 36;
+    default:
+      return 28;
+  }
 });
 
 const backgroundColor = computed(() => {
-    switch (props.color) {
-        case 'secondary':
-        case 'plane':
-        case 'outline':
-        case 'red':
-        case 'primary':
-            return props.color;
-        default:
-            return 'primary';
-    }
+  switch (props.color) {
+    case 'secondary':
+    case 'plane':
+    case 'outline':
+    case 'red':
+    case 'primary':
+      return props.color;
+    default:
+      return 'primary';
+  }
 });
 
 const buttonSize = computed(() => {
-    switch (props.height) {
-        case 'md':
-        case 'sm':
-        case 'xs':
-            return props.height;
-        default:
-            return 'lg';
-    }
+  switch (props.height) {
+    case 'md':
+    case 'sm':
+    case 'xs':
+      return props.height;
+    default:
+      return 'lg';
+  }
 });
 
 const btnDisabled = computed(() => props.isDisabled || btnStatus.value === 'done');
 
 const handleHold = ({ evt }) => {
-    if (btnDisabled.value || !props.enableHold) return;
+  if (btnDisabled.value || !props.enableHold) return;
 
-    if (props.changeIcon && btnRef.value) {
-        btnStatus.value = 'done';
-        finishAnimation(evt, true);
-    }
-    submitAction(evt);
+  if (props.changeIcon && btnRef.value) {
+    btnStatus.value = 'done';
+    finishAnimation(evt, true);
+  }
+  submitAction(evt);
 };
 
 const submitAction = () => {
-    emit('actionSubmitted');
+  emit('actionSubmitted');
 };
 
 const stopAnimation = () => finishAnimation();
 
 const startAnimation = () => {
-    if (btnDisabled.value || !props.enableHold) return;
+  if (btnDisabled.value || !props.enableHold) return;
 
-    btnStatus.value = 'holding';
-    document.addEventListener('mouseup', stopAnimation);
-    document.addEventListener('touchend', stopAnimation);
+  btnStatus.value = 'holding';
+  document.addEventListener('mouseup', stopAnimation);
+  document.addEventListener('touchend', stopAnimation);
 };
 
 const finishAnimation = (_evt, finished) => {
-    if (btnDisabled.value || !props.enableHold) return;
+  if (btnDisabled.value || !props.enableHold) return;
 
-    if (props.changeIcon && finished) {
-        btnStatus.value = 'done';
-    } else {
-        btnStatus.value = 'default';
-    }
-    document.removeEventListener('mouseup', stopAnimation);
-    document.removeEventListener('touchend', stopAnimation);
+  if (props.changeIcon && finished) {
+    btnStatus.value = 'done';
+  } else {
+    btnStatus.value = 'default';
+  }
+  document.removeEventListener('mouseup', stopAnimation);
+  document.removeEventListener('touchend', stopAnimation);
 };
 </script>
 
