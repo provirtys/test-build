@@ -13,7 +13,7 @@
     ".": {
       "import": "./dist/tablet-ui.es.js",
       "require": "./dist/tablet-ui.umd.js",
-      "types": "./dist/index.d.ts"
+      "types": "./index.d.ts"
     },
     "./style.css": "./dist/tablet-ui.css"
   },
