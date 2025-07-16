@@ -16,26 +16,26 @@
 import { VIcon } from '@integrity/base-ui/src/index.js';
 
 defineProps({
-    loadingText: {
-        type: String,
-        default: 'Обновление...',
-    },
-    fallbackText: {
-        type: String,
-        default: 'Ошибка',
-    },
-    fallbackIcon: {
-        type: String,
-        default: 'status-error',
-    },
-    updateBtnText: {
-        type: String,
-        default: 'Обновить',
-    },
-    isLoading: {
-        type: Boolean,
-        default: false,
-    },
+  loadingText: {
+    type: String,
+    default: 'Обновление...',
+  },
+  fallbackText: {
+    type: String,
+    default: 'Ошибка',
+  },
+  fallbackIcon: {
+    type: String,
+    default: 'status-error',
+  },
+  updateBtnText: {
+    type: String,
+    default: 'Обновить',
+  },
+  isLoading: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 defineEmits(['onUpdate']);

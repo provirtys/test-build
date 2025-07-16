@@ -9,15 +9,15 @@
 import { computed } from 'vue';
 
 const props = defineProps({
-    percentage: { type: Number, default: 0 },
-    size: { type: String, default: 'small' },
+  percentage: { type: Number, default: 0 },
+  size: { type: String, default: 'small' },
 });
 
 const degrees = computed(() => {
-    const radius = props.percentage <= 2 ? '6deg' : `${(props.percentage * 3.6).toString()}deg`;
-    return {
-        '--degrees': radius,
-    };
+  const radius = props.percentage <= 2 ? '6deg' : `${(props.percentage * 3.6).toString()}deg`;
+  return {
+    '--degrees': radius,
+  };
 });
 </script>
 

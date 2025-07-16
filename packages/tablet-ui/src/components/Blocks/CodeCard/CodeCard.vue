@@ -19,39 +19,39 @@ import { VIcon } from '@integrity/base-ui/src/index.js';
 import { computed } from 'vue';
 
 const props = defineProps({
-    codeType: {
-        type: String,
-        default: 'dataMatrix',
-    },
-    codeText: {
-        type: String,
-        default: '',
-    },
-    status: {
-        type: String,
-        default: 'none',
-    },
-    time: {
-        type: String,
-        default: '',
-    },
-    position: {
-        type: Number,
-        default: 0,
-    },
+  codeType: {
+    type: String,
+    default: 'dataMatrix',
+  },
+  codeText: {
+    type: String,
+    default: '',
+  },
+  status: {
+    type: String,
+    default: 'none',
+  },
+  time: {
+    type: String,
+    default: '',
+  },
+  position: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const iconName = computed(() => (props.codeType === 'barcode' ? 'barcode' : 'data-matrix'));
 
 const statusIcon = computed(() => {
-    switch (props.status) {
-        case 'verified':
-            return 'status-success';
-        case 'broken':
-            return 'status-error';
-        default:
-            return '';
-    }
+  switch (props.status) {
+    case 'verified':
+      return 'status-success';
+    case 'broken':
+      return 'status-error';
+    default:
+      return '';
+  }
 });
 </script>
 

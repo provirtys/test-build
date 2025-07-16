@@ -22,14 +22,14 @@ import { QTable } from 'quasar';
 
 const { t } = setupI18n();
 const props = defineProps({
-    rows: {
-        type: Array,
-        default: () => [],
-    },
-    columns: {
-        type: Array,
-        default: () => [],
-    },
+  rows: {
+    type: Array,
+    default: () => [],
+  },
+  columns: {
+    type: Array,
+    default: () => [],
+  },
 });
 </script>
 

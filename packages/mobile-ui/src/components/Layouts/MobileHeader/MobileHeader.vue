@@ -37,58 +37,58 @@ const { t } = setupI18n();
 const router = useRouter();
 
 const props = defineProps({
-    showBackButton: {
-        type: Boolean,
-        default: false,
-    },
-    isBackgroundDark: {
-        type: Boolean,
-        default: false,
-    },
-    isOffline: {
-        type: Boolean,
-        default: false,
-    },
-    page: {
-        type: String,
-        default: '',
-    },
+  showBackButton: {
+    type: Boolean,
+    default: false,
+  },
+  isBackgroundDark: {
+    type: Boolean,
+    default: false,
+  },
+  isOffline: {
+    type: Boolean,
+    default: false,
+  },
+  page: {
+    type: String,
+    default: '',
+  },
 });
 
 function onBackButton() {
-    switch (props.page) {
-        case 'FrontPage':
-            break;
+  switch (props.page) {
+    case 'FrontPage':
+      break;
 
-        case 'CheckResult':
-            router.push({ name: 'CheckScan' });
-            break;
+    case 'CheckResult':
+      router.push({ name: 'CheckScan' });
+      break;
 
-        case 'Checking':
-        case 'History':
-        case 'CheckScan':
-        case 'Settings':
-        case 'Auth':
-        case 'ProfileRegister':
-        case 'ForgotPassword':
-            router.push({ name: 'FrontPage' });
-            break;
+    case 'Checking':
+    case 'History':
+    case 'CheckScan':
+    case 'Settings':
+    case 'Auth':
+    case 'ProfileRegister':
+    case 'ForgotPassword':
+      router.push({ name: 'FrontPage' });
+      break;
 
-        default:
-            router.go(-1);
-            break;
-    }
+    default:
+      router.go(-1);
+      break;
+  }
 }
 
 const getPageHeader = computed(() => {
-    switch (props.page) {
-        case 'Profile':
-            return t('storybook.profile');
-        case 'ProfileRegister':
-            return t('storybook.register');
-        default:
-            return undefined;
-    }
+  switch (props.page) {
+    case 'Profile':
+      return t('storybook.profile');
+    case 'ProfileRegister':
+      return t('storybook.register');
+    default:
+      return undefined;
+  }
 });
 </script>
 

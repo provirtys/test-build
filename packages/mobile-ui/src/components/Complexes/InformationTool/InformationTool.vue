@@ -40,21 +40,21 @@ import { VButton } from '@integrity/base-ui/src/index.js';
 const { t } = setupI18n();
 
 const props = defineProps({
-    /** Информация об инструменте */
-    toolItems: {
-        type: Object,
-        default: () => ({}),
-    },
-    /** Изображение инструмента */
-    img: {
-        type: String,
-        default: '',
-    },
-    /** Тип кнопки Получить/Вернуть*/
-    btn: {
-        type: String,
-        default: 'take',
-    },
+  /** Информация об инструменте */
+  toolItems: {
+    type: Object,
+    default: () => ({}),
+  },
+  /** Изображение инструмента */
+  img: {
+    type: String,
+    default: '',
+  },
+  /** Тип кнопки Получить/Вернуть*/
+  btn: {
+    type: String,
+    default: 'take',
+  },
 });
 </script>
 

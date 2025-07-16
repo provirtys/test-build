@@ -81,9 +81,9 @@
 
 <script setup>
 const props = defineProps({
-    page: {
-        type: String,
-        default: '',
-    },
+  page: {
+    type: String,
+    default: '',
+  },
 });
 </script>

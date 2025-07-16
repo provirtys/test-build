@@ -232,6 +232,6 @@
 
 <script setup>
 const props = defineProps({
-    border: { type: Boolean, default: true },
+  border: { type: Boolean, default: true },
 });
 </script>

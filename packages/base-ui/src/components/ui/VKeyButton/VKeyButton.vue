@@ -10,16 +10,16 @@ import { VIcon } from '@base';
 import { computed } from 'vue';
 
 const props = defineProps({
-    /** Значение кнопки*/
-    value: {
-        type: String,
-        default: '',
-    },
-    size: {
-        type: String,
-        default: 'lg',
-        validator: (val) => ['sm', 'md', 'lg'].includes(val),
-    },
+  /** Значение кнопки*/
+  value: {
+    type: String,
+    default: '',
+  },
+  size: {
+    type: String,
+    default: 'lg',
+    validator: (val) => ['sm', 'md', 'lg'].includes(val),
+  },
 });
 
 const emit = defineEmits(['pressed']);
@@ -27,7 +27,7 @@ const emit = defineEmits(['pressed']);
 const classList = computed(() => [`v-key-button--${props.size}`]);
 
 function pressed() {
-    emit('pressed', props.value);
+  emit('pressed', props.value);
 }
 </script>
 

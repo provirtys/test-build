@@ -28,46 +28,46 @@ import { setupI18n } from '@integrity/base-ui/src/i18n.js';
 const { t } = setupI18n();
 
 const props = defineProps({
-    isBackgroundDark: {
-        type: Boolean,
-        default: false,
-    },
-    currentPage: {
-        type: String,
-        default: '',
-    },
+  isBackgroundDark: {
+    type: Boolean,
+    default: false,
+  },
+  currentPage: {
+    type: String,
+    default: '',
+  },
 });
 
 function isPageActive(page) {
-    switch (page) {
-        case 'home':
-            return props.currentPage === 'FrontPage';
-        case 'scan':
-            return ['Checking', 'CheckScan', 'CheckResult'].includes(props.currentPage);
-        case 'history':
-            return props.currentPage === 'History';
-        case 'profile':
-            return [
-                'Profile',
-                'ProfileAuth',
-                'ProfileRegister',
-                'BindingCodeScan',
-                'BindingCodeConfirm',
-                'ProfileEdit',
-            ].includes(props.currentPage);
-        default:
-            return false;
-    }
+  switch (page) {
+    case 'home':
+      return props.currentPage === 'FrontPage';
+    case 'scan':
+      return ['Checking', 'CheckScan', 'CheckResult'].includes(props.currentPage);
+    case 'history':
+      return props.currentPage === 'History';
+    case 'profile':
+      return [
+        'Profile',
+        'ProfileAuth',
+        'ProfileRegister',
+        'BindingCodeScan',
+        'BindingCodeConfirm',
+        'ProfileEdit',
+      ].includes(props.currentPage);
+    default:
+      return false;
+  }
 }
 
 function tabbarItemColor(page) {
-    let style;
-    if (isPageActive(page)) {
-        style = 'active';
-    } else if (props.isBackgroundDark) {
-        style = 'light';
-    }
-    return style;
+  let style;
+  if (isPageActive(page)) {
+    style = 'active';
+  } else if (props.isBackgroundDark) {
+    style = 'light';
+  }
+  return style;
 }
 </script>
 
