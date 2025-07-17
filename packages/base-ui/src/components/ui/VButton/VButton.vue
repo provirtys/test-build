@@ -12,6 +12,7 @@
     @touchstart="startAnimation"
     @mouseup="finishAnimation"
     @touchend="finishAnimation"
+    @click="handleClick"
   >
     <v-icon v-if="showSubmittedIcon" name="done" :size="sizeIcon" />
     <template v-else>
@@ -76,7 +77,7 @@ const props = defineProps({
     type: Boolean,
     required: false,
   },
-  changeIcon: {
+  once: {
     type: Boolean,
     required: false,
   },
@@ -86,12 +87,12 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['actionSubmitted']);
+const emit = defineEmits(['action']);
 
 const btnRef = ref(null);
 const btnStatus = ref('default'); // default, holding or done
 
-const showSubmittedIcon = computed(() => props.changeIcon && btnStatus.value === 'done');
+const showSubmittedIcon = computed(() => props.once && btnStatus.value === 'done');
 
 const btnClasses = computed(() => [
   `v-button--${buttonSize.value}`,
@@ -144,7 +145,7 @@ const btnDisabled = computed(() => props.isDisabled || btnStatus.value === 'done
 const handleHold = ({ evt }) => {
   if (btnDisabled.value || !props.enableHold) return;
 
-  if (props.changeIcon && btnRef.value) {
+  if (props.once && btnRef.value) {
     btnStatus.value = 'done';
     finishAnimation(evt, true);
   }
@@ -152,7 +153,17 @@ const handleHold = ({ evt }) => {
 };
 
 const submitAction = () => {
-  emit('actionSubmitted');
+  emit('action');
+};
+
+const handleClick = () => {
+  if (props.enableHold || btnDisabled.value) return;
+
+  if (props.once) {
+    btnStatus.value = 'done';
+  }
+
+  submitAction();
 };
 
 const stopAnimation = () => finishAnimation();
@@ -168,7 +179,7 @@ const startAnimation = () => {
 const finishAnimation = (_evt, finished) => {
   if (btnDisabled.value || !props.enableHold) return;
 
-  if (props.changeIcon && finished) {
+  if (props.once && finished) {
     btnStatus.value = 'done';
   } else {
     btnStatus.value = 'default';
