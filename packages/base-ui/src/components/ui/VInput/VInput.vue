@@ -15,7 +15,8 @@
 
       <template v-if="showRequiredStar || attrs.type === 'password'" #append>
         <span v-if="showRequiredStar" class="v-input__required-star">*</span>
-        <q-icon v-if="attrs.type === 'password'" :name="isPassword ? 'visibility_off' : 'visibility'"
+        <q-icon v-if="attrs.type === 'password'" class="v-input__eye"
+                :name="isPassword ? 'visibility_off' : 'visibility'"
                 @click="isPassword = !isPassword"/>
       </template>
     </q-input>
@@ -92,9 +93,9 @@ const bindingAttrs = computed(() => {
     const requiredRule = (val) => !!val || 'Поле обязательное для заполнения';
 
     if (Array.isArray(resAttrs.rules)) {
-      resAttrs.rules = [...resAttrs.rules, requiredRule]; // создаём новый массив
+      resAttrs.rules = [requiredRule, ...resAttrs.rules]; // создаём новый массив
     } else if (typeof resAttrs.rules === 'function') {
-      resAttrs.rules = [resAttrs.rules, requiredRule];
+      resAttrs.rules = [requiredRule, resAttrs.rules];
     } else {
       resAttrs.rules = [requiredRule];
     }

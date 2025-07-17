@@ -1,4 +1,6 @@
 import { VInput } from '@base';
+import { sleep } from '@base/utils/sleep.js';
+import { expect, userEvent, waitFor } from 'storybook/test';
 import { computed, ref } from 'vue';
 
 const variants = {
@@ -206,6 +208,23 @@ Password.args = {
   modelValue: '',
   label: 'Пароль',
 };
+Password.play = async () => {
+  const inputEl = document.querySelector('.v-input input');
+  const eyeEl = document.querySelector('.v-input__eye');
+  const password = 'Очень_сильный_пароль';
+
+  await userEvent.type(inputEl, password, { delay: 100 });
+  await userEvent.click(eyeEl);
+
+  await expect(inputEl).toHaveAttribute('type', 'text');
+  await expect(inputEl).toHaveDisplayValue(password);
+
+  await sleep(1000);
+
+  await userEvent.click(eyeEl);
+
+  await expect(inputEl).toHaveAttribute('type', 'password');
+};
 
 export const PasswordRequired = BaseComponent.bind({});
 PasswordRequired.args = {
@@ -223,9 +242,38 @@ PasswordWithValidation.args = {
   placeholder: 'Введите пароль',
   modelValue: '',
   label: 'Пароль',
-  rules: [(val) => val.length < 6 || 'Минимальная длина 6 символов'],
+  rules: [(val) => val.length >= 6 || 'Минимальная длина 6 символов'],
   lazyRules: true,
   required: true,
+};
+
+PasswordWithValidation.play = async ({ canvas }) => {
+  const inputWrapperEl = document.querySelector('.v-input');
+  const inputEl = canvas.getByPlaceholderText('Введите пароль');
+  const errorClass = 'v-input--has-error';
+
+  inputEl.focus();
+  inputEl.blur();
+
+  await waitFor(() => {
+    expect(canvas.getByRole('alert')).toHaveTextContent('обязательное');
+  });
+
+  await userEvent.type(inputEl, '12345', { delay: 200 });
+
+  inputEl.blur();
+
+  await waitFor(() => {
+    expect(canvas.getByRole('alert')).toHaveTextContent('Минимальная длина');
+  });
+
+  await userEvent.type(inputEl, '12345', { delay: 200 });
+
+  inputEl.blur();
+
+  await waitFor(() => {
+    expect(inputWrapperEl).not.toHaveClass(errorClass);
+  });
 };
 
 export const Textarea = BaseComponent.bind({});
