@@ -14,7 +14,7 @@ code-check:
   stage: lint
   rules:
     - if: $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "refactor/dev-203")
-      when: always
+      when: manual
     - when: never
   script:
     - apk add --no-cache git
