@@ -17,6 +17,20 @@ export default defineConfig({
       symbolId: 'icon-[name]',
       svgDomId: 'svg-sprite',
       inject: 'body-last',
+      svgoConfig: {
+        plugins: [
+          {
+            name: 'removeAttributesBySelector',
+            params: {
+              selectors: [
+                {
+                  selector: '*:not(svg)',
+                },
+              ],
+            },
+          },
+        ],
+      },
     }),
   ],
   // Configuration for building your library.
