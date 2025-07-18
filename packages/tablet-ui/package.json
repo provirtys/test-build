@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./dist/tablet-ui.umd.js",
   "module": "./dist/tablet-ui.es.js",
-  "types": "index.d.ts",
+  "types": "./index.d.ts",
   "scripts": {
     "build": "vite build",
     "storybook": "storybook dev -p 3002",
@@ -21,7 +21,7 @@
     "access": "public",
     "main": "src/index.js"
   },
-  "files": ["package.json", "pnpm-lock.yaml", "dist", "index.d.ts"],
+  "files": ["package.json", "pnpm-lock.yaml", "dist", "./index.d.ts"],
   "dependencies": {
     "@chromatic-com/storybook": "catalog:",
     "@integrity/base-ui": "workspace:*",

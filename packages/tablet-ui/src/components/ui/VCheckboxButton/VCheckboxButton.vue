@@ -13,75 +13,89 @@
   </label>
 </template>
 
+/**
+* Мой компонент, который отображает счётчик с заголовком.
+*
+* @prop {string} title - Заголовок компонента
+* @prop {number} count - Текущее значение счётчика
+* @emits update - Событие обновления счётчика с новым значением
+*/
 <script setup>
 import { VIcon } from '@integrity/base-ui/src/index.js';
 import { computed } from 'vue';
 
+/**
+ * @typedef {Object} Props
+ * @property {string} title - Заголовок компонента
+ * @property {number} count - Количество
+ */
+
+/** @type {import('vue').DefineProps<Props>} */
 const props = defineProps({
-    /** Выбранное значение */
-    modelValue: {
-        type: Boolean,
-        default: false,
-    },
-    /** Имя иконки */
-    iconName: {
-        type: String,
-        default: '',
-    },
-    /** Вид Plane */
-    isPlane: {
-        type: Boolean,
-        default: false,
-    },
-    /** Высота */
-    height: {
-        type: String,
-        default: 'lg',
-    },
-    /** Текст кнопки */
-    label: {
-        type: String,
-        default: 'Checkbox',
-    },
-    /** Активность чекбокса */
-    isDisabled: {
-        type: Boolean,
-        default: false,
-    },
+  /** Выбранное значение */
+  modelValue: {
+    type: Boolean,
+    default: false,
+  },
+  /** Имя иконки */
+  iconName: {
+    type: String,
+    default: '',
+  },
+  /** Вид Plane */
+  isPlane: {
+    type: Boolean,
+    default: false,
+  },
+  /** Высота */
+  height: {
+    type: String,
+    default: 'lg',
+  },
+  /** Текст кнопки */
+  label: {
+    type: String,
+    default: 'Checkbox',
+  },
+  /** Активность чекбокса */
+  isDisabled: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 defineEmits(['update:modelValue']);
 
 const classList = computed(() => [
-    [`v-checkbox-button--${props.height}`],
-    {
-        'v-checkbox-button--active': props.modelValue,
-        'v-checkbox-button--plane': props.isPlane,
-        'v-checkbox-button--disabled': props.isDisabled,
-    },
+  [`v-checkbox-button--${props.height}`],
+  {
+    'v-checkbox-button--active': props.modelValue,
+    'v-checkbox-button--plane': props.isPlane,
+    'v-checkbox-button--disabled': props.isDisabled,
+  },
 ]);
 
 const checkboxIconName = computed(() =>
-    props.modelValue ? 'checkbox-transparent-select' : 'checkbox-transparent-empty',
+  props.modelValue ? 'checkbox-transparent-select' : 'checkbox-transparent-empty',
 );
 
 const iconSizes = {
-    lg: {
-        icon: 60,
-        checkbox: 44,
-    },
-    md: {
-        icon: 52,
-        checkbox: 36,
-    },
-    sm: {
-        icon: 44,
-        checkbox: 28,
-    },
-    xs: {
-        icon: 36,
-        checkbox: 28,
-    },
+  lg: {
+    icon: 60,
+    checkbox: 44,
+  },
+  md: {
+    icon: 52,
+    checkbox: 36,
+  },
+  sm: {
+    icon: 44,
+    checkbox: 28,
+  },
+  xs: {
+    icon: 36,
+    checkbox: 28,
+  },
 };
 </script>
 
