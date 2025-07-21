@@ -1,11 +1,15 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "organizeImports": {
-    "enabled": true
+  "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
   },
   "overrides": [
     {
-      "include": ["*.vue"],
+      "includes": ["**/*.vue"],
       "linter": {
         "rules": {
           "style": {
@@ -23,7 +27,7 @@
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
-    "ignore": ["**/node_modules/**"],
+    "includes": ["**", "!**/node_modules/**"],
     "lineWidth": 120
   },
   "javascript": {
@@ -46,7 +50,7 @@
   },
   "linter": {
     "enabled": true,
-    "ignore": ["**/node_modules/**", "**/*.test.*", "./packages/base-ui/src/datamatrix.js"],
+    "includes": ["**", "!**/node_modules/**", "!**/*.test.*", "!packages/base-ui/src/datamatrix.js"],
     "rules": {
       "correctness": {
         "noUnusedVariables": {},
@@ -54,18 +58,12 @@
         "useImportExtensions": {}
       },
       "recommended": true,
-      "complexity": {
-        "all": true
-      },
+      "complexity": {},
       "performance": {
-        "all": true,
         "noBarrelFile": "off"
       },
-      "security": {
-        "all": true
-      },
+      "security": {},
       "suspicious": {
-        "all": true,
         "noConsole": {
           "options": {
             "allow": ["debug", "log", "error", "info", "warn", "time", "timeEnd"]

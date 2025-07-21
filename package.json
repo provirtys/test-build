@@ -15,9 +15,9 @@
   "packageManager": "pnpm@10.11.1",
   "private": true,
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "husky": "^9.1.7",
+    "@biomejs/biome": "^2.1.2",
     "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1"
+    "@commitlint/config-conventional": "^19.8.1",
+    "husky": "^9.1.7"
   }
 }
