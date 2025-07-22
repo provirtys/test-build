@@ -1,3 +1,4 @@
+import { expect } from 'storybook/test';
 import { computed } from 'vue';
 import { StatusBar } from './index.js';
 
@@ -6,14 +7,38 @@ const back = 'back';
 const logout = 'logout';
 const actions = { home, back, logout };
 
+const testElements = (iconName, buttonText, statusText, isStatusSuccess, isLabelBackgroundShown, settingsDisabled) => {
+  const buttonIconEl = document.querySelector('.status-line .v-button__icon-container use');
+  const buttonTextEl = document.querySelector('.status-line .v-button__text');
+  const statusLabelEl = document.querySelector('.status-line .status-label');
+  const statusIndicatorEl = statusLabelEl.querySelector('.status-indicator__dot');
+  const settingsIconEl = document.querySelector('.status-line__settings-button');
+
+  const colorSettings = {
+    true: {
+      label: isLabelBackgroundShown ? 'rgba(116, 200, 32, 0.25)' : 'rgba(0, 0, 0, 0)',
+      dot: 'rgb(116, 200, 32)',
+    },
+    false: {
+      label: isLabelBackgroundShown ? 'rgba(200, 52, 32, 0.25)' : 'rgba(0, 0, 0, 0)',
+      dot: 'rgb(200, 52, 32)',
+    },
+  };
+
+  expect(buttonIconEl.getAttribute('xlink:href')).toBe(iconName);
+  expect(buttonTextEl.textContent).toBe(buttonText);
+  expect(statusLabelEl.textContent.trim()).toBe(statusText);
+  expect(window.getComputedStyle(statusLabelEl).backgroundColor).toBe(colorSettings[isStatusSuccess].label);
+  expect(window.getComputedStyle(statusIndicatorEl).backgroundColor).toBe(colorSettings[isStatusSuccess].dot);
+  expect(settingsIconEl.classList.contains('disabled')).toBe(settingsDisabled);
+};
+
 /** Компонент верхней части приложения. <br>
- * Содержит: <br>
- * <ul>
- *   <li>Одну из кнопок действия - `Домой`, `Назад`, `Выход`</li>
- *   <li>Заголовок текущего контекста приложения</li>
- *   <li>Статус бэкенда</li>
- *   <li>Кнопку для вывода дебаг панели</li>
- * </ul>
+ * Содержит:
+ *  - Одну из кнопок действия - `Домой`, `Назад`, `Выход`
+ *  - Заголовок текущего контекста приложения
+ *  - Статус бэкенда
+ *  - Кнопку для вывода дебаг панели
  * */
 export default {
   component: StatusBar,
@@ -93,10 +118,19 @@ const BaseComponent = (args) => ({
 
 export const HomeNotReady = BaseComponent.bind({});
 
-export const BackReady = BaseComponent.bind({});
-BackReady.args = {
+HomeNotReady.play = () => {
+  testElements('#icon-home', 'Домой', 'Не готово', false, false, false);
+};
+
+export const BackReadySettingsDisabled = BaseComponent.bind({});
+BackReadySettingsDisabled.args = {
   statusIsReady: true,
   action: back,
+  isDisabled: true,
+};
+
+BackReadySettingsDisabled.play = () => {
+  testElements('#icon-arrow-back', 'Назад', 'Готово', true, false, true);
 };
 
 export const LogoutReadyWithBackgroundAndAnimation = BaseComponent.bind({});
@@ -104,5 +138,9 @@ LogoutReadyWithBackgroundAndAnimation.args = {
   statusIsReady: true,
   statusIsAnimated: true,
   statusShowBackground: true,
-  action: back,
+  action: logout,
+};
+
+LogoutReadyWithBackgroundAndAnimation.play = () => {
+  testElements('#icon-logout-dark', 'Выход', 'Готово', true, true, false);
 };
