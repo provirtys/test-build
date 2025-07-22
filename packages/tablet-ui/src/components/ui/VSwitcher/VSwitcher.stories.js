@@ -1,9 +1,11 @@
+import { sleep } from '@integrity/base-ui/src/utils/sleep.js';
+import { expect, userEvent } from 'storybook/test';
 import { computed, ref } from 'vue';
 import { VSwitcher } from './index.js';
 
 const options = [
-  { label: 'Опция 1', value: 'left', slot: 'one', iconName: 'aggregation' },
-  { label: 'Опция 2', value: 'right', slot: 'two', iconName: 'print' },
+  { label: 'Опция 1', value: 'left', iconName: 'aggregation' },
+  { label: 'Опция 2', value: 'right', iconName: 'print' },
 ];
 
 /** Компонент переключатель. Принимает в себя 2 опции, у которых настраивается выводимый текст и иконка. Можно растягивать компонент на всю доступную ширину, позиционировать контент, а также сделать компонент отключенным.  */
@@ -79,6 +81,27 @@ Primary.args = {
   disable: false,
   align: 'left',
   spread: true,
+};
+
+Primary.play = async () => {
+  const firstBtn = document.querySelector('.v-switcher>.q-btn:first-child');
+  const secondBtn = document.querySelector('.v-switcher>.q-btn:not(.q-btn:first-child)');
+
+  await userEvent.click(firstBtn);
+  await expect(firstBtn.getAttribute('aria-pressed'));
+  await expect(!secondBtn.getAttribute('aria-pressed'));
+
+  await sleep(1000);
+
+  await userEvent.click(secondBtn);
+  await expect(secondBtn.getAttribute('aria-pressed'));
+  await expect(!firstBtn.getAttribute('aria-pressed'));
+
+  await sleep(1000);
+
+  await userEvent.click(firstBtn);
+  await expect(firstBtn.getAttribute('aria-pressed'));
+  await expect(!secondBtn.getAttribute('aria-pressed'));
 };
 
 export const AlignCenter = BaseComponent.bind({});

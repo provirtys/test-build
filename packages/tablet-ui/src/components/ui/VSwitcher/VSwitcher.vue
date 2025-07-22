@@ -1,26 +1,22 @@
 <template>
   <q-btn-toggle
+    class="v-switcher"
     :class="classes"
     :model-value="modelValue"
-    :options="options"
+    :options="computedOptions"
     v-bind="computedAttrs"
     @update:modelValue="updateValue"
   >
-    <template v-if="options[0].iconName" v-slot:one>
-      <div class="switcher__item-icon">
-        <v-icon :name="options[0].iconName" />
-      </div>
-    </template>
-    <template v-if="options[1].iconName" v-slot:two>
-      <div class="switcher__item-icon">
-        <v-icon :name="options[1].iconName" />
+    <template v-for="option in computedOptions" v-slot:[option.slot]>
+      <div v-if="option.iconName" class="v-switcher__item-icon">
+        <v-icon :name="option.iconName"/>
       </div>
     </template>
   </q-btn-toggle>
 </template>
 
 <script setup>
-import { VIcon } from '@integrity/base-ui/src/index.js';
+import { VIcon } from '@base';
 import { computed, onMounted, useAttrs } from 'vue';
 
 const props = defineProps({
@@ -38,9 +34,8 @@ defineOptions({
 const attrs = useAttrs();
 
 const classes = computed(() => [
-  'switcher',
   {
-    [`switcher--text-${props.align}`]: props.align,
+    [`v-switcher--text-${props.align}`]: props.align,
   },
 ]);
 
@@ -56,6 +51,13 @@ const computedAttrs = computed(() => ({
   noCaps: true,
 }));
 
+const computedOptions = computed(() => {
+  return props.options.map((option, idx) => ({
+    ...option,
+    slot: `slot-${idx + 1}`,
+  }));
+});
+
 const updateValue = (val) => {
   emit('update:modelValue', val);
 };
@@ -68,7 +70,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-.switcher {
+.v-switcher {
   background: $primary-text-20;
   color: $primary-text;
   border-radius: 12px;
@@ -89,7 +91,7 @@ onMounted(() => {
     margin-left: auto;
   }
 
-  .switcher__item-icon {
+  .v-switcher__item-icon {
     order: -1;
   }
 
