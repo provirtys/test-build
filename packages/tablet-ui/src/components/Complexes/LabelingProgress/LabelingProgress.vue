@@ -40,7 +40,7 @@
     </div>
     <v-button
         icon="arrow"
-        location-icon="right"
+        icon-position="right"
         is-radius
         color="red"
         @action-submitted="finishLabeling"
@@ -59,18 +59,18 @@ import { computed } from 'vue';
 const { t } = setupI18n();
 
 const props = defineProps({
-    total: { type: Number, default: 1 },
-    mistakes: { type: Number, default: 0 },
+  total: { type: Number, default: 1 },
+  mistakes: { type: Number, default: 0 },
 });
 
 const percentage = computed(() => {
-    return Math.round((props.mistakes / props.total) * 100);
+  return Math.round((props.mistakes / props.total) * 100);
 });
 
 const emit = defineEmits(['finishLabeling']);
 
 function finishLabeling() {
-    emit('finishLabeling');
+  emit('finishLabeling');
 }
 </script>
 <style lang="scss">

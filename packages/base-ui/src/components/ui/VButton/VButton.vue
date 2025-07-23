@@ -5,6 +5,7 @@
     :disabled="btnDisabled"
     no-caps
     :ripple="false"
+    :glossy="false"
     flat
     ref="btnRef"
     v-touch-hold:1000:200:200.mouse="handleHold"
@@ -17,14 +18,14 @@
     <v-icon v-if="showSubmittedIcon" name="done" :size="sizeIcon" />
     <template v-else>
       <span
-        v-if="icon && locationIcon === 'left'"
+        v-if="icon && iconPosition === 'left'"
         class="v-button__icon-container justify-start"
       >
         <v-icon :name="icon" :size="sizeIcon" />
       </span>
       <span class="v-button__text"><slot></slot></span>
       <span
-        v-if="icon && locationIcon === 'right'"
+        v-if="icon && iconPosition === 'right'"
         class="v-button__icon-container justify-end"
       >
         <v-icon :name="icon" :size="sizeIcon" />
@@ -59,12 +60,17 @@ const props = defineProps({
     default: true,
     required: false,
   },
-  locationIcon: {
+  icon: {
     type: String,
     required: false,
   },
-  icon: {
+  iconPosition: {
     type: String,
+    required: false,
+  },
+  iconSize: {
+    type: [Number, null],
+    default: null,
     required: false,
   },
   textAlignment: {
@@ -108,6 +114,8 @@ const btnClasses = computed(() => [
 ]);
 
 const sizeIcon = computed(() => {
+  if (props.iconSize) return props.iconSize;
+
   switch (props.height) {
     case 'lg':
       return 36;
@@ -189,11 +197,7 @@ const finishAnimation = (_evt, finished) => {
 };
 </script>
 
-<style lang="scss">
-.pointer-icon {
-  pointer-events: none;
-}
-
+<style lang="scss" scoped>
 .v-button {
   width: 100%;
   height: $xl-4;
@@ -346,7 +350,7 @@ const finishAnimation = (_evt, finished) => {
       background-color: $primary-text-20;
     }
 
-    .q-btn__content {
+    :deep(.q-btn__content) {
       justify-content: center;
     }
   }
@@ -361,7 +365,7 @@ const finishAnimation = (_evt, finished) => {
     width: min-content;
   }
 
-  .q-btn__content {
+  :deep(.q-btn__content) {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -370,7 +374,7 @@ const finishAnimation = (_evt, finished) => {
     flex-wrap: nowrap;
   }
 
-  .q-focus-helper {
+  :deep(.q-focus-helper) {
     display: none;
   }
 }

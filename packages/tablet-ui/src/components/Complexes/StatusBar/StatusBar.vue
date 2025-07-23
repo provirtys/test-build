@@ -5,7 +5,7 @@
       fit-width
       color="secondary"
       :icon="actionOptions.icon"
-      location-icon="left"
+      icon-position="left"
       :is-rounded="false"
       enable-hold
     >
@@ -30,10 +30,9 @@
 </template>
 
 <script setup>
-import { StatusLabel } from '@';
-import { VIcon } from '@integrity/base-ui/src/index.js';
-import { VButton } from '@integrity/base-ui/src/index.js';
+import { VButton, VIcon } from '@integrity/base-ui/src/index.js';
 import { computed } from 'vue';
+import { StatusLabel } from '@';
 
 const props = defineProps({
   status: {
@@ -55,7 +54,7 @@ const props = defineProps({
   action: {
     type: String,
     default: 'home',
-    required: true,
+    required: false,
     validator: (val) => ['home', 'back', 'logout'].includes(val),
   },
 });

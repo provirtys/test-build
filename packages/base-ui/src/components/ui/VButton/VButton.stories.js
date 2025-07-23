@@ -112,7 +112,7 @@ export default {
         labels: iconNames,
       },
     },
-    locationIcon: {
+    iconPosition: {
       description: 'Расположение иконки',
       options: Object.keys(location),
       mapping: location,
@@ -124,6 +124,10 @@ export default {
           right: 'Справа',
         },
       },
+    },
+    iconSize: {
+      description: 'Размер иконки',
+      control: 'number',
     },
     fitWidth: {
       description: 'Отменить растягивание кнопки',
@@ -149,7 +153,8 @@ export default {
     isDisabled: false,
     isRounded: true,
     icon: '',
-    locationIcon: empty,
+    iconPosition: empty,
+    iconSize: 30,
     fitWidth: false,
     once: false,
     enableHold: false,
@@ -248,7 +253,7 @@ ExtraSmall.args = {
 export const IconLeftWithTextLeft = BaseComponent.bind({});
 IconLeftWithTextLeft.args = {
   text: 'Иконка слева текст слева',
-  locationIcon: 'left',
+  iconPosition: 'left',
   icon: 'bad',
   textAlignment: 'left',
 };
@@ -256,14 +261,14 @@ IconLeftWithTextLeft.args = {
 export const IconLeftWithTextCenter = BaseComponent.bind({});
 IconLeftWithTextCenter.args = {
   text: 'Иконка слева текст по центру',
-  locationIcon: 'left',
+  iconPosition: 'left',
   icon: 'bad',
 };
 
 export const IconLeftWithTextRight = BaseComponent.bind({});
 IconLeftWithTextRight.args = {
   text: 'Иконка слева текст справа',
-  locationIcon: 'left',
+  iconPosition: 'left',
   icon: 'bad',
   textAlignment: 'right',
 };
@@ -271,7 +276,7 @@ IconLeftWithTextRight.args = {
 export const IconRightWithTextLeft = BaseComponent.bind({});
 IconRightWithTextLeft.args = {
   text: 'Иконка справа текст слева',
-  locationIcon: 'right',
+  iconPosition: 'right',
   icon: 'bad',
   textAlignment: 'left',
 };
@@ -279,14 +284,14 @@ IconRightWithTextLeft.args = {
 export const IconRightTextCenter = BaseComponent.bind({});
 IconRightTextCenter.args = {
   text: 'Иконка справа текст по центру',
-  locationIcon: 'right',
+  iconPosition: 'right',
   icon: 'bad',
 };
 
 export const IconRightWithTextCenter = BaseComponent.bind({});
 IconRightWithTextCenter.args = {
   text: 'Иконка справа текст справа',
-  locationIcon: 'right',
+  iconPosition: 'right',
   icon: 'bad',
   textAlignment: 'right',
 };
