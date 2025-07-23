@@ -2,7 +2,6 @@
   <div class="status-label" :class="classList">
     {{ label }}
     <status-indicator
-        class="pointer-icon"
         :color="props.color"
         :is-animate="isAnimate"
     ></status-indicator>
@@ -10,8 +9,8 @@
 </template>
 
 <script setup>
-import { StatusIndicator } from '@';
 import { computed } from 'vue';
+import { StatusIndicator } from '@';
 
 const props = defineProps({
   /** Цвет точки */
