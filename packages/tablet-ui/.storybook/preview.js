@@ -72,6 +72,15 @@ const preview = {
   initialGlobals: {
     backgrounds: { value: 'light' },
   },
+  decorators: [
+    (_, { parameters }) => {
+      if (parameters.layout === 'fullscreen') {
+        return { template: '<div style="max-width: 1194px; margin-inline: auto"><story/></div>' };
+      }
+
+      return { template: '<story />' };
+    },
+  ],
 };
 
 export default preview;

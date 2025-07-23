@@ -57,11 +57,16 @@ const props = defineProps({
     default: false,
     required: false,
   },
+  hasBackground: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
 });
 
 const classList = computed(() => ({
   'task-card--bordered': props.isActive,
-  'task-card--filled': ['new', 'labeling'].includes(props.status),
+  'task-card--filled': props.hasBackground,
 }));
 
 const BADGE_STATUSES = {

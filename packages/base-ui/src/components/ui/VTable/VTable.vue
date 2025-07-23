@@ -1,14 +1,15 @@
 <template>
   <q-table
       class="v-table"
-      :rows="rows"
-      :columns="columns"
       row-key="name"
       flat
       virtual-scroll
+      hide-pagination
+      :rows="rows"
+      :columns="columns"
       :rows-per-page-options="[0]"
       :no-data-label="t('storybook.table.noData')"
-      hide-pagination
+      :table-row-class-fn="() => ['q-tr--no-hover']"
   >
     <template v-for="(_, name) in $slots" :key="name" #[name]="slotData">
       <slot :name="name" v-bind="slotData" />
@@ -33,18 +34,18 @@ const props = defineProps({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .v-table {
   font-family: 'Golos',sans-serif;
   padding: 20px;
   border-radius: 8px;
 
-  thead tr {
+  :deep(thead tr) {
     height: 43px;
   }
 
-  tbody td {
+  :deep(tbody td) {
     height: 59px;
     color: $dark-gray;
     @include fontAdaptive(18px, 1.5, 400);
@@ -52,7 +53,7 @@ const props = defineProps({
     padding: 20px 12px 12px;
   }
 
-  th {
+  :deep(th) {
     color: $dark-gray-55;
     @include fontAdaptive(16px, 1.2, 400);
     letter-spacing: -0.02em;
@@ -60,7 +61,7 @@ const props = defineProps({
     vertical-align: baseline;
   }
 
-  .q-table__bottom {
+  :deep(.q-table__bottom) {
     display: flex;
     justify-content: center;
     font-size: $font-size-p4;

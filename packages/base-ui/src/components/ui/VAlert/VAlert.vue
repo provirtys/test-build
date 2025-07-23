@@ -1,6 +1,6 @@
 <template>
   <div class="v-alert" :class="classList">
-    <div class="v-alert__alert flex items-center">
+    <div class="v-alert__alert">
       <q-icon
         name="report_gmailerrorred"
         :color="color"
@@ -48,6 +48,7 @@ const classList = computed(() => [
     padding: 8px;
     display: flex;
     align-items: center;
+    flex-wrap: nowrap;
   }
 
   &__label {

@@ -1,0 +1,22 @@
+.icon-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.icon-item {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  user-select: text;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+
+  &:nth-child(5n) {
+    border-right: none;
+  }
+}

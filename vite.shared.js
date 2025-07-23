@@ -1,4 +1,4 @@
-import { URL, fileURLToPath } from 'node:url';
+import { fileURLToPath, URL } from 'node:url';
 
 export default function createPackageConfig(packageName) {
   const packageURL = new URL(`./packages/${packageName}/`, import.meta.url);
@@ -22,7 +22,7 @@ export default function createPackageConfig(packageName) {
       { find: '@assets', replacement: fileURLToPath(new URL('./src/assets/', packageURL)) },
       { find: '@utils', replacement: fileURLToPath(new URL('./src/utils/', packageURL)) },
       { find: '@css', replacement: fileURLToPath(new URL('./src/css/', packageURL)) },
-      { find: '@stories', replacement: fileURLToPath(new URL('./src/stories/', packageURL)) },
+      { find: '@mocks', replacement: fileURLToPath(new URL('./src/mocks/', packageURL)) },
       // Глобальные алиасы
       {
         find: '@integrity/web-ui',
