@@ -1,8 +1,12 @@
 <template>
   <dl class="v-description-list" :class="classList">
-    <div v-for="item in items" :key="item.term" class="v-description-list__item">
+    <div v-for="item in items" :key="item.slot || item.term" class="v-description-list__item">
       <dt class="v-description-list__term">{{ item.term }}</dt>
-      <dd class="v-description-list__definition">{{ item.definition }}</dd>
+      <dd class="v-description-list__definition">
+        <slot :name="item.slot || 'custom'">
+          {{ item.definition }}
+        </slot>
+      </dd>
     </div>
   </dl>
 </template>
@@ -21,14 +25,23 @@ const props = defineProps({
     required: false,
     default: false,
   },
+  isLight: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  alignCenter: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 });
 
-const classList = computed(() => [
-  `v-description-list--${props.size}`,
-  {
-    'v-description-list--inline': props.inline,
-  },
-]);
+const classList = computed(() => ({
+  'v-description-list--inline': props.inline,
+  'v-description-list--light': props.isLight,
+  'v-description-list--centered': props.alignCenter,
+}));
 </script>
 
 <style lang="scss">
@@ -41,7 +54,18 @@ const classList = computed(() => [
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      min-height: 40px;
     }
+  }
+
+  &--light {
+    .v-description-list__term, .v-description-list__definition {
+      color: $light-gray-40
+    }
+  }
+
+  &--centered &__definition {
+    text-align: center;
   }
 
   &__item {
