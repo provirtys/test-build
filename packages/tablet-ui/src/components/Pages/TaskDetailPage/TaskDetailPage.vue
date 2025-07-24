@@ -26,6 +26,7 @@
         text-alignment="left"
         enable-hold
         once
+        @action="openAggregationPage"
       >Начать упаковку
       </v-button>
     </template>
@@ -33,8 +34,14 @@
 </template>
 
 <script setup>
+import { navigateTo } from '@integrity/base-ui/src/utils/navigation.js';
 import { taskDetailRows } from '@mocks/tasks.js';
 import { MainLayout, TableAttributes, VAlert, VButton, VDescriptionList } from '@tablet';
+import { storeToRefs } from 'pinia';
+import { onMounted } from 'vue';
+import { useMainStore } from '@/stores/index.js';
+
+const { currentPage, headerTitle } = storeToRefs(useMainStore());
 
 const sideList = [
   {
@@ -46,6 +53,13 @@ const sideList = [
     definition: 130,
   },
 ];
+
+const openAggregationPage = () => navigateTo('/?path=/docs/pages-aggregationpage--docs');
+
+onMounted(() => {
+  currentPage.value = 'detail';
+  headerTitle.value = 'Вода Артезианская 5 литров';
+});
 </script>
 
 <style lang="scss" scoped>

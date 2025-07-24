@@ -1,1 +1,1 @@
-export { default as TaskDetailPage } from './TaskDetailPage.vue';
+export { default as AggregationPage } from './AggregationPage.vue';

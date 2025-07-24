@@ -1,4 +1,5 @@
 import { setup } from '@storybook/vue3-vite';
+import { createPinia } from 'pinia';
 import { Notify, Quasar } from 'quasar';
 import { createI18n } from 'vue-i18n';
 
@@ -29,6 +30,8 @@ const i18n = createI18n({
   messages: loadLocaleMessages(),
 });
 
+const pinia = createPinia();
+
 setup((app) => {
   app.use(i18n);
   app.use(Quasar, {
@@ -36,6 +39,7 @@ setup((app) => {
       Notify,
     },
   });
+  app.use(pinia);
 });
 
 Notify.registerType('error', {

@@ -19,6 +19,7 @@
         text-alignment="left"
         :is-disabled="buttonDisabled"
         icon-size="27"
+        @action="openTaskDetailPage"
       >
         Выбрать задачу
       </v-button>
@@ -27,9 +28,14 @@
 </template>
 
 <script setup>
+import { navigateTo } from '@base/utils/navigation.js';
 import { MainLayout, TaskList, VButton, VInput } from '@tablet';
 import { taskWithGTIN } from '@tablet/mocks/tasks.js';
-import { computed, ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { computed, onMounted, ref } from 'vue';
+import { useMainStore } from '@/stores/index.js';
+
+const { currentPage, headerTitle } = storeToRefs(useMainStore());
 
 const searchValue = ref('');
 const selectedTaskID = ref(null);
@@ -43,6 +49,15 @@ const buttonDisabled = computed(() => {
 const selectTask = (id) => {
   selectedTaskID.value = id;
 };
+
+const openTaskDetailPage = () => {
+  navigateTo('/?path=/docs/pages-taskdetailpage--docs');
+};
+
+onMounted(() => {
+  currentPage.value = 'list';
+  headerTitle.value = 'Список заданий';
+});
 </script>
 
 <style lang="scss" scoped>

@@ -11,7 +11,7 @@
     >
       {{actionOptions.label}}
     </v-button>
-    <p class="status-line__task">{{ title }}</p>
+    <p class="status-line__task">{{ headerTitle }}</p>
     <div class="row">
       <status-label
         :label="statusOptions.label"
@@ -30,9 +30,13 @@
 </template>
 
 <script setup>
-import { VButton, VIcon } from '@integrity/base-ui/src/index.js';
+import { VButton, VIcon } from '@base';
+import { StatusLabel } from '@tablet';
+import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
-import { StatusLabel } from '@';
+import { useMainStore } from '@/stores/index.js';
+
+const { headerTitle } = storeToRefs(useMainStore());
 
 const props = defineProps({
   status: {
@@ -55,7 +59,7 @@ const props = defineProps({
     type: String,
     default: 'home',
     required: false,
-    validator: (val) => ['home', 'back', 'logout'].includes(val),
+    validator: (val) => ['home', 'back', 'logout', 'complete'].includes(val),
   },
 });
 
@@ -71,6 +75,11 @@ const actionOptions = computed(() => {
     case 'back':
       return {
         label: 'Назад',
+        icon: 'arrow-back',
+      };
+    case 'complete':
+      return {
+        label: 'Завершить',
         icon: 'arrow-back',
       };
     case 'logout':

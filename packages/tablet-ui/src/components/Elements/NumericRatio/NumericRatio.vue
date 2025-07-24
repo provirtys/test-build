@@ -47,10 +47,12 @@ const classes = computed(() => ({
   flex-direction: column;
   align-items: center;
   font-family: system-ui, -apple-system, sans-serif;
+  width: 100%;
 
   &--light {
     .numeric-ratio__value,
-    .numeric-ratio__total {
+    .numeric-ratio__total,
+    .numeric-ratio__separator {
       color: $light-gray-40;
     }
 
