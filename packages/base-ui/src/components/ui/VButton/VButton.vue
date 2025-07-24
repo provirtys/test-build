@@ -23,7 +23,7 @@
       >
         <v-icon :name="icon" :size="sizeIcon" />
       </span>
-      <span class="v-button__text"><slot></slot></span>
+      <span v-if="$slots.default" class="v-button__text"><slot></slot></span>
       <span
         v-if="icon && iconPosition === 'right'"
         class="v-button__icon-container justify-end"
