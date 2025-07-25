@@ -41,7 +41,7 @@ const classList = computed(() => ({
 }));
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .status-label {
   display: inline-flex;
   gap: 12px;

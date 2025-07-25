@@ -50,7 +50,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .generated-datamatrix {
   width: v-bind(computedSize);
   height: v-bind(computedSize);

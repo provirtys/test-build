@@ -73,10 +73,6 @@ img {
   justify-content: space-between;
   background: $secondary;
   padding: $s-3;
-  min-width: 360px;
-  min-height: 336px;
-  max-width: 825px;
-  max-height: 825px;
 }
 
 .info {

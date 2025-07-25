@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -38,7 +38,7 @@ const classes = computed(() => ({
 }));
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .numeric-ratio {
   --divider-color: #d9d9d9;
   --text-opacity: 0.7;
@@ -73,21 +73,15 @@ const classes = computed(() => ({
   }
 
   &__value {
-    /* actual */
-
     font-family: 'Golos';
     font-style: normal;
     font-weight: 500;
     font-size: 28px;
     line-height: 100%;
-    /* identical to box height, or 24px */
     text-align: center;
     letter-spacing: -0.02em;
     padding-top: 5px;
-
     color: $dark-gray;
-
-    /* Inside auto layout */
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -109,9 +103,6 @@ const classes = computed(() => ({
   }
 
   &__secondary {
-    /* defect */
-
-    height: 19px;
     margin-top: 5px;
     font-family: 'Golos';
     font-style: normal;
@@ -121,8 +112,6 @@ const classes = computed(() => ({
     letter-spacing: -0.02em;
 
     color: $primary-70;
-
-    /* Inside auto layout */
     flex: none;
     order: 2;
     flex-grow: 0;
@@ -133,11 +122,6 @@ const classes = computed(() => ({
   }
 
   &__total {
-    /* planing */
-
-    width: 35px;
-    height: 19px;
-
     font-family: 'Golos';
     font-style: normal;
     font-weight: 500;
@@ -145,10 +129,7 @@ const classes = computed(() => ({
     line-height: 19px;
     text-align: center;
     letter-spacing: -0.02em;
-
     color: rgba(34, 41, 42, 0.7);
-
-    /* Inside auto layout */
     flex: none;
     order: 0;
     flex-grow: 0;

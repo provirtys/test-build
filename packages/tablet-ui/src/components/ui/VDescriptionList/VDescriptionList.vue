@@ -44,7 +44,7 @@ const classList = computed(() => ({
 }));
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-description-list {
   display: grid;
   gap: 20px;

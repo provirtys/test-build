@@ -218,7 +218,7 @@ function updateData(broken, ok, x) {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .bar-chart-bottom {
   height: 100%;
   max-height: 300px;

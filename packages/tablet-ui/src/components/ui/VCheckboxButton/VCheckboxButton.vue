@@ -13,22 +13,9 @@
   </label>
 </template>
 
-/**
-* Мой компонент, который отображает счётчик с заголовком.
-*
-* @prop {string} title - Заголовок компонента
-* @prop {number} count - Текущее значение счётчика
-* @emits update - Событие обновления счётчика с новым значением
-*/
 <script setup>
 import { VIcon } from '@integrity/base-ui/src/index.js';
 import { computed } from 'vue';
-
-/**
- * @typedef {Object} Props
- * @property {string} title - Заголовок компонента
- * @property {number} count - Количество
- */
 
 /** @type {import('vue').DefineProps<Props>} */
 const props = defineProps({
@@ -99,7 +86,7 @@ const iconSizes = {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-checkbox-button {
   width: 100%;
   border-radius: $d-1;

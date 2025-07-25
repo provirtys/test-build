@@ -61,7 +61,7 @@ const classList = computed(() => [
 ]);
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .task-list {
   display: grid;
   grid-template-columns: 1fr 1fr;

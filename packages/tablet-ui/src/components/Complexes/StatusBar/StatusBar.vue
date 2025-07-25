@@ -20,18 +20,12 @@
         :is-animate="statusOptions.sync"
         :show-background="statusOptions.active"
       />
-      <div
-        class="status-line__settings-button"
-        :class="[{ disabled: props.isDisabled }]"
-      >
-        <v-icon name="settings" />
-      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { VButton, VIcon } from '@base';
+import { VButton } from '@base';
 import { StatusLabel } from '@tablet';
 import { computed } from 'vue';
 
@@ -96,7 +90,7 @@ const statusOptions = computed(() => ({
 }));
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .status-line {
   width: 100%;
   height: $l-4;

@@ -209,12 +209,10 @@ function updateData(broken, ok, x) {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .bar-chart {
   height: 80%;
   background: $secondary;
-
-  //style storybook
   border-radius: $s-1;
   min-height: 500px;
   padding: $s-3;

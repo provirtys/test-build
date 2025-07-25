@@ -71,7 +71,7 @@ function tabbarItemColor(page) {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .tabbar {
   background-color: $light-gray-55;
   width: 100%;

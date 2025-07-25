@@ -58,7 +58,7 @@ const codeColor = (index) => {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .codes {
   display: flex;
   align-items: center;

@@ -92,7 +92,7 @@ const getPageHeader = computed(() => {
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .mobile-header {
   --safe-area-inset-top: env(safe-area-inset-top);
   --safe-area-inset-bottom: env(safe-area-inset-bottom);

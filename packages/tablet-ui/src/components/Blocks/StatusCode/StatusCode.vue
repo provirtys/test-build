@@ -10,9 +10,9 @@
 </template>
 
 <script setup>
-import { StatusIndicator } from '@';
 import { VIcon } from '@integrity/base-ui/src/index.js';
 import { computed } from 'vue';
+import { StatusIndicator } from '@';
 
 const props = defineProps({
   type: {
@@ -39,7 +39,7 @@ const iconName = computed(() => (props.type === 'dataMatrix' ? 'data-matrix' : '
 const showPoint = computed(() => props.status && props.color);
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .status-code {
   width: $xl-2;
   height: $xl-2;

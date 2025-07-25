@@ -123,7 +123,7 @@ watch(
 );
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-input {
   --label-width: v-bind(labelWidth);
 
@@ -166,7 +166,7 @@ watch(
 
   &--cropped-top {
 
-    .q-field__inner:before {
+    :deep(.q-field__inner):before {
       content: '';
       position: absolute;
       inset: 0;
@@ -178,16 +178,16 @@ watch(
       mask-image: radial-gradient(circle at calc(var(--label-width) / 2 + 12px) 0px, transparent calc((var(--label-width) / 2)), black 0px);
     }
 
-    &:hover.v-input .q-field__inner:before {
+    &:hover.v-input :deep(.q-field__inner):before {
       border-top-color: #000;
     }
 
-    &.v-input--focused.v-input--focused .q-field__inner:before {
+    &.v-input--focused.v-input--focused :deep(.q-field__inner):before {
       border-top-width: 2px;
       border-top-color: var(--q-primary);
     }
 
-    &.v-input--has-error.v-input--has-error .q-field__inner:before {
+    &.v-input--has-error.v-input--has-error :deep(.q-field__inner):before {
       border-top-width: 2px;
       border-top-color: var(--q-negative);
     }
@@ -197,11 +197,11 @@ watch(
       background: transparent;
     }
 
-    .q-field__control:before {
+    :deep(.q-field__control):before {
       border-top: none;
     }
 
-    .q-field__control::after {
+    :deep(.q-field__control)::after {
       border-top: none;
     }
   }
@@ -217,35 +217,40 @@ watch(
     color: var(--q-negative);
   }
 
-  .q-field__control-container {
+  :deep(.q-field__control-container) {
     order: -1;
   }
 
-  .q-field__append + .q-field__append {
+  :deep(.q-field__append + .q-field__append) {
     order: -1;
   }
 
-  .q-field__prepend {
+  :deep(.q-field__prepend) {
     order: -1;
   }
 
-  .q-field--outlined,
-  .q-field--filled {
+  :deep(.q-field--outlined),
+  :deep(.q-field--filled) {
     .q-field__control {
       border-radius: 8px;
 
       &:before {
         background: transparent;
-        border-bottom: none;
-      }
-
-      &:after {
-        content: unset
       }
     }
   }
 
-  .q-field__native {
+  :deep(.q-field--filled .q-field__control) {
+    &:before {
+      border-bottom: none;
+    }
+
+    &:after {
+      content: unset
+    }
+  }
+
+  :deep(.q-field__native) {
     color: $dark-gray;
   }
 }

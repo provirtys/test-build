@@ -1,3 +1,4 @@
+export { AppSettings } from '@components/Blocks/AppSettings';
 export { BarChart } from '@components/Blocks/BarChart';
 export { BarChartTimeSeries } from '@components/Blocks/BarChartTimeSeries';
 export { CodeCard } from '@components/Blocks/CodeCard';

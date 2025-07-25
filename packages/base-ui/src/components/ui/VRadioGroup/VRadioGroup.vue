@@ -73,7 +73,7 @@ const updateValue = (val) => {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-radio-group {
   font-family: 'Golos', sans-serif;
 

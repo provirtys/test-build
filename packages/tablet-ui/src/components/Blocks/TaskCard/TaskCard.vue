@@ -89,7 +89,7 @@ const BADGE_STATUSES = {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .task-card {
   display: flex;
   flex-direction: column;

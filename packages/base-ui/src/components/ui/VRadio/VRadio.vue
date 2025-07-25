@@ -74,17 +74,17 @@ const updateValue = (val) => {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-radio {
   font-family: 'Golos', sans-serif;
 
   &--lg {
 
-    .q-radio {
+    :deep(.q-radio) {
       gap: 16px;
       padding: 14px 20px;
 
-      &__label {
+      .q-radio__label {
         font-size: $font-size-p1;
       }
     }
@@ -98,11 +98,11 @@ const updateValue = (val) => {
 
   &--md {
 
-    .q-radio {
+    :deep(.q-radio) {
       gap: 12px;
       padding: 12px 18px;
 
-      &__label {
+      .q-radio__label {
         font-size: $font-size-p2;
       }
     }
@@ -116,11 +116,11 @@ const updateValue = (val) => {
 
   &--sm {
 
-    .q-radio {
+    :deep(.q-radio) {
       gap: 10px;
       padding: 10px 16px;
 
-      &__label {
+      .q-radio__label {
         font-size: $font-size-p3;
       }
     }
@@ -134,11 +134,11 @@ const updateValue = (val) => {
 
   &--xs {
 
-    .q-radio {
+    :deep(.q-radio) {
       gap: 6px;
       padding: 4px 8px;
 
-      &__label {
+      .q-radio__label {
         font-size: $font-size-p3;
       }
     }
@@ -152,30 +152,30 @@ const updateValue = (val) => {
 
   &.v-radio--full {
 
-    .q-radio {
+    :deep(.q-radio) {
       width: 100%;
     }
   }
 
   &.v-radio--dark {
 
-    .q-radio {
+    :deep(.q-radio) {
       background-color: $primary-text;
 
-      &__inner {
+      .q-radio__inner {
         color: $light-gray-40
       }
 
-      &__label {
+      .q-radio__label {
         color: $light-gray-40;
       }
     }
   }
 
-  .q-radio {
+  :deep(.q-radio) {
     border-radius: 8px;
 
-    &__inner {
+    .q-radio__inner {
       color: $primary-text;
 
       &:before {
@@ -183,11 +183,11 @@ const updateValue = (val) => {
       }
     }
 
-    &__label {
+    .q-radio__label {
       @include font('Golos', $font-size-p1, 1.2, 400, -0.24px);
     }
 
-    &__bg {
+    .q-radio__bg {
       top: 0;
       left: 0;
       width: 100%;

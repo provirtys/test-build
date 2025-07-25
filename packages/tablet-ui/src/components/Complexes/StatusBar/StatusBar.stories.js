@@ -5,7 +5,8 @@ import { StatusBar } from './index.js';
 const home = 'home';
 const back = 'back';
 const logout = 'logout';
-const actions = { home, back, logout };
+const complete = 'complete';
+const actions = { home, back, logout, complete };
 
 const testElements = (iconName, buttonText, statusText, isStatusSuccess, isLabelBackgroundShown, settingsDisabled) => {
   const buttonIconEl = document.querySelector('.status-line .v-button__icon-container use');
@@ -52,6 +53,7 @@ export default {
           home: 'Домой',
           back: 'Назад',
           logout: 'Выйти',
+          complete: 'Завершить',
         },
       },
     },
@@ -108,12 +110,19 @@ const BaseComponent = (args) => ({
       active: args.statusShowBackground,
     }));
 
+    const action = computed(() => ({
+      type: args.action,
+      to: '/',
+    }));
+
     return {
       args,
       status,
+      action,
     };
   },
-  template: `<StatusBar :action="args.action" :title="args.title" :status="status" :is-disabled="args.isDisabled" />`,
+  template: `
+    <StatusBar :action="action" :title="args.title" :status="status" :is-disabled="args.isDisabled"/>`,
 });
 
 export const HomeNotReady = BaseComponent.bind({});

@@ -12,20 +12,20 @@
 import { computed, useAttrs } from 'vue';
 
 const props = defineProps({
-    size: {
-        type: String,
-        required: false,
-        default: 'lg',
-        validator: (val) => ['lg', 'md', 'sm'].includes(val),
-    },
-    isInverted: {
-        type: Boolean,
-        required: false,
-    },
+  size: {
+    type: String,
+    required: false,
+    default: 'lg',
+    validator: (val) => ['lg', 'md', 'sm'].includes(val),
+  },
+  isInverted: {
+    type: Boolean,
+    required: false,
+  },
 });
 
 defineOptions({
-    inheritAttrs: false,
+  inheritAttrs: false,
 });
 
 const attrs = useAttrs();
@@ -33,19 +33,19 @@ const attrs = useAttrs();
 const badgeClasses = computed(() => [`v-badge--${props.size}`]);
 
 const bindingAttrs = computed(() => {
-    if (!props.isInverted) return attrs;
+  if (!props.isInverted) return attrs;
 
-    const color = attrs.color ?? 'info';
+  const color = attrs.color ?? 'info';
 
-    return {
-        ...attrs,
-        textColor: color,
-        color: `${color}-10`,
-    };
+  return {
+    ...attrs,
+    textColor: color,
+    color: `${color}-10`,
+  };
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-badge {
   border-radius: 4px;
   text-transform: uppercase;

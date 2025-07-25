@@ -73,7 +73,8 @@ function finishLabeling() {
   emit('finishLabeling');
 }
 </script>
-<style lang="scss">
+
+<style lang="scss" scoped>
 .labeling-progress {
   display: flex;
   flex-direction: column;
@@ -127,9 +128,13 @@ function finishLabeling() {
     &.alignment {
       right: -16px;
     }
+
+    p {
+      margin-bottom: 16px;
+    }
   }
 
-  .q-circular-progress {
+  :deep(.q-circular-progress) {
     margin: 0 !important;
   }
 }

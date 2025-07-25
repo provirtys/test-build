@@ -47,25 +47,25 @@
 </template>
 
 <script setup>
-import { ProgressPie } from '@';
 import { setupI18n } from '@integrity/base-ui/src/i18n.js';
 import { VIcon } from '@integrity/base-ui/src/index.js';
 import { computed } from 'vue';
+import { ProgressPie } from '@';
 
 const { t } = setupI18n();
 
 const props = defineProps({
-    showProgressBadge: { type: Boolean, default: false },
-    showProgressPie: { type: Boolean, default: false },
-    showRepeat: { type: Boolean, default: false },
-    codeInfo: { type: Object, default: () => ({}) },
+  showProgressBadge: { type: Boolean, default: false },
+  showProgressPie: { type: Boolean, default: false },
+  showRepeat: { type: Boolean, default: false },
+  codeInfo: { type: Object, default: () => ({}) },
 });
 
 const codeTime = computed(() => new Date(props.codeInfo.time).toLocaleTimeString('RU-ru'));
 const codeDate = computed(() => new Date(props.codeInfo.time).toLocaleDateString('RU-ru'));
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 p {
   margin: 0;
   font-family: 'Golos';

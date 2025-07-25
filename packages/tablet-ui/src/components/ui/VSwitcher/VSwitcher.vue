@@ -69,7 +69,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-switcher {
   background: $primary-text-20;
   color: $primary-text;
@@ -83,11 +83,11 @@ onMounted(() => {
     grid-template-columns: 1fr 1fr;
   }
 
-  &--text-left .q-btn__content {
+  &--text-left :deep(.q-btn__content) {
     margin-right: auto;
   }
 
-  &--text-right .q-btn__content {
+  &--text-right :deep(.q-btn__content) {
     margin-left: auto;
   }
 
@@ -100,7 +100,7 @@ onMounted(() => {
     grid-template-columns: 1fr 1fr;
   }
 
-  .q-btn.q-btn-item {
+  :deep(.q-btn.q-btn-item) {
     display: flex;
     gap: 12px;
     flex: 1;
@@ -110,14 +110,14 @@ onMounted(() => {
     font-family: Golos, sans-serif;
   }
 
-  .q-btn__content {
+  :deep(.q-btn__content) {
     font-size: 18px;
     line-height: 24px;
     letter-spacing: -0.24px;
     gap: 12px;
   }
 
-  .q-focus-helper {
+  :deep(.q-focus-helper) {
     display: none;
   }
 }

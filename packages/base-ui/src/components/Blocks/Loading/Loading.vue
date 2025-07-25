@@ -28,16 +28,16 @@ import { computed } from 'vue';
 const { t } = setupI18n();
 
 const props = defineProps({
-    /** Тип загрузки*/
-    loadingType: { type: String, default: '' },
+  /** Тип загрузки*/
+  loadingType: { type: String, default: '' },
 });
 
 const isInternetError = computed(() => {
-    return props.loadingType === 'internet_false';
+  return props.loadingType === 'internet_false';
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .loading {
   &__animation {
     padding: $s-3;

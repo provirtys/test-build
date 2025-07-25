@@ -8,8 +8,6 @@
   </div>
 </template>
 
-<script setup></script>
-
 <style lang="scss">
 @keyframes loading {
   0% {
@@ -31,6 +29,7 @@
 
 .loading-animation__wrapper {
   position: relative;
+  display: inline-block;
   z-index: 2;
 
   .animation {

@@ -31,7 +31,7 @@ function pressed() {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-key-button {
   cursor: pointer;
   position: relative;

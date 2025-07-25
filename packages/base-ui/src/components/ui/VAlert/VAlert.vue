@@ -34,7 +34,7 @@ const classList = computed(() => [
 const contentClasses = computed(() => [`text-${props.color}`]);
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .v-alert {
   width: 100%;
   background-color: $secondary;
