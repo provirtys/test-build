@@ -233,6 +233,15 @@ watch(
   .q-field--filled {
     .q-field__control {
       border-radius: 8px;
+
+      &:before {
+        background: transparent;
+        border-bottom: none;
+      }
+
+      &:after {
+        content: unset
+      }
     }
   }
 
