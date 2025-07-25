@@ -1,4 +1,4 @@
-import { TaskListPage } from '@tablet';
+import { TaskListPage } from '@tablet/pages.js';
 
 export default {
   component: TaskListPage,

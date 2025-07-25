@@ -1,4 +1,4 @@
-import { TaskDetailPage } from '@tablet';
+import { TaskDetailPage } from '@tablet/pages.js';
 
 export default {
   component: TaskDetailPage,

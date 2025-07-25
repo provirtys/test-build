@@ -1,4 +1,4 @@
-import { AggregationPage } from '@tablet';
+import { AggregationPage } from '@tablet/pages.js';
 import { storeToRefs } from 'pinia';
 import { watch } from 'vue';
 import { useMainStore } from '@/stores/index.js';
