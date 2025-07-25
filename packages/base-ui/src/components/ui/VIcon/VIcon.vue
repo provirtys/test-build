@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, reactive } from 'vue';
+import { computed, onBeforeMount, reactive } from 'vue';
 
 const props = defineProps({
   width: {
@@ -44,7 +44,7 @@ const iconSize = computed(() => ({
 
 const REGEXP_SPLIT = /[\s,]+/;
 
-onMounted(() => {
+onBeforeMount(() => {
   const svgElement = document.querySelector(`#icon-${props.name}`);
   if (svgElement) {
     const originalViewBox = svgElement.getAttribute('viewBox');
