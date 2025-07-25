@@ -57,7 +57,9 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import '@integrity/base-ui/src/css/main.scss';`,
+        additionalData: `
+          @import '@integrity/base-ui/src/css/main.scss';
+          @import '@tablet/css/main.scss';`,
       },
     },
   },

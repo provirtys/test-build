@@ -79,7 +79,7 @@ const preview = {
   decorators: [
     (_, { parameters }) => {
       if (parameters.layout === 'fullscreen') {
-        return { template: '<div style="max-width: 1194px; margin-inline: auto"><story/></div>' };
+        return { template: '<div class="layout-wrapper"><story/></div>' };
       }
 
       return { template: '<story />' };

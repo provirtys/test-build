@@ -1,10 +1,10 @@
 <template>
-  <MainLayout>
+  <MainLayout :header-status="headerStatus" :header-action="headerAction" title="Список заданий">
     <template #main>
       <div class="task-search">
-        <v-input v-model="searchValue" placeholder="Поиск" filled bg-color="white">
+        <v-input v-model="searchValue" placeholder="Поиск" filled bg-color="white" dense>
           <template v-slot:prepend>
-            <q-icon name="search"/>
+            <q-icon name="search" size="16px"/>
           </template>
         </v-input>
       </div>
@@ -18,7 +18,7 @@
         icon="aggregation"
         text-alignment="left"
         :is-disabled="buttonDisabled"
-        icon-size="27"
+        :icon-size="27"
         @action="openTaskDetailPage"
       >
         Выбрать задачу
@@ -32,19 +32,26 @@ import { navigateTo } from '@base/utils/navigation.js';
 import { MainLayout, TaskList, VButton, VInput } from '@tablet';
 import { taskWithGTIN } from '@tablet/mocks/tasks.js';
 import { storeToRefs } from 'pinia';
-import { computed, onMounted, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useMainStore } from '@/stores/index.js';
 
-const { currentPage, headerTitle } = storeToRefs(useMainStore());
+const { isStatusReady } = storeToRefs(useMainStore());
 
 const searchValue = ref('');
 const selectedTaskID = ref(null);
 
-const buttonDisabled = computed(() => {
-  if (selectedTaskID.value !== null) return false;
+const buttonDisabled = computed(() => selectedTaskID.value === null);
 
-  return true;
-});
+const headerStatus = computed(() => ({
+  type: isStatusReady ? 'success' : 'error',
+  sync: true,
+  active: false,
+}));
+
+const headerAction = {
+  type: 'logout',
+  fn: () => {},
+};
 
 const selectTask = (id) => {
   selectedTaskID.value = id;
@@ -53,11 +60,6 @@ const selectTask = (id) => {
 const openTaskDetailPage = () => {
   navigateTo('/?path=/docs/pages-taskdetailpage--docs');
 };
-
-onMounted(() => {
-  currentPage.value = 'list';
-  headerTitle.value = 'Список заданий';
-});
 </script>
 
 <style lang="scss" scoped>

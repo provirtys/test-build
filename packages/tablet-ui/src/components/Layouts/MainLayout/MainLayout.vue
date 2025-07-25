@@ -1,7 +1,7 @@
 <template>
   <div class="main-layout">
     <div class="main-layout__header">
-      <status-bar :action="headerAction" :status="headerStatus"/>
+      <status-bar :action="headerAction" :status="headerStatus" :title="title"/>
     </div>
     <div class="main-layout__main" :class="mainClasses">
       <div class="main-layout__content">
@@ -11,13 +11,15 @@
           class="main-layout__disable-fullscreen"
           icon="close"
           icon-position="left"
-          icon-size="16"
+          :icon-size="16"
           height="xs"
           @click="disableFullscreen"
         />
       </div>
       <div class="main-layout__sidebar" :class="sidebarClasses">
-        <slot name="sidebar-top"/>
+        <div class="main-layout__sidebar-top">
+          <slot name="sidebar-top"/>
+        </div>
         <div class="main-layout__sidebar-bottom">
           <slot name="sidebar-bottom"/>
         </div>
@@ -29,39 +31,51 @@
 <script setup>
 import { VButton } from '@integrity/base-ui/src/components/ui/VButton/index.js';
 import { StatusBar } from '@tablet';
-import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
-import { useMainStore } from '@/stores/index.js';
 
-const { sidebarHasError, isFullscreen, isStatusReady, currentPage } = storeToRefs(useMainStore());
+const props = defineProps({
+  title: String,
+  headerAction: {
+    type: Object,
+    default: () => ({
+      type: 'home',
+      fn: () => {},
+    }),
+    required: true,
+  },
+  headerStatus: {
+    type: Object,
+    default: () => ({
+      type: 'error',
+      sync: false,
+      active: false,
+    }),
+    required: false,
+  },
+  isFullscreen: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
+  sidebarHasError: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
+});
+
+const emit = defineEmits(['disable-fullscreen']);
 
 const mainClasses = computed(() => ({
-  'main-layout__main--fullscreen': isFullscreen.value,
+  'main-layout__main--fullscreen': props.isFullscreen,
 }));
 
 const sidebarClasses = computed(() => ({
-  'main-layout__sidebar--error': sidebarHasError.value,
+  'main-layout__sidebar--error': props.sidebarHasError,
 }));
-
-const headerStatus = computed(() => ({
-  type: isStatusReady.value ? 'success' : 'error',
-  sync: true,
-  active: false,
-}));
-
-const headerAction = computed(() => {
-  switch (currentPage.value) {
-    case 'list':
-      return 'logout';
-    case 'detail':
-      return 'back';
-    case 'aggregation':
-      return 'complete';
-  }
-});
 
 const disableFullscreen = () => {
-  isFullscreen.value = false;
+  emit('disable-fullscreen');
 };
 </script>
 
@@ -72,6 +86,7 @@ const disableFullscreen = () => {
   flex-direction: column;
   background-color: $light-gray-55;
   height: 100vh;
+  max-height: 100%;
 
   &.no-padding {
     padding: 0;

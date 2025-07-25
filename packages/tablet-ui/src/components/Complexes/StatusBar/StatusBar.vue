@@ -8,10 +8,11 @@
       icon-position="left"
       :is-rounded="false"
       enable-hold
+      @action="action.fn"
     >
       {{actionOptions.label}}
     </v-button>
-    <p class="status-line__task">{{ headerTitle }}</p>
+    <p class="status-line__task">{{ title }}</p>
     <div class="row">
       <status-label
         :label="statusOptions.label"
@@ -32,11 +33,7 @@
 <script setup>
 import { VButton, VIcon } from '@base';
 import { StatusLabel } from '@tablet';
-import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
-import { useMainStore } from '@/stores/index.js';
-
-const { headerTitle } = storeToRefs(useMainStore());
 
 const props = defineProps({
   status: {
@@ -49,24 +46,25 @@ const props = defineProps({
   },
   title: {
     type: String,
-    default: 'Список заданий',
+    default: '',
+    required: false,
   },
   isDisabled: {
     type: Boolean,
     default: false,
   },
   action: {
-    type: String,
-    default: 'home',
-    required: false,
-    validator: (val) => ['home', 'back', 'logout', 'complete'].includes(val),
+    type: Object,
+    default: () => ({
+      type: 'home',
+      fn: () => {},
+    }),
+    required: true,
   },
 });
 
-const emit = defineEmits(['logout']);
-
 const actionOptions = computed(() => {
-  switch (props.action) {
+  switch (props.action.type) {
     case 'home':
       return {
         label: 'Домой',

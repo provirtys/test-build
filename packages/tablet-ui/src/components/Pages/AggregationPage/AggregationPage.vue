@@ -1,5 +1,11 @@
 <template>
-  <MainLayout>
+  <MainLayout
+    :header-status="headerStatus"
+    :header-action="headerAction"
+    :is-fullscreen="isFullscreen"
+    :sidebar-has-error="sidebarHasError"
+    title="Вода Артезианская 5 литров"
+  >
     <template #main>
       <div class="image-container" @dblclick="toggleSidebar">
         <img src="@assets/images/aggregation.png"/>
@@ -9,8 +15,8 @@
       <h2 class="task-name" :class="titleClasses">Вода Артезианская 5 литров</h2>
       <v-description-list
         :items="aggregationStatisticsList"
-        inline
         :is-light="hasError"
+        inline
         align-center
       >
         <template #inPackage>
@@ -36,7 +42,7 @@
         text-alignment="left"
         icon="finish-aggregation"
         icon-position="right"
-        icon-size="30"
+        :icon-size="30"
         enable-hold
       >
         Подтвердить код неполной упаковки
@@ -47,12 +53,13 @@
 
 <script setup>
 import { VAlert } from '@integrity/base-ui/src/components/ui/VAlert/index.js';
+import { navigateTo } from '@integrity/base-ui/src/utils/navigation.js';
 import { MainLayout, NumericRatio, VButton, VDescriptionList } from '@tablet';
 import { storeToRefs } from 'pinia';
-import { computed, onMounted, watch } from 'vue';
+import { computed, watch } from 'vue';
 import { useMainStore } from '@/stores/index.js';
 
-const { sidebarHasError, isFullscreen, currentPage, headerTitle } = storeToRefs(useMainStore());
+const { sidebarHasError, isFullscreen, isStatusReady } = storeToRefs(useMainStore());
 
 const props = defineProps({
   inPackageCurrent: {
@@ -121,6 +128,17 @@ const titleClasses = computed(() => ({
   'task-name--light': props.hasError,
 }));
 
+const headerStatus = computed(() => ({
+  type: isStatusReady.value ? 'success' : 'error',
+  sync: true,
+  active: false,
+}));
+
+const headerAction = {
+  type: 'complete',
+  fn: () => navigateTo('/?path=/docs/pages-taskdetailpage--docs'),
+};
+
 const toggleSidebar = () => {
   isFullscreen.value = !isFullscreen.value;
 };
@@ -134,11 +152,6 @@ watch(
     immediate: true,
   },
 );
-
-onMounted(() => {
-  currentPage.value = 'aggregation';
-  headerTitle.value = 'Вода Артезианская 5 литров';
-});
 </script>
 
 <style lang="scss" scoped>

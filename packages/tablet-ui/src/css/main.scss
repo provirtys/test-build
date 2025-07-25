@@ -1,0 +1,12 @@
+//Layout wrapper
+.layout-wrapper {
+  padding: 50px 20px;
+  max-width: 1194px;
+  margin-inline: auto;
+  height: 100vh;
+  max-height: 834px;
+}
+
+#storybook-docs .layout-wrapper {
+  padding: 0;
+}
