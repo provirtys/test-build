@@ -44,6 +44,7 @@
         icon-position="right"
         :icon-size="30"
         enable-hold
+        :is-disabled="!hasError"
       >
         Подтвердить код неполной упаковки
       </v-button>
