@@ -1,12 +1,15 @@
+export { AppSettings } from '@components/Blocks/AppSettings';
 export { BarChart } from '@components/Blocks/BarChart';
 export { BarChartTimeSeries } from '@components/Blocks/BarChartTimeSeries';
 export { CodeCard } from '@components/Blocks/CodeCard';
+export { DevSettings } from '@components/Blocks/DevSettings';
 export { FallbackLoader } from '@components/Blocks/FallbackLoader';
 export { ProgressPie } from '@components/Blocks/ProgressPie';
 export { StatusCode } from '@components/Blocks/StatusCode';
 export { StatusLabel } from '@components/Blocks/StatusLabel';
 export { TaskCard } from '@components/Blocks/TaskCard';
 export { TaskList } from '@components/Blocks/TaskList';
+export { UserSettings } from '@components/Blocks/UserSettings';
 export { LabelingCard } from '@components/Complexes/LabelingCard';
 export { LabelingProgress } from '@components/Complexes/LabelingProgress';
 export { StatusBar } from '@components/Complexes/StatusBar';
