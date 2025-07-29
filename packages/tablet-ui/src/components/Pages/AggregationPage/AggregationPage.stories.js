@@ -1,6 +1,8 @@
+import { sleep } from '@integrity/base-ui/src/utils/sleep.js';
 import { AggregationPage } from '@tablet/pages.js';
 import { storeToRefs } from 'pinia';
-import { computed, watch } from 'vue';
+import { expect, waitFor } from 'storybook/test';
+import { watch } from 'vue';
 import { useMainStore } from '@/stores/index.js';
 
 /**
@@ -78,17 +80,6 @@ const BaseComponent = (args) => ({
   setup() {
     const { isStatusReady } = storeToRefs(useMainStore());
 
-    const bindingArgs = computed(() => {
-      const { hasError, ...restArgs } = args;
-
-      return restArgs;
-    });
-
-    const sideBarHasError = computed(() => {
-      if (args.hasError) return args.hasError;
-
-      return args.inPackageCurrent > 0 && args.inPackageCurrent < args.inPackageTotal;
-    });
     watch(
       () => args.headerStatusReady,
       (val) => {
@@ -100,12 +91,43 @@ const BaseComponent = (args) => ({
     );
 
     return {
-      bindingArgs,
-      sideBarHasError,
+      args,
     };
   },
   template: `
-    <aggregation-page v-bind="bindingArgs" :has-error="sideBarHasError"/>`,
+    <aggregation-page v-bind="args"/>`,
 });
 
 export const Standard = BaseComponent.bind({});
+
+export const WithError = BaseComponent.bind({});
+
+WithError.args = {
+  inPackageCurrent: 2,
+  inPackageTotal: 6,
+};
+
+WithError.play = async ({ args }) => {
+  const sidebar = document.querySelector('.main-layout__sidebar');
+
+  expect(window.getComputedStyle(sidebar).backgroundColor).toBe('rgba(211, 20, 28, 0.85)');
+
+  const sidebarAlert = sidebar.querySelector('.v-alert');
+  const sidebarAlertDescription = sidebar.querySelector('.alert-description');
+  const sidebarButton = sidebar.querySelector('button');
+
+  await expect(sidebarAlert.textContent).toBe('Не все коды подтверждены');
+  await expect(sidebarAlertDescription.textContent).toBe('Печатать код неполной упаковки');
+  await expect(sidebarButton).not.toBeDisabled();
+
+  await sleep(1000);
+
+  await waitFor(() => {
+    args.inPackageCurrent = 6;
+  });
+
+  await expect(window.getComputedStyle(sidebar).backgroundColor).toBe('rgba(0, 0, 0, 0)');
+  await expect(sidebarAlert).not.toBeVisible();
+  await expect(sidebarAlertDescription).not.toBeVisible();
+  await expect(sidebarButton).toBeDisabled();
+};

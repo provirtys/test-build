@@ -15,7 +15,7 @@
       <h2 class="task-name" :class="titleClasses">Вода Артезианская 5 литров</h2>
       <v-description-list
         :items="aggregationStatisticsList"
-        :is-light="hasError"
+        :is-light="sidebarHasError"
         inline
         align-center
       >
@@ -24,13 +24,13 @@
             :value="inPackageStatistics.current"
             :secondary-value="inPackageError > 0 ? inPackageError : null"
             :total="inPackageStatistics.total"
-            :is-light="hasError"
+            :is-light="sidebarHasError"
           />
         </template>
       </v-description-list>
     </template>
     <template #sidebar-bottom>
-      <template v-if="hasError">
+      <template v-if="sidebarHasError">
         <v-alert
           text="Не все коды подтверждены"
           color="error"
@@ -44,7 +44,7 @@
         icon-position="right"
         :icon-size="30"
         enable-hold
-        :is-disabled="!hasError"
+        :is-disabled="!sidebarHasError"
       >
         Подтвердить код неполной упаковки
       </v-button>
@@ -60,7 +60,7 @@ import { storeToRefs } from 'pinia';
 import { computed, watch } from 'vue';
 import { useMainStore } from '@/stores/index.js';
 
-const { sidebarHasError, isFullscreen, isStatusReady } = storeToRefs(useMainStore());
+const { isFullscreen, isStatusReady } = storeToRefs(useMainStore());
 
 const props = defineProps({
   inPackageCurrent: {
@@ -126,7 +126,7 @@ const inPackageStatistics = computed(() => ({
 }));
 
 const titleClasses = computed(() => ({
-  'task-name--light': props.hasError,
+  'task-name--light': sidebarHasError.value,
 }));
 
 const headerStatus = computed(() => ({
@@ -134,6 +134,12 @@ const headerStatus = computed(() => ({
   sync: true,
   active: false,
 }));
+
+const sidebarHasError = computed(() => {
+  if (props.hasError) return props.hasError;
+
+  return props.inPackageCurrent > 0 && props.inPackageCurrent < props.inPackageTotal;
+});
 
 const headerAction = {
   type: 'complete',
@@ -143,16 +149,6 @@ const headerAction = {
 const toggleSidebar = () => {
   isFullscreen.value = !isFullscreen.value;
 };
-
-watch(
-  () => props.hasError,
-  (val) => {
-    sidebarHasError.value = val;
-  },
-  {
-    immediate: true,
-  },
-);
 </script>
 
 <style lang="scss" scoped>
