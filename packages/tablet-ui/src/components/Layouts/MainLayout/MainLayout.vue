@@ -1,7 +1,14 @@
 <template>
   <div class="main-layout">
     <div class="main-layout__header">
-      <status-bar :action="headerAction" :status="headerStatus" :title="title"/>
+      <status-bar :action="headerAction" :status="headerStatus" :title="title">
+        <template #append>
+          <app-settings
+            :options="appSettingsOptions"
+            @update:options="onUpdateOptions"
+          />
+        </template>
+      </status-bar>
     </div>
     <div class="main-layout__main" :class="mainClasses">
       <div class="main-layout__content">
@@ -29,9 +36,11 @@
 </template>
 
 <script setup>
-import { VButton } from '@integrity/base-ui/src/components/ui/VButton/index.js';
-import { StatusBar } from '@tablet';
+import { VButton } from '@base';
+import { AppSettings, StatusBar } from '@tablet';
+import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
+import { useMainStore } from '@/stores/index.js';
 
 const props = defineProps({
   title: String,
@@ -41,7 +50,7 @@ const props = defineProps({
       type: 'home',
       fn: () => {},
     }),
-    required: true,
+    required: false,
   },
   headerStatus: {
     type: Object,
@@ -64,6 +73,9 @@ const props = defineProps({
   },
 });
 
+const store = useMainStore();
+const { appSettingsOptions } = storeToRefs(store);
+
 const emit = defineEmits(['disable-fullscreen']);
 
 const mainClasses = computed(() => ({
@@ -76,6 +88,10 @@ const sidebarClasses = computed(() => ({
 
 const disableFullscreen = () => {
   emit('disable-fullscreen');
+};
+
+const onUpdateOptions = (val) => {
+  appSettingsOptions.value = val;
 };
 </script>
 

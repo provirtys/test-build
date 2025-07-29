@@ -20,6 +20,7 @@
         :is-animate="statusOptions.sync"
         :show-background="statusOptions.active"
       />
+      <slot name="append"/>
     </div>
   </div>
 </template>

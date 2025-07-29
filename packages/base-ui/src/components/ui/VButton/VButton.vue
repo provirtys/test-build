@@ -53,7 +53,7 @@ const props = defineProps({
     type: String,
     default: 'lg',
     required: false,
-    validator: (val) => ['lg', 'md', 'sm', 'xs'].includes(val),
+    validator: (val) => ['lg', 'md', 'sm', 'xs', 'xxs'].includes(val),
   },
   isRounded: {
     type: Boolean,
@@ -142,6 +142,7 @@ const buttonSize = computed(() => {
     case 'md':
     case 'sm':
     case 'xs':
+    case 'xxs':
       return props.height;
     default:
       return 'lg';
@@ -288,6 +289,13 @@ const finishAnimation = (_evt, finished) => {
     padding: 10px $s-2;
   }
 
+  &--xxs {
+    height: $m-3;
+    gap: $d-1;
+    font-size: $font-size-p4;
+    padding: $d-1 $s-1;
+  }
+
   &.v-button--holding {
     &::before {
       content: '';
@@ -362,7 +370,6 @@ const finishAnimation = (_evt, finished) => {
   &__text {
     flex-grow: 1;
     text-align: left;
-    width: min-content;
   }
 
   :deep(.q-btn__content) {

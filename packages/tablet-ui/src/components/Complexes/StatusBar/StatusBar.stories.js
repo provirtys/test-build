@@ -1,5 +1,7 @@
+import { appSettings } from '@mocks/appSettings.js';
+import { AppSettings } from '@tablet';
 import { expect } from 'storybook/test';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { StatusBar } from './index.js';
 
 const home = 'home';
@@ -39,9 +41,10 @@ const testElements = (iconName, buttonText, statusText, isStatusSuccess, isLabel
  *  - Одну из кнопок действия - `Домой`, `Назад`, `Выход`
  *  - Заголовок текущего контекста приложения
  *  - Статус бэкенда
- *  - Кнопку для вывода дебаг панели
+ *  - Кнопку для настроек приложения (через слот `append`)
  * */
 export default {
+  components: { AppSettings },
   component: StatusBar,
   argTypes: {
     action: {
@@ -102,8 +105,10 @@ export default {
 };
 
 const BaseComponent = (args) => ({
-  components: { StatusBar },
+  components: { StatusBar, AppSettings },
   setup() {
+    const appSettingsOptions = ref(appSettings);
+
     const status = computed(() => ({
       type: args.statusIsReady ? 'success' : 'error',
       sync: args.statusIsAnimated,
@@ -115,14 +120,24 @@ const BaseComponent = (args) => ({
       to: '/',
     }));
 
+    const onUpdateOptions = (opt) => {
+      appSettingsOptions.value = opt;
+    };
+
     return {
       args,
       status,
       action,
+      appSettingsOptions,
+      onUpdateOptions,
     };
   },
   template: `
-    <StatusBar :action="action" :title="args.title" :status="status" :is-disabled="args.isDisabled"/>`,
+    <StatusBar :action="action" :title="args.title" :status="status" :is-disabled="args.isDisabled">
+      <template #append>
+        <app-settings :options="appSettingsOptions" :is-disabled="args.isDisabled" @update:options="onUpdateOptions"/>
+      </template>
+    </StatusBar>`,
 });
 
 export const HomeNotReady = BaseComponent.bind({});

@@ -20,6 +20,7 @@ const lg = 'lg';
 const md = 'md';
 const sm = 'sm';
 const xs = 'xs';
+const xxs = 'xxs';
 
 const center = 'center';
 
@@ -34,7 +35,7 @@ const restart = 'restart';
 
 const location = { left, right, empty };
 const colors = { primary, secondary, plane, outline, red };
-const sizes = { lg, md, sm, xs };
+const sizes = { lg, md, sm, xs, xxs };
 const textAlignments = { left, center, right };
 const iconNames = {
   bad,
@@ -95,6 +96,7 @@ export default {
           md: 'Средний',
           sm: 'Маленький',
           xs: 'Очень маленький',
+          xxs: 'Крохотный',
         },
       },
     },
@@ -248,6 +250,12 @@ export const ExtraSmall = BaseComponent.bind({});
 ExtraSmall.args = {
   text: 'Очень маленькая кнопка',
   height: xs,
+};
+
+export const ExtraExtraSmall = BaseComponent.bind({});
+ExtraExtraSmall.args = {
+  text: 'Крохотная кнопка',
+  height: xxs,
 };
 
 export const IconLeftWithTextLeft = BaseComponent.bind({});
