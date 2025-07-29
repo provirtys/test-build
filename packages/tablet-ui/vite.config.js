@@ -58,8 +58,12 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
-          @import '@integrity/base-ui/src/css/main.scss';
-          @import '@tablet/css/main.scss';`,
+          @import '@integrity/base-ui/src/css/fonts.scss';
+          @import '@integrity/base-ui/src/css/variables.scss';
+          @import '@integrity/base-ui/src/css/mixins.scss';
+          @import '@integrity/base-ui/src/css/quasar.classes.scss';
+          @import '@tablet/css/main.scss';
+        `,
       },
     },
   },

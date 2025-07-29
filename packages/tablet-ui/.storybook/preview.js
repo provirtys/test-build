@@ -9,6 +9,8 @@ import '@quasar/extras/material-icons-outlined/material-icons-outlined.css';
 import '@quasar/extras/material-symbols-outlined/material-symbols-outlined.css';
 import 'quasar/dist/quasar.css';
 
+import '@base/css/main.scss';
+
 import en from '@base/locales/en.json';
 import ru from '@base/locales/ru.json';
 
