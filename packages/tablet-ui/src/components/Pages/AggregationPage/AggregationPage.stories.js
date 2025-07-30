@@ -110,15 +110,29 @@ WithError.args = {
 WithError.play = async ({ args }) => {
   const sidebar = document.querySelector('.main-layout__sidebar');
 
-  expect(window.getComputedStyle(sidebar).backgroundColor).toBe('rgba(211, 20, 28, 0.85)');
+  const isSidebarInErrorState = async () => {
+    const sidebarAlert = sidebar?.querySelector('.v-alert');
+    const sidebarAlertDescription = sidebar?.querySelector('.alert-description');
+    const sidebarButton = sidebar?.querySelector('button');
 
-  const sidebarAlert = sidebar.querySelector('.v-alert');
-  const sidebarAlertDescription = sidebar.querySelector('.alert-description');
-  const sidebarButton = sidebar.querySelector('button');
+    await expect(window.getComputedStyle(sidebar).backgroundColor).toBe('rgba(211, 20, 28, 0.85)');
+    await expect(sidebarAlert).toBeVisible();
+    await expect(sidebarAlertDescription.textContent).toBe('Печатать код неполной упаковки');
+    await expect(sidebarButton).not.toBeDisabled();
+  };
 
-  await expect(sidebarAlert.textContent).toBe('Не все коды подтверждены');
-  await expect(sidebarAlertDescription.textContent).toBe('Печатать код неполной упаковки');
-  await expect(sidebarButton).not.toBeDisabled();
+  const isSidebarInNormalState = async () => {
+    const sidebarAlert = sidebar?.querySelector('.v-alert');
+    const sidebarAlertDescription = sidebar?.querySelector('.alert-description');
+    const sidebarButton = sidebar?.querySelector('button');
+
+    await expect(window.getComputedStyle(sidebar).backgroundColor).toBe('rgba(0, 0, 0, 0)');
+    await expect(sidebarAlert).toBeNull();
+    await expect(sidebarAlertDescription).toBeNull();
+    await expect(sidebarButton).toBeDisabled();
+  };
+
+  await isSidebarInErrorState();
 
   await sleep(1000);
 
@@ -126,8 +140,21 @@ WithError.play = async ({ args }) => {
     args.inPackageCurrent = 6;
   });
 
-  await expect(window.getComputedStyle(sidebar).backgroundColor).toBe('rgba(0, 0, 0, 0)');
-  await expect(sidebarAlert).not.toBeVisible();
-  await expect(sidebarAlertDescription).not.toBeVisible();
-  await expect(sidebarButton).toBeDisabled();
+  await isSidebarInNormalState();
+
+  await sleep(1000);
+
+  await waitFor(() => {
+    args.inPackageCurrent = 0;
+  });
+
+  await isSidebarInNormalState();
+
+  await sleep(1000);
+
+  await waitFor(() => {
+    args.inPackageCurrent = 1;
+  });
+
+  await isSidebarInErrorState();
 };
