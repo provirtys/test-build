@@ -217,6 +217,7 @@ const finishAnimation = (_evt, finished) => {
   box-shadow: none;
   border: none;
   animation: none;
+  min-height: unset;
 
   &.primary {
     background-color: $primary-text;
