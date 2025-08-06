@@ -13,13 +13,17 @@
       "import": "./dist/mobile-ui.es.js",
       "require": "./dist/mobile-ui.umd.js"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/mobile-ui.css"
   },
   "publishConfig": {
     "access": "public",
     "main": "dist/mobile-ui.es.js"
   },
-  "files": ["package.json", "pnpm-lock.yaml", "dist"],
+  "files": [
+    "package.json",
+    "pnpm-lock.yaml",
+    "dist"
+  ],
   "dependencies": {
     "@chromatic-com/storybook": "catalog:",
     "@integrity/base-ui": "workspace:*",

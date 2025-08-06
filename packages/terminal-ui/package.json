@@ -13,7 +13,7 @@
       "import": "./dist/terminal-ui.es.js",
       "require": "./dist/terminal-ui.umd.js"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/terminal-ui.css"
   },
   "publishConfig": {
     "access": "public",
