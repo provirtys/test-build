@@ -8,7 +8,7 @@ import createPackageConfig from '../../vite.shared.js';
 
 export default defineConfig({
   root: __dirname,
-  cacheDir: './node_modules/.vite/base-ui',
+  cacheDir: '../node_modules/.vite/terminal-ui',
   plugins: [
     vue(),
     quasar(),
@@ -39,8 +39,8 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: path.resolve(__dirname, 'src/index.js'),
-      name: 'base-ui',
-      fileName: (format) => `base-ui.${format}.js`,
+      name: 'terminal-ui',
+      fileName: (format) => `terminal-ui.${format}.js`,
     },
     rollupOptions: {
       // External packages that should not be bundled into your library.
@@ -53,7 +53,7 @@ export default defineConfig({
       },
     },
   },
-  ...createPackageConfig('base-ui'),
+  ...createPackageConfig('terminal-ui'),
   css: {
     preprocessorOptions: {
       scss: {

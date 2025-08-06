@@ -23,6 +23,7 @@ export default function createPackageConfig(packageName) {
       { find: '@utils', replacement: fileURLToPath(new URL('./src/utils/', packageURL)) },
       { find: '@css', replacement: fileURLToPath(new URL('./src/css/', packageURL)) },
       { find: '@mocks', replacement: fileURLToPath(new URL('./src/mocks/', packageURL)) },
+      { find: '@types', replacement: fileURLToPath(new URL('./src/types/', packageURL)) },
       // Глобальные алиасы
       {
         find: '@integrity/web-ui',
@@ -36,11 +37,16 @@ export default function createPackageConfig(packageName) {
         find: '@integrity/mobile-ui',
         replacement: fileURLToPath(new URL('./packages/mobile-ui/', import.meta.url)),
       },
+      {
+        find: '@integrity/terminal-ui',
+        replacement: fileURLToPath(new URL('./packages/terminal-ui/', import.meta.url)),
+      },
 
       // Межпакетные алиасы
       { find: '@web', replacement: fileURLToPath(new URL('./packages/web-ui/src/', import.meta.url)) },
       { find: '@tablet', replacement: fileURLToPath(new URL('./packages/tablet-ui/src/', import.meta.url)) },
       { find: '@mobile', replacement: fileURLToPath(new URL('./packages/mobile-ui/src/', import.meta.url)) },
+      { find: '@terminal', replacement: fileURLToPath(new URL('./packages/terminal-ui/src/', import.meta.url)) },
     );
   }
 
