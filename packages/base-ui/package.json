@@ -14,13 +14,18 @@
       "require": "./dist/base-ui.umd.js"
     },
     "./style.css": "./dist/base-ui.css",
+    "./variables.scss": "./dist/variables.scss",
     "./src/*": "./src/*"
   },
   "publishConfig": {
     "access": "public",
     "main": "src/index.js"
   },
-  "files": ["package.json", "pnpm-lock.yaml", "dist"],
+  "files": [
+    "package.json",
+    "pnpm-lock.yaml",
+    "dist"
+  ],
   "dependencies": {
     "@chromatic-com/storybook": "catalog:",
     "@integrity/icons": "workspace:*",
@@ -40,6 +45,7 @@
     "storybook": "catalog:",
     "vite": "catalog:",
     "vite-plugin-dts": "catalog:",
+    "vite-plugin-static-copy": "^3.1.1",
     "vue": "catalog:",
     "vue-i18n": "catalog:",
     "vue-router": "catalog:"

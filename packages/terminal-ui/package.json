@@ -24,6 +24,9 @@
     "pnpm-lock.yaml",
     "dist"
   ],
+  "peerDependencies": {
+    "@integrity/base-ui": "^1.0.0"
+  },
   "dependencies": {
     "@chromatic-com/storybook": "catalog:",
     "@integrity/base-ui": "workspace:*",

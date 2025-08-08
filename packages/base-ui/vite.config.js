@@ -4,6 +4,7 @@ import { quasar } from '@quasar/vite-plugin';
 import vue from '@vitejs/plugin-vue';
 /// <reference types='vitest' />
 import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import createPackageConfig from '../../vite.shared.js';
 
 export default defineConfig({
@@ -31,6 +32,14 @@ export default defineConfig({
           },
         ],
       },
+    }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: './src/css/variables.scss',
+          dest: '',
+        },
+      ],
     }),
   ],
   // Configuration for building your library.
