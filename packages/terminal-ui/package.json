@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "@chromatic-com/storybook": "catalog:",
-    "@integrity/base-ui": "workspace:*",
     "@integrity/icons": "workspace:*",
     "@storybook/addon-a11y": "catalog:",
     "@storybook/addon-vitest": "catalog:",
