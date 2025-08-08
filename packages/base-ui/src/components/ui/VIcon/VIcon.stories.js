@@ -48,8 +48,8 @@ export default {
   },
   args: {
     name: dataMatrix,
-    width: '80px',
-    height: '80px',
+    width: '',
+    height: '',
     size: '80px',
     color: '',
   },
@@ -57,10 +57,16 @@ export default {
 
 export const Big = {
   name: '80px',
+  args: {
+    size: '80px',
+  },
 };
 
 export const Standard = {
   name: '40px',
+  args: {
+    size: '40px',
+  },
 };
 
 export const Small = {

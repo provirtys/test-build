@@ -38,8 +38,8 @@ const baseSize = reactive({
 });
 
 const iconSize = computed(() => ({
-  width: props.width ?? props.size ?? baseSize.width,
-  height: props.height ?? props.size ?? baseSize.height,
+  width: props.width || props.size || baseSize.width,
+  height: props.height || props.size || baseSize.height,
 }));
 
 const REGEXP_SPLIT = /[\s,]+/;
