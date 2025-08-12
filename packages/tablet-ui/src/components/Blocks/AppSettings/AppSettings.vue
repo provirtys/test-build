@@ -17,7 +17,8 @@
 </template>
 
 <script setup>
-import { AppSettingsOptions, VButton, VIcon } from '@tablet';
+import { VButton, VIcon } from '@base';
+import { AppSettingsOptions } from '@tablet';
 
 const props = defineProps({
   options: {

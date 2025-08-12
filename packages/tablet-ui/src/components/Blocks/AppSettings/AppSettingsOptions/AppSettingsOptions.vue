@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-import { VButton } from '@integrity/base-ui/src/index.js';
+import { VButton } from '@base';
 
 const props = defineProps({
   options: {

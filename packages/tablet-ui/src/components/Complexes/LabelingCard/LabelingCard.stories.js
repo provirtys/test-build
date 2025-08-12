@@ -1,5 +1,5 @@
+import { VButton } from '@base';
 import { setupI18n } from '@integrity/base-ui/src/i18n.js';
-import { VButton } from '@integrity/base-ui/src/index.js';
 import { computed } from 'vue';
 import { LabelingCard } from './index.js';
 

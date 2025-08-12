@@ -51,8 +51,8 @@
 </template>
 
 <script setup>
+import { VButton } from '@base';
 import { setupI18n } from '@integrity/base-ui/src/i18n.js';
-import { VButton } from '@integrity/base-ui/src/index.js';
 import { QCircularProgress } from 'quasar';
 import { computed } from 'vue';
 
