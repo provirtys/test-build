@@ -25,7 +25,7 @@
     "dist"
   ],
   "peerDependencies": {
-    "@integrity/base-ui": "^1.0.0"
+    "@integrity/base-ui": "workspace:*"
   },
   "dependencies": {
     "@chromatic-com/storybook": "catalog:",
