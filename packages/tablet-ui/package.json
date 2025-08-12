@@ -25,10 +25,12 @@
     "dist",
     "./index.d.ts"
   ],
+  "peerDependencies": {
+    "@integrity/base-ui": "workspace:*",
+    "@integrity/icons": "workspace:*"
+  },
   "dependencies": {
     "@chromatic-com/storybook": "catalog:",
-    "@integrity/base-ui": "workspace:*",
-    "@integrity/icons": "workspace:*",
     "@storybook/addon-a11y": "catalog:",
     "@storybook/addon-vitest": "catalog:",
     "pinia": "catalog:",

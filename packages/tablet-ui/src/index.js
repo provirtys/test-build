@@ -17,4 +17,3 @@ export { TableAttributes } from '@components/Elements/TableAttributes';
 export { MainLayout } from '@components/Layouts/MainLayout';
 export { VCheckboxButton } from '@components/ui/VCheckboxButton';
 export { VDescriptionList } from '@components/ui/VDescriptionList';
-export * from '@integrity/base-ui/src';
