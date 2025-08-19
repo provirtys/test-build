@@ -6,14 +6,10 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import type { VCardProps } from '@/components/ui/VCard/VCard.types';
 
-const props = defineProps({
-  bgColor: {
-    type: String,
-    default: 'white',
-    required: false,
-    validator: (val) => ['white', 'gray'].includes(val),
-  },
+const props = withDefaults(defineProps<VCardProps>(), {
+  bgColor: 'white',
 });
 
 const classList = computed(() => [`v-card--${props.bgColor}`]);

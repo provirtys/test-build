@@ -35,48 +35,34 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { VButton } from '@base';
-import { AppSettings, StatusBar } from '@tablet';
+import type { AppSettings } from '@integrity/base-ui/dist/tablet-ui/src/components/Blocks/AppSettings/AppSettings.types';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
-import { useMainStore } from '@/stores/index.js';
+import { StatusBar } from '@';
+import type { MainLayoutEmits, MainLayoutProps } from '@/components/Layouts/MainLayout/MainLayout.types';
+import { useMainStore } from '@/stores';
 
-const props = defineProps({
-  title: String,
-  headerAction: {
-    type: Object,
-    default: () => ({
-      type: 'home',
-      fn: () => {},
-    }),
-    required: false,
-  },
-  headerStatus: {
-    type: Object,
-    default: () => ({
-      type: 'error',
-      sync: false,
-      active: false,
-    }),
-    required: false,
-  },
-  isFullscreen: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-  sidebarHasError: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
+const props = withDefaults(defineProps<MainLayoutProps>(), {
+  title: '',
+  headerAction: () => ({
+    type: 'home',
+    fn: () => {},
+  }),
+  headerStatus: () => ({
+    type: 'error',
+    sync: false,
+    active: false,
+  }),
+  isFullscreen: false,
+  sidebarHasError: false,
 });
 
 const store = useMainStore();
 const { appSettingsOptions } = storeToRefs(store);
 
-const emit = defineEmits(['disable-fullscreen']);
+const emit = defineEmits<MainLayoutEmits>();
 
 const mainClasses = computed(() => ({
   'main-layout__main--fullscreen': props.isFullscreen,
@@ -90,7 +76,7 @@ const disableFullscreen = () => {
   emit('disable-fullscreen');
 };
 
-const onUpdateOptions = (val) => {
+const onUpdateOptions = (val: AppSettings) => {
   appSettingsOptions.value = val;
 };
 </script>

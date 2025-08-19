@@ -1,16 +1,17 @@
 <template>
-  <div class="progress-pie" :class="[{ done: percentage === 100 }, props.size]" :style="degrees">
+  <div class="progress-pie" :class="classList" :style="degrees">
     <div class="progress-pie__filling"></div>
     <div class="progress-pie__percentage">{{ props.percentage }}%</div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
+import { ProgressPieProps } from '@/components/Blocks/ProgressPie/ProgressPie.types';
 
-const props = defineProps({
-  percentage: { type: Number, default: 0 },
-  size: { type: String, default: 'small' },
+const props = withDefaults(defineProps<ProgressPieProps>(), {
+  percentage: 0,
+  size: 'sm',
 });
 
 const degrees = computed(() => {
@@ -19,6 +20,13 @@ const degrees = computed(() => {
     '--degrees': radius,
   };
 });
+
+const classList = computed(() => [
+  {
+    done: props.percentage === 100,
+  },
+  `progress-pie--${props.size}`,
+]);
 </script>
 
 <style lang="scss" scoped>
@@ -64,7 +72,7 @@ const degrees = computed(() => {
     }
   }
 
-  &.small {
+  &--sm {
     width: $l-2;
     height: $l-2;
 
@@ -76,7 +84,7 @@ const degrees = computed(() => {
     }
   }
 
-  &.large {
+  &--lg {
     width: $xxl-4;
     height: $xxl-4;
 

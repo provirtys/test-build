@@ -9,7 +9,7 @@
       :columns="columns"
       :rows-per-page-options="[0]"
       :no-data-label="t('storybook.table.noData')"
-      :table-row-class-fn="() => ['q-tr--no-hover']"
+      :table-row-class-fn="() => 'q-tr--no-hover'"
   >
     <template v-for="(_, name) in $slots" :key="name" #[name]="slotData">
       <slot :name="name" v-bind="slotData" />
@@ -17,20 +17,16 @@
   </q-table>
 </template>
 
-<script setup>
-import { setupI18n } from '@base/i18n.js';
+<script setup lang="ts">
+import { VTableProps } from '@base/components/ui/VTable/VTable.types';
 import { QTable } from 'quasar';
+import { setupI18n } from '../../../i18n';
 
 const { t } = setupI18n();
-const props = defineProps({
-  rows: {
-    type: Array,
-    default: () => [],
-  },
-  columns: {
-    type: Array,
-    default: () => [],
-  },
+
+withDefaults(defineProps<VTableProps>(), {
+  columns: () => [],
+  rows: () => [],
 });
 </script>
 

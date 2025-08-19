@@ -19,8 +19,10 @@
   </svg>
 </template>
 
-<script setup>
-const props = defineProps({
-  border: { type: Boolean, default: true },
+<script setup lang="ts">
+import type { BarcodeIconProps } from '@base/components/Elements/BarcodeIcon/BarcodeIcon.types';
+
+const props = withDefaults(defineProps<BarcodeIconProps>(), {
+  border: true,
 });
 </script>

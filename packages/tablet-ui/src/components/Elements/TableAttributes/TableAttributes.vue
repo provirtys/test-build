@@ -2,28 +2,25 @@
   <v-table :rows="rows" :columns="columns"/>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { VTable } from '@base';
+import type { VTableProps } from '@base/components/ui/VTable/VTable.types';
 
-const props = defineProps({
-  rows: {
-    type: Array,
-    default: () => [],
-  },
+withDefaults(defineProps<VTableProps>(), {
+  rows: () => [],
+  columns: () => [
+    {
+      label: 'Атрибут',
+      align: 'left',
+      name: 'name',
+      field: 'name',
+    },
+    {
+      label: 'Значение',
+      align: 'left',
+      name: 'value',
+      field: 'value',
+    },
+  ],
 });
-
-const columns = [
-  {
-    label: 'Атрибут',
-    align: 'left',
-    name: 'name',
-    field: 'name',
-  },
-  {
-    label: 'Значение',
-    align: 'left',
-    name: 'value',
-    field: 'value',
-  },
-];
 </script>

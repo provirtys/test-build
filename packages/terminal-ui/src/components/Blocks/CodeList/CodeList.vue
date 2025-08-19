@@ -2,7 +2,7 @@
   <div class="code-list">
     <v-expansion-item no-paddings label="Коды в упаковке" default-opened>
       <div class="code-list__items">
-        <code-item v-for="(item, idx) in items" :label="item.label" :status="item.status" :cancelable="idx === 0"
+        <code-item v-for="(item, idx) in items" :key="item.id" v-bind="getItemBinding(item)" :cancelable="idx === 0"
                    @on-cancel="() => onItemCancel(item)"/>
       </div>
     </v-expansion-item>
@@ -11,20 +11,21 @@
 
 <script setup lang="ts">
 import { VExpansionItem } from '@base';
-import { CodeItem } from '@terminal';
+import { CodeItem } from '@';
+import type { CodeListEmits, CodeListProps } from '@/components/Blocks/CodeList/CodeList.types';
+import type { CodeItemProps } from '@/components/Elements/CodeItem/CodeItem.types';
 
-const props = defineProps({
-  items: {
-    type: Array,
-    default: () => [],
-    required: true,
-  },
-});
+const props = defineProps<CodeListProps>();
 
-const emit = defineEmits(['onItemCancel']);
+const emit = defineEmits<CodeListEmits>();
 
-const onItemCancel = (item) => {
-  emit('onItemCancel', item);
+const getItemBinding = (item: CodeItemProps): Omit<CodeItemProps, 'cancelable'> => {
+  const { cancelable, ...rest } = item;
+  return rest;
+};
+
+const onItemCancel = (item: CodeItemProps) => {
+  emit('onItemCancel', item.id);
 };
 </script>
 

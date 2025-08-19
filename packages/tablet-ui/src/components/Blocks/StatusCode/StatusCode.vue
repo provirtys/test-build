@@ -9,24 +9,16 @@
   </div>
 </template>
 
-<script setup>
-import { VIcon } from '@integrity/base-ui/src/index.js';
+<script setup lang="ts">
+import { VIcon } from '@base';
 import { computed } from 'vue';
 import { StatusIndicator } from '@';
+import type { StatusCodeProps } from '@/components/Blocks/StatusCode/StatusCode.types';
 
-const props = defineProps({
-  type: {
-    type: String,
-    default: 'data-matrix',
-  },
-  status: {
-    type: String,
-    default: '',
-  },
-  color: {
-    type: String,
-    default: 'success',
-  },
+const props = withDefaults(defineProps<StatusCodeProps>(), {
+  type: 'dataMatrix',
+  color: 'success',
+  status: 'hidden',
 });
 
 const classList = computed(() => ({
@@ -36,7 +28,7 @@ const classList = computed(() => ({
 
 const iconName = computed(() => (props.type === 'dataMatrix' ? 'data-matrix' : 'barcode'));
 
-const showPoint = computed(() => props.status && props.color);
+const showPoint = computed(() => props.status !== 'hidden' && props.color);
 </script>
 
 <style lang="scss" scoped>

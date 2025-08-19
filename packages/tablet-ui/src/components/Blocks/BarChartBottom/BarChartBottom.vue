@@ -4,8 +4,8 @@
   </div>
 </template>
 
-<script setup>
-import { setupI18n } from '@integrity/base-ui/src/i18n.js';
+<script setup lang="ts">
+import { setupI18n } from '@base/i18n';
 import ApexCharts from 'apexcharts';
 import { onMounted, ref, watch } from 'vue';
 

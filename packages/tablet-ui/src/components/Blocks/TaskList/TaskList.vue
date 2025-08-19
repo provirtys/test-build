@@ -4,39 +4,29 @@
   </div>
 </template>
 
-<script setup>
-import { TaskCard } from '@tablet';
+<script setup lang="ts">
 import { computed, ref } from 'vue';
+import { TaskCard } from '@';
+import { TaskCardProps } from '@/components/Blocks/TaskCard/TaskCard.types';
+import { TaskListEmits, TaskListProps } from '@/components/Blocks/TaskList/TaskList.types';
 
-const props = defineProps({
-  /** Список задач */
-  tasks: {
-    type: Array,
-    required: true,
-  },
-  isVertical: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-  alwaysShowBackgrounds: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
+const props = withDefaults(defineProps<TaskListProps>(), {
+  tasks: () => [],
+  isVertical: false,
+  alwaysShowBackgrounds: true,
 });
 
-const emit = defineEmits(['onTaskSelect']);
+const emit = defineEmits<TaskListEmits>();
 
-const activeTaskId = ref(null);
+const activeTaskId = ref('');
 
-const onTaskClick = (task) => {
+const onTaskClick = (task: TaskListProps['tasks'][number]) => {
   activeTaskId.value = task.id;
   emit('onTaskSelect', task.id);
 };
 
 const tasksWithActiveState = computed(() => {
-  const map = {};
+  const map: Record<string, TaskCardProps> = {};
 
   for (const task of props.tasks) {
     map[task.id] = {
@@ -48,7 +38,7 @@ const tasksWithActiveState = computed(() => {
       isActive: task.id === activeTaskId.value,
       hasBackground: props.alwaysShowBackgrounds
         ? props.alwaysShowBackgrounds
-        : ['new', 'labeling'].includes(task.status),
+        : task.status && ['new', 'labeling'].includes(task.status),
     };
   }
   return map;

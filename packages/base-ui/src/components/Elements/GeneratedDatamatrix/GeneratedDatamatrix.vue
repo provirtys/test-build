@@ -2,26 +2,15 @@
   <div class="generated-datamatrix" v-html="svgHtml"></div>
 </template>
 
-<script setup>
-import DATAMatrix from '@base/datamatrix.js';
+<script setup lang="ts">
+import type { GeneratedDatamatrixProps } from '@base/components/Elements/GeneratedDatamatrix/GeneratedDatamatrix.types';
 import { computed, onMounted, ref } from 'vue';
+import DATAMatrix from '@/datamatrix.js';
 
-const props = defineProps({
-  data: {
-    type: [Object, String, Number],
-    default: null,
-    required: true,
-  },
-  size: {
-    type: Number,
-    default: 180,
-    required: false,
-  },
-  dark: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
+const props = withDefaults(defineProps<GeneratedDatamatrixProps>(), {
+  data: undefined,
+  size: 180,
+  dark: false,
 });
 
 const svgHtml = ref('');

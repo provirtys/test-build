@@ -4,29 +4,24 @@
   </div>
 </template>
 
-<script setup>
-import { setupI18n } from '@integrity/base-ui/src/i18n.js';
-import ApexCharts from 'apexcharts';
+<script setup lang="ts">
+import { setupI18n } from '@base/i18n';
+import ApexCharts, { ApexOptions } from 'apexcharts';
 import { onMounted, ref, watch } from 'vue';
+import type { BarChartCode, BarChartProps } from '@/components/Blocks/BarChart/BarChart.types';
 
 const { t } = setupI18n();
 
 // количество видимых итераций (значений по горизонтальной оси)
 const limit = 18;
 
-const props = defineProps({
-  codes: {
-    type: Array,
-    default: () => [],
-  },
-  lastMeter: {
-    type: Number,
-    default: 0,
-  },
+const props = withDefaults(defineProps<BarChartProps>(), {
+  codes: () => [],
+  lastMeter: 0,
 });
 
-const ok = ref([]);
-const broken = ref([]);
+const ok = ref<number[]>([]);
+const broken = ref<number[]>([]);
 // каждый раз когда изменяется список всех кодов, которые нужно отобразить на графике
 watch(
   () => props.codes,
@@ -35,7 +30,7 @@ watch(
   },
 );
 
-function changeBarData(codeList) {
+function changeBarData(codeList: BarChartCode[]) {
   ok.value = [];
   broken.value = [];
   const totalItems = codeList.length;
@@ -91,7 +86,9 @@ function changeBarData(codeList) {
   updateData(broken.value, ok.value, xax);
 }
 
-window.Apex = {
+let chartColumn: ApexCharts | null = null;
+
+const optionsColumn: ApexOptions = {
   chart: {
     type: 'bar',
     stacked: true,
@@ -105,38 +102,6 @@ window.Apex = {
     zoom: {
       enabled: false,
     },
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  grid: {
-    show: false,
-  },
-  xaxis: {
-    axisTicks: {
-      color: '#000',
-      width: 2,
-      height: 6,
-    },
-    axisBorder: {
-      color: '#000',
-      height: 2,
-    },
-    title: {
-      text: t('length'),
-    },
-  },
-  // Высплывающая подсказка
-  tooltip: {
-    enabled: false,
-  },
-};
-
-let chartColumn = null;
-
-const optionsColumn = {
-  chart: {
-    height: '100%',
     animations: {
       enabled: false,
     },
@@ -144,6 +109,9 @@ const optionsColumn = {
   colors: ['#d3141c', '#e3e3e3'],
   stroke: {
     width: 0,
+  },
+  grid: {
+    show: false,
   },
   plotOptions: {
     bar: {
@@ -162,7 +130,6 @@ const optionsColumn = {
       show: true,
       color: '#000000',
       width: 6,
-      height: 2,
     },
     title: {
       text: t('errors'),
@@ -185,10 +152,25 @@ const optionsColumn = {
     },
   ],
   xaxis: {
+    axisTicks: {
+      color: '#000',
+      height: 6,
+    },
+    axisBorder: {
+      color: '#000',
+      height: 2,
+    },
+    title: {
+      text: t('length'),
+    },
     tickPlacement: 'on',
   },
   legend: {
     show: false,
+  },
+  // Всплывающая подсказка
+  tooltip: {
+    enabled: false,
   },
 };
 
@@ -198,14 +180,16 @@ onMounted(() => {
   changeBarData(props.codes);
 });
 
-function updateData(broken, ok, x) {
-  chartColumn.updateOptions({
-    series: [{ data: broken }, { data: ok }],
-    xaxis: {
-      type: 'category',
-      categories: x,
-    },
-  });
+function updateData(broken: number[], ok: number[], x: number[]) {
+  if (chartColumn) {
+    chartColumn.updateOptions({
+      series: [{ data: broken }, { data: ok }],
+      xaxis: {
+        type: 'category',
+        categories: x,
+      },
+    });
+  }
 }
 </script>
 

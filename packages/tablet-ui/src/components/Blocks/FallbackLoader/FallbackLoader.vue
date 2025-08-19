@@ -12,31 +12,17 @@
   </div>
 </template>
 
-<script setup>
-import { VIcon } from '@integrity/base-ui/src/index.js';
+<script setup lang="ts">
+import { VIcon } from '@base';
+import type { FallbackLoaderEmits, FallbackLoaderProps } from '@/components/Blocks/FallbackLoader/FallbackLoader.types';
 
-defineProps({
-  loadingText: {
-    type: String,
-    default: 'Обновление...',
-  },
-  fallbackText: {
-    type: String,
-    default: 'Ошибка',
-  },
-  fallbackIcon: {
-    type: String,
-    default: 'status-error',
-  },
-  updateBtnText: {
-    type: String,
-    default: 'Обновить',
-  },
-  isLoading: {
-    type: Boolean,
-    default: false,
-  },
+withDefaults(defineProps<FallbackLoaderProps>(), {
+  loadingText: 'Обновление...',
+  fallbackText: 'Ошибка',
+  fallbackIcon: 'status-error',
+  updateBtnText: 'Обновить',
+  isLoading: false,
 });
 
-defineEmits(['onUpdate']);
+defineEmits<FallbackLoaderEmits>();
 </script>

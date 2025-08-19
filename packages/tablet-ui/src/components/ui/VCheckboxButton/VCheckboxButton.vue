@@ -8,50 +8,26 @@
       @change="() => $emit('update:modelValue', !modelValue)"
     />
     <v-icon :name="checkboxIconName" :size="iconSizes[height]['checkbox']" />
-    <span :class="['v-checkbox-button__title', buttonSize]">{{ label }}</span>
+    <span class="v-checkbox-button__title">{{ label }}</span>
     <v-icon v-if="iconName" :name="iconName" :size="iconSizes[height]['icon']" />
   </label>
 </template>
 
-<script setup>
-import { VIcon } from '@integrity/base-ui/src/index.js';
+<script setup lang="ts">
+import { VIcon } from '@base';
 import { computed } from 'vue';
+import type { VCheckboxButtonEmits, VCheckboxButtonProps } from '@/components/ui/VCheckboxButton/VCheckboxButton.types';
 
-/** @type {import('vue').DefineProps<Props>} */
-const props = defineProps({
-  /** Выбранное значение */
-  modelValue: {
-    type: Boolean,
-    default: false,
-  },
-  /** Имя иконки */
-  iconName: {
-    type: String,
-    default: '',
-  },
-  /** Вид Plane */
-  isPlane: {
-    type: Boolean,
-    default: false,
-  },
-  /** Высота */
-  height: {
-    type: String,
-    default: 'lg',
-  },
-  /** Текст кнопки */
-  label: {
-    type: String,
-    default: 'Checkbox',
-  },
-  /** Активность чекбокса */
-  isDisabled: {
-    type: Boolean,
-    default: false,
-  },
+const props = withDefaults(defineProps<VCheckboxButtonProps>(), {
+  modelValue: false,
+  iconName: '',
+  isPlane: false,
+  height: 'lg',
+  label: 'Checkbox',
+  isDisabled: false,
 });
 
-defineEmits(['update:modelValue']);
+defineEmits<VCheckboxButtonEmits>();
 
 const classList = computed(() => [
   [`v-checkbox-button--${props.height}`],
@@ -136,6 +112,10 @@ const iconSizes = {
     height: $l-1;
     padding: $d-1 $s-2;
     gap: $s-1;
+
+    .v-checkbox-button__title {
+      font-size: $font-size-p2;
+    }
   }
 
   &__input {
@@ -154,10 +134,6 @@ const iconSizes = {
     align-items: center;
     justify-content: flex-start;
     gap: 16px;
-
-    &.v-checkbox-button--xs {
-      font-size: $font-size-p2;
-    }
   }
 }
 </style>

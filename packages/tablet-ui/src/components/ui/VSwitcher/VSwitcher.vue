@@ -2,10 +2,8 @@
   <q-btn-toggle
     class="v-switcher"
     :class="classes"
-    :model-value="modelValue"
-    :options="computedOptions"
-    v-bind="computedAttrs"
     @update:modelValue="updateValue"
+    v-bind="bindingProps"
   >
     <template v-for="option in computedOptions" v-slot:[option.slot]>
       <div v-if="option.iconName" class="v-switcher__item-icon">
@@ -15,33 +13,12 @@
   </q-btn-toggle>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { VIcon } from '@base';
-import { computed, onMounted, useAttrs } from 'vue';
+import { computed, onMounted } from 'vue';
+import type { VSwitcherEmits, VSwitcherProps } from '@/components/ui/VSwitcher/VSwitcher.types';
 
-const props = defineProps({
-  modelValue: { type: String, default: '' },
-  options: { type: Array, default: () => [] },
-  align: { type: String, default: 'center' },
-});
-
-const emit = defineEmits(['update:modelValue']);
-
-defineOptions({
-  inheritAttrs: false,
-});
-
-const attrs = useAttrs();
-
-const classes = computed(() => [
-  {
-    [`v-switcher--text-${props.align}`]: props.align,
-  },
-]);
-
-const computedAttrs = computed(() => ({
-  disable: attrs.disable,
-  spread: attrs.spread,
+const props = withDefaults(defineProps<VSwitcherProps>(), {
   textColor: 'dark-1',
   toggleColor: 'dark-1',
   toggleTextColor: 'white',
@@ -49,7 +26,17 @@ const computedAttrs = computed(() => ({
   rounded: true,
   unelevated: true,
   noCaps: true,
-}));
+  align: 'center',
+  options: () => [],
+});
+
+const emit = defineEmits<VSwitcherEmits>();
+
+const classes = computed(() => [
+  {
+    [`v-switcher--text-${props.align}`]: props.align,
+  },
+]);
 
 const computedOptions = computed(() => {
   return props.options.map((option, idx) => ({
@@ -58,7 +45,15 @@ const computedOptions = computed(() => {
   }));
 });
 
-const updateValue = (val) => {
+const bindingProps = computed(() => {
+  const { options, ...otherProps } = props;
+  return {
+    ...otherProps,
+    options: computedOptions.value,
+  };
+});
+
+const updateValue = (val: string) => {
   emit('update:modelValue', val);
 };
 

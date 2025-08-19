@@ -1,4 +1,4 @@
-import { BarChartTwoGraphs } from './index.js';
+import { BarChartTwoGraphs } from './index.ts';
 
 /** Экран с гафиками отображает информацию о наличие/отстуствии и количестве ошибок на длине изделия. */
 export default {

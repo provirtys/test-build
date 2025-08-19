@@ -44,8 +44,9 @@
     "quasar": "catalog:",
     "storybook": "catalog:",
     "vite": "catalog:",
+    "vue-tsc": "catalog:",
     "vite-plugin-dts": "catalog:",
-    "vite-plugin-static-copy": "^3.1.1",
+    "vite-plugin-static-copy": "catalog:",
     "vue": "catalog:",
     "vue-i18n": "catalog:",
     "vue-router": "catalog:"

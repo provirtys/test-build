@@ -33,13 +33,15 @@
   </MainLayout>
 </template>
 
-<script setup>
-import { navigateTo } from '@integrity/base-ui/src/utils/navigation.js';
-import { taskDetailRows } from '@mocks/tasks.js';
-import { MainLayout, TableAttributes, VAlert, VButton, VDescriptionList } from '@tablet';
+<script setup lang="ts">
+import { VAlert, VButton } from '@base';
+import { navigateTo } from '@base/utils/navigation';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
-import { useMainStore } from '@/stores/index.js';
+import { MainLayout, TableAttributes, VDescriptionList } from '@';
+import type { VDescriptionListItem } from '@/components/ui/VDescriptionList/VDescriptionList.types';
+import { taskDetailRows } from '@/mocks/tasks.js';
+import { useMainStore } from '@/stores';
 
 const { isStatusReady } = storeToRefs(useMainStore());
 
@@ -54,14 +56,14 @@ const headerAction = {
   fn: () => navigateTo('/?path=/docs/pages-tasklistpage--docs'),
 };
 
-const sideList = [
+const sideList: VDescriptionListItem[] = [
   {
     term: 'Всего кодов маркировки',
-    definition: 145,
+    definition: '145',
   },
   {
     term: 'Всего упаковок',
-    definition: 130,
+    definition: '130',
   },
 ];
 

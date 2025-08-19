@@ -7,22 +7,15 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { VIcon } from '@base';
 import { computed } from 'vue';
+import type { VAlertProps } from './VAlert.types';
 
-const props = defineProps({
-  color: {
-    type: String,
-    default: 'info',
-    required: false,
-    validator: (val) => ['success', 'error', 'info', 'warning'].includes(val),
-  },
-  text: {
-    type: String,
-    default: 'Info',
-  },
-  isBackgroundWhite: Boolean,
+const props = withDefaults(defineProps<VAlertProps>(), {
+  color: 'info',
+  text: 'Info',
+  isBackgroundWhite: false,
 });
 
 const classList = computed(() => [

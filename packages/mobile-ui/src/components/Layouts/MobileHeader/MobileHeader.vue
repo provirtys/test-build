@@ -28,32 +28,16 @@
   </div>
 </template>
 
-<script setup>
-import { setupI18n } from '@integrity/base-ui/src/i18n.js';
+<script setup lang="ts">
+import { setupI18n } from '@base/i18n';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
+import type { MobileHeaderProps } from '@/components/Layouts/MobileHeader/MobileHeader.types';
 
 const { t } = setupI18n();
 const router = useRouter();
 
-const props = defineProps({
-  showBackButton: {
-    type: Boolean,
-    default: false,
-  },
-  isBackgroundDark: {
-    type: Boolean,
-    default: false,
-  },
-  isOffline: {
-    type: Boolean,
-    default: false,
-  },
-  page: {
-    type: String,
-    default: '',
-  },
-});
+const props = defineProps<MobileHeaderProps>();
 
 function onBackButton() {
   switch (props.page) {

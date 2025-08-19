@@ -16,26 +16,18 @@
   </v-button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { VButton, VIcon } from '@base';
-import { AppSettingsOptions } from '@tablet';
+import { AppSettingsOptions } from '@';
+import type { AppSettingsEmits, AppSettingsProps } from '@/components/Blocks/AppSettings/AppSettings.types';
 
-const props = defineProps({
-  options: {
-    type: Object,
-    required: true,
-    default: () => ({}),
-  },
-  isDisabled: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
+const props = withDefaults(defineProps<AppSettingsProps>(), {
+  isDisabled: false,
 });
 
-const emit = defineEmits(['update:options']);
+const emit = defineEmits<AppSettingsEmits>();
 
-const updateDevMode = (val) => {
+const updateDevMode = (val: boolean) => {
   emit('update:options', {
     ...props.options,
     devMode: val,

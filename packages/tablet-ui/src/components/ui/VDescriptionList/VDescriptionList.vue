@@ -11,30 +11,15 @@
   </dl>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
+import type { VDescriptionListProps } from '@/components/ui/VDescriptionList/VDescriptionList.types';
 
-const props = defineProps({
-  items: {
-    type: Array,
-    required: true,
-    default: () => [],
-  },
-  inline: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  isLight: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
-  alignCenter: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
+const props = withDefaults(defineProps<VDescriptionListProps>(), {
+  items: () => [],
+  inline: false,
+  isLight: false,
+  alignCenter: false,
 });
 
 const classList = computed(() => ({

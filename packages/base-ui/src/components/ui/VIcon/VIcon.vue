@@ -10,31 +10,15 @@
   </svg>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, onBeforeMount, reactive } from 'vue';
+import type { VIconProps } from './VIcon.types';
 
-const props = defineProps({
-  width: {
-    type: [String, Number],
-    required: false,
-  },
-  height: {
-    type: [String, Number],
-    required: false,
-  },
-  size: {
-    type: [String, Number],
-    required: false,
-  },
-  name: {
-    type: [String, Number],
-    required: true,
-  },
-});
+const props = defineProps<VIconProps>();
 
-const baseSize = reactive({
-  width: null,
-  height: null,
+const baseSize = reactive<{ width?: string; height?: string }>({
+  width: undefined,
+  height: undefined,
 });
 
 const iconSize = computed(() => ({
@@ -49,8 +33,7 @@ onBeforeMount(() => {
   if (svgElement) {
     const originalViewBox = svgElement.getAttribute('viewBox');
     if (originalViewBox) {
-      const viewBoxArr = originalViewBox.split(REGEXP_SPLIT).filter(Boolean);
-      [, , baseSize.width, baseSize.height] = viewBoxArr;
+      [, , baseSize.width, baseSize.height] = originalViewBox.split(REGEXP_SPLIT).filter(Boolean);
     }
   }
 });

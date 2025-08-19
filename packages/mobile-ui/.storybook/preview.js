@@ -11,7 +11,7 @@ import 'quasar/dist/quasar.css';
 import '@base/css/main.scss';
 
 import en from '@base/locales/en.json';
-import ru from '@base/locales/ru.json';
+import ru from '@integrity/base-ui/src/locales/ru.json';
 
 function loadLocaleMessages() {
   const locales = [{ en }, { ru }];

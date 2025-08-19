@@ -9,24 +9,10 @@
 <script setup lang="ts">
 import { VIcon } from '@base';
 import { computed } from 'vue';
+import type { CodeItemProps } from '@/components/Elements/CodeItem/CodeItem.types';
 
-const props = defineProps({
-  label: {
-    type: String,
-    required: true,
-    default: '',
-  },
-  status: {
-    type: String,
-    required: false,
-    default: '',
-    validator: (val) => ['', 'new', 'deleted'].includes(val),
-  },
-  cancelable: {
-    type: Boolean,
-    required: false,
-    default: false,
-  },
+const props = withDefaults(defineProps<CodeItemProps>(), {
+  status: 'unchanged',
 });
 
 const emit = defineEmits(['onCancel']);

@@ -2,7 +2,7 @@
   <div class="task-card" :class="classList">
     <div v-if="status" class="task-card__tags">
       <v-badge :color="BADGE_STATUSES[status].color">{{ BADGE_STATUSES[status].label }}</v-badge>
-      <v-badge v-if="priority !== null" is-inverted>P{{ priority }}</v-badge>
+      <v-badge v-if="priority !== undefined" is-inverted>P{{ priority }}</v-badge>
     </div>
     <div class="task-card__content">
       <p v-if="title" class="task-card__title">{{ title }}</p>
@@ -16,53 +16,12 @@
   </div>
 </template>
 
-<script setup>
-import { VBadge } from '@integrity/base-ui/src/index.js';
+<script setup lang="ts">
+import { VBadge } from '@base';
 import { computed } from 'vue';
+import type { TaskCardProps } from '@/components/Blocks/TaskCard/TaskCard.types';
 
-const props = defineProps({
-  /** Идентификатор задачи */
-  id: {
-    type: String,
-    default: '',
-    required: true,
-  },
-  /** Название задачи*/
-  title: {
-    type: String,
-    default: '',
-    required: false,
-  },
-  /** Информация о задаче*/
-  properties: {
-    type: Array,
-    default: () => [],
-    required: false,
-  },
-  /** Статус маркировки (new, labeling, ready, canceled) */
-  status: {
-    type: String,
-    default: '',
-    required: false,
-  },
-  /** Приоритет задания */
-  priority: {
-    type: [Number, null],
-    default: null,
-    required: false,
-  },
-  /** Активность задачи */
-  isActive: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-  hasBackground: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-});
+const props = defineProps<TaskCardProps>();
 
 const classList = computed(() => ({
   'task-card--bordered': props.isActive,

@@ -1,5 +1,5 @@
 <template>
-  <q-expansion-item class="v-expansion-item" :class="classList" dense-toggle>
+  <q-expansion-item class="v-expansion-item" :class="classList" v-bind="props">
     <template
       v-if="$slots.header"
       #header
@@ -15,15 +15,13 @@
   </q-expansion-item>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
+import type { VExpansionItemProps } from './VExpansionItem.types';
 
-const props = defineProps({
-  noPaddings: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
+const props = withDefaults(defineProps<VExpansionItemProps>(), {
+  noPaddings: false,
+  denseToggle: true,
 });
 
 const classList = computed(() => ({

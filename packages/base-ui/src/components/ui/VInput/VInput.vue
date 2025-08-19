@@ -1,30 +1,31 @@
 <template>
   <div :class="wrapperClasses">
-    <span v-if="labelOutside" ref="labelRef" :class="labelClasses" @click="focusInput">{{ attrs.label }}</span>
+    <span v-if="labelOutside" ref="labelRef" :class="labelClasses" @click="focusInput">{{ props.label }}</span>
     <q-input
-        v-model="modelValue"
-        v-bind="bindingAttrs"
-        no-error-icon
-        ref="inputRef"
-        @focus="() => isFocused = true"
-        @blur="() => isFocused = false"
+      v-model="modelValue"
+      v-bind="bindingAttrs"
+      no-error-icon
+      ref="inputRef"
+      @focus="() => isFocused = true"
+      @blur="() => isFocused = false"
     >
       <template v-for="(_, name) in $slots" :key="name" #[name]="slotData">
         <slot v-if="name !== 'append'" :name="name" v-bind="slotData" />
       </template>
 
-      <template v-if="showRequiredStar || attrs.type === 'password'" #append>
+      <template v-if="showRequiredStar || props.type === 'password'" #append>
         <span v-if="showRequiredStar" class="v-input__required-star">*</span>
-        <q-icon v-if="attrs.type === 'password'" class="v-input__eye"
-                :name="isPassword ? 'visibility_off' : 'visibility'"
+        <q-icon v-if="props.type === 'password'" class="v-input__eye"
+                :name="isPassword ? 'visibility' : 'visibility_off'"
                 @click="isPassword = !isPassword"/>
       </template>
     </q-input>
   </div>
 </template>
 
-<script setup>
-import { isQuasarColor } from '@base/utils/resolveColor.js';
+<script setup lang="ts">
+import type { VInputProps } from '@base/components/ui/VInput/VInput.types';
+import { isQuasarColor } from '@base/utils/resolveColor';
 import { QInput } from 'quasar';
 import { computed, ref, useAttrs, watch } from 'vue';
 
@@ -32,14 +33,14 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const props = defineProps({
-  labelOutside: Boolean,
-  required: Boolean,
+const props = withDefaults(defineProps<VInputProps>(), {
+  labelOutside: false,
+  required: false,
 });
 
 const attrs = useAttrs();
 
-const modelValue = defineModel();
+const modelValue = defineModel<string>();
 
 const inputRef = ref();
 const labelRef = ref();
@@ -53,11 +54,11 @@ const croppedTop = computed(() => props.labelOutside && bindingAttrs.value.outli
 const showRequiredStar = computed(() => croppedTop.value && props.required);
 
 const computedType = computed(() => {
-  if (attrs.type === 'password' && !isPassword.value) {
+  if (props.type === 'password' && !isPassword.value) {
     return 'text';
   }
 
-  return attrs.type;
+  return props.type;
 });
 
 const wrapperClasses = computed(() => [
@@ -75,47 +76,40 @@ const wrapperClasses = computed(() => [
 const labelWidth = computed(() => (props.labelOutside && labelRef.value ? `${labelRef.value.clientWidth}px` : '0'));
 
 const bindingAttrs = computed(() => {
-  const booleanFields = ['outlined', 'filled', 'dense', 'clearable'];
-  const resAttrs = { ...attrs };
+  const resProps = JSON.parse(JSON.stringify(props));
 
-  resAttrs.type = computedType.value;
-
-  for (let key of booleanFields) {
-    if (resAttrs[key] !== undefined) {
-      resAttrs[key] = resAttrs[key] === '' || resAttrs[key] === true;
-    }
-  }
+  resProps.type = computedType.value;
 
   if (props.labelOutside) {
-    resAttrs.label = undefined;
+    resProps.label = undefined;
   }
   if (props.required) {
-    const requiredRule = (val) => !!val || 'Поле обязательное для заполнения';
+    const requiredRule = (val: string) => !!val || 'Поле обязательное для заполнения';
 
-    if (Array.isArray(resAttrs.rules)) {
-      resAttrs.rules = [requiredRule, ...resAttrs.rules]; // создаём новый массив
-    } else if (typeof resAttrs.rules === 'function') {
-      resAttrs.rules = [requiredRule, resAttrs.rules];
+    if (Array.isArray(resProps.rules)) {
+      resProps.rules = [requiredRule, ...resProps.rules]; // создаём новый массив
+    } else if (typeof resProps.rules === 'function') {
+      resProps.rules = [requiredRule, resProps.rules];
     } else {
-      resAttrs.rules = [requiredRule];
+      resProps.rules = [requiredRule];
     }
   }
 
-  return resAttrs;
+  return { ...resProps, ...attrs };
 });
 
-const quasarColor = computed(() => (isQuasarColor(attrs.labelColor) ? `text-${attrs.labelColor}` : null));
+const quasarColor = computed(() => (isQuasarColor(props.labelColor) ? `text-${props.labelColor}` : null));
 
 const labelClasses = computed(() => ['v-input__label', quasarColor.value]);
 
-const bindColor = computed(() => (!quasarColor.value ? attrs.labelColor : ''));
+const bindColor = computed(() => (!quasarColor.value ? props.labelColor : ''));
 
 const focusInput = () => {
   inputRef.value.focus();
 };
 
 watch(
-  () => attrs.type,
+  () => props.type,
   (type) => {
     isPassword.value = type === 'password';
   },

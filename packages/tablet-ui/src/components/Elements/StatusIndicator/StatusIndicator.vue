@@ -5,18 +5,12 @@
   </div>
 </template>
 
-<script setup>
-const props = defineProps({
-  /** Цвет индикатора*/
-  color: {
-    type: String,
-    default: 'info',
-  },
-  /** Анимированное состояние иконки*/
-  isAnimate: {
-    type: Boolean,
-    default: false,
-  },
+<script setup lang="ts">
+import type { StatusIndicatorProps } from '@/components/Elements/StatusIndicator/StatusIndicator.types';
+
+const props = withDefaults(defineProps<StatusIndicatorProps>(), {
+  color: 'info',
+  isAnimate: false,
 });
 </script>
 

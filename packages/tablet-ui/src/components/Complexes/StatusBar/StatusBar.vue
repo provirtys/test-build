@@ -25,37 +25,23 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { VButton } from '@base';
-import { StatusLabel } from '@tablet';
 import { computed } from 'vue';
+import { StatusLabel } from '@';
+import type { StatusBarProps } from '@/components/Complexes/StatusBar/StatusBar.types';
 
-const props = defineProps({
-  status: {
-    type: Object,
-    default: () => ({
-      type: 'error',
-      sync: true,
-      active: false,
-    }),
-  },
-  title: {
-    type: String,
-    default: '',
-    required: false,
-  },
-  isDisabled: {
-    type: Boolean,
-    default: false,
-  },
-  action: {
-    type: Object,
-    default: () => ({
-      type: 'home',
-      fn: () => {},
-    }),
-    required: true,
-  },
+const props = withDefaults(defineProps<StatusBarProps>(), {
+  status: () => ({
+    type: 'error',
+    sync: true,
+    active: false,
+  }),
+  isDisabled: false,
+  action: () => ({
+    type: 'home',
+    fn: () => {},
+  }),
 });
 
 const actionOptions = computed(() => {

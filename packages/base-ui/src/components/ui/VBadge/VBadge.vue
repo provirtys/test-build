@@ -8,37 +8,24 @@
   </q-badge>
 </template>
 
-<script setup>
-import { computed, useAttrs } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
+import type { VBadgeProps } from './VBadge.types';
 
-const props = defineProps({
-  size: {
-    type: String,
-    required: false,
-    default: 'lg',
-    validator: (val) => ['lg', 'md', 'sm'].includes(val),
-  },
-  isInverted: {
-    type: Boolean,
-    required: false,
-  },
+const props = withDefaults(defineProps<VBadgeProps>(), {
+  size: 'lg',
+  isInverted: false,
 });
-
-defineOptions({
-  inheritAttrs: false,
-});
-
-const attrs = useAttrs();
 
 const badgeClasses = computed(() => [`v-badge--${props.size}`]);
 
 const bindingAttrs = computed(() => {
-  if (!props.isInverted) return attrs;
+  if (!props.isInverted) return props;
 
-  const color = attrs.color ?? 'info';
+  const color = props.color ?? 'info';
 
   return {
-    ...attrs,
+    ...props,
     textColor: color,
     color: `${color}-10`,
   };

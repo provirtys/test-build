@@ -11,7 +11,8 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { VRadioEmits, VRadioProps } from '@base/components/ui/VRadio/VRadio.types';
 import { computed } from 'vue';
 
 const SIZES = {
@@ -21,36 +22,14 @@ const SIZES = {
   xs: '14px',
 };
 
-const props = defineProps({
-  label: {
-    type: String,
-    default: '',
-    required: false,
-  },
-  val: {
-    type: [Number, String, Boolean, Object],
-    required: true,
-  },
-  modelValue: {
-    type: [String, Number, Boolean, Object],
-    required: true,
-  },
-  size: {
-    type: String,
-    default: 'lg',
-    required: false,
-    validator: (val) => ['lg', 'md', 'sm', 'xs'].includes(val),
-  },
-  width: {
-    type: String,
-    default: 'auto',
-    required: false,
-    validator: (val) => ['auto', 'dense', 'full'].includes(val),
-  },
-  dark: Boolean,
+const props = withDefaults(defineProps<VRadioProps>(), {
+  dark: false,
+  label: '',
+  size: 'lg',
+  width: 'auto',
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<VRadioEmits>();
 
 defineOptions({
   inheritAttrs: false,
@@ -69,7 +48,7 @@ const classList = computed(() => [
   },
 ]);
 
-const updateValue = (val) => {
+const updateValue = (val: number | string | boolean | object) => {
   emit('update:modelValue', val);
 };
 </script>

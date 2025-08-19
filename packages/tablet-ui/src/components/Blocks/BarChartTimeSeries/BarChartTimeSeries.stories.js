@@ -1,4 +1,4 @@
-import { BarChartTimeSeries } from './index.js';
+import { BarChartTimeSeries } from './index.ts';
 
 /** Компонент отображает информацию о наличие/отстуствии ошибок на длине изделия. */
 export default {

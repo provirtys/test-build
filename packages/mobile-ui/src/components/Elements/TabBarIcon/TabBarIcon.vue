@@ -79,11 +79,8 @@
   </svg>
 </template>
 
-<script setup>
-const props = defineProps({
-  page: {
-    type: String,
-    default: '',
-  },
-});
+<script setup lang="ts">
+import type { TabBarIconProps } from '@/components/Elements/TabBarIcon/TabBarIcon.types';
+
+defineProps<TabBarIconProps>();
 </script>

@@ -223,15 +223,17 @@
     <path d="M68.001 71.501H65.5009V74.0011H68.001V71.501Z" fill="currentColor" />
     <path d="M70.502 71.501H68.0018V74.0011H70.502V71.501Z" fill="currentColor" />
     <path d="M73.001 71.501H70.5009V74.0011H73.001V71.501Z" fill="currentColor" />
-    <path v-if="props.border" d="M2 59L2 92L36 92" stroke="currentColor" stroke-width="4" />
-    <path v-if="props.border" d="M94 59L94 92L60 92" stroke="currentColor" stroke-width="4" />
-    <path v-if="props.border" d="M2 36L2 2L36 2" stroke="currentColor" stroke-width="4" />
-    <path v-if="props.border" d="M94 36L94 2L60 2" stroke="currentColor" stroke-width="4" />
+    <path v-if="border" d="M2 59L2 92L36 92" stroke="currentColor" stroke-width="4"/>
+    <path v-if="border" d="M94 59L94 92L60 92" stroke="currentColor" stroke-width="4"/>
+    <path v-if="border" d="M2 36L2 2L36 2" stroke="currentColor" stroke-width="4"/>
+    <path v-if="border" d="M94 36L94 2L60 2" stroke="currentColor" stroke-width="4"/>
   </svg>
 </template>
 
-<script setup>
-const props = defineProps({
-  border: { type: Boolean, default: true },
+<script setup lang="ts">
+import type { DatamatrixProps } from '@base/components/Elements/DatamatrixIcon/Datamatrix.types';
+
+withDefaults(defineProps<DatamatrixProps>(), {
+  border: true,
 });
 </script>

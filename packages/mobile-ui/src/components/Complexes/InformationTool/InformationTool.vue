@@ -7,7 +7,7 @@
           <img :alt="t('storybook.toolImage')" :src="props.img" />
         </div>
         <div class="info__items">
-          <dl v-for="(item, key) in props.toolItems" :key="key">
+          <dl v-for="(item, key) in attributes" :key="key">
             <dt>{{ key }}:</dt>
             <dd>{{ item }}</dd>
           </dl>
@@ -16,46 +16,25 @@
     </div>
 
     <div class="buttons">
-      <v-button
-        v-if="props.btn === 'take'"
-        :color="'dark'"
-      >
-        {{ t('storybook.take') }}
-      </v-button>
-      <v-button
-        v-if="props.btn === 'returnBtn'"
-        :color="'dark'"
-      >
-        {{ t('storybook.return') }}
-      </v-button>
+      <v-button>{{ btnText }}</v-button>
       <v-button>{{ t('storybook.cancel') }}</v-button>
     </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { VButton } from '@base';
-import { setupI18n } from '@integrity/base-ui/src/i18n.js';
+import { setupI18n } from '@base/i18n';
+import { computed } from 'vue';
+import type { InformationToolProps } from '@/components/Complexes/InformationTool/InformationTool.types';
 
 const { t } = setupI18n();
 
-const props = defineProps({
-  /** Информация об инструменте */
-  toolItems: {
-    type: Object,
-    default: () => ({}),
-  },
-  /** Изображение инструмента */
-  img: {
-    type: String,
-    default: '',
-  },
-  /** Тип кнопки Получить/Вернуть*/
-  btn: {
-    type: String,
-    default: 'take',
-  },
+const props = withDefaults(defineProps<InformationToolProps>(), {
+  btn: 'get',
 });
+
+const btnText = computed(() => (props.btn === 'get' ? t('storybook.get') : t('storybook.return')));
 </script>
 
 <style lang="scss">

@@ -8,7 +8,7 @@
           </template>
         </v-input>
       </div>
-      <task-list :tasks="taskWithGTIN" always-show-backgrounds :is-vertical="true" @on-task-select="selectTask"/>
+      <task-list :tasks="tasksWithGTIN" always-show-backgrounds :is-vertical="true" @on-task-select="selectTask"/>
     </template>
     <template #sidebar-bottom>
       <v-button
@@ -27,18 +27,19 @@
   </MainLayout>
 </template>
 
-<script setup>
-import { navigateTo } from '@base/utils/navigation.js';
-import { MainLayout, TaskList, VButton, VInput } from '@tablet';
-import { taskWithGTIN } from '@tablet/mocks/tasks.js';
+<script setup lang="ts">
+import { VButton } from '@base';
+import { navigateTo } from '@base/utils/navigation';
 import { storeToRefs } from 'pinia';
 import { computed, ref } from 'vue';
-import { useMainStore } from '@/stores/index.js';
+import { MainLayout, TaskList } from '@';
+import { tasksWithGTIN } from '@/mocks/tasks';
+import { useMainStore } from '@/stores';
 
 const { isStatusReady } = storeToRefs(useMainStore());
 
 const searchValue = ref('');
-const selectedTaskID = ref(null);
+const selectedTaskID = ref('');
 
 const buttonDisabled = computed(() => selectedTaskID.value === null);
 
@@ -53,7 +54,7 @@ const headerAction = {
   fn: () => {},
 };
 
-const selectTask = (id) => {
+const selectTask = (id: string) => {
   selectedTaskID.value = id;
 };
 

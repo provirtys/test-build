@@ -15,41 +15,21 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { VRadio } from '@base';
+import type { VRadioProps } from '@base/components/ui/VRadio/VRadio.types';
+import type { VRadioGroupEmits, VRadioGroupProps } from '@base/components/ui/VRadioGroup/VRadioGroup.types';
 import { computed } from 'vue';
 
-const props = defineProps({
-  label: {
-    type: String,
-    default: '',
-    required: false,
-  },
-  modelValue: {
-    type: [String, Number, Boolean, Object],
-    required: true,
-  },
-  options: {
-    type: Array,
-    default: () => [],
-    required: true,
-  },
-  size: {
-    type: String,
-    default: 'lg',
-    required: false,
-    validator: (val) => ['lg', 'md', 'sm', 'xs'].includes(val),
-  },
-  width: {
-    type: String,
-    default: 'auto',
-    required: false,
-    validator: (val) => ['auto', 'dense', 'full'].includes(val),
-  },
-  dark: Boolean,
+const props = withDefaults(defineProps<VRadioGroupProps>(), {
+  label: '',
+  options: () => [],
+  size: 'lg',
+  width: 'auto',
+  dark: false,
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits<VRadioGroupEmits>();
 
 defineOptions({
   inheritAttrs: false,
@@ -68,7 +48,7 @@ const classList = computed(() => [
   },
 ]);
 
-const updateValue = (val) => {
+const updateValue = (val: VRadioProps['modelValue']) => {
   emit('update:modelValue', val);
 };
 </script>

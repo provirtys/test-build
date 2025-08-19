@@ -8,31 +8,16 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
 import { StatusIndicator } from '@';
+import { StatusLabelProps } from '@/components/Blocks/StatusLabel/StatusLabel.types';
 
-const props = defineProps({
-  /** Цвет точки */
-  color: {
-    type: String,
-    default: 'info',
-  },
-  /** Текст надписи */
-  label: {
-    type: String,
-    default: '',
-  },
-  /** Включить анимацию у точки */
-  isAnimate: {
-    type: Boolean,
-    default: false,
-  },
-  /** Показывать задний фон */
-  showBackground: {
-    type: Boolean,
-    default: false,
-  },
+const props = withDefaults(defineProps<StatusLabelProps>(), {
+  color: 'info',
+  label: '',
+  isAnimate: false,
+  showBackground: false,
 });
 
 const classList = computed(() => ({

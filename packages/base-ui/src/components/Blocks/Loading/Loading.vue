@@ -12,24 +12,23 @@
     <div v-else class="loading__error">{{ t('loading.wait') }}</div>
     <v-button
       v-if="isInternetError"
-      background="red"
-      color="white"
+      color="red"
       size="lg"
       class="mt-5"
     >{{t('loading.retry')}}</v-button>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { LoadingAnimation, VButton } from '@base';
+import type { LoadingProps } from '@base/components/Blocks/Loading/Loading.types';
 import { setupI18n } from '@base/i18n.js';
 import { computed } from 'vue';
 
 const { t } = setupI18n();
 
-const props = defineProps({
-  /** Тип загрузки*/
-  loadingType: { type: String, default: '' },
+const props = withDefaults(defineProps<LoadingProps>(), {
+  loadingType: '',
 });
 
 const isInternetError = computed(() => {

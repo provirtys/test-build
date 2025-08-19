@@ -7,8 +7,8 @@
         :key="btnKey"
         height="xxs"
         color="secondary"
-        :loading="btn.loading"
-        @click="() => btn.fn()"
+        :loading="(btn as ButtonOption).loading"
+        @click="() => (btn as ButtonOption).fn()"
       >
         {{ btn.label }}
       </v-button>
@@ -19,14 +19,14 @@
         class="q-px-none"
       >
         <q-input
-          v-model="input.value"
+          v-model="(input as InputOption).value"
           :label="input.label"
           outlined
           debounce="500"
           class="full-width"
         >
-          <template v-if="input.resetFn" #append>
-            <q-icon name="refresh" class="cursor-pointer" @click="() => input.resetFn()"/>
+          <template v-if="(input as InputOption).resetFn" #append>
+            <q-icon name="refresh" class="cursor-pointer" @click="() => (input as InputOption).resetFn?.()"/>
           </template>
         </q-input>
       </q-item>
@@ -34,22 +34,24 @@
         v-else-if="optKey === 'flags'"
         v-for="(flag, flagKey) in optGroup"
         :key="flagKey"
-        v-model="flag.value"
-        :label="flag.label"
+        v-model="(flag as FlagOption).value"
+        :label="(flag as FlagOption).label"
       />
     </div>
   </template>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { VButton } from '@base';
+import type {
+  AppSettingsOptionsProps,
+  ButtonOption,
+  FlagOption,
+  InputOption,
+} from '@/components/Blocks/AppSettings/AppSettingsOptions/AppSettingsOptions.types';
 
-const props = defineProps({
-  options: {
-    type: Object,
-    required: true,
-    default: () => ({}),
-  },
+withDefaults(defineProps<AppSettingsOptionsProps>(), {
+  options: () => ({}),
 });
 </script>
 

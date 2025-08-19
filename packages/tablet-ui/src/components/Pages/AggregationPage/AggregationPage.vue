@@ -8,7 +8,7 @@
   >
     <template #main>
       <div class="image-container" @dblclick="toggleSidebar">
-        <img src="@assets/images/aggregation.png"/>
+        <img src="@/assets/images/aggregation.png"/>
       </div>
     </template>
     <template #sidebar-top>
@@ -22,7 +22,7 @@
         <template #inPackage>
           <numeric-ratio
             :value="inPackageStatistics.current"
-            :secondary-value="inPackageError > 0 ? inPackageError : null"
+            :secondary-value="inPackageError > 0 ? inPackageError : undefined"
             :total="inPackageStatistics.total"
             :is-light="sidebarHasError"
           />
@@ -52,70 +52,45 @@
   </MainLayout>
 </template>
 
-<script setup>
-import { VAlert } from '@integrity/base-ui/src/components/ui/VAlert/index.js';
-import { navigateTo } from '@integrity/base-ui/src/utils/navigation.js';
-import { MainLayout, NumericRatio, VButton, VDescriptionList } from '@tablet';
+<script setup lang="ts">
+import { VAlert, VButton } from '@base';
+import { navigateTo } from '@base/utils/navigation';
 import { storeToRefs } from 'pinia';
-import { computed, watch } from 'vue';
-import { useMainStore } from '@/stores/index.js';
+import { computed } from 'vue';
+import { MainLayout, NumericRatio, VDescriptionList } from '@';
+import type { StatusBarActionProp, StatusBarStatusProp } from '@/components/Complexes/StatusBar/StatusBar.types';
+import type { AggregationPageProps } from '@/components/Pages/AggregationPage/AggregationPage.types';
+import type { VDescriptionListItem } from '@/components/ui/VDescriptionList/VDescriptionList.types';
+import { useMainStore } from '@/stores';
 
 const { isFullscreen, isStatusReady } = storeToRefs(useMainStore());
 
-const props = defineProps({
-  inPackageCurrent: {
-    type: Number,
-    default: 0,
-    required: false,
-  },
-  inPackageError: {
-    type: Number,
-    default: 0,
-    required: false,
-  },
-  inPackageTotal: {
-    type: Number,
-    default: 0,
-    required: false,
-  },
-  codesTotal: {
-    type: Number,
-    default: 0,
-    required: false,
-  },
-  inQueue: {
-    type: Number,
-    default: 0,
-    required: false,
-  },
-  packagesTotal: {
-    type: Number,
-    default: 0,
-    required: false,
-  },
-  hasError: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
+const props = withDefaults(defineProps<AggregationPageProps>(), {
+  inPackageCurrent: 0,
+  inPackageError: 0,
+  inPackageTotal: 0,
+  codesTotal: 0,
+  inQueue: 0,
+  packagesTotal: 0,
+  hasError: false,
 });
 
-const aggregationStatisticsList = computed(() => [
+const aggregationStatisticsList = computed<VDescriptionListItem[]>(() => [
   {
     term: 'В упаковке',
     slot: 'inPackage',
   },
   {
     term: 'Всего кодов маркировки',
-    definition: props.codesTotal,
+    definition: props.codesTotal.toString(),
   },
   {
     term: 'В очереди',
-    definition: props.inQueue,
+    definition: props.inQueue.toString(),
   },
   {
     term: 'Всего упаковок',
-    definition: props.packagesTotal,
+    definition: props.packagesTotal.toString(),
   },
 ]);
 
@@ -129,7 +104,7 @@ const titleClasses = computed(() => ({
   'task-name--light': sidebarHasError.value,
 }));
 
-const headerStatus = computed(() => ({
+const headerStatus = computed<StatusBarStatusProp>(() => ({
   type: isStatusReady.value ? 'success' : 'error',
   sync: true,
   active: false,
@@ -141,7 +116,7 @@ const sidebarHasError = computed(() => {
   return props.inPackageCurrent > 0 && props.inPackageCurrent < props.inPackageTotal;
 });
 
-const headerAction = {
+const headerAction: StatusBarActionProp = {
   type: 'complete',
   fn: () => navigateTo('/?path=/docs/pages-taskdetailpage--docs'),
 };

@@ -5,24 +5,17 @@
   </button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { VIcon } from '@base';
+import type { VKeyButtonEmits, VKeyButtonProps } from '@base/components/ui/VKeyButton/VKeyButton.types';
 import { computed } from 'vue';
 
-const props = defineProps({
-  /** Значение кнопки*/
-  value: {
-    type: String,
-    default: '',
-  },
-  size: {
-    type: String,
-    default: 'lg',
-    validator: (val) => ['sm', 'md', 'lg'].includes(val),
-  },
+const props = withDefaults(defineProps<VKeyButtonProps>(), {
+  value: '',
+  size: 'lg',
 });
 
-const emit = defineEmits(['pressed']);
+const emit = defineEmits<VKeyButtonEmits>();
 
 const classList = computed(() => [`v-key-button--${props.size}`]);
 

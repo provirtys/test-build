@@ -11,19 +11,16 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { BarcodeIcon, DatamatrixIcon, VIcon } from '@base';
+import type { CodeStepsProps } from '@base/components/Blocks/CodeSteps/CodeSteps.types';
 import { computed } from 'vue';
 
-const props = defineProps({
-  /** Вариант изображения кода*/
-  codeType: { type: String, default: 'data-matrix' },
-  /** Индекс сканируемого кода*/
-  currentCodeIndex: { type: Number, default: 0 },
-  /** Количество сканируемых кодов */
-  codesLength: { type: Number, default: 2 },
-  /** Видимость рамки сканирования кода*/
-  showBorder: { type: Boolean, default: true },
+const props = withDefaults(defineProps<CodeStepsProps>(), {
+  codeType: 'dataMatrix',
+  currentCodeIndex: 0,
+  codesLength: 2,
+  showBorder: true,
 });
 
 const codeTypes = {
@@ -51,7 +48,7 @@ const firstCodeColor = computed(() => {
 });
 const arrowMargin = computed(() => (props.codeType === 'barcode' ? 'medium' : 'large'));
 
-const codeColor = (index) => {
+const codeColor = (index: number) => {
   if (index === props.currentCodeIndex) return 'red';
   if (index < props.currentCodeIndex + 1) return 'black';
   return 'gray';

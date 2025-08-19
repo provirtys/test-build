@@ -14,31 +14,13 @@
   </div>
 </template>
 
-<script setup>
-import { VIcon } from '@integrity/base-ui/src/index.js';
+<script setup lang="ts">
+import { VIcon } from '@base';
 import { computed } from 'vue';
+import { CodeCardProps } from '@/components/Blocks/CodeCard/CodeCard.types';
 
-const props = defineProps({
-  codeType: {
-    type: String,
-    default: 'dataMatrix',
-  },
-  codeText: {
-    type: String,
-    default: '',
-  },
-  status: {
-    type: String,
-    default: 'none',
-  },
-  time: {
-    type: String,
-    default: '',
-  },
-  position: {
-    type: Number,
-    default: 0,
-  },
+const props = withDefaults(defineProps<CodeCardProps>(), {
+  codeType: 'dataMatrix',
 });
 
 const iconName = computed(() => (props.codeType === 'barcode' ? 'barcode' : 'data-matrix'));

@@ -15,88 +15,62 @@
     @touchend="finishAnimation"
     @click="handleClick"
   >
-    <v-icon v-if="showSubmittedIcon" name="done" :size="sizeIcon" />
+    <v-icon
+      v-if="showSubmittedIcon"
+      name="done"
+      :size="sizeIcon"
+    />
     <template v-else>
       <span
         v-if="icon && iconPosition === 'left'"
         class="v-button__icon-container justify-start"
       >
-        <v-icon :name="icon" :size="sizeIcon" />
+        <v-icon
+          :name="icon"
+          :size="sizeIcon"
+        />
       </span>
-      <span v-if="$slots.default" class="v-button__text"><slot></slot></span>
+      <span
+        v-if="$slots.default"
+        class="v-button__text"
+      >
+        <slot></slot>
+      </span>
       <span
         v-if="icon && iconPosition === 'right'"
         class="v-button__icon-container justify-end"
       >
-        <v-icon :name="icon" :size="sizeIcon" />
+        <v-icon
+          :name="icon"
+          :size="sizeIcon"
+        />
       </span>
     </template>
   </q-btn>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { VIcon } from '@base';
 import { computed, ref } from 'vue';
+import type { VButtonEmits, VButtonProps } from './VButton.types';
 
-const props = defineProps({
-  color: {
-    type: String,
-    default: 'primary',
-    required: false,
-    validator: (val) => ['primary', 'secondary', 'plane', 'outline', 'red'].includes(val),
-  },
-  isDisabled: {
-    type: Boolean,
-    required: false,
-  },
-  height: {
-    type: String,
-    default: 'lg',
-    required: false,
-    validator: (val) => ['lg', 'md', 'sm', 'xs', 'xxs'].includes(val),
-  },
-  isRounded: {
-    type: Boolean,
-    default: true,
-    required: false,
-  },
-  icon: {
-    type: String,
-    required: false,
-  },
-  iconPosition: {
-    type: String,
-    required: false,
-  },
-  iconSize: {
-    type: [Number, null],
-    default: null,
-    required: false,
-  },
-  textAlignment: {
-    type: String,
-    default: 'center',
-    required: false,
-    validator: (val) => ['left', 'center', 'right'].includes(val),
-  },
-  fitWidth: {
-    type: Boolean,
-    required: false,
-  },
-  once: {
-    type: Boolean,
-    required: false,
-  },
-  enableHold: {
-    type: Boolean,
-    required: false,
-  },
+const props = withDefaults(defineProps<VButtonProps>(), {
+  color: 'primary',
+  isDisabled: false,
+  isRounded: true,
+  icon: undefined,
+  iconPosition: undefined,
+  iconSize: undefined,
+  textAlignment: 'center',
+  fitWidth: false,
+  once: false,
+  enableHold: false,
 });
 
-const emit = defineEmits(['action']);
+const emit = defineEmits<VButtonEmits>();
 
-const btnRef = ref(null);
-const btnStatus = ref('default'); // default, holding or done
+const btnRef = ref<HTMLButtonElement | null>(null);
+const btnStatus = ref<'default' | 'holding' | 'done'>('default'); // default, holding or done
 
 const showSubmittedIcon = computed(() => props.once && btnStatus.value === 'done');
 
@@ -151,14 +125,14 @@ const buttonSize = computed(() => {
 
 const btnDisabled = computed(() => props.isDisabled || btnStatus.value === 'done');
 
-const handleHold = ({ evt }) => {
+const handleHold = ({ evt }: { evt: Event }) => {
   if (btnDisabled.value || !props.enableHold) return;
 
   if (props.once && btnRef.value) {
     btnStatus.value = 'done';
     finishAnimation(evt, true);
   }
-  submitAction(evt);
+  submitAction();
 };
 
 const submitAction = () => {
@@ -185,7 +159,7 @@ const startAnimation = () => {
   document.addEventListener('touchend', stopAnimation);
 };
 
-const finishAnimation = (_evt, finished) => {
+const finishAnimation = (_?: Event, finished?: boolean) => {
   if (btnDisabled.value || !props.enableHold) return;
 
   if (props.once && finished) {
@@ -254,7 +228,7 @@ const finishAnimation = (_evt, finished) => {
 
     &.v-button--holding:before {
       border-radius: $d-1 0 0 $d-1;
-      }
+    }
   }
 
   &.text-left &__text {
@@ -352,9 +326,11 @@ const finishAnimation = (_evt, finished) => {
     &.primary {
       background-color: $primary-text-70;
     }
+
     &.secondary {
       background-color: $primary-text-5;
     }
+
     &.outline {
       background-color: $primary-text-20;
     }
@@ -391,6 +367,7 @@ const finishAnimation = (_evt, finished) => {
   0% {
     width: 0;
   }
+
   100% {
     width: 100%;
   }

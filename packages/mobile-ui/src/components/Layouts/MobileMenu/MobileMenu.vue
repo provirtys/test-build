@@ -21,47 +21,42 @@
   </div>
 </template>
 
-<script setup>
-import { TabBarIcon } from '@components/Elements/TabBarIcon/index.js';
-import { setupI18n } from '@integrity/base-ui/src/i18n.js';
+<script setup lang="ts">
+import { setupI18n } from '@base/i18n';
+import { TabBarIcon } from '@/components/Elements/TabBarIcon';
+import type { MobileMenuProps } from '@/components/Layouts/MobileMenu/MobileMenu.types';
 
 const { t } = setupI18n();
 
-const props = defineProps({
-  isBackgroundDark: {
-    type: Boolean,
-    default: false,
-  },
-  currentPage: {
-    type: String,
-    default: '',
-  },
-});
+const props = defineProps<MobileMenuProps>();
 
-function isPageActive(page) {
-  switch (page) {
-    case 'home':
-      return props.currentPage === 'FrontPage';
-    case 'scan':
-      return ['Checking', 'CheckScan', 'CheckResult'].includes(props.currentPage);
-    case 'history':
-      return props.currentPage === 'History';
-    case 'profile':
-      return [
-        'Profile',
-        'ProfileAuth',
-        'ProfileRegister',
-        'BindingCodeScan',
-        'BindingCodeConfirm',
-        'ProfileEdit',
-      ].includes(props.currentPage);
-    default:
-      return false;
+function isPageActive(page: string) {
+  if (props.currentPage) {
+    switch (page) {
+      case 'home':
+        return props.currentPage === 'FrontPage';
+      case 'scan':
+        return ['Checking', 'CheckScan', 'CheckResult'].includes(props.currentPage);
+      case 'history':
+        return props.currentPage === 'History';
+      case 'profile':
+        return [
+          'Profile',
+          'ProfileAuth',
+          'ProfileRegister',
+          'BindingCodeScan',
+          'BindingCodeConfirm',
+          'ProfileEdit',
+        ].includes(props.currentPage);
+      default:
+        return false;
+    }
   }
+  return false;
 }
 
-function tabbarItemColor(page) {
-  let style;
+function tabbarItemColor(page: string) {
+  let style = '';
   if (isPageActive(page)) {
     style = 'active';
   } else if (props.isBackgroundDark) {

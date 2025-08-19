@@ -14,23 +14,14 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
+import type { NumericRatioProps } from '@/components/Elements/NumericRatio/NumericRatio.types';
 
-const props = defineProps({
-  value: {
-    type: Number,
-    default: 0,
-  },
-  secondaryValue: {
-    type: [Number, null],
-    default: null,
-  },
-  total: Number,
-  isLight: {
-    type: Boolean,
-    default: false,
-  },
+const props = withDefaults(defineProps<NumericRatioProps>(), {
+  value: 0,
+  total: 0,
+  isLight: false,
 });
 
 const classes = computed(() => ({
