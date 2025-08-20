@@ -24,6 +24,7 @@
     "pnpm-lock.yaml",
     "dist"
   ],
+  "types": "./dist/terminal-ui.es.d.ts",
   "peerDependencies": {
     "@integrity/base-ui": "workspace:*",
     "@integrity/icons": "workspace:*"
