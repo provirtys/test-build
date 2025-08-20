@@ -70,7 +70,7 @@ const props = withDefaults(defineProps<VButtonProps>(), {
 const emit = defineEmits<VButtonEmits>();
 
 const btnRef = ref<HTMLButtonElement | null>(null);
-const btnStatus = ref<'default' | 'holding' | 'done'>('default'); // default, holding or done
+const btnStatus = ref<'default' | 'holding' | 'done'>('default');
 
 const showSubmittedIcon = computed(() => props.once && btnStatus.value === 'done');
 
