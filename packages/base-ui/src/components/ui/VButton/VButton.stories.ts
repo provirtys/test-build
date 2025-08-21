@@ -149,6 +149,7 @@ const meta: Meta = {
   },
   args: {
     color: 'primary',
+    height: 'lg',
     text: 'Кнопка',
     textAlignment: 'center',
     isDisabled: false,
