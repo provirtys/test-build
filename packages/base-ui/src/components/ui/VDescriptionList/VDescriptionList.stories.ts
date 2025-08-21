@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { NumericRatio } from '@';
+import { VBadge } from '@';
 import { VDescriptionList } from './index';
 
 type Story = StoryObj<typeof VDescriptionList>;
@@ -95,23 +95,17 @@ export const WithCustomSlot: Story = {
     ],
   },
   render: (args) => ({
-    components: { VDescriptionList, NumericRatio },
+    components: { VDescriptionList, VBadge },
     setup() {
-      const numbers = {
-        primary: 0,
-        secondary: 2,
-        total: 4,
-      };
-
       return {
         items: args.items,
-        numbers,
       };
     },
     template: `
     <v-description-list :items="items" inline>
       <template #custom-slot>
-        <numeric-ratio :value="numbers.primary" :secondary-value="numbers.secondary" :total="numbers.total"/>
+        <v-badge label="Значение 2.1" color="success" style="margin-right: 10px"/>
+        <v-badge label="Значение 2.2"/>
       </template>
     </v-description-list>`,
   }),

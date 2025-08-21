@@ -35,11 +35,11 @@
 
 <script setup lang="ts">
 import { VAlert, VButton } from '@base';
+import type { VDescriptionListItem } from '@base/components/ui/VDescriptionList/VDescriptionList.types';
 import { navigateTo } from '@base/utils/navigation';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
 import { MainLayout, TableAttributes, VDescriptionList } from '@';
-import type { VDescriptionListItem } from '@/components/ui/VDescriptionList/VDescriptionList.types';
 import { taskDetailRows } from '@/mocks/tasks.js';
 import { useMainStore } from '@/stores';
 
