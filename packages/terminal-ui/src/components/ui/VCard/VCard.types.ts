@@ -1,5 +1,5 @@
-export type Color = 'white' | 'gray';
+export type VCardBgColor = 'white' | 'gray';
 
 export interface VCardProps {
-  bgColor?: Color;
+  bgColor?: VCardBgColor;
 }
