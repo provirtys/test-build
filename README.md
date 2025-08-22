@@ -191,3 +191,43 @@ shared-mobile-components/
 
 Например:
 `<v-icon name='aggregation' size='40' />` - отобразит иконку размером 40x40 px.
+
+## Начало работы с пакетом
+
+1. Установить `base-ui` и другой не базовый пакет в зависимости
+
+```bash
+pnpm i @integrity/base-ui @integrity/[НАЗВАНИЕ ПАКЕТА]
+```
+
+2. Для отображения иконок нужно дополнительно установить любой плагин для создания svg sprite и настроить его на папку
+   `node_modules/@integrity/icons/icons`  
+   Пример настройки плагина `@pivanov/vite-plugin-svg-sprite`:
+
+```code
+import svgSpritePlugin from '@pivanov/vite-plugin-svg-sprite'
+
+export default defineConfig(() => {
+    return {
+    ...
+        vitePlugins: [
+            svgSpritePlugin({
+              iconDirs: ['node_modules/@integrity/icons/icons'],
+              symbolId: 'icon-[name]',
+              svgDomId: 'svg-sprite',
+              inject: 'body-last',
+            }),
+      ],
+    }
+}
+```
+
+3. Также необходимо подключить файлы
+
+```code
+@integrity/base-ui/variables.scss
+@integrity/base-ui/style.css
+@integrity/[НАЗВАНИЕ ПАКЕТА]/style.css
+```
+
+Таким образом, стили из библиотек будут добавлены в проект, а также IDE подхватит scss переменные
