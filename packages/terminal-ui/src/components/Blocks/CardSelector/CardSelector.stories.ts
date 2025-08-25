@@ -94,15 +94,14 @@ const meta: Meta<typeof CardSelector> = {
 export default meta;
 
 export const OneColumn: Story = {
-  name: 'Одна колонка',
   args: {
     items: itemsMock1,
   },
 };
 
-export const TwoColumn: Story = {
-  name: 'Две колонки',
+export const TwoColumns: Story = {
   args: {
     items: itemsMock2,
+    colsCount: 2,
   },
 };
