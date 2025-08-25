@@ -31,6 +31,12 @@ const meta: Meta<typeof VDescriptionList> = {
         type: 'boolean',
       },
     },
+    termFontSize: {
+      description: 'Размер шрифта у заголовка',
+    },
+    definitionFontSize: {
+      description: 'Размер шрифта у значения',
+    },
   },
   args: {
     items: [
@@ -50,6 +56,8 @@ const meta: Meta<typeof VDescriptionList> = {
     inline: false,
     isLight: false,
     alignCenter: false,
+    termFontSize: '14px',
+    definitionFontSize: '28px',
   },
 };
 export default meta;

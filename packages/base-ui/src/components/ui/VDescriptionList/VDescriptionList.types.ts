@@ -9,4 +9,6 @@ export interface VDescriptionListProps {
   inline?: boolean;
   isLight?: boolean;
   alignCenter?: boolean;
+  termFontSize?: string;
+  definitionFontSize?: string;
 }

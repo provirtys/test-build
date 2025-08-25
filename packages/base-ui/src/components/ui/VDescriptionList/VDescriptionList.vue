@@ -20,6 +20,8 @@ const props = withDefaults(defineProps<VDescriptionListProps>(), {
   inline: false,
   isLight: false,
   alignCenter: false,
+  termFontSize: '14px',
+  definitionFontSize: '28px',
 });
 
 const classList = computed(() => ({
@@ -60,12 +62,12 @@ const classList = computed(() => ({
   }
 
   &__term {
-    @include font('Golos', $font-size-p4, 1, 500, -0.02em);
+    @include font('Golos', v-bind(termFontSize), 1, 500, -0.02em);
     color: $dark-gray-70;
   }
 
   &__definition {
-    @include font('Golos', $font-size-h5, 1, 500, -0.02em);
+    @include font('Golos', v-bind(definitionFontSize), 1, 500, -0.02em);
     color: $dark-gray;
   }
 }
