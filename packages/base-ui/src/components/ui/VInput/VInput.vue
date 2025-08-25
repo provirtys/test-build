@@ -98,7 +98,9 @@ const bindingAttrs = computed(() => {
   return { ...resProps, ...attrs };
 });
 
-const quasarColor = computed(() => (isQuasarColor(props.labelColor) ? `text-${props.labelColor}` : null));
+const quasarColor = computed(() =>
+  props.labelColor ? (isQuasarColor(props.labelColor) ? `text-${props.labelColor}` : null) : null,
+);
 
 const labelClasses = computed(() => ['v-input__label', quasarColor.value]);
 
@@ -246,6 +248,10 @@ watch(
 
   :deep(.q-field__native) {
     color: $dark-gray;
+  }
+
+  :deep(.q-field--standard.q-field--readonly) .q-field__control:before {
+    border-bottom: 1px solid $light-gray;
   }
 }
 </style>
