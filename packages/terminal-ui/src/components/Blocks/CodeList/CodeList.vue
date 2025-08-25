@@ -1,8 +1,9 @@
 <template>
   <div class="code-list">
-    <v-expansion-item no-paddings label="Коды в упаковке" default-opened>
+    <v-expansion-item no-paddings :label="label" default-opened :model-value="true">
       <div class="code-list__items">
-        <code-item v-for="(item, idx) in items" :key="item.id" v-bind="getItemBinding(item)" :cancelable="idx === 0"
+        <code-item v-for="(item, idx) in items" :key="item.id" v-bind="getItemBinding(item)"
+                   :cancelable="getItemCancelable({...item, order: idx})"
                    @on-cancel="() => onItemCancel(item)"/>
       </div>
     </v-expansion-item>
@@ -24,7 +25,13 @@ const getItemBinding = (item: CodeItemProps): Omit<CodeItemProps, 'cancelable'> 
   return rest;
 };
 
+const getItemCancelable = (data: CodeItemProps & { order: number }) => {
+  return props.cancelable && data.status === 'new' && data.order === 0;
+};
+
 const onItemCancel = (item: CodeItemProps) => {
+  if (!props.cancelable) return;
+
   emit('onItemCancel', item.id);
 };
 </script>
@@ -35,6 +42,10 @@ const onItemCancel = (item: CodeItemProps) => {
   &__items {
     display: grid;
     gap: 8px;
+  }
+
+  :deep(.q-expansion-item__toggle-icon) {
+    color: $primary-text;
   }
 }
 </style>
