@@ -70,6 +70,7 @@ const wrapperClasses = computed(() => [
     'v-input--cropped-top': croppedTop.value,
     'v-input--focused': isFocused.value,
     'v-input--has-error': hasError.value,
+    'v-input--has-xpadding': props.xPadding,
   },
 ]);
 
@@ -202,6 +203,16 @@ watch(
     }
   }
 
+  &--has-xpadding {
+    .v-input__label {
+      padding-inline: v-bind(xPadding);
+    }
+
+    :deep(.q-field__control) {
+      padding-inline: v-bind(xPadding);
+    }
+  }
+
   &__label {
     display: inline-block;
     position: relative;
@@ -250,8 +261,14 @@ watch(
     color: $dark-gray;
   }
 
-  :deep(.q-field--standard.q-field--readonly) .q-field__control:before {
-    border-bottom: 1px solid $light-gray;
+  :deep(.q-field--standard.q-field--readonly) {
+    .q-field__control:before {
+      border-bottom: 1px solid $light-gray;
+    }
+
+    .q-field__native {
+      cursor: default;
+    }
   }
 }
 </style>

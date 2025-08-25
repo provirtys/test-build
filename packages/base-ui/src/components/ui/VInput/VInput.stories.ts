@@ -74,6 +74,9 @@ const meta: Meta = {
         type: 'boolean',
       },
     },
+    xPadding: {
+      description: 'Горизонтальный отступ',
+    },
   },
   args: {
     type: 'text',
@@ -215,6 +218,16 @@ export const FilledLabelOutsideRequired: Story = {
     variant: 'filled',
     labelOutside: true,
     required: true,
+  },
+};
+
+export const WithInlinePadding: Story = {
+  args: {
+    placeholder: 'Введите имя',
+    modelValue: '',
+    label: 'Ваше имя',
+    xPadding: '12px',
+    labelOutside: true,
   },
 };
 
