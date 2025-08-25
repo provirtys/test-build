@@ -103,5 +103,7 @@ export const TwoColumns: Story = {
   args: {
     items: itemsMock2,
     colsCount: 2,
+    itemPaddingX: '20px',
+    itemPaddingY: '20px',
   },
 };

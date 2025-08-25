@@ -65,6 +65,12 @@ const onSelect = (item: CardSelectorItem) => {
     flex-grow: 1;
     display: grid;
     place-items: center;
+    max-width: 75%;
+    margin-inline: auto;
+
+    img {
+      max-width: 100%;
+    }
   }
 }
 </style>
