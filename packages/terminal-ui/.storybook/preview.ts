@@ -1,4 +1,6 @@
+import type { Preview } from '@storybook/vue3-vite';
 import { setup } from '@storybook/vue3-vite';
+import { createPinia } from 'pinia';
 import { Notify, Quasar } from 'quasar';
 import { createI18n } from 'vue-i18n';
 
@@ -10,8 +12,8 @@ import 'quasar/dist/quasar.css';
 
 import '@base/css/main.scss';
 
-import en from '@base/locales/en.json';
-import ru from '@integrity/base-ui/src/locales/ru.json';
+import en from '../../base-ui/src/locales/en.json';
+import ru from '../../base-ui/src/locales/ru.json';
 
 function loadLocaleMessages() {
   const locales = [{ en }, { ru }];
@@ -31,6 +33,8 @@ const i18n = createI18n({
   messages: loadLocaleMessages(),
 });
 
+const pinia = createPinia();
+
 setup((app) => {
   app.use(i18n);
   app.use(Quasar, {
@@ -38,18 +42,10 @@ setup((app) => {
       Notify,
     },
   });
+  app.use(pinia);
 });
 
-Notify.registerType('error', {
-  position: 'top',
-  classes: ['main-notification'],
-  timeout: 3000,
-  color: 'error',
-  textColor: 'white',
-});
-
-/** @type { import('@storybook/vue3-vite').Preview } */
-const preview = {
+const preview: Preview = {
   parameters: {
     controls: {
       matchers: {
