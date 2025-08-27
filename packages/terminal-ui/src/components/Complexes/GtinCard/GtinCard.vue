@@ -42,12 +42,12 @@ import { VButton } from '@base';
 import { VDescriptionList } from '@base/components/ui/VDescriptionList';
 import { computed } from 'vue';
 import { CodeItemProps, CodeList, VCard } from '@';
-import { GTINCardEmits, GTINCardProps } from '@/components/Complexes/GTINCard/GTINCard.types';
+import type { GtinCardEmits, GtinCardProps } from '@/components/Complexes/GtinCard/GtinCard.types';
 import { CodeEl } from '@/types/entity';
 
-const props = defineProps<GTINCardProps>();
+const props = defineProps<GtinCardProps>();
 
-const emit = defineEmits<GTINCardEmits>();
+const emit = defineEmits<GtinCardEmits>();
 
 const codesTitle = computed(() => {
   if (props.mode === 'filling' || props.mode === 'viewing') return 'Коды в упаковке';

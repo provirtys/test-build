@@ -3,7 +3,7 @@ export interface CodeEl {
   label: string;
 }
 
-export interface GTINEl {
+export interface GtinEl {
   id: string;
   name: string;
   quantityInPackage: number;

@@ -2,8 +2,7 @@ import VButton from '@base/components/ui/VButton/VButton.vue';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { computed, ref } from 'vue';
 import type { CodeEl } from '@/types/entity';
-import type { GTINCardMode } from './GTINCard.types';
-import GTINCard from './GTINCard.vue';
+import type { GtinCardMode } from './GtinCard.types';
 import { GtinCard } from './index';
 
 type Story = StoryObj<typeof GtinCard>;
@@ -47,7 +46,7 @@ const codesMock: CodeEl[] = [
   },
 ];
 
-const modes: Record<GTINCardMode, string> = {
+const modes: Record<GtinCardMode, string> = {
   filling: 'Добавление кодов',
   viewing: 'Просмотр кодов',
   'package-adding': 'Добавление кодов в упаковку',
@@ -82,7 +81,7 @@ export const AggregationMode: Story = {
     mode: 'filling',
   },
   render: (args) => ({
-    components: { GTINCard, VButton },
+    components: { GtinCard, VButton },
     setup() {
       let curCodeIdx = 10;
 
@@ -127,7 +126,7 @@ export const AggregationMode: Story = {
       <v-button height="xxs" color="primary" fit-width style="position: absolute; top: 10px; right: 10px"
                 @action="deleteFirstCode">Удалить код
       </v-button>
-      <GTINCard v-bind="bindingArgs" @remove-code="deleteCodeById"/>
+      <GtinCard v-bind="bindingArgs" @remove-code="deleteCodeById"/>
     `,
   }),
 };

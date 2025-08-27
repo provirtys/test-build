@@ -7,11 +7,11 @@
 
 <script setup lang="ts">
 import { VInput } from '@base';
-import type { GTINInfoProps } from './GTINInfo.types';
+import type { GtinInfoProps } from '@/components/Blocks/GtinInfo/GtinInfo.types';
 
-defineProps<GTINInfoProps>();
+defineProps<GtinInfoProps>();
 
-const fieldLabels: Record<keyof GTINInfoProps['gtin'], string> = {
+const fieldLabels: Record<keyof GtinInfoProps['gtin'], string> = {
   id: 'GTIN',
   name: 'Наименование',
   quantityInPallet: 'Кол-во в упаковке',

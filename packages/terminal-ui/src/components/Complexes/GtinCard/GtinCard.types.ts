@@ -1,6 +1,6 @@
 import type { CodeEl } from '@/types/entity';
 
-export type GTINCardMode =
+export type GtinCardMode =
   | 'filling'
   | 'viewing'
   | 'package-adding'
@@ -8,11 +8,11 @@ export type GTINCardMode =
   | 'moving-adding'
   | 'moving-removing';
 
-export interface GTINCardProps {
+export interface GtinCardProps {
   id: string;
   title: string;
   codes?: CodeEl[];
-  mode: GTINCardMode;
+  mode: GtinCardMode;
 }
 
-export type GTINCardEmits = (e: 'removeCode', id: CodeEl['id']) => void;
+export type GtinCardEmits = (e: 'removeCode', id: CodeEl['id']) => void;
