@@ -14,7 +14,11 @@ export default defineConfig({
   plugins: [
     vue(),
     quasar(),
-    dts({ insertTypesEntry: true, include: ['**/src/components/**/*', '**/src/index.ts'], exclude: '**/*.stories.ts' }),
+    dts({
+      insertTypesEntry: true,
+      include: ['**/src/components/**/*', '**/src/index.ts'],
+      exclude: '**/*.stories.ts',
+    }),
     svgSpritePlugin({
       iconDirs: [path.resolve(__dirname, '../icons/icons')],
       symbolId: 'icon-[name]',

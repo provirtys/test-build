@@ -14,7 +14,7 @@ export default defineConfig({
     vue(),
     quasar(),
     dts({
-      rollupTypes: true,
+      insertTypesEntry: true,
       include: ['**/src/components/**/*', '**/src/index.ts'],
       exclude: '**/*.stories.ts',
     }),
