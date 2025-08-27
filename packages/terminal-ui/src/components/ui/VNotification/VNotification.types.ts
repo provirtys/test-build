@@ -13,5 +13,5 @@ export interface VNotificationProps {
   title?: string;
   text?: string;
   actions?: VNotificationAction[];
-  modelValue: boolean;
+  timeout?: number;
 }

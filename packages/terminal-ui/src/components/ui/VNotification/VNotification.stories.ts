@@ -2,7 +2,7 @@ import VButton from '@base/components/ui/VButton/VButton.vue';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
-import { useMainStore } from '@/stores';
+import { useNotificationStore } from '@/stores/notification/store';
 import { VNotification } from './index';
 import type { VNotificationColor } from './VNotification.types';
 
@@ -16,7 +16,8 @@ const types: Record<VNotificationColor, string> = {
 };
 
 /**
- * UI компонент для оповещения пользователя.
+ * UI компонент для оповещения пользователя. Поддерживает 4 цветовых палитры и вывод кнопок в нижней части элемента.
+ * Пример использования см. в stores/notification/store.ts
  * */
 const meta: Meta<typeof VNotification> = {
   component: VNotification,
@@ -31,48 +32,23 @@ const meta: Meta<typeof VNotification> = {
     },
   },
   args: {
+    title: '',
+    actions: [],
     type: 'info',
-    text: 'Если вы вернётесь назад, все несохранённые данные и отсканированные коды будут утеряны.',
+    text: 'Текст уведомления',
+    timeout: 0,
   },
   render: (args) => ({
     components: { VNotification, VButton },
     setup() {
       const notification = ref(true);
 
-      const mainStore = useMainStore();
-      const { notifications } = storeToRefs(mainStore);
-      const { createNotification, removeNotification } = mainStore;
+      const notificationStore = useNotificationStore();
+      const { notifications } = storeToRefs(notificationStore);
+      const { createNotification, createConfirmationNotification, removeNotification } = notificationStore;
 
-      const showNotification = (type: VNotificationColor | 'backward') => {
-        if (type === 'backward') {
-          createNotification({
-            type: 'warning',
-            text: 'Текст',
-            title: 'Заголовок',
-            modelValue: true,
-            actions: [
-              {
-                handler() {
-                  console.log('Нажата кнопка остаться');
-                },
-                text: 'Остаться',
-                color: 'secondary',
-              },
-              {
-                handler() {
-                  console.log('Нажата кнопка Выйти');
-                },
-                text: 'Выйти',
-              },
-            ],
-          });
-        } else {
-          createNotification({
-            type: type,
-            text: 'Текст уведомления',
-            modelValue: true,
-          });
-        }
+      const showNotification = () => {
+        createNotification(args);
       };
 
       return {
@@ -80,23 +56,22 @@ const meta: Meta<typeof VNotification> = {
         notification,
         notifications,
         createNotification,
+        createConfirmationNotification,
         removeNotification,
         showNotification,
       };
     },
     template: `
       <div class="column q-gutter-md">
-        <v-button @action="() => showNotification('info')" height="sm">Показать info</v-button>
-        <v-button @action="() => showNotification('warning')" height="sm">Показать warning</v-button>
-        <v-button @action="() => showNotification('error')" height="sm">Показать error</v-button>
-        <v-button @action="() => showNotification('success')" height="sm">Показать success</v-button>
-        <v-button @action="() => showNotification('backward')" height="sm">Показать backward</v-button>
-        <template v-for="n in notifications">
-          <v-notification v-bind="n" @update:modelValue="() => removeNotification(n)"/>
+        <v-button @action="showNotification" height="sm">Показать уведомление</v-button>
+        <v-button @action="createConfirmationNotification" height="sm">Показать уведомление для подтверждения выхода
+        </v-button>
+        <template v-for="n in notifications" :key="n.id">
+          <v-notification v-bind="n" @update:modelValue="() => removeNotification(n.id)"/>
         </template>
       </div>`,
   }),
 };
 export default meta;
 
-export const ErrorState: Story = {};
+export const CallButtons: Story = {};
