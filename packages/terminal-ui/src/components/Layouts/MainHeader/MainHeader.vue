@@ -1,7 +1,7 @@
 <template>
   <div class="main-header">
     <button v-show="showBackButton" @click="emit('back')" class="main-header__back-button">
-      <v-icon name="arrow-back-rounded" width="14" height="16"/>
+      <v-icon name="arrow-back-rounded" width="16" height="14"/>
     </button>
     <div class="main-header__content">
       <slot/>
