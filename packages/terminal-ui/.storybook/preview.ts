@@ -1,7 +1,7 @@
 import type { Preview } from '@storybook/vue3-vite';
 import { setup } from '@storybook/vue3-vite';
 import { createPinia } from 'pinia';
-import { Notify, Quasar } from 'quasar';
+import { Dialog, Notify, Quasar } from 'quasar';
 import { createI18n } from 'vue-i18n';
 
 import '@quasar/extras/roboto-font/roboto-font.css';
@@ -40,6 +40,7 @@ setup((app) => {
   app.use(Quasar, {
     plugins: {
       Notify,
+      Dialog,
     },
   });
   app.use(pinia);

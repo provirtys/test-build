@@ -1,6 +1,5 @@
 import VButton from '@base/components/ui/VButton/VButton.vue';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
 import { useNotificationStore } from '@/stores/notification/store';
 import { VNotification } from './index';
@@ -37,6 +36,7 @@ const meta: Meta<typeof VNotification> = {
     type: 'info',
     text: 'Текст уведомления',
     timeout: 0,
+    seamless: true,
   },
   render: (args) => ({
     components: { VNotification, VButton },
@@ -44,31 +44,23 @@ const meta: Meta<typeof VNotification> = {
       const notification = ref(true);
 
       const notificationStore = useNotificationStore();
-      const { notifications } = storeToRefs(notificationStore);
-      const { createNotification, createConfirmationNotification, removeNotification } = notificationStore;
-
-      const showNotification = () => {
-        createNotification(args);
-      };
+      const { createNotification, createConfirmNotification } = notificationStore;
 
       return {
         args,
         notification,
-        notifications,
         createNotification,
-        createConfirmationNotification,
-        removeNotification,
-        showNotification,
+        createConfirmNotification,
       };
     },
     template: `
       <div class="column q-gutter-md">
-        <v-button @action="showNotification" height="sm">Показать уведомление</v-button>
-        <v-button @action="createConfirmationNotification" height="sm">Показать уведомление для подтверждения выхода
+        <v-button @action="() => createNotification(args)" height="sm">Показать уведомление</v-button>
+        <v-button @action="() => createNotification({...args, timeout: 1000})" height="sm">Показать уведомление с
+          автоматическим закрытием
         </v-button>
-        <template v-for="n in notifications" :key="n.id">
-          <v-notification v-bind="n" @update:modelValue="() => removeNotification(n.id)"/>
-        </template>
+        <v-button @action="createConfirmNotification" height="sm">Показать уведомление с подтверждением
+        </v-button>
       </div>`,
   }),
 };

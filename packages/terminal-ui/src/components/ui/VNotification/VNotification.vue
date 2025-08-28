@@ -1,5 +1,5 @@
 <template>
-  <q-dialog class="v-notification" v-model="isOpen" seamless position="right">
+  <q-dialog class="v-notification" ref="dialogRef" @hide="onDialogHide" :seamless position="right">
     <div class="v-notification__background" :class="backgroundClasses">
       <q-card class="v-notification__card" flat>
         <div class="v-notification__header">
@@ -10,9 +10,12 @@
           {{ text }}
         </div>
         <div v-if="actions?.length" class="v-notification__actions">
-          <v-button v-for="action in actions" :color="action.color" height="xs" @action="action.handler">{{
-              action.text
-            }}
+          <button @click="() => console.log('simple button')"></button>
+          <v-button :color="actions[0].color" height="xs" @action="() => console.log(123)">
+            {{ actions[0].text }}
+          </v-button>
+          <v-button :color="actions[1].color" height="xs" @action="onDialogOK">
+            {{ actions[1].text }}
           </v-button>
         </div>
         <v-icon name="close" size="16" class="v-notification__close-btn" v-close-popup/>
@@ -23,14 +26,22 @@
 
 <script setup lang="ts">
 import { VButton, VIcon } from '@base';
-import { computed } from 'vue';
+import { useDialogPluginComponent } from 'quasar';
+import { computed, onMounted } from 'vue';
 import type { VNotificationProps } from '@/components/ui/VNotification/VNotification.types';
 
 const props = withDefaults(defineProps<VNotificationProps>(), {
   type: 'warning',
 });
 
-const isOpen = defineModel({ type: Boolean });
+defineEmits([...useDialogPluginComponent.emits]);
+
+const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } = useDialogPluginComponent();
+
+const cancelHandler = () => {
+  console.log('ON CANCEL');
+  onDialogCancel();
+};
 
 const backgroundClasses = computed(() => [`bg-${props.type}`]);
 
@@ -60,6 +71,14 @@ const iconName = computed(() => {
       return 'alert-triangle';
     case 'success':
       return 'done';
+  }
+});
+
+onMounted(() => {
+  if (props.timeout) {
+    setTimeout(() => {
+      dialogRef.value?.hide();
+    }, props.timeout);
   }
 });
 </script>
