@@ -10,8 +10,7 @@
           {{ text }}
         </div>
         <div v-if="actions?.length" class="v-notification__actions">
-          <button @click="() => console.log('simple button')"></button>
-          <v-button :color="actions[0].color" height="xs" @action="() => console.log(123)">
+          <v-button :color="actions[0].color" height="xs" @action="onDialogCancel">
             {{ actions[0].text }}
           </v-button>
           <v-button :color="actions[1].color" height="xs" @action="onDialogOK">
@@ -37,11 +36,6 @@ const props = withDefaults(defineProps<VNotificationProps>(), {
 defineEmits([...useDialogPluginComponent.emits]);
 
 const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } = useDialogPluginComponent();
-
-const cancelHandler = () => {
-  console.log('ON CANCEL');
-  onDialogCancel();
-};
 
 const backgroundClasses = computed(() => [`bg-${props.type}`]);
 
