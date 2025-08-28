@@ -1,5 +1,5 @@
 <template>
-  <q-dialog class="v-notification" ref="dialogRef" @hide="onDialogHide" :seamless position="right">
+  <q-dialog class="v-notification" ref="dialogRef" @hide="onDialogHide" :seamless position="bottom">
     <div class="v-notification__background" :class="backgroundClasses">
       <q-card class="v-notification__card" flat>
         <div class="v-notification__header">
@@ -81,6 +81,10 @@ onMounted(() => {
 .v-notification {
 
   .v-notification__background {
+    position: relative;
+    bottom: 10px;
+    max-width: calc(100vw - 40px);
+    width: 440px !important;
     border-radius: 12px;
   }
 
@@ -88,7 +92,6 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    width: 440px;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.9);
   }
