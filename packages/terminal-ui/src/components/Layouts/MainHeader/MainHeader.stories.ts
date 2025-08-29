@@ -25,7 +25,22 @@ export default meta;
 
 export const Standard: Story = {};
 
-export const WithSlot: Story = {
+export const WithText: Story = {
+  render: (args) => ({
+    components: { MainHeader, VIcon },
+    setup() {
+      return {
+        args,
+      };
+    },
+    template: `
+      <main-header :show-back-button="args.showBackButton">
+        <div>Заголовок</div>
+      </main-header>`,
+  }),
+};
+
+export const WithIcon: Story = {
   render: (args) => ({
     components: { MainHeader, VIcon },
     setup() {

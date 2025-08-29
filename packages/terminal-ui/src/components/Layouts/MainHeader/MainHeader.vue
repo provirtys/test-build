@@ -29,12 +29,16 @@ const emit = defineEmits<MainHeaderEmits>();
     border: none;
     cursor: pointer;
     position: absolute;
+    left: 16px;
     padding: 0;
   }
 
   &__content {
+    @include fontAdaptive($font-size-p3, 20px, 500, 0.01em);
     color: $dark-gray-70;
     margin-inline: auto;
+    padding-inline: 20px;
+    text-align: center;
   }
 }
 </style>
