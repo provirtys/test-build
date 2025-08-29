@@ -58,6 +58,7 @@ const onSelect = (item: CardSelectorItem) => {
     padding-inline: v-bind(itemPaddingX);
     padding-block: v-bind(itemPaddingY);
     cursor: pointer;
+    overflow: hidden;
   }
 
   &__image-container {
@@ -67,9 +68,12 @@ const onSelect = (item: CardSelectorItem) => {
     place-items: center;
     max-width: 75%;
     margin-inline: auto;
+    overflow: hidden;
 
     img {
       max-width: 100%;
+      max-height: 100%;
+      overflow: hidden;
     }
   }
 
