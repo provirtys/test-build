@@ -28,6 +28,8 @@ const emit = defineEmits<MainHeaderEmits>();
   &__back-button {
     border: none;
     cursor: pointer;
+    position: absolute;
+    padding: 0;
   }
 
   &__content {

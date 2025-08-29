@@ -168,6 +168,7 @@ const removeCode = (id: CodeEl['id']) => {
 
   :deep(.code-list .q-expansion-item__content) {
     overflow: auto;
+    padding-bottom: 20px;
   }
 }
 </style>

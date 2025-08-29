@@ -72,5 +72,9 @@ const onSelect = (item: CardSelectorItem) => {
       max-width: 100%;
     }
   }
+
+  &__item-title {
+    word-break: break-all;
+  }
 }
 </style>
