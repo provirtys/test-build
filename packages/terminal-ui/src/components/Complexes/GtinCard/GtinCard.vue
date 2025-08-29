@@ -129,11 +129,15 @@ const removeCode = (id: CodeEl['id']) => {
 
 <style scoped lang="scss">
 .gtin-card {
+  overflow: hidden;
+  flex: 1;
+  display: grid;
 
   &__container {
     display: flex;
     flex-direction: column;
-    gap: 20px
+    gap: 20px;
+    overflow: hidden;
   }
 
   &__title {
@@ -150,6 +154,20 @@ const removeCode = (id: CodeEl['id']) => {
     display: grid;
     gap: 12px;
     grid-auto-flow: column;
+  }
+
+  &__codes {
+    overflow: hidden;
+    display: grid;
+  }
+
+  :deep(.code-list), :deep(.v-expansion-item), :deep(.q-expansion-item__container) {
+    overflow: hidden;
+    display: grid;
+  }
+
+  :deep(.code-list .q-expansion-item__content) {
+    overflow: auto;
   }
 }
 </style>
