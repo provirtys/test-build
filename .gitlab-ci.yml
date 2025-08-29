@@ -42,11 +42,11 @@ publish-npm:
     - pnpm build
     - pnpm config set @integrity:registry ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/npm/
     - pnpm config set -- //${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken ${CI_JOB_TOKEN}
-    #  - |
-    #   echo "🔍 Удаление всех пакетов..."
-    #    curl -sS --header "PRIVATE-TOKEN:${API_GITLAB_TOKEN}" "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages" \
-    #    | jq -r '.[].id' \
-    #    | xargs -r -I{} curl -sS --request DELETE \
-    #        --header "PRIVATE-TOKEN:${API_GITLAB_TOKEN}" \
-    #        "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/{}" || true
+    - |
+      echo "🔍 Удаление всех пакетов..."
+      curl -sS --header "PRIVATE-TOKEN:${API_GITLAB_TOKEN}" "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages" \
+      | jq -r '.[].id' \
+      | xargs -r -I{} curl -sS --request DELETE \
+          --header "PRIVATE-TOKEN:${API_GITLAB_TOKEN}" \
+          "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/{}" || true
     - pnpm publish -r --no-git-checks --verbose
