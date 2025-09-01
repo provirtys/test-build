@@ -66,12 +66,16 @@ const meta: Meta<typeof GtinCard> = {
         labels: modes,
       },
     },
+    dense: {
+      description: 'Уменьшить размер элементов',
+    },
   },
   args: {
     id: '029000000001381',
     title: 'Вода Артезианская 5 литров',
     mode: 'filling',
     codes: codesMock,
+    dense: false,
   },
 };
 export default meta;

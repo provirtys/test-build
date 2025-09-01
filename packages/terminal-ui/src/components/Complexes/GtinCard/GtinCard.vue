@@ -1,5 +1,5 @@
 <template>
-  <div class="gtin-card">
+  <div class="gtin-card" :class="classList">
     <div class="gtin-card__container">
       <div class="gtin-card__title">{{ title }}</div>
       <v-button
@@ -16,17 +16,20 @@
       <div class="gtin-card__count-cards">
         <div v-if="showChangesCards" class="gtin-card__changes-cards">
           <v-card :bg-color="isAddingMode ? 'gray' : 'white'">
-            <v-description-list :items="[{term: 'Добавлено', definition: `+${addedCodes.length}`}]"/>
+            <v-description-list :items="[{term: 'Добавлено', definition: `+${addedCodes.length}`}]"
+                                :definitionFontSize/>
           </v-card>
           <v-card :bg-color="!isAddingMode ? 'gray' : 'white'">
-            <v-description-list :items="[{term: 'Удалено', definition: `-${removedCodes.length}`}]"/>
+            <v-description-list :items="[{term: 'Удалено', definition: `-${removedCodes.length}`}]"
+                                :definitionFontSize/>
           </v-card>
         </div>
         <v-card v-if="movingCodesValue" bg-color="gray">
-          <v-description-list :items="[{term: 'Количество изменений', definition: movingCodesValue}]"/>
+          <v-description-list :items="[{term: 'Количество изменений', definition: movingCodesValue}]"
+                              :definitionFontSize/>
         </v-card>
         <v-card>
-          <v-description-list :items="[{term: 'Количество', definition: codes?.length}]"/>
+          <v-description-list :items="[{term: 'Количество', definition: codes?.length}]" :definitionFontSize/>
         </v-card>
       </div>
       <div class="gtin-card__codes" v-if="codesToShow">
@@ -48,6 +51,10 @@ import { CodeEl } from '@/types/entity';
 const props = defineProps<GtinCardProps>();
 
 const emit = defineEmits<GtinCardEmits>();
+
+const classList = computed(() => ({
+  'gtin-card--dense': props.dense,
+}));
 
 const codesTitle = computed(() => {
   if (props.mode === 'filling' || props.mode === 'viewing') return 'Коды в упаковке';
@@ -122,6 +129,8 @@ const codesToShow = computed<CodeItemProps[]>(() => {
   return res.reverse();
 });
 
+const definitionFontSize = computed(() => (props.dense ? '40px' : '56px'));
+
 const removeCode = (id: CodeEl['id']) => {
   emit('removeCode', id);
 };
@@ -132,6 +141,12 @@ const removeCode = (id: CodeEl['id']) => {
   overflow: hidden;
   flex: 1;
   display: grid;
+
+  &--dense {
+    .gtin-card__title {
+      font-size: $font-size-p1;
+    }
+  }
 
   &__container {
     display: flex;

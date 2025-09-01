@@ -30,6 +30,7 @@ const emit = defineEmits<CardSelectorEmits>();
 
 const classList = computed(() => ({
   'card-selector--big-font': props.bigFont,
+  'card-selector--dense': props.dense,
 }));
 
 const onSelect = (item: CardSelectorItem) => {
@@ -48,6 +49,11 @@ const onSelect = (item: CardSelectorItem) => {
 
   &--big-font {
     font-size: $font-size-h6;
+  }
+
+  &--dense {
+    gap: 8px;
+    font-size: $font-size-p5;
   }
 
   &__item {

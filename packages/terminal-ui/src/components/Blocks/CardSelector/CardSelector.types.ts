@@ -15,6 +15,7 @@ export interface CardSelectorProps {
   itemPaddingY?: string;
   itemPaddingX?: string;
   bgColor?: VCardBgColor;
+  dense?: boolean;
 }
 
 export type CardSelectorEmits = (e: 'select', val: CardSelectorItem['id']) => void;

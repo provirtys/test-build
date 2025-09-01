@@ -81,6 +81,9 @@ const meta: Meta<typeof CardSelector> = {
         labels: bgColors,
       },
     },
+    dense: {
+      description: 'Уменьшить элементы',
+    },
   },
   args: {
     items: itemsMock1,
@@ -89,6 +92,7 @@ const meta: Meta<typeof CardSelector> = {
     itemPaddingY: '16px',
     bigFont: false,
     colsCount: 1,
+    dense: false,
   },
 };
 export default meta;

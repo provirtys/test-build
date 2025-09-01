@@ -13,6 +13,7 @@ export interface GtinCardProps {
   title: string;
   codes?: CodeEl[];
   mode: GtinCardMode;
+  dense?: boolean;
 }
 
 export type GtinCardEmits = (e: 'removeCode', id: CodeEl['id']) => void;
