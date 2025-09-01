@@ -143,6 +143,11 @@ const removeCode = (id: CodeEl['id']) => {
   display: grid;
 
   &--dense {
+
+    .gtin-card__container {
+      gap: 12px;
+    }
+
     .gtin-card__title {
       font-size: $font-size-p1;
     }
