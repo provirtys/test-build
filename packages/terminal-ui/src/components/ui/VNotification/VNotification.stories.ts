@@ -1,7 +1,6 @@
 import VButton from '@base/components/ui/VButton/VButton.vue';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { ref } from 'vue';
-import { useNotificationStore } from '@/stores/notification/store';
+import { createConfirmNotification, createNotification } from '@/utils/notification';
 import { VNotification } from './index';
 import type { VNotificationColor } from './VNotification.types';
 
@@ -16,7 +15,6 @@ const types: Record<VNotificationColor, string> = {
 
 /**
  * UI компонент для оповещения пользователя. Поддерживает 4 цветовых палитры и вывод кнопок в нижней части элемента.
- * Пример использования см. в stores/notification/store.ts
  * */
 const meta: Meta<typeof VNotification> = {
   component: VNotification,
@@ -41,14 +39,8 @@ const meta: Meta<typeof VNotification> = {
   render: (args) => ({
     components: { VNotification, VButton },
     setup() {
-      const notification = ref(true);
-
-      const notificationStore = useNotificationStore();
-      const { createNotification, createConfirmNotification } = notificationStore;
-
       return {
         args,
-        notification,
         createNotification,
         createConfirmNotification,
       };
