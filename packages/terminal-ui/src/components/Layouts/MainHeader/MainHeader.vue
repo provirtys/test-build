@@ -29,7 +29,7 @@ const emit = defineEmits<MainHeaderEmits>();
     border: none;
     cursor: pointer;
     position: absolute;
-    left: 16px;
+    left: 36px;
     padding: 0;
   }
 
@@ -37,7 +37,7 @@ const emit = defineEmits<MainHeaderEmits>();
     @include fontAdaptive($font-size-p3, 20px, 500, 0.01em);
     color: $dark-gray-70;
     margin-inline: auto;
-    padding-inline: 20px;
+    padding-inline: 36px;
     text-align: center;
   }
 }
