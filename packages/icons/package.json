@@ -1,10 +1,12 @@
 {
   "name": "@integrity/icons",
   "description": "Icons asset for usage in other packages",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "main": "./dist/icons.umd.js",
   "module": "./dist/icons.es.js",
-  "files": ["icons/"],
+  "files": [
+    "icons/"
+  ],
   "exports": {
     ".": {
       "import": "./dist/icons.es.js",
