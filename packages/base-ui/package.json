@@ -15,6 +15,7 @@
     },
     "./style.css": "./dist/base-ui.css",
     "./variables.scss": "./dist/variables.scss",
+    "./mixins.scss": "./dist/mixins.scss",
     "./src/*": "./src/*"
   },
   "publishConfig": {
