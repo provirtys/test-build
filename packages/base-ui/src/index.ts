@@ -7,6 +7,7 @@ export * from './components/Elements/LoadingAnimation';
 export * from './components/ui/VAlert';
 export * from './components/ui/VBadge';
 export * from './components/ui/VButton';
+export * from './components/ui/VDescriptionList';
 export * from './components/ui/VExpansionItem';
 export * from './components/ui/VIcon';
 export * from './components/ui/VInput';

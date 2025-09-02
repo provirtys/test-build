@@ -1,6 +1,6 @@
 {
   "name": "@integrity/mobile-ui",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "main": "./dist/mobile-ui.umd.js",
   "module": "./dist/mobile-ui.es.js",
   "scripts": {
