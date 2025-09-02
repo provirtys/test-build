@@ -225,9 +225,10 @@ export default defineConfig(() => {
 3. Также необходимо подключить файлы
 
 ```code
-@integrity/base-ui/variables.scss
-@integrity/base-ui/style.css
-@integrity/[НАЗВАНИЕ ПАКЕТА]/style.css
+@integrity/base-ui/variables.scss - переменные SCSS
+@integrity/base-ui/mixins.scss - SCSS функции для удобства разработки
+@integrity/base-ui/style.css - общие стили для всех пакетов
+@integrity/[НАЗВАНИЕ ПАКЕТА]/style.css - стили нужного пакета
 ```
 
-Таким образом, стили из библиотек будут добавлены в проект, а также IDE подхватит scss переменные
+Таким образом, стили из библиотек будут добавлены в проект, а также IDE подхватит scss переменные и миксины

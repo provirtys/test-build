@@ -45,6 +45,10 @@ export default defineConfig({
           src: 'src/css/variables.scss',
           dest: '',
         },
+        {
+          src: 'src/css/mixins.scss',
+          dest: '',
+        },
       ],
     }),
   ],
