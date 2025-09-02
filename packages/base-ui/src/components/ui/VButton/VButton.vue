@@ -6,6 +6,7 @@
     no-caps
     :ripple="false"
     :glossy="false"
+    :loading
     flat
     ref="btnRef"
     v-touch-hold:1000:200:200.mouse="handleHold"

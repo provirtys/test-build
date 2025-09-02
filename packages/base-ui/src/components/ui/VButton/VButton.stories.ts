@@ -185,13 +185,7 @@ export default meta;
 
 export const Primary: Story = {
   args: {
-    text: 'Кнопка 1',
-  },
-};
-
-export const Test: Story = {
-  args: {
-    color: 'primary',
+    text: 'Основной вариант',
   },
 };
 
