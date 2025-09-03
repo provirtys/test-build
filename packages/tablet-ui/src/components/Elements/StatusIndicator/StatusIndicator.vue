@@ -74,12 +74,19 @@ const props = withDefaults(defineProps<StatusIndicatorProps>(), {
 }
 
 @keyframes ping {
-  from {
+  0% {
     border-width: 1.5px;
     scale: 0;
+    opacity: 1;
   }
 
-  to {
+  80% {
+    opacity: 1;
+  }
+
+
+  100% {
+    opacity: 0;
     border-width: 2px;
     scale: 2;
   }
