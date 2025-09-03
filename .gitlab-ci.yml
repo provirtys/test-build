@@ -49,10 +49,16 @@ publish-npm:
     - pnpm config set -- //${CI_SERVER_HOST}/api/v4/projects/119/packages/npm/:_authToken ${CI_JOB_TOKEN}
     - pnpm config set -- //${CI_SERVER_HOST}/api/v4/packages/npm/:_authToken ${CI_JOB_TOKEN}
     - |
+      echo "📦 Получение списка пакетов..."
+      curl -sS --header "PRIVATE-TOKEN:${API_GITLAB_TOKEN}" "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages"
+    - echo "API_GITLAB_TOKEN=${API_GITLAB_TOKEN}"
+    - echo "CI_API_V4_URL=${CI_API_V4_URL}"
+    - echo "CI_PROJECT_ID=${CI_PROJECT_ID}"
+    - |
       echo "🔍 Удаление всех пакетов..."
       curl -sS --header "PRIVATE-TOKEN:${API_GITLAB_TOKEN}" "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages" \
       | jq -r '.[].id' \
       | xargs -r -I{} curl -sS --request DELETE \
           --header "PRIVATE-TOKEN:${API_GITLAB_TOKEN}" \
           "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/{}" || true
-    - pnpm publish -r --no-git-checks --verbose
+    - pnpm publish -r --no-git-checks --verbose 
