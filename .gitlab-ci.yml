@@ -52,13 +52,14 @@ publish-npm:
       echo "📦 Получение списка пакетов..."
       curl -sS --header "PRIVATE-TOKEN:${API_GITLAB_TOKEN}" "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages"
     - echo "API_GITLAB_TOKEN=${API_GITLAB_TOKEN}"
+    - echo "RELEASE_TOKEN=${RELEASE_TOKEN}"
     - echo "CI_API_V4_URL=${CI_API_V4_URL}"
     - echo "CI_PROJECT_ID=${CI_PROJECT_ID}"
     - |
       echo "🔍 Удаление всех пакетов..."
-      curl -sS --header "PRIVATE-TOKEN:${API_GITLAB_TOKEN}" "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages" \
+      curl -sS --header "PRIVATE-TOKEN:${RELEASE_TOKEN}" "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages" \
       | jq -r '.[].id' \
       | xargs -r -I{} curl -sS --request DELETE \
-          --header "PRIVATE-TOKEN:${API_GITLAB_TOKEN}" \
+          --header "PRIVATE-TOKEN:${RELEASE_TOKEN}" \
           "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/{}" || true
     - pnpm publish -r --no-git-checks --verbose 
