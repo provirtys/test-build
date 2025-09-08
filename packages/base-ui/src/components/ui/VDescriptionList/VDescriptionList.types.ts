@@ -1,6 +1,6 @@
 export interface VDescriptionListItem {
   term?: string;
-  definition?: string;
+  definition?: string | VDescriptionListItem[];
   slot?: string;
 }
 

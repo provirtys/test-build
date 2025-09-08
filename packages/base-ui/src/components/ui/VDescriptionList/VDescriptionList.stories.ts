@@ -118,3 +118,53 @@ export const WithCustomSlot: Story = {
     </v-description-list>`,
   }),
 };
+
+export const MultiLevel: Story = {
+  args: {
+    items: [
+      {
+        term: 'Заголовок 1',
+        definition: [
+          {
+            term: 'Заголовок 1.1',
+            definition: [
+              {
+                term: 'Заголовок 1.1.1',
+                definition: 'Значение 1.1.1',
+              },
+              {
+                term: 'Заголовок 1.1.2',
+                definition: 'Значение 1.1.2',
+              },
+              {
+                term: 'Заголовок 1.1.3',
+                definition: 'Значение 1.1.3',
+              },
+            ],
+          },
+          {
+            term: 'Заголовок 1.2',
+            definition: 'Значение 1.2',
+          },
+        ],
+      },
+      {
+        term: 'Заголовок 2',
+        definition: [
+          {
+            term: 'Заголовок 2.1',
+            definition: 'Значение 2.1',
+          },
+          {
+            term: 'Заголовок 2.2',
+            definition: 'Значение 2.2',
+          },
+          {
+            term: 'Заголовок 2.3',
+            definition: 'Значение 2.3',
+          },
+        ],
+      },
+    ],
+  },
+};

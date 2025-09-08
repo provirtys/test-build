@@ -3,9 +3,15 @@
     <div v-for="item in items" :key="item.slot || item.term" class="v-description-list__item">
       <dt class="v-description-list__term">{{ item.term }}</dt>
       <dd class="v-description-list__definition">
+        <template v-if="typeof item.definition === 'string'">
         <slot :name="item.slot || 'custom'">
           {{ item.definition }}
         </slot>
+        </template>
+        <template v-else-if="Array.isArray(item.definition)">
+          <v-description-list :items="item.definition" :inline :is-light :align-center :term-font-size
+                              :definitionFontSize/>
+        </template>
       </dd>
     </div>
   </dl>
@@ -69,6 +75,10 @@ const classList = computed(() => ({
   &__definition {
     @include font('Golos', v-bind(definitionFontSize), 1, 500, -0.02em);
     color: $dark-gray;
+  }
+
+  .v-description-list {
+    padding-left: 20px;
   }
 }
 </style>
