@@ -37,6 +37,9 @@ const meta: Meta<typeof VDescriptionList> = {
     definitionFontSize: {
       description: 'Размер шрифта у значения',
     },
+    bordered: {
+      description: 'Показывать границы у элементов',
+    },
   },
   args: {
     items: [
@@ -58,6 +61,7 @@ const meta: Meta<typeof VDescriptionList> = {
     alignCenter: false,
     termFontSize: '14px',
     definitionFontSize: '28px',
+    bordered: false,
   },
 };
 export default meta;

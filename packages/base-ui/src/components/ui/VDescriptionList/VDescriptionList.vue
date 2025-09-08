@@ -35,6 +35,7 @@ const classList = computed(() => ({
   'v-description-list--inline': props.inline,
   'v-description-list--light': props.isLight,
   'v-description-list--centered': props.alignCenter,
+  'v-description-list--bordered': props.bordered,
 }));
 </script>
 
@@ -48,7 +49,6 @@ const classList = computed(() => ({
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      min-height: 40px;
     }
   }
 
@@ -60,6 +60,13 @@ const classList = computed(() => ({
 
   &--centered &__definition {
     text-align: center;
+  }
+
+  &--bordered {
+    .v-description-list__item:not(:last-child) {
+      border-bottom: 1px solid $light-gray;
+      padding-bottom: 5px;
+    }
   }
 
   &__item {
@@ -80,6 +87,7 @@ const classList = computed(() => ({
 
   .v-description-list {
     padding-left: 20px;
+    gap: 12px;
   }
 }
 </style>
