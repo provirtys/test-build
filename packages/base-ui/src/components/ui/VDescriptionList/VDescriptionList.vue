@@ -1,6 +1,7 @@
 <template>
   <dl class="v-description-list" :class="classList">
-    <div v-for="item in items" :key="item.slot || item.term" class="v-description-list__item">
+    <div v-for="item in items" :key="item.slot || item.term" class="v-description-list__item"
+         :class="{'v-description-list__item--inlined': inline && !Array.isArray(item.definition)}">
       <dt class="v-description-list__term">{{ item.term }}</dt>
       <dd class="v-description-list__definition">
         <template v-if="typeof item.definition === 'string'">
@@ -43,7 +44,7 @@ const classList = computed(() => ({
   gap: 20px;
 
   &--inline {
-    .v-description-list__item {
+    .v-description-list__item--inlined {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
