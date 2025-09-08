@@ -1,2 +1,2 @@
-export type { VDescriptionListProps } from './VDescriptionList.types';
+export type { VDescriptionListItem, VDescriptionListProps } from './VDescriptionList.types';
 export { default as VDescriptionList } from './VDescriptionList.vue';
