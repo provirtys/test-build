@@ -83,6 +83,10 @@ const classList = computed(() => ({
   &__definition {
     @include font('Golos', v-bind(definitionFontSize), 1, 500, -0.02em);
     color: $dark-gray;
+
+    .v-description-list__term {
+      font-size: smaller;
+    }
   }
 
   .v-description-list {
