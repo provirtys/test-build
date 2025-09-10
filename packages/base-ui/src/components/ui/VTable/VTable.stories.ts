@@ -1,6 +1,7 @@
 import { VTable } from '@base';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import type { QTableColumn } from 'quasar';
+import { VDescriptionList } from '../VDescriptionList';
 
 type Story = StoryObj<typeof VTable>;
 
@@ -122,4 +123,49 @@ export const WordBreak: Story = {
       },
     ],
   },
+};
+
+export const DesktopExample: Story = {
+  args: {
+    columns: [
+      {
+        label: 'ID',
+        name: 'id',
+        field: 'id',
+      },
+      {
+        label: 'Продукция/GTIN ',
+        name: 'gitn',
+        field: 'gitn',
+      },
+    ],
+    rows: [
+      {
+        id: 'MPK37',
+        gtin: {
+          title: 'Вода минеральная 2 л.',
+          subtitle: '029000000001381',
+        },
+      },
+      {
+        id: 'MPK38',
+        gtin: {
+          title: 'Вода минеральная 2 л.',
+          subtitle: '029000000001382',
+        },
+      },
+    ],
+  },
+  render: (args) => ({
+    components: { VTable },
+    setup() {
+      return {
+        args,
+      };
+    },
+    template: `
+      <v-table>
+
+      </v-table>`,
+  }),
 };
