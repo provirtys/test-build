@@ -1,0 +1,59 @@
+{
+  "name": "@integrity/desktop-ui",
+  "version": "1.0.12",
+  "main": "./dist/desktop-ui.umd.js",
+  "module": "./dist/desktop-ui.es.js",
+  "scripts": {
+    "build": "vite build",
+    "storybook": "storybook dev -p 3005",
+    "build:storybook": "storybook build"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/desktop-ui.es.js",
+      "require": "./dist/desktop-ui.umd.js"
+    },
+    "./style.css": "./dist/desktop-ui.css"
+  },
+  "publishConfig": {
+    "access": "public",
+    "main": "src/index.js"
+  },
+  "files": [
+    "package.json",
+    "pnpm-lock.yaml",
+    "dist"
+  ],
+  "types": "./dist/desktop-ui.es.d.ts",
+  "peerDependencies": {
+    "@integrity/base-ui": "workspace:*",
+    "@integrity/icons": "workspace:*"
+  },
+  "dependencies": {
+    "@chromatic-com/storybook": "catalog:",
+    "@storybook/addon-a11y": "catalog:",
+    "@storybook/addon-vitest": "catalog:",
+    "pinia": "catalog:",
+    "sass-embedded": "catalog:",
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "@bufbuild/protobuf": "catalog:",
+    "@pivanov/vite-plugin-svg-sprite": "catalog:",
+    "@quasar/extras": "catalog:",
+    "@quasar/vite-plugin": "catalog:",
+    "@storybook/addon-docs": "catalog:",
+    "@storybook/vue3-vite": "catalog:",
+    "@vitejs/plugin-vue": "catalog:",
+    "quasar": "catalog:",
+    "storybook": "catalog:",
+    "uuid": "catalog:",
+    "vite": "catalog:",
+    "vite-plugin-dts": "catalog:",
+    "vue": "catalog:",
+    "vue-i18n": "catalog:",
+    "vue-router": "catalog:"
+  },
+  "type": "module",
+  "packageManager": "pnpm@10.11.1"
+}
