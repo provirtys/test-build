@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import type { VInputProps } from '@base/components/ui/VInput/VInput.types';
+import type { VInputProps, VInputSlots } from '@base/components/ui/VInput/VInput.types';
 import { isQuasarColor } from '@base/utils/resolveColor';
 import { QInput } from 'quasar';
 import { computed, ref, useAttrs, watch } from 'vue';
@@ -37,6 +37,8 @@ const props = withDefaults(defineProps<VInputProps>(), {
   labelOutside: false,
   required: false,
 });
+
+defineSlots<VInputSlots>();
 
 const attrs = useAttrs();
 

@@ -60,7 +60,7 @@ const props = withDefaults(defineProps<VButtonProps>(), {
   isDisabled: false,
   isRounded: true,
   icon: undefined,
-  iconPosition: undefined,
+  iconPosition: 'left',
   iconSize: undefined,
   textAlignment: 'center',
   fitWidth: false,
