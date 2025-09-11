@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { QTd } from 'quasar';
+import { PieProgress } from '@';
 import type { VTableColumn } from './VTable.types';
 import VTable from './VTable.vue';
 
@@ -45,17 +46,17 @@ const columns: (VTableColumn & { field: keyof ColFields })[] = [
     filters: [
       {
         id: 'line1',
-        name: 'Линия 1',
+        label: 'Линия 1',
         value: false,
       },
       {
         id: 'line2',
-        name: 'Линия 2',
+        label: 'Линия 2',
         value: false,
       },
       {
         id: 'line3',
-        name: 'Линия 3',
+        label: 'Линия 3',
         value: false,
       },
     ],
@@ -147,7 +148,7 @@ const rows: ColFields[] = [
     statusPercentage: 5,
   },
   {
-    id: 'MPK337',
+    id: 'MPK37',
     gtin: {
       name: 'Вода минеральная 2 л.',
       number: '029000000001381',
@@ -208,14 +209,19 @@ export default meta;
 
 export const Standard: Story = {
   render: (args) => ({
-    components: { VTable, QTd },
+    components: { VTable, QTd, PieProgress },
     setup() {
+      const updateSearch = (data: Record<string, string>) => {
+        console.log('Новые данные для поиска = ', data);
+      };
+
       return {
         args,
+        updateSearch,
       };
     },
     template: `
-      <v-table :columns="args.columns" :rows="args.rows">
+      <v-table :columns="args.columns" :rows="args.rows" @onSearchUpdate="updateSearch">
         <template #body-cell-gtin="props">
           <q-td :props="props">{{ props.value.name }}<span>{{ props.value.number }}</span></q-td>
         </template>
@@ -231,7 +237,10 @@ export const Standard: Story = {
             <span>{{ parseFloat(((props.value / props.row.quantity) * 100).toFixed(2)) + '%' }}</span></q-td>
         </template>
         <template #body-cell-statusPercentage="props">
-          <q-td :props="props">{{ props.value + '%' }}</q-td>
+          <q-td :props="props">
+            <pie-progress :value="props.value" color="warning" size="14" border-width="1"/>
+            {{ props.value + '%' }}
+          </q-td>
         </template>
       </v-table>
     `,
