@@ -1,5 +1,6 @@
 <template>
-  <q-table class="v-table" :columns :rows flat @request="onRequest" :pagination="pagination">
+  <q-table class="v-table" :columns :rows flat @request="onRequest" v-model:pagination="internalPagination"
+           ref="tableRef">
     <template #header-cell="props">
       <q-th :props="props" class="v-table__th" :class="getThClassesByCol(props.col)">
         {{ props.col.label }}
@@ -45,10 +46,27 @@
       </q-th>
     </template>
 
-    <template #pagination="props">
+    <template #bottom="props">
       <div class="v-table__pagination">
         <v-button class="v-table__pagination-btn" icon="arrow-back" :icon-size="16" fit-width color="secondary"
                   @action="props.prevPage"/>
+        <v-button v-if="!props.isFirstPage" class="v-table__pagination-btn" fit-width color="plane"
+                  @action="props.firstPage()">1
+        </v-button>
+        <v-button v-if=" props.pagination.page - 1 > 1" class="v-table__pagination-btn v-table__pagination-dots"
+                  fit-width color="plane" @action="() => goToPage(Math.floor((1+props.pagination.page)/2))">...
+        </v-button>
+        <v-button class="v-table__pagination-btn v-table__current-page" fit-width color="secondary"
+                  @action="props.prevPage">{{ props.pagination.page }}
+        </v-button>
+        <v-button v-if="props.pagesNumber - props.pagination.page > 1"
+                  class="v-table__pagination-btn v-table__pagination-dots" fit-width color="plane"
+                  @action="() => goToPage(Math.floor((props.pagesNumber+props.pagination.page)/2))">...
+        </v-button>
+        <v-button v-if="!props.isLastPage" class="v-table__pagination-btn" fit-width color="plane"
+                  @action="props.lastPage()">
+          {{ props.pagesNumber }}
+        </v-button>
         <v-button class="v-table__pagination-btn" icon="arrow" :icon-size="16" fit-width color="secondary"
                   @action="props.nextPage"/>
       </div>
@@ -61,8 +79,8 @@
 </template>
 <script setup lang="ts">
 import { VButton, VIcon, VInput } from '@base';
-import { QTableProps } from 'quasar';
-import { onMounted, reactive, ref } from 'vue';
+import { QTable, QTableProps } from 'quasar';
+import { computed, onMounted, reactive, ref } from 'vue';
 import type { VTableColumn, VTableEmits, VTableProps, VTableSlots } from '@/components/ui/VTable/VTable.types';
 
 const props = withDefaults(defineProps<VTableProps>(), {
@@ -73,42 +91,40 @@ const props = withDefaults(defineProps<VTableProps>(), {
 const emit = defineEmits<VTableEmits>();
 defineSlots<VTableSlots>();
 
-const pagination = ref<NonNullable<QTableProps['pagination']>>({
-  sortBy: undefined,
-  descending: false,
-  page: 1,
-  rowsPerPage: 10,
-  rowsNumber: 0,
-});
+const tableRef = ref<InstanceType<typeof QTable> | null>(null);
+const internalPagination = ref({ ...props.pagination });
 
 const searchFilters = reactive<Record<string, string>>({});
 const menuStates = reactive<Record<string, boolean>>({});
 
 const getThClassesByCol = (col: VTableColumn) => ({
   'v-table__th--active':
-    pagination.value.sortBy === col.field ||
+    internalPagination.value.sortBy === col.field ||
     menuStates[col.name] ||
     searchFilters[col.name] ||
     col.filters?.find((f) => f.value),
-  'v-table__th--sort-descending': pagination.value.sortBy === col.field && pagination.value.descending,
+  'v-table__th--sort-descending': internalPagination.value.sortBy === col.field && internalPagination.value.descending,
 });
 
-const onRequest: QTableProps['onRequest'] = ({ pagination: requestPagination }) => {
-  if (pagination.value.sortBy === requestPagination.sortBy) {
-    if (pagination.value.descending) {
-      pagination.value.sortBy = undefined;
-      pagination.value.descending = false;
-    } else {
-      pagination.value.descending = true;
-    }
-  } else {
-    pagination.value = requestPagination;
-  }
+const onRequest: QTableProps['onRequest'] = (data) => {
+  internalPagination.value = { ...data.pagination };
+  // if (pagination.value.sortBy === data.pagination.sortBy) {
+  //   if (pagination.value.descending) {
+  //     pagination.value.sortBy = undefined;
+  //     pagination.value.descending = false;
+  //   } else {
+  //     pagination.value.descending = true;
+  //   }
+  // } else {
+  //   pagination.value = data.pagination;
+  // }
+  emit('update:pagination', { ...data.pagination });
+  emit('request', data);
 };
 
 const onSearchSubmit = (colName: string) => {
   menuStates[colName] = false;
-  emit('onSearchUpdate', searchFilters);
+  tableRef.value?.requestServerInteraction();
 };
 
 const onFilterClear = (column: VTableColumn) => {
@@ -116,6 +132,10 @@ const onFilterClear = (column: VTableColumn) => {
   column.filters?.forEach((f) => {
     f.value = false;
   });
+};
+
+const goToPage = (pageNumber: number) => {
+  tableRef.value?.setPagination({ ...internalPagination.value, page: pageNumber }, true);
 };
 
 onMounted(() => {
@@ -160,9 +180,19 @@ onMounted(() => {
     gap: 12px;
   }
 
-  &__pagination-btn {
+  .v-table__pagination-btn {
     padding: 12px;
     height: 40px;
+    width: 40px;
+  }
+
+  :deep(.v-table__current-page) {
+    background-color: $primary-text-5;
+    cursor: default;
+  }
+
+  &__pagination-dots {
+    opacity: 0.1;
   }
 }
 
@@ -219,6 +249,11 @@ onMounted(() => {
   tbody tr:hover {
     background-color: $primary-text-15;
   }
+}
+
+:deep(.q-table__bottom) {
+  margin-left: auto;
+  border-top: none;
 }
 
 :deep(.search-input) {

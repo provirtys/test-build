@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { QTd } from 'quasar';
+import { type QTableProps, QTd } from 'quasar';
+import { ref } from 'vue';
 import { PieProgress } from '@';
 import type { VTableColumn } from './VTable.types';
 import VTable from './VTable.vue';
@@ -148,7 +149,7 @@ const rows: ColFields[] = [
     statusPercentage: 5,
   },
   {
-    id: 'MPK37',
+    id: 'MPK38',
     gtin: {
       name: 'Вода минеральная 2 л.',
       number: '029000000001381',
@@ -202,6 +203,13 @@ const meta: Meta<typeof VTable> = {
   args: {
     rows: rows,
     columns: columns,
+    pagination: {
+      sortBy: undefined,
+      descending: false,
+      page: 1,
+      rowsPerPage: 2,
+      rowsNumber: 20,
+    },
   },
 };
 
@@ -211,17 +219,20 @@ export const Standard: Story = {
   render: (args) => ({
     components: { VTable, QTd, PieProgress },
     setup() {
-      const updateSearch = (data: Record<string, string>) => {
-        console.log('Новые данные для поиска = ', data);
+      const onRequest = (data: Parameters<NonNullable<QTableProps['onRequest']>>[0]) => {
+        console.log('ON REQUEST = ', data);
+        argsModel.value.pagination = data.pagination;
       };
+      const argsModel = ref({ ...args });
 
       return {
-        args,
-        updateSearch,
+        argsModel,
+        onRequest,
       };
     },
     template: `
-      <v-table :columns="args.columns" :rows="args.rows" @onSearchUpdate="updateSearch">
+      <v-table :columns="argsModel.columns" :rows="argsModel.rows" v-model:pagination="argsModel.pagination"
+               @request="onRequest">
         <template #body-cell-gtin="props">
           <q-td :props="props">{{ props.value.name }}<span>{{ props.value.number }}</span></q-td>
         </template>

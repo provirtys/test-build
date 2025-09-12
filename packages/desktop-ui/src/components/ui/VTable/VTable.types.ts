@@ -20,4 +20,7 @@ export interface VTableSlots extends QTableSlots {
   [key: string]: any;
 }
 
-export type VTableEmits = (e: 'onSearchUpdate', data: Record<string, string>) => void;
+export type VTableEmits = {
+  (e: 'update:pagination', data: QTableProps['pagination']): void;
+  (e: 'request', data: Parameters<NonNullable<QTableProps['onRequest']>>[0]): void;
+};
