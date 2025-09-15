@@ -2,13 +2,13 @@
   <q-btn
     class="v-button"
     :class="btnClasses"
-    :disabled="btnDisabled"
     no-caps
     :ripple="false"
     :glossy="false"
     :loading
     flat
     ref="btnRef"
+    v-bind="bindingProps"
     v-touch-hold:1000:200:200.mouse="handleHold"
     @mousedown="startAnimation"
     @touchstart="startAnimation"
@@ -52,6 +52,7 @@
 
 <script setup lang="ts">
 import { VIcon } from '@base';
+import { QBtnProps } from 'quasar';
 import { computed, ref } from 'vue';
 import type { VButtonEmits, VButtonProps } from './VButton.types';
 
@@ -72,6 +73,13 @@ const emit = defineEmits<VButtonEmits>();
 
 const btnRef = ref<HTMLButtonElement | null>(null);
 const btnStatus = ref<'default' | 'holding' | 'done'>('default');
+
+const bindingProps = computed<QBtnProps>(() => ({
+  target: props.target,
+  type: props.type,
+  to: props.to,
+  href: props.href,
+}));
 
 const showSubmittedIcon = computed(() => props.once && btnStatus.value === 'done');
 
