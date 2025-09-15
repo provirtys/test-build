@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { type QTableProps, QTd } from 'quasar';
+import { QTd } from 'quasar';
 import { ref } from 'vue';
 import { PieProgress } from '@';
-import type { VTableColumn } from './VTable.types';
+import type { VTableColumn, VTableEmitsRequest } from './VTable.types';
 import VTable from './VTable.vue';
 
 type Story = StoryObj<typeof VTable>;
@@ -209,6 +209,8 @@ const meta: Meta<typeof VTable> = {
       page: 1,
       rowsPerPage: 2,
       rowsNumber: 20,
+      filterBy: {},
+      searchBy: {},
     },
   },
 };
@@ -219,8 +221,8 @@ export const Standard: Story = {
   render: (args) => ({
     components: { VTable, QTd, PieProgress },
     setup() {
-      const onRequest = (data: Parameters<NonNullable<QTableProps['onRequest']>>[0]) => {
-        console.log('ON REQUEST = ', data);
+      const onRequest = (data: VTableEmitsRequest) => {
+        console.log('ON REQUEST = ', data.pagination);
         argsModel.value.pagination = data.pagination;
       };
       const argsModel = ref({ ...args });

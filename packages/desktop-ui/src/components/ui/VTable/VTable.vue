@@ -1,6 +1,12 @@
 <template>
-  <q-table class="v-table" :columns :rows flat @request="onRequest" v-model:pagination="internalPagination"
-           ref="tableRef">
+  <q-table class="v-table"
+           :columns
+           :rows
+           flat
+           v-model:pagination="internalPagination"
+           ref="tableRef"
+           @request="onRequest"
+  >
     <template #header-cell="props">
       <q-th :props="props" class="v-table__th" :class="getThClassesByCol(props.col)">
         {{ props.col.label }}
@@ -10,7 +16,8 @@
             <v-icon name="search" size="11"/>
           </span>
           <q-menu class="q-pa-sm" v-model="menuStates[props.col.name]">
-            <v-input class="search-input" v-model="searchFilters[props.col.name]" outlined dense hide-bottom-space
+            <v-input class="search-input" v-model="internalPagination.searchBy[props.col.name]" outlined dense
+                     hide-bottom-space
                      autofocus @change="() => onSearchSubmit(props.col.name)">
               <template #append>
                 <v-icon class="search-icon" name="search" size="14" @click="() => onSearchSubmit(props.col.name)"
@@ -30,7 +37,9 @@
                 <q-item v-for="item in props.col.filters" :key="item.id">
                   <q-checkbox v-model="item.value" :label="item.label" color="primary-text" size="xs"
                               checked-icon="svguse:#icon-checkbox-short-filled"
-                              unchecked-icon="svguse:#icon-checkbox-short"/>
+                              unchecked-icon="svguse:#icon-checkbox-short"
+                              @update:modelValue="() => onFilterItemUpdate(props.col)"
+                  />
                 </q-item>
               </q-list>
               <button class="filter-menu__clear" @click="() => onFilterClear(props.col)">Очистить</button>
@@ -80,8 +89,14 @@
 <script setup lang="ts">
 import { VButton, VIcon, VInput } from '@base';
 import { QTable, QTableProps } from 'quasar';
-import { computed, onMounted, reactive, ref } from 'vue';
-import type { VTableColumn, VTableEmits, VTableProps, VTableSlots } from '@/components/ui/VTable/VTable.types';
+import { onMounted, reactive, ref } from 'vue';
+import type {
+  VTableColumn,
+  VTableEmits,
+  VTableEmitsRequest,
+  VTableProps,
+  VTableSlots,
+} from '@/components/ui/VTable/VTable.types';
 
 const props = withDefaults(defineProps<VTableProps>(), {
   columns: () => [],
@@ -94,32 +109,22 @@ defineSlots<VTableSlots>();
 const tableRef = ref<InstanceType<typeof QTable> | null>(null);
 const internalPagination = ref({ ...props.pagination });
 
-const searchFilters = reactive<Record<string, string>>({});
 const menuStates = reactive<Record<string, boolean>>({});
 
 const getThClassesByCol = (col: VTableColumn) => ({
   'v-table__th--active':
     internalPagination.value.sortBy === col.field ||
     menuStates[col.name] ||
-    searchFilters[col.name] ||
+    internalPagination.value.searchBy[col.name] ||
     col.filters?.find((f) => f.value),
   'v-table__th--sort-descending': internalPagination.value.sortBy === col.field && internalPagination.value.descending,
 });
 
 const onRequest: QTableProps['onRequest'] = (data) => {
-  internalPagination.value = { ...data.pagination };
-  // if (pagination.value.sortBy === data.pagination.sortBy) {
-  //   if (pagination.value.descending) {
-  //     pagination.value.sortBy = undefined;
-  //     pagination.value.descending = false;
-  //   } else {
-  //     pagination.value.descending = true;
-  //   }
-  // } else {
-  //   pagination.value = data.pagination;
-  // }
-  emit('update:pagination', { ...data.pagination });
-  emit('request', data);
+  const typedData = data as VTableEmitsRequest;
+  internalPagination.value = { ...typedData.pagination };
+  emit('update:pagination', { ...typedData.pagination });
+  emit('request', typedData);
 };
 
 const onSearchSubmit = (colName: string) => {
@@ -131,17 +136,26 @@ const onFilterClear = (column: VTableColumn) => {
   menuStates[column.name] = false;
   column.filters?.forEach((f) => {
     f.value = false;
+    delete internalPagination.value.filterBy[column.name];
   });
+  tableRef.value?.requestServerInteraction();
 };
 
 const goToPage = (pageNumber: number) => {
   tableRef.value?.setPagination({ ...internalPagination.value, page: pageNumber }, true);
 };
 
+const onFilterItemUpdate = (column: VTableColumn) => {
+  if (column.filters) {
+    internalPagination.value.filterBy[column.name] = column.filters.filter((f) => f.value).map((f) => f.id);
+  }
+  tableRef.value?.requestServerInteraction();
+};
+
 onMounted(() => {
   props.columns.forEach((col) => {
     if (col.searchable) {
-      searchFilters[col.name] = '';
+      internalPagination.value.searchBy[col.name] = '';
     }
   });
 });
