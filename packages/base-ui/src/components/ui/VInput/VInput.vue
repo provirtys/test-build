@@ -8,12 +8,12 @@
       ref="inputRef"
       @focus="() => isFocused = true"
       @blur="() => isFocused = false"
+      @update:modelValue="props['onUpdate:modelValue']"
     >
       <template v-for="(_, name) in $slots" :key="name" #[name]="slotData">
-        <slot v-if="name !== 'append'" :name="name" v-bind="slotData" />
+        <slot v-if="true" :name="name" v-bind="slotData"/>
       </template>
-
-      <template v-if="showRequiredStar || props.type === 'password'" #append>
+      <template v-if="$slots.append && showRequiredStar || props.type === 'password'" #append>
         <span v-if="showRequiredStar" class="v-input__required-star">*</span>
         <q-icon v-if="props.type === 'password'" class="v-input__eye"
                 :name="isPassword ? 'visibility' : 'visibility_off'"
@@ -65,6 +65,7 @@ const computedType = computed(() => {
 
 const wrapperClasses = computed(() => [
   'v-input',
+  attrs.class,
   {
     'v-input--label-outside': props.labelOutside,
     'v-input--outlined': bindingAttrs.value.outlined,

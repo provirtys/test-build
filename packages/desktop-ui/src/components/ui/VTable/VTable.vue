@@ -1,11 +1,12 @@
 <template>
-  <q-table class="v-table"
-           :columns
-           :rows
-           flat
-           v-model:pagination="internalPagination"
-           ref="tableRef"
-           @request="onRequest"
+  <q-table
+    class="v-table"
+    :columns
+    :rows
+    flat
+    v-model:pagination="internalPagination"
+    ref="tableRef"
+    @request="onRequest"
   >
     <template #header-cell="props">
       <q-th :props="props" class="v-table__th" :class="getThClassesByCol(props.col)">
@@ -16,9 +17,15 @@
             <v-icon name="search" size="11"/>
           </span>
           <q-menu class="q-pa-sm" v-model="menuStates[props.col.name]">
-            <v-input class="search-input" v-model="internalPagination.searchBy[props.col.name]" outlined dense
-                     hide-bottom-space
-                     autofocus @change="() => onSearchSubmit(props.col.name)">
+            <v-input
+              class="search-input"
+              v-model="internalPagination.searchBy[props.col.name]"
+              outlined
+              dense
+              hide-bottom-space
+              autofocus
+              @change="() => onSearchSubmit(props.col.name)"
+            >
               <template #append>
                 <v-icon class="search-icon" name="search" size="14" @click="() => onSearchSubmit(props.col.name)"
                         v-close-popup/>
@@ -35,10 +42,14 @@
             <div class="filter-menu">
               <q-list class="filter-menu__list">
                 <q-item v-for="item in props.col.filters" :key="item.id">
-                  <q-checkbox v-model="item.value" :label="item.label" color="primary-text" size="xs"
-                              checked-icon="svguse:#icon-checkbox-short-filled"
-                              unchecked-icon="svguse:#icon-checkbox-short"
-                              @update:modelValue="() => onFilterItemUpdate(props.col)"
+                  <q-checkbox
+                    v-model="item.value"
+                    :label="item.label"
+                    color="primary-text"
+                    size="xs"
+                    checked-icon="svguse:#icon-checkbox-short-filled"
+                    unchecked-icon="svguse:#icon-checkbox-short"
+                    @update:modelValue="() => onFilterItemUpdate(props.col)"
                   />
                 </q-item>
               </q-list>
