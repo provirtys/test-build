@@ -12,7 +12,7 @@
     "update:deps": "pnpm up",
     "prepare": "husky || true"
   },
-  "packageManager": "pnpm@10.11.1",
+  "packageManager": "pnpm@10.16.1",
   "private": true,
   "devDependencies": {
     "@biomejs/biome": "^2.1.2",

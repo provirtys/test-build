@@ -36,3 +36,6 @@ catalog:
   "apexcharts": "^4.7.0"
 onlyBuiltDependencies:
   - '@biomejs/biome'
+minimumReleaseAge: 10080
+minimumReleaseAgeExclude:
+  - '@integrity/utils'
