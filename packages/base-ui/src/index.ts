@@ -14,4 +14,5 @@ export * from './components/ui/VInput';
 export * from './components/ui/VKeyButton';
 export * from './components/ui/VRadio';
 export * from './components/ui/VRadioGroup';
+export * from './components/ui/VSelect';
 export * from './components/ui/VTable';
