@@ -29,9 +29,7 @@ function createStorybookComponent(componentName: string, basePath: string) {
 <script setup lang="ts">
 import type { ${componentName}Props } from './${componentName}.types'
 
-interface Props extends ${componentName}Props {}
-
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<${componentName}Props>(), {
   // Значения по умолчанию
 })
 </script>
@@ -68,7 +66,7 @@ export const Standard: Story = {
 }`,
 
     'index.ts': `export type { ${componentName}Props } from './${componentName}.types'
-export { default } from './${componentName}.vue'`,
+export { default as ${componentName} } from './${componentName}.vue'`,
   };
 
   // Создаем файлы
