@@ -1,6 +1,9 @@
 <template>
   <div class="v-card" :class="classList">
-    <slot/>
+    <h3 v-if="title" class="v-card__title">{{ title }}</h3>
+    <div v-if="$slots.default" class="v-card__content">
+      <slot/>
+    </div>
   </div>
 </template>
 
@@ -23,9 +26,17 @@ const classList = computed(() => ({
   background-color: $light-gray-40;
   border-radius: 8px;
   width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
   &--stretch {
     width: auto;
+  }
+
+  &__title {
+    @include font(Golos, $font-size-p1, 1, 500);
+    color: $dark-gray-70;
   }
 }
 </style>

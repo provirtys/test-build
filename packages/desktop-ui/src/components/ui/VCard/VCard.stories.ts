@@ -8,6 +8,9 @@ type Story = StoryObj<typeof VCard>;
 const meta: Meta<typeof VCard> = {
   component: VCard,
   argTypes: {
+    title: {
+      description: 'Заголовок карточки',
+    },
     stretch: {
       description: 'Растягиваться на всего родителя',
       control: 'boolean',
@@ -19,11 +22,18 @@ const meta: Meta<typeof VCard> = {
     },
   },
   args: {
+    title: '',
     stretch: true,
   },
 };
 
 export default meta;
+
+export const WithTitle: Story = {
+  args: {
+    title: 'Название карточки',
+  },
+};
 
 export const Stretch: Story = {
   render: (args) => ({
