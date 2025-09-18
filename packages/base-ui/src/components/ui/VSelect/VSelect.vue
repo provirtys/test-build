@@ -41,9 +41,9 @@
 </template>
 
 <script setup lang="ts">
+import { VIcon, VInput } from '@base';
 import { QSelect } from 'quasar';
 import { computed, ref } from 'vue';
-import { VIcon, VInput } from '@';
 import type { VSelectProps, VSelectSlots } from '@/components/ui/VSelect/VSelect.types';
 
 const props = withDefaults(defineProps<VSelectProps>(), {

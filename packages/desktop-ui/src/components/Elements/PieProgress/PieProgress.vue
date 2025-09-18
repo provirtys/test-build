@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { colors } from 'quasar';
-import { computed, defineProps, withDefaults } from 'vue';
+import { computed, withDefaults } from 'vue';
 import type { PieProgressProps } from '@/components/Elements/PieProgress/PieProgress.types';
 
 const props = withDefaults(defineProps<PieProgressProps>(), {
