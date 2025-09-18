@@ -45,6 +45,21 @@ const meta: Meta<typeof VSelect> = {
         disable: true,
       },
     },
+    outlined: {
+      table: {
+        disable: true,
+      },
+    },
+    dense: {
+      table: {
+        disable: true,
+      },
+    },
+    color: {
+      table: {
+        disable: true,
+      },
+    },
   },
   args: {
     label: 'Выберите опцию',
