@@ -8,7 +8,6 @@ import { sleep } from '@/utils/sleep';
 
 type AdditionalArgs = {
   variant?: Variant;
-  placeholder?: string;
 };
 
 type Meta = ExtendedMeta<typeof VInput, AdditionalArgs>;
@@ -70,9 +69,6 @@ const meta: Meta = {
     },
     placeholder: {
       description: 'Заглушка для поля',
-      table: {
-        category: 'attrs',
-      },
     },
     labelOutside: {
       description: 'Название за границами поля ввода',

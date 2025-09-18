@@ -1,7 +1,7 @@
 <template>
   <div :class="wrapperClasses">
     <div v-if="showOutsideContent" class="v-input__outside">
-      <v-icon v-if="showAsterisk" class="text-primary" name="asterisk" size="14"/>
+      <v-icon v-if="showAsterisk" class="text-primary" name="asterisk" size="10"/>
       <span v-if="labelOutside" ref="labelRef" class="v-input__label" @click="focusInput">{{ props.label }}</span>
     </div>
     <q-input
@@ -138,6 +138,10 @@ watch(
 
   &--label-outside {
     position: relative;
+
+    .v-input__label {
+      line-height: 1;
+    }
   }
 
   &--required:not(&--label-outside) {
