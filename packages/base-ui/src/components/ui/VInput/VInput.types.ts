@@ -6,6 +6,7 @@ export interface VInputProps extends QInputProps {
   labelOutside?: boolean;
   required?: boolean;
   xPadding?: string;
+  labelOnBorder?: boolean;
 }
 
 export interface VInputSlots extends QInputSlots {

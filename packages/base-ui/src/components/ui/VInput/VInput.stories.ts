@@ -41,6 +41,9 @@ const meta: Meta = {
         type: 'select',
         labels: types,
       },
+      table: {
+        category: 'props',
+      },
     },
     variant: {
       description: 'Стиль поля ввода',
@@ -49,15 +52,27 @@ const meta: Meta = {
         type: 'select',
         labels: variants,
       },
+      table: {
+        category: 'props',
+      },
     },
     label: {
       description: 'Название поля',
+      table: {
+        category: 'props',
+      },
     },
     modelValue: {
       description: 'Значение поля',
+      table: {
+        category: 'props',
+      },
     },
     placeholder: {
       description: 'Заглушка для поля',
+      table: {
+        category: 'attrs',
+      },
     },
     labelOutside: {
       description: 'Название за границами поля ввода',
@@ -73,9 +88,15 @@ const meta: Meta = {
       control: {
         type: 'boolean',
       },
+      table: {
+        category: 'props',
+      },
     },
     xPadding: {
       description: 'Горизонтальный отступ',
+    },
+    labelOnBorder: {
+      description: 'Отображать название на границе в `outlined` режиме',
     },
   },
   args: {
@@ -87,6 +108,8 @@ const meta: Meta = {
     labelOutside: false,
     required: false,
     dense: false,
+    xPadding: '',
+    labelOnBorder: true,
   },
   render: (args: any) => ({
     components: { VInput },
@@ -180,6 +203,17 @@ export const OutlinedLabelOutside: Story = {
   },
 };
 
+export const OutlinedLabelOnBorderRequired: Story = {
+  args: {
+    placeholder: 'Введите имя',
+    modelValue: '',
+    label: 'Ваше имя',
+    variant: 'outlined',
+    labelOutside: true,
+    required: true,
+  },
+};
+
 export const OutlinedLabelOutsideRequired: Story = {
   args: {
     placeholder: 'Введите имя',
@@ -188,6 +222,7 @@ export const OutlinedLabelOutsideRequired: Story = {
     variant: 'outlined',
     labelOutside: true,
     required: true,
+    labelOnBorder: false,
   },
 };
 

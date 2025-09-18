@@ -1,6 +1,9 @@
 <template>
   <div :class="wrapperClasses">
-    <span v-if="labelOutside" ref="labelRef" :class="labelClasses" @click="focusInput">{{ props.label }}</span>
+    <div v-if="showOutsideContent" class="v-input__outside">
+      <v-icon v-if="showAsterisk" class="text-primary" name="asterisk" size="14"/>
+      <span v-if="labelOutside" ref="labelRef" class="v-input__label" @click="focusInput">{{ props.label }}</span>
+    </div>
     <q-input
       v-model="modelValue"
       v-bind="bindingAttrs"
@@ -25,9 +28,9 @@
 
 <script setup lang="ts">
 import type { VInputProps, VInputSlots } from '@base/components/ui/VInput/VInput.types';
-import { isQuasarColor } from '@base/utils/resolveColor';
-import { QInput } from 'quasar';
+import { colors, QInput } from 'quasar';
 import { computed, ref, useAttrs, watch } from 'vue';
+import { VIcon } from '@';
 
 defineOptions({
   inheritAttrs: false,
@@ -36,6 +39,7 @@ defineOptions({
 const props = withDefaults(defineProps<VInputProps>(), {
   labelOutside: false,
   required: false,
+  labelOnBorder: true,
 });
 
 defineSlots<VInputSlots>();
@@ -51,7 +55,7 @@ const isPassword = ref(false);
 
 const hasError = computed(() => inputRef.value?.hasError);
 
-const croppedTop = computed(() => props.labelOutside && bindingAttrs.value.outlined);
+const croppedTop = computed(() => props.labelOutside && bindingAttrs.value.outlined && props.labelOnBorder);
 
 const showRequiredStar = computed(() => croppedTop.value && props.required);
 
@@ -63,11 +67,15 @@ const computedType = computed(() => {
   return props.type;
 });
 
+const showOutsideLabel = computed(
+  () => (props.labelOutside && !props.outlined) || (!props.labelOnBorder && props.outlined && props.labelOutside),
+);
+
 const wrapperClasses = computed(() => [
   'v-input',
   attrs.class,
   {
-    'v-input--label-outside': props.labelOutside,
+    'v-input--label-outside': showOutsideLabel.value,
     'v-input--outlined': bindingAttrs.value.outlined,
     'v-input--required': props.required,
     'v-input--cropped-top': croppedTop.value,
@@ -77,7 +85,7 @@ const wrapperClasses = computed(() => [
   },
 ]);
 
-const labelWidth = computed(() => (props.labelOutside && labelRef.value ? `${labelRef.value.clientWidth}px` : '0'));
+const labelWidth = computed(() => (croppedTop.value && labelRef.value ? `${labelRef.value.clientWidth}px` : '0'));
 
 const bindingAttrs = computed(() => {
   const resProps = JSON.parse(JSON.stringify(props));
@@ -102,13 +110,11 @@ const bindingAttrs = computed(() => {
   return { ...resProps, ...attrs };
 });
 
-const quasarColor = computed(() =>
-  props.labelColor ? (isQuasarColor(props.labelColor) ? `text-${props.labelColor}` : null) : null,
-);
+const bindingLabelColor = computed(() => (props.labelColor ? colors.getPaletteColor(props.labelColor) : null));
 
-const labelClasses = computed(() => ['v-input__label', quasarColor.value]);
+const showOutsideContent = computed(() => props.labelOutside);
 
-const bindColor = computed(() => (!quasarColor.value ? props.labelColor : ''));
+const showAsterisk = computed(() => props.required && showOutsideLabel.value);
 
 const focusInput = () => {
   inputRef.value.focus();
@@ -130,28 +136,19 @@ watch(
   font-family: 'Golos', sans-serif;
   position: relative;
 
-  &--outlined {
-
-    .v-input__label {
-      position: absolute;
-      top: 0;
-      left: 12px;
-      background: $secondary;
-      z-index: 10;
-      margin: 0;
-      padding-inline: 4px;
-      font-size: 12px;
-      color: $dark-gray-70;
-      transform: translateY(-50%);
-    }
-  }
-
   &--label-outside {
     position: relative;
   }
 
-  &--required:not(&--cropped-top) {
-    .v-input__label, .q-field__label {
+  &--required:not(&--label-outside) {
+
+    &.v-input--cropped-top {
+      .v-input__label:before {
+        right: -2px;
+      }
+    }
+
+    .v-input__label, :deep(.q-field__label) {
       overflow: visible;
 
       &:before {
@@ -165,6 +162,19 @@ watch(
   }
 
   &--cropped-top {
+
+    .v-input__label {
+      position: absolute;
+      top: 0;
+      left: 12px;
+      background: $secondary;
+      z-index: 10;
+      margin: 0;
+      padding-inline: 4px;
+      font-size: 12px;
+      color: $dark-gray-70;
+      transform: translateY(-50%);
+    }
 
     :deep(.q-field__inner):before {
       content: '';
@@ -197,6 +207,10 @@ watch(
       background: transparent;
     }
 
+    .v-input__outside {
+      margin-bottom: 0;
+    }
+
     :deep(.q-field__control):before {
       border-top: none;
     }
@@ -216,11 +230,24 @@ watch(
     }
   }
 
+  &--outlined:not(&--cropped-top) {
+    .v-input__label {
+      margin: 0;
+    }
+  }
+
+  &__outside {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
   &__label {
     display: inline-block;
     position: relative;
     margin-block: 8px;
-    color: v-bind(bindColor);
+    color: v-bind(bindingLabelColor);
   }
 
   &__required-star {
