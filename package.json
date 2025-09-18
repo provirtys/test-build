@@ -10,7 +10,8 @@
     "lint": "biome check --write --staged --files-ignore-unknown=true --no-errors-on-unmatched",
     "audit:licenses": "pnpm licenses list --long",
     "update:deps": "pnpm up",
-    "prepare": "husky || true"
+    "prepare": "husky || true",
+    "create:componentFolder": "node createComponentFolder.ts"
   },
   "packageManager": "pnpm@10.16.1",
   "private": true,
