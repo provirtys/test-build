@@ -8,6 +8,7 @@ export interface VInputProps extends QInputProps {
   xPadding?: string;
   labelOnBorder?: boolean;
   placeholder?: string;
+  fontSize?: string;
 }
 
 export interface VInputSlots extends QInputSlots {

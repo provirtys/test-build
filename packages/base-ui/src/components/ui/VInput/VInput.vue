@@ -40,6 +40,7 @@ const props = withDefaults(defineProps<VInputProps>(), {
   labelOutside: false,
   required: false,
   labelOnBorder: true,
+  fontSize: '14px',
 });
 
 defineSlots<VInputSlots>();
@@ -111,6 +112,8 @@ const bindingAttrs = computed(() => {
 });
 
 const bindingLabelColor = computed(() => (props.labelColor ? colors.getPaletteColor(props.labelColor) : null));
+
+const bindingFontSize = computed(() => props.fontSize || '14px');
 
 const showOutsideContent = computed(() => props.labelOutside);
 
@@ -281,6 +284,10 @@ watch(
     }
   }
 
+  :deep(.q-field__control:after) {
+    border-width: 1px;
+  }
+
   :deep(.q-field--filled .q-field__control) {
     &:before {
       border-bottom: none;
@@ -293,6 +300,11 @@ watch(
 
   :deep(.q-field__native) {
     color: $dark-gray;
+    font-size: v-bind(bindingFontSize);
+
+    &::-webkit-input-placeholder {
+      font-size: v-bind(bindingFontSize);
+    }
   }
 
   :deep(.q-field--standard.q-field--readonly) {

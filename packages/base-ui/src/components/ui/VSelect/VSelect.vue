@@ -158,6 +158,11 @@ const popupContentClass = computed(() => {
   :deep(.q-field__label), :deep(.q-item__label) {
     font-size: 16px;
   }
+
+  :deep(.q-select__dropdown-icon) {
+    scale: 0.7;
+    width: 14px;
+  }
 }
 
 :global(.v-select__menu) {
