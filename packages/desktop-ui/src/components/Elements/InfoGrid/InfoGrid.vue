@@ -21,8 +21,7 @@ const classList = computed(() => ({
   grid-template-rows: repeat(v-bind(rowsCount), 1fr);
   grid-template-columns: repeat(v-bind(columnsCount), 1fr);
   gap: 4px;
-  height: 100%;
-  min-height: v-bind(height);
+  height: v-bind(height);
 
 
   &--light {
