@@ -1,4 +1,5 @@
 export * from '@/components/Blocks/TaskForm';
+export * from '@/components/Elements/InfoGrid';
 export * from '@/components/Elements/PieProgress';
 export * from '@/components/Elements/StatusCard';
 export * from '@/components/Elements/StatusTimeline';
