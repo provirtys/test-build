@@ -5,13 +5,13 @@
       <span v-if="labelOutside" ref="labelRef" class="v-input__label" @click="focusInput">{{ props.label }}</span>
     </div>
     <q-input
-      v-model="modelValue"
+      :model-value="modelValue"
       v-bind="bindingAttrs"
       no-error-icon
       ref="inputRef"
-      @focus="() => isFocused = true"
-      @blur="() => isFocused = false"
-      @update:modelValue="props['onUpdate:modelValue']"
+      @focus="onFocus"
+      @blur="onBlur"
+      @update:model-value="onUpdate"
     >
       <template v-for="(_, name) in $slots" :key="name" #[name]="slotData">
         <slot v-if="true" :name="name" v-bind="slotData"/>
@@ -28,9 +28,9 @@
 
 <script setup lang="ts">
 import { VIcon } from '@base';
-import type { VInputProps, VInputSlots } from '@base/components/ui/VInput/VInput.types';
+import { VInputEmits, VInputProps, VInputSlots } from '@base/components/ui/VInput/VInput.types';
 import { colors, QInput } from 'quasar';
-import { computed, ref, useAttrs, watch } from 'vue';
+import { computed, nextTick, onMounted, ref, useAttrs, watch } from 'vue';
 
 defineOptions({
   inheritAttrs: false,
@@ -42,19 +42,18 @@ const props = withDefaults(defineProps<VInputProps>(), {
   labelOnBorder: true,
   fontSize: '14px',
 });
+const emit = defineEmits<VInputEmits>();
 
 defineSlots<VInputSlots>();
 
 const attrs = useAttrs();
 
-const modelValue = defineModel<string>();
-
-const inputRef = ref();
+const rawModelValue = ref('');
+const inputRef = ref<InstanceType<typeof QInput> | null>(null);
 const labelRef = ref();
 const isFocused = ref(false);
 const isPassword = ref(false);
-
-const hasError = computed(() => inputRef.value?.hasError);
+const displayValue = ref('');
 
 const croppedTop = computed(() => props.labelOutside && bindingAttrs.value.outlined && props.labelOnBorder);
 
@@ -81,7 +80,7 @@ const wrapperClasses = computed(() => [
     'v-input--required': props.required,
     'v-input--cropped-top': croppedTop.value,
     'v-input--focused': isFocused.value,
-    'v-input--has-error': hasError.value,
+    'v-input--has-error': inputRef.value?.hasError,
     'v-input--has-xpadding': props.xPadding,
   },
 ]);
@@ -119,8 +118,52 @@ const showOutsideContent = computed(() => props.labelOutside);
 
 const showAsterisk = computed(() => props.required && showOutsideLabel.value);
 
-const focusInput = () => {
-  inputRef.value.focus();
+const focusInput = () => inputRef.value?.focus();
+
+const onUpdate = async (val: any) => {
+  if (inputRef.value && props.displayNumberWithDelimiter) {
+    const cursorPosition = inputRef.value?.nativeEl.selectionStart || 0;
+    const oldValue = val;
+    const inputEl = inputRef.value.nativeEl;
+
+    // Извлекаем только цифры
+    const digits = val.replace(/\D/g, '');
+    rawModelValue.value = digits;
+    emit('update:modelValue', +rawModelValue.value);
+
+    const newValue = digits ? Number(digits).toLocaleString('ru-RU') : '';
+    displayValue.value = newValue;
+
+    await nextTick();
+    inputEl.value = newValue;
+
+    // Восстанавливаем позицию курсора (приблизительно)
+    if (newValue !== oldValue) {
+      const diff = newValue.length - oldValue.length;
+      const newCursorPosition = Math.max(0, cursorPosition + diff);
+      inputEl.setSelectionRange(newCursorPosition, newCursorPosition);
+    }
+  } else {
+    emit('update:modelValue', val);
+  }
+};
+
+const updateDisplayValueInInput = async () => {
+  await nextTick();
+
+  if (inputRef.value && props.displayNumberWithDelimiter) {
+    inputRef.value.nativeEl.value = displayValue.value;
+  }
+};
+
+const onFocus = () => {
+  isFocused.value = true;
+  updateDisplayValueInInput();
+};
+
+const onBlur = () => {
+  isFocused.value = false;
+  updateDisplayValueInInput();
 };
 
 watch(
@@ -130,6 +173,12 @@ watch(
   },
   { immediate: true },
 );
+
+onMounted(() => {
+  if (props.displayNumberWithDelimiter && props.modelValue) {
+    onUpdate(props.modelValue.toString());
+  }
+});
 </script>
 
 <style lang="scss" scoped>
@@ -237,6 +286,14 @@ watch(
     }
   }
 
+  &--outlined {
+    :deep(.q-field__counter) {
+      position: absolute;
+      right: 4px;
+      bottom: 25px;
+    }
+  }
+
   &--outlined:not(&--cropped-top) {
     .v-input__label {
       margin: 0;
@@ -301,6 +358,7 @@ watch(
   :deep(.q-field__native) {
     color: $dark-gray;
     font-size: v-bind(bindingFontSize);
+    resize: none;
 
     &::-webkit-input-placeholder {
       font-size: v-bind(bindingFontSize);
@@ -314,6 +372,12 @@ watch(
 
     .q-field__native {
       cursor: default;
+    }
+  }
+
+  :deep(.q-field--dense) {
+    .q-field__counter {
+      font-size: $font-size-p5;
     }
   }
 }

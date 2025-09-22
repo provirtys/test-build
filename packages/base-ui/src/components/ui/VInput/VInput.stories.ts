@@ -1,7 +1,7 @@
 import { VInput } from '@base';
 import type { QInputProps } from 'quasar';
 import { expect, userEvent, waitFor } from 'storybook/test';
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import type { Variant } from '@/components/ui/VInput/VInput.types';
 import type { ExtendedMeta, ExtendedStory } from '@/types/story';
 import { sleep } from '@/utils/sleep';
@@ -94,6 +94,9 @@ const meta: Meta = {
     labelOnBorder: {
       description: 'Отображать название на границе в `outlined` режиме',
     },
+    displayNumberWithDelimiter: {
+      description: 'Отображать значение в формате 1 000 000 (только цифры)',
+    },
   },
   args: {
     type: 'text',
@@ -106,6 +109,7 @@ const meta: Meta = {
     dense: false,
     xPadding: '',
     labelOnBorder: true,
+    displayNumberWithDelimiter: false,
   },
   render: (args: any) => ({
     components: { VInput },
@@ -126,19 +130,18 @@ const meta: Meta = {
         return baseProps;
       });
 
-      const updateModelValue = (val: string) => {
+      watch(modelValue, (val) => {
         args.modelValue = val;
-      };
+      });
 
       return {
         modelValue,
         inputProps,
         args,
-        updateModelValue,
       };
     },
     template: `
-      <v-input v-model="modelValue" v-bind="inputProps" @update:modelValue="updateModelValue"/>`,
+      <v-input v-model="modelValue" v-bind="inputProps"/>`,
   }),
 };
 
@@ -355,5 +358,20 @@ export const TextareaRequired: Story = {
     modelValue: '',
     label: 'Сообщение',
     required: true,
+  },
+};
+
+export const NumberWithThousandsDelimiter: Story = {
+  args: {
+    displayNumberWithDelimiter: true,
+    modelValue: '123456789',
+  },
+};
+
+export const WithCounter: Story = {
+  args: {
+    outlined: true,
+    counter: true,
+    maxlength: 120,
   },
 };

@@ -9,8 +9,11 @@ export interface VInputProps extends QInputProps {
   labelOnBorder?: boolean;
   placeholder?: string;
   fontSize?: string;
+  displayNumberWithDelimiter?: boolean;
 }
 
 export interface VInputSlots extends QInputSlots {
   [key: string]: any;
 }
+
+export type VInputEmits = (e: 'update:modelValue', val: string | number | undefined) => void;
