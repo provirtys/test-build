@@ -1,0 +1,54 @@
+<template>
+  <v-card class="package-template-card">
+    <div class="package-template-card__header">
+        <span class="package-template-card__size">
+          {{ columnsCount }}x{{ rowsCount }}
+        </span>
+      <h3 v-if="title" class="package-template-card__title">{{ title }}</h3>
+      <div v-if="layersCount > 1" class="package-template-card__layers">
+        <v-icon name="layers" size="20" class="layers-icon"/>
+        {{ layersCount }}
+      </div>
+    </div>
+    <info-grid class="package-template-card__grid" :rows-count :columns-count height="160px" is-light/>
+  </v-card>
+</template>
+
+<script setup lang="ts">
+import { VIcon } from '@base';
+import { InfoGrid, VCard } from '@';
+import type { PackageTemplateCardProps } from './PackageTemplateCard.types';
+
+defineProps<PackageTemplateCardProps>();
+</script>
+
+<style scoped lang="scss">
+.package-template-card {
+
+  &__header {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    @include font(VelaSans, $font-size-p1, 1, 400);
+  }
+
+  &__size, &__layers {
+    color: $dark-gray-70;
+  }
+
+  &__layers {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .layers-icon {
+    margin-right: 4px;
+  }
+
+  &__title {
+    color: $dark-gray;
+    @include font(VelaSans, $font-size-p1, 1, 400);
+  }
+}
+</style>
