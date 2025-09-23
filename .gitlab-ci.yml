@@ -13,7 +13,7 @@ code-check:
     - docker
   stage: lint
   rules:
-    - if: $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "refactor/dev-203")
+    - if: $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "feat/dev-304")
       when: manual
     - when: never
   script:
@@ -31,7 +31,7 @@ publish-npm:
     - docker
   stage: release
   rules:
-    - if: $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "refactor/dev-203")
+    - if: $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "feat/dev-304")
       when: always
     - when: never
   script:
@@ -40,7 +40,7 @@ publish-npm:
     - corepack prepare pnpm@latest --activate
     - pnpm i
     - pnpm build
-    - pnpm config set @integrity:registry ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/npm/ 
+    - pnpm config set @integrity:registry ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/npm/
     - pnpm config set -- //${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken ${CI_JOB_TOKEN}
     - pnpm config set @internal:registry ${CI_API_V4_URL}/packages/npm/
     - pnpm config set @labeling:registry ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/npm/
@@ -55,4 +55,4 @@ publish-npm:
       | xargs -r -I{} curl -sS --request DELETE \
           --header "PRIVATE-TOKEN:${API_GITLAB_TOKEN}" \
           "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/{}" || true
-    - pnpm publish -r --no-git-checks --verbose 
+    - pnpm publish -r --no-git-checks --verbose
