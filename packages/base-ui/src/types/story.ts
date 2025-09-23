@@ -5,6 +5,6 @@ export type ExtendedMeta<T, K> = Meta<T> & {
   argTypes?: ArgTypes<K>;
 };
 
-export type ExtendedArgs<T, K> = ComponentPropsAndSlots<T> & K;
+export type ExtendedArgs<T, K = unknown> = ComponentPropsAndSlots<T> & K;
 
 export type ExtendedStory<T, K> = StoryObj<T> & { args?: K };
