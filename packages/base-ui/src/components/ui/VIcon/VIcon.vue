@@ -26,14 +26,12 @@ const iconSize = computed(() => ({
   height: props.height || props.size || baseSize.height,
 }));
 
-const REGEXP_SPLIT = /[\s,]+/;
-
 onBeforeMount(() => {
   const svgElement = document.querySelector(`#icon-${props.name}`);
   if (svgElement) {
     const originalViewBox = svgElement.getAttribute('viewBox');
     if (originalViewBox) {
-      [, , baseSize.width, baseSize.height] = originalViewBox.split(REGEXP_SPLIT).filter(Boolean);
+      [, , baseSize.width, baseSize.height] = originalViewBox.split(/[\s,]+/).filter(Boolean);
     }
   }
 });

@@ -15,7 +15,7 @@
       </ul>
     </nav>
     <div class="app-sidebar__bottom">
-      <v-icon class="text-primary" name="integrity-logo" height="15" width="100%"/>
+      <v-icon v-if="!isDense" class="text-primary" name="integrity-logo" height="15" width="88"/>
       <v-button class="app-sidebar__toggler" icon="arrow-menu-close" :icon-size="12" height="xxs" color="secondary"
                 @action="toggleDense"/>
     </div>
@@ -51,7 +51,7 @@ const toggleDense = () => {
   transition: width 0.3s ease;
 
   &--dense {
-    width: 50px;
+    width: 52px;
 
     .app-sidebar__item {
       height: 62px;
@@ -94,6 +94,7 @@ const toggleDense = () => {
     flex-direction: column;
     gap: 12px;
     margin-top: auto;
+    align-items: center;
 
     :deep(.q-btn__content) {
       justify-content: center;

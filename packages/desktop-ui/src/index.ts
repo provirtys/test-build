@@ -7,6 +7,8 @@ export * from '@/components/Elements/StatusCard';
 export * from '@/components/Elements/StatusTimeline';
 export * from '@/components/Elements/StripedCard';
 export * from '@/components/Layouts/AppSidebar';
+export * from '@/components/Layouts/MainLayout';
+export * from '@/components/ui/VBreadcrumbs';
 export * from '@/components/ui/VCard';
 export * from '@/components/ui/VFormRow';
 export * from '@/components/ui/VTable';

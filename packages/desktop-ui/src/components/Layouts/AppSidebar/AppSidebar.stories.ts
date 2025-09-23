@@ -1,6 +1,7 @@
 import type { ExtendedArgs } from '@integrity/base-ui/src/types/story';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
+import { sidebarItems } from '@/mocks/layout';
 import AppSidebar from './AppSidebar.vue';
 
 type Story = StoryObj<typeof AppSidebar>;
@@ -28,44 +29,14 @@ const meta: Meta<typeof AppSidebar> = {
   render: (args: Args) => ({
     components: { AppSidebar },
     setup() {
-      const items = ref([
-        {
-          label: 'Задачи',
-          icon: 'page-check',
+      const items = ref(
+        sidebarItems.map((item, idx) => ({
+          ...item,
           handler: () => {
-            activateItem(0);
+            activateItem(idx);
           },
-        },
-        {
-          label: 'Линии',
-          icon: 'water-pump',
-          handler: () => {
-            activateItem(1);
-          },
-        },
-        {
-          label: 'Шаблоны',
-          icon: 'folder-special',
-          handler: () => {
-            activateItem(2);
-          },
-          active: true,
-        },
-        {
-          label: 'Интеграции',
-          icon: 'puzzle',
-          handler: () => {
-            activateItem(3);
-          },
-        },
-        {
-          label: 'Настройки',
-          icon: 'settings-filled',
-          handler: () => {
-            activateItem(4);
-          },
-        },
-      ]);
+        })),
+      );
 
       const activateItem = (id: number) => {
         items.value.forEach((item, idx) => {
@@ -79,7 +50,7 @@ const meta: Meta<typeof AppSidebar> = {
       };
     },
     template: `
-      <div class="sidebar-wrappper" style="height: 958px">
+      <div style="height: 958px">
         <app-sidebar :items="items"/>
       </div>`,
   }),
