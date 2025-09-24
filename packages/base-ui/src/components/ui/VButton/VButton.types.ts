@@ -1,5 +1,7 @@
 import type { QBtnProps } from 'quasar';
 
+export type { QBtnProps } from 'quasar';
+
 export type Color = 'primary' | 'secondary' | 'plane' | 'outline' | 'red';
 
 export type Height = 'lg' | 'md' | 'sm' | 'xs' | 'xxs';
@@ -20,6 +22,7 @@ export interface VButtonProps extends QBtnProps {
   fitWidth?: boolean;
   once?: boolean;
   enableHold?: boolean;
+  borderRadius?: string;
 }
 
 export type VButtonEmits = (e: 'action') => void;

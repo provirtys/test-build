@@ -67,6 +67,7 @@ const props = withDefaults(defineProps<VButtonProps>(), {
   fitWidth: false,
   once: false,
   enableHold: false,
+  borderRadius: '8px',
 });
 
 const emit = defineEmits<VButtonEmits>();
@@ -233,7 +234,7 @@ const finishAnimation = (_?: Event, finished?: boolean) => {
   }
 
   &.v-button--rounded {
-    border-radius: $d-1;
+    border-radius: v-bind(borderRadius);
 
     &.v-button--holding:before {
       border-radius: $d-1 0 0 $d-1;

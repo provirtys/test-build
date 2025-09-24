@@ -141,6 +141,9 @@ const meta: Meta = {
       options: [true, false],
       control: { type: 'boolean' },
     },
+    borderRadius: {
+      description: 'Радиус границы',
+    },
     default: {
       table: {
         disable: true,
@@ -152,6 +155,7 @@ const meta: Meta = {
     height: 'lg',
     text: 'Кнопка',
     textAlignment: 'center',
+    borderRadius: '8px',
     isDisabled: false,
     isRounded: true,
     icon: '',
@@ -221,6 +225,13 @@ export const Disabled: Story = {
   args: {
     text: 'Неактивная кнопка',
     isDisabled: true,
+  },
+};
+
+export const BorderRadius4px: Story = {
+  name: 'Border Radius 4px',
+  args: {
+    borderRadius: '4px',
   },
 };
 
