@@ -49,6 +49,7 @@ const toggleDense = () => {
   flex-direction: column;
   border-radius: 8px;
   transition: width 0.3s ease;
+  overflow: hidden;
 
   &--dense {
     width: 52px;

@@ -26,6 +26,7 @@
   gap: 32px 24px;
   padding: 12px;
   background-color: $light-gray-55;
+  height: 100%;
 
   &__sidebar {
     grid-area: sidebar;

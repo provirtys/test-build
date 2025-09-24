@@ -60,19 +60,21 @@ const meta: Meta<typeof MainLayout> = {
       };
     },
     template: `
-      <main-layout style="height: 958px">
-        <template #sidebar>
-          <main-sidebar :items="sidebarItems"/>
-        </template>
-        <template #header>
-          <v-breadcrumbs :items="headerItems"/>
-        </template>
-        <template #content>
-          <div class="flex flex-center full-height text-h5">
-            Контент страницы
-          </div>
-        </template>
-      </main-layout>
+      <div style="height: 958px">
+        <main-layout>
+          <template #sidebar>
+            <main-sidebar :items="sidebarItems"/>
+          </template>
+          <template #header>
+            <v-breadcrumbs :items="headerItems"/>
+          </template>
+          <template #content>
+            <div class="flex flex-center full-height text-h5">
+              Контент страницы
+            </div>
+          </template>
+        </main-layout>
+      </div>
     `,
   }),
 };
