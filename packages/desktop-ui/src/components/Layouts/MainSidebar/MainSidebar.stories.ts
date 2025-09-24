@@ -2,16 +2,16 @@ import type { ExtendedArgs } from '@integrity/base-ui/src/types/story';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import { sidebarItems } from '@/mocks/layout';
-import AppSidebar from './AppSidebar.vue';
+import MainSidebar from './MainSidebar.vue';
 
-type Story = StoryObj<typeof AppSidebar>;
-type Args = ExtendedArgs<typeof AppSidebar>;
+type Story = StoryObj<typeof MainSidebar>;
+type Args = ExtendedArgs<typeof MainSidebar>;
 
 /**
  * Компонент сайдбара приложения. Содержит в себе элементы навигации и логотип компании. Может принимать компактный вид.
  */
-const meta: Meta<typeof AppSidebar> = {
-  component: AppSidebar,
+const meta: Meta<typeof MainSidebar> = {
+  component: MainSidebar,
   argTypes: {
     items: {
       description:
@@ -27,7 +27,7 @@ const meta: Meta<typeof AppSidebar> = {
     items: [],
   },
   render: (args: Args) => ({
-    components: { AppSidebar },
+    components: { MainSidebar },
     setup() {
       const items = ref(
         sidebarItems.map((item, idx) => ({
@@ -51,7 +51,7 @@ const meta: Meta<typeof AppSidebar> = {
     },
     template: `
       <div style="height: 958px">
-        <app-sidebar :items="items"/>
+        <main-sidebar :items="items"/>
       </div>`,
   }),
 };

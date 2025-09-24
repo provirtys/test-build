@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { Notify } from 'quasar';
 import { ref } from 'vue';
-import { AppSidebar, VBreadcrumbs, type VBreadcrumbsItem } from '@';
+import { MainSidebar, VBreadcrumbs, type VBreadcrumbsItem } from '@';
 import { sidebarItems as sidebarItemsMock } from '@/mocks/layout';
 import MainLayout from './MainLayout.vue';
 
@@ -22,7 +22,7 @@ const meta: Meta<typeof MainLayout> = {
     },
   },
   render: () => ({
-    components: { MainLayout, AppSidebar, VBreadcrumbs },
+    components: { MainLayout, MainSidebar, VBreadcrumbs },
     setup() {
       const sidebarItems = ref(
         sidebarItemsMock.map((item, idx) => ({
@@ -62,7 +62,7 @@ const meta: Meta<typeof MainLayout> = {
     template: `
       <main-layout style="height: 958px">
         <template #sidebar>
-          <app-sidebar :items="sidebarItems"/>
+          <main-sidebar :items="sidebarItems"/>
         </template>
         <template #header>
           <v-breadcrumbs :items="headerItems"/>

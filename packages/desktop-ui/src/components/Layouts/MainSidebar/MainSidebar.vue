@@ -1,22 +1,22 @@
 <template>
-  <aside class="app-sidebar" :class="classList">
-    <nav class="app-sidebar__nav">
-      <ul class="app-sidebar__list">
+  <aside class="main-sidebar" :class="classList">
+    <nav class="main-sidebar__nav">
+      <ul class="main-sidebar__list">
         <li
           v-for="item in items"
           :key="item.label"
-          class="app-sidebar__item"
-          :class="{'app-sidebar__item--active': item.active}"
+          class="main-sidebar__item"
+          :class="{'main-sidebar__item--active': item.active}"
           @click="item.handler"
         >
           <v-icon v-if="item.icon" :name="item.icon" size="24"/>
-          <span class="app-sidebar__item-label">{{ item.label }}</span>
+          <span class="main-sidebar__item-label">{{ item.label }}</span>
         </li>
       </ul>
     </nav>
-    <div class="app-sidebar__bottom">
+    <div class="main-sidebar__bottom">
       <v-icon v-if="!isDense" class="text-primary" name="integrity-logo" height="15" width="88"/>
-      <v-button class="app-sidebar__toggler" icon="arrow-menu-close" :icon-size="12" height="xxs" color="secondary"
+      <v-button class="main-sidebar__toggler" icon="arrow-menu-close" :icon-size="12" height="xxs" color="secondary"
                 @action="toggleDense"/>
     </div>
   </aside>
@@ -25,14 +25,14 @@
 <script setup lang="ts">
 import { VButton, VIcon } from '@base';
 import { computed, ref } from 'vue';
-import { AppSidebarProps } from '@/components/Layouts/AppSidebar/AppSidebar.types';
+import { MainSidebarProps } from '@/components/Layouts/MainSidebar/MainSidebar.types';
 
-defineProps<AppSidebarProps>();
+defineProps<MainSidebarProps>();
 
 const isDense = ref(false);
 
 const classList = computed(() => ({
-  'app-sidebar--dense': isDense.value,
+  'main-sidebar--dense': isDense.value,
 }));
 
 const toggleDense = () => {
@@ -41,7 +41,7 @@ const toggleDense = () => {
 </script>
 
 <style scoped lang="scss">
-.app-sidebar {
+.main-sidebar {
   background-color: $light-gray-70;
   width: 112px;
   min-height: 100%;
@@ -53,15 +53,15 @@ const toggleDense = () => {
   &--dense {
     width: 52px;
 
-    .app-sidebar__item {
+    .main-sidebar__item {
       height: 62px;
     }
 
-    .app-sidebar__item-label {
+    .main-sidebar__item-label {
       display: none;
     }
 
-    .app-sidebar__toggler {
+    .main-sidebar__toggler {
       transform: rotate(180deg);
     }
   }
@@ -101,7 +101,7 @@ const toggleDense = () => {
     }
   }
 
-  .app-sidebar__toggler {
+  .main-sidebar__toggler {
     height: 30px;
     border-radius: 4px;
   }
