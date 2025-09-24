@@ -1,6 +1,6 @@
 {
   "name": "@integrity/base-ui",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "main": "./dist/base-ui.umd.js",
   "module": "./dist/base-ui.es.js",
   "scripts": {
@@ -51,6 +51,11 @@
     "vue": "catalog:",
     "vue-i18n": "catalog:",
     "vue-router": "catalog:"
+  },
+  "peerDependencies": {
+    "@quasar/extras": "catalog:",
+    "@quasar/vite-plugin": "catalog:",
+    "quasar": "catalog:"
   },
   "type": "module",
   "packageManager": "pnpm@10.11.1"
