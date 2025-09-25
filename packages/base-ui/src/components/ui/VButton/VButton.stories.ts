@@ -1,3 +1,4 @@
+import { QMenu } from 'quasar';
 import { computed } from 'vue';
 import type { Color, Height, IconPosition, TextAlignment } from '@/components/ui/VButton/VButton.types';
 import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@/types/story';
@@ -148,6 +149,9 @@ const meta: Meta = {
       table: {
         disable: true,
       },
+    },
+    menu: {
+      description: 'Слот для меню. <br/> Пример использования см. ниже',
     },
   },
   args: {
@@ -357,4 +361,24 @@ export const OnceWithHold: Story = {
     once: true,
     enableHold: true,
   },
+};
+
+export const WithMenu: Story = {
+  render: () => ({
+    components: { VButton, QMenu },
+    setup() {},
+    template: `
+      <v-button>
+        Кнопка с меню
+        <template #menu>
+          <q-menu class="q-pa-sm">
+            <ul>
+              <li class="q-pa-sm">Пункт 1</li>
+              <li class="q-pa-sm">Пункт 2</li>
+              <li class="q-pa-sm">Пункт 3</li>
+            </ul>
+          </q-menu>
+        </template>
+      </v-button>`,
+  }),
 };

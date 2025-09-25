@@ -47,6 +47,7 @@
         />
       </span>
     </template>
+    <slot v-if="$slots.menu" name="menu"/>
   </q-btn>
 </template>
 
