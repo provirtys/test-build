@@ -1,6 +1,6 @@
 {
   "name": "@integrity/terminal-ui",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "main": "./dist/terminal-ui.umd.js",
   "module": "./dist/terminal-ui.es.js",
   "scripts": {
