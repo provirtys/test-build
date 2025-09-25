@@ -41,6 +41,7 @@ const props = withDefaults(defineProps<VInputProps>(), {
   required: false,
   labelOnBorder: true,
   fontSize: '14px',
+  borderRadius: '8px',
 });
 const emit = defineEmits<VInputEmits>();
 
@@ -333,7 +334,7 @@ onMounted(() => {
   :deep(.q-field--outlined),
   :deep(.q-field--filled) {
     .q-field__control {
-      border-radius: 8px;
+      border-radius: v-bind(borderRadius);
 
       &:before {
         background: transparent;

@@ -10,6 +10,7 @@ export interface VInputProps extends QInputProps {
   placeholder?: string;
   fontSize?: string;
   displayNumberWithDelimiter?: boolean;
+  borderRadius?: string;
 }
 
 export interface VInputSlots extends QInputSlots {

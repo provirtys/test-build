@@ -97,6 +97,9 @@ const meta: Meta = {
     displayNumberWithDelimiter: {
       description: 'Отображать значение в формате 1 000 000 (только цифры)',
     },
+    borderRadius: {
+      description: 'Радиус границы',
+    },
   },
   args: {
     type: 'text',
@@ -110,6 +113,7 @@ const meta: Meta = {
     xPadding: '',
     labelOnBorder: true,
     displayNumberWithDelimiter: false,
+    borderRadius: '8px',
   },
   render: (args: any) => ({
     components: { VInput },
@@ -222,6 +226,16 @@ export const OutlinedLabelOutsideRequired: Story = {
     labelOutside: true,
     required: true,
     labelOnBorder: false,
+  },
+};
+
+export const BorderRadius4px: Story = {
+  name: 'Border radius 4px',
+  args: {
+    placeholder: 'Введите имя',
+    modelValue: '',
+    variant: 'outlined',
+    borderRadius: '4px',
   },
 };
 
