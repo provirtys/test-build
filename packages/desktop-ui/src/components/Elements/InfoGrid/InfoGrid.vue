@@ -18,8 +18,8 @@ const classList = computed(() => ({
 <style scoped lang="scss">
 .info-grid {
   display: grid;
-  grid-template-rows: repeat(v-bind(x), 1fr);
-  grid-template-columns: repeat(v-bind(y), 1fr);
+  grid-template-rows: repeat(v-bind(y), 1fr);
+  grid-template-columns: repeat(v-bind(x), 1fr);
   gap: 4px;
   height: v-bind(height);
 
