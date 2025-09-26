@@ -21,6 +21,7 @@ defineProps<VListProps>();
   display: inline-flex;
   flex-direction: column;
   gap: 4px;
+  width: 100%;
 
   &__item {
     @include font(Golos, $font-size-p4, 1, 500);
