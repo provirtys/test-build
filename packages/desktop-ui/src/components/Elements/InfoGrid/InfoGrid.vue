@@ -1,6 +1,6 @@
 <template>
   <div class="info-grid" :class="classList">
-    <div v-for="(_, idx) in Array.from({length: rowsCount * columnsCount})" :key="idx" class="info-grid__item"></div>
+    <div v-for="(_, idx) in Array.from({length: x * y})" :key="idx" class="info-grid__item"></div>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import { computed } from 'vue';
 import type { InfoGridProps } from './InfoGrid.types';
 
-const { rowsCount, columnsCount, height, isLight } = defineProps<InfoGridProps>();
+const { x, y, height, isLight } = defineProps<InfoGridProps>();
 
 const classList = computed(() => ({
   'info-grid--light': isLight,
@@ -18,8 +18,8 @@ const classList = computed(() => ({
 <style scoped lang="scss">
 .info-grid {
   display: grid;
-  grid-template-rows: repeat(v-bind(rowsCount), 1fr);
-  grid-template-columns: repeat(v-bind(columnsCount), 1fr);
+  grid-template-rows: repeat(v-bind(x), 1fr);
+  grid-template-columns: repeat(v-bind(y), 1fr);
   gap: 4px;
   height: v-bind(height);
 
