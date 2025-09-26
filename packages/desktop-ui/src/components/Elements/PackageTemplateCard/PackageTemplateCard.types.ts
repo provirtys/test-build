@@ -1,6 +1,6 @@
 import type { InfoGridProps } from '../InfoGrid';
 
-export interface PackageTemplateCardProps extends Pick<InfoGridProps, 'rowsCount' | 'columnsCount'> {
+export interface PackageTemplateCardProps extends Pick<InfoGridProps, 'x' | 'y'> {
   title?: string;
-  layersCount?: number;
+  layers?: number;
 }

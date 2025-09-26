@@ -7,19 +7,19 @@ type Story = StoryObj<typeof PackageTemplateCard>;
 const meta: Meta<typeof PackageTemplateCard> = {
   component: PackageTemplateCard,
   argTypes: {
-    columnsCount: {
+    x: {
       description: 'Количество колонок в сетке',
       table: {
         category: 'props',
       },
     },
-    rowsCount: {
+    y: {
       description: 'Количество строк в сетке',
       table: {
         category: 'props',
       },
     },
-    layersCount: {
+    layers: {
       description: 'Количество слоев в сетке <br/> Если < 1, то не показывается в карточке',
     },
     title: {
@@ -28,9 +28,9 @@ const meta: Meta<typeof PackageTemplateCard> = {
   },
   args: {
     title: 'Вода-палет-1',
-    columnsCount: 4,
-    rowsCount: 3,
-    layersCount: 2,
+    x: 4,
+    y: 3,
+    layers: 2,
   },
 };
 
@@ -40,8 +40,8 @@ export const Standard: Story = {};
 
 export const OneLayer: Story = {
   args: {
-    layersCount: 1,
-    columnsCount: 7,
-    rowsCount: 5,
+    layers: 1,
+    x: 7,
+    y: 5,
   },
 };

@@ -7,10 +7,10 @@ type Story = StoryObj<typeof InfoGrid>;
 const meta: Meta<typeof InfoGrid> = {
   component: InfoGrid,
   argTypes: {
-    rowsCount: {
+    x: {
       description: 'Количество строк в сетке',
     },
-    columnsCount: {
+    y: {
       description: 'Количество колонок в сетке',
     },
     height: {
@@ -21,8 +21,8 @@ const meta: Meta<typeof InfoGrid> = {
     },
   },
   args: {
-    rowsCount: 4,
-    columnsCount: 5,
+    x: 4,
+    y: 5,
     height: '160px',
     isLight: false,
   },

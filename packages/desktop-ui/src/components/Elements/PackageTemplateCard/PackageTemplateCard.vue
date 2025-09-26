@@ -2,15 +2,15 @@
   <v-card class="package-template-card">
     <div class="package-template-card__header">
         <span class="package-template-card__size">
-          {{ columnsCount }}x{{ rowsCount }}
+          {{ x }}x{{ y }}
         </span>
       <h3 v-if="title" class="package-template-card__title">{{ title }}</h3>
-      <div v-if="layersCount > 1" class="package-template-card__layers">
+      <div v-if="layers && layers > 1" class="package-template-card__layers">
         <v-icon name="layers" size="20" class="layers-icon"/>
-        {{ layersCount }}
+        {{ layers }}
       </div>
     </div>
-    <info-grid class="package-template-card__grid" :rows-count :columns-count height="160px" is-light/>
+    <info-grid class="package-template-card__grid" :x :y height="160px" is-light/>
   </v-card>
 </template>
 

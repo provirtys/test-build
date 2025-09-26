@@ -1,8 +1,8 @@
 import { Notify } from 'quasar';
 import type { VBreadcrumbsItem } from '@';
-import type { AppSidebarItem } from '../components/Layouts/AppSidebar';
+import type { MainSidebarItem } from '../components/Layouts/MainSidebar';
 
-export const sidebarItems: Omit<AppSidebarItem, 'handler'>[] = [
+export const sidebarItems: Omit<MainSidebarItem, 'handler'>[] = [
   {
     label: 'Задачи',
     icon: 'page-check',

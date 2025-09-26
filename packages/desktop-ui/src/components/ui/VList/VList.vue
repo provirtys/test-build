@@ -30,6 +30,7 @@ defineProps<VListProps>();
     align-items: center;
     gap: 4px;
     border-radius: 4px;
+    cursor: pointer;
 
     &:hover {
       background-color: $primary-text-15;
