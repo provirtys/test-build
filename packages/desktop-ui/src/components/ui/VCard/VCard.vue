@@ -13,16 +13,20 @@ import type { VCardProps } from '@/components/ui/VCard/VCard.types';
 
 const props = withDefaults(defineProps<VCardProps>(), {
   stretch: true,
+  paddingX: '20px',
+  paddingY: '20px',
 });
 
 const classList = computed(() => ({
   'v-card--stretch': props.stretch,
+  [`bg-${props.color}-10`]: props.color,
 }));
 </script>
 
 <style scoped lang="scss">
 .v-card {
-  padding: 20px;
+  padding-inline: v-bind(paddingX);
+  padding-block: v-bind(paddingY);
   background-color: $light-gray-40;
   border-radius: 8px;
   width: fit-content;
