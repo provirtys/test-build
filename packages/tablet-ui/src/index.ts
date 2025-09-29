@@ -15,4 +15,3 @@ export { NumericRatio } from '@/components/Elements/NumericRatio';
 export { StatusIndicator } from '@/components/Elements/StatusIndicator';
 export { TableAttributes } from '@/components/Elements/TableAttributes';
 export { MainLayout } from '@/components/Layouts/MainLayout';
-export { VCheckboxButton } from '@/components/ui/VCheckboxButton';

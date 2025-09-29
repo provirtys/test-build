@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { computed, ref } from 'vue';
-import type { Height } from '@/components/ui/VCheckboxButton/VCheckboxButton.types';
 import { VCheckboxButton } from './index';
+import type { Height } from './VCheckboxButton.types';
 
 type Story = StoryObj<typeof VCheckboxButton>;
 
@@ -60,6 +60,9 @@ const meta: Meta<typeof VCheckboxButton> = {
       description: 'Активность чекбокса',
       options: [true, false],
     },
+    border: {
+      description: 'Радиус границы',
+    },
   },
   parameters: {
     backgrounds: {
@@ -79,6 +82,7 @@ const meta: Meta<typeof VCheckboxButton> = {
     iconName: '',
     isPlane: false,
     isDisabled: false,
+    border: '8px',
   },
   render: (args) => ({
     components: { VCheckboxButton },
