@@ -12,3 +12,12 @@ export interface TaskItem {
   packageTemplate: string;
   packageCount: number;
 }
+
+export interface BoxTemplateItem {
+  id: string;
+  name: string;
+  gtin: string[];
+  x: number;
+  y: number;
+  layers: number;
+}

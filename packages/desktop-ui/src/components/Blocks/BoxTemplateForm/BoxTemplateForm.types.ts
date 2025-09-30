@@ -1,0 +1,30 @@
+import type { VInputProps, VSelectProps } from '@integrity/base-ui/src';
+import type { BoxTemplateItem } from '@/types/entities';
+
+export interface BoxTemplateFormProps {
+  box?: Partial<BoxTemplateItem>;
+  mode?: 'new' | 'edit';
+  options?: SelectFieldOptions;
+}
+
+export type BoxTemplateFormEmits = (e: 'submit', data: Partial<BoxTemplateItem>) => void;
+
+export type SelectFields = Pick<BoxTemplateItem, 'gtin'>;
+export type SelectFieldKey = keyof SelectFields;
+export type InputFieldKey = Exclude<keyof BoxTemplateItem, SelectFieldKey | 'id'>;
+
+export type FieldSettings = {
+  [K in SelectFieldKey]: VSelectProps;
+} & {
+  [K in InputFieldKey]: VInputProps;
+};
+
+export interface BoxTemplateFormFieldProps {
+  (name: SelectFieldKey): VSelectProps;
+
+  (name: InputFieldKey): VInputProps;
+}
+
+export const SelectFieldsKeys: SelectFieldKey[] = ['gtin'];
+
+export interface SelectFieldOptions extends Record<SelectFieldKey, VSelectProps['options']> {}
