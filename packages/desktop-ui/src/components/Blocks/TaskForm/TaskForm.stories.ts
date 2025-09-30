@@ -126,10 +126,10 @@ const meta: Meta<typeof TaskForm> = {
 
 export default meta;
 
-export const NoData: Story = {
+export const New: Story = {
   args: {
     task: undefined,
   },
 };
 
-export const WithData: Story = {};
+export const Edit: Story = {};

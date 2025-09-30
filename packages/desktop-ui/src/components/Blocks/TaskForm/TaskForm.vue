@@ -168,6 +168,7 @@ const getFieldProps: GetFieldProps = (name) => {
       optionsDense: true,
       mapOptions: true,
       emitValue: true,
+      rules: (fieldSettings.value[name]?.required && [(val) => val.length || 'Выберите значение']) || [],
       options: props.options ? props.options[name] : [],
       'onUpdate:modelValue': (val) => {
         formData[name] = val;
