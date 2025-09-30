@@ -8,6 +8,8 @@ export interface VCheckboxButtonProps {
   label?: string;
   isDisabled?: boolean;
   border?: string;
+  borderColor?: string;
+  bgAlwaysFilled?: boolean;
 }
 
 export type VCheckboxButtonEmits = (e: 'update:modelValue', val: boolean) => void;

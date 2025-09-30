@@ -63,6 +63,12 @@ const meta: Meta<typeof VCheckboxButton> = {
     border: {
       description: 'Радиус границы',
     },
+    borderColor: {
+      description: 'Цвет границы',
+    },
+    bgAlwaysFilled: {
+      description: 'Цвет фона всегда заполненный',
+    },
   },
   parameters: {
     backgrounds: {
@@ -83,6 +89,7 @@ const meta: Meta<typeof VCheckboxButton> = {
     isPlane: false,
     isDisabled: false,
     border: '8px',
+    borderColor: 'drak-gray',
   },
   render: (args) => ({
     components: { VCheckboxButton },

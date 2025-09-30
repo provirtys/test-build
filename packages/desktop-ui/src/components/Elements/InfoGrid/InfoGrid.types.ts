@@ -1,6 +1,6 @@
 export interface InfoGridProps {
-  x: number;
-  y: number;
+  x: number | string;
+  y: number | string;
   height?: string;
   isLight?: boolean;
 }

@@ -15,6 +15,7 @@
 
 <script setup lang="ts">
 import { VIcon } from '@base';
+import { colors } from 'quasar';
 import { computed } from 'vue';
 import type { VCheckboxButtonEmits, VCheckboxButtonProps } from '@/components/ui/VCheckboxButton/VCheckboxButton.types';
 
@@ -26,6 +27,7 @@ const props = withDefaults(defineProps<VCheckboxButtonProps>(), {
   label: 'Checkbox',
   isDisabled: false,
   border: '8px',
+  borderColor: 'dark-gray',
 });
 
 defineEmits<VCheckboxButtonEmits>();
@@ -33,7 +35,7 @@ defineEmits<VCheckboxButtonEmits>();
 const classList = computed(() => [
   [`v-checkbox-button--${props.height}`],
   {
-    'v-checkbox-button--active': props.modelValue,
+    'v-checkbox-button--active': props.modelValue || props.bgAlwaysFilled,
     'v-checkbox-button--plane': props.isPlane,
     'v-checkbox-button--disabled': props.isDisabled,
   },
@@ -42,6 +44,8 @@ const classList = computed(() => [
 const checkboxIconName = computed(() =>
   props.modelValue ? 'checkbox-transparent-select' : 'checkbox-transparent-empty',
 );
+
+const bindingBorderColor = computed(() => colors.getPaletteColor(props.borderColor));
 
 const iconSizes = {
   lg: {
@@ -72,7 +76,7 @@ const iconSizes = {
   justify-content: space-between;
   gap: $s-3;
   box-shadow: none;
-  border: 1px solid $dark-gray;
+  border: 1px solid v-bind(bindingBorderColor);
   animation: none;
   background: none;
 
@@ -111,11 +115,11 @@ const iconSizes = {
   &--xs {
     min-width: 206px;
     height: $l-1;
-    padding: $d-1 $s-2;
-    gap: $s-1;
+    padding: $s-1;
+    gap: $d-1;
 
     .v-checkbox-button__title {
-      font-size: $font-size-p2;
+      font-size: $font-size-p3;
     }
   }
 
@@ -124,13 +128,10 @@ const iconSizes = {
   }
 
   &__title {
-    font-size: $font-size-p1;
+    @include font(Golos, $font-size-p1, 1, 500, -0.24px);
     font-family: Golos, sans-serif;
-    letter-spacing: -0.24px;
-    line-height: $s-4;
     color: $dark-gray;
     margin-right: auto;
-
     display: flex;
     align-items: center;
     justify-content: flex-start;

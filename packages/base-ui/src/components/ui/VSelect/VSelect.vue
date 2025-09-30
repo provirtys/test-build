@@ -21,7 +21,19 @@
         </q-item>
       </template>
       <template v-slot:selected-item="scope">
-        <q-item-label class="">{{ scope.opt.label }} <span v-if="scope.opt.labelLight">{{ scope.opt.labelLight }}</span>
+        <template v-if="useChips">
+          <q-chip v-if="scope.index < 3" class="v-select__chip" removable square color="primary-text-5"
+                  text-color="dark-gray" icon-remove="close" @remove="() => unselectOption(scope.opt.value)">
+            {{ scope.opt.label }}
+            <span v-if="scope.opt.labelLight">{{ scope.opt.labelLight }}</span>
+          </q-chip>
+          <q-chip v-if="Array.isArray(modelValue) && modelValue.length > 3 && scope.index === modelValue.length - 1"
+                  class="v-select__chip" removable square color="primary-text-5" text-color="dark-gray"
+                  icon-remove="close" @remove="unselectLastOptions">
+            +{{ modelValue.length - 3 }}
+          </q-chip>
+        </template>
+        <q-item-label v-else>{{ scope.opt.label }} <span v-if="scope.opt.labelLight">{{ scope.opt.labelLight }}</span>
         </q-item-label>
       </template>
       <template #option="scope">
@@ -44,7 +56,7 @@
 import { VIcon, VInput } from '@base';
 import { QSelect } from 'quasar';
 import { computed, ref } from 'vue';
-import type { VSelectProps, VSelectSlots } from '@/components/ui/VSelect/VSelect.types';
+import type { VSelectEmits, VSelectProps, VSelectSlots } from '@/components/ui/VSelect/VSelect.types';
 
 const props = withDefaults(defineProps<VSelectProps>(), {
   outlined: true,
@@ -52,6 +64,8 @@ const props = withDefaults(defineProps<VSelectProps>(), {
   dense: true,
   color: 'primary-text',
 });
+
+const emit = defineEmits<VSelectEmits>();
 
 defineSlots<VSelectSlots>();
 
@@ -61,6 +75,7 @@ const selectRef = ref<InstanceType<typeof QSelect> | null>(null);
 const classList = computed(() => ({
   'v-select--static-label': props.staticLabel,
   'v-select--has-value': props.modelValue,
+  'v-select--chips': props.useChips,
 }));
 
 const optionsToShow = computed(() => {
@@ -86,6 +101,27 @@ const popupContentClass = computed(() => {
 
   return res;
 });
+
+const unselectOption = (val: string) => {
+  if (Array.isArray(props.modelValue)) {
+    emit(
+      'update:modelValue',
+      props.modelValue.filter((opt) => {
+        if (typeof opt === 'object') {
+          return opt.value !== val;
+        }
+
+        return opt !== val;
+      }),
+    );
+  } else if (props.modelValue.value === val) {
+    emit('update:modelValue', null);
+  }
+};
+
+const unselectLastOptions = () => {
+  emit('update:modelValue', props.modelValue.slice(0, 3));
+};
 </script>
 
 <style lang="scss" scoped>
@@ -111,6 +147,13 @@ const popupContentClass = computed(() => {
       :deep(.q-field__label) {
         display: none;
       }
+    }
+  }
+
+  &--chips {
+    :deep(.q-field__native) {
+      display: flex;
+      gap: 4px;
     }
   }
 
@@ -157,11 +200,29 @@ const popupContentClass = computed(() => {
 
   :deep(.q-field__label), :deep(.q-item__label) {
     font-size: 16px;
+    margin-top: 0;
   }
 
   :deep(.q-select__dropdown-icon) {
     scale: 0.7;
     width: 14px;
+  }
+
+
+  &__chip {
+    @include fontAdaptive($font-size-p4, 1, 500);
+    padding: 4px;
+    margin: 0;
+
+    :deep(.q-icon) {
+      margin: 0 0 0 4px;
+      font-size: 14px;
+    }
+
+    span {
+      margin-left: 8px;
+      color: $dark-gray-55;
+    }
   }
 }
 
