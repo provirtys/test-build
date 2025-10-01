@@ -1,8 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { VBadge } from '@';
 import { VDescriptionList } from './index';
+import type { FontWeight } from './VDescriptionList.types';
 
 type Story = StoryObj<typeof VDescriptionList>;
+
+const fontWeights: Record<FontWeight, string> = {
+  bold: 'Жирный',
+  normal: 'Нормальный',
+};
 
 /**
  * Компонент для вывода списка элементов - ключ:значение. Поддерживает слоты для кастомного вывода значений.
@@ -49,6 +55,14 @@ const meta: Meta<typeof VDescriptionList> = {
     contentGap: {
       description: 'Расстояние между элементами',
     },
+    fontWeight: {
+      description: 'Жирность шрифта',
+      options: Object.keys(fontWeights),
+      control: {
+        type: 'radio',
+        labels: fontWeights,
+      },
+    },
   },
   args: {
     items: [
@@ -74,6 +88,7 @@ const meta: Meta<typeof VDescriptionList> = {
     contentInline: false,
     itemGap: '12px',
     contentGap: '20px',
+    fontWeight: 'bold',
   },
 };
 export default meta;

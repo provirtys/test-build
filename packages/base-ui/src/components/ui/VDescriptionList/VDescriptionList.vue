@@ -4,14 +4,20 @@
          :class="{'v-description-list__item--inlined': inline && !Array.isArray(item.definition)}">
       <dt class="v-description-list__term">{{ item.term }}</dt>
       <dd class="v-description-list__definition">
-        <template v-if="typeof item.definition === 'string'">
+        <template v-if="!Array.isArray(item.definition)">
         <slot :name="item.slot || 'custom'">
           {{ item.definition }}
         </slot>
         </template>
         <template v-else-if="Array.isArray(item.definition)">
-          <v-description-list :items="item.definition" :inline :is-light :align-center :term-font-size
-                              :definitionFontSize/>
+          <v-description-list
+            :items="item.definition"
+            :inline
+            :is-light
+            :align-center
+            :term-font-size
+            :definitionFontSize
+          />
         </template>
       </dd>
     </div>
@@ -32,6 +38,7 @@ const props = withDefaults(defineProps<VDescriptionListProps>(), {
   contentInline: false,
   itemGap: '12px',
   contentGap: '20px',
+  fontWeight: 'bold',
 });
 
 const classList = computed(() => ({
@@ -40,7 +47,10 @@ const classList = computed(() => ({
   'v-description-list--centered': props.alignCenter,
   'v-description-list--bordered': props.bordered,
   'v-description-list--content-inline': props.contentInline,
+  'v-description-list--font-bold': props.fontWeight,
 }));
+
+const bindingFontWeight = computed(() => (props.fontWeight === 'normal' ? 400 : 500));
 </script>
 
 <style lang="scss" scoped>
@@ -85,12 +95,12 @@ const classList = computed(() => ({
   }
 
   &__term {
-    @include font('Golos', v-bind(termFontSize), 1, 500, -0.02em);
+    @include font('Golos', v-bind(termFontSize), 1, v-bind(bindingFontWeight), -0.02em);
     color: $dark-gray-70;
   }
 
   &__definition {
-    @include font('Golos', v-bind(definitionFontSize), 1, 500, -0.02em);
+    @include font('Golos', v-bind(definitionFontSize), 1, v-bind(bindingFontWeight), -0.02em);
     color: $dark-gray;
 
     .v-description-list__term {
