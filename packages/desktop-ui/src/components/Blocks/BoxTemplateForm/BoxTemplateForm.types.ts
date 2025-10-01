@@ -15,7 +15,7 @@ export interface BoxTemplateFormProps {
   options?: SelectFieldOptions;
 }
 
-export type BoxTemplateFormEmits = (e: 'submit', data: Partial<BoxTemplateItem>) => void;
+export type BoxTemplateFormEmits = (e: 'submit', data: BoxTemplateItem) => void;
 
 export type SelectFields = Pick<BoxTemplateItem, 'gtin'>;
 export type SelectFieldKey = keyof SelectFields;
