@@ -1,17 +1,30 @@
 <template>
   <ul class="v-list">
-    <li v-for="item in items" :key="item.label" class="v-list__item" @click="item.handler">
-      <v-icon v-if="item.icon" :name="item.icon" size="14"/>
-      {{ item.label }}
-    </li>
+    <template v-for="item in items" :key="item.label">
+      <q-separator v-if="item.topDivider"/>
+      <li class="v-list__item" @click="item.handler">
+        <v-icon
+          v-if="item.icon"
+          :name="item.icon"
+          size="14"
+          :style="{color: getIconColor(item.iconColor || 'primary-text')}"
+        />
+        {{ item.label }}
+      </li>
+    </template>
   </ul>
 </template>
 
 <script setup lang="ts">
 import { VIcon } from '@base';
+import { colors } from 'quasar';
 import type { VListProps } from './VList.types';
 
 defineProps<VListProps>();
+
+const getIconColor = (color: string) => {
+  return colors.getPaletteColor(color);
+};
 </script>
 
 <style scoped lang="scss">
@@ -36,6 +49,13 @@ defineProps<VListProps>();
     &:hover {
       background-color: $primary-text-15;
     }
+  }
+
+  &__divider {
+    margin-block: 4px;
+    height: 1px;
+    width: 100%;
+    color: $light-gray;
   }
 }
 </style>
