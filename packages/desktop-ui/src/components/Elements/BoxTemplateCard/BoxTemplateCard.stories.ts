@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import PackageTemplateCard from './PackageTemplateCard.vue';
+import BoxTemplateCard from './BoxTemplateCard.vue';
 
-type Story = StoryObj<typeof PackageTemplateCard>;
+type Story = StoryObj<typeof BoxTemplateCard>;
 
 /** Комопонент карточки шаблона упаковки/палета. В качестве пропсов принимает размерность шаблона и заголовок.  */
-const meta: Meta<typeof PackageTemplateCard> = {
-  component: PackageTemplateCard,
+const meta: Meta<typeof BoxTemplateCard> = {
+  component: BoxTemplateCard,
   argTypes: {
     x: {
       description: 'Количество колонок в сетке',
