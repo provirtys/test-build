@@ -194,10 +194,10 @@ shared-mobile-components/
 
 ## Начало работы с пакетом
 
-1. Установить `base-ui` и другой не базовый пакет в зависимости
+1. Установить `quasar`, `base-ui` и другой не базовый пакет в зависимости
 
 ```bash
-pnpm i @integrity/base-ui @integrity/[НАЗВАНИЕ ПАКЕТА]
+pnpm i quasar @integrity/base-ui @integrity/[НАЗВАНИЕ ПАКЕТА]
 ```
 
 2. Для отображения иконок нужно дополнительно установить любой плагин для создания svg sprite и настроить его на папку
@@ -222,16 +222,26 @@ export default defineConfig(() => {
 }
 ```
 
-3. Также необходимо подключить файлы
+3. Также необходимо подключить файлы quasar
 
 ```code
+@quasar/extras/material-icons/material-icons.css';
+@quasar/extras/material-icons-outlined/material-icons-outlined.css';
+@quasar/extras/material-symbols-outlined/material-symbols-outlined.css';
+quasar/dist/quasar.css';
+```
+
+И файлы самой библиотеки
+```code
+
 @integrity/base-ui/variables.scss - переменные SCSS
 @integrity/base-ui/mixins.scss - SCSS функции для удобства разработки
 @integrity/base-ui/style.css - общие стили для всех пакетов
 @integrity/[НАЗВАНИЕ ПАКЕТА]/style.css - стили нужного пакета
 ```
 
-Таким образом, стили из библиотек будут добавлены в проект, а также IDE подхватит scss переменные и миксины
+Таким образом, стили, шрифты и иконки из библиотек будут добавлены в проект, а также IDE подхватит scss переменные и
+миксины
 
 ## Создание папки для компонента из шаблона
 

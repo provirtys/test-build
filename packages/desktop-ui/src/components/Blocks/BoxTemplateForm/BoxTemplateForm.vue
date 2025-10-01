@@ -180,11 +180,11 @@ const onSubmit = async () => {
   const isValid = await formRef.value?.validate();
   if (isValid) {
     emit('submit', {
-      name: formData.name,
-      gtin: formData.gtin,
+      name: formData.name!,
+      gtin: formData.gtin!,
       x: Number(formData.x),
       y: Number(formData.y),
-      layers: Number(formData.layers),
+      layers: formData.layers ? Number(formData.layers) : 1,
     });
   }
 };
