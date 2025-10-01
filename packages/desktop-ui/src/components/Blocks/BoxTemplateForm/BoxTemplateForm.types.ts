@@ -1,5 +1,13 @@
 import type { VInputProps, VSelectProps } from '@integrity/base-ui/src';
-import type { BoxTemplateItem } from '@/types/entities';
+
+export interface BoxTemplateItem {
+  id: string;
+  name: string;
+  gtin: string[];
+  x: number;
+  y: number;
+  layers: number;
+}
 
 export interface BoxTemplateFormProps {
   box?: Partial<BoxTemplateItem>;

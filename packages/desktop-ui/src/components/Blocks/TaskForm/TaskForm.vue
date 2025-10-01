@@ -53,9 +53,9 @@ import {
   SelectFieldsKeys,
   TaskFormEmits,
   TaskFormProps,
+  TaskItem,
 } from '@/components/Blocks/TaskForm/TaskForm.types';
 import VFormRow from '@/components/ui/VFormRow/VFormRow.vue';
-import { TaskItem } from '@/types/entities';
 
 const props = withDefaults(defineProps<TaskFormProps>(), {
   mode: 'new',

@@ -1,5 +1,19 @@
 import type { VInputProps, VSelectProps } from '@integrity/base-ui/src';
-import type { TaskItem } from '@/types/entities';
+
+export interface TaskItem {
+  id: string;
+  name: string;
+  gtin: string;
+  dateStart: string;
+  timeStart: string;
+  quantity: number;
+  line: string;
+  comment: string;
+  privateComment: string;
+  labelTemplate: string;
+  packageTemplate: string;
+  packageCount: number;
+}
 
 export interface TaskFormProps {
   task?: Partial<TaskItem>;

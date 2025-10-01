@@ -53,12 +53,12 @@ import {
   BoxTemplateFormEmits,
   BoxTemplateFormFieldProps,
   BoxTemplateFormProps,
+  BoxTemplateItem,
   FieldSettings,
   SelectFieldKey,
   SelectFieldsKeys,
 } from '@/components/Blocks/BoxTemplateForm/BoxTemplateForm.types';
 import VFormRow from '@/components/ui/VFormRow/VFormRow.vue';
-import { BoxTemplateItem } from '@/types/entities';
 
 const props = withDefaults(defineProps<BoxTemplateFormProps>(), {
   mode: 'new',
@@ -182,9 +182,9 @@ const onSubmit = async () => {
     emit('submit', {
       name: formData.name,
       gtin: formData.gtin,
-      x: formData.x,
-      y: formData.y,
-      layers: formData.layers,
+      x: Number(formData.x),
+      y: Number(formData.y),
+      layers: Number(formData.layers),
     });
   }
 };
