@@ -81,7 +81,7 @@ const emit = defineEmits<BoxTemplateFormEmits>();
 
 const formRef = ref<InstanceType<typeof QForm> | null>(null);
 
-const formData = reactive({ ...props.box, multilayered: !!props.box.layers });
+const formData = reactive({ ...props.box, multilayered: !!props.box.layers && props.box.layers !== 1 });
 
 const fieldSettings = computed<FieldSettings>(() => ({
   name: {

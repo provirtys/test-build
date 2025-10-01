@@ -24,6 +24,7 @@ defineProps<BoxTemplateCardProps>();
 
 <style scoped lang="scss">
 .box-template-card {
+  cursor: pointer;
 
   &__header {
     display: flex;
