@@ -29,6 +29,9 @@ const props = withDefaults(defineProps<VDescriptionListProps>(), {
   alignCenter: false,
   termFontSize: '14px',
   definitionFontSize: '28px',
+  contentInline: false,
+  itemGap: '12px',
+  contentGap: '20px',
 });
 
 const classList = computed(() => ({
@@ -36,13 +39,14 @@ const classList = computed(() => ({
   'v-description-list--light': props.isLight,
   'v-description-list--centered': props.alignCenter,
   'v-description-list--bordered': props.bordered,
+  'v-description-list--content-inline': props.contentInline,
 }));
 </script>
 
 <style lang="scss" scoped>
 .v-description-list {
   display: grid;
-  gap: 20px;
+  gap: v-bind(contentGap);
 
   &--inline {
     .v-description-list__item--inlined {
@@ -69,10 +73,15 @@ const classList = computed(() => ({
     }
   }
 
+  &--content-inline {
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+  }
+
   &__item {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: v-bind(itemGap);
   }
 
   &__term {

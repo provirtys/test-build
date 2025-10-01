@@ -12,4 +12,7 @@ export interface VDescriptionListProps {
   termFontSize?: string;
   definitionFontSize?: string;
   bordered?: boolean;
+  contentInline?: boolean;
+  itemGap?: string;
+  contentGap?: string;
 }

@@ -40,6 +40,15 @@ const meta: Meta<typeof VDescriptionList> = {
     bordered: {
       description: 'Показывать границы у элементов',
     },
+    contentInline: {
+      description: 'Отображать элементы в линию',
+    },
+    itemGap: {
+      description: 'Расстояние между term и definition в элементе',
+    },
+    contentGap: {
+      description: 'Расстояние между элементами',
+    },
   },
   args: {
     items: [
@@ -62,6 +71,9 @@ const meta: Meta<typeof VDescriptionList> = {
     termFontSize: '14px',
     definitionFontSize: '28px',
     bordered: false,
+    contentInline: false,
+    itemGap: '12px',
+    contentGap: '20px',
   },
 };
 export default meta;
@@ -86,6 +98,22 @@ export const Light: Story = {
 export const Centered: Story = {
   args: {
     alignCenter: true,
+  },
+};
+
+export const ContentInline: Story = {
+  args: {
+    contentInline: true,
+  },
+};
+
+export const ContentInlineAndItemsInline: Story = {
+  name: 'Content Inline + Items Inline',
+  args: {
+    inline: true,
+    contentInline: true,
+    termFontSize: '16px',
+    definitionFontSize: '16px',
   },
 };
 
