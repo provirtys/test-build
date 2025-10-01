@@ -61,11 +61,10 @@
 
 <script setup lang="ts">
 import { VButton } from '@base';
-import type { QTableProps } from 'quasar';
 import { computed } from 'vue';
-import { VPaginationEmits, VPaginationSettings } from './VPagination.types';
+import { VPaginationModel } from './VPagination.types';
 
-const pagination = defineModel<VPaginationSettings>();
+const pagination = defineModel<VPaginationModel>();
 
 const totalPages = computed(() =>
   pagination.value ? Math.ceil(pagination.value.totalEl / pagination.value.elPerPage) : 0,

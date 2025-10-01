@@ -1,4 +1,4 @@
-export interface VPaginationSettings {
+export interface VPaginationModel {
   page: number;
   elPerPage: number;
   totalEl: number;
