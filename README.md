@@ -258,3 +258,11 @@ pnpm create:componentFolder MyComponent .\packages\desktop-ui\src\components\ele
 ```
 
 Данная команда создаст папку с шаблонными файлами по указанному пути и добавит их в отслеживание в гите
+
+Для каждого новосозданного компонента нужно добавить экспорты в `src/index.ts` текущего пакета
+
+Например:
+
+```code
+export * from '@/components/element/MyComponent';
+```

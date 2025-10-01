@@ -2,6 +2,7 @@ export * from '@/components/Blocks/BoxTemplateCards';
 export * from '@/components/Blocks/BoxTemplateForm';
 export * from '@/components/Blocks/TaskForm';
 export * from '@/components/Elements/BoxTemplateCard';
+export * from '@/components/Elements/BoxTemplateCardDetail';
 export * from '@/components/Elements/InfoGrid';
 export * from '@/components/Elements/PieProgress';
 export * from '@/components/Elements/StatusCard';
