@@ -4,7 +4,7 @@
         <span class="package-template-card__size">
           {{ x }}x{{ y }}
         </span>
-      <h3 v-if="title" class="package-template-card__title">{{ title }}</h3>
+      <h3 v-if="name" class="package-template-card__title">{{ name }}</h3>
       <div v-if="layers && layers > 1" class="package-template-card__layers">
         <v-icon name="layers" size="20" class="layers-icon"/>
         {{ layers }}

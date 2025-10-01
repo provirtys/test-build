@@ -22,12 +22,12 @@ const meta: Meta<typeof PackageTemplateCard> = {
     layers: {
       description: 'Количество слоев в сетке <br/> Если < 1, то не показывается в карточке',
     },
-    title: {
+    name: {
       description: 'Заголовок карточки',
     },
   },
   args: {
-    title: 'Вода-палет-1',
+    name: 'Вода-палет-1',
     x: 4,
     y: 3,
     layers: 2,
