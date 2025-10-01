@@ -62,9 +62,11 @@
 <script setup lang="ts">
 import { VButton } from '@base';
 import { computed } from 'vue';
-import { VPaginationModel } from './VPagination.types';
+import { VPaginationEmits, VPaginationModel } from './VPagination.types';
 
 const pagination = defineModel<VPaginationModel>();
+
+const emit = defineEmits<VPaginationEmits>();
 
 const totalPages = computed(() =>
   pagination.value ? Math.ceil(pagination.value.totalEl / pagination.value.elPerPage) : 0,
@@ -73,24 +75,28 @@ const totalPages = computed(() =>
 const onPrev = () => {
   if (pagination.value) {
     pagination.value.page = pagination.value.page - 1;
+    emit('prev');
   }
 };
 
 const onNext = () => {
   if (pagination.value) {
     pagination.value.page = pagination.value.page + 1;
+    emit('next');
   }
 };
 
 const onFirst = () => {
   if (pagination.value) {
     pagination.value.page = pagination.value.page = 1;
+    emit('first');
   }
 };
 
 const onLast = () => {
   if (pagination.value) {
     pagination.value.page = pagination.value.page = totalPages.value;
+    emit('last');
   }
 };
 
