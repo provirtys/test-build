@@ -19,6 +19,7 @@ export interface TaskFormProps {
   task?: Partial<TaskItem>;
   mode?: 'new' | 'edit';
   options?: SelectFieldOptions;
+  loading?: boolean;
 }
 
 export interface TaskFormEmits {

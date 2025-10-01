@@ -13,6 +13,7 @@ export interface BoxTemplateFormProps {
   box?: Partial<BoxTemplateItem>;
   mode?: 'new' | 'edit';
   options?: SelectFieldOptions;
+  loading?: boolean;
 }
 
 export type BoxTemplateFormEmits = (e: 'submit', data: Omit<BoxTemplateItem, 'id'>) => void;

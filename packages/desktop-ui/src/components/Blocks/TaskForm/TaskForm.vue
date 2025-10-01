@@ -31,11 +31,25 @@
         </v-form-row>
       </v-card>
       <div class="task-form__buttons">
-        <v-button color="secondary" text-alignment="left" icon="page" :icon-size="20" icon-position="right"
-                  @action="onDraft">Сохранить как черновик
+        <v-button color="secondary"
+                  text-alignment="left"
+                  icon="page"
+                  :icon-size="20"
+                  icon-position="right"
+                  :loading
+                  @action="onDraft"
+        >
+          Сохранить как черновик
         </v-button>
-        <v-button icon="plus" text-alignment="left" :icon-size="20" icon-position="right" @action="onSubmit">Создать
-          задачу
+        <v-button
+          icon="plus"
+          text-alignment="left"
+          :icon-size="20"
+          icon-position="right"
+          :loading
+          @action="onSubmit"
+        >
+          Создать задачу
         </v-button>
       </div>
     </q-form>

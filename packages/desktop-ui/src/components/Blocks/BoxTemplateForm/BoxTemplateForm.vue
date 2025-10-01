@@ -35,8 +35,14 @@
         </v-card>
       </v-card>
       <div class="box-template-form__buttons">
-        <v-button text-alignment="left" :icon="buttonConfig.icon" :icon-size="20" icon-position="right"
-                  @action="onSubmit">
+        <v-button
+          text-alignment="left"
+          :icon="buttonConfig.icon"
+          :icon-size="20"
+          icon-position="right"
+          :loading
+          @action="onSubmit"
+        >
           {{ buttonConfig.title }}
         </v-button>
       </div>
