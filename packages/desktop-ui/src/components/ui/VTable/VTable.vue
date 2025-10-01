@@ -68,27 +68,63 @@
 
     <template #bottom="props">
       <div class="v-table__pagination">
-        <v-button class="v-table__pagination-btn" icon="arrow-back" :icon-size="16" fit-width color="secondary"
-                  @action="props.prevPage"/>
-        <v-button v-if="!props.isFirstPage" class="v-table__pagination-btn" fit-width color="plane"
-                  @action="props.firstPage()">1
+        <v-button
+          class="v-table__pagination-btn v-table__pagination-btn--lg"
+          icon="arrow-back"
+          :icon-size="16"
+          fit-width color="secondary"
+          :disabled="props.pagination.page === 1"
+          @action="props.prevPage"
+        />
+        <v-button
+          v-if="!props.isFirstPage"
+          class="v-table__pagination-btn"
+          fit-width
+          color="plane"
+          @action="props.firstPage()"
+        >
+          1
         </v-button>
-        <v-button v-if=" props.pagination.page - 1 > 1" class="v-table__pagination-btn v-table__pagination-dots"
-                  fit-width color="plane" @action="() => goToPage(Math.floor((1+props.pagination.page)/2))">...
+        <v-button
+          v-if=" props.pagination.page - 1 > 1"
+          class="v-table__pagination-btn v-table__pagination-dots"
+          fit-width color="plane"
+          @action="() => goToPage(Math.floor((1+props.pagination.page)/2))"
+        >
+          ...
         </v-button>
-        <v-button class="v-table__pagination-btn v-table__current-page" fit-width color="secondary"
-                  @action="props.prevPage">{{ props.pagination.page }}
+        <v-button
+          class="v-table__pagination-btn v-table__current-page"
+          fit-width
+          color="secondary"
+          @action="props.prevPage">
+          {{ props.pagination.page }}
         </v-button>
-        <v-button v-if="props.pagesNumber - props.pagination.page > 1"
-                  class="v-table__pagination-btn v-table__pagination-dots" fit-width color="plane"
-                  @action="() => goToPage(Math.floor((props.pagesNumber+props.pagination.page)/2))">...
+        <v-button
+          v-if="props.pagesNumber - props.pagination.page > 1"
+          class="v-table__pagination-btn v-table__pagination-dots"
+          fit-width
+          color="plane"
+          @action="() => goToPage(Math.floor((props.pagesNumber+props.pagination.page)/2))"
+        >
+          ...
         </v-button>
-        <v-button v-if="!props.isLastPage" class="v-table__pagination-btn" fit-width color="plane"
-                  @action="props.lastPage()">
+        <v-button
+          v-if="!props.isLastPage"
+          class="v-table__pagination-btn"
+          fit-width
+          color="plane"
+          @action="props.lastPage()"
+        >
           {{ props.pagesNumber }}
         </v-button>
-        <v-button class="v-table__pagination-btn" icon="arrow" :icon-size="16" fit-width color="secondary"
-                  @action="props.nextPage"/>
+        <v-button
+          class="v-table__pagination-btn v-table__pagination-btn--lg"
+          icon="arrow"
+          :icon-size="16"
+          fit-width color="secondary"
+          :disabled="props.isLastPage"
+          @action="props.nextPage"/>
       </div>
     </template>
 
@@ -202,13 +238,21 @@ onMounted(() => {
 
   &__pagination {
     display: flex;
+    align-items: center;
     gap: 12px;
   }
 
   .v-table__pagination-btn {
-    padding: 12px;
-    height: 40px;
-    width: 40px;
+    padding: 0;
+    width: 32px;
+    height: 30px;
+    @include font(Golos, $font-size-p4, 1, 500);
+
+    &--lg {
+      padding: 12px;
+      height: 40px;
+      width: 40px;
+    }
   }
 
   :deep(.v-table__current-page) {
