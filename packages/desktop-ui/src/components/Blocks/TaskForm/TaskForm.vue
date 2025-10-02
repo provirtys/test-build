@@ -164,9 +164,9 @@ const fieldSettings = computed<FieldSettings>(() => ({
   },
 }));
 
-function isSelectFieldKey(name: keyof TaskItem): name is SelectFieldKey {
+const isSelectFieldKey = (name: keyof TaskItem): name is SelectFieldKey => {
   return SelectFieldsKeys.includes(name as SelectFieldKey);
-}
+};
 
 const getFieldProps: GetFieldProps = (name) => {
   if (isSelectFieldKey(name)) {

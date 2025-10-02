@@ -133,9 +133,9 @@ const buttonConfig = computed(() => ({
   icon: props.mode === 'new' ? 'plus' : 'done',
 }));
 
-function isSelectFieldKey(name: keyof BoxTemplateItem): name is SelectFieldKey {
+const isSelectFieldKey = (name: keyof BoxTemplateItem): name is SelectFieldKey => {
   return SelectFieldsKeys.includes(name as SelectFieldKey);
-}
+};
 
 const getFieldProps: BoxTemplateFormFieldProps = (name) => {
   if (isSelectFieldKey(name)) {
