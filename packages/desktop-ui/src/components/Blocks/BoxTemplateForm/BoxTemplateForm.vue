@@ -89,6 +89,7 @@ const fieldSettings = computed<FieldSettings>(() => ({
     placeholder: 'Новый шаблон',
     modelValue: formData.name,
     required: true,
+    disable: props.mode === 'edit',
   },
   gtin: {
     outsideLabel: 'GTIN к которым применяется шаблон',
