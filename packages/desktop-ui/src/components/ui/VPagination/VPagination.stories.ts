@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import { Notify } from 'quasar';
 import { ref } from 'vue';
+import type { VPaginationNavigateData } from './VPagination.types';
 import VPagination from './VPagination.vue';
 
 type Story = StoryObj<typeof VPagination>;
@@ -27,12 +29,41 @@ const meta: Meta<typeof VPagination> = {
     setup() {
       const pagination = ref(args.modelValue);
 
+      const paginationHandler = (data: VPaginationNavigateData) => {
+        if (pagination.value) {
+          pagination.value.page = data.page;
+        }
+        switch (data.type) {
+          case 'prev':
+            Notify.create({
+              message: 'Запрос на предыдущую страницу',
+            });
+            break;
+          case 'next':
+            Notify.create({
+              message: 'Запрос на следующую страницу',
+            });
+            break;
+          case 'first':
+            Notify.create({
+              message: 'Запрос на первую страницу',
+            });
+            break;
+          case 'last':
+            Notify.create({
+              message: 'Запрос на последнюю страницу',
+            });
+            break;
+        }
+      };
+
       return {
         pagination,
+        paginationHandler,
       };
     },
     template: `
-      <v-pagination v-model="pagination"/>`,
+      <v-pagination v-model="pagination" @navigate="paginationHandler"/>`,
   }),
 };
 

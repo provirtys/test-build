@@ -74,31 +74,46 @@ const totalPages = computed(() =>
 
 const onPrev = () => {
   if (pagination.value) {
-    emit('request', pagination.value.page - 1);
+    emit('navigate', {
+      type: 'prev',
+      page: pagination.value.page - 1,
+    });
   }
 };
 
 const onNext = () => {
   if (pagination.value) {
-    emit('request', pagination.value.page + 1);
+    emit('navigate', {
+      type: 'next',
+      page: pagination.value.page + 1,
+    });
   }
 };
 
 const onFirst = () => {
   if (pagination.value) {
-    emit('request', 1);
+    emit('navigate', {
+      type: 'first',
+      page: 1,
+    });
   }
 };
 
 const onLast = () => {
   if (pagination.value) {
-    emit('request', totalPages.value);
+    emit('navigate', {
+      type: 'last',
+      page: totalPages.value,
+    });
   }
 };
 
 const goToPage = (pageNumber: number) => {
   if (pagination.value) {
-    pagination.value.page = pageNumber;
+    emit('navigate', {
+      type: 'target',
+      page: pageNumber,
+    });
   }
 };
 </script>
