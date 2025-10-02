@@ -74,29 +74,25 @@ const totalPages = computed(() =>
 
 const onPrev = () => {
   if (pagination.value) {
-    pagination.value.page = pagination.value.page - 1;
-    emit('prev');
+    emit('request', pagination.value.page - 1);
   }
 };
 
 const onNext = () => {
   if (pagination.value) {
-    pagination.value.page = pagination.value.page + 1;
-    emit('next');
+    emit('request', pagination.value.page + 1);
   }
 };
 
 const onFirst = () => {
   if (pagination.value) {
-    pagination.value.page = pagination.value.page = 1;
-    emit('first');
+    emit('request', 1);
   }
 };
 
 const onLast = () => {
   if (pagination.value) {
-    pagination.value.page = pagination.value.page = totalPages.value;
-    emit('last');
+    emit('request', totalPages.value);
   }
 };
 

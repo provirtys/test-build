@@ -4,9 +4,4 @@ export interface VPaginationModel {
   totalEl: number;
 }
 
-export type VPaginationEmits = {
-  (e: 'first'): void;
-  (e: 'last'): void;
-  (e: 'prev'): void;
-  (e: 'next'): void;
-};
+export type VPaginationEmits = (e: 'request', page: number) => void;

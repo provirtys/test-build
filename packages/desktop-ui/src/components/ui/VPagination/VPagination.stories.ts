@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { reactive, ref } from 'vue';
+import { ref } from 'vue';
 import VPagination from './VPagination.vue';
 
 type Story = StoryObj<typeof VPagination>;
