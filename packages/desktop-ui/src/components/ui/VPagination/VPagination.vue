@@ -18,9 +18,9 @@
     </v-button>
     <v-button
       v-if="pagination.page - 1 > 1"
-      class="v-pagination__btn v-pagination-dots"
+      class="v-pagination__btn v-pagination__dots"
       fit-width color="plane"
-      @action="() => goToPage(Math.floor((1+pagination.page)/2))"
+      is-disabled
     >
       ...
     </v-button>
@@ -33,10 +33,10 @@
     </v-button>
     <v-button
       v-if="totalPages - pagination.page > 1"
-      class="v-pagination__btn v-pagination-dots"
+      class="v-pagination__btn v-pagination__dots"
       fit-width
       color="plane"
-      @action="() => goToPage(Math.floor((totalPages+pagination.page)/2))"
+      is-disabled
     >
       ...
     </v-button>
@@ -107,15 +107,6 @@ const onLast = () => {
     });
   }
 };
-
-const goToPage = (pageNumber: number) => {
-  if (pagination.value) {
-    emit('navigate', {
-      type: 'target',
-      page: pageNumber,
-    });
-  }
-};
 </script>
 
 <style scoped lang="scss">
@@ -141,6 +132,10 @@ const goToPage = (pageNumber: number) => {
       background-color: $primary-text-5;
       cursor: default;
     }
+  }
+
+  &__dots {
+    cursor: default;
   }
 }
 </style>

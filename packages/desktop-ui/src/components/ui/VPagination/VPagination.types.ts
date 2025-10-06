@@ -4,7 +4,7 @@ export interface VPaginationModel {
   totalEl: number;
 }
 
-export type VPaginationNavigationType = 'prev' | 'next' | 'first' | 'last' | 'target';
+export type VPaginationNavigationType = 'prev' | 'next' | 'first' | 'last';
 
 export interface VPaginationNavigateData {
   type: VPaginationNavigationType;
