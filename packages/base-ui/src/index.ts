@@ -10,6 +10,7 @@ export * from './components/ui/VButton';
 export * from './components/ui/VCheckboxButton';
 export * from './components/ui/VDescriptionList';
 export * from './components/ui/VExpansionItem';
+export * from './components/ui/VFileUpload';
 export * from './components/ui/VIcon';
 export * from './components/ui/VInput';
 export * from './components/ui/VKeyButton';
