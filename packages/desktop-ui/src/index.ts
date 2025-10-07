@@ -9,6 +9,7 @@ export * from '@/components/Elements/PieProgress';
 export * from '@/components/Elements/StatusCard';
 export * from '@/components/Elements/StatusTimeline';
 export * from '@/components/Elements/StickerTemplateCard';
+export * from '@/components/Elements/StickerTemplateCardDetail';
 export * from '@/components/Elements/StripedCard';
 export * from '@/components/Layouts/MainLayout';
 export * from '@/components/Layouts/MainSidebar';

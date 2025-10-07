@@ -15,6 +15,8 @@ defineProps<StickerTemplateCardProps>();
 
 <style scoped lang="scss">
 .sticker-template-card {
+  cursor: pointer;
+  overflow: hidden;
 
   &__image-container {
     max-width: 100%;
