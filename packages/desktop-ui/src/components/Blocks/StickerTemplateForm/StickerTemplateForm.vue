@@ -6,9 +6,6 @@
           <v-input v-bind="getFieldProps('name')"/>
         </v-form-row>
         <v-form-row>
-          <v-select v-bind="getFieldProps('gtin')"/>
-        </v-form-row>
-        <v-form-row>
           <v-file-upload v-model="formData.file"/>
         </v-form-row>
       </v-card>
@@ -29,18 +26,15 @@
 </template>
 
 <script setup lang="ts">
-import { VButton, VFileUpload, VInput, VSelect } from '@base';
+import { VButton, VFileUpload, VInput } from '@base';
 import { QForm } from 'quasar';
 import { computed, reactive, ref } from 'vue';
 import { VCard } from '@';
 import {
   FieldSettings,
-  SelectFieldKey,
-  SelectFieldsKeys,
   StickerTemplateFormEmits,
   StickerTemplateFormFieldProps,
   StickerTemplateFormProps,
-  StickerTemplateItem,
 } from '@/components/Blocks/StickerTemplateForm/StickerTemplateForm.types';
 import VFormRow from '@/components/ui/VFormRow/VFormRow.vue';
 
@@ -62,14 +56,6 @@ const fieldSettings = computed<FieldSettings>(() => ({
     required: true,
     disable: props.mode === 'edit',
   },
-  gtin: {
-    outsideLabel: 'GTIN к которым применяется шаблон',
-    label: 'Выберите GTIN',
-    modelValue: formData.gtin,
-    required: true,
-    multiple: true,
-    useChips: true,
-  },
   file: {
     modelValue: File,
   },
@@ -80,34 +66,7 @@ const buttonConfig = computed(() => ({
   icon: props.mode === 'new' ? 'plus' : 'done',
 }));
 
-const isSelectFieldKey = (name: keyof StickerTemplateItem): name is SelectFieldKey => {
-  return SelectFieldsKeys.includes(name as SelectFieldKey);
-};
-
 const getFieldProps: StickerTemplateFormFieldProps = (name) => {
-  if (isSelectFieldKey(name)) {
-    return {
-      modelValue: fieldSettings.value[name]?.modelValue,
-      outsideLabel: fieldSettings.value[name]?.outsideLabel,
-      label: fieldSettings.value[name]?.label,
-      staticLabel: true,
-      required: fieldSettings.value[name]?.required,
-      outlined: true,
-      labelOutside: true,
-      dense: true,
-      optionsDense: true,
-      mapOptions: true,
-      emitValue: true,
-      useChips: fieldSettings.value[name]?.useChips,
-      multiple: fieldSettings.value[name]?.multiple,
-      rules: (fieldSettings.value[name]?.required && [(val) => val.length || 'Выберите значение']) || [],
-      options: props.options ? props.options[name] : [],
-      'onUpdate:modelValue': (val) => {
-        formData[name] = val;
-      },
-    };
-  }
-
   return {
     modelValue: fieldSettings.value[name]?.modelValue,
     label: fieldSettings.value[name].label,
@@ -133,7 +92,6 @@ const onSubmit = async () => {
   if (isValid) {
     emit('submit', {
       name: formData.name!,
-      gtin: formData.gtin!,
       file: formData.file!,
     });
   }

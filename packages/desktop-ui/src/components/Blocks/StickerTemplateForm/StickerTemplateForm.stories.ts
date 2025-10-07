@@ -1,43 +1,10 @@
+import { base64ToUint8Array, uint8ArrayToFile } from '@integrity/base-ui/src/helpers/convert';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import type { BoxTemplateFormProps, SelectFieldOptions } from '../BoxTemplateForm/BoxTemplateForm.types';
+import { sticker1Base64 } from '../../../mocks/stickers';
+import type { BoxTemplateFormProps } from '../BoxTemplateForm';
 import StickerTemplateForm from './StickerTemplateForm.vue';
 
 type Story = StoryObj<typeof StickerTemplateForm>;
-
-const inputOptions: SelectFieldOptions = {
-  gtin: [
-    {
-      label: '029000000001381',
-      labelLight: 'Вода минеральная 0.3 л.',
-      value: 'gtin-1',
-    },
-    {
-      label: '029000000001382',
-      labelLight: 'Вода минеральная 0.5 л.',
-      value: 'gtin-2',
-    },
-    {
-      label: '029000000001383',
-      labelLight: 'Вода минеральная 1 л.',
-      value: 'gtin-3',
-    },
-    {
-      label: '029000000001384',
-      labelLight: 'Вода минеральная 1.5 л.',
-      value: 'gtin-4',
-    },
-    {
-      label: '029000000001385',
-      labelLight: 'Вода минеральная 2 л.',
-      value: 'gtin-5',
-    },
-    {
-      label: '029000000001386',
-      labelLight: 'Вода минеральная 5 л.',
-      value: 'gtin-6',
-    },
-  ],
-};
 
 const modes: Record<NonNullable<BoxTemplateFormProps['mode']>, string> = {
   new: 'Создание',
@@ -51,9 +18,6 @@ const meta: Meta<typeof StickerTemplateForm> = {
     sticker: {
       description: 'Изначальные данные для формы',
     },
-    options: {
-      description: 'Набор опций для селектов',
-    },
     mode: {
       description: 'Режим создания/изменения',
       options: Object.keys(modes),
@@ -65,7 +29,6 @@ const meta: Meta<typeof StickerTemplateForm> = {
   },
   args: {
     sticker: {},
-    options: inputOptions,
     mode: 'new',
     onSubmit: (data) => {
       console.log('Данные формы:', data);
@@ -75,7 +38,6 @@ const meta: Meta<typeof StickerTemplateForm> = {
     components: { StickerTemplateForm },
     setup() {
       const stickerData = args.sticker;
-      const options = inputOptions;
 
       const onSubmit = (data: any) => {
         console.log('Событие создания шаблона:', data);
@@ -83,12 +45,11 @@ const meta: Meta<typeof StickerTemplateForm> = {
 
       return {
         stickerData,
-        options,
         onSubmit,
       };
     },
     template: `
-      <sticker-template-form :sticker="stickerData" :options="options" @submit="onSubmit"/>`,
+      <sticker-template-form :sticker="stickerData" @submit="onSubmit"/>`,
   }),
 };
 
@@ -100,7 +61,7 @@ export const Edit: Story = {
   args: {
     sticker: {
       name: 'Шаблон этикетки 1',
-      gtin: ['gtin-1', 'gtin-2', 'gtin-4'],
+      file: uint8ArrayToFile(base64ToUint8Array(sticker1Base64), 'testFile'),
     },
   },
 };

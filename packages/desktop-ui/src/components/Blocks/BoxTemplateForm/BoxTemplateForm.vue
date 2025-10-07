@@ -5,9 +5,6 @@
         <v-form-row>
           <v-input v-bind="getFieldProps('name')"/>
         </v-form-row>
-        <v-form-row>
-          <v-select v-bind="getFieldProps('gtin')"/>
-        </v-form-row>
         <v-form-row class="box-template-form__grid">
           <span class="box-template-form__grid-title">Кол-во</span>
           <info-grid :x="formData.x || 5" :y="formData.y || 3" height="212px"/>
@@ -51,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { VButton, VCheckboxButton, VIcon, VInput, VSelect } from '@base';
+import { VButton, VCheckboxButton, VIcon, VInput } from '@base';
 import { QForm } from 'quasar';
 import { computed, reactive, ref, watch } from 'vue';
 import { InfoGrid, VCard } from '@';
@@ -59,10 +56,7 @@ import {
   BoxTemplateFormEmits,
   BoxTemplateFormFieldProps,
   BoxTemplateFormProps,
-  BoxTemplateItem,
   FieldSettings,
-  SelectFieldKey,
-  SelectFieldsKeys,
 } from '@/components/Blocks/BoxTemplateForm/BoxTemplateForm.types';
 import VFormRow from '@/components/ui/VFormRow/VFormRow.vue';
 
@@ -90,14 +84,6 @@ const fieldSettings = computed<FieldSettings>(() => ({
     modelValue: formData.name,
     required: true,
     disable: props.mode === 'edit',
-  },
-  gtin: {
-    outsideLabel: 'GTIN к которым применяется шаблон',
-    label: 'Выберите GTIN',
-    modelValue: formData.gtin,
-    required: true,
-    multiple: true,
-    useChips: true,
   },
   x: {
     label: 'X',
@@ -133,62 +119,32 @@ const buttonConfig = computed(() => ({
   icon: props.mode === 'new' ? 'plus' : 'done',
 }));
 
-const isSelectFieldKey = (name: keyof BoxTemplateItem): name is SelectFieldKey => {
-  return SelectFieldsKeys.includes(name as SelectFieldKey);
-};
-
-const getFieldProps: BoxTemplateFormFieldProps = (name) => {
-  if (isSelectFieldKey(name)) {
-    return {
-      modelValue: fieldSettings.value[name]?.modelValue,
-      outsideLabel: fieldSettings.value[name]?.outsideLabel,
-      label: fieldSettings.value[name]?.label,
-      staticLabel: true,
-      required: fieldSettings.value[name]?.required,
-      outlined: true,
-      labelOutside: true,
-      dense: true,
-      optionsDense: true,
-      mapOptions: true,
-      emitValue: true,
-      useChips: fieldSettings.value[name]?.useChips,
-      multiple: fieldSettings.value[name]?.multiple,
-      rules: (fieldSettings.value[name]?.required && [(val) => val.length || 'Выберите значение']) || [],
-      options: props.options ? props.options[name] : [],
-      'onUpdate:modelValue': (val) => {
-        formData[name] = val;
-      },
-    };
-  }
-
-  return {
-    modelValue: fieldSettings.value[name]?.modelValue,
-    label: fieldSettings.value[name].label,
-    placeholder: fieldSettings.value[name].placeholder,
-    required: fieldSettings.value[name].required,
-    outlined: true,
-    labelOutside: true,
-    labelOnBorder: false,
-    dense: true,
-    labelColor: 'dark-gray-70',
-    color: 'primary-text',
-    fontSize: '16px',
-    type: fieldSettings.value[name].type || 'text',
-    maxlength: 120,
-    min: name === 'layers' ? 1 : 0,
-    disable: fieldSettings.value[name].disable,
-    'onUpdate:modelValue': (val) => {
-      formData[name] = val;
-    },
-  };
-};
+const getFieldProps: BoxTemplateFormFieldProps = (name) => ({
+  modelValue: fieldSettings.value[name]?.modelValue,
+  label: fieldSettings.value[name].label,
+  placeholder: fieldSettings.value[name].placeholder,
+  required: fieldSettings.value[name].required,
+  outlined: true,
+  labelOutside: true,
+  labelOnBorder: false,
+  dense: true,
+  labelColor: 'dark-gray-70',
+  color: 'primary-text',
+  fontSize: '16px',
+  type: fieldSettings.value[name].type || 'text',
+  maxlength: 120,
+  min: name === 'layers' ? 1 : 0,
+  disable: fieldSettings.value[name].disable,
+  'onUpdate:modelValue': (val) => {
+    formData[name] = val;
+  },
+});
 
 const onSubmit = async () => {
   const isValid = await formRef.value?.validate();
   if (isValid) {
     emit('submit', {
       name: formData.name!,
-      gtin: formData.gtin!,
       x: Number(formData.x),
       y: Number(formData.y),
       layers: formData.layers ? Number(formData.layers) : 1,

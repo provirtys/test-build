@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { Notify } from 'quasar';
-import { sticker1, sticker2, sticker3, sticker4 } from '../../../mocks/stickers';
+import { sticker1Base64, sticker2Base64, sticker3Base64, sticker4Base64 } from '../../../mocks/stickers';
 import StickerTemplateCardDetail from './StickerTemplateCardDetail.vue';
 
 type Story = StoryObj<typeof StickerTemplateCardDetail>;
@@ -50,27 +50,27 @@ export default meta;
 export const Sticker1: Story = {
   args: {
     name: 'Этикетка 1',
-    base64Image: sticker1,
+    base64Image: 'data:image/png;base64,' + sticker1Base64,
   },
 };
 
 export const Sticker2: Story = {
   args: {
     name: 'Этикетка 2',
-    base64Image: sticker2,
+    base64Image: 'data:image/png;base64,' + sticker2Base64,
   },
 };
 
 export const Sticker3: Story = {
   args: {
     name: 'Этикетка 3',
-    base64Image: sticker3,
+    base64Image: 'data:image/png;base64,' + sticker3Base64,
   },
 };
 
 export const Sticker4: Story = {
   args: {
     name: 'Этикетка 4',
-    base64Image: sticker4,
+    base64Image: 'data:image/png;base64,' + sticker4Base64,
   },
 };

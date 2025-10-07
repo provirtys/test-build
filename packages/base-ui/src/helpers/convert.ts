@@ -16,3 +16,13 @@ export const fileToBase64 = (file: File) => {
     reader.readAsDataURL(file);
   });
 };
+
+export const base64ToUint8Array = (str: string): Uint8Array => {
+  const binaryString = atob(str);
+  const length = binaryString.length;
+  const bytes = new Uint8Array(length);
+  for (let i = 0; i < length; i++) {
+    bytes[i] = binaryString.charCodeAt(i);
+  }
+  return bytes;
+};
