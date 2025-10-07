@@ -83,7 +83,6 @@ const fieldSettings = computed<FieldSettings>(() => ({
     placeholder: 'Новый шаблон',
     modelValue: formData.name,
     required: true,
-    disable: props.mode === 'edit',
   },
   x: {
     label: 'X',

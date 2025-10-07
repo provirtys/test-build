@@ -54,7 +54,6 @@ const fieldSettings = computed<FieldSettings>(() => ({
     placeholder: 'Новый шаблон',
     modelValue: formData.name,
     required: true,
-    disable: props.mode === 'edit',
   },
   file: {
     modelValue: File,
@@ -80,7 +79,6 @@ const getFieldProps: StickerTemplateFormFieldProps = (name) => {
     color: 'primary-text',
     fontSize: '16px',
     type: fieldSettings.value[name].type || 'text',
-    disable: fieldSettings.value[name].disable,
     'onUpdate:modelValue': (val) => {
       formData[name] = val;
     },
