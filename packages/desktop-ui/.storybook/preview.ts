@@ -10,9 +10,6 @@ import '@quasar/extras/material-icons-outlined/material-icons-outlined.css';
 import '@quasar/extras/material-symbols-outlined/material-symbols-outlined.css';
 import 'quasar/dist/quasar.css';
 
-import '@vue-flow/core/dist/style.css';
-import '@vue-flow/core/dist/theme-default.css';
-
 import '@base/css/main.scss';
 
 import en from '../../base-ui/src/locales/en.json';

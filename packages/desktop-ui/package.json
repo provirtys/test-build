@@ -1,6 +1,6 @@
 {
   "name": "@integrity/desktop-ui",
-  "version": "1.0.45",
+  "version": "1.0.46",
   "main": "./dist/desktop-ui.umd.js",
   "module": "./dist/desktop-ui.es.js",
   "scripts": {
@@ -27,14 +27,14 @@
   "types": "./dist/desktop-ui.es.d.ts",
   "peerDependencies": {
     "@integrity/base-ui": "workspace:*",
-    "@integrity/icons": "workspace:*"
+    "@integrity/icons": "workspace:*",
+    "@vue-flow/background": "catalog:",
+    "@vue-flow/core": "catalog:"
   },
   "dependencies": {
     "@chromatic-com/storybook": "catalog:",
     "@storybook/addon-a11y": "catalog:",
     "@storybook/addon-vitest": "catalog:",
-    "@vue-flow/background": "catalog:",
-    "@vue-flow/core": "catalog:",
     "pinia": "catalog:",
     "sass-embedded": "catalog:",
     "vue": "catalog:"

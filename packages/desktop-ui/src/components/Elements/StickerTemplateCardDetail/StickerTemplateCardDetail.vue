@@ -48,6 +48,7 @@ import { type Node, VueFlow } from '@vue-flow/core';
 import { computed, ref } from 'vue';
 import { VCard, VList, VListItem } from '@';
 import type { StickerTemplateCardDetailEmits, StickerTemplateCardDetailProps } from './StickerTemplateCardDetail.types';
+import '@vue-flow/core/dist/style.css';
 
 const props = defineProps<StickerTemplateCardDetailProps>();
 const emit = defineEmits<StickerTemplateCardDetailEmits>();
