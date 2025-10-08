@@ -1,6 +1,6 @@
 <template>
   <div class="box-template-form">
-    <q-form ref="formRef" class="box-template-form__form">
+    <q-form ref="formRef" class="box-template-form__form" @submit="onSubmit">
       <v-card title="Информация">
         <v-form-row>
           <v-input v-bind="getFieldProps('name')"/>
@@ -34,11 +34,11 @@
       <div class="box-template-form__buttons">
         <v-button
           text-alignment="left"
+          type="submit"
+          icon-position="right"
           :icon="buttonConfig.icon"
           :icon-size="20"
-          icon-position="right"
           :loading
-          @action="onSubmit"
         >
           {{ buttonConfig.title }}
         </v-button>

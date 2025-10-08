@@ -10,4 +10,5 @@ export interface VFileUploadProps {
   formats?: string[];
   label?: string;
   image?: string;
+  required?: boolean;
 }

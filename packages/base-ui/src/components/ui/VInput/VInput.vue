@@ -92,11 +92,13 @@ const bindingAttrs = computed(() => {
   const resProps = JSON.parse(JSON.stringify(props));
 
   resProps.type = computedType.value;
+  resProps.rules = props.rules;
 
   if (props.labelOutside) {
     resProps.label = undefined;
   }
   if (props.required) {
+    resProps.required = undefined;
     const requiredRule = (val: string) => !!val || 'Поле обязательное для заполнения';
 
     if (Array.isArray(resProps.rules)) {

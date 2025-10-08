@@ -1,12 +1,12 @@
 <template>
   <div class="sticker-template-form">
-    <q-form ref="formRef" class="sticker-template-form__form">
+    <q-form ref="formRef" class="sticker-template-form__form" @submit="onSubmit">
       <v-card title="Информация">
         <v-form-row>
           <v-input v-bind="getFieldProps('name')"/>
         </v-form-row>
         <v-form-row>
-          <v-file-upload v-model="formData.file"/>
+          <v-file-upload v-model="formData.file" required/>
         </v-form-row>
       </v-card>
       <div class="sticker-template-form__buttons">
@@ -14,9 +14,9 @@
           text-alignment="left"
           :icon="buttonConfig.icon"
           :icon-size="20"
-          icon-position="right"
           :loading
-          @action="onSubmit"
+          icon-position="right"
+          type="submit"
         >
           {{ buttonConfig.title }}
         </v-button>

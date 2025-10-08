@@ -1,6 +1,9 @@
 <template>
   <div class="v-file-upload">
-    <label class="v-file-upload__label">{{ label }}</label>
+    <div class="v-file-upload__header">
+      <v-icon v-if="required" class="text-primary" name="asterisk" size="10"/>
+      <label class="v-file-upload__label">{{ label }}</label>
+    </div>
     <div class="v-file-upload__container">
       <v-icon class="q-mb-lg" :class="iconClass" :name="config.icon" size="28"/>
       <p class="v-file-upload__formats">{{ config.hint }}</p>
@@ -127,6 +130,13 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .v-file-upload {
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
 
   &__label {
     @include font(VelaSans, $font-size-p4, 1, 400);
