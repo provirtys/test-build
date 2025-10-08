@@ -132,6 +132,10 @@ const onLast = () => {
       background-color: $primary-text-5;
       cursor: default;
     }
+
+    &:disabled {
+      opacity: 0.1 !important;
+    }
   }
 
   &__dots {

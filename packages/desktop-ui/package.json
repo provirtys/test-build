@@ -1,6 +1,6 @@
 {
   "name": "@integrity/desktop-ui",
-  "version": "1.0.48",
+  "version": "1.0.49",
   "main": "./dist/desktop-ui.umd.js",
   "module": "./dist/desktop-ui.es.js",
   "scripts": {
