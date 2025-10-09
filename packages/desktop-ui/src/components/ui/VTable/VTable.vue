@@ -12,7 +12,7 @@
       <q-th :props="props" class="v-table__th" :class="getThClassesByCol(props.col)">
         {{ props.col.label }}
         <!-- Поиск -->
-        <template v-if="props.col.searchable">
+        <template v-if="props.col.searchable && internalPagination.searchBy?.[props.col.name]">
           <span class="v-table__th-icon">
             <v-icon name="search" size="11"/>
           </span>
@@ -89,7 +89,7 @@
           v-if=" props.pagination.page - 1 > 1"
           class="v-table__pagination-btn v-table__pagination-dots"
           fit-width color="plane"
-          @action="() => goToPage(Math.floor((1+props.pagination.page)/2))"
+          is-disabled
         >
           ...
         </v-button>
@@ -105,7 +105,7 @@
           class="v-table__pagination-btn v-table__pagination-dots"
           fit-width
           color="plane"
-          @action="() => goToPage(Math.floor((props.pagesNumber+props.pagination.page)/2))"
+          is-disabled
         >
           ...
         </v-button>
@@ -162,7 +162,7 @@ const getThClassesByCol = (col: VTableColumn) => ({
   'v-table__th--active':
     internalPagination.value.sortBy === col.field ||
     menuStates[col.name] ||
-    internalPagination.value.searchBy[col.name] ||
+    internalPagination.value.searchBy?.[col.name] ||
     col.filters?.find((f) => f.value),
   'v-table__th--sort-descending': internalPagination.value.sortBy === col.field && internalPagination.value.descending,
 });
@@ -183,17 +183,13 @@ const onFilterClear = (column: VTableColumn) => {
   menuStates[column.name] = false;
   column.filters?.forEach((f) => {
     f.value = false;
-    delete internalPagination.value.filterBy[column.name];
+    delete internalPagination.value.filterBy?.[column.name];
   });
   tableRef.value?.requestServerInteraction();
 };
 
-const goToPage = (pageNumber: number) => {
-  tableRef.value?.setPagination({ ...internalPagination.value, page: pageNumber }, true);
-};
-
 const onFilterItemUpdate = (column: VTableColumn) => {
-  if (column.filters) {
+  if (column.filters && internalPagination.value.filterBy) {
     internalPagination.value.filterBy[column.name] = column.filters.filter((f) => f.value).map((f) => f.id);
   }
   tableRef.value?.requestServerInteraction();
@@ -201,7 +197,7 @@ const onFilterItemUpdate = (column: VTableColumn) => {
 
 onMounted(() => {
   props.columns.forEach((col) => {
-    if (col.searchable) {
+    if (col.searchable && internalPagination.value.searchBy) {
       internalPagination.value.searchBy[col.name] = '';
     }
   });
@@ -248,6 +244,10 @@ onMounted(() => {
     height: 30px;
     @include font(Golos, $font-size-p4, 1, 500);
 
+    &:disabled {
+      opacity: 0.1 !important;
+    }
+
     &--lg {
       padding: 12px;
       height: 40px;
@@ -262,11 +262,16 @@ onMounted(() => {
 
   &__pagination-dots {
     opacity: 0.1;
+    cursor: default;
   }
 }
 
 :deep(.q-table) {
   border-spacing: 0 8px;
+
+  thead tr {
+    height: 35px;
+  }
 
   tr {
     border: unset;

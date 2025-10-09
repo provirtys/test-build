@@ -13,13 +13,13 @@ export interface VTableColumn extends QTableColumn {
 }
 
 export interface VTablePagination extends NonNullable<QTableProps['pagination']> {
-  searchBy: Record<string, string>;
-  filterBy: Record<string, string[]>;
+  searchBy?: Record<string, string>;
+  filterBy?: Record<string, string[]>;
 }
 
 export interface VTableProps extends QTableProps {
   columns: VTableColumn[];
-  pagination: VTablePagination;
+  pagination?: VTablePagination;
 }
 
 export interface VTableSlots extends QTableSlots {

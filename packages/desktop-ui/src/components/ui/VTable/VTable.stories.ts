@@ -149,7 +149,7 @@ const rows: ColFields[] = [
     statusPercentage: 5,
   },
   {
-    id: 'MPK38',
+    id: 'MPK39',
     gtin: {
       name: 'Вода минеральная 2 л.',
       number: '029000000001381',
@@ -204,7 +204,7 @@ const meta: Meta<typeof VTable> = {
     rows: rows,
     columns: columns,
     pagination: {
-      sortBy: undefined,
+      sortBy: null,
       descending: false,
       page: 1,
       rowsPerPage: 2,
@@ -233,7 +233,9 @@ export const Standard: Story = {
       };
     },
     template: `
-      <v-table :columns="argsModel.columns" :rows="argsModel.rows" v-model:pagination="argsModel.pagination"
+      <v-table :columns="argsModel.columns"
+               :rows="argsModel.rows"
+               v-model:pagination="argsModel.pagination"
                @request="onRequest">
         <template #body-cell-gtin="props">
           <q-td :props="props">{{ props.value.name }}<span>{{ props.value.number }}</span></q-td>
