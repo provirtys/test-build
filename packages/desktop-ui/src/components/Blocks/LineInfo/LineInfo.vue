@@ -46,8 +46,8 @@
 
 <script setup lang="ts">
 import { VButton, VDescriptionList, type VDescriptionListItem } from '@base';
-import { computed, reactive, ref } from 'vue';
-import { VCard, VList, VListItem, VTable, VTableEmitsRequest, type VTableProps } from '@';
+import { computed, ref } from 'vue';
+import { ModuleItem, VCard, VList, VListItem, VTable, VTableEmitsRequest, type VTableProps } from '@';
 import type { LineInfoProps, VLineInfoEmits } from './LineInfo.types';
 
 const props = defineProps<LineInfoProps>();
@@ -69,11 +69,7 @@ const descriptionList = computed<VDescriptionListItem[]>(() => [
   },
 ]);
 
-type ColFields = {
-  ip: string;
-  name: string;
-};
-const columns: (VTableProps['columns'][number] & { field: keyof ColFields })[] = [
+const columns: (VTableProps['columns'][number] & { field: keyof ModuleItem })[] = [
   {
     label: 'IP',
     name: 'ip',
@@ -90,7 +86,7 @@ const columns: (VTableProps['columns'][number] & { field: keyof ColFields })[] =
   },
 ];
 
-const pagination = reactive<NonNullable<VTableProps['pagination']>>({
+const pagination = ref<NonNullable<VTableProps['pagination']>>({
   page: 1,
   rowsPerPage: 5,
   rowsNumber: 100,
