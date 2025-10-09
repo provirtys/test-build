@@ -37,6 +37,8 @@ import type { BoxTemplateCardDetailEmits, BoxTemplateCardDetailProps } from './B
 
 const props = defineProps<BoxTemplateCardDetailProps>();
 
+const emit = defineEmits<BoxTemplateCardDetailEmits>();
+
 const menuOpen = ref(false);
 
 const descriptionList = computed<VDescriptionListItem[]>(() => [
@@ -86,8 +88,6 @@ const menuList = computed<VListItem[]>(() => [
     },
   },
 ]);
-
-const emit = defineEmits<BoxTemplateCardDetailEmits>();
 </script>
 
 <style scoped lang="scss">
