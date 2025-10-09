@@ -1,5 +1,6 @@
 export * from '@/components/Blocks/BoxTemplateCards';
 export * from '@/components/Blocks/BoxTemplateForm';
+export * from '@/components/Blocks/LineForm';
 export * from '@/components/Blocks/StickerTemplateForm';
 export * from '@/components/Blocks/TaskForm';
 export * from '@/components/Elements/BoxTemplateCard';

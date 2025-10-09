@@ -139,27 +139,5 @@ const onSubmit = async () => {
       border-radius: 4px;
     }
   }
-
-  &__multilayered {
-    margin-top: 18px;
-    height: 40px;
-  }
-
-  &__quantity-card {
-    color: $dark-gray-70;
-    border-radius: 4px;
-
-    span {
-      color: $dark-gray;
-    }
-
-    :deep(.v-card__content) {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      @include fontAdaptive($font-size-p3, 1, 400);
-    }
-
-  }
 }
 </style>

@@ -9,6 +9,7 @@ const modes: Record<NonNullable<BoxTemplateFormProps['mode']>, string> = {
   edit: 'Изменение',
 };
 
+/** Компонент формы создания/редактирования шаблона упаковки */
 const meta: Meta<typeof BoxTemplateForm> = {
   component: BoxTemplateForm,
   argTypes: {

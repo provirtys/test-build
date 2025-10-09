@@ -1,2 +1,2 @@
-export type { VTableProps } from './VTable.types';
+export type { VTableColumn, VTableProps } from './VTable.types';
 export { default as VTable } from './VTable.vue';
