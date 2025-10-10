@@ -28,7 +28,6 @@
           text-alignment="left"
           icon="plus"
           :icon-size="14"
-          :loading
           icon-position="right"
           border-radius="4px"
           @action="onAddModule"
