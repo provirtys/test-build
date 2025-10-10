@@ -4,7 +4,7 @@
     :columns
     :rows
     flat
-    v-model:pagination="internalPagination"
+    v-model:pagination="pagination"
     ref="tableRef"
     @request="onRequest"
   >
@@ -12,14 +12,14 @@
       <q-th :props="props" class="v-table__th" :class="getThClassesByCol(props.col)">
         {{ props.col.label }}
         <!-- Поиск -->
-        <template v-if="props.col.searchable && internalPagination.searchBy?.[props.col.name]">
+        <template v-if="props.col.searchable">
           <span class="v-table__th-icon">
             <v-icon name="search" size="11"/>
           </span>
           <q-menu class="q-pa-sm" v-model="menuStates[props.col.name]">
             <v-input
               class="search-input"
-              v-model="internalPagination.searchBy[props.col.name]"
+              v-model="pagination.searchBy![props.col.name]"
               outlined
               dense
               hide-bottom-space
@@ -136,11 +136,12 @@
 <script setup lang="ts">
 import { VButton, VIcon, VInput } from '@base';
 import { QTable, QTableProps } from 'quasar';
-import { onMounted, reactive, ref } from 'vue';
+import { onMounted, reactive, ref, watch } from 'vue';
 import type {
   VTableColumn,
   VTableEmits,
   VTableEmitsRequest,
+  VTablePagination,
   VTableProps,
   VTableSlots,
 } from '@/components/ui/VTable/VTable.types';
@@ -154,22 +155,28 @@ const emit = defineEmits<VTableEmits>();
 defineSlots<VTableSlots>();
 
 const tableRef = ref<InstanceType<typeof QTable> | null>(null);
-const internalPagination = ref({ ...props.pagination });
+
+const pagination = defineModel<VTablePagination>('pagination', {
+  default: {
+    searchBy: '',
+    filterBy: '',
+  },
+});
 
 const menuStates = reactive<Record<string, boolean>>({});
 
 const getThClassesByCol = (col: VTableColumn) => ({
   'v-table__th--active':
-    internalPagination.value.sortBy === col.field ||
+    pagination.value.sortBy === col.field ||
     menuStates[col.name] ||
-    internalPagination.value.searchBy?.[col.name] ||
+    pagination.value.searchBy?.[col.name] ||
     col.filters?.find((f) => f.value),
-  'v-table__th--sort-descending': internalPagination.value.sortBy === col.field && internalPagination.value.descending,
+  'v-table__th--sort-descending': pagination.value.sortBy === col.field && pagination.value.descending,
 });
 
 const onRequest: QTableProps['onRequest'] = (data) => {
   const typedData = data as VTableEmitsRequest;
-  internalPagination.value = { ...typedData.pagination };
+  pagination.value = { ...typedData.pagination };
   emit('update:pagination', { ...typedData.pagination });
   emit('request', typedData);
 };
@@ -183,22 +190,22 @@ const onFilterClear = (column: VTableColumn) => {
   menuStates[column.name] = false;
   column.filters?.forEach((f) => {
     f.value = false;
-    delete internalPagination.value.filterBy?.[column.name];
+    delete pagination.value.filterBy?.[column.name];
   });
   tableRef.value?.requestServerInteraction();
 };
 
 const onFilterItemUpdate = (column: VTableColumn) => {
-  if (column.filters && internalPagination.value.filterBy) {
-    internalPagination.value.filterBy[column.name] = column.filters.filter((f) => f.value).map((f) => f.id);
+  if (column.filters && pagination.value.filterBy) {
+    pagination.value.filterBy[column.name] = column.filters.filter((f) => f.value).map((f) => f.id);
   }
   tableRef.value?.requestServerInteraction();
 };
 
 onMounted(() => {
   props.columns.forEach((col) => {
-    if (col.searchable && internalPagination.value.searchBy) {
-      internalPagination.value.searchBy[col.name] = '';
+    if (col.searchable && pagination.value.searchBy) {
+      pagination.value.searchBy[col.name] = '';
     }
   });
 });

@@ -19,7 +19,6 @@ export interface VTablePagination extends NonNullable<QTableProps['pagination']>
 
 export interface VTableProps extends QTableProps {
   columns: VTableColumn[];
-  pagination?: VTablePagination;
 }
 
 export interface VTableSlots extends QTableSlots {
