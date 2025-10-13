@@ -131,6 +131,10 @@
       </div>
     </template>
 
+    <template #no-data>
+      <v-pagination :model-value="{ page: 1, totalEl: 1, elPerPage: 1 }"/>
+    </template>
+
     <template v-for="(_, name) in $slots" :key="name" #[name]="slotData">
       <slot :name="name" v-bind="slotData"/>
     </template>
@@ -140,6 +144,7 @@
 import { VButton, VIcon, VInput } from '@base';
 import { QTable, QTableProps } from 'quasar';
 import { computed, onMounted, reactive, ref } from 'vue';
+import { VPagination } from '@/components/ui/VPagination';
 import type {
   VTableColumn,
   VTableEmits,
@@ -172,33 +177,33 @@ const tableRef = ref<InstanceType<typeof QTable> | null>(null);
 const tableFilter = computed(() => {
   if (pagination.value.rowsNumber) return null;
 
-  return {
+  return JSON.stringify({
     ...pagination.value.searchBy,
     ...pagination.value.filterBy,
-  };
+  });
 });
 
 const tableFilterMethod = (rows, filter) => {
-  if (pagination.value.rowsNumber || !Object.keys(filter).length) return rows;
+  const filterObj = JSON.parse(filter);
 
-  console.log(filter.line);
+  if (pagination.value.rowsNumber || !Object.keys(filterObj).length) return rows;
 
   return rows.filter((row) => {
-    for (const filterKey of Object.keys(filter)) {
+    for (const filterKey of Object.keys(filterObj)) {
       const needleCol = props.columns.find((c) => c.field === filterKey);
       if (!needleCol) return true;
 
-      if (needleCol.searchable && filter[filterKey]) {
+      if (needleCol.searchable && filterObj[filterKey]) {
         if (typeof row[filterKey] === 'object') {
           return Object.keys(row[filterKey]).some((field) =>
-            row[filterKey][field].toLowerCase().includes(filter[filterKey].toLowerCase()),
+            row[filterKey][field].toLowerCase().includes(filterObj[filterKey].toLowerCase()),
           );
-        } else if (!row[filterKey].toLowerCase().includes(filter[filterKey].toLowerCase())) {
+        } else if (!row[filterKey].toLowerCase().includes(filterObj[filterKey].toLowerCase())) {
           return false;
         }
       }
 
-      if (needleCol.filterable && !filter[filterKey].includes(row[filterKey]['id'])) {
+      if (needleCol.filterable && !filterObj[filterKey].includes(row[filterKey]['id'])) {
         return false;
       }
     }
@@ -239,6 +244,10 @@ const onFilterClear = (column: VTableColumn) => {
 const onFilterItemUpdate = (column: VTableColumn) => {
   if (column.filters && pagination.value.filterBy) {
     pagination.value.filterBy[column.name] = column.filters.filter((f) => f.value).map((f) => f.id);
+
+    if (!pagination.value.filterBy[column.name].length) {
+      delete pagination.value.filterBy[column.name];
+    }
   }
   tableRef.value?.requestServerInteraction();
 };
