@@ -1,6 +1,6 @@
 {
   "name": "@integrity/web-ui",
-  "version": "1.0.54",
+  "version": "1.0.55",
   "main": "./dist/web-ui.umd.js",
   "module": "./dist/web-ui.es.js",
   "scripts": {
