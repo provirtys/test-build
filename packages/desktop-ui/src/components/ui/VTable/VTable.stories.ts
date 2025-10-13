@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { QTd } from 'quasar';
+import { Notify, QTd } from 'quasar';
 import { ref } from 'vue';
 import { PieProgress } from '@';
 import type { VTableColumn, VTableEmitsRequest } from './VTable.types';
@@ -14,6 +14,7 @@ type ColFields = {
     number: string;
   };
   line?: {
+    id: string;
     name: string;
     labels: string[];
   };
@@ -107,6 +108,7 @@ const rows: ColFields[] = [
       number: '029000000001381',
     },
     line: {
+      id: 'line1',
       name: 'Линия 1',
       labels: ['Сериализация', 'Агрегация'],
     },
@@ -123,6 +125,7 @@ const rows: ColFields[] = [
       number: '029000000001381',
     },
     line: {
+      id: 'line3',
       name: 'Линия 3',
       labels: ['Агрегация'],
     },
@@ -139,6 +142,7 @@ const rows: ColFields[] = [
       number: '029000000001381',
     },
     line: {
+      id: 'line2',
       name: 'Линия 2',
       labels: ['Сериализация'],
     },
@@ -155,6 +159,7 @@ const rows: ColFields[] = [
       number: '029000000001381',
     },
     line: {
+      id: 'line1',
       name: 'Линия 1',
       labels: ['Сериализация', 'Агрегация'],
     },
@@ -171,6 +176,7 @@ const rows: ColFields[] = [
       number: '029000000001381',
     },
     line: {
+      id: 'line3',
       name: 'Линия 3',
       labels: ['Агрегация'],
     },
@@ -187,6 +193,7 @@ const rows: ColFields[] = [
       number: '029000000001381',
     },
     line: {
+      id: 'line1',
       name: 'Линия 1',
       labels: ['Сериализация', 'Агрегация'],
     },
@@ -237,6 +244,70 @@ export const Standard: Story = {
                :rows="argsModel.rows"
                v-model:pagination="argsModel.pagination"
                @request="onRequest">
+        <template #body-cell-gtin="props">
+          <q-td :props="props">{{ props.value.name }}<span>{{ props.value.number }}</span></q-td>
+        </template>
+        <template #body-cell-line="props">
+          <q-td :props="props">{{ props.value.name }}<span v-for="l in props.value.labels" :key="l">{{ l }}</span>
+          </q-td>
+        </template>
+        <template #body-cell-quantity="props">
+          <q-td :props="props">{{ props.value.toLocaleString() }}</q-td>
+        </template>
+        <template #body-cell-reject="props">
+          <q-td :props="props">{{ props.value }}
+            <span>{{ parseFloat(((props.value / props.row.quantity) * 100).toFixed(2)) + '%' }}</span></q-td>
+        </template>
+        <template #body-cell-statusPercentage="props">
+          <q-td :props="props">
+            <pie-progress :value="props.value" color="warning" size="14" border-width="1"/>
+            {{ props.value + '%' }}
+          </q-td>
+        </template>
+      </v-table>
+    `,
+  }),
+};
+
+export const ClientPagination: Story = {
+  args: {
+    rows: rows,
+    columns: columns,
+    pagination: {
+      sortBy: null,
+      descending: false,
+      page: 1,
+      rowsPerPage: 2,
+      filterBy: {},
+      searchBy: {},
+    },
+  },
+  render: (args) => ({
+    components: { VTable, QTd, PieProgress, Notify },
+    setup() {
+      const onRequest = (data: VTableEmitsRequest) => {
+        console.log('ON REQUEST = ', data.pagination);
+        argsModel.value.pagination = data.pagination;
+      };
+      const argsModel = ref({ ...args });
+
+      const onRowClick = (_: any, row: ColFields) => {
+        Notify.create({
+          message: `Нажатие по ${row.id}`,
+        });
+      };
+
+      return {
+        argsModel,
+        onRequest,
+        onRowClick,
+      };
+    },
+    template: `
+      <v-table :columns="argsModel.columns"
+               :rows="argsModel.rows"
+               v-model:pagination="argsModel.pagination"
+               @rowClick="onRowClick">
         <template #body-cell-gtin="props">
           <q-td :props="props">{{ props.value.name }}<span>{{ props.value.number }}</span></q-td>
         </template>

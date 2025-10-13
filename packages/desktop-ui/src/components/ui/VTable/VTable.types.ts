@@ -32,4 +32,5 @@ export type VTableEmitsRequest = Parameters<NonNullable<QTableProps['onRequest']
 export type VTableEmits = {
   (e: 'update:pagination', data: VTablePagination): void;
   (e: 'request', data: VTableEmitsRequest): void;
+  (e: 'rowClick', evt: Event, row: any, index: number): void;
 };

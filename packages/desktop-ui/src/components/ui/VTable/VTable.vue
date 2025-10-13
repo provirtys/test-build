@@ -2,11 +2,14 @@
   <q-table
     class="v-table"
     :columns
-    :rows
+    :rows="rows"
     flat
+    :filter="tableFilter"
+    :filter-method="tableFilterMethod"
     v-model:pagination="pagination"
     ref="tableRef"
     @request="onRequest"
+    @rowClick="(...args) => emit('rowClick', ...args)"
   >
     <template #header-cell="props">
       <q-th :props="props" class="v-table__th" :class="getThClassesByCol(props.col)">
@@ -136,7 +139,7 @@
 <script setup lang="ts">
 import { VButton, VIcon, VInput } from '@base';
 import { QTable, QTableProps } from 'quasar';
-import { onMounted, reactive, ref, watch } from 'vue';
+import { computed, onMounted, reactive, ref } from 'vue';
 import type {
   VTableColumn,
   VTableEmits,
@@ -152,9 +155,8 @@ const props = withDefaults(defineProps<VTableProps>(), {
 });
 
 const emit = defineEmits<VTableEmits>();
-defineSlots<VTableSlots>();
 
-const tableRef = ref<InstanceType<typeof QTable> | null>(null);
+defineSlots<VTableSlots>();
 
 const pagination = defineModel<VTablePagination>('pagination', {
   default: {
@@ -164,6 +166,45 @@ const pagination = defineModel<VTablePagination>('pagination', {
 });
 
 const menuStates = reactive<Record<string, boolean>>({});
+
+const tableRef = ref<InstanceType<typeof QTable> | null>(null);
+
+const tableFilter = computed(() => {
+  if (pagination.value.rowsNumber) return null;
+
+  return {
+    ...pagination.value.searchBy,
+    ...pagination.value.filterBy,
+  };
+});
+
+const tableFilterMethod = (rows, filter) => {
+  if (pagination.value.rowsNumber || !Object.keys(filter).length) return rows;
+
+  console.log(filter.line);
+
+  return rows.filter((row) => {
+    for (const filterKey of Object.keys(filter)) {
+      const needleCol = props.columns.find((c) => c.field === filterKey);
+      if (!needleCol) return true;
+
+      if (needleCol.searchable && filter[filterKey]) {
+        if (typeof row[filterKey] === 'object') {
+          return Object.keys(row[filterKey]).some((field) =>
+            row[filterKey][field].toLowerCase().includes(filter[filterKey].toLowerCase()),
+          );
+        } else if (!row[filterKey].toLowerCase().includes(filter[filterKey].toLowerCase())) {
+          return false;
+        }
+      }
+
+      if (needleCol.filterable && !filter[filterKey].includes(row[filterKey]['id'])) {
+        return false;
+      }
+    }
+    return true;
+  });
+};
 
 const getThClassesByCol = (col: VTableColumn) => ({
   'v-table__th--active':
