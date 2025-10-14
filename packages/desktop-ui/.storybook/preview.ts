@@ -10,7 +10,9 @@ import '@quasar/extras/material-icons-outlined/material-icons-outlined.css';
 import '@quasar/extras/material-symbols-outlined/material-symbols-outlined.css';
 import 'quasar/dist/quasar.css';
 
+import '@base/css/fonts.scss';
 import '@base/css/main.scss';
+import '@/css/fonts.scss';
 
 import en from '../../base-ui/src/locales/en.json';
 import ru from '../../base-ui/src/locales/ru.json';

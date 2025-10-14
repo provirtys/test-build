@@ -64,11 +64,9 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         additionalData: `
-          @import '@base/css/fonts.scss';
           @import '@base/css/variables.scss';
           @import '@base/css/mixins.scss';
           @import '@base/css/quasar.classes.scss';
-          @import '@/css/fonts.scss';
         `,
       },
     },

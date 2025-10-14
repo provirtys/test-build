@@ -8,6 +8,7 @@ import '@quasar/extras/material-icons-outlined/material-icons-outlined.css';
 import '@quasar/extras/material-symbols-outlined/material-symbols-outlined.css';
 import 'quasar/dist/quasar.css';
 
+import '@base/css/fonts.scss';
 import '@base/css/main.scss';
 
 import ru from '@integrity/base-ui/src/locales/ru.json';
