@@ -47,7 +47,7 @@
 <script setup lang="ts">
 import { VButton, VDescriptionList, type VDescriptionListItem } from '@base';
 import { computed, ref } from 'vue';
-import { ModuleItem, VCard, VList, VListItem, VTable, VTableEmitsRequest, type VTableProps } from '@';
+import { ModuleItem, VCard, VList, VListItem, VTable, VTableEmitsRequest, VTablePagination, type VTableProps } from '@';
 import type { LineInfoProps, VLineInfoEmits } from './LineInfo.types';
 
 const props = defineProps<LineInfoProps>();
@@ -86,12 +86,9 @@ const columns: (VTableProps['columns'][number] & { field: keyof ModuleItem })[] 
   },
 ];
 
-const pagination = ref<NonNullable<VTableProps['pagination']>>({
+const pagination = ref<NonNullable<VTablePagination>>({
   page: 1,
   rowsPerPage: 5,
-  rowsNumber: 100,
-  filterBy: {},
-  searchBy: {},
 });
 
 const menuOpen = ref(false);

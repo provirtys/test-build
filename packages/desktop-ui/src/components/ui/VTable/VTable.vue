@@ -22,7 +22,7 @@
           <q-menu class="q-pa-sm" v-model="menuStates[props.col.name]">
             <v-input
               class="search-input"
-              v-model="pagination.searchBy![props.col.name]"
+              v-model="pagination!.searchBy![props.col.name]"
               outlined
               dense
               hide-bottom-space
@@ -143,7 +143,7 @@
 <script setup lang="ts">
 import { VButton, VIcon, VInput } from '@base';
 import { QTable, QTableProps } from 'quasar';
-import { computed, onMounted, reactive, ref } from 'vue';
+import { computed, nextTick, onMounted, reactive, ref } from 'vue';
 import { VPagination } from '@/components/ui/VPagination';
 import type {
   VTableColumn,
@@ -154,6 +154,8 @@ import type {
   VTableSlots,
 } from '@/components/ui/VTable/VTable.types';
 
+const pagination = defineModel<VTablePagination>('pagination');
+
 const props = withDefaults(defineProps<VTableProps>(), {
   columns: () => [],
   rows: () => [],
@@ -163,19 +165,12 @@ const emit = defineEmits<VTableEmits>();
 
 defineSlots<VTableSlots>();
 
-const pagination = defineModel<VTablePagination>('pagination', {
-  default: {
-    searchBy: '',
-    filterBy: '',
-  },
-});
-
 const menuStates = reactive<Record<string, boolean>>({});
 
 const tableRef = ref<InstanceType<typeof QTable> | null>(null);
 
 const tableFilter = computed(() => {
-  if (pagination.value.rowsNumber) return null;
+  if (!pagination.value || pagination.value.rowsNumber) return null;
 
   return JSON.stringify({
     ...pagination.value.searchBy,
@@ -183,7 +178,8 @@ const tableFilter = computed(() => {
   });
 });
 
-const tableFilterMethod = (rows, filter) => {
+const tableFilterMethod = (rows: typeof props.rows, filter: string) => {
+  if (!pagination.value) return;
   const filterObj = JSON.parse(filter);
 
   if (pagination.value.rowsNumber || !Object.keys(filterObj).length) return rows;
@@ -213,11 +209,11 @@ const tableFilterMethod = (rows, filter) => {
 
 const getThClassesByCol = (col: VTableColumn) => ({
   'v-table__th--active':
-    pagination.value.sortBy === col.field ||
+    pagination.value?.sortBy === col.field ||
     menuStates[col.name] ||
-    pagination.value.searchBy?.[col.name] ||
+    pagination.value?.searchBy?.[col.name] ||
     col.filters?.find((f) => f.value),
-  'v-table__th--sort-descending': pagination.value.sortBy === col.field && pagination.value.descending,
+  'v-table__th--sort-descending': pagination.value?.sortBy === col.field && pagination.value?.descending,
 });
 
 const onRequest: QTableProps['onRequest'] = (data) => {
@@ -236,13 +232,13 @@ const onFilterClear = (column: VTableColumn) => {
   menuStates[column.name] = false;
   column.filters?.forEach((f) => {
     f.value = false;
-    delete pagination.value.filterBy?.[column.name];
+    delete pagination.value?.filterBy?.[column.name];
   });
   tableRef.value?.requestServerInteraction();
 };
 
 const onFilterItemUpdate = (column: VTableColumn) => {
-  if (column.filters && pagination.value.filterBy) {
+  if (column.filters && pagination.value?.filterBy) {
     pagination.value.filterBy[column.name] = column.filters.filter((f) => f.value).map((f) => f.id);
 
     if (!pagination.value.filterBy[column.name].length) {
@@ -252,10 +248,17 @@ const onFilterItemUpdate = (column: VTableColumn) => {
   tableRef.value?.requestServerInteraction();
 };
 
-onMounted(() => {
+onMounted(async () => {
+  if (!pagination.value) return;
+
+  await nextTick();
   props.columns.forEach((col) => {
-    if (col.searchable && pagination.value.searchBy) {
+    if (pagination.value && col.searchable) {
+      if (!pagination.value.searchBy) {
+        pagination.value.searchBy = {};
+      }
       pagination.value.searchBy[col.name] = '';
+      menuStates[col.name] = false;
     }
   });
 });
