@@ -30,8 +30,20 @@
               @change="() => onSearchSubmit(props.col.name)"
             >
               <template #append>
-                <v-icon class="search-icon" name="search" size="14" @click="() => onSearchSubmit(props.col.name)"
-                        v-close-popup/>
+                 <v-icon
+                   class="cursor-pointer text-primary-text-40 q-mr-sm"
+                   :class="pagination!.searchBy![props.col.name].length ? '' : 'invisible'"
+                   name="close"
+                   size="14"
+                   @click="pagination!.searchBy![props.col.name] = ''"
+                 />
+                <v-icon
+                  class="cursor-pointer"
+                  name="search"
+                  size="14"
+                  v-close-popup
+                  @click="() => onSearchSubmit(props.col.name)"
+                />
               </template>
             </v-input>
           </q-menu>
@@ -408,10 +420,6 @@ onMounted(async () => {
   .q-field__native {
     padding-block: 8px;
     color: $primary-text;
-  }
-
-  .search-icon {
-    cursor: pointer;
   }
 }
 
