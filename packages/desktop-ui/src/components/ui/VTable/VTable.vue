@@ -348,14 +348,16 @@ onMounted(async () => {
 
     svg {
       display: inline-flex;
+      margin-bottom: -1px;
     }
   }
 
   td {
     @include fontAdaptive($font-size-p3, 1.2, 400);
     vertical-align: baseline;
-    padding: 8px;
+    padding: 4px 8px 15px;
     border: unset;
+    height: unset;
 
     span {
       display: block;

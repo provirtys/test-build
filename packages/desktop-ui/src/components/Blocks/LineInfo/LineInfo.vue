@@ -26,7 +26,6 @@
     </v-button>
       </v-card>
        <v-table
-         class="modules-table"
          :columns
          :rows="modules"
          v-model:pagination="pagination"
@@ -76,6 +75,8 @@ const columns: (VTableProps['columns'][number] & { field: keyof ModuleItem })[] 
     field: 'ip',
     align: 'left',
     searchable: true,
+    style: 'width: 100px; min-width: 100px; max-width: 100px;',
+    headerStyle: 'width: 100px; min-width: 100px; max-width: 100px;',
   },
   {
     label: 'Название',
