@@ -11,7 +11,7 @@
           <v-input v-bind="getFieldProps('timeStart')"/>
         </v-form-row>
         <v-form-row columns="2">
-          <v-input v-bind="getFieldProps('quantity')"/>
+          <v-input v-bind="getFieldProps('total')"/>
           <v-select v-bind="getFieldProps('line')"/>
         </v-form-row>
         <v-form-row columns="2">
@@ -21,13 +21,13 @@
       </v-card>
       <v-card title="Сериализация">
         <v-form-row>
-          <v-select v-bind="getFieldProps('labelTemplate')"/>
+          <v-select v-bind="getFieldProps('sticker')"/>
         </v-form-row>
       </v-card>
       <v-card title="Агрегация">
         <v-form-row columns="2">
-          <v-select v-bind="getFieldProps('packageTemplate')"/>
-          <v-input v-bind="getFieldProps('packageCount')"/>
+          <v-select v-bind="getFieldProps('box')"/>
+          <v-input v-bind="getFieldProps('boxTotal')"/>
         </v-form-row>
       </v-card>
       <div class="task-form__buttons">
@@ -37,7 +37,7 @@
           icon="page"
           :icon-size="20"
           icon-position="right"
-          :loading
+          :loading="loadingStates?.submitting"
           name="draftBtn"
           type="submit"
         >
@@ -48,7 +48,7 @@
           text-alignment="left"
           :icon-size="20"
           icon-position="right"
-          :loading
+          :loading="loadingStates?.submitting"
           type="submit"
         >
           Создать задачу
@@ -109,6 +109,7 @@ const fieldSettings = computed<FieldSettings>(() => ({
     label: 'Выберите GTIN',
     modelValue: formData.gtin,
     required: true,
+    loading: props.loadingStates?.gtin,
   },
   dateStart: {
     label: 'Дата начала',
@@ -121,9 +122,9 @@ const fieldSettings = computed<FieldSettings>(() => ({
     type: 'time',
     placeholder: '12:30',
   },
-  quantity: {
+  total: {
     label: 'Кол-во',
-    modelValue: formData.quantity,
+    modelValue: formData.total,
     required: true,
     displayNumberWithDelimiter: true,
   },
@@ -132,6 +133,7 @@ const fieldSettings = computed<FieldSettings>(() => ({
     label: 'Выберите линию',
     modelValue: formData.line,
     required: true,
+    loading: props.loadingStates?.line,
   },
   comment: {
     label: 'Комментарий к задаче',
@@ -147,21 +149,23 @@ const fieldSettings = computed<FieldSettings>(() => ({
     type: 'textarea',
     counter: true,
   },
-  labelTemplate: {
+  sticker: {
     outsideLabel: 'Шаблон этикетки',
     label: 'Выбрать шаблон...',
-    modelValue: formData.labelTemplate,
+    modelValue: formData.sticker,
     required: true,
+    loading: props.loadingStates?.sticker,
   },
-  packageTemplate: {
+  box: {
     outsideLabel: 'Шаблон упаковки',
     label: 'Выбрать шаблон...',
-    modelValue: formData.packageTemplate,
+    modelValue: formData.box,
     required: true,
+    loading: props.loadingStates?.box,
   },
-  packageCount: {
+  boxTotal: {
     label: 'Кол-во упаковок',
-    modelValue: formData.packageCount,
+    modelValue: formData.boxTotal,
     displayNumberWithDelimiter: true,
   },
 }));
@@ -190,6 +194,7 @@ const getFieldProps: GetFieldProps = (name) => {
         ]) ||
         [],
       options: props.options ? props.options[name] : [],
+      loading: fieldSettings.value[name]?.loading,
       lazyRules: 'ondemand',
       'onUpdate:modelValue': (val) => {
         formData[name] = val;
@@ -199,7 +204,7 @@ const getFieldProps: GetFieldProps = (name) => {
 
   return {
     modelValue:
-      name !== 'quantity'
+      name !== 'total'
         ? fieldSettings.value[name]?.modelValue
         : fieldSettings.value[name]?.modelValue?.toLocaleString('ru'),
     label: fieldSettings.value[name].label,
@@ -223,8 +228,9 @@ const getFieldProps: GetFieldProps = (name) => {
   };
 };
 
-const onSubmit = async (e: SubmitEvent) => {
-  const submitterName = (e.submitter as HTMLButtonElement)?.name;
+const onSubmit = async (e: Event | SubmitEvent) => {
+  const event = e as SubmitEvent;
+  const submitterName = (event.submitter as HTMLButtonElement)?.name;
   if (submitterName === 'draftBtn') {
     emit('draft', formData);
   } else {

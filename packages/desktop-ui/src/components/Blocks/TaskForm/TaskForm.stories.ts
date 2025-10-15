@@ -1,5 +1,8 @@
+import { sleep } from '@integrity/base-ui/src/utils/sleep';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import type { SelectFieldOptions } from './TaskForm.types';
+import { Notify } from 'quasar';
+import { onMounted, reactive } from 'vue';
+import type { SelectFieldOptions, TaskFormLoadingStates } from './TaskForm.types';
 import TaskForm from './TaskForm.vue';
 
 type Story = StoryObj<typeof TaskForm>;
@@ -36,7 +39,7 @@ const inputOptions: SelectFieldOptions = {
       value: 'line-3',
     },
   ],
-  labelTemplate: [
+  sticker: [
     {
       label: 'Шаблон этикетки 1',
       value: 'label-template-1',
@@ -50,7 +53,7 @@ const inputOptions: SelectFieldOptions = {
       value: 'label-template-3',
     },
   ],
-  packageTemplate: [
+  box: [
     {
       label: 'Шаблон упаковки 1',
       value: 'package-template-1',
@@ -88,13 +91,13 @@ const meta: Meta<typeof TaskForm> = {
       gtin: 'gtin-1',
       dateStart: '',
       timeStart: '',
-      quantity: 100000,
+      total: 100000,
       line: 'line-1',
       comment: 'Это обычный комментарий',
       privateComment: 'Это приватный комментарий',
-      labelTemplate: 'label-template-1',
-      packageTemplate: 'package-template-1',
-      packageCount: 1234,
+      sticker: 'label-template-1',
+      box: 'package-template-1',
+      boxTotal: 1234,
     },
     options: inputOptions,
   },
@@ -102,9 +105,29 @@ const meta: Meta<typeof TaskForm> = {
     components: { TaskForm },
     setup() {
       const taskData = args.task;
-      const options = inputOptions;
+      const options = reactive<SelectFieldOptions>({
+        gtin: [],
+        line: [],
+        box: [],
+        sticker: [],
+      });
 
-      const onSubmit = (data: any) => {
+      const loadingStates = reactive<TaskFormLoadingStates>({
+        submitting: false,
+        gtin: false,
+        line: false,
+        box: false,
+        sticker: false,
+      });
+
+      const onSubmit = async (data: any) => {
+        loadingStates.submitting = true;
+        await sleep(2000);
+        Notify.create({
+          type: 'positive',
+          message: 'Задача успешно создана',
+        });
+        loadingStates.submitting = false;
         console.log('Событие создания задачи:', data);
       };
 
@@ -112,15 +135,36 @@ const meta: Meta<typeof TaskForm> = {
         console.log('Событие сохранения задачи как черновика:', data);
       };
 
+      const fakeOptionRequest = async (loadingKey: keyof Omit<TaskFormLoadingStates, 'submitting'>, ms: number) => {
+        loadingStates[loadingKey] = true;
+        await sleep(ms);
+        options[loadingKey] = inputOptions[loadingKey];
+        loadingStates[loadingKey] = false;
+      };
+
+      onMounted(() => {
+        fakeOptionRequest('gtin', 1500);
+        fakeOptionRequest('line', 1000);
+        fakeOptionRequest('box', 3000);
+        fakeOptionRequest('sticker', 2000);
+      });
+
       return {
         taskData,
         options,
+        loadingStates,
         onSubmit,
         onDraft,
       };
     },
     template: `
-      <task-form :task="taskData" :options="options" @submit="onSubmit" @draft="onDraft"/>`,
+      <task-form
+        :task="taskData"
+        :options="options"
+        :loading-states="loadingStates"
+        @submit="onSubmit"
+        @draft="onDraft"
+      />`,
   }),
 };
 

@@ -6,29 +6,16 @@ export interface TaskItem {
   gtin: string;
   dateStart: string;
   timeStart: string;
-  quantity: number;
+  total: number;
   line: string;
   comment: string;
   privateComment: string;
-  labelTemplate: string;
-  packageTemplate: string;
-  packageCount: number;
+  sticker: string;
+  box: string;
+  boxTotal: number;
 }
 
-export interface TaskFormProps {
-  task?: Partial<TaskItem>;
-  mode?: 'new' | 'edit';
-  options?: SelectFieldOptions;
-  loading?: boolean;
-}
-
-export interface TaskFormEmits {
-  (e: 'submit', data: Partial<TaskItem>): void;
-
-  (e: 'draft', data: Partial<TaskItem>): void;
-}
-
-export type SelectFields = Pick<TaskItem, 'gtin' | 'line' | 'labelTemplate' | 'packageTemplate'>;
+export type SelectFields = Pick<TaskItem, 'gtin' | 'line' | 'sticker' | 'box'>;
 export type SelectFieldKey = keyof SelectFields;
 export type InputFieldKey = Exclude<keyof TaskItem, SelectFieldKey | 'id'>;
 
@@ -44,6 +31,21 @@ export interface GetFieldProps {
   (name: InputFieldKey): VInputProps;
 }
 
-export const SelectFieldsKeys: SelectFieldKey[] = ['gtin', 'line', 'labelTemplate', 'packageTemplate'];
+export const SelectFieldsKeys: SelectFieldKey[] = ['gtin', 'line', 'box', 'sticker'];
 
 export interface SelectFieldOptions extends Record<SelectFieldKey, VSelectProps['options']> {}
+
+export interface TaskFormLoadingStates extends Record<SelectFieldKey | 'submitting', boolean> {}
+
+export interface TaskFormProps {
+  task?: Partial<TaskItem>;
+  mode?: 'new' | 'edit';
+  options?: SelectFieldOptions;
+  loadingStates?: TaskFormLoadingStates;
+}
+
+export interface TaskFormEmits {
+  (e: 'submit', data: Partial<TaskItem>): void;
+
+  (e: 'draft', data: Partial<TaskItem>): void;
+}
