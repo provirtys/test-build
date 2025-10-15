@@ -121,6 +121,7 @@ const getFieldProps: LineFormFieldProps = (name) => {
     fontSize: '16px',
     borderRadius: '4px',
     hideBottomSpace: true,
+    lazyRules: 'ondemand',
   };
 };
 

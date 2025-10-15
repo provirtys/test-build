@@ -190,6 +190,7 @@ const getFieldProps: GetFieldProps = (name) => {
         ]) ||
         [],
       options: props.options ? props.options[name] : [],
+      lazyRules: 'ondemand',
       'onUpdate:modelValue': (val) => {
         formData[name] = val;
       },
@@ -215,6 +216,7 @@ const getFieldProps: GetFieldProps = (name) => {
     maxlength: 120,
     counter: fieldSettings.value[name].counter,
     displayNumberWithDelimiter: fieldSettings.value[name].displayNumberWithDelimiter,
+    lazyRules: 'ondemand',
     'onUpdate:modelValue': (val) => {
       formData[name] = val;
     },

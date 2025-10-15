@@ -134,6 +134,7 @@ const getFieldProps: BoxTemplateFormFieldProps = (name) => ({
   maxlength: 120,
   min: name === 'layers' ? 1 : 0,
   disable: fieldSettings.value[name].disable,
+  lazyRules: 'ondemand',
   'onUpdate:modelValue': (val) => {
     formData[name] = val;
   },

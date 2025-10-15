@@ -79,6 +79,7 @@ const getFieldProps: StickerTemplateFormFieldProps = (name) => {
     color: 'primary-text',
     fontSize: '16px',
     type: fieldSettings.value[name].type || 'text',
+    lazyRules: 'ondemand',
     'onUpdate:modelValue': (val) => {
       formData[name] = val;
     },
