@@ -1,6 +1,6 @@
 <template>
   <div class="task-form">
-    <q-form ref="formRef" class="task-form__form">
+    <q-form ref="formRef" class="task-form__form" @submit="onSubmit">
       <v-card title="Общая информация">
         <v-form-row columns="2">
           <v-input v-bind="getFieldProps('name')"/>
@@ -31,13 +31,15 @@
         </v-form-row>
       </v-card>
       <div class="task-form__buttons">
-        <v-button color="secondary"
-                  text-alignment="left"
-                  icon="page"
-                  :icon-size="20"
-                  icon-position="right"
-                  :loading
-                  @action="onDraft"
+        <v-button
+          color="secondary"
+          text-alignment="left"
+          icon="page"
+          :icon-size="20"
+          icon-position="right"
+          :loading
+          name="draftBtn"
+          type="submit"
         >
           Сохранить как черновик
         </v-button>
@@ -47,7 +49,7 @@
           :icon-size="20"
           icon-position="right"
           :loading
-          @action="onSubmit"
+          type="submit"
         >
           Создать задачу
         </v-button>
@@ -219,17 +221,12 @@ const getFieldProps: GetFieldProps = (name) => {
   };
 };
 
-const onSubmit = async () => {
-  const isValid = await formRef.value?.validate();
-  if (isValid) {
-    emit('submit', formData);
-  }
-};
-
-const onDraft = async () => {
-  const isValid = await formRef.value?.validate();
-  if (isValid) {
+const onSubmit = async (e: SubmitEvent) => {
+  const submitterName = (e.submitter as HTMLButtonElement)?.name;
+  if (submitterName === 'draftBtn') {
     emit('draft', formData);
+  } else {
+    emit('submit', formData);
   }
 };
 </script>
