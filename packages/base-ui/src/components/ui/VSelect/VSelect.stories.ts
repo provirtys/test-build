@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import { VSelect } from './index';
+import type { VSelectOption } from './VSelect.types';
 
 type Story = StoryObj<typeof VSelect>;
 
-const simpleOptions = [
+const simpleOptions: VSelectOption[] = [
   { label: 'Опция 1', value: 'opt1' },
   { label: 'Опция 2', value: 'opt2' },
   { label: 'Опция 3', value: 'opt3' },
@@ -27,7 +28,7 @@ const simpleOptions = [
   { label: 'Опция 20', value: 'opt20' },
 ];
 
-const lightLabelOptions = [
+const lightLabelOptions: VSelectOption[] = [
   {
     label: '029000000001381',
     labelLight: 'Вода минеральная 0.3 л.',
