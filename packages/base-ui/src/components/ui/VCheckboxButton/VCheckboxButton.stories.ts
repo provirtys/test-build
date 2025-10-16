@@ -69,6 +69,9 @@ const meta: Meta<typeof VCheckboxButton> = {
     bgAlwaysFilled: {
       description: 'Цвет фона всегда заполненный',
     },
+    fitWidth: {
+      description: 'Отменить растягивание кнопки',
+    },
   },
   parameters: {
     backgrounds: {
@@ -89,7 +92,9 @@ const meta: Meta<typeof VCheckboxButton> = {
     isPlane: false,
     isDisabled: false,
     border: '8px',
-    borderColor: 'drak-gray',
+    borderColor: 'dark-gray',
+    bgAlwaysFilled: false,
+    fitWidth: false,
   },
   render: (args) => ({
     components: { VCheckboxButton },
@@ -153,5 +158,11 @@ export const ExtraSmallHeight: Story = {
 export const Disabled: Story = {
   args: {
     isDisabled: true,
+  },
+};
+
+export const Fit: Story = {
+  args: {
+    fitWidth: true,
   },
 };

@@ -17,7 +17,11 @@
 import { VIcon } from '@base';
 import { colors } from 'quasar';
 import { computed } from 'vue';
-import type { VCheckboxButtonEmits, VCheckboxButtonProps } from '@/components/ui/VCheckboxButton/VCheckboxButton.types';
+import type {
+  Height,
+  VCheckboxButtonEmits,
+  VCheckboxButtonProps,
+} from '@/components/ui/VCheckboxButton/VCheckboxButton.types';
 
 const props = withDefaults(defineProps<VCheckboxButtonProps>(), {
   modelValue: false,
@@ -38,6 +42,7 @@ const classList = computed(() => [
     'v-checkbox-button--active': props.modelValue || props.bgAlwaysFilled,
     'v-checkbox-button--plane': props.isPlane,
     'v-checkbox-button--disabled': props.isDisabled,
+    'v-checkbox-button--fit-width': props.fitWidth,
   },
 ]);
 
@@ -47,7 +52,7 @@ const checkboxIconName = computed(() =>
 
 const bindingBorderColor = computed(() => colors.getPaletteColor(props.borderColor));
 
-const iconSizes = {
+const iconSizes: Record<Height, { icon: number; checkbox: number }> = {
   lg: {
     icon: 60,
     checkbox: 44,
@@ -64,6 +69,10 @@ const iconSizes = {
     icon: 36,
     checkbox: 16,
   },
+  xxs: {
+    icon: 30,
+    checkbox: 14,
+  },
 };
 </script>
 
@@ -79,6 +88,7 @@ const iconSizes = {
   border: 1px solid v-bind(bindingBorderColor);
   animation: none;
   background: none;
+  cursor: pointer;
 
   &--active {
     background: $primary-text-20;
@@ -121,6 +131,22 @@ const iconSizes = {
     .v-checkbox-button__title {
       font-size: $font-size-p3;
     }
+  }
+
+  &--xxs {
+    min-width: 200px;
+    height: 30px;
+    padding: $d-1;
+    gap: $d-0;
+
+    .v-checkbox-button__title {
+      font-size: $font-size-p4;
+    }
+  }
+
+  &--fit-width {
+    width: fit-content;
+    min-width: unset;
   }
 
   &__input {

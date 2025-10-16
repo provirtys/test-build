@@ -1,4 +1,4 @@
-export type Height = 'lg' | 'md' | 'sm' | 'xs';
+export type Height = 'lg' | 'md' | 'sm' | 'xs' | 'xxs';
 
 export interface VCheckboxButtonProps {
   modelValue: boolean;
@@ -10,6 +10,7 @@ export interface VCheckboxButtonProps {
   border?: string;
   borderColor?: string;
   bgAlwaysFilled?: boolean;
+  fitWidth?: boolean;
 }
 
 export type VCheckboxButtonEmits = (e: 'update:modelValue', val: boolean) => void;
