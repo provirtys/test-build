@@ -114,13 +114,13 @@ const props = withDefaults(defineProps<TaskFormProps>(), {
     gtin: undefined,
     dateStart: '',
     timeStart: '',
-    quantity: undefined,
+    total: undefined,
     line: undefined,
     comment: '',
     privateComment: '',
-    labelTemplate: undefined,
-    packageTemplate: undefined,
-    packageCount: undefined,
+    sticker: undefined,
+    box: undefined,
+    boxTotal: undefined,
   }),
 });
 
