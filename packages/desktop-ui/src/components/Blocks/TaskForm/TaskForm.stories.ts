@@ -2,12 +2,12 @@ import { sleep } from '@integrity/base-ui/src/utils/sleep';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { Notify } from 'quasar';
 import { onMounted, reactive } from 'vue';
-import type { SelectFieldOptions, TaskFormLoadingStates } from './TaskForm.types';
+import type { TaskFormLoadingStates, TaskFormOptions } from './TaskForm.types';
 import TaskForm from './TaskForm.vue';
 
 type Story = StoryObj<typeof TaskForm>;
 
-const inputOptions: SelectFieldOptions = {
+const inputOptions: TaskFormOptions = {
   gtin: [
     {
       label: '0001',
@@ -57,14 +57,17 @@ const inputOptions: SelectFieldOptions = {
     {
       label: 'Шаблон упаковки 1',
       value: 'package-template-1',
+      perBox: 5,
     },
     {
       label: 'Шаблон упаковки 2',
       value: 'package-template-2',
+      perBox: 12,
     },
     {
       label: 'Шаблон упаковки 3',
       value: 'package-template-3',
+      perBox: 27,
     },
   ],
 };
@@ -105,7 +108,7 @@ const meta: Meta<typeof TaskForm> = {
     components: { TaskForm },
     setup() {
       const taskData = args.task;
-      const options = reactive<SelectFieldOptions>({
+      const options = reactive<TaskFormOptions>({
         gtin: [],
         line: [],
         box: [],
@@ -138,7 +141,11 @@ const meta: Meta<typeof TaskForm> = {
       const fakeOptionRequest = async (loadingKey: keyof Omit<TaskFormLoadingStates, 'submitting'>, ms: number) => {
         loadingStates[loadingKey] = true;
         await sleep(ms);
-        options[loadingKey] = inputOptions[loadingKey];
+        if (loadingKey === 'box') {
+          options.box = inputOptions.box;
+        } else {
+          options[loadingKey] = inputOptions[loadingKey];
+        }
         loadingStates[loadingKey] = false;
       };
 

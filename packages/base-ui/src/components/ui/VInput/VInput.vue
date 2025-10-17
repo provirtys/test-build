@@ -177,6 +177,25 @@ watch(
   { immediate: true },
 );
 
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    if (props.displayNumberWithDelimiter && newValue !== undefined && newValue !== null) {
+      const newDigits = newValue.toString().replace(/\D/g, '');
+
+      if (rawModelValue.value !== newDigits) {
+        rawModelValue.value = newDigits;
+        displayValue.value = newDigits ? Number(newDigits).toLocaleString('ru-RU') : '';
+
+        if (!isFocused.value) {
+          updateDisplayValueInInput();
+        }
+      }
+    }
+  },
+  { immediate: true },
+);
+
 onMounted(() => {
   if (props.displayNumberWithDelimiter && props.modelValue) {
     onUpdate(props.modelValue.toString());

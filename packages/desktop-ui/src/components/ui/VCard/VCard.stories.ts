@@ -79,13 +79,6 @@ export const SuccessColor: Story = {
   },
 };
 
-export const Stretch: Story = {
-  args: {
-    title: 'Заголовок карточки',
-    stretch: false,
-  },
-};
-
 export const NoStretch: Story = {
   args: {
     title: '',

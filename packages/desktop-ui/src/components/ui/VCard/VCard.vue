@@ -35,7 +35,7 @@ const classList = computed(() => ({
   gap: 20px;
 
   &--stretch {
-    width: auto;
+    width: 100%;
   }
 
   &__title {
