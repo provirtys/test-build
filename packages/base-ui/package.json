@@ -1,6 +1,6 @@
 {
   "name": "@integrity/base-ui",
-  "version": "1.0.67",
+  "version": "1.0.68",
   "main": "./dist/base-ui.umd.js",
   "module": "./dist/base-ui.es.js",
   "scripts": {
