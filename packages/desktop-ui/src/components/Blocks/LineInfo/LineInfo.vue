@@ -1,6 +1,6 @@
 <template>
     <div class="line-info">
-      <v-card class="line-info__card" title="Общая информация">
+      <v-card class="line-info__card" title="Общая информация" :menu-items="menuList">
         <v-description-list
           :items="descriptionList"
           term-font-size="16px"
@@ -9,21 +9,6 @@
           item-gap="8px"
           content-gap="24px"
           font-weight="normal"/>
-        <v-button
-          class="line-info__menu-btn"
-          icon="dots-horizontal"
-          height="xxs"
-          :icon-size="16"
-          fit-width
-          border-radius="4px"
-          color="secondary"
-        >
-      <template #menu>
-        <q-menu class="button-menu" v-model="menuOpen" anchor="bottom right" self="top right" :offset="[0, 4]">
-          <v-list :items="menuList"/>
-        </q-menu>
-      </template>
-    </v-button>
       </v-card>
        <v-table
          :columns
@@ -44,9 +29,9 @@
 </template>
 
 <script setup lang="ts">
-import { VButton, VDescriptionList, type VDescriptionListItem } from '@base';
+import { VDescriptionList, type VDescriptionListItem } from '@base';
 import { computed, ref } from 'vue';
-import { ModuleItem, VCard, VList, VListItem, VTable, VTableEmitsRequest, VTablePagination, type VTableProps } from '@';
+import { ModuleItem, VCard, VListItem, VTable, VTableEmitsRequest, VTablePagination, type VTableProps } from '@';
 import type { LineInfoProps, VLineInfoEmits } from './LineInfo.types';
 
 const props = defineProps<LineInfoProps>();
@@ -92,15 +77,12 @@ const pagination = ref<NonNullable<VTablePagination>>({
   rowsPerPage: 5,
 });
 
-const menuOpen = ref(false);
-
 const menuList = computed<VListItem[]>(() => [
   {
     icon: 'pencil',
     label: 'Редактировать',
     handler: () => {
       emit('edit');
-      menuOpen.value = false;
     },
   },
   {
@@ -110,7 +92,6 @@ const menuList = computed<VListItem[]>(() => [
     topDivider: true,
     handler: () => {
       emit('delete');
-      menuOpen.value = false;
     },
   },
 ]);
@@ -121,14 +102,4 @@ const onRequest = (data: VTableEmitsRequest) => {
 </script>
 
 <style scoped lang="scss">
-.line-info {
-  position: relative;
-
-  &__menu-btn {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    height: 40px;
-  }
-}
 </style>

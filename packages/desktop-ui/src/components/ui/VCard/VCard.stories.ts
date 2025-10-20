@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import { Notify } from 'quasar';
 import { PieProgress } from '@/components/Elements/PieProgress';
 import type { Color } from './VCard.types';
 import VCard from './VCard.vue';
@@ -12,7 +13,7 @@ const colors: Record<Color, string> = {
   warning: 'Желтый',
 };
 
-/** Простой компонент-обертка. Через слот добавляется нужный контент. */
+/** Простой компонент-обертка. Через слот добавляется нужный контент. Также поддерживает показ меню справа наверху - для этого необходимо передать массив пунктов через проп `menuItems` */
 const meta: Meta<typeof VCard> = {
   component: VCard,
   argTypes: {
@@ -37,6 +38,9 @@ const meta: Meta<typeof VCard> = {
     paddingY: {
       description: 'Внутренний отступ по вертикали',
     },
+    menuItems: {
+      description: 'Список пунктов меню из компонента [VList](/?path=/docs/ui-vlist--docs)',
+    },
     default: {
       table: {
         disable: true,
@@ -48,6 +52,7 @@ const meta: Meta<typeof VCard> = {
     stretch: true,
     paddingX: '20px',
     paddingY: '20px',
+    menuItems: [],
   },
 };
 
@@ -96,4 +101,32 @@ export const NoStretch: Story = {
         <pie-progress size="60"/>
       </v-card>`,
   }),
+};
+
+export const WithMenu: Story = {
+  args: {
+    title: 'Карточка с меню',
+    menuItems: [
+      {
+        icon: 'pencil',
+        label: 'Редактировать',
+        handler: () => {
+          Notify.create({
+            message: 'Нажатие на кнопку',
+          });
+        },
+      },
+      {
+        icon: 'trash',
+        iconColor: 'primary',
+        label: 'Удалить',
+        topDivider: true,
+        handler: () => {
+          Notify.create({
+            message: 'Нажатие на кнопку',
+          });
+        },
+      },
+    ],
+  },
 };

@@ -1,3 +1,5 @@
+import type { VListItem } from '@/components/ui/VList';
+
 export type Color = 'success' | 'error' | 'info' | 'warning';
 
 export interface VCardProps {
@@ -6,4 +8,5 @@ export interface VCardProps {
   color?: Color;
   paddingX?: string;
   paddingY?: string;
+  menuItems?: VListItem[];
 }

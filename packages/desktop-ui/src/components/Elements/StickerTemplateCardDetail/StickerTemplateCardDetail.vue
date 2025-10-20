@@ -1,5 +1,5 @@
 <template>
-  <v-card class="sticker-template-card-detail" title="Общая информация">
+  <v-card class="sticker-template-card-detail" title="Общая информация" :menu-items="menuList">
     <v-description-list
       class="sticker-template-card-detail__list"
       :items="descriptionList"
@@ -23,37 +23,20 @@
              :alt="name"/>
       </template>
     </vue-flow>
-    <v-button
-      class="sticker-template-card-detail__menu-btn"
-      icon="dots-horizontal"
-      height="xxs"
-      :icon-size="16"
-      fit-width
-      border-radius="4px"
-      color="secondary"
-    >
-      <template #menu>
-        <q-menu class="button-menu" v-model="menuOpen" anchor="bottom right" self="top right" :offset="[0, 4]">
-          <v-list :items="menuList"/>
-        </q-menu>
-      </template>
-    </v-button>
   </v-card>
 </template>
 
 <script setup lang="ts">
-import { VButton, VDescriptionList, VDescriptionListItem } from '@base';
+import { VDescriptionList, VDescriptionListItem } from '@base';
 import { Background } from '@vue-flow/background';
 import { type Node, VueFlow } from '@vue-flow/core';
 import { computed, ref } from 'vue';
-import { VCard, VList, VListItem } from '@';
+import { VCard, VListItem } from '@';
 import type { StickerTemplateCardDetailEmits, StickerTemplateCardDetailProps } from './StickerTemplateCardDetail.types';
 import '@vue-flow/core/dist/style.css';
 
 const props = defineProps<StickerTemplateCardDetailProps>();
 const emit = defineEmits<StickerTemplateCardDetailEmits>();
-
-const menuOpen = ref(false);
 
 const descriptionList = computed<VDescriptionListItem[]>(() => [
   {
@@ -68,7 +51,6 @@ const menuList = computed<VListItem[]>(() => [
     label: 'Редактировать',
     handler: () => {
       emit('edit');
-      menuOpen.value = false;
     },
   },
   {
@@ -76,7 +58,6 @@ const menuList = computed<VListItem[]>(() => [
     label: 'Экспортировать',
     handler: () => {
       emit('export');
-      menuOpen.value = false;
     },
   },
   {
@@ -86,7 +67,6 @@ const menuList = computed<VListItem[]>(() => [
     topDivider: true,
     handler: () => {
       emit('delete');
-      menuOpen.value = false;
     },
   },
 ]);
@@ -103,7 +83,6 @@ const nodes = ref<Node[]>([
 
 <style scoped lang="scss">
 .sticker-template-card-detail {
-  position: relative;
 
   &__image-container {
     height: 220px;
@@ -115,13 +94,6 @@ const nodes = ref<Node[]>([
 
   &__list {
     margin-bottom: 20px;
-  }
-
-  &__menu-btn {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    height: 40px;
   }
 }
 </style>
