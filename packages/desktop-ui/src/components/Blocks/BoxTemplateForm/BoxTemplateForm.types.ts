@@ -1,5 +1,3 @@
-import type { VInputProps } from '@integrity/base-ui/src';
-
 export interface BoxTemplateItem {
   id: string;
   name: string;
@@ -16,10 +14,4 @@ export interface BoxTemplateFormProps {
 
 export type BoxTemplateFormEmits = (e: 'submit', data: Omit<BoxTemplateItem, 'id'>) => void;
 
-export type InputFieldKey = Exclude<keyof BoxTemplateItem, 'id'>;
-
-export type FieldSettings = {
-  [K in InputFieldKey]: VInputProps;
-};
-
-export type BoxTemplateFormFieldProps = (name: InputFieldKey) => VInputProps;
+export type FormInputKey = Exclude<keyof BoxTemplateItem, 'id'>;

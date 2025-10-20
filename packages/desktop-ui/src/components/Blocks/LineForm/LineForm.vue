@@ -54,15 +54,10 @@
 import { VButton, VInput } from '@base';
 import { QForm } from 'quasar';
 import { computed, onMounted, reactive, ref } from 'vue';
-import { VCard, VList } from '@';
-import {
-  FieldSettings,
-  LineFormEmits,
-  LineFormFieldProps,
-  LineFormProps,
-  ModuleItem,
-} from '@/components/Blocks/LineForm/LineForm.types';
+import { VCard } from '@';
+import { FormInputKey, LineFormEmits, LineFormProps } from '@/components/Blocks/LineForm/LineForm.types';
 import VFormRow from '@/components/ui/VFormRow/VFormRow.vue';
+import { FormInputProps, FormInputSettings } from '@/types/formFields';
 
 const props = withDefaults(defineProps<LineFormProps>(), {
   line: () => ({
@@ -88,7 +83,7 @@ const buttonConfig = computed(() => ({
   icon: props.mode === 'new' ? 'plus' : 'done',
 }));
 
-const fieldSettings = computed<FieldSettings>(() => ({
+const formSettings = computed<FormInputSettings<FormInputKey>>(() => ({
   name: {
     label: 'Название линии',
     placeholder: 'Новая линия...',
@@ -107,11 +102,11 @@ const fieldSettings = computed<FieldSettings>(() => ({
   },
 }));
 
-const getFieldProps: LineFormFieldProps = (name) => {
+const getFieldProps: FormInputProps<FormInputKey> = (name) => {
   return {
-    label: fieldSettings.value[name].label,
-    placeholder: fieldSettings.value[name].placeholder,
-    required: fieldSettings.value[name].required,
+    label: formSettings.value[name].label,
+    placeholder: formSettings.value[name].placeholder,
+    required: formSettings.value[name].required,
     outlined: true,
     labelOutside: true,
     labelOnBorder: false,

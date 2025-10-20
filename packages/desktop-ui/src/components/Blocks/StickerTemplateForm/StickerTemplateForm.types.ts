@@ -1,5 +1,3 @@
-import type { VInputProps } from '@integrity/base-ui/src';
-
 export interface StickerTemplateItem {
   id: string;
   name: string;
@@ -14,10 +12,4 @@ export interface StickerTemplateFormProps {
 
 export type StickerTemplateFormEmits = (e: 'submit', data: Omit<StickerTemplateItem, 'id'>) => void;
 
-export type InputFieldKey = Exclude<keyof StickerTemplateItem, 'id'>;
-
-export type FieldSettings = {
-  [K in InputFieldKey]: VInputProps;
-};
-
-export type StickerTemplateFormFieldProps = (name: InputFieldKey) => VInputProps;
+export type FormInputKey = Exclude<keyof StickerTemplateItem, 'id'>;

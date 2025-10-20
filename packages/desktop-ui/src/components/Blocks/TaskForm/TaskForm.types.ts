@@ -1,5 +1,4 @@
 import type { VSelectOption } from '@base/components/ui/VSelect/VSelect.types';
-import type { VInputProps, VSelectProps } from '@integrity/base-ui/src';
 
 export interface TaskItem {
   id: string;
@@ -16,23 +15,8 @@ export interface TaskItem {
   boxTotal: number;
 }
 
-export type SelectFields = Pick<TaskItem, 'gtin' | 'line' | 'sticker' | 'box'>;
-export type SelectFieldKey = keyof SelectFields;
-export type InputFieldKey = Exclude<keyof TaskItem, SelectFieldKey | 'id'>;
-
-export type FieldSettings = {
-  [K in SelectFieldKey]: Omit<VSelectProps, 'modelValue' | 'onUpdate:modelValue'>;
-} & {
-  [K in InputFieldKey]: Omit<VInputProps, 'modelValue' | 'onUpdate:modelValue'>;
-};
-
-export interface GetFieldProps {
-  (name: SelectFieldKey): Omit<VSelectProps, 'modelValue' | 'onUpdate:modelValue'>;
-
-  (name: InputFieldKey): Omit<VInputProps, 'modelValue' | 'onUpdate:modelValue'>;
-}
-
-export const SelectFieldsKeys: SelectFieldKey[] = ['gtin', 'line', 'box', 'sticker'];
+export type FormSelectKey = keyof Pick<TaskItem, 'gtin' | 'line' | 'sticker' | 'box'>;
+export type FormInputKey = Exclude<keyof TaskItem, FormSelectKey | 'id'>;
 
 export interface TaskFormOptions {
   gtin: VSelectOption[];
@@ -41,7 +25,7 @@ export interface TaskFormOptions {
   box: (VSelectOption & { perBox: number })[];
 }
 
-export interface TaskFormLoadingStates extends Record<SelectFieldKey | 'submitting', boolean> {}
+export interface TaskFormLoadingStates extends Record<FormSelectKey | 'submitting', boolean> {}
 
 export interface TaskFormProps {
   task?: Partial<TaskItem>;
@@ -52,6 +36,7 @@ export interface TaskFormProps {
 
 export interface TaskFormEmits {
   (e: 'submit', data: Partial<TaskItem>): void;
+
   (e: 'draft', data: Partial<TaskItem>): void;
 }
 

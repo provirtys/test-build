@@ -1,7 +1,3 @@
-import type { VInputProps } from '@integrity/base-ui/src';
-
-type InputProps = Omit<VInputProps, 'modelValue'>;
-
 export interface ModuleItem {
   name: string;
   ip: string;
@@ -21,10 +17,4 @@ export interface LineFormProps {
 
 export type LineFormEmits = (e: 'submit', data: Omit<LineItem, 'uuid'>) => void;
 
-export type FieldSettings = {
-  name: InputProps;
-  moduleName: InputProps;
-  moduleIp: InputProps;
-};
-
-export type LineFormFieldProps = (name: keyof FieldSettings) => InputProps;
+export type FormInputKey = 'name' | 'moduleName' | 'moduleIp';

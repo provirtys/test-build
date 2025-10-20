@@ -96,15 +96,14 @@ import { computed, reactive, ref, watch } from 'vue';
 import { VCard } from '@';
 import {
   BoxAlert,
-  FieldSettings,
-  GetFieldProps,
-  SelectFieldKey,
-  SelectFieldsKeys,
+  FormInputKey,
+  FormSelectKey,
   TaskFormEmits,
   TaskFormProps,
   TaskItem,
 } from '@/components/Blocks/TaskForm/TaskForm.types';
 import VFormRow from '@/components/ui/VFormRow/VFormRow.vue';
+import { FormInputProps, FormInputSettings, FormSelectProps, FormSelectSettings } from '@/types/formFields';
 
 const props = withDefaults(defineProps<TaskFormProps>(), {
   mode: 'new',
@@ -134,7 +133,9 @@ const formRef = ref<InstanceType<typeof QForm> | null>(null);
 
 const boxAlertValue = ref(false);
 
-const fieldSettings = computed<FieldSettings>(() => ({
+const SelectFieldKeys: FormSelectKey[] = ['gtin', 'line', 'box', 'sticker'];
+
+const formSettings = computed<FormInputSettings<FormInputKey> & FormSelectSettings<FormSelectKey>>(() => ({
   name: {
     label: 'Название задачи',
     placeholder: 'Новая задача',
@@ -254,34 +255,34 @@ const boxAlertRules = computed(() => [
   },
 ]);
 
-const isSelectFieldKey = (name: keyof TaskItem): name is SelectFieldKey => {
-  return SelectFieldsKeys.includes(name as SelectFieldKey);
+const isSelectFieldKey = (name: keyof TaskItem): name is FormSelectKey => {
+  return SelectFieldKeys.includes(name as FormSelectKey);
 };
 
-const getFieldProps: GetFieldProps = (name) => {
+const getFieldProps: FormInputProps<FormInputKey> & FormSelectProps<FormSelectKey> = (name) => {
   if (isSelectFieldKey(name)) {
     return {
-      outsideLabel: fieldSettings.value[name]?.outsideLabel,
-      label: fieldSettings.value[name]?.label,
+      outsideLabel: formSettings.value[name]?.outsideLabel,
+      label: formSettings.value[name]?.label,
       staticLabel: true,
-      required: fieldSettings.value[name]?.required,
+      required: formSettings.value[name]?.required,
       outlined: true,
       labelOutside: true,
       dense: true,
       optionsDense: true,
       mapOptions: true,
       emitValue: true,
-      rules: fieldSettings.value[name]?.required ? [(val) => (val && val.length > 0) || 'Выберите значение'] : [],
+      rules: formSettings.value[name]?.required ? [(val) => (val && val.length > 0) || 'Выберите значение'] : [],
       options: props.options ? props.options[name] : [],
-      loading: fieldSettings.value[name]?.loading,
+      loading: formSettings.value[name]?.loading,
       lazyRules: 'ondemand',
     };
   }
 
   return {
-    label: fieldSettings.value[name].label,
-    placeholder: fieldSettings.value[name].placeholder,
-    required: fieldSettings.value[name].required,
+    label: formSettings.value[name].label,
+    placeholder: formSettings.value[name].placeholder,
+    required: formSettings.value[name].required,
     outlined: true,
     labelOutside: true,
     labelOnBorder: false,
@@ -289,10 +290,10 @@ const getFieldProps: GetFieldProps = (name) => {
     labelColor: 'dark-gray-70',
     color: 'primary-text',
     fontSize: '16px',
-    type: fieldSettings.value[name].type || 'text',
+    type: formSettings.value[name].type || 'text',
     maxlength: 120,
-    counter: fieldSettings.value[name].counter,
-    displayNumberWithDelimiter: fieldSettings.value[name].displayNumberWithDelimiter,
+    counter: formSettings.value[name].counter,
+    displayNumberWithDelimiter: formSettings.value[name].displayNumberWithDelimiter,
     lazyRules: 'ondemand',
   };
 };

@@ -3,7 +3,7 @@
     <q-form ref="formRef" class="sticker-template-form__form" @submit="onSubmit">
       <v-card title="Информация">
         <v-form-row>
-          <v-input v-bind="getFieldProps('name')"/>
+          <v-input v-bind="getFieldProps('name')" v-model="formData.name"/>
         </v-form-row>
         <v-form-row>
           <v-file-upload v-model="formData.file" required/>
@@ -31,12 +31,12 @@ import { QForm } from 'quasar';
 import { computed, reactive, ref } from 'vue';
 import { VCard } from '@';
 import {
-  FieldSettings,
+  FormInputKey,
   StickerTemplateFormEmits,
-  StickerTemplateFormFieldProps,
   StickerTemplateFormProps,
 } from '@/components/Blocks/StickerTemplateForm/StickerTemplateForm.types';
 import VFormRow from '@/components/ui/VFormRow/VFormRow.vue';
+import { FormInputProps, FormInputSettings } from '@/types/formFields';
 
 const props = withDefaults(defineProps<StickerTemplateFormProps>(), {
   mode: 'new',
@@ -48,16 +48,13 @@ const formRef = ref<InstanceType<typeof QForm> | null>(null);
 
 const formData = reactive({ ...props.sticker });
 
-const fieldSettings = computed<FieldSettings>(() => ({
+const formSettings = computed<FormInputSettings<FormInputKey>>(() => ({
   name: {
     label: 'Название шаблона',
     placeholder: 'Новый шаблон',
-    modelValue: formData.name,
     required: true,
   },
-  file: {
-    modelValue: File,
-  },
+  file: {},
 }));
 
 const buttonConfig = computed(() => ({
@@ -65,12 +62,11 @@ const buttonConfig = computed(() => ({
   icon: props.mode === 'new' ? 'plus' : 'done',
 }));
 
-const getFieldProps: StickerTemplateFormFieldProps = (name) => {
+const getFieldProps: FormInputProps<FormInputKey> = (name) => {
   return {
-    modelValue: fieldSettings.value[name]?.modelValue,
-    label: fieldSettings.value[name].label,
-    placeholder: fieldSettings.value[name].placeholder,
-    required: fieldSettings.value[name].required,
+    label: formSettings.value[name].label,
+    placeholder: formSettings.value[name].placeholder,
+    required: formSettings.value[name].required,
     outlined: true,
     labelOutside: true,
     labelOnBorder: false,
@@ -78,11 +74,8 @@ const getFieldProps: StickerTemplateFormFieldProps = (name) => {
     labelColor: 'dark-gray-70',
     color: 'primary-text',
     fontSize: '16px',
-    type: fieldSettings.value[name].type || 'text',
+    type: formSettings.value[name].type || 'text',
     lazyRules: 'ondemand',
-    'onUpdate:modelValue': (val) => {
-      formData[name] = val;
-    },
   };
 };
 

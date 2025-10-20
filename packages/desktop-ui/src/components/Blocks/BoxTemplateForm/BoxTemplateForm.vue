@@ -3,15 +3,15 @@
     <q-form ref="formRef" class="box-template-form__form" @submit="onSubmit">
       <v-card title="Информация">
         <v-form-row>
-          <v-input v-bind="getFieldProps('name')"/>
+          <v-input v-bind="getFieldProps('name')" v-model="formData.name"/>
         </v-form-row>
         <v-form-row class="box-template-form__grid">
           <span class="box-template-form__grid-title">Кол-во</span>
           <info-grid :x="formData.x || 5" :y="formData.y || 3" height="212px"/>
         </v-form-row>
         <v-form-row columns="2">
-          <v-input v-bind="getFieldProps('x')"/>
-          <v-input v-bind="getFieldProps('y')"/>
+          <v-input v-bind="getFieldProps('x')" v-model="formData.x"/>
+          <v-input v-bind="getFieldProps('y')" v-model="formData.y"/>
         </v-form-row>
         <v-form-row columns="2">
           <v-checkbox-button
@@ -23,7 +23,9 @@
             is-plane
             bg-always-filled
           />
-          <v-input :style="{'opacity': formData.multilayered ? 1 : 0.2}" v-bind="getFieldProps('layers')"/>
+          <v-input :style="{'opacity': formData.multilayered ? 1 : 0.2}"
+                   v-bind="getFieldProps('layers')"
+                   v-model="formData.layers"/>
         </v-form-row>
         <v-card v-if="productsQuantity" class="box-template-form__quantity-card" color="info" padding-x="12px"
                 padding-y="12px">
@@ -54,11 +56,11 @@ import { computed, reactive, ref, watch } from 'vue';
 import { InfoGrid, VCard } from '@';
 import {
   BoxTemplateFormEmits,
-  BoxTemplateFormFieldProps,
   BoxTemplateFormProps,
-  FieldSettings,
+  FormInputKey,
 } from '@/components/Blocks/BoxTemplateForm/BoxTemplateForm.types';
 import VFormRow from '@/components/ui/VFormRow/VFormRow.vue';
+import { FormInputProps, FormInputSettings } from '@/types/formFields';
 
 const props = withDefaults(defineProps<BoxTemplateFormProps>(), {
   mode: 'new',
@@ -77,7 +79,7 @@ const formRef = ref<InstanceType<typeof QForm> | null>(null);
 
 const formData = reactive({ ...props.box, multilayered: !!props.box.layers && props.box.layers !== 1 });
 
-const fieldSettings = computed<FieldSettings>(() => ({
+const formSettings = computed<FormInputSettings<FormInputKey>>(() => ({
   name: {
     label: 'Название шаблона',
     placeholder: 'Новый шаблон',
@@ -118,11 +120,10 @@ const buttonConfig = computed(() => ({
   icon: props.mode === 'new' ? 'plus' : 'done',
 }));
 
-const getFieldProps: BoxTemplateFormFieldProps = (name) => ({
-  modelValue: fieldSettings.value[name]?.modelValue,
-  label: fieldSettings.value[name].label,
-  placeholder: fieldSettings.value[name].placeholder,
-  required: fieldSettings.value[name].required,
+const getFieldProps: FormInputProps<FormInputKey> = (name) => ({
+  label: formSettings.value[name].label,
+  placeholder: formSettings.value[name].placeholder,
+  required: formSettings.value[name].required,
   outlined: true,
   labelOutside: true,
   labelOnBorder: false,
@@ -130,14 +131,11 @@ const getFieldProps: BoxTemplateFormFieldProps = (name) => ({
   labelColor: 'dark-gray-70',
   color: 'primary-text',
   fontSize: '16px',
-  type: fieldSettings.value[name].type || 'text',
+  type: formSettings.value[name].type || 'text',
   maxlength: 120,
   min: name === 'layers' ? 1 : 0,
-  disable: fieldSettings.value[name].disable,
+  disable: formSettings.value[name].disable,
   lazyRules: 'ondemand',
-  'onUpdate:modelValue': (val) => {
-    formData[name] = val;
-  },
 });
 
 const onSubmit = async () => {
