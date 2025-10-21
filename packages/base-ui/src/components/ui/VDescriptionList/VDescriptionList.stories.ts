@@ -78,6 +78,18 @@ const meta: Meta<typeof VDescriptionList> = {
         term: 'Заголовок 3',
         definition: 'Значение 3',
       },
+      {
+        term: 'Заголовок 4',
+        definition: 'Значение 4',
+      },
+      {
+        term: 'Заголовок 5',
+        definition: 'Значение 5',
+      },
+      {
+        term: 'Заголовок 6',
+        definition: 'Значение 6',
+      },
     ],
     inline: false,
     isLight: false,

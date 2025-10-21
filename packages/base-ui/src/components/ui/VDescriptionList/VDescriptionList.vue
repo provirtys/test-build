@@ -55,7 +55,9 @@ const bindingFontWeight = computed(() => (props.fontWeight === 'normal' ? 400 : 
 
 <style lang="scss" scoped>
 .v-description-list {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   gap: v-bind(contentGap);
 
   &--inline {
@@ -84,8 +86,7 @@ const bindingFontWeight = computed(() => (props.fontWeight === 'normal' ? 400 : 
   }
 
   &--content-inline {
-    grid-auto-flow: column;
-    grid-auto-columns: max-content;
+    flex-direction: row;
   }
 
   &__item {
