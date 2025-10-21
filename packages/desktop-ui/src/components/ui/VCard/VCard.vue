@@ -40,6 +40,7 @@ const menuOpen = ref(false);
 const classList = computed(() => ({
   'v-card--stretch': props.stretch,
   [`bg-${props.color}-10`]: props.color,
+  'v-card--flex': props.isFlex,
 }));
 
 const menuItemsComputed = computed(() =>
@@ -69,6 +70,13 @@ const menuItemsComputed = computed(() =>
 
   &--stretch {
     width: 100%;
+  }
+
+  &--flex {
+    .v-card__content {
+      display: flex;
+      align-items: center;
+    }
   }
 
   &__title {
