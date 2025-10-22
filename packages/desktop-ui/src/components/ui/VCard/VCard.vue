@@ -4,7 +4,7 @@
     <div v-if="$slots.default" class="v-card__content">
       <slot/>
     </div>
-    <v-button-menu v-if="menuItems && menuItems.length" :items="menuItems" position-absolute/>
+    <v-button-menu v-if="menuItems && menuItems.length" class="v-card__menu-btn" :items="menuItems" position-absolute/>
   </div>
 </template>
 
@@ -52,6 +52,12 @@ const classList = computed(() => ({
   &__title {
     @include font(Golos, $font-size-p1, 1, 500);
     color: $dark-gray-70;
+  }
+
+  &__menu-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
   }
 }
 </style>

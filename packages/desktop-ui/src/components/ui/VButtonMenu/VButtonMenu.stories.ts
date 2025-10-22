@@ -11,9 +11,6 @@ const meta: Meta<typeof VButtonMenu> = {
     items: {
       description: 'Список элементов',
     },
-    positionAbsolute: {
-      description: 'Использовать абсолютное позиционирование для элемента',
-    },
     dense: {
       description: 'Уменьшить размер',
     },
@@ -41,7 +38,7 @@ const meta: Meta<typeof VButtonMenu> = {
         },
       },
     ],
-    positionAbsolute: false,
+    dense: false,
   },
 };
 

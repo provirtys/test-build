@@ -40,17 +40,11 @@ const menuItemsComputed = computed(() =>
 
 const classList = computed(() => ({
   'v-button-menu--dense': props.dense,
-  'v-button-menu--absolute': props.positionAbsolute,
 }));
-
-const position = computed(() => (props.positionAbsolute ? 'absolute' : 'relative'));
 </script>
 
 <style scoped lang="scss">
 .v-button-menu {
-  position: v-bind(position);
-  top: 4px;
-  right: 4px;
   width: 40px;
   height: 40px;
   justify-content: center;
