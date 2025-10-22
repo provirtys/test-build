@@ -4,30 +4,14 @@
     <div v-if="$slots.default" class="v-card__content">
       <slot/>
     </div>
-      <v-button
-        v-if="menuItemsComputed && menuItemsComputed.length"
-        class="v-card__menu-btn"
-        icon="dots-horizontal"
-        height="xxs"
-        :icon-size="16"
-        fit-width
-        border-radius="4px"
-        color="secondary"
-      >
-        <template #menu>
-          <q-menu class="button-menu" v-model="menuOpen" anchor="bottom right" self="top right" :offset="[0, 4]">
-            <v-list :items="menuItemsComputed"/>
-          </q-menu>
-        </template>
-      </v-button>
+    <v-menu-button v-if="menuItems && menuItems.length" :items="menuItems" position-absolute/>
   </div>
 </template>
 
 <script setup lang="ts">
-import { VButton } from '@base';
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import type { VCardProps } from '@/components/ui/VCard/VCard.types';
-import { VList } from '@/components/ui/VList';
+import { VMenuButton } from '@/components/ui/VMenuButton';
 
 const props = withDefaults(defineProps<VCardProps>(), {
   stretch: true,
@@ -35,25 +19,11 @@ const props = withDefaults(defineProps<VCardProps>(), {
   paddingY: '20px',
 });
 
-const menuOpen = ref(false);
-
 const classList = computed(() => ({
   'v-card--stretch': props.stretch,
   [`bg-${props.color}-10`]: props.color,
   'v-card--flex': props.isFlex,
 }));
-
-const menuItemsComputed = computed(() =>
-  props.menuItems?.map((item) => ({
-    ...item,
-    handler: () => {
-      menuOpen.value = false;
-      if (item.handler) {
-        item.handler();
-      }
-    },
-  })),
-);
 </script>
 
 <style scoped lang="scss">
@@ -82,13 +52,6 @@ const menuItemsComputed = computed(() =>
   &__title {
     @include font(Golos, $font-size-p1, 1, 500);
     color: $dark-gray-70;
-  }
-
-  &__menu-btn {
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    height: 40px;
   }
 }
 </style>
