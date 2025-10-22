@@ -1,9 +1,10 @@
 <template>
   <v-button
     class="v-button-menu"
+    :class="classList"
     icon="dots-horizontal"
     height="xxs"
-    :icon-size="16"
+    :icon-size="dense ? 12 : 14"
     border-radius="4px"
     color="secondary"
   >
@@ -37,6 +38,11 @@ const menuItemsComputed = computed(() =>
   })),
 );
 
+const classList = computed(() => ({
+  'v-button-menu--dense': props.dense,
+  'v-button-menu--absolute': props.positionAbsolute,
+}));
+
 const position = computed(() => (props.positionAbsolute ? 'absolute' : 'relative'));
 </script>
 
@@ -47,5 +53,11 @@ const position = computed(() => (props.positionAbsolute ? 'absolute' : 'relative
   right: 4px;
   width: 40px;
   height: 40px;
+  justify-content: center;
+
+  &--dense {
+    width: 30px;
+    height: 30px;
+  }
 }
 </style>

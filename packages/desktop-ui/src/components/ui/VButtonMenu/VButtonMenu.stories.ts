@@ -14,6 +14,9 @@ const meta: Meta<typeof VButtonMenu> = {
     positionAbsolute: {
       description: 'Использовать абсолютное позиционирование для элемента',
     },
+    dense: {
+      description: 'Уменьшить размер',
+    },
   },
   args: {
     items: [
@@ -45,3 +48,9 @@ const meta: Meta<typeof VButtonMenu> = {
 export default meta;
 
 export const Standard: Story = {};
+
+export const Dense: Story = {
+  args: {
+    dense: true,
+  },
+};
