@@ -4,14 +4,14 @@
     <div v-if="$slots.default" class="v-card__content">
       <slot/>
     </div>
-    <v-menu-button v-if="menuItems && menuItems.length" :items="menuItems" position-absolute/>
+    <v-button-menu v-if="menuItems && menuItems.length" :items="menuItems" position-absolute/>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { VButtonMenu } from '@/components/ui/VButtonMenu';
 import type { VCardProps } from '@/components/ui/VCard/VCard.types';
-import { VMenuButton } from '@/components/ui/VMenuButton';
 
 const props = withDefaults(defineProps<VCardProps>(), {
   stretch: true,
