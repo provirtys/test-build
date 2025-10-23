@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<VCardProps>(), {
   stretch: true,
   paddingX: '20px',
   paddingY: '20px',
+  borderRadius: '8px',
 });
 
 const classList = computed(() => ({
@@ -31,7 +32,7 @@ const classList = computed(() => ({
   padding-inline: v-bind(paddingX);
   padding-block: v-bind(paddingY);
   background-color: $light-gray-40;
-  border-radius: 8px;
+  border-radius: v-bind(borderRadius);
   width: fit-content;
   display: flex;
   flex-direction: column;

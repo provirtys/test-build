@@ -10,4 +10,5 @@ export interface VCardProps {
   paddingY?: string;
   menuItems?: VListItem[];
   isFlex?: boolean;
+  borderRadius?: string;
 }

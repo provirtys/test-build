@@ -42,6 +42,12 @@ const meta: Meta<typeof VCard> = {
     menuItems: {
       description: 'Список пунктов меню из компонента [VList](/?path=/docs/ui-vlist--docs)',
     },
+    borderRadius: {
+      description: 'Радиус границы',
+    },
+    isFlex: {
+      description: 'Применить flex к контенту',
+    },
     default: {
       table: {
         disable: true,
@@ -54,6 +60,8 @@ const meta: Meta<typeof VCard> = {
     paddingX: '20px',
     paddingY: '20px',
     menuItems: [],
+    borderRadius: '8px',
+    isFlex: false,
   },
 };
 
