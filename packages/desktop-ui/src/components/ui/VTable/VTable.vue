@@ -367,7 +367,6 @@ onMounted(async () => {
   td {
     @include fontAdaptive($font-size-p3, 1.2, 400);
     vertical-align: baseline;
-    padding: 4px 8px 15px;
     border: unset;
     height: unset;
 
