@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<VCardProps>(), {
 
 const classList = computed(() => ({
   'v-card--stretch': props.stretch,
-  [`bg-${props.color}-10`]: props.color,
+  [props.color === 'gray' ? 'bg-light-gray-70' : `bg-${props.color}-10`]: true,
   'v-card--flex': props.isFlex,
 }));
 </script>

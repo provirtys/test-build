@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="labeling-progress__legend-item">
-        <div class="labeling-progress__legend-color bg-gray-2"></div>
+        <div class="labeling-progress__legend-color bg-light-gray-85"></div>
         <div class="labeling-progress__legend-title">
           <p>{{ t('withoutErrors') }}</p>
           <p>{{ total - mistakes }}</p>
@@ -30,7 +30,7 @@
           size="320px"
           :thickness="0.4"
           color="primary"
-          track-color="gray-2"
+          track-color="light-gray-85"
           class="q-ma-md"
       />
       <div class="labeling-progress__indicator-titles" :class="{ alignment: percentage === 100 || percentage === 0 }">

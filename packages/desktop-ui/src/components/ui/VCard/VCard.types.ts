@@ -1,6 +1,6 @@
 import type { VListItem } from '@/components/ui/VList';
 
-export type Color = 'success' | 'error' | 'info' | 'warning';
+export type Color = 'success' | 'error' | 'info' | 'warning' | 'gray';
 
 export interface VCardProps {
   title?: string;

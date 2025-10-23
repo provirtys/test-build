@@ -36,7 +36,7 @@ defineOptions({
 });
 
 const bindingProps = computed(() => ({
-  color: props.dark ? 'gray-3' : 'dark-1',
+  color: props.dark ? 'light-gray-40' : 'dark-1',
   size: SIZES[props.size],
 }));
 

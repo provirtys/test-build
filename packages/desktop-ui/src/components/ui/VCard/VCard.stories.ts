@@ -11,6 +11,7 @@ const colors: Record<Color, string> = {
   error: 'Красный',
   info: 'Синий',
   warning: 'Желтый',
+  gray: 'Серый',
 };
 
 /** Простой компонент-обертка. Через слот добавляется нужный контент. Также поддерживает показ меню справа наверху - для этого необходимо передать массив пунктов через проп `menuItems` */
@@ -81,6 +82,12 @@ export const WarningColor: Story = {
 export const SuccessColor: Story = {
   args: {
     color: 'success',
+  },
+};
+
+export const GrayColor: Story = {
+  args: {
+    color: 'gray',
   },
 };
 
