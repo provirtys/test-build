@@ -1,15 +1,9 @@
 <template>
   <q-table
     class="v-table"
-    :columns
-    :rows="rows"
-    flat
-    :filter="tableFilter"
-    :filter-method="tableFilterMethod"
+    v-bind="bindingProps"
     v-model:pagination="pagination"
     ref="tableRef"
-    @request="onRequest"
-    @rowClick="(...args) => emit('rowClick', ...args)"
   >
     <template #header-cell="props">
       <q-th :props="props" class="v-table__th" :class="getThClassesByCol(props.col)">
@@ -190,8 +184,21 @@ const tableFilter = computed(() => {
   });
 });
 
+const bindingProps = computed<QTableProps>(() => {
+  return {
+    ...props,
+    rows: props.rows,
+    columns: props.columns,
+    flat: true,
+    filter: tableFilter.value,
+    filterMethod: tableFilterMethod,
+    onRequest,
+    onRowClick: (...args) => emit('rowClick', ...args),
+  };
+});
+
 const tableFilterMethod = (rows: typeof props.rows, filter: string) => {
-  if (!pagination.value) return;
+  if (!pagination.value) return rows;
   const filterObj = JSON.parse(filter);
 
   if (pagination.value.rowsNumber || !Object.keys(filterObj).length) return rows;
