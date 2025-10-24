@@ -11,7 +11,7 @@
         <!-- Поиск -->
         <template v-if="props.col.searchable">
           <span class="v-table__th-icon">
-            <v-icon name="search" size="11"/>
+            <v-icon name="search" size="10"/>
           </span>
           <q-menu class="q-pa-sm" v-model="menuStates[props.col.name]">
             <v-input
@@ -45,7 +45,7 @@
         <!-- Фильтрация -->
         <template v-else-if="props.col.filterable">
           <span class="v-table__th-icon">
-            <v-icon name="filter" size="11"/>
+            <v-icon name="filter" size="10"/>
           </span>
           <q-menu v-model="menuStates[props.col.name]">
             <div class="filter-menu">
@@ -54,6 +54,7 @@
                   <q-checkbox
                     v-model="item.value"
                     :label="item.label"
+                    class="full-width"
                     color="primary-text"
                     size="xs"
                     checked-icon="svguse:#icon-checkbox-short-filled"
@@ -69,7 +70,7 @@
         <!-- Сортировка -->
         <template v-else-if="props.col.sortable">
           <span class="v-table__th-icon">
-            <v-icon name="sort" size="11"/>
+            <v-icon name="sort" size="10"/>
           </span>
         </template>
       </q-th>
@@ -367,7 +368,6 @@ onMounted(async () => {
 
     svg {
       display: inline-flex;
-      margin-bottom: -1px;
     }
   }
 

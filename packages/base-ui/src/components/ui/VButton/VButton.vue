@@ -86,6 +86,7 @@ const bindingProps = computed<QBtnProps>(() => ({
 const showSubmittedIcon = computed(() => props.once && btnStatus.value === 'done');
 
 const btnClasses = computed(() => [
+  //todo Сделать button size опциональным, чтобы работал size prop, когда не задан height
   `v-button--${buttonSize.value}`,
   backgroundColor.value,
   {
