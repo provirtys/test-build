@@ -94,6 +94,7 @@ const meta: Meta<typeof VDescriptionList> = {
     inline: false,
     isLight: false,
     alignCenter: false,
+    justifyCenter: false,
     termFontSize: '14px',
     definitionFontSize: '28px',
     bordered: false,

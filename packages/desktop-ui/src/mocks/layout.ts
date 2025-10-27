@@ -21,8 +21,12 @@ export const sidebarItems: Omit<MainSidebarItem, 'handler'>[] = [
     icon: 'puzzle',
   },
   {
-    label: 'Настройки',
-    icon: 'settings-filled',
+    label: 'Продукция',
+    icon: 'box',
+  },
+  {
+    label: 'Журнал',
+    icon: 'notifications',
   },
 ];
 

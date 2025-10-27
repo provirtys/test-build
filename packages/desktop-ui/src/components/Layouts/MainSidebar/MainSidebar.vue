@@ -9,13 +9,20 @@
           :class="{'main-sidebar__item--active': item.active}"
           @click="item.handler"
         >
-          <v-icon v-if="item.icon" :name="item.icon" size="24"/>
+          <div class="main-sidebar__item-icon">
+            <v-icon v-if="item.icon" :name="item.icon" size="24"/>
+            <span v-if="item.notificationsCount && item.notificationsCount > 0"
+                  class="main-sidebar__item-notifications">{{ item.notificationsCount }}</span>
+          </div>
           <span class="main-sidebar__item-label">{{ item.label }}</span>
         </li>
       </ul>
     </nav>
     <div class="main-sidebar__bottom">
-      <v-icon v-if="!isDense" class="text-primary" name="integrity-logo" height="15" width="88"/>
+      <div v-if="!isDense">
+        <v-description-list :items="bottomDescriptionList" v-bind="descriptionListProps"/>
+      </div>
+      <v-icon v-if="!isDense" class="text-primary" name="integrity-logo" height="19" width="108"/>
       <v-button class="main-sidebar__toggler" icon="arrow-menu-close" :icon-size="12" height="xxs" color="secondary"
                 @action="toggleDense"/>
     </div>
@@ -23,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { VButton, VIcon } from '@base';
+import { VButton, VDescriptionList, VDescriptionListProps, VIcon } from '@base';
 import { computed, ref } from 'vue';
 import { MainSidebarProps } from '@/components/Layouts/MainSidebar/MainSidebar.types';
 
@@ -38,12 +45,22 @@ const classList = computed(() => ({
 const toggleDense = () => {
   isDense.value = !isDense.value;
 };
+
+const descriptionListProps = computed<Omit<VDescriptionListProps, 'items'>>(() => ({
+  termFontSize: '12px',
+  definitionFontSize: '12px',
+  inline: true,
+  contentInline: true,
+  itemGap: '4px',
+  contentGap: '8px',
+  justifyCenter: true,
+}));
 </script>
 
 <style scoped lang="scss">
 .main-sidebar {
   background-color: $light-gray-70;
-  width: 112px;
+  width: 160px;
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -52,10 +69,10 @@ const toggleDense = () => {
   overflow: hidden;
 
   &--dense {
-    width: 52px;
+    width: 48px;
 
     .main-sidebar__item {
-      height: 62px;
+      height: 53px;
     }
 
     .main-sidebar__item-label {
@@ -69,11 +86,11 @@ const toggleDense = () => {
 
   &__item {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
+    gap: 12px;
+    padding: 12px;
+    justify-content: flex-start;
     align-items: center;
-    height: 92px;
+    height: 53px;
     color: $primary-text-70;
     cursor: pointer;
     transition: height 0.3s ease;
@@ -89,11 +106,30 @@ const toggleDense = () => {
     color: inherit;
   }
 
+  &__item-icon {
+    position: relative;
+  }
+
+  &__item-notifications {
+    position: absolute;
+    top: -4px;
+    left: 100%;
+    transform: translate(-7px, -50%);
+    height: 16px;
+    padding-inline: 5.25px;
+    border-radius: 16px;
+    background-color: $info;
+    color: $secondary;
+    @include font(Golos, $font-size-p6, 1, 500);
+    display: flex;
+    align-items: center;
+  }
+
   &__bottom {
     padding: 0 4px 4px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 24px;
     margin-top: auto;
     align-items: center;
 

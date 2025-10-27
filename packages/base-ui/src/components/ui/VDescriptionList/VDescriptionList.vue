@@ -44,7 +44,8 @@ const props = withDefaults(defineProps<VDescriptionListProps>(), {
 const classList = computed(() => ({
   'v-description-list--inline': props.inline,
   'v-description-list--light': props.isLight,
-  'v-description-list--centered': props.alignCenter,
+  'v-description-list--align-centered': props.alignCenter,
+  'v-description-list--justify-centered': props.justifyCenter,
   'v-description-list--bordered': props.bordered,
   'v-description-list--content-inline': props.contentInline,
   'v-description-list--font-bold': props.fontWeight,
@@ -74,7 +75,11 @@ const bindingFontWeight = computed(() => (props.fontWeight === 'normal' ? 400 : 
     }
   }
 
-  &--centered &__definition {
+  &--justify-centered {
+    justify-content: center;
+  }
+
+  &--align-centered &__definition {
     text-align: center;
   }
 

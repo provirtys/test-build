@@ -11,6 +11,7 @@ export interface VDescriptionListProps {
   inline?: boolean;
   isLight?: boolean;
   alignCenter?: boolean;
+  justifyCenter?: boolean;
   termFontSize?: string;
   definitionFontSize?: string;
   bordered?: boolean;
