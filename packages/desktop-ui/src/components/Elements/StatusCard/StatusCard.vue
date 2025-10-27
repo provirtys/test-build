@@ -23,6 +23,7 @@ import type { StatusCardProps, TogglerStatus } from '@/components/Elements/Statu
 const props = withDefaults(defineProps<StatusCardProps>(), {
   startColor: 'light-gray-55',
   behindColor: 'light-gray-55',
+  borderRadius: '8px',
 });
 
 const togglerStatus = defineModel<TogglerStatus>('togglerStatus', {
@@ -60,7 +61,7 @@ const behindBackgroundColor = computed(() => colors.getPaletteColor(props.behind
 <style scoped lang="scss">
 .status-card {
   position: relative;
-  border-radius: 8px;
+  border-radius: v-bind(borderRadius);
   overflow: hidden;
   background-color: v-bind(behindBackgroundColor);
 
@@ -84,6 +85,7 @@ const behindBackgroundColor = computed(() => colors.getPaletteColor(props.behind
     position: relative;
     padding: 20px;
     min-height: 120px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

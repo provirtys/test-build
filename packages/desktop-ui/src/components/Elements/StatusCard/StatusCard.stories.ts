@@ -71,6 +71,9 @@ v-model:togglerStatus="togglerModel"`,
         type: 'text',
       },
     },
+    borderRadius: {
+      description: 'Радиус границы',
+    },
   },
   args: {
     title: '',
@@ -82,6 +85,7 @@ v-model:togglerStatus="togglerModel"`,
     startColor: 'light-gray-55',
     endColor: '',
     behindColor: 'light-gray-55',
+    borderRadius: '8px',
   },
   globals: {
     backgrounds: { value: 'white' },

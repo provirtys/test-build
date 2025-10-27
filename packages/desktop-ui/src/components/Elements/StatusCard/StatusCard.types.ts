@@ -11,4 +11,5 @@ export interface StatusCardProps {
   startColor?: string;
   endColor?: string;
   behindColor?: string;
+  borderRadius?: string;
 }
