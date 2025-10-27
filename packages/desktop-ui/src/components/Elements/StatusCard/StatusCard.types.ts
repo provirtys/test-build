@@ -8,4 +8,7 @@ export interface StatusCardProps {
   label?: string;
   color?: Color;
   progress?: number;
+  startColor?: string;
+  endColor?: string;
+  behindColor?: string;
 }

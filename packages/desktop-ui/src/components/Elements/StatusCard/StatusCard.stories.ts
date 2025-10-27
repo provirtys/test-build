@@ -53,6 +53,24 @@ v-model:togglerStatus="togglerModel"`,
         type: 'select',
       },
     },
+    startColor: {
+      description: 'Цвет, с которого начинается градиентный фон. По умолчанию `light-gray-55`',
+      control: {
+        type: 'text',
+      },
+    },
+    endColor: {
+      description: 'Цвет, которым заканчивается градиентный фон. Если не задан, то используется цвет из пропа `color`',
+      control: {
+        type: 'text',
+      },
+    },
+    behindColor: {
+      description: 'Цвет подложки заднего фона, отображается когда карточка не до конца заполнена',
+      control: {
+        type: 'text',
+      },
+    },
   },
   args: {
     title: '',
@@ -61,6 +79,9 @@ v-model:togglerStatus="togglerModel"`,
     color: undefined,
     togglerStatus: null,
     progress: 0,
+    startColor: 'light-gray-55',
+    endColor: '',
+    behindColor: 'light-gray-55',
   },
   globals: {
     backgrounds: { value: 'white' },
@@ -118,5 +139,19 @@ export const SuccessColor: Story = {
     color: 'success',
     progress: 100,
     togglerStatus: false,
+  },
+};
+
+export const CustomBackgroundColors: Story = {
+  args: {
+    title: 'Общий статус',
+    text: '10%',
+    label: '1ч 32мин.',
+    color: 'success',
+    progress: 75,
+    togglerStatus: false,
+    startColor: 'error',
+    endColor: 'info',
+    behindColor: 'light-gray-70',
   },
 };

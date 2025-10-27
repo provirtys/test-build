@@ -20,7 +20,10 @@ import { colors } from 'quasar';
 import { computed } from 'vue';
 import type { StatusCardProps, TogglerStatus } from '@/components/Elements/StatusCard/StatusCard.types';
 
-const props = defineProps<StatusCardProps>();
+const props = withDefaults(defineProps<StatusCardProps>(), {
+  startColor: 'light-gray-55',
+  behindColor: 'light-gray-55',
+});
 
 const togglerStatus = defineModel<TogglerStatus>('togglerStatus', {
   default: null,
@@ -39,7 +42,19 @@ const backgroundWidth = computed(() => {
 
   return `${props.progress}%`;
 });
-const backgroundColor = computed(() => (props.color ? colors.getPaletteColor(`${props.color}-25`) : null));
+const startBackgroundColor = computed(() => colors.getPaletteColor(props.startColor));
+const endBackgroundColor = computed(() => {
+  if (props.endColor) {
+    return colors.getPaletteColor(props.endColor);
+  }
+
+  if (props.color) {
+    return colors.getPaletteColor(`${props.color}-25`);
+  }
+
+  return null;
+});
+const behindBackgroundColor = computed(() => colors.getPaletteColor(props.behindColor));
 </script>
 
 <style scoped lang="scss">
@@ -47,7 +62,7 @@ const backgroundColor = computed(() => (props.color ? colors.getPaletteColor(`${
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  background-color: $light-gray-55;
+  background-color: v-bind(behindBackgroundColor);
 
   &--active {
     .status-card__btn {
@@ -62,7 +77,7 @@ const backgroundColor = computed(() => (props.color ? colors.getPaletteColor(`${
     left: 0;
     height: 100%;
     width: v-bind(backgroundWidth);
-    background: linear-gradient(to right, $light-gray-55, v-bind(backgroundColor));
+    background: linear-gradient(to right, v-bind(startBackgroundColor), v-bind(endBackgroundColor));
   }
 
   &__container {
@@ -77,6 +92,7 @@ const backgroundColor = computed(() => (props.color ? colors.getPaletteColor(`${
   &__title {
     @include font(VelaSans, $font-size-p3, 1, 500);
     color: $dark-gray-70;
+    text-align: left;
   }
 
   &__content {
