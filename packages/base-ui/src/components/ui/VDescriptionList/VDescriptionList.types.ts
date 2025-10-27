@@ -2,6 +2,8 @@ export interface VDescriptionListItem {
   term?: string;
   definition?: string | number | VDescriptionListItem[];
   slot?: string;
+  termClasses?: string | string[];
+  definitionClasses?: string | string[];
 }
 
 export type FontWeight = 'normal' | 'bold';

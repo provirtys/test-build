@@ -170,7 +170,7 @@ export const WithCustomSlot: Story = {
       };
     },
     template: `
-    <v-description-list :items="items" inline>
+      <v-description-list :items="items" inline>
       <template #custom-slot>
         <v-badge label="Значение 2.1" color="success" style="margin-right: 10px"/>
         <v-badge label="Значение 2.2"/>
@@ -224,6 +224,30 @@ export const MultiLevel: Story = {
             definition: 'Значение 2.3',
           },
         ],
+      },
+    ],
+  },
+};
+
+export const TermAndDefinitionClasses: Story = {
+  args: {
+    items: [
+      {
+        term: 'Заголовок 1',
+        definition: 'Значение 1',
+        termClasses: 'text-red',
+        definitionClasses: 'text-warning',
+      },
+      {
+        term: 'Заголовок 2',
+        definition: 'Значение 2',
+        termClasses: 'text-info',
+        definitionClasses: 'text-success',
+      },
+      {
+        term: 'Заголовок 3',
+        definition: 'Значение 3',
+        definitionClasses: 'text-error',
       },
     ],
   },

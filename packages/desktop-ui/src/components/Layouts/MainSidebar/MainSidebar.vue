@@ -20,7 +20,7 @@
     </nav>
     <div class="main-sidebar__bottom">
       <div v-if="!isDense">
-        <v-description-list :items="bottomDescriptionList" v-bind="descriptionListProps"/>
+        <v-description-list :items="computedBottomDescriptionList" v-bind="descriptionListProps"/>
       </div>
       <v-icon v-if="!isDense" class="text-primary" name="integrity-logo" height="19" width="108"/>
       <v-button class="main-sidebar__toggler" icon="arrow-menu-close" :icon-size="12" height="xxs" color="secondary"
@@ -34,13 +34,21 @@ import { VButton, VDescriptionList, VDescriptionListProps, VIcon } from '@base';
 import { computed, ref } from 'vue';
 import { MainSidebarProps } from '@/components/Layouts/MainSidebar/MainSidebar.types';
 
-defineProps<MainSidebarProps>();
+const props = defineProps<MainSidebarProps>();
 
 const isDense = ref(false);
 
 const classList = computed(() => ({
   'main-sidebar--dense': isDense.value,
 }));
+
+const computedBottomDescriptionList = computed(() =>
+  props.bottomDescriptionList?.map((item) => ({
+    ...item,
+    termClasses: ['text-primary-text-70', 'q-pl-xs'],
+    definitionClasses: 'text-dark-gray-55',
+  })),
+);
 
 const toggleDense = () => {
   isDense.value = !isDense.value;
@@ -53,7 +61,6 @@ const descriptionListProps = computed<Omit<VDescriptionListProps, 'items'>>(() =
   contentInline: true,
   itemGap: '4px',
   contentGap: '8px',
-  justifyCenter: true,
 }));
 </script>
 
@@ -126,7 +133,7 @@ const descriptionListProps = computed<Omit<VDescriptionListProps, 'items'>>(() =
   }
 
   &__bottom {
-    padding: 0 4px 4px;
+    padding: 0 8px 8px;
     display: flex;
     flex-direction: column;
     gap: 24px;

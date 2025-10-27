@@ -2,8 +2,8 @@
   <dl class="v-description-list" :class="classList">
     <div v-for="item in items" :key="item.slot || item.term" class="v-description-list__item"
          :class="{'v-description-list__item--inlined': inline && !Array.isArray(item.definition)}">
-      <dt class="v-description-list__term">{{ item.term }}</dt>
-      <dd class="v-description-list__definition">
+      <dt class="v-description-list__term" :class="item.termClasses">{{ item.term }}</dt>
+      <dd class="v-description-list__definition" :class="item.definitionClasses">
         <template v-if="!Array.isArray(item.definition)">
         <slot :name="item.slot || 'custom'">
           {{ item.definition }}
