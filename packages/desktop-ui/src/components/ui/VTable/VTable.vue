@@ -376,6 +376,7 @@ onMounted(async () => {
     vertical-align: baseline;
     border: unset;
     height: unset;
+    padding: 4px 8px;
 
     span {
       display: block;
