@@ -359,7 +359,7 @@ onMounted(async () => {
 
   th {
     @include fontAdaptive($font-size-p4, 1, 400);
-    color: $dark-gray-55;
+    color: $dark-gray-85;
     padding: 8px;
 
     &:has(.v-table__th-icon) {
@@ -376,7 +376,7 @@ onMounted(async () => {
     vertical-align: baseline;
     border: unset;
     height: unset;
-    padding: 4px 8px;
+    padding: 4px 8px 15px;
 
     span {
       display: block;

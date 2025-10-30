@@ -4,6 +4,7 @@ import { ref } from 'vue';
 import { PieProgress } from '@';
 import type { VTableColumn, VTableEmitsRequest } from './VTable.types';
 import VTable from './VTable.vue';
+import './style.scss';
 
 type Story = StoryObj<typeof VTable>;
 
@@ -226,6 +227,32 @@ export default meta;
 
 export const Standard: Story = {
   render: (args) => ({
+    components: { VTable, QTd },
+    setup() {
+      const onRequest = (data: VTableEmitsRequest) => {
+        console.log('ON REQUEST = ', data.pagination);
+        argsModel.value.pagination = data.pagination;
+      };
+      const argsModel = ref({ ...args });
+
+      return {
+        argsModel,
+        onRequest,
+      };
+    },
+    template: `
+      <v-table
+        :columns="argsModel.columns"
+        :rows="argsModel.rows"
+        v-model:pagination="argsModel.pagination"
+        @request="onRequest">
+      </v-table>
+    `,
+  }),
+};
+
+export const TaskTable: Story = {
+  render: (args) => ({
     components: { VTable, QTd, PieProgress },
     setup() {
       const onRequest = (data: VTableEmitsRequest) => {
@@ -240,10 +267,12 @@ export const Standard: Story = {
       };
     },
     template: `
-      <v-table :columns="argsModel.columns"
-               :rows="argsModel.rows"
-               v-model:pagination="argsModel.pagination"
-               @request="onRequest">
+      <v-table
+        class="task-table"
+        :columns="argsModel.columns"
+        :rows="argsModel.rows"
+        v-model:pagination="argsModel.pagination"
+        @request="onRequest">
         <template #body-cell-gtin="props">
           <q-td :props="props">{{ props.value.name }}<span>{{ props.value.number }}</span></q-td>
         </template>
