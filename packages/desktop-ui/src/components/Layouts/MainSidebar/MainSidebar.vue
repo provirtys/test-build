@@ -102,6 +102,11 @@ const descriptionListProps = computed<Omit<VDescriptionListProps, 'items'>>(() =
     cursor: pointer;
     transition: height 0.3s ease;
 
+    &:hover:not(&--active) {
+      background-color: $primary-text-5;
+      color: $primary-text;
+    }
+
     &--active {
       background-color: $primary-text-10;
       color: $primary-text;
