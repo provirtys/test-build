@@ -11,6 +11,7 @@ code-check:
   image: node:24-alpine
   tags:
     - docker
+    - amd
   stage: lint
   rules:
     - if: $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "feat/dev-304")
@@ -29,6 +30,7 @@ publish-npm:
   image: node:24-alpine
   tags:
     - docker
+    - amd
   stage: release
   rules:
     - if: $CI_PIPELINE_SOURCE == "push" && ($CI_COMMIT_BRANCH == "feat/dev-304")
