@@ -26,3 +26,21 @@ export const base64ToUint8Array = (str: string): Uint8Array => {
   }
   return bytes;
 };
+
+export const timestampToFormattedDate = (ms: number) => {
+  const date = new Date(ms);
+  const formatted =
+    date.getFullYear() +
+    '-' +
+    String(date.getMonth() + 1).padStart(2, '0') +
+    '-' +
+    String(date.getDate()).padStart(2, '0') +
+    ' ' +
+    String(date.getHours()).padStart(2, '0') +
+    ':' +
+    String(date.getMinutes()).padStart(2, '0') +
+    ':' +
+    String(date.getSeconds()).padStart(2, '0');
+
+  return formatted;
+};

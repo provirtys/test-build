@@ -6,14 +6,24 @@
     ref="tableRef"
   >
     <template #header-cell="props">
-      <q-th :props="props" class="v-table__th" :class="getThClassesByCol(props.col)">
+      <q-th
+        :props="props"
+        class="v-table__th"
+        :class="getThClassesByCol(props.col)"
+      >
         {{ props.col.label }}
         <!-- Поиск -->
         <template v-if="props.col.searchable">
           <span class="v-table__th-icon">
-            <v-icon name="search" size="10"/>
+            <v-icon
+              name="search"
+              size="10"
+            />
           </span>
-          <q-menu class="q-pa-sm" v-model="menuStates[props.col.name]">
+          <q-menu
+            class="q-pa-sm"
+            v-model="menuStates[props.col.name]"
+          >
             <v-input
               class="search-input"
               v-model="pagination!.searchBy![props.col.name]"
@@ -24,13 +34,13 @@
               @change="() => onSearchSubmit(props.col.name)"
             >
               <template #append>
-                 <v-icon
-                   class="cursor-pointer text-primary-text-40 q-mr-sm"
-                   :class="pagination!.searchBy![props.col.name].length ? '' : 'invisible'"
-                   name="close"
-                   size="14"
-                   @click="pagination!.searchBy![props.col.name] = ''"
-                 />
+                <v-icon
+                  class="cursor-pointer text-primary-text-40 q-mr-sm"
+                  :class="pagination!.searchBy![props.col.name].length ? '' : 'invisible'"
+                  name="close"
+                  size="14"
+                  @click="pagination!.searchBy![props.col.name] = ''"
+                />
                 <v-icon
                   class="cursor-pointer"
                   name="search"
@@ -43,14 +53,20 @@
           </q-menu>
         </template>
         <!-- Фильтрация -->
-        <template v-else-if="props.col.filterable">
+        <template v-else-if="props.col.filter?.active">
           <span class="v-table__th-icon">
-            <v-icon name="filter" size="10"/>
+            <v-icon
+              name="filter"
+              size="10"
+            />
           </span>
           <q-menu v-model="menuStates[props.col.name]">
             <div class="filter-menu">
               <q-list class="filter-menu__list">
-                <q-item v-for="item in props.col.filters" :key="item.id">
+                <q-item
+                  v-for="item in props.col.filter.list"
+                  :key="item.id"
+                >
                   <q-checkbox
                     v-model="item.value"
                     :label="item.label"
@@ -63,14 +79,39 @@
                   />
                 </q-item>
               </q-list>
-              <button class="filter-menu__clear" @click="() => onFilterClear(props.col)">Очистить</button>
+              <button
+                class="filter-menu__clear"
+                @click="() => onFilterClear(props.col)"
+              >Очистить</button>
+            </div>
+          </q-menu>
+        </template>
+        <!-- Фильтрация по дате -->
+        <template v-else-if="props.col.dateFilter?.active">
+          <span class="v-table__th-icon">
+            <v-icon
+              name="calendar-today"
+              size="10"
+            />
+          </span>
+          <q-menu v-model="menuStates[props.col.name]">
+            <div class="dates-wrapper flex">
+              <v-date v-model="pagination!.dateFilter!.from" flat/>
+              <v-date
+                v-if="props.col.dateFilter?.multiple"
+                v-model="pagination!.dateFilter!.to"
+                flat
+              />
             </div>
           </q-menu>
         </template>
         <!-- Сортировка -->
         <template v-else-if="props.col.sortable">
           <span class="v-table__th-icon">
-            <v-icon name="sort" size="10"/>
+            <v-icon
+              name="sort"
+              size="10"
+            />
           </span>
         </template>
       </q-th>
@@ -82,7 +123,8 @@
           class="v-table__pagination-btn v-table__pagination-btn--lg"
           icon="arrow-back"
           :icon-size="16"
-          fit-width color="secondary"
+          fit-width
+          color="secondary"
           :disabled="props.pagination.page === 1"
           @action="props.prevPage"
         />
@@ -96,9 +138,10 @@
           1
         </v-button>
         <v-button
-          v-if=" props.pagination.page - 1 > 1"
+          v-if="props.pagination.page - 1 > 1"
           class="v-table__pagination-btn v-table__pagination-dots"
-          fit-width color="plane"
+          fit-width
+          color="plane"
           is-disabled
         >
           ...
@@ -107,7 +150,8 @@
           class="v-table__pagination-btn v-table__current-page"
           fit-width
           color="secondary"
-          @action="props.prevPage">
+          @action="props.prevPage"
+        >
           {{ props.pagination.page }}
         </v-button>
         <v-button
@@ -132,9 +176,11 @@
           class="v-table__pagination-btn v-table__pagination-btn--lg"
           icon="arrow"
           :icon-size="16"
-          fit-width color="secondary"
+          fit-width
+          color="secondary"
           :disabled="props.isLastPage"
-          @action="props.nextPage"/>
+          @action="props.nextPage"
+        />
       </div>
     </template>
 
@@ -142,8 +188,15 @@
       <v-pagination :model-value="{ page: 1, totalEl: 1, elPerPage: 1 }"/>
     </template>
 
-    <template v-for="(_, name) in $slots" :key="name" #[name]="slotData">
-      <slot :name="name" v-bind="slotData"/>
+    <template
+      v-for="(_, name) in $slots"
+      :key="name"
+      #[name]="slotData"
+    >
+      <slot
+        :name="name"
+        v-bind="slotData"
+      />
     </template>
   </q-table>
 </template>
@@ -151,6 +204,7 @@
 import { VButton, VIcon, VInput } from '@base';
 import { QTable, QTableProps } from 'quasar';
 import { computed, nextTick, onMounted, reactive, ref } from 'vue';
+import { VDate } from '@/components/ui/VDate';
 import { VPagination } from '@/components/ui/VPagination';
 import type {
   VTableColumn,
@@ -182,6 +236,7 @@ const tableFilter = computed(() => {
   return JSON.stringify({
     ...pagination.value.searchBy,
     ...pagination.value.filterBy,
+    ...pagination.value.dateFilter,
   });
 });
 
@@ -219,7 +274,7 @@ const tableFilterMethod = (rows: typeof props.rows, filter: string) => {
         }
       }
 
-      if (needleCol.filterable && !filterObj[filterKey].includes(row[filterKey]['id'])) {
+      if (needleCol.filter?.active && !filterObj[filterKey].includes(row[filterKey]['id'])) {
         return false;
       }
     }
@@ -232,7 +287,7 @@ const getThClassesByCol = (col: VTableColumn) => ({
     pagination.value?.sortBy === col.field ||
     menuStates[col.name] ||
     pagination.value?.searchBy?.[col.name] ||
-    col.filters?.find((f) => f.value),
+    col.filter?.list?.find((f) => f.value),
   'v-table__th--sort-descending': pagination.value?.sortBy === col.field && pagination.value?.descending,
 });
 
@@ -250,7 +305,7 @@ const onSearchSubmit = (colName: string) => {
 
 const onFilterClear = (column: VTableColumn) => {
   menuStates[column.name] = false;
-  column.filters?.forEach((f) => {
+  column.filter?.list?.forEach((f) => {
     f.value = false;
     delete pagination.value?.filterBy?.[column.name];
   });
@@ -258,8 +313,8 @@ const onFilterClear = (column: VTableColumn) => {
 };
 
 const onFilterItemUpdate = (column: VTableColumn) => {
-  if (column.filters && pagination.value?.filterBy) {
-    pagination.value.filterBy[column.name] = column.filters.filter((f) => f.value).map((f) => f.id);
+  if (column.filter?.active && pagination.value?.filterBy) {
+    pagination.value.filterBy[column.name] = column.filter?.list.filter((f) => f.value).map((f) => f.id);
 
     if (!pagination.value.filterBy[column.name].length) {
       delete pagination.value.filterBy[column.name];
@@ -273,12 +328,26 @@ onMounted(async () => {
 
   await nextTick();
   props.columns.forEach((col) => {
-    if (pagination.value && col.searchable) {
-      if (!pagination.value.searchBy) {
-        pagination.value.searchBy = {};
+    if (pagination.value) {
+      if (col.searchable) {
+        if (!pagination.value.searchBy) {
+          pagination.value.searchBy = {};
+        }
+        pagination.value.searchBy[col.name] = '';
+        menuStates[col.name] = false;
       }
-      pagination.value.searchBy[col.name] = '';
-      menuStates[col.name] = false;
+
+      if (col.dateFilter?.active && !pagination.value.dateFilter) {
+        pagination.value.dateFilter = {
+          from: '',
+          to: '',
+        };
+        menuStates[col.name] = false;
+      }
+
+      if (col.filter?.active) {
+        menuStates[col.name] = false;
+      }
     }
   });
 });
@@ -291,7 +360,9 @@ onMounted(async () => {
   color: $dark-gray-70;
 
   .v-table__th {
-    &:hover, &--active {
+
+    &:hover,
+    &--active {
       color: $primary-text;
 
       .v-table__th-icon {
@@ -459,6 +530,14 @@ onMounted(async () => {
     width: 100%;
     text-align: left;
     color: $primary-text;
+  }
+}
+
+.dates-wrapper {
+  padding: 8px;
+
+  :deep(.v-date:nth-child(2)) {
+    border-left: 1px solid $light-gray;
   }
 }
 </style>

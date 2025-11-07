@@ -6,15 +6,26 @@ interface VTableColumnFilterItem {
   value: boolean;
 }
 
+export interface VTableColumnFilter {
+  active?: boolean;
+  list: VTableColumnFilterItem[];
+}
+
+export interface VTableColumnDateFilter {
+  active?: boolean;
+  multiple?: boolean;
+}
+
 export interface VTableColumn extends QTableColumn {
   searchable?: boolean;
-  filterable?: boolean;
-  filters?: VTableColumnFilterItem[];
+  filter?: VTableColumnFilter;
+  dateFilter?: VTableColumnDateFilter;
 }
 
 export interface VTablePagination extends NonNullable<QTableProps['pagination']> {
   searchBy?: Record<string, string>;
   filterBy?: Record<string, string[]>;
+  dateFilter?: { from: string; to: string };
 }
 
 export interface VTableProps extends QTableProps {
