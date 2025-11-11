@@ -1,21 +1,16 @@
 import { VIcon } from '@base';
-import { computed, onMounted, ref } from 'vue';
+import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import { onMounted, ref } from 'vue';
 import './style.scss';
-import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@/types/story';
 
-type AdditionalArgs = {
-  color?: string;
-};
-
-type Meta = ExtendedMeta<typeof VIcon, AdditionalArgs>;
-type Args = ExtendedArgs<typeof VIcon, AdditionalArgs>;
-type Story = ExtendedStory<typeof VIcon, AdditionalArgs>;
+type Story = StoryObj<typeof VIcon>;
 
 const dataMatrix = 'data-matrix';
 
 /** Компонент для вывода иконки. <br>
  * Иконки берутся из пакета @integrity/icons. <br>
  * Поддерживает динамическую смену цвета и размера. <br>
+ * Чтобы сменить цвет иконки, нужно задать соответствующий css класс (например, `text-info`, `text-warning-10`) или задать цвет в самих стилях (`color: $info` или `color: $warning-10`). <br>
  * Можно отдельно менять ширину и высоту, для этого существуют пропсы `width` и `height`. Но в большинстве случаев используйте проп `size` <br>
  * Если размер не задан, то размер берется из viewbox самой иконки. Размер задается либо числом (например, `40`), либо строкой (например, `'40px'`) <br>
  * */
@@ -47,20 +42,12 @@ const meta: Meta = {
         type: 'text',
       },
     },
-    color: {
-      description:
-        'Цвет иконки (используется в `AllIcons` story). При использовании меняется автоматически на основе родительского css-свойства `color`',
-      control: {
-        type: 'color',
-      },
-    },
   },
   args: {
     name: dataMatrix,
     width: '',
     height: '',
     size: '80px',
-    color: '',
   },
 };
 
@@ -89,15 +76,12 @@ export const Small: Story = {
 
 export const AllIcons: Story = {
   args: {
-    size: 40,
+    size: '40px',
   },
-  render: (args: Args) => ({
+  render: (args) => ({
     components: { VIcon },
     setup() {
       const iconIds = ref<string[]>([]);
-      const iconItemStyle = computed(() => ({
-        color: args.color,
-      }));
 
       onMounted(() => {
         const iconSymbols = Array.from(document.querySelectorAll('#svg-sprite symbol'));
@@ -112,15 +96,14 @@ export const AllIcons: Story = {
 
       return {
         iconIds,
-        iconItemStyle,
-        iconSize: args.size,
+        args,
       };
     },
     template: `
     <div class="icon-list">
-      <div v-for="icon in iconIds" :key="icon" class="icon-item" :style=iconItemStyle>
+      <div v-for="icon in iconIds" :key="icon" class="icon-item">
         <span class="icon-item__name">{{ icon }}</span>
-        <v-icon :name="icon" :size="iconSize"/>
+        <v-icon class="text-primary-text" :name="icon" :size="args.size"/>
       </div>
     </div>
   `,
