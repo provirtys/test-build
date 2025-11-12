@@ -8,6 +8,7 @@ export * from '@/components/Layouts/MainSidebar';
 export * from '@/components/ui/VBreadcrumbs';
 export * from '@/components/ui/VButtonMenu';
 export * from '@/components/ui/VCard';
+export * from '@/components/ui/VDate';
 export * from '@/components/ui/VFormRow';
 export * from '@/components/ui/VList';
 export * from '@/components/ui/VPagination';
