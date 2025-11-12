@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import langRu from 'quasar/lang/ru';
 import { computed } from 'vue';
-import type { QDateLocale, VDateProps, VDateSlots } from './VDate.types';
+import type { QDateLocale, VDateEmits, VDateProps, VDateSlots } from './VDate.types';
 
 const modelValue = defineModel();
 
@@ -31,6 +31,8 @@ const props = withDefaults(defineProps<VDateProps>(), {
     }, {} as QDateLocale),
   firstDayOfWeek: 1,
 });
+
+defineEmits<VDateEmits>();
 
 defineSlots<VDateSlots>();
 

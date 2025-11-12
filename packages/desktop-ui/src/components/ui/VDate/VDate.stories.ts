@@ -5,7 +5,7 @@ import VDate from './VDate.vue';
 type Story = StoryObj<typeof VDate>;
 
 /**
- * Компонент-обертка над QDate. Наследует все пропсы и слоты от QDate.
+ * Компонент-обертка над QDate. Наследует все пропсы, слоты и эмиты от QDate.
  */
 const meta: Meta<typeof VDate> = {
   component: VDate,
