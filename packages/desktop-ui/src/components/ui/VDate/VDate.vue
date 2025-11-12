@@ -87,7 +87,7 @@ const bindingProps = computed<VDateProps>(() => props);
 
       > div {
         opacity: 1;
-        width: auto !important;
+        flex: 1 1 auto;
       }
     }
 
@@ -120,6 +120,7 @@ const bindingProps = computed<VDateProps>(() => props);
       flex-basis: 28px;
       width: 28px !important;
       height: 33px !important;
+      padding: 0;
 
       button {
         border-radius: 4px;
