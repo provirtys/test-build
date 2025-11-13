@@ -11,7 +11,7 @@
     <v-button
       v-if="pagination.page !== 1"
       class="v-pagination__btn"
-      fit-width color="plane"
+      fit-width color="plain"
       @action="onFirst"
     >
       1
@@ -19,7 +19,7 @@
     <v-button
       v-if="pagination.page - 1 > 1"
       class="v-pagination__btn v-pagination__dots"
-      fit-width color="plane"
+      fit-width color="plain"
       is-disabled
     >
       ...
@@ -35,7 +35,7 @@
       v-if="totalPages - pagination.page > 1"
       class="v-pagination__btn v-pagination__dots"
       fit-width
-      color="plane"
+      color="plain"
       is-disabled
     >
       ...
@@ -43,7 +43,7 @@
     <v-button
       v-if="pagination.page !== totalPages"
       class="v-pagination__btn"
-      fit-width color="plane"
+      fit-width color="plain"
       @action="onLast"
     >
       {{ totalPages }}

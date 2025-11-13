@@ -3,7 +3,7 @@ export type Height = 'lg' | 'md' | 'sm' | 'xs' | 'xxs';
 export interface VCheckboxButtonProps {
   modelValue: boolean;
   iconName?: string;
-  isPlane?: boolean;
+  isPlain?: boolean;
   height?: Height;
   label?: string;
   isDisabled?: boolean;

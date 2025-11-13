@@ -44,7 +44,7 @@ const meta: Meta<typeof VCheckboxButton> = {
         },
       },
     },
-    isPlane: {
+    isPlain: {
       description: 'Без границ',
       options: [true, false],
     },
@@ -89,7 +89,7 @@ const meta: Meta<typeof VCheckboxButton> = {
     label: 'Checkbox',
     height: 'lg',
     iconName: '',
-    isPlane: false,
+    isPlain: false,
     isDisabled: false,
     border: '8px',
     borderColor: 'dark-gray',
@@ -131,9 +131,9 @@ export const WithIcon: Story = {
   },
 };
 
-export const Plane: Story = {
+export const Plain: Story = {
   args: {
-    isPlane: true,
+    isPlain: true,
   },
 };
 

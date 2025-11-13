@@ -132,7 +132,7 @@
           v-if="!props.isFirstPage"
           class="v-table__pagination-btn"
           fit-width
-          color="plane"
+          color="plain"
           @action="props.firstPage()"
         >
           1
@@ -141,7 +141,7 @@
           v-if="props.pagination.page - 1 > 1"
           class="v-table__pagination-btn v-table__pagination-dots"
           fit-width
-          color="plane"
+          color="plain"
           is-disabled
         >
           ...
@@ -158,7 +158,7 @@
           v-if="props.pagesNumber - props.pagination.page > 1"
           class="v-table__pagination-btn v-table__pagination-dots"
           fit-width
-          color="plane"
+          color="plain"
           is-disabled
         >
           ...
@@ -167,7 +167,7 @@
           v-if="!props.isLastPage"
           class="v-table__pagination-btn"
           fit-width
-          color="plane"
+          color="plain"
           @action="props.lastPage()"
         >
           {{ props.pagesNumber }}

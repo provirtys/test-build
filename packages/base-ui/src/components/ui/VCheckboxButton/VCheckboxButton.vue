@@ -26,7 +26,7 @@ import type {
 const props = withDefaults(defineProps<VCheckboxButtonProps>(), {
   modelValue: false,
   iconName: '',
-  isPlane: false,
+  isPlain: false,
   height: 'lg',
   label: 'Checkbox',
   isDisabled: false,
@@ -40,7 +40,7 @@ const classList = computed(() => [
   [`v-checkbox-button--${props.height}`],
   {
     'v-checkbox-button--active': props.modelValue || props.bgAlwaysFilled,
-    'v-checkbox-button--plane': props.isPlane,
+    'v-checkbox-button--plain': props.isPlain,
     'v-checkbox-button--disabled': props.isDisabled,
     'v-checkbox-button--fit-width': props.fitWidth,
   },
@@ -100,7 +100,7 @@ const iconSizes: Record<Height, { icon: number; checkbox: number }> = {
     opacity: 0.4;
   }
 
-  &--plane {
+  &--plain {
     border: 1px solid transparent;
   }
 
