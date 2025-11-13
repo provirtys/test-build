@@ -1,28 +1,32 @@
 import type { QBtnProps } from 'quasar';
 
-export type { QBtnProps } from 'quasar';
+export type Color = 'primary' | 'secondary' | 'plain' | 'outline' | 'red';
 
-export type Color = 'primary' | 'secondary' | 'plane' | 'outline' | 'red';
-
-export type Height = 'lg' | 'md' | 'sm' | 'xs' | 'xxs';
-
-export type IconPosition = 'left' | 'right';
+export type Size = 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'xxs';
 
 export type TextAlignment = 'left' | 'center' | 'right';
 
 export interface VButtonProps extends QBtnProps {
   color?: Color;
   isDisabled?: boolean;
-  height?: Height;
-  isRounded?: boolean;
-  icon?: string;
-  iconPosition?: IconPosition;
-  iconSize?: number;
+  size?: Size;
+  iconSize?: string | number;
   textAlignment?: TextAlignment;
   fitWidth?: boolean;
   once?: boolean;
   enableHold?: boolean;
   borderRadius?: string;
+  gap?: string;
+  fontSize?: string;
+  height?: string;
 }
 
 export type VButtonEmits = (e: 'action') => void;
+
+export interface VButtonSizeConfig {
+  font: string;
+  padding: string;
+  height: string;
+  icon: string | number;
+  gap: string;
+}

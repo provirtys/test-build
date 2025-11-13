@@ -1,8 +1,9 @@
 import { QMenu } from 'quasar';
 import { computed } from 'vue';
-import type { Color, Height, IconPosition, TextAlignment } from '@/components/ui/VButton/VButton.types';
+import type { Color, TextAlignment } from '@/components/ui/VButton/VButton.types';
 import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@/types/story';
 import { VButton } from './index';
+import type { Size } from './VButton.types';
 
 type AdditionalArgs = {
   text?: string;
@@ -16,7 +17,7 @@ type Story = ExtendedStory<typeof VButton, AdditionalArgs>;
 const colors: Record<Color, string> = {
   primary: 'Основной',
   secondary: 'Второстепенный',
-  plane: 'Плоский',
+  plain: 'Плоский',
   outline: 'С границей',
   red: 'Красная',
 };
@@ -29,19 +30,13 @@ const textAlignments: Record<TextAlignment, string> = {
 };
 
 //Высота кнопки
-const heights: Record<Height, string> = {
+const sizes: Record<Size, string> = {
+  xl: 'Очень большой',
   lg: 'Большой',
   md: 'Средний',
   sm: 'Маленький',
   xs: 'Очень маленький',
-  xxs: 'Крохотный',
-};
-
-//Позиция иконки
-const iconPositions: Record<IconPosition | 'empty', string> = {
-  empty: 'Без иконки',
-  left: 'Слева',
-  right: 'Справа',
+  xxs: 'Миниатюрный',
 };
 
 //Названия иконок
@@ -54,6 +49,7 @@ const dataMatrix = 'data-matrix';
 const restart = 'restart';
 
 const iconNames = {
+  Нет: undefined,
   bad,
   arrow,
   aggregation,
@@ -63,8 +59,9 @@ const iconNames = {
   restart,
 };
 
-/** Компонент кнопки с длительным нажатием, используемый на планшетах. Можно регулировать цвет кнопки, её текст и управлять
- * наличием иконки и её расположением */
+/** Компонент кнопки, базово использует QBtn. Поддерживает отображение иконок с обеих сторон, удержание кнопки, а также однократное срабатывание. <br/>
+ *  Кнопка принимает квадратный вид, если используется только ОДНА иконка, проп `fit-width = true` и в слот `default` не прокидывается ничего (см. пример [OnlyIcon](?path=/story/ui-vbutton--only-icon))
+ * */
 const meta: Meta = {
   component: VButton,
   argTypes: {
@@ -92,21 +89,37 @@ const meta: Meta = {
       options: [true, false],
       control: { type: 'boolean' },
     },
-    height: {
-      description: 'Размер кнопки',
-      options: Object.keys(heights),
+    size: {
+      description:
+        'Размер элементов и отступов у кнопки (высота кнопки, размер иконок, font-size, padding, gap). Каждое значение может быть через отдельный соответствующий проп: <br/>' +
+        '`fontSize` — размер шрифта <br/>' +
+        '`padding` — отступы <br/>' +
+        '`height` — высота кнопки <br/>' +
+        '`iconSize` — размер иконки <br/>' +
+        '`gap` — расстояние между текстом и иконками <br/>',
+      options: Object.keys(sizes),
       control: {
         type: 'select',
-        labels: heights,
+        labels: sizes,
       },
     },
-    isRounded: {
-      description: 'Скругленные края',
-      options: [true, false],
-      control: { type: 'boolean' },
+    fontSize: {
+      description: 'Размер шрифта. <br/> Переопределяет соответствующее значение из пропа `size`',
+    },
+    height: {
+      description: 'Высота кнопки. <br/> Переопределяет соответствующее значение из пропа `size`',
+    },
+    gap: {
+      description: 'Расстояние между текстом и иконками. <br/> Переопределяет соответствующее значение из пропа `size`',
+    },
+    padding: {
+      description: 'Внутренний отступ кнопки. <br/> Переопределяет соответствующее значение из пропа `size`',
+      control: {
+        type: 'text',
+      },
     },
     icon: {
-      description: 'Имя иконки (название файла из папки с иконками без расширения)',
+      description: 'Имя для левой иконки (название файла из папки с иконками без расширения)',
       options: Object.keys(iconNames),
       mapping: iconNames,
       control: {
@@ -114,18 +127,18 @@ const meta: Meta = {
         labels: iconNames,
       },
     },
-    iconPosition: {
-      description: 'Расположение иконки',
-      options: Object.keys(iconPositions),
-      mapping: location,
+    iconRight: {
+      description: 'Имя для правой иконки (название файла из папки с иконками без расширения)',
+      options: Object.keys(iconNames),
+      mapping: iconNames,
       control: {
         type: 'select',
-        labels: iconPositions,
+        labels: iconNames,
       },
     },
     iconSize: {
-      description: 'Размер иконки',
-      control: 'number',
+      description: 'Размер иконки. <br/> Переопределяет соответствующее значение из пропа `size`',
+      control: 'text',
     },
     fitWidth: {
       description: 'Отменить растягивание кнопки',
@@ -153,21 +166,59 @@ const meta: Meta = {
     menu: {
       description: 'Слот для меню. <br/> Пример использования см. ниже',
     },
+    noCaps: {
+      table: {
+        disable: true,
+      },
+    },
+    push: {
+      table: {
+        disable: true,
+      },
+    },
+    unelevated: {
+      table: {
+        disable: true,
+      },
+    },
+    ripple: {
+      table: {
+        disable: true,
+      },
+    },
+    glossy: {
+      table: {
+        disable: true,
+      },
+    },
+    flat: {
+      table: {
+        disable: true,
+      },
+    },
+    rounded: {
+      table: {
+        disable: true,
+      },
+    },
   },
   args: {
     color: 'primary',
-    height: 'lg',
+    size: 'lg',
     text: 'Кнопка',
     textAlignment: 'center',
     borderRadius: '8px',
     isDisabled: false,
-    isRounded: true,
-    icon: '',
-    iconPosition: undefined,
-    iconSize: 30,
+    icon: undefined,
+    iconRight: undefined,
+    iconSize: undefined,
     fitWidth: false,
     once: false,
     enableHold: false,
+    fontSize: undefined,
+    height: undefined,
+    gap: undefined,
+    padding: undefined,
   },
   render: (args: Args) => ({
     components: { VButton },
@@ -185,7 +236,11 @@ const meta: Meta = {
       };
     },
     template: `
-      <v-button v-bind="bindingArgs">{{ text }}</v-button>`,
+      <v-button v-bind="bindingArgs">
+        <template #default v-if="text">
+          {{ text }}
+        </template>
+      </v-button>`,
   }),
 };
 
@@ -204,10 +259,10 @@ export const Secondary: Story = {
   },
 };
 
-export const Plane: Story = {
+export const Plain: Story = {
   args: {
     text: 'Вариант без границы и заднего фона',
-    color: 'plane',
+    color: 'plain',
   },
 };
 
@@ -242,7 +297,7 @@ export const BorderRadius4px: Story = {
 export const Square: Story = {
   args: {
     text: 'Не скругленная',
-    isRounded: false,
+    borderRadius: '0',
   },
 };
 
@@ -263,35 +318,34 @@ export const TextRight: Story = {
 export const Large: Story = {
   args: {
     text: 'Большая кнопка',
-    height: 'lg',
+    size: 'lg',
   },
 };
 
 export const Small: Story = {
   args: {
     text: 'Маленькая кнопка',
-    height: 'sm',
+    size: 'sm',
   },
 };
 
 export const ExtraSmall: Story = {
   args: {
     text: 'Очень маленькая кнопка',
-    height: 'xs',
+    size: 'xs',
   },
 };
 
 export const ExtraExtraSmall: Story = {
   args: {
     text: 'Крохотная кнопка',
-    height: 'xxs',
+    size: 'xxs',
   },
 };
 
 export const IconLeftWithTextLeft: Story = {
   args: {
     text: 'Иконка слева текст слева',
-    iconPosition: 'left',
     icon: 'bad',
     textAlignment: 'left',
   },
@@ -300,7 +354,6 @@ export const IconLeftWithTextLeft: Story = {
 export const IconLeftWithTextCenter: Story = {
   args: {
     text: 'Иконка слева текст по центру',
-    iconPosition: 'left',
     icon: 'bad',
   },
 };
@@ -308,7 +361,6 @@ export const IconLeftWithTextCenter: Story = {
 export const IconLeftWithTextRight: Story = {
   args: {
     text: 'Иконка слева текст справа',
-    iconPosition: 'left',
     icon: 'bad',
     textAlignment: 'right',
   },
@@ -317,26 +369,49 @@ export const IconLeftWithTextRight: Story = {
 export const IconRightWithTextLeft: Story = {
   args: {
     text: 'Иконка справа текст слева',
-    iconPosition: 'right',
-    icon: 'bad',
+    iconRight: 'bad',
     textAlignment: 'left',
   },
 };
 
 export const IconRightTextCenter: Story = {
-  args: {},
-};
-IconRightTextCenter.args = {
-  text: 'Иконка справа текст по центру',
-  iconPosition: 'right',
-  icon: 'bad',
+  args: {
+    text: 'Иконка справа текст по центру',
+    iconRight: 'bad',
+  },
 };
 
 export const IconRightWithTextCenter: Story = {
   args: {
     text: 'Иконка справа текст справа',
-    iconPosition: 'right',
-    icon: 'bad',
+    iconRight: 'bad',
+    textAlignment: 'right',
+  },
+};
+
+export const BothIconsWithTextLeft: Story = {
+  args: {
+    text: 'Обе иконки текст слева',
+    icon: 'arrow',
+    iconRight: 'bad',
+    textAlignment: 'left',
+  },
+};
+
+export const BothIconsWithTextCenter: Story = {
+  args: {
+    text: 'Обе иконки текст по центру',
+    icon: 'arrow',
+    iconRight: 'bad',
+    textAlignment: 'center',
+  },
+};
+
+export const BothIconsWithTextRight: Story = {
+  args: {
+    text: 'Обе иконки текст справа',
+    icon: 'arrow',
+    iconRight: 'bad',
     textAlignment: 'right',
   },
 };
@@ -381,4 +456,13 @@ export const WithMenu: Story = {
         </template>
       </v-button>`,
   }),
+};
+
+export const OnlyIcon: Story = {
+  args: {
+    size: 'xs',
+    text: undefined,
+    icon: 'pencil',
+    fitWidth: true,
+  },
 };

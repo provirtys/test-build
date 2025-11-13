@@ -2,11 +2,6 @@
   <q-btn
     class="v-button"
     :class="btnClasses"
-    no-caps
-    :ripple="false"
-    :glossy="false"
-    :loading
-    flat
     ref="btnRef"
     v-bind="bindingProps"
     v-touch-hold:1000:200:200.mouse="handleHold"
@@ -19,16 +14,16 @@
     <v-icon
       v-if="showSubmittedIcon"
       name="done"
-      :size="sizeIcon"
+      :size="buttonSize.icon"
     />
     <template v-else>
       <span
-        v-if="icon && iconPosition === 'left'"
+        v-if="icon"
         class="v-button__icon-container justify-start"
       >
         <v-icon
           :name="icon"
-          :size="sizeIcon"
+          :size="buttonSize.icon"
         />
       </span>
       <span
@@ -38,12 +33,12 @@
         <slot></slot>
       </span>
       <span
-        v-if="icon && iconPosition === 'right'"
+        v-if="iconRight"
         class="v-button__icon-container justify-end"
       >
         <v-icon
-          :name="icon"
-          :size="sizeIcon"
+          :name="iconRight"
+          :size="buttonSize.icon"
         />
       </span>
     </template>
@@ -53,67 +48,118 @@
 
 <script setup lang="ts">
 import { VIcon } from '@base';
-import { QBtnProps } from 'quasar';
-import { computed, ref } from 'vue';
-import type { VButtonEmits, VButtonProps } from './VButton.types';
+import { QBtnProps, TouchHoldValue } from 'quasar';
+import { computed, ref, useSlots } from 'vue';
+import { Size, VButtonEmits, VButtonProps, VButtonSizeConfig } from './VButton.types';
+
+const buttonSizeConfigs: Record<Size, VButtonSizeConfig> = {
+  xl: {
+    font: '22px',
+    height: '72px',
+    icon: 20,
+    padding: '22px',
+    gap: '14px',
+  },
+  lg: {
+    font: '20px',
+    height: '64px',
+    icon: 18,
+    padding: '20px',
+    gap: '12px',
+  },
+  md: {
+    font: '18px',
+    height: '54px',
+    icon: 16,
+    padding: '16px',
+    gap: '12px',
+  },
+  sm: {
+    font: '16px',
+    height: '43px',
+    icon: 14,
+    padding: '12px',
+    gap: '8px',
+  },
+  xs: {
+    font: '14px',
+    height: '33px',
+    icon: 12,
+    padding: '8px',
+    gap: '4px',
+  },
+  xxs: {
+    font: '12px',
+    height: '26px',
+    icon: 10,
+    padding: '6px',
+    gap: '4px',
+  },
+};
 
 const props = withDefaults(defineProps<VButtonProps>(), {
   color: 'primary',
   isDisabled: false,
-  isRounded: true,
   icon: undefined,
-  iconPosition: 'left',
+  rounded: true,
+  iconRight: undefined,
   iconSize: undefined,
   textAlignment: 'center',
   fitWidth: false,
   once: false,
   enableHold: false,
   borderRadius: '8px',
+  noCaps: true,
+  push: false,
+  unelevated: true,
+  ripple: false,
+  glossy: false,
+  flat: true,
+  padding: undefined,
 });
+
+const slots = useSlots();
 
 const emit = defineEmits<VButtonEmits>();
 
 const btnRef = ref<HTMLButtonElement | null>(null);
+
 const btnStatus = ref<'default' | 'holding' | 'done'>('default');
 
-const bindingProps = computed<QBtnProps>(() => ({
-  target: props.target,
-  type: props.type,
-  to: props.to,
-  href: props.href,
-}));
+const bindingProps = computed<QBtnProps>(() => {
+  const res: QBtnProps = {
+    ...props,
+    icon: undefined,
+    iconRight: undefined,
+    padding: undefined,
+    size: undefined,
+    rounded: undefined,
+  };
+
+  return res;
+});
 
 const showSubmittedIcon = computed(() => props.once && btnStatus.value === 'done');
 
+const showAsSquare = computed(
+  () => (props.fitWidth && props.icon && !props.iconRight) || (!props.icon && props.iconRight && !slots.default),
+);
+
 const btnClasses = computed(() => [
-  //todo Сделать button size опциональным, чтобы работал size prop, когда не задан height
-  `v-button--${buttonSize.value}`,
   backgroundColor.value,
   {
     'v-button--disabled': btnDisabled.value,
-    'v-button--rounded': props.isRounded,
-    'v-button--fit-width': props.fitWidth,
     [`text-${props.textAlignment}`]: props.textAlignment,
+    'v-button--square': showAsSquare.value,
     'v-button--holding': btnStatus.value === 'holding',
     'v-button--done': showSubmittedIcon.value,
   },
 ]);
 
-const sizeIcon = computed(() => {
-  if (props.iconSize) return props.iconSize;
-
-  switch (props.height) {
-    case 'lg':
-      return 36;
-    default:
-      return 28;
-  }
-});
-
 const backgroundColor = computed(() => {
   switch (props.color) {
     case 'secondary':
-    case 'plane':
+    case 'plain':
     case 'outline':
     case 'red':
     case 'primary':
@@ -123,21 +169,33 @@ const backgroundColor = computed(() => {
   }
 });
 
-const buttonSize = computed(() => {
-  switch (props.height) {
-    case 'md':
-    case 'sm':
-    case 'xs':
-    case 'xxs':
-      return props.height;
-    default:
-      return 'lg';
+const buttonSize = computed<VButtonSizeConfig>(() => {
+  const base = buttonSizeConfigs[props.size || 'lg'];
+
+  return {
+    ...base,
+    font: props.fontSize ? props.fontSize : base.font,
+    height: props.height ? props.height : base.height,
+    padding: props.padding ? props.padding : base.padding,
+    icon: props.iconSize ? props.iconSize : base.icon,
+    gap: props.gap ? props.gap : base.gap,
+  };
+});
+
+const buttonWidth = computed(() => {
+  if (props.fitWidth) {
+    if (showAsSquare.value) {
+      return buttonSize.value.height;
+    }
+    return 'auto';
   }
+
+  return '100%';
 });
 
 const btnDisabled = computed(() => props.isDisabled || btnStatus.value === 'done');
 
-const handleHold = ({ evt }: { evt: Event }) => {
+const handleHold: TouchHoldValue = ({ evt }) => {
   if (btnDisabled.value || !props.enableHold) return;
 
   if (props.once && btnRef.value) {
@@ -186,61 +244,78 @@ const finishAnimation = (_?: Event, finished?: boolean) => {
 
 <style lang="scss" scoped>
 .v-button {
-  width: 100%;
-  height: $xl-4;
-  border-radius: 0;
+  width: v-bind(buttonWidth);
+  border-radius: v-bind(borderRadius);
   text-align: center;
-  font-size: $font-size-p1;
+  font-size: v-bind('buttonSize.font');
   font-family: 'Golos', sans-serif;
   letter-spacing: -0.24px;
-  line-height: $s-4;
+  line-height: 1.2;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: $s-2;
   position: relative;
   box-shadow: none;
   border: none;
   animation: none;
-  min-height: unset;
+  min-height: v-bind('buttonSize.height');
+  padding: v-bind('buttonSize.padding');
+  transition: background-color 0.3s ease;
 
   &.primary {
-    background-color: $primary-text;
-    color: $secondary;
+    background-color: $primary-text !important;
+    color: $secondary !important;
+
+    &:hover {
+      background-color: $primary-text-70 !important;
+    }
   }
 
   &.secondary {
-    background-color: $primary-text-20;
-    color: $primary-text;
+    background-color: $primary-text-20 !important;
+    color: $primary-text !important;
+
+    &:hover {
+      background-color: $primary-text-40 !important;
+    }
   }
 
-  &.plane {
-    color: $primary-text;
-    background: none;
+  &.plain {
+    color: $primary-text !important;
+    background-color: transparent !important;
+
+    &:hover {
+      background-color: $primary-text-20 !important;
+    }
   }
 
   &.outline {
     border: solid 1px $primary-text;
-    color: $primary-text;
-    background: none;
+    color: $primary-text !important;
+    background: none !important;
+
+    &:hover {
+      background-color: $primary-text-20 !important;
+    }
   }
 
   &.red {
-    background-color: $primary;
-    color: $secondary;
+    background-color: $primary !important;
+    color: $secondary !important;
   }
 
   &.v-button--disabled {
+    pointer-events: none;
     opacity: 0.1 !important;
   }
 
-  &.v-button--rounded {
-    border-radius: v-bind(borderRadius);
+  &.v-button--rounded.v-button--holding:before {
+    border-radius: v-bind(borderRadius) 0 0 v-bind(borderRadius);
+  }
 
-    &.v-button--holding:before {
-      border-radius: $d-1 0 0 $d-1;
-    }
+  &.v-button--square :deep(.q-btn__content) {
+    justify-content: center;
   }
 
   &.text-left &__text {
@@ -255,39 +330,11 @@ const finishAnimation = (_?: Event, finished?: boolean) => {
     text-align: right;
   }
 
-  &--lg {
-    height: $xxl-4;
-    padding: $m-2 $m-1;
-  }
-
-  &--md {
-    padding: $s-4;
-  }
-
-  &--sm {
-    height: $l-4;
-    padding: $s-2 $s-3;
-  }
-
-  &--xs {
-    height: $l-1;
-    gap: $s-1;
-    font-size: $font-size-p2;
-    padding: 10px $s-2;
-  }
-
-  &--xxs {
-    height: $m-3;
-    gap: $d-1;
-    font-size: $font-size-p4;
-    padding: $d-1 $s-1;
-  }
-
   &.v-button--holding {
     &::before {
       content: '';
       position: absolute;
-      background: $primary-text;
+      background: $primary-text !important;
       opacity: 0.2;
       width: 0;
       height: 100%;
@@ -298,14 +345,14 @@ const finishAnimation = (_?: Event, finished?: boolean) => {
 
     &.primary {
       &::before {
-        background: $secondary;
+        background: $secondary !important;
         opacity: 0.2;
       }
     }
 
     &.red {
       &::before {
-        background: $secondary;
+        background: $secondary !important;
         opacity: 0.25;
       }
     }
@@ -326,7 +373,7 @@ const finishAnimation = (_?: Event, finished?: boolean) => {
       background-repeat: no-repeat;
       position: absolute;
       width: $m-1;
-      height: $m-1;
+      min-height: $m-1;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -336,24 +383,20 @@ const finishAnimation = (_?: Event, finished?: boolean) => {
     }
 
     &.primary {
-      background-color: $primary-text-70;
+      background-color: $primary-text-70 !important;
     }
 
     &.secondary {
-      background-color: $primary-text-5;
+      background-color: $primary-text-5 !important;
     }
 
     &.outline {
-      background-color: $primary-text-20;
+      background-color: $primary-text-20 !important;
     }
 
     :deep(.q-btn__content) {
       justify-content: center;
     }
-  }
-
-  &.v-button--fit-width {
-    width: auto;
   }
 
   &__text {
@@ -366,7 +409,7 @@ const finishAnimation = (_?: Event, finished?: boolean) => {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: $s-2;
+    gap: v-bind('buttonSize.gap');
     flex-wrap: nowrap;
   }
 
