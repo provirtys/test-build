@@ -84,7 +84,7 @@ const meta: Meta = {
         labels: textAlignments,
       },
     },
-    isDisabled: {
+    disable: {
       description: 'Неактивное состояние',
       options: [true, false],
       control: { type: 'boolean' },
@@ -208,7 +208,7 @@ const meta: Meta = {
     text: 'Кнопка',
     textAlignment: 'center',
     borderRadius: '8px',
-    isDisabled: false,
+    disable: false,
     icon: undefined,
     iconRight: undefined,
     iconSize: undefined,
@@ -283,7 +283,7 @@ export const Red: Story = {
 export const Disabled: Story = {
   args: {
     text: 'Неактивная кнопка',
-    isDisabled: true,
+    disable: true,
   },
 };
 

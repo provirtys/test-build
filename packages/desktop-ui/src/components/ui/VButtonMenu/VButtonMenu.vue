@@ -3,10 +3,11 @@
     class="v-button-menu"
     :class="classList"
     icon="dots-horizontal"
-    height="xxs"
+    size="xxs"
     :icon-size="dense ? 12 : 14"
     border-radius="4px"
     color="secondary"
+    fit-width
   >
     <template #menu>
       <q-menu v-model="menuOpen" anchor="bottom right" self="top right" :offset="[0, 4]">

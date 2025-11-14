@@ -10,10 +10,10 @@
           {{ text }}
         </div>
         <div v-if="actions?.length" class="v-notification__actions">
-          <v-button :color="actions[0].color" height="xs" @action="onDialogCancel">
+          <v-button :color="actions[0].color" size="xs" @action="onDialogCancel">
             {{ actions[0].text }}
           </v-button>
-          <v-button :color="actions[1].color" height="xs" @action="onDialogOK">
+          <v-button :color="actions[1].color" size="xs" @action="onDialogOK">
             {{ actions[1].text }}
           </v-button>
         </div>

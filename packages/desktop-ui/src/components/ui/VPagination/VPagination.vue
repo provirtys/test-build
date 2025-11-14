@@ -3,15 +3,19 @@
     <v-button
       class="v-pagination__btn v-pagination__btn--lg"
       icon="arrow-back"
-      :icon-size="16"
       fit-width
       color="secondary"
-      :disabled="pagination.page === 1"
+      size="sm"
+      :disable="pagination.page === 1"
+      border-radius="4px"
       @action="onPrev"/>
     <v-button
       v-if="pagination.page !== 1"
       class="v-pagination__btn"
-      fit-width color="plain"
+      fit-width
+      color="plain"
+      border-radius="4px"
+      size="xs"
       @action="onFirst"
     >
       1
@@ -19,8 +23,11 @@
     <v-button
       v-if="pagination.page - 1 > 1"
       class="v-pagination__btn v-pagination__dots"
-      fit-width color="plain"
-      is-disabled
+      fit-width
+      color="plain"
+      size="xs"
+      disable
+      border-radius="4px"
     >
       ...
     </v-button>
@@ -28,6 +35,8 @@
       class="v-pagination__btn v-pagination__btn--current"
       fit-width
       color="secondary"
+      size="xs"
+      border-radius="4px"
     >
       {{ pagination.page }}
     </v-button>
@@ -36,14 +45,19 @@
       class="v-pagination__btn v-pagination__dots"
       fit-width
       color="plain"
-      is-disabled
+      disable
+      size="xs"
+      border-radius="4px"
     >
       ...
     </v-button>
     <v-button
       v-if="pagination.page !== totalPages"
       class="v-pagination__btn"
-      fit-width color="plain"
+      fit-width
+      color="plain"
+      size="xs"
+      border-radius="4px"
       @action="onLast"
     >
       {{ totalPages }}
@@ -53,8 +67,10 @@
       icon="arrow"
       :icon-size="16"
       fit-width
+      size="sm"
       color="secondary"
-      :disabled="pagination.page >= totalPages"
+      :disable="pagination.page >= totalPages"
+      border-radius="4px"
       @action="onNext"/>
   </div>
 </template>
@@ -117,14 +133,10 @@ const onLast = () => {
 
   .v-pagination__btn {
 
-    padding: 0;
     width: 32px;
-    height: 30px;
     @include font(Golos, $font-size-p4, 1, 500);
 
     &--lg {
-      padding: 12px;
-      height: 40px;
       width: 40px;
     }
 

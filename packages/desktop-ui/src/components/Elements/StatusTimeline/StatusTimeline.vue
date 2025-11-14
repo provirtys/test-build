@@ -10,9 +10,8 @@
               v-for="link in item.links"
               :key="link.href"
               color="secondary"
-              height="xxs"
-              icon="download"
-              icon-position="right"
+              size="xxs"
+              icon-right="download"
               :icon-size="14"
               fit-width
               :href="link.href"

@@ -6,7 +6,7 @@
         class="gtin-card__gtin-btn"
         color="secondary"
         text-alignment="left"
-        height="sm"
+        size="sm"
         icon="arrow-forward-sharp"
         :icon-size="23"
         icon-position="right"

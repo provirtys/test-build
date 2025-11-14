@@ -40,11 +40,10 @@
       </template>
       <v-button
         text-alignment="left"
-        icon="finish-aggregation"
-        icon-position="right"
+        icon-right="finish-aggregation"
         :icon-size="30"
         enable-hold
-        :is-disabled="!sidebarHasError"
+        :disable="!sidebarHasError"
       >
         Подтвердить код неполной упаковки
       </v-button>
@@ -53,12 +52,12 @@
 </template>
 
 <script setup lang="ts">
-import { VAlert, VButton } from '@base';
+import { VAlert, VButton, VDescriptionList } from '@base';
 import type { VDescriptionListItem } from '@base/components/ui/VDescriptionList/VDescriptionList.types';
 import { navigateTo } from '@base/utils/navigation';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
-import { MainLayout, NumericRatio, VDescriptionList } from '@';
+import { MainLayout, NumericRatio } from '@';
 import type { StatusBarActionProp, StatusBarStatusProp } from '@/components/Complexes/StatusBar/StatusBar.types';
 import type { AggregationPageProps } from '@/components/Pages/AggregationPage/AggregationPage.types';
 import { useMainStore } from '@/stores';

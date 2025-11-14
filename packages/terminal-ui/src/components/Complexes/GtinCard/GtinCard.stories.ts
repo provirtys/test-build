@@ -124,10 +124,10 @@ export const AggregationMode: Story = {
       };
     },
     template: `
-      <v-button height="xxs" color="primary" fit-width style="position: absolute; top: 10px; right: 120px"
+      <v-button size="xs" color="primary" fit-width style="position: absolute; top: 10px; right: 120px"
                 @action="addCode">Добавить код
       </v-button>
-      <v-button height="xxs" color="primary" fit-width style="position: absolute; top: 10px; right: 10px"
+      <v-button size="xs" color="primary" fit-width style="position: absolute; top: 10px; right: 10px"
                 @action="deleteFirstCode">Удалить код
       </v-button>
       <GtinCard v-bind="bindingArgs" @remove-code="deleteCodeById"/>

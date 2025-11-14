@@ -1,12 +1,11 @@
 <template>
   <div class="status-line">
     <v-button
-      height="sm"
+      size="sm"
       fit-width
       color="secondary"
       :icon="actionOptions.icon"
-      icon-position="left"
-      :is-rounded="false"
+      border-radius="0"
       enable-hold
       @action="action.fn"
     >

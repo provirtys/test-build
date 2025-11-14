@@ -135,7 +135,7 @@ const meta: Meta = {
       }));
 
       const action = computed(() => ({
-        type: args.action,
+        type: args.action?.type,
         to: '/',
       }));
 

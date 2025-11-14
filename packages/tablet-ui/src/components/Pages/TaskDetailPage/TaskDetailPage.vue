@@ -6,10 +6,9 @@
     <template #sidebar-top>
       <v-description-list class="task-statistics" :items="sideList"/>
       <v-button
-        icon="cleaning"
-        :icon-size="28"
-        icon-position="right"
-        height="sm"
+        icon-right="cleaning"
+        icon-size="28"
+        size="sm"
         text-alignment="left"
         color="secondary"
         enable-hold
@@ -20,9 +19,8 @@
     <template #sidebar-bottom>
       <v-alert class="task-alert" text="Сверьте информацию перед началом выполнения"/>
       <v-button
-        icon="aggregation"
+        icon-right="aggregation"
         :icon-size="27"
-        icon-position="right"
         text-alignment="left"
         enable-hold
         once
@@ -34,24 +32,25 @@
 </template>
 
 <script setup lang="ts">
-import { VAlert, VButton } from '@base';
+import { VAlert, VButton, VDescriptionList } from '@base';
 import type { VDescriptionListItem } from '@base/components/ui/VDescriptionList/VDescriptionList.types';
 import { navigateTo } from '@base/utils/navigation';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
-import { MainLayout, TableAttributes, VDescriptionList } from '@';
+import { MainLayout, TableAttributes } from '@';
+import type { StatusBarActionProp, StatusBarStatusProp } from '@/components/Complexes/StatusBar/StatusBar.types';
 import { taskDetailRows } from '@/mocks/tasks.js';
 import { useMainStore } from '@/stores';
 
 const { isStatusReady } = storeToRefs(useMainStore());
 
-const headerStatus = computed(() => ({
+const headerStatus = computed<StatusBarStatusProp>(() => ({
   type: isStatusReady ? 'success' : 'error',
   sync: true,
   active: false,
 }));
 
-const headerAction = {
+const headerAction: StatusBarActionProp = {
   type: 'back',
   fn: () => navigateTo('/?path=/docs/pages-tasklistpage--docs'),
 };

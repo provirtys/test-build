@@ -66,16 +66,13 @@ const meta: Meta<typeof LabelingCard> = {
         <template v-if="bindingArgs.buttons" #buttons>
           <template v-if="bindingArgs.buttons === 1">
             <v-button
-                icon="scan"
-                icon-position="right"
-                is-radius
+                icon-right="scan"
                 text-alignment="left"
                 color="red"
             >
               {{ t('scan') }}
             </v-button>
             <v-button
-                is-radius
                 text-alignment="left"
             >
               {{ t('startAggregation') }}
@@ -83,18 +80,14 @@ const meta: Meta<typeof LabelingCard> = {
           </template>
           <template v-else-if="bindingArgs.buttons === 2">
             <v-button
-                icon="restart"
-                icon-position="right"
-                is-radius
+                icon-right="restart"
                 text-alignment="left"
                 color="red"
             >
               {{ t('repeatLabeling') }}
             </v-button>
             <v-button
-                icon="bad"
-                icon-position="right"
-                is-radius
+                icon-right="bad"
                 text-alignment="left"
                 color="secondary"
             >
@@ -103,9 +96,7 @@ const meta: Meta<typeof LabelingCard> = {
           </template>
           <template v-else-if="bindingArgs.buttons === 3">
             <v-button
-                icon="scan"
-                icon-position="right"
-                is-radius
+                icon-right="scan"
                 text-alignment="left"
                 color="red"
             >
@@ -114,9 +105,7 @@ const meta: Meta<typeof LabelingCard> = {
           </template>
           <template v-else-if="bindingArgs.buttons === 4">
             <v-button
-                icon="done"
-                icon-position="right"
-                is-radius
+                icon-right="done"
                 text-alignment="left"
                 color="red"
             >
@@ -125,18 +114,14 @@ const meta: Meta<typeof LabelingCard> = {
           </template>
           <template v-else-if="bindingArgs.buttons === 5">
             <v-button
-                icon="scan"
-                icon-position="right"
-                is-radius
+                icon-right="scan"
                 text-alignment="left"
                 color="red"
             >
               {{ t('scan') }}
             </v-button>
             <v-button
-                icon="aggregation"
-                icon-position="right"
-                is-radius
+                icon-right="aggregation"
                 text-alignment="left"
             >
               {{ t('finishAggregation') }}

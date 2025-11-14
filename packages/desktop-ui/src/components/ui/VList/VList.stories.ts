@@ -74,7 +74,7 @@ export const ExampleWithButton: Story = {
       };
     },
     template: `
-      <v-button height="xs">
+      <v-button>
         Открыть меню
         <template #menu>
           <q-menu>

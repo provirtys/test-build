@@ -99,7 +99,6 @@ const buttonSizeConfigs: Record<Size, VButtonSizeConfig> = {
 
 const props = withDefaults(defineProps<VButtonProps>(), {
   color: 'primary',
-  isDisabled: false,
   icon: undefined,
   rounded: true,
   iconRight: undefined,
@@ -142,7 +141,7 @@ const bindingProps = computed<QBtnProps>(() => {
 const showSubmittedIcon = computed(() => props.once && btnStatus.value === 'done');
 
 const showAsSquare = computed(
-  () => (props.fitWidth && props.icon && !props.iconRight) || (!props.icon && props.iconRight && !slots.default),
+  () => props.fitWidth && !slots.default && ((props.icon && !props.iconRight) || (!props.icon && props.iconRight)),
 );
 
 const btnClasses = computed(() => [
@@ -193,7 +192,7 @@ const buttonWidth = computed(() => {
   return '100%';
 });
 
-const btnDisabled = computed(() => props.isDisabled || btnStatus.value === 'done');
+const btnDisabled = computed(() => props.disable || btnStatus.value === 'done');
 
 const handleHold: TouchHoldValue = ({ evt }) => {
   if (btnDisabled.value || !props.enableHold) return;

@@ -1,6 +1,6 @@
 {
   "name": "@integrity/tablet-ui",
-  "version": "1.0.99",
+  "version": "1.1.0",
   "main": "./dist/tablet-ui.umd.js",
   "module": "./dist/tablet-ui.es.js",
   "scripts": {

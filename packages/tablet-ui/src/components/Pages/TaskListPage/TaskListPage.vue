@@ -13,11 +13,11 @@
     <template #sidebar-bottom>
       <v-button
         enable-hold
-        once is-rounded
-        icon-position="right"
-        icon="aggregation"
+        once
+        border-radius="0"
+        icon-right="aggregation"
         text-alignment="left"
-        :is-disabled="buttonDisabled"
+        :disable="buttonDisabled"
         :icon-size="27"
         @action="openTaskDetailPage"
       >

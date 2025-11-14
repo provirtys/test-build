@@ -8,7 +8,6 @@ export type TextAlignment = 'left' | 'center' | 'right';
 
 export interface VButtonProps extends QBtnProps {
   color?: Color;
-  isDisabled?: boolean;
   size?: Size;
   iconSize?: string | number;
   textAlignment?: TextAlignment;

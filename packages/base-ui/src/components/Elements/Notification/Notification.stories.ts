@@ -22,7 +22,7 @@ const meta: Meta<QNotifyOptions> = {
       };
     },
     template: `
-    <v-button height="xs" text-alignment="center" @action="createNotification">Показать сообщение</v-button>`,
+    <v-button text-alignment="center" @action="createNotification">Показать сообщение</v-button>`,
   }),
 };
 export default meta;

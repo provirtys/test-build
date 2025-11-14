@@ -17,9 +17,8 @@
           v-if="isFullscreen"
           class="main-layout__disable-fullscreen"
           icon="close"
-          icon-position="left"
           :icon-size="16"
-          height="xs"
+          size="xs"
           @click="disableFullscreen"
         />
       </div>

@@ -23,7 +23,7 @@
         <v-description-list :items="computedBottomDescriptionList" v-bind="descriptionListProps"/>
       </div>
       <v-icon v-if="!isDense" class="text-primary" name="integrity-logo" height="19" width="108"/>
-      <v-button class="main-sidebar__toggler" icon="arrow-menu-close" :icon-size="12" height="xxs" color="secondary"
+      <v-button class="main-sidebar__toggler" icon="arrow-menu-close" :icon-size="12" size="xxs" color="secondary"
                 @action="toggleDense"/>
     </div>
   </aside>

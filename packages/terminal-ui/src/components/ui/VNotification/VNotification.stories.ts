@@ -47,11 +47,11 @@ const meta: Meta<typeof VNotification> = {
     },
     template: `
       <div class="column q-gutter-md">
-        <v-button @action="() => createNotification(args)" height="sm">Показать уведомление</v-button>
-        <v-button @action="() => createNotification({...args, timeout: 1000})" height="sm">Показать уведомление с
+        <v-button @action="() => createNotification(args)" size="sm">Показать уведомление</v-button>
+        <v-button @action="() => createNotification({...args, timeout: 1000})" size="sm">Показать уведомление с
           автоматическим закрытием
         </v-button>
-        <v-button @action="createConfirmNotification" height="sm">Показать уведомление с подтверждением
+        <v-button @action="createConfirmNotification" size="sm">Показать уведомление с подтверждением
         </v-button>
       </div>`,
   }),

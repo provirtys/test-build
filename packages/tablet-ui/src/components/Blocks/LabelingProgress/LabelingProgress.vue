@@ -39,9 +39,7 @@
       </div>
     </div>
     <v-button
-        icon="arrow"
-        icon-position="right"
-        is-radius
+      icon-right="arrow"
         color="red"
         @action-submitted="finishLabeling"
     >

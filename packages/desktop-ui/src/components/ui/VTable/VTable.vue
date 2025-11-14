@@ -122,15 +122,16 @@
         <v-button
           class="v-table__pagination-btn v-table__pagination-btn--lg"
           icon="arrow-back"
-          :icon-size="16"
+          size="sm"
           fit-width
           color="secondary"
-          :disabled="props.pagination.page === 1"
+          :disable="props.pagination.page === 1"
           @action="props.prevPage"
         />
         <v-button
           v-if="!props.isFirstPage"
           class="v-table__pagination-btn"
+          size="xs"
           fit-width
           color="plain"
           @action="props.firstPage()"
@@ -141,16 +142,17 @@
           v-if="props.pagination.page - 1 > 1"
           class="v-table__pagination-btn v-table__pagination-dots"
           fit-width
+          size="xs"
           color="plain"
-          is-disabled
+          disable
         >
           ...
         </v-button>
         <v-button
           class="v-table__pagination-btn v-table__current-page"
           fit-width
+          size="xs"
           color="secondary"
-          @action="props.prevPage"
         >
           {{ props.pagination.page }}
         </v-button>
@@ -158,8 +160,9 @@
           v-if="props.pagesNumber - props.pagination.page > 1"
           class="v-table__pagination-btn v-table__pagination-dots"
           fit-width
+          size="xs"
           color="plain"
-          is-disabled
+          disable
         >
           ...
         </v-button>
@@ -167,6 +170,7 @@
           v-if="!props.isLastPage"
           class="v-table__pagination-btn"
           fit-width
+          size="xs"
           color="plain"
           @action="props.lastPage()"
         >
@@ -175,10 +179,10 @@
         <v-button
           class="v-table__pagination-btn v-table__pagination-btn--lg"
           icon="arrow"
-          :icon-size="16"
+          size="sm"
           fit-width
           color="secondary"
-          :disabled="props.isLastPage"
+          :disable="props.isLastPage"
           @action="props.nextPage"
         />
       </div>

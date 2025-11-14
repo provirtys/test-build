@@ -17,7 +17,7 @@
       <v-button
         class="v-file-upload__button"
         color="secondary"
-        height="xxs"
+        size="xxs"
         border-radius="4px"
         fit-width
         @action="pickFile"

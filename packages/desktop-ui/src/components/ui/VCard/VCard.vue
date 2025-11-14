@@ -4,7 +4,7 @@
     <div v-if="$slots.default" class="v-card__content">
       <slot/>
     </div>
-    <v-button-menu v-if="menuItems && menuItems.length" class="v-card__menu-btn" :items="menuItems" position-absolute/>
+    <v-button-menu v-if="menuItems && menuItems.length" class="v-card__menu-btn" :items="menuItems"/>
   </div>
 </template>
 
