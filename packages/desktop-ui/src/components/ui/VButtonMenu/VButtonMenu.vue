@@ -3,9 +3,8 @@
     class="v-button-menu"
     :class="classList"
     icon="dots-horizontal"
-    size="xxs"
+    size="xs"
     :icon-size="dense ? 12 : 14"
-    border-radius="4px"
     color="secondary"
     fit-width
   >
@@ -18,9 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import { VButton } from '@base';
 import { computed, ref } from 'vue';
-import { VList } from '@';
+import { VButton, VList } from '@';
 import type { VButtonMenuProps } from './VButtonMenu.types';
 
 const props = defineProps<VButtonMenuProps>();

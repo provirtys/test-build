@@ -205,9 +205,10 @@
   </q-table>
 </template>
 <script setup lang="ts">
-import { VButton, VIcon, VInput } from '@base';
+import { VIcon, VInput } from '@base';
 import { QTable, QTableProps } from 'quasar';
 import { computed, nextTick, onMounted, reactive, ref } from 'vue';
+import { VButton } from '@';
 import { VDate } from '@/components/ui/VDate';
 import { VPagination } from '@/components/ui/VPagination';
 import type {

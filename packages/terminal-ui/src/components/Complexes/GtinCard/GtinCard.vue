@@ -2,6 +2,7 @@
   <div class="gtin-card" :class="classList">
     <div class="gtin-card__container">
       <div class="gtin-card__title">{{ title }}</div>
+      <!--  todo создать компонент VButton (как в desktop-ui и задать размеры)-->
       <v-button
         class="gtin-card__gtin-btn"
         color="secondary"

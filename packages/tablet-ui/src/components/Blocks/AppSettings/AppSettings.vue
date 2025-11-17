@@ -1,4 +1,5 @@
 <template>
+<!--  todo создать компонент VButton (как в desktop-ui и задать размеры)-->
   <v-button
     class="app-settings"
     color="secondary"
@@ -27,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { VButton, VIcon } from '@base';
+import { VButton } from '@base';
 import { AppSettingsOptions } from '@';
 import type { AppSettingsEmits, AppSettingsProps } from '@/components/Blocks/AppSettings/AppSettings.types';
 

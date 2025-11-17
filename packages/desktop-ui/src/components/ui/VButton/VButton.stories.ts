@@ -1,8 +1,9 @@
-import { QMenu } from 'quasar';
+import type { Color, TextAlignment } from '@base/components/ui/VButton/VButton.types';
+import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@base/types/story';
+import { Notify, QMenu } from 'quasar';
 import { computed } from 'vue';
-import type { Color, TextAlignment } from '@/components/ui/VButton/VButton.types';
-import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@/types/story';
 import { VButton } from './index';
+import type { Size } from './VButton.types';
 
 type AdditionalArgs = {
   text?: string;
@@ -28,6 +29,14 @@ const textAlignments: Record<TextAlignment, string> = {
   right: 'Справа',
 };
 
+//Размер кнопки
+const sizes: Record<Size, string> = {
+  lg: 'Большой',
+  md: 'Средний',
+  sm: 'Маленький',
+  xs: 'Очень маленький',
+};
+
 //Названия иконок
 const bad = 'bad';
 const arrow = 'arrow';
@@ -49,8 +58,7 @@ const iconNames = {
 };
 
 /** Компонент кнопки, базово использует QBtn. Поддерживает отображение иконок с обеих сторон, удержание кнопки, а также однократное срабатывание. <br/>
- *  Кнопка принимает квадратный вид, если используется только ОДНА иконка, проп `fit-width = true` и в слот `default` не прокидывается ничего (см. пример [OnlyIcon](?path=/story/ui-vbutton--only-icon)) <br/>
- *  Проп `size` вынесен из этого компонента и настраивается для каждого пакета индивидуально через пропсы `fontSize`, `height`, `padding`, `gap`, `iconSize`.
+ *  Кнопка принимает квадратный вид, если используется только ОДНА иконка, проп `fit-width = true` и в слот `default` не прокидывается ничего (см. пример [OnlyIcon](?path=/story/ui-vbutton--only-icon))
  * */
 const meta: Meta = {
   component: VButton,
@@ -78,6 +86,20 @@ const meta: Meta = {
       description: 'Неактивное состояние',
       options: [true, false],
       control: { type: 'boolean' },
+    },
+    size: {
+      description:
+        'Размер элементов и отступов у кнопки (высота кнопки, размер иконок, font-size, padding, gap). Каждое значение может быть через отдельный соответствующий проп: <br/>' +
+        '`fontSize` — размер шрифта <br/>' +
+        '`padding` — отступы <br/>' +
+        '`height` — высота кнопки <br/>' +
+        '`iconSize` — размер иконки <br/>' +
+        '`gap` — расстояние между текстом и иконками <br/>',
+      options: Object.keys(sizes),
+      control: {
+        type: 'select',
+        labels: sizes,
+      },
     },
     fontSize: {
       description: 'Размер шрифта. <br/> Переопределяет соответствующее значение из пропа `size`',
@@ -180,9 +202,10 @@ const meta: Meta = {
   },
   args: {
     color: 'primary',
+    size: 'lg',
     text: 'Кнопка',
     textAlignment: 'center',
-    borderRadius: '8px',
+    borderRadius: '4px',
     disable: false,
     icon: undefined,
     iconRight: undefined,
@@ -262,13 +285,6 @@ export const Disabled: Story = {
   },
 };
 
-export const BorderRadius4px: Story = {
-  name: 'Border Radius 4px',
-  args: {
-    borderRadius: '4px',
-  },
-};
-
 export const Square: Story = {
   args: {
     text: 'Не скругленная',
@@ -287,6 +303,34 @@ export const TextRight: Story = {
   args: {
     text: 'Текст справа',
     textAlignment: 'right',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    text: 'Большая кнопка',
+    size: 'lg',
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    text: 'Средняя кнопка',
+    size: 'md',
+  },
+};
+
+export const Small: Story = {
+  args: {
+    text: 'Маленькая кнопка',
+    size: 'sm',
+  },
+};
+
+export const ExtraSmall: Story = {
+  args: {
+    text: 'Очень маленькая кнопка',
+    size: 'xs',
   },
 };
 
@@ -387,7 +431,7 @@ export const OnceWithHold: Story = {
 
 export const WithMenu: Story = {
   render: () => ({
-    components: { VButton, QMenu },
+    components: { VButton, QMenu, Notify },
     setup() {},
     template: `
       <v-button>
@@ -407,6 +451,7 @@ export const WithMenu: Story = {
 
 export const OnlyIcon: Story = {
   args: {
+    size: 'xs',
     text: undefined,
     icon: 'pencil',
     fitWidth: true,

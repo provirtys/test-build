@@ -14,7 +14,7 @@
     <v-icon
       v-if="showSubmittedIcon"
       name="done"
-      :size="buttonSize.icon"
+      :size="buttonSize.iconSize"
     />
     <template v-else>
       <span
@@ -23,7 +23,7 @@
       >
         <v-icon
           :name="icon"
-          :size="buttonSize.icon"
+          :size="buttonSize.iconSize"
         />
       </span>
       <span
@@ -38,7 +38,7 @@
       >
         <v-icon
           :name="iconRight"
-          :size="buttonSize.icon"
+          :size="buttonSize.iconSize"
         />
       </span>
     </template>
@@ -49,53 +49,14 @@
 <script setup lang="ts">
 import { VIcon } from '@base';
 import { QBtnProps, TouchHoldValue } from 'quasar';
-import { computed, ref, useSlots } from 'vue';
-import { Size, VButtonEmits, VButtonProps, VButtonSizeConfig } from './VButton.types';
+import { computed, ref, useAttrs, useSlots } from 'vue';
+import { VButtonEmits, VButtonProps, VButtonSizeConfig } from './VButton.types';
 
-const buttonSizeConfigs: Record<Size, VButtonSizeConfig> = {
-  xl: {
-    font: '22px',
-    height: '72px',
-    icon: 20,
-    padding: '22px',
-    gap: '14px',
-  },
-  lg: {
-    font: '20px',
-    height: '64px',
-    icon: 18,
-    padding: '20px',
-    gap: '12px',
-  },
-  md: {
-    font: '18px',
-    height: '54px',
-    icon: 16,
-    padding: '16px',
-    gap: '12px',
-  },
-  sm: {
-    font: '16px',
-    height: '43px',
-    icon: 14,
-    padding: '12px',
-    gap: '8px',
-  },
-  xs: {
-    font: '14px',
-    height: '33px',
-    icon: 12,
-    padding: '8px',
-    gap: '4px',
-  },
-  xxs: {
-    font: '12px',
-    height: '26px',
-    icon: 10,
-    padding: '6px',
-    gap: '4px',
-  },
-};
+defineOptions({
+  inheritAttrs: false,
+});
+
+const attrs = useAttrs();
 
 const props = withDefaults(defineProps<VButtonProps>(), {
   color: 'primary',
@@ -131,8 +92,8 @@ const bindingProps = computed<QBtnProps>(() => {
     icon: undefined,
     iconRight: undefined,
     padding: undefined,
-    size: undefined,
     rounded: undefined,
+    size: undefined,
   };
 
   return res;
@@ -145,6 +106,7 @@ const showAsSquare = computed(
 );
 
 const btnClasses = computed(() => [
+  attrs.class,
   backgroundColor.value,
   {
     'v-button--disabled': btnDisabled.value,
@@ -169,14 +131,19 @@ const backgroundColor = computed(() => {
 });
 
 const buttonSize = computed<VButtonSizeConfig>(() => {
-  const base = buttonSizeConfigs[props.size || 'lg'];
+  const base: VButtonSizeConfig = {
+    fontSize: '22px',
+    height: '72px',
+    iconSize: 20,
+    padding: '22px',
+    gap: '14px',
+  };
 
   return {
-    ...base,
-    font: props.fontSize ? props.fontSize : base.font,
+    fontSize: props.fontSize ? props.fontSize : base.fontSize,
     height: props.height ? props.height : base.height,
     padding: props.padding ? props.padding : base.padding,
-    icon: props.iconSize ? props.iconSize : base.icon,
+    iconSize: props.iconSize ? props.iconSize : base.iconSize,
     gap: props.gap ? props.gap : base.gap,
   };
 });
@@ -246,7 +213,7 @@ const finishAnimation = (_?: Event, finished?: boolean) => {
   width: v-bind(buttonWidth);
   border-radius: v-bind(borderRadius);
   text-align: center;
-  font-size: v-bind('buttonSize.font');
+  font-size: v-bind('buttonSize.fontSize');
   font-family: 'Golos', sans-serif;
   letter-spacing: -0.24px;
   line-height: 1.2;

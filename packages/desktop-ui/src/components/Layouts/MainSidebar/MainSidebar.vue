@@ -23,15 +23,20 @@
         <v-description-list :items="computedBottomDescriptionList" v-bind="descriptionListProps"/>
       </div>
       <v-icon v-if="!isDense" class="text-primary" name="integrity-logo" height="19" width="108"/>
-      <v-button class="main-sidebar__toggler" icon="arrow-menu-close" :icon-size="12" size="xxs" color="secondary"
-                @action="toggleDense"/>
+      <v-button
+        class="main-sidebar__toggler"
+        icon="arrow-menu-close"
+        size="xs"
+        @action="toggleDense"
+      />
     </div>
   </aside>
 </template>
 
 <script setup lang="ts">
-import { VButton, VDescriptionList, VDescriptionListProps, VIcon } from '@base';
+import { VDescriptionList, VDescriptionListProps, VIcon } from '@base';
 import { computed, ref } from 'vue';
+import { VButton } from '@';
 import { MainSidebarProps } from '@/components/Layouts/MainSidebar/MainSidebar.types';
 
 const props = defineProps<MainSidebarProps>();

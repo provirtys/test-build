@@ -6,6 +6,7 @@ export * from '@/components/Elements/StripedCard';
 export * from '@/components/Layouts/MainLayout';
 export * from '@/components/Layouts/MainSidebar';
 export * from '@/components/ui/VBreadcrumbs';
+export * from '@/components/ui/VButton';
 export * from '@/components/ui/VButtonMenu';
 export * from '@/components/ui/VCard';
 export * from '@/components/ui/VDate';

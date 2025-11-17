@@ -10,9 +10,8 @@
               v-for="link in item.links"
               :key="link.href"
               color="secondary"
-              size="xxs"
+              size="xs"
               icon-right="download"
-              :icon-size="14"
               fit-width
               :href="link.href"
               target="_blank"
@@ -29,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { VButton } from '@base';
+import { VButton } from '@';
 import type { StatusTimelineProps } from '@/components/Elements/StatusTimeline/StatusTimeline.types';
 
 defineProps<StatusTimelineProps>();

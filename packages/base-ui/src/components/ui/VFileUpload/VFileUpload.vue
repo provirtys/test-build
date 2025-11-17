@@ -16,10 +16,7 @@
       />
       <v-button
         class="v-file-upload__button"
-        color="secondary"
-        size="xxs"
-        border-radius="4px"
-        fit-width
+        v-bind="btnProps"
         @action="pickFile"
       >
         {{ config.buttonText }}
@@ -32,9 +29,8 @@
 </template>
 
 <script setup lang="ts">
-import { VButton, VIcon } from '@base';
+import { VButton, VButtonProps, VIcon } from '@base';
 import { computed, onMounted, ref } from 'vue';
-import { fileToBase64 } from '@/helpers/convert';
 import type { Status, VFileUploadConfig, VFileUploadProps } from './VFileUpload.types';
 
 const props = withDefaults(defineProps<VFileUploadProps>(), {
@@ -94,6 +90,17 @@ const config = computed<VFileUploadConfig>(() => {
   }
   return res;
 });
+
+const btnProps: VButtonProps = {
+  color: 'secondary',
+  fontSize: '14px',
+  height: '33px',
+  iconSize: 12,
+  padding: '8px',
+  gap: '4px',
+  borderRadius: '4px',
+  fitWidth: true,
+};
 
 const pickFile = () => {
   if (!inputRef.value) return;

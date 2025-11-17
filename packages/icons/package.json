@@ -1,7 +1,7 @@
 {
   "name": "@integrity/icons",
   "description": "Icons asset for usage in other packages",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "./dist/icons.umd.js",
   "module": "./dist/icons.es.js",
   "files": [

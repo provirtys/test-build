@@ -2,13 +2,10 @@ import type { QBtnProps } from 'quasar';
 
 export type Color = 'primary' | 'secondary' | 'plain' | 'outline' | 'red';
 
-export type Size = 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'xxs';
-
 export type TextAlignment = 'left' | 'center' | 'right';
 
-export interface VButtonProps extends QBtnProps {
+export interface VButtonProps extends Omit<QBtnProps, 'size'> {
   color?: Color;
-  size?: Size;
   iconSize?: string | number;
   textAlignment?: TextAlignment;
   fitWidth?: boolean;
@@ -23,9 +20,9 @@ export interface VButtonProps extends QBtnProps {
 export type VButtonEmits = (e: 'action') => void;
 
 export interface VButtonSizeConfig {
-  font: string;
+  fontSize: string;
   padding: string;
   height: string;
-  icon: string | number;
+  iconSize: string | number;
   gap: string;
 }

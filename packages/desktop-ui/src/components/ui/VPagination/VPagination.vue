@@ -76,8 +76,8 @@
 </template>
 
 <script setup lang="ts">
-import { VButton } from '@base';
 import { computed } from 'vue';
+import { VButton } from '@';
 import { VPaginationEmits, VPaginationModel } from './VPagination.types';
 
 const pagination = defineModel<VPaginationModel>();
