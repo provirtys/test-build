@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
     "baseUrl": ".",
     "paths": {
       "@": ["src"],
@@ -9,6 +10,11 @@
       "@base/*": ["../base-ui/src/*"]
     }
   },
+  "references": [
+    {
+      "path": "../base-ui"
+    }
+  ],
   "include": ["**/src/**/*"],
   "exclude": ["node_modules"]
 }

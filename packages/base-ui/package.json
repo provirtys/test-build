@@ -1,6 +1,6 @@
 {
   "name": "@integrity/base-ui",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "./dist/base-ui.umd.js",
   "module": "./dist/base-ui.es.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "./style.css": "./dist/base-ui.css",
     "./variables.scss": "./dist/variables.scss",
     "./mixins.scss": "./dist/mixins.scss",
-    "./src/*": "./src/*"
+    "./src/*": "./dist/*"
   },
   "publishConfig": {
     "access": "public",
