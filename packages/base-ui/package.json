@@ -16,7 +16,7 @@
     "./style.css": "./dist/base-ui.css",
     "./variables.scss": "./dist/variables.scss",
     "./mixins.scss": "./dist/mixins.scss",
-    "./src/*": "./dist/*"
+    "./src/*": "./src/*"
   },
   "publishConfig": {
     "access": "public",
