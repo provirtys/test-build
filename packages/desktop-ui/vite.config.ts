@@ -17,6 +17,8 @@ export default defineConfig({
       insertTypesEntry: true,
       include: ['**/src/components/**/*', '**/src/index.ts'],
       exclude: '**/*.stories.ts',
+      tsconfigPath: './tsconfig.json',
+      aliasesExclude: [/@base/],
     }),
     svgSpritePlugin({
       iconDirs: [path.resolve(__dirname, '../icons/icons')],
@@ -39,6 +41,11 @@ export default defineConfig({
       },
     }),
   ],
+  resolve: {
+    alias: {
+      '@base': path.resolve(__dirname, '../base-ui/src'),
+    },
+  },
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
