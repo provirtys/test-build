@@ -10,11 +10,6 @@
       "@base/*": ["../base-ui/src/*"]
     }
   },
-  "references": [
-    {
-      "path": "../base-ui"
-    }
-  ],
   "include": ["**/src/**/*"],
   "exclude": ["node_modules"]
 }
