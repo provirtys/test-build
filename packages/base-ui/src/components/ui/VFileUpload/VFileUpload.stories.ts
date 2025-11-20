@@ -1,4 +1,4 @@
-import { uint8ArrayToFile } from '@integrity/shared/helpers';
+import { uint8ArrayToFile } from '@integrity/shared/utils';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import { VFileUpload } from './index';

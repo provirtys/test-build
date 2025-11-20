@@ -1,11 +1,6 @@
 <template>
   <div class="loading__animation">
-    <img
-      v-if="isInternetError"
-      class="icon"
-      src="../../../assets/images/no-wifi.svg"
-      :alt="t('loading.internet_false')"
-    />
+    <v-icon v-if="isInternetError" style="color: #B1B8C7;" name="no-wifi"/>
     <loading-animation v-else />
     <div class="loading__text">{{ t('loading.' + loadingType) }}</div>
     <div v-if="isInternetError" class="loading__error">{{ t('loading.try_again') }}</div>
@@ -22,7 +17,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { LoadingAnimation, VButton } from '@';
+import { LoadingAnimation, VButton, VIcon } from '@';
 import type { LoadingProps } from '@/components/Blocks/Loading/Loading.types';
 
 const { t } = useI18n();

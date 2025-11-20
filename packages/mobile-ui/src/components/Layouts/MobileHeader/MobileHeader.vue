@@ -1,27 +1,14 @@
 <template>
   <div class="mobile-header">
     <button v-if="showBackButton" @click="onBackButton" class="back-button">
-      <img v-if="isBackgroundDark" src="../../../assets/images/back-arrow-light.svg" alt="back" />
-      <img v-else src="../../../assets/images/back-arrow-dark.svg" alt="back" />
+      <v-icon name="arrow-back-rounded" :class="{'text-light-gray-40': isBackgroundDark}"/>
     </button>
     <div class="integrity-logo-block">
       <div v-if="getPageHeader" class="integrity-header-name">
         {{ getPageHeader }}
       </div>
-      <img
-        v-else-if="isBackgroundDark"
-        class="integrity-logo"
-        alt="integrity"
-        src="../../../assets/images/integrity-logo-light.svg"
-      />
-      <img
-        v-else
-        class="integrity-logo"
-        alt="integrity"
-        src="../../../assets/images/integrity-logo.svg"
-      />
+      <v-icon v-else name="integrity-logo" width="108" :class="{'text-light-gray-40': isBackgroundDark}"/>
     </div>
-
     <div class="offline-mode-marker" :class="{ light: isBackgroundDark }" v-if="isOffline">
       <span>offline mode</span>
     </div>
@@ -29,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+import { VIcon } from '@integrity/base-ui';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
@@ -107,11 +95,6 @@ const getPageHeader = computed(() => {
   .integrity-logo-block {
     align-self: center;
     margin: $d-1 auto 0px auto;
-
-    .integrity-logo {
-      width: $b-1;
-      height: $s-3;
-    }
   }
 
   .offline-mode-marker {

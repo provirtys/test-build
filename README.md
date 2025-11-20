@@ -5,8 +5,9 @@
 - @integrity/mobile-ui (для мобильных приложений)
 - @integrity/tablet-ui (для планшетов)
 - @integrity/web-ui (для веба)
+- @integrity/desktop-ui (для десктопных приложений)
 - @integrity/terminal-ui (для терминала сбора данных)
-- @integrity/icons (иконки приложений)
+- @integrity/shared (общие для всех пакетов шрифты, иконки, хелперы, локаль, типы, стили, ...)
 
 ## Использование
 Используется **pnpm workspace** для организации зависимостей.
@@ -23,7 +24,7 @@ pnpm i
 pnpm build
 ```
 
-В каждом пакете будет папка `packages/*/dist/` с собранными файлами,
+В каждом пакете (не shared) будет папка `packages/*/dist/` с собранными файлами,
 при публикации пакетов будет опубликованы только файлы из этой папки.
 
 **Storybook** для демонстрации, документирования и тестирования компонентов.
@@ -48,15 +49,23 @@ pnpm lint
 
 Для автоматической проверки используется **husky** для git hooks проверяющий код перед каждым commit.
 
+⚠️ Перед запуском любого не базового пакета (base-ui) необходимо заранее собрать его. То же самое делаем и при появлении
+изменений в базовом пакете
+
 ## Структура проекта
 
 shared-mobile-components/    
 ├── .husky Конфигурация Git hooks для автоматизации  
 ├── packages Пакеты     
-│ ├── base-ui Базовый UI-пакет, общие компоненты и стили  
+│ ├── shared Пакет с общими асетами, стилями, типами и функциями  
+│ │ ├── assets Шрифты, картинки, иконки
+│ │ ├── locales Файлы локалей и конфигурация для vue-i18n
+│ │ ├── styles Подключение шрифтов, миксинов, переменных, сброса стилей и классов quasar
+│ │ ├── types Общие типы для стори и компонентов
+│ │ ├── utils Полезные функции для разработки (конвертеры, переход на страницу, ...)
+│ ├── base-ui Базовый UI-пакет, общие компоненты  
 │ │ ├── .storybook Конфигурация Storybook    
 │ │ ├── src Исходный код базового UI    
-│ │ │ ├── assets Статические ресурсы (изображения, шрифты)    
 │ │ │ ├── components Файлы с компонентами и сторисами  
 │ │ │ │  ├── ui См. раздел `Уровни компонентов`  
 │ │ │ │  │  ├── VButton - Папка компонента  
@@ -70,29 +79,25 @@ shared-mobile-components/
 │ │ │ │  ├── Layouts  
 │ │ │ │  ├── Page  
 │ │ │ ├── css Общие стили пакетов   
-│ │ │ ├── locales Файлы локализации   
-│ │ │ ├── utils Вспомогательные функции и утилиты    
-│ │ │ ├── i18n.ts Настройка интернационализации   
 │ │ │ └── index.ts Barrel file для экспорта компонентов из одной точки  
 │ │ ├── tsconfig.json Конфигурация TS для пакета
 │ │ └── vite.config.ts Конфигурация Vite  
 │ ├── mobile-ui Пакет для мобильных устройств  
 │ │ ├── ...  
 │ │ ├── src    
-│ │ │ ├── assets Статические ресурсы для mobile-ui     
 │ │ │ └── components Компоненты для mobile-ui     
 │ ├── tablet-ui Пакет для планшетов (структура аналогична)    
 │ ├── terminal-ui Пакет для терминала сбора данных (структура аналогична)    
-│ ├── web-ui Пакет для веб-версии (структура аналогична)    
-│ └── icons Пакет с иконками  
+│ └── desktop-ui Пакет для десктопных приложений (структура аналогична)    
+│ └── web-ui Пакет для веб-версии (структура аналогична)    
 ├── biome.json Конфигурация для Biome — инструмента форматирования/линтинга    
 ├── commitlint.config.ts Конфигурация для проверки сообщений коммитов    
 ├── package.json Основной package.json для монорепозитория    
 ├── pnpm-lock.yaml Файл блокировки зависимостей для pnpm    
 ├── pnpm-workspace.yaml Конфигурация workspace для pnpm, содержит версии для всех зависимостей пакетов    
 ├── README.md Документация проекта    
-├── tsconfig.json Общая конфигурация TS для всего проекта и для пакетов   
-└── vite.shared.ts Общая конфигурация Vite для всех пакетов
+├── TODO.md Список задач на улучшение библиотеки    
+└── tsconfig.json Общая конфигурация TS для всего проекта и для пакетов
 
 ### Уровни компонентов
 Каждый пакет внутри себя разделяет компоненты на несколько уровней:
@@ -183,7 +188,7 @@ shared-mobile-components/
 
 ### Иконки
 
-Все иконки для использования лежат в пакете `packages/icons`
+Все иконки для использования лежат в пакете `packages/shared/assets/icons`
 
 Сборщик автоматически проходится по этой папке и создает один svg sprite.
 
@@ -191,57 +196,6 @@ shared-mobile-components/
 
 Например:
 `<v-icon name='aggregation' size='40' />` - отобразит иконку размером 40x40 px.
-
-## Начало работы с пакетом
-
-1. Установить `quasar`, `base-ui` и другой не базовый пакет в зависимости
-
-```bash
-pnpm i quasar @integrity/base-ui @integrity/[НАЗВАНИЕ ПАКЕТА]
-```
-
-2. Для отображения иконок нужно дополнительно установить любой плагин для создания svg sprite и настроить его на папку
-   `node_modules/@integrity/icons/icons`  
-   Пример настройки плагина `@pivanov/vite-plugin-svg-sprite`:
-
-```code
-import svgSpritePlugin from '@pivanov/vite-plugin-svg-sprite'
-
-export default defineConfig(() => {
-    return {
-    ...
-        vitePlugins: [
-            svgSpritePlugin({
-              iconDirs: ['node_modules/@integrity/icons/icons'],
-              symbolId: 'icon-[name]',
-              svgDomId: 'svg-sprite',
-              inject: 'body-last',
-            }),
-      ],
-    }
-}
-```
-
-3. Также необходимо подключить файлы quasar
-
-```code
-@quasar/extras/material-icons/material-icons.css';
-@quasar/extras/material-icons-outlined/material-icons-outlined.css';
-@quasar/extras/material-symbols-outlined/material-symbols-outlined.css';
-quasar/dist/quasar.css';
-```
-
-И файлы самой библиотеки
-```code
-
-@integrity/base-ui/variables.scss - переменные SCSS
-@integrity/base-ui/mixins.scss - SCSS функции для удобства разработки
-@integrity/base-ui/style.css - общие стили для всех пакетов
-@integrity/[НАЗВАНИЕ ПАКЕТА]/style.css - стили нужного пакета
-```
-
-Таким образом, стили, шрифты и иконки из библиотек будут добавлены в проект, а также IDE подхватит scss переменные и
-миксины
 
 ## Создание папки для компонента из шаблона
 
@@ -266,3 +220,79 @@ pnpm create:componentFolder MyComponent .\packages\desktop-ui\src\components\ele
 ```code
 export * from '@/components/element/MyComponent';
 ```
+
+## Начало работы с пакетом в приложении
+
+### 1. Установка зависимостей
+
+Установите следующие зависимости: `quasar`, `@integrity/base-ui`, `@integrity/shared` и другой не базовый пакет
+
+```bash
+pnpm i quasar @integrity/base-ui @integrity/[НАЗВАНИЕ ПАКЕТА]
+```
+
+### 2. Подключение иконок
+
+Для отображения иконок нужно дополнительно установить любой плагин для создания svg sprite и настроить его на папку
+`node_modules/@integrity/shared/assets/icons`  
+   Пример настройки плагина `@pivanov/vite-plugin-svg-sprite`:
+
+```code
+import svgSpritePlugin from '@pivanov/vite-plugin-svg-sprite'
+
+export default defineConfig(() => {
+    return {
+    ...
+        vitePlugins: [
+            svgSpritePlugin({
+              iconDirs: ['node_modules/@integrity/shared/assets/icons'],
+              symbolId: 'icon-[name]',
+              svgDomId: 'svg-sprite',
+              inject: 'body-last',
+            }),
+      ],
+    }
+}
+```
+
+### 3. Подключение стилей
+
+В preview.ts файле нужно подключить следующие файлы:
+
+* Стили quasar
+
+```code
+@quasar/extras/material-icons/material-icons.css';
+@quasar/extras/material-icons-outlined/material-icons-outlined.css';
+@quasar/extras/material-symbols-outlined/material-symbols-outlined.css';
+quasar/dist/quasar.css';
+```
+
+* Стили пакетов
+```code
+@integrity/shared/reset.css - файл сброса стилей (⚠️ подключать только в preview.ts, иначе переопределит стили quasar)
+@integrity/base-ui/style.css - файл стилей базового пакета
+@/css/main.scss - файл стилей текущего пакета (⚠️ подключать обязательно, хотя бы пустой, иначе не подтягиваются цвета quasar)
+```
+
+В vite.config.ts нужно подключить файл стилей из пакета `@integrity/shared`
+
+```code
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  ...
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @import '@integrity/shared/style.scss';
+        `,
+      },
+    },
+  }
+})
+```
+
+Таким образом, стили, шрифты и иконки из библиотек будут добавлены в проект, а также IDE подхватит scss переменные и
+миксины
