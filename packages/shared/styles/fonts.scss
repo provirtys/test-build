@@ -11,19 +11,31 @@
 }
 
 @font-face {
-  font-family: 'Golos';
+  font-family: Golos;
   src: url('../assets/fonts/Golos/Golos-Regular.ttf');
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Golos';
+  font-family: Golos;
   src: url('../assets/fonts/Golos/Golos-Medium.ttf');
   font-weight: 500;
 }
 
 @font-face {
-  font-family: 'Golos';
+  font-family: Golos;
   src: url('../assets/fonts/Golos/Golos-Bold.ttf');
   font-weight: 700;
+}
+
+@font-face {
+  font-family: VelaSans;
+  src: url('../assets/fonts/VelaSans/VelaSans-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: VelaSans;
+  src: url('../assets/fonts/VelaSans/VelaSans-Medium.ttf');
+  font-weight: 500;
 }

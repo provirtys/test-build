@@ -1,9 +1,9 @@
-import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@base/types/story';
+import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@integrity/shared/types/story';
 import { expect } from 'storybook/test';
 import { computed, ref } from 'vue';
-import type { AppSettings } from '@/components/Blocks/AppSettings/AppSettings.types';
-import type { ActionType } from '@/components/Complexes/StatusBar/StatusBar.types';
+import type { AppSettingsConf } from '@';
 import { appSettings } from '@/mocks/appSettings';
+import type { StatusBarActionType } from './index';
 import { StatusBar } from './index';
 
 type AdditionalArgs = {
@@ -16,7 +16,7 @@ type Story = ExtendedStory<typeof StatusBar, AdditionalArgs>;
 type Meta = ExtendedMeta<typeof StatusBar, AdditionalArgs>;
 type Args = ExtendedArgs<typeof StatusBar, AdditionalArgs>;
 
-const actions: Record<ActionType, string> = {
+const actions: Record<StatusBarActionType, string> = {
   home: 'Домой',
   back: 'Назад',
   logout: 'Выйти',
@@ -139,7 +139,7 @@ const meta: Meta = {
         to: '/',
       }));
 
-      const onUpdateOptions = (opt: AppSettings) => {
+      const onUpdateOptions = (opt: AppSettingsConf) => {
         appSettingsOptions.value = opt;
       };
 

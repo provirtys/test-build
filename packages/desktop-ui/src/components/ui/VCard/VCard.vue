@@ -5,11 +5,21 @@
       <slot/>
     </div>
     <v-button-menu v-if="menuItems && menuItems.length" class="v-card__menu-btn" :items="menuItems"/>
+    <v-button
+      v-else-if="btnConf"
+      class="v-card__btn"
+      size="xs"
+      fit-width
+      :icon-size="11"
+      color="secondary"
+      :icon="btnConf.icon"
+      @action="btnConf.handler"/>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { VButton } from '@';
 import { VButtonMenu } from '@/components/ui/VButtonMenu';
 import type { VCardProps } from '@/components/ui/VCard/VCard.types';
 
@@ -59,6 +69,14 @@ const classList = computed(() => ({
     position: absolute;
     top: 4px;
     right: 4px;
+    height: 43px;
+  }
+
+  &__btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 30px;
   }
 }
 </style>

@@ -18,11 +18,11 @@
 </template>
 
 <script setup lang="ts">
-import { VTableProps } from '@base/components/ui/VTable/VTable.types';
 import { QTable } from 'quasar';
-import { setupI18n } from '../../../i18n';
+import { useI18n } from 'vue-i18n';
+import { VTableProps } from '@/components/ui/VTable/VTable.types';
 
-const { t } = setupI18n();
+const { t } = useI18n();
 
 withDefaults(defineProps<VTableProps>(), {
   columns: () => [],

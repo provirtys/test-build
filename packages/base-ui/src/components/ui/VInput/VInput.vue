@@ -27,10 +27,10 @@
 </template>
 
 <script setup lang="ts">
-import { VIcon } from '@base';
-import { VInputEmits, VInputProps, VInputSlots } from '@base/components/ui/VInput/VInput.types';
 import { colors, QInput } from 'quasar';
 import { computed, nextTick, onMounted, ref, useAttrs, watch } from 'vue';
+import { VIcon } from '@';
+import { VInputEmits, VInputProps, VInputSlots } from '@/components/ui/VInput/VInput.types';
 
 defineOptions({
   inheritAttrs: false,

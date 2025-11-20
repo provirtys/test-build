@@ -12,8 +12,8 @@
 </template>
 
 <script setup lang="ts">
-import { VRadioEmits, VRadioProps } from '@base/components/ui/VRadio/VRadio.types';
 import { computed } from 'vue';
+import { VRadioEmits, VRadioProps } from '@/components/ui/VRadio/VRadio.types';
 
 const SIZES = {
   lg: '28px',

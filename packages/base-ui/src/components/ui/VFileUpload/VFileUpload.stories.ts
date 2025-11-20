@@ -1,7 +1,7 @@
+import { uint8ArrayToFile } from '@integrity/shared/helpers';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
-import { uint8ArrayToFile } from '../../../helpers/convert';
-import VFileUpload from './VFileUpload.vue';
+import { VFileUpload } from './index';
 
 type Story = StoryObj<typeof VFileUpload>;
 
@@ -91,7 +91,7 @@ export const WithInitialFile: Story = {
   render: (args) => ({
     components: { VFileUpload },
     setup() {
-      const file = ref<File>(uint8ArrayToFile(args.image, 'testName'));
+      const file = ref<File>(uint8ArrayToFile(args.image as unknown as Uint8Array, 'testName'));
 
       return {
         file,

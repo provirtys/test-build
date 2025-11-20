@@ -1,9 +1,10 @@
-import type { VButtonProps as VBaseButtonProps } from '@base';
+import type { VButtonProps as VBaseButtonProps } from '@integrity/base-ui';
+import type { ComponentSize } from '@integrity/shared/types/components';
 
-export type Size = 'lg' | 'md' | 'sm' | 'xs';
+export type VButtonSize = ComponentSize;
 
 export interface VButtonProps extends VBaseButtonProps {
-  size?: Size;
+  size?: VButtonSize;
 }
 
 export type VButtonEmits = (e: 'action') => void;

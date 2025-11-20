@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { Notify } from 'quasar';
 import { PieProgress } from '@/components/Elements/PieProgress';
-import type { Color } from './VCard.types';
+import type { VCardColor } from './VCard.types';
 import VCard from './VCard.vue';
 
 type Story = StoryObj<typeof VCard>;
 
-const colors: Record<Color, string> = {
+const colors: Record<VCardColor, string> = {
   success: 'Зеленый',
   error: 'Красный',
   info: 'Синий',
@@ -143,5 +143,18 @@ export const WithMenu: Story = {
         },
       },
     ],
+  },
+};
+
+export const WithBtn: Story = {
+  args: {
+    title: 'Карточка с кнопкой',
+    btnConf: {
+      icon: 'pencil',
+      handler: () =>
+        Notify.create({
+          message: 'Нажатие на кнопку',
+        }),
+    },
   },
 };

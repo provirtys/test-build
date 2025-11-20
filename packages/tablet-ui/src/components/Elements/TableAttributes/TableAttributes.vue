@@ -3,8 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { VTable } from '@base';
-import type { VTableProps } from '@base/components/ui/VTable/VTable.types';
+import { VTable, type VTableProps } from '@integrity/base-ui';
 
 withDefaults(defineProps<VTableProps>(), {
   rows: () => [],

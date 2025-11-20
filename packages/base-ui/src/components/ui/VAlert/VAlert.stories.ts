@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import type { Color } from '@/components/ui/VAlert/VAlert.types';
+import type { VAlertColor } from '@/components/ui/VAlert/VAlert.types';
 import { VAlert } from './index';
 
 type Story = StoryObj<typeof VAlert>;
 
-const colors: Record<Color, string> = {
+const colors: Record<VAlertColor, string> = {
   success: 'Зеленый',
   error: 'Красный',
   info: 'Синий',

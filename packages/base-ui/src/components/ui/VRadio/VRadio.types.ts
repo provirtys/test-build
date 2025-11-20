@@ -1,16 +1,17 @@
+import type { ComponentSize } from '@integrity/shared/types/components';
 import type { QRadioProps } from 'quasar';
 
-export type Size = 'lg' | 'md' | 'sm' | 'xs';
+export type VRadioSize = ComponentSize;
 
-export type Width = 'auto' | 'dense' | 'full';
+export type VRadioWidth = 'auto' | 'dense' | 'full';
 
 export interface VRadioProps extends QRadioProps {
   label?: string;
   val: string;
-  modelValue: string;
-  size?: Size;
-  width?: Width;
+  modelValue: number | string | boolean | object;
+  size?: VRadioSize;
+  width?: VRadioWidth;
   dark?: boolean;
 }
 
-export type VRadioEmits = (e: 'update:modelValue', val: string) => void;
+export type VRadioEmits = (e: 'update:modelValue', val: number | string | boolean | object) => void;

@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { VIcon } from '@base';
+import { VIcon } from '@integrity/base-ui';
 import type { MainHeaderEmits, MainHeaderProps } from '@/components/Layouts/MainHeader/MainHeader.types';
 
 withDefaults(defineProps<MainHeaderProps>(), {

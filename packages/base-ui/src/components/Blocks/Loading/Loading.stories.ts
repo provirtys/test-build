@@ -1,5 +1,5 @@
-import { Loading } from '@base';
 import type { Meta } from '@storybook/vue3-vite';
+import { Loading } from './index';
 
 /** Loading component with customizable massage*/
 const meta: Meta<typeof Loading> = {

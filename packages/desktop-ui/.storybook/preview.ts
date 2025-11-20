@@ -1,8 +1,8 @@
+import { i18n } from '@integrity/shared/locales';
 import type { Preview } from '@storybook/vue3-vite';
 import { setup } from '@storybook/vue3-vite';
 import { createPinia } from 'pinia';
 import { Dialog, Notify, Quasar } from 'quasar';
-import { createI18n } from 'vue-i18n';
 
 import '@quasar/extras/roboto-font/roboto-font.css';
 import '@quasar/extras/material-icons/material-icons.css';
@@ -10,30 +10,9 @@ import '@quasar/extras/material-icons-outlined/material-icons-outlined.css';
 import '@quasar/extras/material-symbols-outlined/material-symbols-outlined.css';
 import 'quasar/dist/quasar.css';
 
-import '@base/css/fonts.scss';
-import '@base/css/main.scss';
-import '@/css/fonts.scss';
-
-import en from '../../base-ui/src/locales/en.json';
-import ru from '../../base-ui/src/locales/ru.json';
-
-function loadLocaleMessages() {
-  const locales = [{ en }, { ru }];
-  const messages = {};
-  for (const lang of locales) {
-    const key = Object.keys(lang)[0];
-    messages[key] = lang[key];
-  }
-  return messages;
-}
-
-const i18n = createI18n({
-  locale: navigator.language.split('-')[0] || 'en',
-  fallbackLocale: 'en',
-  globalInjection: true,
-  legacy: false,
-  messages: loadLocaleMessages(),
-});
+import '@integrity/shared/reset.css';
+import '@integrity/base-ui/style.css';
+import '@/css/main.scss';
 
 const pinia = createPinia();
 

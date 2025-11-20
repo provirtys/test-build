@@ -1,6 +1,6 @@
-import { VIcon } from '@base';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { onMounted, ref } from 'vue';
+import { VIcon } from './index';
 import './style.scss';
 
 type Story = StoryObj<typeof VIcon>;

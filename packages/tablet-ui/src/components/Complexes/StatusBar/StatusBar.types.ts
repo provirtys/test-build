@@ -1,14 +1,14 @@
-export type StatusType = 'error' | 'success';
-export type ActionType = 'home' | 'back' | 'complete' | 'logout';
+export type StatusBarStatusType = 'error' | 'success';
+export type StatusBarActionType = 'home' | 'back' | 'complete' | 'logout';
 
 export interface StatusBarStatusProp {
-  type: StatusType;
+  type: StatusBarStatusType;
   sync?: boolean;
   active?: boolean;
 }
 
 export interface StatusBarActionProp {
-  type: ActionType;
+  type: StatusBarActionType;
   fn: () => void;
 }
 

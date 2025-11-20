@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { VBadge } from '@base';
+import { VBadge } from '@integrity/base-ui';
 import { computed } from 'vue';
 import type { TaskCardProps } from '@/components/Blocks/TaskCard/TaskCard.types';
 

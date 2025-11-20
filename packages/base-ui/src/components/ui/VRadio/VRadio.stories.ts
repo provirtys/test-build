@@ -1,18 +1,18 @@
-import { VRadio } from '@base';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { computed, ref } from 'vue';
-import type { Size, Width } from '@/components/ui/VRadio/VRadio.types';
+import type { VRadioSize, VRadioWidth } from '@/components/ui/VRadio/VRadio.types';
+import { VRadio } from './index';
 
 type Story = StoryObj<typeof VRadio>;
 
-const sizes: Record<Size, string> = {
+const sizes: Record<VRadioSize, string> = {
   lg: 'Большой',
   md: 'Средний',
   sm: 'Маленький',
   xs: 'Очень маленький',
 };
 
-const widths: Record<Width, string> = {
+const widths: Record<VRadioWidth, string> = {
   auto: 'Автоматически',
   dense: 'Уменьшенный',
   full: 'На всего родителя',

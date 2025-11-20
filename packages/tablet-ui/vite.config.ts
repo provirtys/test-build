@@ -5,7 +5,6 @@ import vue from '@vitejs/plugin-vue';
 /// <reference types='vitest' />
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import createPackageConfig from '../../vite.shared';
 
 export default defineConfig({
   root: __dirname,
@@ -19,7 +18,7 @@ export default defineConfig({
       exclude: '**/*.stories.ts',
     }),
     svgSpritePlugin({
-      iconDirs: [path.resolve(__dirname, '../icons/icons')],
+      iconDirs: [path.resolve(__dirname, '../shared/assets/icons')],
       symbolId: 'icon-[name]',
       svgDomId: 'svg-sprite',
       inject: 'body-last',
@@ -59,17 +58,18 @@ export default defineConfig({
       },
     },
   },
-  ...createPackageConfig('tablet-ui'),
   css: {
     preprocessorOptions: {
       scss: {
         additionalData: `
-          @import '@base/css/variables.scss';
-          @import '@base/css/mixins.scss';
-          @import '@base/css/quasar.classes.scss';
-          @import '@/css/main.scss';
+          @import '@integrity/shared/style.scss';
         `,
       },
+    },
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
     },
   },
 });

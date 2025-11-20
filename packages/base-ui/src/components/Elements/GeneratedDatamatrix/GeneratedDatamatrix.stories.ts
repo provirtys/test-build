@@ -1,6 +1,6 @@
-import { GeneratedDatamatrix } from '@base';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { computed } from 'vue';
+import { GeneratedDatamatrix } from '@';
 
 type Story = StoryObj<typeof GeneratedDatamatrix>;
 

@@ -1,14 +1,14 @@
 import type { AppSettingsOptionsItems } from '@/components/Blocks/AppSettings/AppSettingsOptions/AppSettingsOptions.types';
 
-export interface AppSettings {
+export interface AppSettingsConf {
   userSettings?: AppSettingsOptionsItems;
   devSettings?: AppSettingsOptionsItems;
   devMode?: boolean;
 }
 
 export interface AppSettingsProps {
-  options: AppSettings;
+  options: AppSettingsConf;
   isDisabled?: boolean;
 }
 
-export type AppSettingsEmits = (e: 'update:options', val: AppSettings) => void;
+export type AppSettingsEmits = (e: 'update:options', val: AppSettingsConf) => void;

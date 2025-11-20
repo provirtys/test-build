@@ -1,18 +1,18 @@
-import { VBadge } from '@base';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { computed } from 'vue';
-import type { Color, Size } from '@/components/ui/VBadge/VBadge.types';
+import type { VBadgeColor, VBadgeSize } from './index';
+import { VBadge } from './index';
 
 type Story = StoryObj<typeof VBadge>;
 
-const colors: Record<Color, string> = {
+const colors: Record<VBadgeColor, string> = {
   success: 'Зеленый',
   error: 'Красный',
   info: 'Синий',
   warning: 'Желтый',
 };
 
-const sizes: Record<Size, string> = {
+const sizes: Record<VBadgeSize, string> = {
   lg: 'Большой',
   md: 'Средний',
   sm: 'Маленький',

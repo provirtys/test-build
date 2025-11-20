@@ -5,11 +5,11 @@
 </template>
 
 <script setup lang="ts">
-import { setupI18n } from '@base/i18n';
 import ApexCharts from 'apexcharts';
 import { onMounted, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 
-const { t } = setupI18n();
+const { t } = useI18n();
 
 const props = defineProps({
   codes: {

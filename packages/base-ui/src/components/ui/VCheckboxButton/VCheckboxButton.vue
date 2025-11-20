@@ -14,9 +14,9 @@
 </template>
 
 <script setup lang="ts">
-import { VIcon } from '@base';
 import { colors } from 'quasar';
 import { computed } from 'vue';
+import { VIcon } from '@';
 import type {
   Height,
   VCheckboxButtonEmits,

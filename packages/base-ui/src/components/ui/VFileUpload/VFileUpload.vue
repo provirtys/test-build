@@ -29,8 +29,8 @@
 </template>
 
 <script setup lang="ts">
-import { VButton, VButtonProps, VIcon } from '@base';
 import { computed, onMounted, ref } from 'vue';
+import { VButton, VButtonProps, VIcon } from '@';
 import type { Status, VFileUploadConfig, VFileUploadProps } from './VFileUpload.types';
 
 const props = withDefaults(defineProps<VFileUploadProps>(), {

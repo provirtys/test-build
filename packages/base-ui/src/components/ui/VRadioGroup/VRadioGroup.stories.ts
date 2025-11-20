@@ -1,18 +1,18 @@
-import { VRadioGroup } from '@base';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { computed, ref } from 'vue';
-import type { Size, Width } from '@/components/ui/VRadioGroup/VRadioGroup.types';
+import type { VRadioGroupSize, VRadioGroupWidth } from '@/components/ui/VRadioGroup/VRadioGroup.types';
+import { VRadioGroup } from './index';
 
 type Story = StoryObj<typeof VRadioGroup>;
 
-const sizes: Record<Size, string> = {
+const sizes: Record<VRadioGroupSize, string> = {
   lg: 'Большой',
   md: 'Средний',
   sm: 'Маленький',
   xs: 'Очень маленький',
 };
 
-const widths: Record<Width, string> = {
+const widths: Record<VRadioGroupWidth, string> = {
   auto: 'Автоматически',
   dense: 'В одну строку',
   full: 'На всего родителя',

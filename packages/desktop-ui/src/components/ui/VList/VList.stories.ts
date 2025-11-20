@@ -1,6 +1,6 @@
-import { VButton } from '@base';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { Notify, QMenu } from 'quasar';
+import { VButton } from '@';
 import VList from './VList.vue';
 
 type Story = StoryObj<typeof VList>;

@@ -1,4 +1,6 @@
-export type Color = 'success' | 'error' | 'info' | 'warning';
+import type { ComponentColor } from '@integrity/shared/types/components';
+
+export type StatusTimelineColor = ComponentColor;
 
 interface StatusTimelineLink {
   text: string;
@@ -9,7 +11,7 @@ export interface StatusTimelineItem {
   id: string;
   name: string;
   label?: string;
-  color?: Color;
+  color?: StatusTimelineColor;
   links?: StatusTimelineLink[];
 }
 

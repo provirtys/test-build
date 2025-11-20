@@ -52,15 +52,14 @@
 </template>
 
 <script setup lang="ts">
-import { VAlert, VButton, VDescriptionList } from '@base';
-import type { VDescriptionListItem } from '@base/components/ui/VDescriptionList/VDescriptionList.types';
-import { navigateTo } from '@base/utils/navigation';
+import { VAlert, VButton, VDescriptionList, type VDescriptionListItem } from '@integrity/base-ui';
+import { navigateTo } from '@integrity/shared/utils';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
+import type { StatusBarActionProp, StatusBarStatusProp } from '@';
 import { MainLayout, NumericRatio } from '@';
-import type { StatusBarActionProp, StatusBarStatusProp } from '@/components/Complexes/StatusBar/StatusBar.types';
-import type { AggregationPageProps } from '@/components/Pages/AggregationPage/AggregationPage.types';
 import { useMainStore } from '@/stores';
+import type { AggregationPageProps } from './index';
 
 const { isFullscreen, isStatusReady } = storeToRefs(useMainStore());
 

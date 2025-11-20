@@ -42,8 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { VButton } from '@base';
-import { VDescriptionList } from '@base/components/ui/VDescriptionList';
+import { VButton, VDescriptionList } from '@integrity/base-ui';
 import { computed } from 'vue';
 import { CodeItemProps, CodeList, VCard } from '@';
 import type { GtinCardEmits, GtinCardProps } from '@/components/Complexes/GtinCard/GtinCard.types';

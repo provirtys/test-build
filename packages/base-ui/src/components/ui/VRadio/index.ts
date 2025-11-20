@@ -1,2 +1,2 @@
-export type { VRadioEmits, VRadioProps } from './VRadio.types';
+export type { VRadioEmits, VRadioProps, VRadioSize } from './VRadio.types';
 export { default as VRadio } from './VRadio.vue';

@@ -1,4 +1,4 @@
-import { VIcon } from '@base';
+import { VIcon } from '@integrity/base-ui';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { MainHeader } from './index';
 

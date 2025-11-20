@@ -1,10 +1,10 @@
-import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@base/types/story';
-import { sleep } from '@base/utils/sleep';
+import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@integrity/shared/types/story';
+import { sleep } from '@integrity/shared/utils';
 import { storeToRefs } from 'pinia';
 import { expect, waitFor } from 'storybook/test';
 import { watch } from 'vue';
-import { AggregationPage } from '@/pages';
 import { useMainStore } from '@/stores';
+import { AggregationPage } from './index';
 
 type AdditionalArgs = {
   headerStatusReady?: boolean;

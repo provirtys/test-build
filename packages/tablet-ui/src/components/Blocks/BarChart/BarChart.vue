@@ -5,12 +5,12 @@
 </template>
 
 <script setup lang="ts">
-import { setupI18n } from '@base/i18n';
 import ApexCharts, { ApexOptions } from 'apexcharts';
 import { onMounted, ref, watch } from 'vue';
-import type { BarChartCode, BarChartProps } from '@/components/Blocks/BarChart/BarChart.types';
+import { useI18n } from 'vue-i18n';
+import type { BarChartCode, BarChartProps } from './index';
 
-const { t } = setupI18n();
+const { t } = useI18n();
 
 // количество видимых итераций (значений по горизонтальной оси)
 const limit = 18;

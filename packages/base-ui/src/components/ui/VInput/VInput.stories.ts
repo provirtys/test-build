@@ -1,10 +1,10 @@
-import { VInput } from '@base';
+import type { ExtendedMeta, ExtendedStory } from '@integrity/shared/types/story';
+import { sleep } from '@integrity/shared/utils';
 import type { QInputProps } from 'quasar';
 import { expect, userEvent, waitFor } from 'storybook/test';
 import { computed, ref, watch } from 'vue';
 import type { Variant } from '@/components/ui/VInput/VInput.types';
-import type { ExtendedMeta, ExtendedStory } from '@/types/story';
-import { sleep } from '@/utils/sleep';
+import { VInput } from './index';
 
 type AdditionalArgs = {
   variant?: Variant;
@@ -324,7 +324,7 @@ export const PasswordWithValidation: Story = {
     placeholder: 'Введите пароль',
     modelValue: '',
     label: 'Пароль',
-    rules: [(val) => val.length >= 6 || 'Минимальная длина 6 символов'],
+    rules: [(val: string) => val.length >= 6 || 'Минимальная длина 6 символов'],
     lazyRules: true,
     required: true,
   },

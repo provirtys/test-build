@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import type { Color } from '@/components/Elements/StatusIndicator/StatusIndicator.types';
+import type { StatusIndicatorColor } from '@/components/Elements/StatusIndicator/StatusIndicator.types';
 import { StatusIndicator } from './index';
 
 type Story = StoryObj<typeof StatusIndicator>;
 
-const colors: Record<Color, string> = {
-  info: 'Info (Синий)',
-  success: 'Success (Зеленый)',
-  error: 'Error (Красный)',
-  warning: 'Warning (Желтый)',
+const colors: Record<StatusIndicatorColor, string> = {
+  info: 'Синий',
+  success: 'Зеленый',
+  error: 'Красный',
+  warning: 'Желтый',
 };
 
 /** Компонент для отображения статуса сервиса. Можно регулировать цвет и включать/отключать анимацию. */

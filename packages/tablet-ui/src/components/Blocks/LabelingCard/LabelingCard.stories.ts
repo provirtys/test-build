@@ -1,7 +1,7 @@
-import { VButton } from '@base';
-import { setupI18n } from '@base/i18n';
+import { VButton } from '@integrity/base-ui';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { LabelingCard } from './index';
 
 type Story = StoryObj<typeof LabelingCard>;
@@ -54,7 +54,7 @@ const meta: Meta<typeof LabelingCard> = {
     components: { MarkingCard: LabelingCard, VButton },
     setup() {
       const bindingArgs = computed(() => args);
-      const { t } = setupI18n();
+      const { t } = useI18n();
 
       return {
         bindingArgs,

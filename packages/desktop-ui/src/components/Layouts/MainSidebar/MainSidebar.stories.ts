@@ -1,4 +1,4 @@
-import type { ExtendedArgs } from '@integrity/base-ui/src/types/story';
+import type { ExtendedArgs } from '@integrity/shared/types/story';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { ref } from 'vue';
 import { sidebarItems } from '@/mocks/layout';

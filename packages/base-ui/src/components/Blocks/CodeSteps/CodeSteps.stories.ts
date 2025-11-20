@@ -1,5 +1,5 @@
-import { CodeSteps } from '@base';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import { CodeSteps } from '@';
 
 type Story = StoryObj<typeof CodeSteps>;
 

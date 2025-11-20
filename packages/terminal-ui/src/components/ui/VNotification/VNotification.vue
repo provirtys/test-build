@@ -24,10 +24,10 @@
 </template>
 
 <script setup lang="ts">
-import { VButton, VIcon } from '@base';
+import { VButton, VIcon } from '@integrity/base-ui';
 import { useDialogPluginComponent } from 'quasar';
 import { computed, onMounted } from 'vue';
-import type { VNotificationProps } from '@/components/ui/VNotification/VNotification.types';
+import type { VNotificationProps } from './index';
 
 const props = withDefaults(defineProps<VNotificationProps>(), {
   type: 'warning',

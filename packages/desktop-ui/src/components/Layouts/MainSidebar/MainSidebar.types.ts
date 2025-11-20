@@ -1,4 +1,4 @@
-import type { VDescriptionListItem } from '@base';
+import type { VDescriptionListItem } from '@integrity/base-ui';
 
 export interface MainSidebarItem {
   label: string;

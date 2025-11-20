@@ -1,7 +1,6 @@
 import { ref } from 'vue';
 import { appSettings } from '@/mocks/appSettings.js';
-import type { AppSettings as TAppSettings } from './AppSettings.types';
-import AppSettings from './AppSettings.vue';
+import { AppSettings, type AppSettingsConf } from './index';
 
 /**
  * Компонент с настройками приложения как для пользователя, так и для разработчика.<br>
@@ -21,7 +20,7 @@ const BaseComponent = () => ({
   setup() {
     const appSettingsOptions = ref(appSettings);
 
-    const onUpdateOptions = (opt: TAppSettings) => {
+    const onUpdateOptions = (opt: AppSettingsConf) => {
       appSettingsOptions.value = opt;
     };
 

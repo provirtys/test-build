@@ -32,13 +32,12 @@
 </template>
 
 <script setup lang="ts">
-import { VAlert, VButton, VDescriptionList } from '@base';
-import type { VDescriptionListItem } from '@base/components/ui/VDescriptionList/VDescriptionList.types';
-import { navigateTo } from '@base/utils/navigation';
+import { VAlert, VButton, VDescriptionList, type VDescriptionListItem } from '@integrity/base-ui';
+import { navigateTo } from '@integrity/shared/utils';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
+import type { StatusBarActionProp, StatusBarStatusProp } from '@';
 import { MainLayout, TableAttributes } from '@';
-import type { StatusBarActionProp, StatusBarStatusProp } from '@/components/Complexes/StatusBar/StatusBar.types';
 import { taskDetailRows } from '@/mocks/tasks.js';
 import { useMainStore } from '@/stores';
 

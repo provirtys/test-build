@@ -1,10 +1,10 @@
 {
   "name": "integrity",
-  "version": "1.1.3",
+  "version": "1.1.5",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "pnpm --parallel -r run build",
+    "build": "pnpm -r build",
     "build:storybook": "pnpm --parallel -r run build:storybook",
     "lint:check": "biome check --staged",
     "lint": "biome check --write --staged --files-ignore-unknown=true --no-errors-on-unmatched",

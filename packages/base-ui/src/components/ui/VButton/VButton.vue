@@ -47,9 +47,9 @@
 </template>
 
 <script setup lang="ts">
-import { VIcon } from '@base';
 import { QBtnProps, TouchHoldValue } from 'quasar';
 import { computed, ref, useAttrs, useSlots } from 'vue';
+import { VIcon } from '@';
 import { VButtonEmits, VButtonProps, VButtonSizeConfig } from './VButton.types';
 
 defineOptions({

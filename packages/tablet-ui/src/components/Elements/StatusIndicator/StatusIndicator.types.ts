@@ -1,6 +1,8 @@
-export type Color = 'info' | 'success' | 'error' | 'warning';
+import type { ComponentColor } from '@integrity/shared/types/components';
+
+export type StatusIndicatorColor = ComponentColor;
 
 export interface StatusIndicatorProps {
-  color?: Color;
+  color?: StatusIndicatorColor;
   isAnimate?: boolean;
 }

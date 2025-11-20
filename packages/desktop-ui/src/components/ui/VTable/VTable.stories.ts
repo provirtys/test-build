@@ -1,5 +1,5 @@
-import { timestampToFormattedDate } from '@base/helpers/convert';
-import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@base/types/story';
+import { timestampToFormattedDate } from '@integrity/shared/helpers';
+import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@integrity/shared/types/story';
 import { Notify, QTd } from 'quasar';
 import { ref } from 'vue';
 import { PieProgress } from '@';

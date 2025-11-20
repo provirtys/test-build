@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { VDescriptionList, VDescriptionListProps, VIcon } from '@base';
+import { VDescriptionList, VDescriptionListProps, VIcon } from '@integrity/base-ui';
 import { computed, ref } from 'vue';
 import { VButton } from '@';
 import { MainSidebarProps } from '@/components/Layouts/MainSidebar/MainSidebar.types';

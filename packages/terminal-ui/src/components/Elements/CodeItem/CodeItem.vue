@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { VIcon } from '@base';
+import { VIcon } from '@integrity/base-ui';
 import { computed } from 'vue';
 import type { CodeItemProps } from '@/components/Elements/CodeItem/CodeItem.types';
 

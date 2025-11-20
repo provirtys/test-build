@@ -35,13 +35,13 @@
 </template>
 
 <script setup lang="ts">
-import { VButton } from '@base';
-import type { AppSettings } from '@integrity/base-ui/dist/tablet-ui/src/components/Blocks/AppSettings/AppSettings.types';
+import { VButton } from '@integrity/base-ui';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
+import type { AppSettingsConf } from '@';
 import { StatusBar } from '@';
-import type { MainLayoutEmits, MainLayoutProps } from '@/components/Layouts/MainLayout/MainLayout.types';
 import { useMainStore } from '@/stores';
+import type { MainLayoutEmits, MainLayoutProps } from './index';
 
 const props = withDefaults(defineProps<MainLayoutProps>(), {
   title: '',
@@ -75,7 +75,7 @@ const disableFullscreen = () => {
   emit('disable-fullscreen');
 };
 
-const onUpdateOptions = (val: AppSettings) => {
+const onUpdateOptions = (val: AppSettingsConf) => {
   appSettingsOptions.value = val;
 };
 </script>

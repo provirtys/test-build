@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import type { Size } from '@/components/Blocks/ProgressPie/ProgressPie.types';
+import type { ProgressPieSize } from '@/components/Blocks/ProgressPie/ProgressPie.types';
 import { ProgressPie } from './index';
 
-const sizes: Record<Size, string> = {
+const sizes: Record<ProgressPieSize, string> = {
   sm: 'Маленький',
   lg: 'Большой',
 };

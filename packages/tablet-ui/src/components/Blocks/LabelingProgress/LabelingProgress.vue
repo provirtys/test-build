@@ -49,16 +49,13 @@
 </template>
 
 <script setup lang="ts">
-import { VButton } from '@base';
-import { setupI18n } from '@base/i18n';
+import { VButton } from '@integrity/base-ui';
 import { QCircularProgress } from 'quasar';
 import { computed } from 'vue';
-import type {
-  LabelingProgressEmits,
-  LabelingProgressProps,
-} from '@/components/Blocks/LabelingProgress/LabelingProgress.types';
+import { useI18n } from 'vue-i18n';
+import type { LabelingProgressEmits, LabelingProgressProps } from './index';
 
-const { t } = setupI18n();
+const { t } = useI18n();
 
 const props = withDefaults(defineProps<LabelingProgressProps>(), {
   mistakes: 0,

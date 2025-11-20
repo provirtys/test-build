@@ -14,9 +14,9 @@
 </template>
 
 <script setup lang="ts">
-import { VIcon } from '@base';
+import { VIcon } from '@integrity/base-ui';
 import { computed, onMounted } from 'vue';
-import type { VSwitcherEmits, VSwitcherProps } from '@/components/ui/VSwitcher/VSwitcher.types';
+import type { VSwitcherEmits, VSwitcherProps } from './index';
 
 const props = withDefaults(defineProps<VSwitcherProps>(), {
   textColor: 'dark-1',

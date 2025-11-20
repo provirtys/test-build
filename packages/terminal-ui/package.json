@@ -1,6 +1,6 @@
 {
   "name": "@integrity/terminal-ui",
-  "version": "1.1.3",
+  "version": "1.1.5",
   "main": "./dist/terminal-ui.umd.js",
   "module": "./dist/terminal-ui.es.js",
   "scripts": {
@@ -27,7 +27,7 @@
   "types": "./dist/terminal-ui.es.d.ts",
   "peerDependencies": {
     "@integrity/base-ui": "workspace:*",
-    "@integrity/icons": "workspace:*"
+    "@integrity/shared": "workspace:*"
   },
   "dependencies": {
     "@chromatic-com/storybook": "catalog:",

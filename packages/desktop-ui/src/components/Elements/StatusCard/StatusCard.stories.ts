@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import type { Color } from './StatusCard.types';
+import type { StatusCardColor } from './StatusCard.types';
 import StatusCard from './StatusCard.vue';
 
 type Story = StoryObj<typeof StatusCard>;
 
-const colors: Record<Color, string> = {
+const colors: Record<StatusCardColor, string> = {
   success: 'Зеленый',
   error: 'Красный',
   info: 'Синий',

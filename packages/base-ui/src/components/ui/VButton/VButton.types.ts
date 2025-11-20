@@ -1,13 +1,14 @@
+import type { ComponentPosition } from '@integrity/shared/types/components';
 import type { QBtnProps } from 'quasar';
 
-export type Color = 'primary' | 'secondary' | 'plain' | 'outline' | 'red';
+export type VButtonColor = 'primary' | 'secondary' | 'plain' | 'outline' | 'red';
 
-export type TextAlignment = 'left' | 'center' | 'right';
+export type VButtonTextAlignment = ComponentPosition;
 
 export interface VButtonProps extends Omit<QBtnProps, 'size'> {
-  color?: Color;
+  color?: VButtonColor;
   iconSize?: string | number;
-  textAlignment?: TextAlignment;
+  textAlignment?: VButtonTextAlignment;
   fitWidth?: boolean;
   once?: boolean;
   enableHold?: boolean;

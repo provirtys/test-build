@@ -23,12 +23,12 @@
 </template>
 
 <script setup lang="ts">
-import { VButton } from '@base';
-import { setupI18n } from '@base/i18n';
+import { VButton } from '@integrity/base-ui';
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import type { InformationToolProps } from '@/components/Complexes/InformationTool/InformationTool.types';
 
-const { t } = setupI18n();
+const { t } = useI18n();
 
 const props = withDefaults(defineProps<InformationToolProps>(), {
   btn: 'get',

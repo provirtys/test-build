@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 @keyframes loading {
   0% {
     opacity: 0;

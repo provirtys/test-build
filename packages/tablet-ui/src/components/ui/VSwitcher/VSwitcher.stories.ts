@@ -1,4 +1,4 @@
-import { sleep } from '@base/utils/sleep';
+import { sleep } from '@integrity/shared/utils';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { expect, userEvent } from 'storybook/test';
 import { computed, ref } from 'vue';

@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { VExpansionItem } from '@base';
+import { VExpansionItem } from '@integrity/base-ui';
 import { CodeItem } from '@';
 import type { CodeListEmits, CodeListProps } from '@/components/Blocks/CodeList/CodeList.types';
 import type { CodeItemProps } from '@/components/Elements/CodeItem/CodeItem.types';

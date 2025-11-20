@@ -29,12 +29,12 @@
 </template>
 
 <script setup lang="ts">
-import { setupI18n } from '@base/i18n';
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
-import type { MobileHeaderProps } from '@/components/Layouts/MobileHeader/MobileHeader.types';
+import type { MobileHeaderProps } from './MobileHeader.types';
 
-const { t } = setupI18n();
+const { t } = useI18n();
 const router = useRouter();
 
 const props = defineProps<MobileHeaderProps>();

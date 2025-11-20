@@ -1,6 +1,6 @@
 {
   "name": "@integrity/desktop-ui",
-  "version": "1.1.3",
+  "version": "1.1.5",
   "main": "./dist/desktop-ui.umd.js",
   "module": "./dist/desktop-ui.es.js",
   "scripts": {
@@ -27,7 +27,7 @@
   "types": "./dist/desktop-ui.es.d.ts",
   "peerDependencies": {
     "@integrity/base-ui": "workspace:*",
-    "@integrity/icons": "workspace:*",
+    "@integrity/shared": "workspace:*",
     "@vue-flow/background": "catalog:",
     "@vue-flow/core": "catalog:"
   },

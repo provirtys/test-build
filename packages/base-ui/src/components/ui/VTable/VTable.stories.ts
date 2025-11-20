@@ -1,7 +1,6 @@
-import { VTable } from '@base';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import type { QTableColumn } from 'quasar';
-import { VDescriptionList } from '../VDescriptionList';
+import { VTable } from './index';
 
 type Story = StoryObj<typeof VTable>;
 
@@ -73,6 +72,7 @@ export const Standard: Story = {
 
 export const Empty: Story = {
   args: {
+    rows: [],
     columns: baseColumns,
   },
 };

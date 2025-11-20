@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { VButton } from '@base';
+import { VButton } from '@integrity/base-ui';
 import type {
   AppSettingsOptionsProps,
   ButtonOption,

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { VCard } from './index';
-import type { Color } from './VCard.types';
+import type { VCardBgColor } from './VCard.types';
 
 type Story = StoryObj<typeof VCard>;
 
-const colors: Record<Color, string> = {
+const colors: Record<VCardBgColor, string> = {
   white: 'Белый',
   gray: 'Серый',
 };

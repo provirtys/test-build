@@ -20,12 +20,12 @@
 </template>
 
 <script setup lang="ts">
-import { LoadingAnimation, VButton } from '@base';
-import type { LoadingProps } from '@base/components/Blocks/Loading/Loading.types';
-import { setupI18n } from '@base/i18n.js';
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { LoadingAnimation, VButton } from '@';
+import type { LoadingProps } from '@/components/Blocks/Loading/Loading.types';
 
-const { t } = setupI18n();
+const { t } = useI18n();
 
 const props = withDefaults(defineProps<LoadingProps>(), {
   loadingType: '',

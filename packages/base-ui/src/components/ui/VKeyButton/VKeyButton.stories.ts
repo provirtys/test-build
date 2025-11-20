@@ -1,8 +1,8 @@
-import { VKeyButton } from '@base';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import type { Size } from '@/components/ui/VKeyButton/VKeyButton.types';
+import type { VKeyButtonSize } from '@/components/ui/VKeyButton/VKeyButton.types';
+import { VKeyButton } from './index';
 
-const sizes: Record<Size, string> = {
+const sizes: Record<VKeyButtonSize, string> = {
   lg: 'Большой',
   md: 'Средний',
   sm: 'Маленький',

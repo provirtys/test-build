@@ -6,9 +6,9 @@
 </template>
 
 <script setup lang="ts">
-import { VIcon } from '@base';
-import type { VKeyButtonEmits, VKeyButtonProps } from '@base/components/ui/VKeyButton/VKeyButton.types';
 import { computed } from 'vue';
+import { VIcon } from '@';
+import type { VKeyButtonEmits, VKeyButtonProps } from '@/components/ui/VKeyButton/VKeyButton.types';
 
 const props = withDefaults(defineProps<VKeyButtonProps>(), {
   value: '',

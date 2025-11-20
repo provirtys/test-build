@@ -1,0 +1,50 @@
+@import "variables";
+@import "mixins";
+@import "fonts";
+@import "quasar.classes";
+
+html,
+body {
+  font-family: 'Golos', sans-serif;
+  font-size: $font-size-p4;
+  background: rgba($dark-gray-40, 0.25);
+  min-height: 100vh;
+  height: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+#q-app {
+  height: 100%;
+}
+
+.my-3 {
+  margin-bottom: $s-1;
+  margin-top: $s-1;
+}
+
+.mb-3 {
+  margin-bottom: $s-1;
+}
+
+.mt-3 {
+  margin-top: $s-1;
+}
+
+.mt-5 {
+  margin-top: $s-3;
+}
+
+.mt-8 {
+  margin-top: $m-2;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}

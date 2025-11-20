@@ -231,7 +231,7 @@
 </template>
 
 <script setup lang="ts">
-import type { DatamatrixProps } from '@base/components/Elements/DatamatrixIcon/Datamatrix.types';
+import type { DatamatrixProps } from '@/components/Elements/DatamatrixIcon/Datamatrix.types';
 
 withDefaults(defineProps<DatamatrixProps>(), {
   border: true,

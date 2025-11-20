@@ -25,10 +25,10 @@
 </template>
 
 <script setup lang="ts">
-import { VButton } from '@base';
+import { VButton } from '@integrity/base-ui';
 import { computed } from 'vue';
 import { StatusLabel } from '@';
-import type { StatusBarProps } from '@/components/Complexes/StatusBar/StatusBar.types';
+import type { StatusBarProps } from './index';
 
 const props = withDefaults(defineProps<StatusBarProps>(), {
   status: () => ({

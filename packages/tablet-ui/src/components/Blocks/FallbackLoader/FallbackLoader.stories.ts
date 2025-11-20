@@ -1,4 +1,4 @@
-import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@base/types/story';
+import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@integrity/shared/types/story';
 import { ref } from 'vue';
 import { FallbackLoader } from './index';
 

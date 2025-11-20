@@ -4,9 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@": ["src"],
-      "@/*": ["src/*"],
-      "@base": ["../base-ui/src"],
-      "@base/*": ["../base-ui/src/*"]
+      "@/*": ["src/*"]
     }
   },
   "include": ["**/src/**/*"],

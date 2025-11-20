@@ -1,6 +1,6 @@
+import { sleep } from '@integrity/shared/utils';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { expect, userEvent, waitFor } from 'storybook/test';
-import { sleep } from '@/utils/sleep';
 import { VExpansionItem } from './index';
 
 type Story = StoryObj<typeof VExpansionItem>;

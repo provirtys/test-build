@@ -205,7 +205,7 @@
   </q-table>
 </template>
 <script setup lang="ts">
-import { VIcon, VInput } from '@base';
+import { VIcon, VInput } from '@integrity/base-ui';
 import { QTable, QTableProps } from 'quasar';
 import { computed, nextTick, onMounted, reactive, ref } from 'vue';
 import { VButton } from '@';

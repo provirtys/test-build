@@ -1,8 +1,8 @@
-import { VButton } from '@base';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import type { QNotifyOptions } from 'quasar';
 import { Notify } from 'quasar';
 import { expect, userEvent, waitFor } from 'storybook/test';
+import { VButton } from '@';
 
 type Story = StoryObj;
 
@@ -15,6 +15,7 @@ const meta: Meta<QNotifyOptions> = {
         Notify.create({
           type: args.type,
           message: args.message,
+          timeout: 0,
         });
       };
       return {

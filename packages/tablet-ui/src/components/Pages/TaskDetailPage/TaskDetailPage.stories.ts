@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { TaskDetailPage } from '@/pages';
+import { TaskDetailPage } from './index';
 
 type Story = StoryObj<typeof TaskDetailPage>;
 

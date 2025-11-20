@@ -1,9 +1,9 @@
-import type { Color, TextAlignment } from '@base/components/ui/VButton/VButton.types';
-import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@base/types/story';
+import type { VButtonColor, VButtonTextAlignment } from '@integrity/base-ui';
+import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@integrity/shared/types/story';
 import { Notify, QMenu } from 'quasar';
 import { computed } from 'vue';
 import { VButton } from './index';
-import type { Size } from './VButton.types';
+import type { VButtonSize } from './VButton.types';
 
 type AdditionalArgs = {
   text?: string;
@@ -14,7 +14,7 @@ type Args = ExtendedArgs<typeof VButton, AdditionalArgs>;
 type Story = ExtendedStory<typeof VButton, AdditionalArgs>;
 
 //Цвет кнопки
-const colors: Record<Color, string> = {
+const colors: Record<VButtonColor, string> = {
   primary: 'Основной',
   secondary: 'Второстепенный',
   plain: 'Плоский',
@@ -23,14 +23,14 @@ const colors: Record<Color, string> = {
 };
 
 //Выравнивание текста
-const textAlignments: Record<TextAlignment, string> = {
+const textAlignments: Record<VButtonTextAlignment, string> = {
   left: 'Слева',
   center: 'По центру',
   right: 'Справа',
 };
 
 //Размер кнопки
-const sizes: Record<Size, string> = {
+const sizes: Record<VButtonSize, string> = {
   lg: 'Большой',
   md: 'Средний',
   sm: 'Маленький',

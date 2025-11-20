@@ -3,9 +3,9 @@
 </template>
 
 <script setup lang="ts">
-import type { GeneratedDatamatrixProps } from '@base/components/Elements/GeneratedDatamatrix/GeneratedDatamatrix.types';
-import DATAMatrix from '@base/datamatrix';
 import { computed, onMounted, ref } from 'vue';
+import type { GeneratedDatamatrixProps } from '@/components/Elements/GeneratedDatamatrix/GeneratedDatamatrix.types';
+import DATAMatrix from '@/datamatrix';
 
 const props = withDefaults(defineProps<GeneratedDatamatrixProps>(), {
   data: undefined,

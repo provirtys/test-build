@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { VIcon } from '@base';
+import { VIcon } from '@integrity/base-ui';
 import type { InfoMessageProps } from '@/components/Blocks/InfoMessage/InfoMessage.types';
 
 const props = withDefaults(defineProps<InfoMessageProps>(), {});

@@ -1,7 +1,9 @@
-export type Color = 'success' | 'error' | 'info' | 'warning';
+import type { ComponentColor } from '@integrity/shared/types/components';
+
+export type VAlertColor = ComponentColor;
 
 export interface VAlertProps {
-  color?: Color;
+  color?: VAlertColor;
   text?: string;
   isBackgroundWhite?: boolean;
 }

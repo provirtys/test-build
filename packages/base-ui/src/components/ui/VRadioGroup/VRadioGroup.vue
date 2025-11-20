@@ -16,10 +16,10 @@
 </template>
 
 <script setup lang="ts">
-import { VRadio } from '@base';
-import type { VRadioProps } from '@base/components/ui/VRadio/VRadio.types';
-import type { VRadioGroupEmits, VRadioGroupProps } from '@base/components/ui/VRadioGroup/VRadioGroup.types';
 import { computed } from 'vue';
+import { VRadio } from '@';
+import type { VRadioProps } from '@/components/ui/VRadio/VRadio.types';
+import type { VRadioGroupEmits, VRadioGroupProps } from '@/components/ui/VRadioGroup/VRadioGroup.types';
 
 const props = withDefaults(defineProps<VRadioGroupProps>(), {
   label: '',

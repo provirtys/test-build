@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import type { Color } from './PieProgress.types';
+import type { PieProgressColor } from './PieProgress.types';
 import PieProgress from './PieProgress.vue';
 
 type Story = StoryObj<typeof PieProgress>;
 
-const colors: Record<Color, string> = {
+const colors: Record<PieProgressColor, string> = {
   success: 'Зеленый',
   error: 'Красный',
   info: 'Синий',
@@ -19,12 +19,21 @@ const meta: Meta<typeof PieProgress> = {
   argTypes: {
     size: {
       description: 'Размер элемента',
+      control: {
+        type: 'number',
+      },
     },
     value: {
       description: 'Процент заполнения элемента',
+      control: {
+        type: 'number',
+      },
     },
     borderWidth: {
       description: 'Ширина границы элемента',
+      control: {
+        type: 'number',
+      },
     },
     color: {
       description: 'Цвет элемента',

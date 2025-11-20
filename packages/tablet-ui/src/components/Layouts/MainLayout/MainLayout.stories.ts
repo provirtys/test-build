@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import { MainLayout } from '@';
+import { MainLayout } from './index';
 
 type Story = StoryObj<typeof MainLayout>;
 

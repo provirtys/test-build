@@ -1,8 +1,8 @@
-import { sleep } from '@integrity/base-ui/src/utils/sleep';
-import type { AppSettings } from '@/components/Blocks/AppSettings/AppSettings.types';
+import { sleep } from '@integrity/shared/utils';
+import type { AppSettingsConf } from '@';
 import type { ButtonOption } from '@/components/Blocks/AppSettings/AppSettingsOptions/AppSettingsOptions.types';
 
-export const appSettings: AppSettings = {
+export const appSettings: AppSettingsConf = {
   userSettings: {
     buttons: {
       unlock: {

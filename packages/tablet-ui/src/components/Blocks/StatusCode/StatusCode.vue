@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { VIcon } from '@base';
+import { VIcon } from '@integrity/base-ui';
 import { computed } from 'vue';
 import { StatusIndicator } from '@';
 import type { StatusCodeProps } from '@/components/Blocks/StatusCode/StatusCode.types';

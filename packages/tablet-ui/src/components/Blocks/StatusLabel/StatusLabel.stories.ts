@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import type { Color } from '@/components/Blocks/StatusLabel/StatusLabel.types';
+import type { StatusLabelColor } from '@/components/Blocks/StatusLabel/StatusLabel.types';
 import { StatusLabel } from './index';
 
 type Story = StoryObj<typeof StatusLabel>;
 
-const colors: Record<Color, string> = {
+const colors: Record<StatusLabelColor, string> = {
   success: 'Зеленый',
   error: 'Красный',
   warning: 'Желтый',

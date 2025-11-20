@@ -1,4 +1,4 @@
-import type { VButtonProps } from '@base/components/ui/VButton/VButton.types';
+import type { VButtonProps } from '@integrity/base-ui';
 
 export type VNotificationColor = 'error' | 'success' | 'warning' | 'info';
 

@@ -5,7 +5,6 @@ import vue from '@vitejs/plugin-vue';
 /// <reference types='vitest' />
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import createPackageConfig from '../../vite.shared';
 
 export default defineConfig({
   root: __dirname,
@@ -17,11 +16,9 @@ export default defineConfig({
       insertTypesEntry: true,
       include: ['**/src/components/**/*', '**/src/index.ts'],
       exclude: '**/*.stories.ts',
-      tsconfigPath: './tsconfig.json',
-      aliasesExclude: [/@base/],
     }),
     svgSpritePlugin({
-      iconDirs: [path.resolve(__dirname, '../icons/icons')],
+      iconDirs: [path.resolve(__dirname, '../shared/assets/icons')],
       symbolId: 'icon-[name]',
       svgDomId: 'svg-sprite',
       inject: 'body-last',
@@ -41,11 +38,6 @@ export default defineConfig({
       },
     }),
   ],
-  resolve: {
-    alias: {
-      '@base': path.resolve(__dirname, '../base-ui/src'),
-    },
-  },
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
@@ -66,16 +58,18 @@ export default defineConfig({
       },
     },
   },
-  ...createPackageConfig('desktop-ui'),
   css: {
     preprocessorOptions: {
       scss: {
         additionalData: `
-          @import '@base/css/variables.scss';
-          @import '@base/css/mixins.scss';
-          @import '@base/css/quasar.classes.scss';
+          @import '@integrity/shared/style.scss';
         `,
       },
+    },
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
     },
   },
 });

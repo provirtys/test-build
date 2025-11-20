@@ -47,13 +47,13 @@
 </template>
 
 <script setup lang="ts">
-import { VIcon } from '@base';
-import { setupI18n } from '@base/i18n';
+import { VIcon } from '@integrity/base-ui';
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { ProgressPie } from '@';
-import type { LabelingCardProps } from '@/components/Blocks/LabelingCard/LabelingCard.types';
+import type { LabelingCardProps } from './index';
 
-const { t } = setupI18n();
+const { t } = useI18n();
 
 const props = defineProps<LabelingCardProps>();
 

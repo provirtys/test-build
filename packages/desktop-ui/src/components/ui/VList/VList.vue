@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { VIcon } from '@base';
+import { VIcon } from '@integrity/base-ui';
 import { colors } from 'quasar';
 import type { VListProps } from './VList.types';
 

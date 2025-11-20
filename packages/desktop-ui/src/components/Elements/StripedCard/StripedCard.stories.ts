@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
-import type { Color } from './StripedCard.types';
+import type { StripedCardColor } from './StripedCard.types';
 import StripedCard from './StripedCard.vue';
 
 type Story = StoryObj<typeof StripedCard>;
 
-const colors: Record<Color & undefined, string> = {
+const colors: Record<StripedCardColor & undefined, string> = {
   '': 'Без цвета',
   success: 'Зеленый',
   error: 'Красный',

@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { VInput } from '@base';
+import { VInput } from '@integrity/base-ui';
 import type { GtinInfoProps } from '@/components/Blocks/GtinInfo/GtinInfo.types';
 
 defineProps<GtinInfoProps>();

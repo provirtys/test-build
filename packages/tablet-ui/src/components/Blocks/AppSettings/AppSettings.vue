@@ -28,9 +28,9 @@
 </template>
 
 <script setup lang="ts">
-import { VButton } from '@base';
-import { AppSettingsOptions } from '@';
-import type { AppSettingsEmits, AppSettingsProps } from '@/components/Blocks/AppSettings/AppSettings.types';
+import { VButton } from '@integrity/base-ui';
+import type { AppSettingsEmits, AppSettingsProps } from './index';
+import { AppSettingsOptions } from './index';
 
 const props = withDefaults(defineProps<AppSettingsProps>(), {
   isDisabled: false,

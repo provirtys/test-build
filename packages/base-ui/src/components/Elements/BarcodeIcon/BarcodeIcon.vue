@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import type { BarcodeIconProps } from '@base/components/Elements/BarcodeIcon/BarcodeIcon.types';
+import type { BarcodeIconProps } from '@/components/Elements/BarcodeIcon/BarcodeIcon.types';
 
 const props = withDefaults(defineProps<BarcodeIconProps>(), {
   border: true,

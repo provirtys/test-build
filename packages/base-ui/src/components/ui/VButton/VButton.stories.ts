@@ -1,7 +1,7 @@
+import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@integrity/shared/types/story';
 import { QMenu } from 'quasar';
 import { computed } from 'vue';
-import type { Color, TextAlignment } from '@/components/ui/VButton/VButton.types';
-import type { ExtendedArgs, ExtendedMeta, ExtendedStory } from '@/types/story';
+import type { VButtonColor, VButtonTextAlignment } from '@/components/ui/VButton/VButton.types';
 import { VButton } from './index';
 
 type AdditionalArgs = {
@@ -13,7 +13,7 @@ type Args = ExtendedArgs<typeof VButton, AdditionalArgs>;
 type Story = ExtendedStory<typeof VButton, AdditionalArgs>;
 
 //Цвет кнопки
-const colors: Record<Color, string> = {
+const colors: Record<VButtonColor, string> = {
   primary: 'Основной',
   secondary: 'Второстепенный',
   plain: 'Плоский',
@@ -22,7 +22,7 @@ const colors: Record<Color, string> = {
 };
 
 //Выравнивание текста
-const textAlignments: Record<TextAlignment, string> = {
+const textAlignments: Record<VButtonTextAlignment, string> = {
   left: 'Слева',
   center: 'По центру',
   right: 'Справа',

@@ -8,8 +8,8 @@
 </template>
 
 <script setup lang="ts">
-import { VIcon } from '@base';
 import { computed } from 'vue';
+import { VIcon } from '@';
 import type { VAlertProps } from './VAlert.types';
 
 const props = withDefaults(defineProps<VAlertProps>(), {
@@ -41,6 +41,7 @@ const contentClasses = computed(() => [`text-${props.color}`]);
     align-items: center;
     flex-wrap: nowrap;
     gap: 11.5px;
+    font-family: 'VelaSans';
   }
 
   &__label {

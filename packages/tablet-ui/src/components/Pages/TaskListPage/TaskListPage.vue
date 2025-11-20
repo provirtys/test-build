@@ -28,11 +28,11 @@
 </template>
 
 <script setup lang="ts">
-import { VButton } from '@base';
-import { navigateTo } from '@base/utils/navigation';
+import { VButton } from '@integrity/base-ui';
+import { navigateTo } from '@integrity/shared/utils';
 import { storeToRefs } from 'pinia';
 import { computed, ref } from 'vue';
-import { MainLayout, TaskList } from '@';
+import { MainLayout, StatusBarActionProp, StatusBarStatusProp, TaskList } from '@';
 import { tasksWithGTIN } from '@/mocks/tasks';
 import { useMainStore } from '@/stores';
 
@@ -43,13 +43,13 @@ const selectedTaskID = ref('');
 
 const buttonDisabled = computed(() => selectedTaskID.value === null);
 
-const headerStatus = computed(() => ({
+const headerStatus = computed<StatusBarStatusProp>(() => ({
   type: isStatusReady ? 'success' : 'error',
   sync: true,
   active: false,
 }));
 
-const headerAction = {
+const headerAction: StatusBarActionProp = {
   type: 'logout',
   fn: () => {},
 };

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import type { VCardBgColor } from '@';
 import boxImage from '@/assets/images/box.png';
 import boxCodeImage from '@/assets/images/box-code.png';
 import boxOpenImage from '@/assets/images/box-open.png';
 import boxPalletImage from '@/assets/images/box-pallet.png';
 import boxesImage from '@/assets/images/boxes.png';
 import datamatrixScanImage from '@/assets/images/datamatrix-scan.png';
-import type { VCardBgColor } from '../../ui/VCard/VCard.types';
 import type { CardSelectorItem } from './CardSelector.types';
 import { CardSelector } from './index';
 

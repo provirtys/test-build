@@ -10,12 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import { VButton } from '@base';
-import { VButtonSizeConfig } from '@base/components/ui/VButton/VButton.types';
+import { VButton, VButtonSizeConfig } from '@integrity/base-ui';
 import { computed } from 'vue';
-import { Size, VButtonEmits, VButtonProps } from './VButton.types';
+import { VButtonEmits, VButtonProps, VButtonSize } from './VButton.types';
 
-const buttonSizeConfigs: Record<Size, VButtonSizeConfig> = {
+const buttonSizeConfigs: Record<VButtonSize, VButtonSizeConfig> = {
   lg: {
     fontSize: '20px',
     height: '64px',

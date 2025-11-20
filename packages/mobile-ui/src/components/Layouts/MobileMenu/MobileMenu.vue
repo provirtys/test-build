@@ -22,11 +22,11 @@
 </template>
 
 <script setup lang="ts">
-import { setupI18n } from '@base/i18n';
+import { useI18n } from 'vue-i18n';
 import { TabBarIcon } from '@/components/Elements/TabBarIcon';
-import type { MobileMenuProps } from '@/components/Layouts/MobileMenu/MobileMenu.types';
+import type { MobileMenuProps } from './index';
 
-const { t } = setupI18n();
+const { t } = useI18n();
 
 const props = defineProps<MobileMenuProps>();
 

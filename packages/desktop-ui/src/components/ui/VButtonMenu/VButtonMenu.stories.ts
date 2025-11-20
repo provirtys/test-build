@@ -28,7 +28,7 @@ const meta: Meta<typeof VButtonMenu> = {
       },
       {
         icon: 'trash',
-        iconColor: 'primary',
+        iconColor: 'error',
         label: 'Удалить',
         topDivider: true,
         handler: () => {

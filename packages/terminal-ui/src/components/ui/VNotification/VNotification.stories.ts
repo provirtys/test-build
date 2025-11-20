@@ -1,4 +1,4 @@
-import VButton from '@base/components/ui/VButton/VButton.vue';
+import { VButton } from '@integrity/base-ui';
 import type { Meta, StoryObj } from '@storybook/vue3-vite';
 import { createConfirmNotification, createNotification } from '@/utils/notification';
 import { VNotification } from './index';

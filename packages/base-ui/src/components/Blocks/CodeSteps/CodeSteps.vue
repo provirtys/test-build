@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-import { BarcodeIcon, DatamatrixIcon, VIcon } from '@base';
-import type { CodeStepsProps } from '@base/components/Blocks/CodeSteps/CodeSteps.types';
 import { computed } from 'vue';
+import { BarcodeIcon, DatamatrixIcon, VIcon } from '@';
+import type { CodeStepsProps } from '@/components/Blocks/CodeSteps/CodeSteps.types';
 
 const props = withDefaults(defineProps<CodeStepsProps>(), {
   codeType: 'dataMatrix',
