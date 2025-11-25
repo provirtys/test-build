@@ -63,8 +63,9 @@ const props = withDefaults(defineProps<VButtonProps>(), {
   icon: undefined,
   rounded: true,
   iconRight: undefined,
-  iconSize: undefined,
+  iconSize: 20,
   textAlignment: 'center',
+  centeredContent: true,
   fitWidth: false,
   once: false,
   enableHold: false,
@@ -111,9 +112,9 @@ const btnClasses = computed(() => [
   {
     'v-button--disabled': btnDisabled.value,
     [`text-${props.textAlignment}`]: props.textAlignment,
-    'v-button--square': showAsSquare.value,
     'v-button--holding': btnStatus.value === 'holding',
     'v-button--done': showSubmittedIcon.value,
+    'v-button--centered-content': props.centeredContent,
   },
 ]);
 
@@ -280,10 +281,6 @@ const finishAnimation = (_?: Event, finished?: boolean) => {
     border-radius: v-bind(borderRadius) 0 0 v-bind(borderRadius);
   }
 
-  &.v-button--square :deep(.q-btn__content) {
-    justify-content: center;
-  }
-
   &.text-left &__text {
     text-align: left;
   }
@@ -362,6 +359,16 @@ const finishAnimation = (_?: Event, finished?: boolean) => {
 
     :deep(.q-btn__content) {
       justify-content: center;
+    }
+  }
+
+  &.v-button--centered-content {
+    :deep(.q-btn__content) {
+      justify-content: center;
+    }
+
+    .v-button__text {
+      flex-grow: 0;
     }
   }
 

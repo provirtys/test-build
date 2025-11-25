@@ -16,6 +16,7 @@ export interface VButtonProps extends Omit<QBtnProps, 'size'> {
   gap?: string;
   fontSize?: string;
   height?: string;
+  centeredContent?: boolean;
 }
 
 export type VButtonEmits = (e: 'action') => void;

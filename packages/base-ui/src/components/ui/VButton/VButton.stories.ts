@@ -74,6 +74,11 @@ const meta: Meta = {
         labels: textAlignments,
       },
     },
+    centeredContent: {
+      description:
+        'Располагать контент по центру <br/>' +
+        'Если `true`, то проп `textAlignment` не учитывается при расположении текста',
+    },
     disable: {
       description: 'Неактивное состояние',
       options: [true, false],
@@ -182,11 +187,12 @@ const meta: Meta = {
     color: 'primary',
     text: 'Кнопка',
     textAlignment: 'center',
+    centeredContent: true,
     borderRadius: '8px',
     disable: false,
     icon: undefined,
     iconRight: undefined,
-    iconSize: undefined,
+    iconSize: 20,
     fitWidth: false,
     once: false,
     enableHold: false,
@@ -280,6 +286,7 @@ export const TextLeft: Story = {
   args: {
     text: 'Текст слева',
     textAlignment: 'left',
+    centeredContent: false,
   },
 };
 
@@ -287,6 +294,7 @@ export const TextRight: Story = {
   args: {
     text: 'Текст справа',
     textAlignment: 'right',
+    centeredContent: false,
   },
 };
 
@@ -295,6 +303,7 @@ export const IconLeftWithTextLeft: Story = {
     text: 'Иконка слева текст слева',
     icon: 'bad',
     textAlignment: 'left',
+    centeredContent: false,
   },
 };
 
@@ -302,6 +311,7 @@ export const IconLeftWithTextCenter: Story = {
   args: {
     text: 'Иконка слева текст по центру',
     icon: 'bad',
+    centeredContent: false,
   },
 };
 
@@ -310,6 +320,7 @@ export const IconLeftWithTextRight: Story = {
     text: 'Иконка слева текст справа',
     icon: 'bad',
     textAlignment: 'right',
+    centeredContent: false,
   },
 };
 
@@ -318,6 +329,7 @@ export const IconRightWithTextLeft: Story = {
     text: 'Иконка справа текст слева',
     iconRight: 'bad',
     textAlignment: 'left',
+    centeredContent: false,
   },
 };
 
@@ -325,6 +337,7 @@ export const IconRightTextCenter: Story = {
   args: {
     text: 'Иконка справа текст по центру',
     iconRight: 'bad',
+    centeredContent: false,
   },
 };
 
@@ -333,6 +346,7 @@ export const IconRightWithTextCenter: Story = {
     text: 'Иконка справа текст справа',
     iconRight: 'bad',
     textAlignment: 'right',
+    centeredContent: false,
   },
 };
 
@@ -342,6 +356,7 @@ export const BothIconsWithTextLeft: Story = {
     icon: 'arrow',
     iconRight: 'bad',
     textAlignment: 'left',
+    centeredContent: false,
   },
 };
 
@@ -351,6 +366,7 @@ export const BothIconsWithTextCenter: Story = {
     icon: 'arrow',
     iconRight: 'bad',
     textAlignment: 'center',
+    centeredContent: false,
   },
 };
 
@@ -360,6 +376,7 @@ export const BothIconsWithTextRight: Story = {
     icon: 'arrow',
     iconRight: 'bad',
     textAlignment: 'right',
+    centeredContent: false,
   },
 };
 
