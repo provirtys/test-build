@@ -11,6 +11,10 @@ const config: StorybookConfig = {
       },
     },
   },
+  viteFinal: async (config) => {
+    config.base = '/provirtys.github.io/test-build/base-ui/'; // замените your-repo-name
+    return config;
+  },
 };
 
 export default config;

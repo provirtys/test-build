@@ -18,15 +18,15 @@ const config: StorybookConfig = {
     },
     desktop: {
       title: 'Desktop',
-      url: 'https://provirtys.github.io/test-build/desktop/iframe.html',
+      url: 'https://provirtys.github.io/test-build/desktop-ui/iframe.html',
     },
     mobile: {
       title: 'Mobile',
-      url: 'https://provirtys.github.io/test-build/mobile/iframe.html',
+      url: 'https://provirtys.github.io/test-build/mobile-ui/iframe.html',
     },
     tablet: {
       title: 'Tablet',
-      url: 'https://provirtys.github.io/test-build/tablet/iframe.html',
+      url: 'https://provirtys.github.io/test-build/tablet-ui/iframe.html',
     },
   },
 };
