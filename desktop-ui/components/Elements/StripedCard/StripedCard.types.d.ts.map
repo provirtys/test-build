@@ -1,0 +1,1 @@
+{"version":3,"file":"StripedCard.types.d.ts","sourceRoot":"","sources":["../../../../src/components/Elements/StripedCard/StripedCard.types.ts"],"names":[],"mappings":"AAAA,MAAM,MAAM,gBAAgB,GAAG,SAAS,GAAG,OAAO,GAAG,MAAM,GAAG,SAAS,CAAC;AAExE,MAAM,WAAW,gBAAgB;IAC/B,KAAK,CAAC,EAAE,MAAM,CAAC;IACf,IAAI,CAAC,EAAE,MAAM,CAAC;IACd,KAAK,CAAC,EAAE,gBAAgB,CAAC;CAC1B"}
