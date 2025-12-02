@@ -14,19 +14,19 @@ const config: StorybookConfig = {
   refs: {
     baseui: {
       title: 'Base UI',
-      url: 'https://https://provirtys.github.io/test-build/base-ui/iframe.html',
+      url: 'https://provirtys.github.io/test-build/base-ui/iframe.html',
     },
     desktop: {
       title: 'Desktop',
-      url: 'https://https://provirtys.github.io/test-build/desktop/iframe.html',
+      url: 'https://provirtys.github.io/test-build/desktop/iframe.html',
     },
     mobile: {
       title: 'Mobile',
-      url: 'https://https://provirtys.github.io/test-build/mobile/iframe.html',
+      url: 'https://provirtys.github.io/test-build/mobile/iframe.html',
     },
     tablet: {
       title: 'Tablet',
-      url: 'https://https://provirtys.github.io/test-build/tablet/iframe.html',
+      url: 'https://provirtys.github.io/test-build/tablet/iframe.html',
     },
   },
 };
