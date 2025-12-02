@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [ desktop, mobile, tablet ]
+        platform: [ desktop-ui, mobile-ui, tablet-ui ]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
