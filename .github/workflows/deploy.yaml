@@ -92,5 +92,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: storybook-static  # если root в корне
-          branch: test/github-pages
-          target-folder: root
+          branch: gh-pages
