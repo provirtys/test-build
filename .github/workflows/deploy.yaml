@@ -17,7 +17,7 @@ jobs:
           node-version: 18
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm --filter base-ui run build
+      - run: pnpm --filter base-ui build
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: packages/base-ui/storybook-static
