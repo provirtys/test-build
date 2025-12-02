@@ -86,7 +86,7 @@ jobs:
       - run: pnpm install
 
       - name: Build root Storybook
-        run: pnpm build-storybook  # если root в корне
+        run: pnpm storybook build  # если root в корне
 
       - name: Deploy root Storybook
         uses: JamesIves/github-pages-deploy-action@v4
