@@ -1,0 +1,1 @@
+{"version":3,"file":"VBreadcrumbs.types.d.ts","sourceRoot":"","sources":["../../../../src/components/ui/VBreadcrumbs/VBreadcrumbs.types.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,gBAAgB;IAC/B,KAAK,EAAE,MAAM,CAAC;IACd,OAAO,CAAC,EAAE,MAAM,IAAI,CAAC;CACtB;AAED,MAAM,WAAW,iBAAiB;IAChC,KAAK,EAAE,gBAAgB,EAAE,CAAC;CAC3B"}
