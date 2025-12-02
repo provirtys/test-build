@@ -1,1 +1,0 @@
-{"version":3,"file":"Loading.types.d.ts","sourceRoot":"","sources":["../../../../src/components/Blocks/Loading/Loading.types.ts"],"names":[],"mappings":"AAAA,MAAM,MAAM,WAAW,GAAG,SAAS,GAAG,OAAO,GAAG,YAAY,GAAG,OAAO,GAAG,gBAAgB,GAAG,WAAW,GAAG,OAAO,CAAC;AAElH,MAAM,WAAW,YAAY;IAC3B,WAAW,EAAE,EAAE,GAAG,WAAW,CAAC;CAC/B"}
