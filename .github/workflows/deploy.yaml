@@ -43,28 +43,28 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: packages/base-ui/storybook-static
-          branch: test/github-pages
+          branch: gh-pages
           target-folder: base-ui
 
       - name: Deploy desktop-ui
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: packages/desktop-ui/storybook-static
-          branch: test/github-pages
+          branch: gh-pages
           target-folder: desktop-ui
 
       - name: Deploy mobile-ui
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: packages/mobile-ui/storybook-static
-          branch: test/github-pages
+          branch: gh-pages
           target-folder: mobile-ui
 
       - name: Deploy tablet-ui
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: packages/tablet-ui/storybook-static
-          branch: test/github-pages
+          branch: gh-pages
           target-folder: tablet-ui
 
   deploy-root-storybook:
