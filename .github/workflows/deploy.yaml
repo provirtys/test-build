@@ -1,49 +1,62 @@
-name: Build and Deploy Storybook
+name: Build and Deploy Storybooks
 
 on:
   push:
-    branches:
-      - test/github-pages
+    branches: [ main ]
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
-  build-and-deploy:
+  build-base-ui:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
         with:
-          node-version: 24
-
-      - name: Enable corepack and install pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build base-ui
-        run: pnpm --filter base-ui build
-
-      - name: Build Storybook
-        run: pnpm build:storybook
-
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v3
-
-      - name: Upload Storybook artifact
-        uses: actions/upload-pages-artifact@v4
+          node-version: 18
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm --filter base-ui run build
+      - uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: storybook-static
+          folder: packages/base-ui/storybook-static
+          branch: gh-pages
+          target-folder: base-ui  # your-repo.github.io/base-ui/
 
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+  build-platforms:
+    needs: build-base-ui
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [ desktop, mobile, tablet ]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm --filter ${{ matrix.platform }} build-storybook -o storybook-static
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: packages/${{ matrix.platform }}/storybook-static
+          branch: gh-pages
+          target-folder: ${{ matrix.platform }}
+
+  deploy-root-storybook:
+    needs: build-platforms
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm --filter root-storybook build-storybook -o storybook-static
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: packages/root-storybook/storybook-static
+          branch: gh-pages
+          target-folder: root
