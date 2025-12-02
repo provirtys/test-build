@@ -1,4 +1,17 @@
 import type { StorybookConfig } from '@storybook/vue3-vite';
+import { defineConfig, mergeConfig, type Plugin } from 'vite';
+
+function fixStorybookMockerEntryPlugin(): Plugin {
+  return {
+    name: 'fix-storybook-mocker-entry',
+    enforce: 'post',
+    transformIndexHtml(html) {
+      // https://github.com/storybookjs/storybook/blob/2657cc33826d1abf76334f94fef4b82b10f1e1c0/code/core/src/core-server/presets/vitePlugins/vite-inject-mocker/plugin.ts#L11
+      const entryPath = '/vite-inject-mocker-entry.js';
+      return html.replace(`"${entryPath}"`, `".${entryPath}"`);
+    },
+  };
+}
 
 const config: StorybookConfig = {
   stories: ['../src/components/**/*.mdx', '../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -11,10 +24,15 @@ const config: StorybookConfig = {
       },
     },
   },
-  viteFinal: async (config) => {
-    config.base = '/provirtys.github.io/test-build/base-ui/'; // замените your-repo-name
-    return config;
-  },
+  viteFinal: (config) =>
+    mergeConfig(
+      config,
+      defineConfig({
+        plugins: [
+          fixStorybookMockerEntryPlugin(), //
+        ],
+      }),
+    ),
 };
 
 export default config;
