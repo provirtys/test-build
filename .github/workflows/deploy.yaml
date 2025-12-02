@@ -9,7 +9,6 @@ permissions:
 
 jobs:
   build-all-storybooks:
-    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -69,6 +68,7 @@ jobs:
           target-folder: tablet-ui
 
   deploy-root-storybook:
+    needs: build-all-storybooks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
