@@ -28,7 +28,7 @@ jobs:
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: packages/base-ui/storybook-static
-          branch: gh-pages
+          branch: test/github-pages
           target-folder: base-ui  # your-repo.github.io/base-ui/
 
   build-platforms:
@@ -48,7 +48,7 @@ jobs:
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: packages/${{ matrix.platform }}/storybook-static
-          branch: gh-pages
+          branch: test/github-pages
           target-folder: ${{ matrix.platform }}
 
   deploy-root-storybook:
@@ -65,5 +65,5 @@ jobs:
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: packages/root-storybook/storybook-static
-          branch: gh-pages
+          branch: test/github-pages
           target-folder: root
