@@ -8,66 +8,91 @@ permissions:
   contents: write
 
 jobs:
-  build-base-ui:
+  build-all-storybooks:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 24
+          cache: 'pnpm'
 
       - name: Enable corepack and install pnpm
         run: |
           corepack enable
           corepack prepare pnpm@latest --activate
-      - run: pnpm install
-      - run: pnpm --filter base-ui build
-      - run: pnpm --filter base-ui build:storybook
-      - uses: JamesIves/github-pages-deploy-action@v4
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build base-ui (lib)
+        run: pnpm --filter base-ui build
+
+      - name: Build base-ui Storybook
+        run: pnpm --filter base-ui build:storybook
+
+      - name: Build platform Storybooks
+        run: |
+          pnpm --filter desktop-ui build:storybook
+          pnpm --filter mobile-ui build:storybook
+          pnpm --filter tablet-ui build:storybook
+
+      - name: Deploy base-ui
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: packages/base-ui/storybook-static
           branch: test/github-pages
-          target-folder: base-ui  # your-repo.github.io/base-ui/
+          target-folder: base-ui
 
-  build-platforms:
-    needs: build-base-ui
+      - name: Deploy desktop-ui
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: packages/desktop-ui/storybook-static
+          branch: test/github-pages
+          target-folder: desktop-ui
+
+      - name: Deploy mobile-ui
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: packages/mobile-ui/storybook-static
+          branch: test/github-pages
+          target-folder: mobile-ui
+
+      - name: Deploy tablet-ui
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: packages/tablet-ui/storybook-static
+          branch: test/github-pages
+          target-folder: tablet-ui
+
+  deploy-root-storybook:
+    needs: build-all-storybooks
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        platform: [ desktop-ui, mobile-ui, tablet-ui ]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 24
+          cache: 'pnpm'
+
       - name: Enable corepack and install pnpm
         run: |
           corepack enable
           corepack prepare pnpm@latest --activate
-      - run: pnpm install
-      - run: pnpm --filter ${{ matrix.platform }} build:storybook
-      - uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: packages/${{ matrix.platform }}/storybook-static
-          branch: test/github-pages
-          target-folder: ${{ matrix.platform }}
 
-  deploy-root-storybook:
-    needs: build-platforms
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm --filter root-storybook build-storybook -o storybook-static
-      - uses: JamesIves/github-pages-deploy-action@v4
+
+      - name: Build root Storybook
+        run: pnpm build-storybook  # если root в корне
+
+      - name: Deploy root Storybook
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: packages/root-storybook/storybook-static
+          folder: storybook-static  # если root в корне
           branch: test/github-pages
           target-folder: root
