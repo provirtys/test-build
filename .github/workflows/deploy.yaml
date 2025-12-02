@@ -25,6 +25,7 @@ jobs:
           corepack prepare pnpm@latest --activate
       - run: pnpm install
       - run: pnpm --filter base-ui build
+      - run: pnpm --filter base-ui build:storybook
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: packages/base-ui/storybook-static
