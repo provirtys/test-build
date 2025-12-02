@@ -2,7 +2,7 @@ name: Build and Deploy Storybooks
 
 on:
   push:
-    branches: [ main ]
+    branches: [ test/github-pages ]
 
 permissions:
   contents: write
