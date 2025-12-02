@@ -12,19 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4  # обновите до v4
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4  # v4
+        uses: actions/setup-node@v3
         with:
           node-version: 24
-          cache: 'pnpm'
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4  # официальный action
-        with:
-          version: latest
-
+      - name: Enable corepack and install pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
       - run: pnpm install
       - run: pnpm --filter base-ui build
       - run: pnpm --filter base-ui build:storybook
@@ -32,7 +30,7 @@ jobs:
         with:
           folder: packages/base-ui/storybook-static
           branch: test/github-pages
-          target-folder: base-ui
+          target-folder: base-ui  # your-repo.github.io/base-ui/
 
   build-platforms:
     needs: build-base-ui
@@ -42,18 +40,14 @@ jobs:
         platform: [ desktop-ui, mobile-ui, tablet-ui ]
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v3
         with:
           node-version: 24
           cache: 'pnpm'
-
-      - name: Install pnpm  # ← ДОБАВЬТЕ ЭТОТ ШАГ!
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
-
+      - name: Enable corepack and install pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
       - run: pnpm install
       - run: pnpm --filter ${{ matrix.platform }} build:storybook
       - uses: JamesIves/github-pages-deploy-action@v4
@@ -67,22 +61,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v3
         with:
-          node-version: 24  # унифицируйте версию
+          node-version: 18
           cache: 'pnpm'
-
-      - name: Install pnpm  # ← И СЮДА ТОЖЕ!
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
-
       - run: pnpm install
-      - run: pnpm build-storybook  # уберите --filter, если root в корне
+      - run: pnpm --filter root-storybook build-storybook -o storybook-static
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: storybook-static  # если root в корне
+          folder: packages/root-storybook/storybook-static
           branch: test/github-pages
           target-folder: root
